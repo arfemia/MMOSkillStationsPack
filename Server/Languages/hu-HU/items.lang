@@ -1,0 +1,3 @@
+MMO_Station_Sawmill.name = Fűrészmalom
+MMO_Station_Sawmill.description = Munkaállomás, amely rönköket fűrészel deszkává. Nyomd meg a használat gombot a munka megkezdéséhez.
+MMO_Station_Sawmill.hint = Nyomd meg a [{key}] gombot a munkához

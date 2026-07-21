@@ -1,0 +1,57 @@
+{
+  "$Comment": "The Sawmill work station block. Model reuses the vanilla Lumbermill bench.",
+  "TranslationProperties": {
+    "Name": "items.MMO_Station_Sawmill.name",
+    "Description": "items.MMO_Station_Sawmill.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": ["Furniture.Furniture"],
+  "Icon": "Icons/ItemsGenerated/Bench_Lumbermill.png",
+  "MaxStack": 1,
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "PhysicalMaterialId": "Wood",
+    "CustomModel": "Blocks/Benches/Lumbermill.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Lumbermill_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "HitboxType": "Bench_Lumbermill",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "InteractionHint": "items.MMO_Station_Sawmill.hint",
+    "Interactions": {
+      "Use": "MMO_Station_Sawmill_Use"
+    }
+  },
+  "Tags": {
+    "Type": ["Furniture"],
+    "Family": ["MMOSkillTree"]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

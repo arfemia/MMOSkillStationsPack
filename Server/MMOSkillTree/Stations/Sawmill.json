@@ -1,0 +1,56 @@
+{
+  "Identity": {
+    "NameKey": "station.sawmill.name",
+    "DescKey": "station.sawmill.desc",
+    "Icon": "Wood_Hardwood_Planks"
+  },
+  "Work": {
+    "CycleMs": 5000,
+    "MaxDurationMs": 600000,
+    "MaxMoveMeters": 1.5,
+    "Exclusive": true,
+    "Xp": [
+      { "Skill": "WOODCUTTING", "PerCycle": 8.0 },
+      { "Skill": "CRAFTING", "PerCycle": 4.0 }
+    ]
+  },
+  "Recipe": {
+    "FromCrafting": { "Categories": ["WoodPlanks"] }
+  },
+  "Luck": {
+    "Tiers": [
+      { "MinLuck": 50, "DropList": "MMO_Station_Sawmill_T1" },
+      { "MinLuck": 100, "DropList": "MMO_Station_Sawmill_T2" },
+      { "MinLuck": 150, "DropList": "MMO_Station_Sawmill_T3" }
+    ]
+  },
+  "Hold": {
+    "MovementLock": true,
+    "EffectId": "MMO_Station_Hold",
+    "InterruptOnDamage": true
+  },
+  "Tool": {
+    "Gather": { "GatherType": "Woods", "MinPower": 0.1 },
+    "Tags": { "Family": ["Hatchet"] },
+    "XpScale": { "ReferencePower": 0.2, "MinMult": 0.75, "MaxMult": 1.5 }
+  },
+  "Camera": {
+    "Mode": "ThirdPerson",
+    "Locked": true,
+    "FaceBlock": false
+  },
+  "Animation": {
+    "EmoteId": "MMO_Emote_Saw",
+    "Swing": {
+      "IntervalMs": 933,
+      "Presentation": {
+        "Sound": "SFX_Tool_T1_Swing",
+        "Particles": "Block_Hit_Wood"
+      }
+    }
+  },
+  "Presentation": {
+    "Sound": "SFX_Wood_Break",
+    "Feedback": "STATION_CYCLE"
+  }
+}

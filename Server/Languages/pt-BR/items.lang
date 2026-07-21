@@ -1,0 +1,3 @@
+MMO_Station_Sawmill.name = Serraria
+MMO_Station_Sawmill.description = Uma estação de trabalho que serra troncos em tábuas. Pressione usar para começar a trabalhar.
+MMO_Station_Sawmill.hint = Pressione [{key}] para trabalhar

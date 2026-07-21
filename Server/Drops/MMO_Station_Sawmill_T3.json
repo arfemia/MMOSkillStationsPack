@@ -1,0 +1,12 @@
+{
+  "Container": {
+    "Type": "Choice",
+    "RollsMin": 1,
+    "RollsMax": 1,
+    "Containers": [
+      { "Type": "Empty", "Weight": 70 },
+      { "Type": "Single", "Weight": 25,
+        "Item": { "ItemId": "Wood_Hardwood_Planks", "QuantityMin": 2, "QuantityMax": 4 } }
+    ]
+  }
+}

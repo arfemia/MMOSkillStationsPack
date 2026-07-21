@@ -1,0 +1,3 @@
+MMO_Station_Sawmill.name = Bıçkıhane
+MMO_Station_Sawmill.description = Kütükleri kalaslara dönüştüren bir çalışma istasyonu. Çalışmaya başlamak için kullan tuşuna bas.
+MMO_Station_Sawmill.hint = Çalışmak için [{key}] tuşuna bas
