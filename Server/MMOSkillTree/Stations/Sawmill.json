@@ -5,7 +5,7 @@
     "Icon": "Wood_Hardwood_Planks"
   },
   "Work": {
-    "CycleMs": 5000,
+    "CycleMs": 4665,
     "MaxDurationMs": 600000,
     "MaxMoveMeters": 1.5,
     "Exclusive": true,
@@ -60,5 +60,9 @@
   "Presentation": {
     "Sound": "SFX_Wood_Break",
     "Feedback": "STATION_CYCLE"
+  },
+  "Completion": {
+    "Sound": "SFX_Chest_Wooden_Open_Player",
+    "Particles": "Block_Gem_Sparks"
   }
 }
