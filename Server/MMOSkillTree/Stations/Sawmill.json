@@ -40,7 +40,8 @@
   "Camera": {
     "Mode": "ThirdPerson",
     "Locked": true,
-    "FaceBlock": true
+    "FaceBlock": true,
+    "FaceBlockMode": "look_rot"
   },
   "Animation": {
     "EmoteId": "MMO_Emote_Saw",
