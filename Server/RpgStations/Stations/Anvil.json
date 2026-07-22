@@ -92,7 +92,7 @@
             "Reagents": [ { "ResourceTypeId": "MMO_Sharpened_Bar", "Quantity": 2 } ],
             "Durability": { "AddMax": 10 },
             "Stats": {
-              "Pool": "anvil_weapon_pool",
+              "Pool": "anvilweaponpool",
               "Picks": { "Min": 1, "Max": 2 },
               "Unique": true,
               "Caps": {
