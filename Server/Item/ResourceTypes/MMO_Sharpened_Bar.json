@@ -1,0 +1,4 @@
+{
+  "$Comment": "D6 fix: the anvil's ten MMO_Sharpened_<Metal>_Bar items reference this ResourceType family (their own Convert output AND the enhance action's Stamp.Reagents route). Mirrors vanilla Metal_Bars' own icon convention (Icons/ResourceTypes/Rock.png, reused by every metal-adjacent vanilla ResourceType - Bricks/Charcoal/Copper_Iron_Bar).",
+  "Icon": "Icons/ResourceTypes/Rock.png"
+}

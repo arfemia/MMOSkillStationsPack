@@ -12,7 +12,6 @@
     }
   },
   "Camera": {
-    "FaceBlock": true,
     "Recipe": "look_rot"
   },
   "Tool": {

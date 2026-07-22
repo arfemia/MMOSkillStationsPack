@@ -149,6 +149,29 @@ same risk class as the standing-mount pose).
   not match how that file actually loads - a local server-owner config, not a pack-authorable
   asset).
 
+## History (first-boot fix wave, 2026-07-22)
+
+Two content bugs surfaced on the first real boot log after phase 2 landed, both fixed in place
+(no design change, the Anvil's authored intent is unchanged):
+
+- **D3 - redundant `Camera.FaceBlock`**: `Anvil.json`'s station-level `Camera` group authored
+  `FaceBlock: true` ALONGSIDE `Hold.Mount` (the standing entity mount, leg D) - the validator's
+  `MOUNT_FACE_BLOCK_CONFLICT` warning was correct (the mount already locks facing while keeping
+  the camera free; the packet-level `FaceBlock` lock on top is redundant/conflicting). Removed
+  `FaceBlock` from `Camera`, keeping only `Recipe: "look_rot"`.
+- **D6 - the ten `MMO_Sharpened_<Metal>_Bar` items failed native validation (SEVERE, anvil
+  unusable)**: each authors `ResourceTypes: [{"Id": "MMO_Sharpened_Bar"}]`, but no `ResourceType`
+  asset with that id existed - vanilla `ResourceType` (`HytaleAssets/Schema/ResourceType.json`,
+  path `Item/ResourceTypes`) is a genuinely pack-authorable native asset type (Name/Description/
+  Icon/Tags only, membership lives entirely on the ITEM side per
+  `HytaleServer/CoreServer/.../asset/type/item/config/ResourceType.java`) - every vanilla exemplar
+  (`Wood_Trunk`, `Metal_Bars`, `Bricks`, `Charcoal`, ...) is just `{"Icon": "Icons/ResourceTypes/
+  <Something>.png"}`. Fix: ship `Server/Item/ResourceTypes/MMO_Sharpened_Bar.json` (`{"Icon":
+  "Icons/ResourceTypes/Rock.png"}`, mirroring `Metal_Bars`' own icon - every metal-adjacent
+  vanilla `ResourceType` reuses `Rock.png`), no item JSON changes needed. `ResourceType` is a
+  native `loadsAfter` dependency of `Item` (`AssetRegistryLoader`'s `Item` store registration), so
+  same-pack-layer load order guarantees it resolves before the ten items validate.
+
 ## History (i18n fix round - the leg-H locale gap closed)
 
 Commit `18e25f5` ("Anvil-era key fill, 8 non-English locales") filled `items.lang`/
