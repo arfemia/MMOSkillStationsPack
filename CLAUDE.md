@@ -243,6 +243,25 @@ Third in-game smoke round, after the R4 fix confirmed display entities RENDER at
   (`"RPG_Station_Sawmill"`/`"RPG_Station_Anvil"`) - the fallback is the single source of truth, so
   no id can drift between the block file and the station asset if one is renamed later.
 
+## History (anvil work-start deny fix, R6, 2026-07-22)
+
+The maintainer's fourth smoke boot found the anvil denying EVERY work-start attempt with
+`ui.station.mount_unavailable`, holding the correct hammer. Diagnosis (RPG Stations
+`station/CLAUDE.md`'s R6 bullet has the full source-confirmed trail): the anvil's
+`Hold.Mount.Surface:"Entity"` (design 9.2's standing work mount, a phase-2 spike never verified
+in-game) engaged with zero throw but zero visible effect - `StationEntityMountController`'s anchor
+entity carried no `NetworkId` component, so the native mount broadcast/self-view systems silently
+no-op'd against it. `Anvil.json`'s `Hold` moved OFF `Mount` onto the proven phase-1 effect-mode
+default (`MovementLock: true`, `EffectId: "RPG_Station_Hold"`, `InterruptOnDamage: true`) - the
+maintainer-recommended proven-hold swap while the Entity mount stays an unverified spike, NOT a
+permanent reversal of the design-9.2 standing-worker intent (the engine-side `NetworkId` fix
+landed alongside this, so a future pack revision can pick the Entity mount back up once it gets
+its own in-game confirmation pass). `Camera.Recipe: "look_rot"` is unchanged. See the engine's own
+`station/CLAUDE.md` R6 bullet for the graceful-degradation + orphan-anchor-leak + teardown
+tick-safety hardening that landed in the SAME round, plus the new press-F custody RETRIEVAL
+feature (no pack authoring needed - every `Custody.Display`-bearing action in this pack, both the
+sawmill's logs and the anvil's `convert`/`enhance`, is now retrievable for free).
+
 ## How it fits together
 
 - **A station is one `StationAsset` JSON + its block + its interaction.**

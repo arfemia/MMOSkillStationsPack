@@ -1,14 +1,13 @@
 {
-  "$Comment": "The anvil work station (design section 9.5, phase 2 leg E): two diegetic actions selected by held/placed item - Convert (sharpen a vanilla metal bar) and Enhance (the flagship Stamp-step ritual). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel) - no new art. Smoke round R5 (2026-07-22): convert.Custody.Display.Offset.Y lowered from 0.55 to 0.35 so the placed ingot rests closer to the anvil surface - a maintainer-tunable FIRST GUESS from this round, not yet re-verified in-game (the maintainer flagged only the placed INGOT; enhance's placed-weapon offset is left at 0.55 pending separate confirmation). Identity.Icon removed: StationService#blockItemIdAt already falls back to the anchor block's own BlockType id when Identity.Icon is absent/blank, and that id equals this station's own item id (RPG_Station_Anvil, filename = item id per repo convention) - so the summary-HUD crest already shows the anvil's own block icon with zero duplicated id to drift.",
+  "$Comment": "The anvil work station (design section 9.5, phase 2 leg E): two diegetic actions selected by held/placed item - Convert (sharpen a vanilla metal bar) and Enhance (the flagship Stamp-step ritual). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel) - no new art. Smoke round R5 (2026-07-22): convert.Custody.Display.Offset.Y lowered from 0.55 to 0.35 so the placed ingot rests closer to the anvil surface - a maintainer-tunable FIRST GUESS from this round, not yet re-verified in-game (the maintainer flagged only the placed INGOT; enhance's placed-weapon offset is left at 0.55 pending separate confirmation). Identity.Icon removed: StationService#blockItemIdAt already falls back to the anchor block's own BlockType id when Identity.Icon is absent/blank, and that id equals this station's own item id (RPG_Station_Anvil, filename = item id per repo convention) - so the summary-HUD crest already shows the anvil's own block icon with zero duplicated id to drift. Work-start deny fix round (2026-07-22): Hold.Mount (the standing Entity-surface mount, design 9.2) moved to effect-mode (MovementLock + EffectId, the proven phase-1 default) - the Entity mount is a phase-2 spike never verified in-game and StationEntityMountController's own anchor never carried a NetworkId component, so PlayerMount/TrackerUpdate silently no-op'd (the mount added with zero throw, zero visible effect) whenever the anvil's convert/enhance work loop tried to engage, denying with ui.station.mount_unavailable even though the tool gate and custody viability had already passed. The engine-side NetworkId fix (StationEntityMountController) and graceful degradation (StationService#toggle) both landed alongside this authoring change and hold regardless of which mount surface a future pack revision picks; this is the maintainer-recommended proven-hold swap, not a permanent design reversal - see additional-mods/rpg-stations station/CLAUDE.md for the full fix-round detail.",
   "Identity": {
     "NameKey": "rpgstations.station.anvil.name",
     "DescKey": "rpgstations.station.anvil.desc"
   },
   "Hold": {
-    "Mount": {
-      "Surface": "Entity",
-      "Entity": { "Offset": { "X": 0.0, "Y": 0.0, "Z": 0.6 }, "DismountOnMove": true, "Steerable": false }
-    }
+    "MovementLock": true,
+    "EffectId": "RPG_Station_Hold",
+    "InterruptOnDamage": true
   },
   "Camera": {
     "Recipe": "look_rot"
