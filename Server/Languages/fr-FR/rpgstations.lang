@@ -1,0 +1,7 @@
+# MMO Skill Tree Stations Pack - clés additives par rapport au rpgstations.lang d'RPG Stations
+# (l'espace de noms "rpgstations." ; fusion additive par clé, ne remplace jamais une clé d'RPG Stations).
+# La Scierie réutilise les propres clés expédiées d'RPG Stations station.sawmill.* ; l'Enclume est
+# un contenu exclusif au pack, donc ses clés station.anvil.* vivent ici.
+
+station.anvil.name = Enclume
+station.anvil.desc = Forgez des barres aiguisées à partir de métal, ou améliorez une arme dans un rituel de martelage.

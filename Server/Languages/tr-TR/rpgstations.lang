@@ -1,0 +1,7 @@
+# MMO Skill Tree Stations Pack - additive keys over RPG Stations' own rpgstations.lang
+# (the "rpgstations." namespace; per-key-additive merge, never overrides an RPG Stations key).
+# The Sawmill reuses RPG Stations' own shipped station.sawmill.* keys; the Anvil is
+# pack-exclusive content, so its station.anvil.* keys live here.
+
+station.anvil.name = Örs
+station.anvil.desc = Metalden bileli çubuklar dövün veya bir çekiçleme ritüelinde silah geliştirin.

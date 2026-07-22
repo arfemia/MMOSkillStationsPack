@@ -6,3 +6,4 @@
 # (Server/Emote/*.json) and never overrides a client-owned one.
 
 emotes.MMO_Emote_Saw.name = Scier
+emotes.MMO_Emote_Hammer.name = Martelage
