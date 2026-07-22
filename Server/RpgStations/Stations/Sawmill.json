@@ -1,8 +1,8 @@
 {
+  "$Comment": "Smoke round R5 (2026-07-22): Custody.Display.Offset.Y lowered from 0.62 to 0.05 so the placed log rests on the bench surface instead of floating - a maintainer-tunable FIRST GUESS from this round, not yet re-verified in-game. Identity.Icon removed: StationService#blockItemIdAt already falls back to the anchor block's own BlockType id when Identity.Icon is absent/blank, and that id equals this station's own item id (RPG_Station_Sawmill, filename = item id per repo convention) - so the summary-HUD crest (StationSummaryHud#renderStationIcon) already shows the station's own block icon with zero duplicated id to drift.",
   "Identity": {
     "NameKey": "rpgstations.station.sawmill.name",
-    "DescKey": "rpgstations.station.sawmill.desc",
-    "Icon": "Wood_Hardwood_Planks"
+    "DescKey": "rpgstations.station.sawmill.desc"
   },
   "Work": {
     "CycleMs": 4805,
@@ -21,7 +21,7 @@
     "MaxQuantity": 100,
     "States": { "Empty": "Default", "Loaded": "Loaded" },
     "Display": {
-      "Offset": { "Y": 0.62 },
+      "Offset": { "Y": 0.05 },
       "Scale": 0.4
     }
   },

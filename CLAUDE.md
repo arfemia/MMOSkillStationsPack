@@ -213,6 +213,36 @@ state. A fix-round pass added `station.anvil.name`/`.desc` to the 4 missing loca
 `rpgstations.lang` files and corrected both docs - all 9 shipped locales are now key-complete for
 the Anvil content, matching what `items.lang`/`avatarCustomization.lang` already were.
 
+## History (display-offset + icon tuning, smoke round R5, 2026-07-22)
+
+Third in-game smoke round, after the R4 fix confirmed display entities RENDER at all:
+
+- **Display offsets, maintainer-observed in-game**: the placed log floated well above the
+  sawmill's bench surface, and the placed ingot sat a bit too high on the anvil. Both `Custody.
+  Display.Offset.Y` values from R4 (0.62 sawmill, 0.55 anvil `convert`) were maintainer-directed
+  FIRST-GUESS placeholders, never re-verified in-game (see the R4 leg's own PROVISIONAL caveat
+  above). Lowered to `Sawmill.json`'s `Custody.Display.Offset.Y: 0.05` (resting on the bench
+  surface) and `Anvil.json`'s `convert.Custody.Display.Offset.Y: 0.35` - both marked with a
+  top-level `$Comment` as maintainer-tunable first-pass guesses from this round, still not
+  re-verified in-game. The maintainer flagged only the placed INGOT (`convert`), not the placed
+  weapon (`enhance`), so `enhance.Custody.Display.Offset.Y` stays at 0.55 pending separate
+  confirmation - both actions share the same anchor surface, so if the weapon also reads too high
+  a follow-up smoke round should true it up the same way.
+- **Station icons**: the maintainer asked the anvil/sawmill icon to use "the item id of those
+  stations (its file name)". Read RPG Stations `station/StationService.java` (`#toggle` ->
+  `#blockItemIdAt`) and `ui/StationSummaryHud.java` (`#renderStationIcon`, the ONE render site for
+  `Identity.Icon`): the summary-HUD crest is built directly from a raw item id string
+  (`new ItemStack(stationIconItemId, 1)`), and when a station authors no `Identity.Icon` (null or
+  blank) the engine falls back to the anchor block's own `BlockType.getId()` at ENGAGE time
+  (`StationService#blockItemIdAt`). Since this pack's block item files are named (and therefore
+  IDed, per the repo's filename-is-item-id convention) `RPG_Station_Sawmill.json` /
+  `RPG_Station_Anvil.json` exactly, that fallback already resolves to precisely the station's own
+  item id with zero extra authoring. Removed `Identity.Icon` from both `Sawmill.json` (was
+  `"Wood_Hardwood_Planks"`, a raw material, not the station's own icon) and `Anvil.json` (was
+  `"Ingredient_Bar_Iron"`, same issue) rather than re-authoring it to the item-id form
+  (`"RPG_Station_Sawmill"`/`"RPG_Station_Anvil"`) - the fallback is the single source of truth, so
+  no id can drift between the block file and the station asset if one is renamed later.
+
 ## How it fits together
 
 - **A station is one `StationAsset` JSON + its block + its interaction.**
