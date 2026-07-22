@@ -27,6 +27,10 @@
   "Actions": {
     "convert": {
       "Input": { "ResourceTypeId": "Metal_Bars" },
+      "Custody": {
+        "MaxQuantity": 100,
+        "States": { "Empty": "Default", "Loaded": "BarsPlaced" }
+      },
       "Work": {
         "CycleMs": 3800,
         "Xp": [ { "Skill": "SMITHING", "PerCycle": 6.0 } ]

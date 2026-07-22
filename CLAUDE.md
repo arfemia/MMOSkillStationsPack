@@ -121,12 +121,24 @@ same risk class as the standing-mount pose).
   bars -> 1 `MMO_Sharpened_<Metal>_Bar`, `Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json`
   x10, `ResourceTypes:[{"Id":"MMO_Sharpened_Bar"}]` - their OWN shared family, the Stamp step's
   `Reagents` route) - explicit over a `FromCrafting` sweep so no phantom native recipe leaks into
-  bench UIs, per design 9.5.
+  bench UIs, per design 9.5. **SMOKE-FIX S4 (2026-07-22): `convert` now ALSO authors
+  `Custody: {MaxQuantity: 100, States: {Empty: "Default", Loaded: "BarsPlaced"}}`** (no explicit
+  `Custody.Input` - acceptance derives from `Recipe.Conversions`, the sawmill's zero-extra-
+  authoring fallback) - leg E shipped `convert` WITHOUT a `Custody` group at all, so pressing F
+  while holding a bar fell straight through to the station-level `Tool` gate (requires a hammer),
+  denying placement entirely regardless of what was held; the fix mirrors `enhance`'s own
+  placement mechanism. `RPG_Station_Anvil.json` gained the matching `BarsPlaced` block state
+  (reusing the existing generic `items.RPG_Station_Anvil.hint.loaded` key - no new lang key).
 - **Enhance**: `Input: {Function: "Weapon"}` selects this action for any held weapon-shaped item;
   `Custody: {MaxQuantity: 1, Input: {Function: "Weapon"}, States: {Empty: "Default", Loaded:
   "WeaponPlaced"}}` places the weapon (a state-dependent F, design 9.4's mechanism, reused for a
   single metadata-preserving item this time - see RPG Stations' `station/CLAUDE.md`'s
-  `StationCustodyClaim.uniqueStack` note for why that matters). The ritual's `Steps` (`strike1`/
+  `StationCustodyClaim.uniqueStack` note for why that matters). **SMOKE-FIX S4 (2026-07-22):**
+  `Custody.Input`'s `Function` route was never actually wired into the custody PLACEMENT matcher
+  (`station.StationCustody#matchesInput` only tested ItemId/ResourceTypeId/Tags, despite
+  `ActionInput.Function` being resolved for ACTION SELECTION since leg E - a stale-javadoc gap,
+  not a design choice), so a held weapon always correctly SELECTED `enhance` but never actually
+  PLACED into custody; fixed by adding the `Function` route to `matchesInput`. The ritual's `Steps` (`strike1`/
   `strike2`/`settle`/`stamp`) use `Wait.DurationMs` (NOT `Beats` - `Beats` stays schema-reserved,
   unimplemented; authoring it would have hard-failed the ritual at its first step) and reuse
   ONLY verified sound/particle ids (`SFX_Metal_Hit`, `Block_Gem_Sparks`,

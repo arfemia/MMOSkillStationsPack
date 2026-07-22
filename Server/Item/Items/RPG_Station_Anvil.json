@@ -54,6 +54,9 @@
         },
         "WeaponPlaced": {
           "InteractionHint": "items.RPG_Station_Anvil.hint.loaded"
+        },
+        "BarsPlaced": {
+          "InteractionHint": "items.RPG_Station_Anvil.hint.loaded"
         }
       }
     }
