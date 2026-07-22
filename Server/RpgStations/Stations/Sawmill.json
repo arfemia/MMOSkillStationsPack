@@ -19,7 +19,11 @@
   },
   "Custody": {
     "MaxQuantity": 100,
-    "States": { "Empty": "Default", "Loaded": "Loaded" }
+    "States": { "Empty": "Default", "Loaded": "Loaded" },
+    "Display": {
+      "Offset": { "Y": 0.62 },
+      "Scale": 0.4
+    }
   },
   "Loot": {
     "Rolls": [

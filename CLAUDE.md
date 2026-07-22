@@ -82,6 +82,23 @@ the per-cycle backpack drain the pre-leg-C engine ran is RETIRED - the implicit 
 `Consume` step reads from that placed pouch instead. `items.lang` gained the two new hint keys in
 en-US only (a later leg fills the other 8 locales).
 
+## History (placed-input PLACED-AS-ENTITY visual, RPG Stations phase 2 leg G)
+
+Both `Custody`-governed stations this pack ships now author a `Custody.Display` group (design
+section 9, the maintainer-directed PLACED-AS-ENTITY route - a spawned prop entity, NOT a
+Blockbench baked-node model swap): `Sawmill.json`'s `Custody.Display: {"Offset":{"Y":0.62},
+"Scale":0.4}` and `Anvil.json`'s `enhance.Custody.Display: {"Offset":{"Y":0.55},"Scale":1.0}`.
+RPG Stations' `station.StationCustodyDisplay` spawns a static, network-replicated, pickup-immune,
+physics-free entity rendering the placed item at the station's block-top anchor (`blockX+0.5,
+blockY+0.5, blockZ+0.5`, shifted by `Offset`) - a real `BlockEntity` for the sawmill's placed logs
+(block-shaped, renders the actual log model, `Scale` composes with the engine's own
+block-entity base-scale doubling) and a bare dropped-item-style `ItemComponent` prop for the
+anvil's placed weapon (no native `BlockType`). **Both numeric `Offset`/`Scale` values here are
+PROVISIONAL, tuned from source reading only, not verified in-game** - the phase-2 smoke round is
+the place to adjust them (see RPG Stations' `station/CLAUDE.md`'s `StationCustodyDisplay` bullet
+for the full engine-side mechanism and the world-space-offset caveat: a rotated block placement
+is not compensated for, so keep any horizontal `X`/`Z` offset here small).
+
 ## The Anvil (RPG Stations phase 2 leg E, design section 9.5)
 
 `Server/RpgStations/Stations/Anvil.json` is the FIRST multi-action station this pack ships

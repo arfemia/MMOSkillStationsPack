@@ -60,7 +60,11 @@
       "Custody": {
         "MaxQuantity": 1,
         "Input": { "Function": "Weapon" },
-        "States": { "Empty": "Default", "Loaded": "WeaponPlaced" }
+        "States": { "Empty": "Default", "Loaded": "WeaponPlaced" },
+        "Display": {
+          "Offset": { "Y": 0.55 },
+          "Scale": 1.0
+        }
       },
       "Work": {
         "CycleMs": 600,
