@@ -242,16 +242,35 @@ Third in-game smoke round, after the R4 fix confirmed display entities RENDER at
   `"Ingredient_Bar_Iron"`, same issue) rather than re-authoring it to the item-id form
   (`"RPG_Station_Sawmill"`/`"RPG_Station_Anvil"`) - the fallback is the single source of truth, so
   no id can drift between the block file and the station asset if one is renamed later.
+  **R7 CORRECTION (this leg's own fix round, 2026-07-22): the "that id equals this station's own
+  item id" claim above was FALSE at engage time.** Both stations are custody stations
+  (`Custody.States`), and a custody station ONLY engages after materials are placed - which has
+  already flipped the block to a `Loaded`/`BarsPlaced`/`WeaponPlaced` state via
+  `setBlockInteractionState`. A state variant is a DISTINCT, generated-key `BlockType` asset
+  (`StateData#generateBlockKey`: `"*" + parentKey + "_" + stateName`), so at engage
+  `blockType.getId()` actually returned e.g. `"*RPG_Station_Sawmill_Loaded"` - not a real item id
+  - and `new ItemStack(id, 1)` resolved the UNKNOWN placeholder crest, not the station's own icon:
+  the fallback defeated its own stated goal, regressing from the PRIOR valid-if-wrong material
+  icon to a placeholder. Fixed engine-side, not by re-authoring `Identity.Icon` here:
+  `StationService#blockItemIdAt` now resolves via `BlockType#getItem()` (the block's containing
+  Item asset key, confirmed via the shared source to walk correctly through a state variant's
+  `Data.containerData` chain back to the base Item) instead of the raw `BlockType#getId()` - the
+  fallback's original zero-duplicated-id-to-drift intent now genuinely holds for state-bearing
+  custody blocks too, so no pack authoring change was needed. See RPG Stations'
+  `station/CLAUDE.md`'s R7 bullet for the full source trail.
 
 ## History (anvil work-start deny fix, R6, 2026-07-22)
 
 The maintainer's fourth smoke boot found the anvil denying EVERY work-start attempt with
-`ui.station.mount_unavailable`, holding the correct hammer. Diagnosis (RPG Stations
-`station/CLAUDE.md`'s R6 bullet has the full source-confirmed trail): the anvil's
+`ui.station.mount_unavailable` (the exact toast `StationService#toggle`'s Entity-mount engage path
+sends whenever `spawnAnchor`/`attach` returns null/false), holding the correct hammer. Diagnosis
+(RPG Stations `station/CLAUDE.md`'s R6 bullet has the full source-confirmed trail): the anvil's
 `Hold.Mount.Surface:"Entity"` (design 9.2's standing work mount, a phase-2 spike never verified
-in-game) engaged with zero throw but zero visible effect - `StationEntityMountController`'s anchor
+in-game). Source reading of that same mechanism surfaced a SEPARATE, confirmed defect independent
+of whichever condition triggered the observed deny - `StationEntityMountController`'s anchor
 entity carried no `NetworkId` component, so the native mount broadcast/self-view systems silently
-no-op'd against it. `Anvil.json`'s `Hold` moved OFF `Mount` onto the proven phase-1 effect-mode
+no-op'd against it, meaning even a mount that DID succeed would have rendered invisibly.
+`Anvil.json`'s `Hold` moved OFF `Mount` onto the proven phase-1 effect-mode
 default (`MovementLock: true`, `EffectId: "RPG_Station_Hold"`, `InterruptOnDamage: true`) - the
 maintainer-recommended proven-hold swap while the Entity mount stays an unverified spike, NOT a
 permanent reversal of the design-9.2 standing-worker intent (the engine-side `NetworkId` fix
