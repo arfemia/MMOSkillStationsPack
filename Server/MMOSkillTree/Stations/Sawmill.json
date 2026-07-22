@@ -29,19 +29,14 @@
   "Hold": {
     "MovementLock": true,
     "EffectId": "MMO_Station_Hold",
-    "InterruptOnDamage": true
+    "InterruptOnDamage": true,
+    "Seat": { "Enabled": true }
   },
   "Tool": {
     "Gather": { "GatherType": "Woods", "MinPower": 0.1 },
     "Tags": { "Family": ["Hatchet"] },
     "XpScale": { "ReferencePower": 0.2, "MinMult": 0.5, "MaxMult": 3.0 },
     "Durability": { "PerCycle": 1 }
-  },
-  "Camera": {
-    "Mode": "ThirdPerson",
-    "Locked": true,
-    "FaceBlock": true,
-    "FaceBlockMode": "look_rot"
   },
   "Animation": {
     "EmoteId": "MMO_Emote_Saw",

@@ -1,5 +1,5 @@
 {
-  "$Comment": "The Sawmill work station block. Model reuses the vanilla Lumbermill bench.",
+  "$Comment": "The Sawmill work station block. Model reuses the vanilla Lumbermill bench. BlockType.Seats is the seat hold mode's mount anchor (StationAsset.Hold.Seat.Enabled - see the mod's station/CLAUDE.md); Offset stands the player back at working distance rather than seated inside the bench, Yaw 0 faces the block (the vanilla chair exemplar's convention).",
   "TranslationProperties": {
     "Name": "items.MMO_Station_Sawmill.name",
     "Description": "items.MMO_Station_Sawmill.description"
@@ -47,7 +47,10 @@
     "InteractionHint": "items.MMO_Station_Sawmill.hint",
     "Interactions": {
       "Use": "MMO_Station_Sawmill_Use"
-    }
+    },
+    "Seats": [
+      { "Offset": { "X": 0, "Y": 0, "Z": 0.6 }, "Yaw": 0 }
+    ]
   },
   "Tags": {
     "Type": ["Furniture"],
