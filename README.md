@@ -3,36 +3,46 @@
 A standalone Hytale content pack that ships the **interactive work stations** content: the
 **Sawmill**, a diegetic third-person work loop (press use, a looping sawing emote plays, logs turn
 into planks one cycle at a time) that grants passive Woodcutting + Crafting XP, scaled by the held
-hatchet's power, with luck-tiered bonus loot.
+hatchet's power, with luck-tiered bonus loot; and the **Anvil**, a two-action station that sharpens
+vanilla metal bars (Convert) or runs a hammering ritual that rolls stats onto a placed weapon
+(Enhance), granting Smithing XP.
 
-The station **engine** (work loop, camera/hold/swing machinery, the conditional-lootable `Loot`
-layer, the registered `rpg_station_use` interaction type) ships in the standalone
+The station **engine** (work loop, camera/hold/mount/swing machinery, session-scoped placed-input
+custody, the multi-action step engine, the conditional-lootable `Loot` layer, the registered
+`rpg_station_use` interaction type) ships in the standalone
 [RPG Stations](https://github.com/arfemia/hytale-rpg-stations) mod. This pack's Sawmill block
 carries the SAME id (`RPG_Station_Sawmill`) as RPG Stations' own jar-default sawmill and overrides
 it via pack load order, so its `StationAsset` (`Server/RpgStations/Stations/Sawmill.json`) becomes
 the one that loads. The MMO Skill Tree bridge (a soft extension the MMO registers when it detects
 RPG Stations, no hard coupling either direction) turns the work loop into skill XP, aggregated
-luck (`mmoskilltree:station_luck`), and mastery bonuses. This pack is a **hard dependency** on
-BOTH mods, declared in `manifest.json`; without RPG Stations installed, stations do not exist at
-all, and without the MMO installed the Sawmill still works (loot proc + tier ladder) but grants no
-skill XP.
+luck (`mmoskilltree:station_luck`), mastery bonuses, and (for the Anvil's Enhance ritual) rolled
+item stats via a registered `EnhanceStamper`. This pack is a **hard dependency** on BOTH mods,
+declared in `manifest.json`; without RPG Stations installed, stations do not exist at all, and
+without the MMO installed the Sawmill and Anvil still work (loot proc + tier ladder / the ritual's
+own durability bonus) but grant no skill XP and roll no item stats.
 
 ## What is inside
 
 | Path | What it is |
 |------|------------|
-| `Server/RpgStations/Stations/Sawmill.json` | The Sawmill's `StationAsset` (work loop, recipe, `Loot` proc + tier ladder, tool gate, camera, animation, presentation) |
-| `Server/Item/Items/RPG_Station_Sawmill.json` | The placeable Sawmill block (reuses the vanilla Lumbermill bench model/texture/icon; SHARED id with RPG Stations' jar default) |
-| `Server/Item/RootInteractions/RPG_Station_Sawmill_Use.json` | The block's interaction, `{ "Type": "rpg_station_use", "Station": "sawmill" }` |
-| `Server/Drops/MMO_Station_Sawmill_T1/T2/T3.json` | The three luck-tier bonus-loot drop tables (native ids, unrenamed - no id collision with RPG Stations' own drop tables) |
+| `Server/RpgStations/Stations/Sawmill.json` | The Sawmill's `StationAsset` (work loop, placed-input custody, `Loot` proc + tier ladder, tool gate, camera, animation, presentation, a placed-log display entity) |
+| `Server/RpgStations/Stations/Anvil.json` | The Anvil's `StationAsset`: two actions, `convert` (sharpen a vanilla metal bar) and `enhance` (the weapon-enhancement ritual, a `Stamp`-step program) |
+| `Server/RpgStations/RollPools/AnvilWeaponPool.json` | The weighted stat pool the Enhance ritual's `Stamp` step rolls from |
+| `Server/Item/Items/RPG_Station_Sawmill.json` / `RPG_Station_Anvil.json` | The two placeable station blocks (reuse the vanilla Lumbermill / Anvil bench models; the Sawmill id is SHARED with RPG Stations' jar default) |
+| `Server/Item/RootInteractions/RPG_Station_Sawmill_Use.json` / `RPG_Station_Anvil_Use.json` | Each block's interaction, `{ "Type": "rpg_station_use", "Station": "<id>" }` |
+| `Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` (x10) | The Anvil's Convert-action output, one per vanilla metal bar family, and the Enhance ritual's own `Stamp.Reagents` |
+| `Server/Drops/MMO_Station_Sawmill_T1/T2/T3.json` | The Sawmill's three luck-tier bonus-loot drop tables (native ids, unrenamed - no id collision with RPG Stations' own drop tables) |
 | `Server/Emote/MMO_Emote_Saw.json` | The looping sawing work emote (native id, unrenamed) |
-| `Server/Languages/<locale>/items.lang` | Block name, description, and interaction hint, keyed `RPG_Station_Sawmill.*` |
+| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The emote's display name (Hytale's own `avatarCustomization` namespace) |
+| `Server/Languages/en-US/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
 
-All 9 shipped locales carry the same two `.lang` files translated. The Sawmill's display name/desc
-(`Identity.NameKey`/`DescKey`) point at `rpgstations.station.sawmill.name`/`.desc`, the keys RPG
-Stations itself ships (`rpgstations.lang`) - this pack reuses them rather than duplicating the
-translation.
+En-US is currently the only fully key-complete locale for the Anvil-era content (the sharpened-bar
+items, the split empty/loaded hints, and the `rpgstations.lang` overlay); the other 8 locales carry
+the original Sawmill-only translation and are pending a fill for everything added since. The
+Sawmill's display name/desc (`Identity.NameKey`/`DescKey`) point at
+`rpgstations.station.sawmill.name`/`.desc`, the keys RPG Stations itself ships (`rpgstations.lang`)
+- this pack reuses them rather than duplicating the translation.
 
 ## Build
 
@@ -54,8 +64,11 @@ A station is pure JSON, no plugin code:
 
 1. **The station itself**: `Server/RpgStations/Stations/<Name>.json`, decoded through RPG
    Stations' `StationAsset` Pattern A codec (the filename, lowercased, is the station id). See
-   `Sawmill.json` for the full shape (`Identity`/`Work`/`Recipe`/`Hold`/`Tool`/`Camera`/
-   `Animation`/`Loot`/`Presentation`).
+   `Sawmill.json` for the classic single-action shape (`Identity`/`Work`/`Recipe`/`Custody`/`Hold`/
+   `Tool`/`Camera`/`Animation`/`Loot`/`Presentation`), or `Anvil.json` for a multi-action station
+   (an `Actions` map, each action a whole-group override of the station-level defaults, optionally
+   its own `Steps` program instead of the classic convert loop - see RPG Stations' own `CLAUDE.md`
+   for the full authoring reference).
 2. **The block**: `Server/Item/Items/<Id>.json`, a native Hytale block item whose
    `BlockType.Interactions.Use` points at a `RootInteraction`.
 3. **The interaction**: `Server/Item/RootInteractions/<Id>_Use.json`, a 3-line stub:
