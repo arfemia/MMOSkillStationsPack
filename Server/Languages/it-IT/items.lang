@@ -1,3 +1,3 @@
-MMO_Station_Sawmill.name = Segheria
-MMO_Station_Sawmill.description = Una stazione di lavoro che sega i tronchi in assi. Premi usa per iniziare a lavorare.
-MMO_Station_Sawmill.hint = Premi [{key}] per lavorare
+RPG_Station_Sawmill.name = Segheria
+RPG_Station_Sawmill.description = Una stazione di lavoro che sega i tronchi in assi. Premi usa per iniziare a lavorare.
+RPG_Station_Sawmill.hint = Premi [{key}] per lavorare

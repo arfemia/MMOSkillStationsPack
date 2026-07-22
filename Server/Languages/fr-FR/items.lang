@@ -1,3 +1,3 @@
-MMO_Station_Sawmill.name = Scierie
-MMO_Station_Sawmill.description = Une station de travail qui scie les rondins en planches. Appuie sur utiliser pour commencer à travailler.
-MMO_Station_Sawmill.hint = Appuie sur [{key}] pour travailler
+RPG_Station_Sawmill.name = Scierie
+RPG_Station_Sawmill.description = Une station de travail qui scie les rondins en planches. Appuie sur utiliser pour commencer à travailler.
+RPG_Station_Sawmill.hint = Appuie sur [{key}] pour travailler

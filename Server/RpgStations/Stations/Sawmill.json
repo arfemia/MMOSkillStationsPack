@@ -1,0 +1,90 @@
+{
+  "Identity": {
+    "NameKey": "rpgstations.station.sawmill.name",
+    "DescKey": "rpgstations.station.sawmill.desc",
+    "Icon": "Wood_Hardwood_Planks"
+  },
+  "Work": {
+    "CycleMs": 4805,
+    "MaxDurationMs": 600000,
+    "MaxMoveMeters": 1.5,
+    "Exclusive": true,
+    "Xp": [
+      { "Skill": "WOODCUTTING", "PerCycle": 8.0 },
+      { "Skill": "CRAFTING", "PerCycle": 4.0 }
+    ]
+  },
+  "Recipe": {
+    "FromCrafting": { "Categories": ["WoodPlanks"] }
+  },
+  "Loot": {
+    "Rolls": [
+      {
+        "Chance": {
+          "BasePercent": 0,
+          "AddFactors": [ { "Factor": "mmoskilltree:station_luck" } ],
+          "CapPercent": 90
+        },
+        "Grants": { "BonusOutputCopies": 1 }
+      },
+      {
+        "Ladder": {
+          "Value": { "Factor": "mmoskilltree:station_luck" },
+          "Floors": [
+            { "Min": 50, "Grants": { "DropList": "MMO_Station_Sawmill_T1" } },
+            {
+              "Min": 100,
+              "Grants": { "DropList": "MMO_Station_Sawmill_T2" },
+              "Presentation": {
+                "Sound": "SFX_Coins_Land",
+                "Particles": "Block_Gem_Sparks"
+              }
+            },
+            {
+              "Min": 150,
+              "Grants": { "DropList": "MMO_Station_Sawmill_T3" },
+              "Presentation": {
+                "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
+                "Particles": "Effect_Crown_Gold"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Hold": {
+    "MovementLock": true,
+    "EffectId": "RPG_Station_Hold",
+    "InterruptOnDamage": true,
+    "Seat": { "Enabled": true }
+  },
+  "Tool": {
+    "Gather": { "GatherType": "Woods", "MinPower": 0.1 },
+    "Tags": { "Family": ["Hatchet"] },
+    "XpScale": { "ReferencePower": 0.2, "MinMult": 0.5, "MaxMult": 3.0 },
+    "Durability": { "PerCycle": 1 }
+  },
+  "Animation": {
+    "EmoteId": "MMO_Emote_Saw",
+    "Swing": {
+      "IntervalMs": 933,
+      "Presentation": {
+        "Sound": "SFX_Tool_T1_Swing"
+      },
+      "Impact": {
+        "DelayMs": 140,
+        "Presentation": {
+          "Particles": "Block_Hit_Wood"
+        }
+      }
+    }
+  },
+  "Presentation": {
+    "Sound": "SFX_Wood_Break"
+  },
+  "Completion": {
+    "Sound": "SFX_Chest_Wooden_Open_Player",
+    "Particles": "Block_Gem_Sparks"
+  }
+}
