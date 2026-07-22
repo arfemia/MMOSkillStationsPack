@@ -29,7 +29,11 @@
       "Input": { "ResourceTypeId": "Metal_Bars" },
       "Custody": {
         "MaxQuantity": 100,
-        "States": { "Empty": "Default", "Loaded": "BarsPlaced" }
+        "States": { "Empty": "Default", "Loaded": "BarsPlaced" },
+        "Display": {
+          "Offset": { "Y": 0.55 },
+          "Scale": 1.0
+        }
       },
       "Work": {
         "CycleMs": 3800,

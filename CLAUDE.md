@@ -84,20 +84,37 @@ en-US only at first; a later leg (commit `18e25f5`) filled the other 8 locales.
 
 ## History (placed-input PLACED-AS-ENTITY visual, RPG Stations phase 2 leg G)
 
-Both `Custody`-governed stations this pack ships now author a `Custody.Display` group (design
+Every `Custody`-governed action this pack ships now authors a `Custody.Display` group (design
 section 9, the maintainer-directed PLACED-AS-ENTITY route - a spawned prop entity, NOT a
 Blockbench baked-node model swap): `Sawmill.json`'s `Custody.Display: {"Offset":{"Y":0.62},
-"Scale":0.4}` and `Anvil.json`'s `enhance.Custody.Display: {"Offset":{"Y":0.55},"Scale":1.0}`.
-RPG Stations' `station.StationCustodyDisplay` spawns a static, network-replicated, pickup-immune,
-physics-free entity rendering the placed item at the station's block-top anchor (`blockX+0.5,
-blockY+0.5, blockZ+0.5`, shifted by `Offset`) - a real `BlockEntity` for the sawmill's placed logs
-(block-shaped, renders the actual log model, `Scale` composes with the engine's own
-block-entity base-scale doubling) and a bare dropped-item-style `ItemComponent` prop for the
-anvil's placed weapon (no native `BlockType`). **Both numeric `Offset`/`Scale` values here are
-PROVISIONAL, tuned from source reading only, not verified in-game** - the phase-2 smoke round is
-the place to adjust them (see RPG Stations' `station/CLAUDE.md`'s `StationCustodyDisplay` bullet
-for the full engine-side mechanism and the world-space-offset caveat: a rotated block placement
-is not compensated for, so keep any horizontal `X`/`Z` offset here small).
+"Scale":0.4}`, `Anvil.json`'s `enhance.Custody.Display: {"Offset":{"Y":0.55},"Scale":1.0}`, and
+(R4 authoring fix, closing the gap the anvil's `convert` action shipped WITHOUT one)
+`Anvil.json`'s `convert.Custody.Display: {"Offset":{"Y":0.55},"Scale":1.0}` (mirrors `enhance`'s
+own values - a placed metal bar, like the placed weapon, is a non-block item, so both render via
+the same item-route prop). Before this fix a placed bar never even attempted a display spawn
+(`StationService#placeIntoCustody` guards the spawn on a non-null `Custody.Display`), the
+definitive cause of "no ingot visible on the anvil top" independent of the sibling ENGINE fix
+below. RPG Stations' `station.StationCustodyDisplay` spawns a static, network-replicated,
+pickup-immune, physics-free entity rendering the placed item at the station's block-top anchor
+(`blockX+0.5, blockY+0.5, blockZ+0.5`, shifted by `Offset`) - a real `BlockEntity` for the
+sawmill's placed logs (block-shaped, renders the actual log model, `Scale` composes with the
+engine's own block-entity base-scale doubling) and a bare dropped-item-style `ItemComponent` prop
+for the anvil's placed weapon/bar (no native `BlockType`). **All numeric `Offset`/`Scale` values
+here are PROVISIONAL, tuned from source reading only, not verified in-game** - the phase-2 smoke
+round is the place to adjust them (see RPG Stations' `station/CLAUDE.md`'s `StationCustodyDisplay`
+bullet for the full engine-side mechanism and the world-space-offset caveat: a rotated block
+placement is not compensated for, so keep any horizontal `X`/`Z` offset here small).
+
+**R4 ENGINE fix (bugfix leg, alongside the authoring fix above):** the spawn/despawn call itself
+was previously `store.addEntity`/`store.removeEntity` DIRECTLY from `StationCustodyDisplay`, which
+throws `IllegalStateException("Store is currently processing!")` when called from inside an
+interaction handler (the placement call site, `StationService#toggle` -> `#placeIntoCustody`, runs
+INSIDE the store's processing lock) - the throw was caught by the method's own `catch (Throwable)`
+and logged as a WARN, so the sawmill's placed-logs display (which DID author a `Custody.Display`
+from the start) silently never appeared either. Fixed by switching both `spawn`/`despawn` to the
+tick-safe `CommandBuffer<EntityStore>` primitive (`commandBuffer.addEntity`/`.removeEntity`, the
+same one `StationEntityMountController#spawnAnchor` already used) - see RPG Stations'
+`station/CLAUDE.md` for the file-by-file detail.
 
 ## The Anvil (RPG Stations phase 2 leg E, design section 9.5)
 
