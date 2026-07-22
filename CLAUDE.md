@@ -26,10 +26,10 @@ skill-stations-pack/
     ├── Drops/MMO_Station_Sawmill_T1/T2/T3.json           native ItemDropList luck-tier bonus loot (referenced by Sawmill.json's Loot.Rolls[1].Ladder.Floors[*].Grants.DropList); native ids, unrenamed - no collision with RPG Stations' own drop tables
     ├── Emote/MMO_Emote_Saw.json                          the looping sawing work emote (native id, unrenamed; server-authored EmoteAsset)
     ├── Languages/<bcp47>/
-    │   ├── items.lang                                    RPG_Station_Sawmill.name/.description/.hint (native namespace)
+    │   ├── items.lang                                    RPG_Station_Sawmill.name/.description/.hint.empty/.hint.loaded (native namespace; en-US only as of the leg-C custody migration, non-English fill pending)
     │   └── avatarCustomization.lang                       emotes.MMO_Emote_Saw.name (Hytale's own avatarCustomization namespace)
     └── RpgStations/
-        └── Stations/Sawmill.json                         the StationAsset itself (Work/Recipe/Hold/Tool/Camera/Animation/Loot/Presentation), folds through RPG Stations' codec
+        └── Stations/Sawmill.json                         the StationAsset itself (Work/Recipe/Custody/Hold/Tool/Camera/Animation/Loot/Presentation), folds through RPG Stations' codec
 ```
 
 `Server/Item/**`, `Server/Drops/**`, `Server/Emote/**`, and `Server/Languages/**` load via Hytale's
@@ -64,6 +64,22 @@ Stations' own shipped keys), its `Presentation.Feedback` leaf was dropped (the M
 deleted in the extraction). The native `Server/Drops/*`, `Server/Emote/*`, and
 `avatarCustomization.lang` assets are untouched (their ids never collided with RPG Stations' own).
 
+## History (placed-input custody migration, RPG Stations phase 2 leg C)
+
+The Sawmill migrated to session-scoped placed-input custody (design section 9.4) in lockstep with
+RPG Stations' own engine leg: `Sawmill.json` gained a `Custody: {"MaxQuantity":100,"States":
+{"Empty":"Default","Loaded":"Loaded"}}` group (no explicit `Custody.Input` - acceptance derives
+from the station's existing `Recipe.Conversions`, the "logs by ResourceTypeId family" fallback,
+zero extra authoring); `RPG_Station_Sawmill.json`'s `BlockType` gained a `State.Definitions.
+Default/Loaded` pair (hint-only this leg - per-state `InteractionHint` only, no visual flip yet,
+mechanism-first per the maintainer's sequencing) and its base `InteractionHint` repointed from the
+single `items.RPG_Station_Sawmill.hint` key to `items.RPG_Station_Sawmill.hint.empty` (the `Loaded`
+state's own hint is `.hint.loaded`, the OLD "Press [{key}] to work" wording). Materials now load
+INTO the station on the first F-press (whole held stack, repeat presses top up, capped at 100) and
+the per-cycle backpack drain the pre-leg-C engine ran is RETIRED - the implicit convert loop's
+`Consume` step reads from that placed pouch instead. `items.lang` gained the two new hint keys in
+en-US only (a later leg fills the other 8 locales).
+
 ## How it fits together
 
 - **A station is one `StationAsset` JSON + its block + its interaction.**
@@ -71,7 +87,9 @@ deleted in the extraction). The native `Server/Drops/*`, `Server/Emote/*`, and
   through RPG Stations' Pattern A codec: `Identity` (name/desc/icon), `Work` (cycle cadence, XP
   grants forwarded as progression declarations, optional `Idle` practice mode), `Recipe` (authored
   `Conversions` or a native-crafting-derived `FromCrafting`), `Hold` (the movement-lock effect),
-  `Tool` (the held-tool gate: `Tags`/`Gather`/`Ids` routes, plus optional `XpScale`), `Camera`
+  `Tool` (the held-tool gate: `Tags`/`Gather`/`Ids` routes, plus optional `XpScale`), `Custody`
+  (session-scoped placed-input custody - a state-dependent F places materials then works them,
+  see the History section above and RPG Stations' `asset/CLAUDE.md`), `Camera`
   (third-person pull, optional `FaceBlock`), `Animation` (the looping work emote plus an optional
   per-swing `Swing` cadence), `Loot` (`Tables` references and/or inline `Rolls` - the conditional
   proc/ladder/command-reward layer), `Presentation` (the per-cycle sound/particle/shake moment),
@@ -113,7 +131,11 @@ deleted in the extraction). The native `Server/Drops/*`, `Server/Emote/*`, and
    `"Parent": "Sawmill"` and override only the leaves it needs (every leaf is `appendInherited`).
 2. **The block**: copy `RPG_Station_Sawmill.json` -> `<Id>.json`, point `BlockType.Interactions.Use`
    at your new `RootInteraction` id, and give it its own model/texture/icon (or reuse a vanilla
-   one, as the Sawmill does).
+   one, as the Sawmill does). A `Custody`-governed station (step 5 below) needs a matching
+   `BlockType.State.Definitions.<Empty>/<Loaded>` pair (Sawmill's own `Default`/`Loaded` names are
+   just a convention, not fixed strings - whatever `Custody.States.Empty`/`.Loaded` name) so
+   `world.setBlockInteractionState` has a state to flip to; hint-only is fine (per-state
+   `InteractionHint` only, no visual flip yet - see the History section above).
 3. **The interaction**: `Server/Item/RootInteractions/<Id>_Use.json`:
    ```json
    { "Cooldown": { "Id": "BlockInteraction", "Cooldown": 0.278, "ClickBypass": true },
