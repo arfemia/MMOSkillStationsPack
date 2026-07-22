@@ -1,8 +1,8 @@
 {
-  "$Comment": "The Sawmill work station block. Model reuses the vanilla Lumbermill bench. BlockType.Seats is the seat hold mode's mount anchor (StationAsset.Hold.Seat.Enabled - see the mod's station/CLAUDE.md); Offset stands the player back at working distance rather than seated inside the bench. Yaw 180: the engine adds a hard +180deg to the authored seat yaw (BlockMountPoint.computeRotationEuler - a chair's sitter faces AWAY from the block at authored 0), so 180 lands the worker facing the work surface.",
+  "$Comment": "The Sawmill work station block. SHARED id with RpgStations' own jar default (maintainer decision): this pack file overrides that default via pack load order, so the block's StationAsset (Server/RpgStations/Stations/Sawmill.json) becomes the MMO-bridged one. Model reuses the vanilla Lumbermill bench. BlockType.Seats is the seat hold mode's mount anchor (StationAsset.Hold.Seat.Enabled - see the RpgStations mod's station/CLAUDE.md); Offset stands the player back at working distance rather than seated inside the bench. Yaw 180: the engine adds a hard +180deg to the authored seat yaw (BlockMountPoint.computeRotationEuler - a chair's sitter faces AWAY from the block at authored 0), so 180 lands the worker facing the work surface.",
   "TranslationProperties": {
-    "Name": "items.MMO_Station_Sawmill.name",
-    "Description": "items.MMO_Station_Sawmill.description"
+    "Name": "items.RPG_Station_Sawmill.name",
+    "Description": "items.RPG_Station_Sawmill.description"
   },
   "PlayerAnimationsId": "Block",
   "Categories": ["Furniture.Furniture"],
@@ -44,9 +44,9 @@
       ]
     },
     "VariantRotation": "NESW",
-    "InteractionHint": "items.MMO_Station_Sawmill.hint",
+    "InteractionHint": "items.RPG_Station_Sawmill.hint",
     "Interactions": {
-      "Use": "MMO_Station_Sawmill_Use"
+      "Use": "RPG_Station_Sawmill_Use"
     },
     "Seats": [
       { "Offset": { "X": 0, "Y": 0, "Z": 0.6 }, "Yaw": 180 }

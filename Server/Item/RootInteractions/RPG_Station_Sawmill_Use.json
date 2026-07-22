@@ -5,6 +5,6 @@
     "ClickBypass": true
   },
   "Interactions": [
-    { "Type": "mmo_station_use", "Station": "sawmill" }
+    { "Type": "rpg_station_use", "Station": "sawmill" }
   ]
 }
