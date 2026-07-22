@@ -35,14 +35,13 @@ own durability bonus) but grant no skill XP and roll no item stats.
 | `Server/Emote/MMO_Emote_Saw.json` | The looping sawing work emote (native id, unrenamed) |
 | `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The emote's display name (Hytale's own `avatarCustomization` namespace) |
-| `Server/Languages/en-US/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
+| `Server/Languages/<locale>/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
 
-En-US is currently the only fully key-complete locale for the Anvil-era content (the sharpened-bar
-items, the split empty/loaded hints, and the `rpgstations.lang` overlay); the other 8 locales carry
-the original Sawmill-only translation and are pending a fill for everything added since. The
-Sawmill's display name/desc (`Identity.NameKey`/`DescKey`) point at
-`rpgstations.station.sawmill.name`/`.desc`, the keys RPG Stations itself ships (`rpgstations.lang`)
-- this pack reuses them rather than duplicating the translation.
+All 9 shipped locales are key-complete for the Anvil-era content (the sharpened-bar items, the
+split empty/loaded hints, and the `rpgstations.lang` overlay). The Sawmill's display name/desc
+(`Identity.NameKey`/`DescKey`) point at `rpgstations.station.sawmill.name`/`.desc`, the keys RPG
+Stations itself ships (`rpgstations.lang`) - this pack reuses them rather than duplicating the
+translation.
 
 ## Build
 

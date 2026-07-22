@@ -28,7 +28,7 @@ skill-stations-pack/
     ├── Drops/MMO_Station_Sawmill_T1/T2/T3.json           native ItemDropList luck-tier bonus loot (referenced by Sawmill.json's Loot.Rolls[1].Ladder.Floors[*].Grants.DropList); native ids, unrenamed - no collision with RPG Stations' own drop tables
     ├── Emote/MMO_Emote_Saw.json                          the looping sawing work emote (native id, unrenamed; server-authored EmoteAsset)
     ├── Languages/<bcp47>/
-    │   ├── items.lang                                    RPG_Station_Sawmill.name/.description/.hint.empty/.hint.loaded (native namespace; en-US only as of the leg-C custody migration, non-English fill pending)
+    │   ├── items.lang                                    RPG_Station_Sawmill.name/.description/.hint.empty/.hint.loaded (native namespace; key-complete across all 9 locales)
     │   └── avatarCustomization.lang                       emotes.MMO_Emote_Saw.name (Hytale's own avatarCustomization namespace)
     └── RpgStations/
         └── Stations/Sawmill.json                         the StationAsset itself (Work/Recipe/Custody/Hold/Tool/Camera/Animation/Loot/Presentation), folds through RPG Stations' codec
@@ -80,7 +80,7 @@ state's own hint is `.hint.loaded`, the OLD "Press [{key}] to work" wording). Ma
 INTO the station on the first F-press (whole held stack, repeat presses top up, capped at 100) and
 the per-cycle backpack drain the pre-leg-C engine ran is RETIRED - the implicit convert loop's
 `Consume` step reads from that placed pouch instead. `items.lang` gained the two new hint keys in
-en-US only (a later leg fills the other 8 locales).
+en-US only at first; a later leg (commit `18e25f5`) filled the other 8 locales.
 
 ## History (placed-input PLACED-AS-ENTITY visual, RPG Stations phase 2 leg G)
 
@@ -148,6 +148,18 @@ same risk class as the standing-mount pose).
   section for the m9 correction (the design doc's `custom-skills.json`-in-the-pack framing does
   not match how that file actually loads - a local server-owner config, not a pack-authorable
   asset).
+
+## History (i18n fix round - the leg-H locale gap closed)
+
+Commit `18e25f5` ("Anvil-era key fill, 8 non-English locales") filled `items.lang`/
+`avatarCustomization.lang` across all 8 non-English locales, but its own `rpgstations.lang` overlay
+(the 2 `station.anvil.*` keys) only landed for es-ES/fr-FR/hu-HU/tr-TR - its commit body was honest
+about the residual de-DE/it-IT/pt-BR/ru-RU gap, but the terse title read as broader completeness
+than the diff actually shipped, and this `CLAUDE.md`/the pack `README.md` were never updated after
+that commit to reflect even the partial fill, so both kept describing the PRE-commit "en-US only"
+state. A fix-round pass added `station.anvil.name`/`.desc` to the 4 missing locales' own
+`rpgstations.lang` files and corrected both docs - all 9 shipped locales are now key-complete for
+the Anvil content, matching what `items.lang`/`avatarCustomization.lang` already were.
 
 ## How it fits together
 
