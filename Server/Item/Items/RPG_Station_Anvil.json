@@ -1,0 +1,66 @@
+{
+  "$Comment": "The Anvil work station block (design section 9.5). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel) - no new art; the sibling texture path follows the SAME Blocks/Benches/<Model>_Texture.png convention every other bench in this family uses (Lumbermill/Furnace/Workbench/...), UNVERIFIED against the live client - a phase-2 smoke item like the standing-mount pose. Two Actions share this one block: Convert (sharpen a bar) and Enhance (the Stamp-step ritual); the F interaction is diegetic input-matched selection, no menu.",
+  "TranslationProperties": {
+    "Name": "items.RPG_Station_Anvil.name",
+    "Description": "items.RPG_Station_Anvil.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": ["Furniture.Furniture"],
+  "Icon": "Icons/ItemsGenerated/Ingredient_Bar_Iron.png",
+  "MaxStack": 1,
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+
+  "BlockType": {
+    "BlockParticleSetId": "Metal",
+    "BlockSoundSetId": "Metal",
+    "PhysicalMaterialId": "Metal",
+    "CustomModel": "Blocks/Benches/Anvil.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Blocks/Benches/Anvil_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "DrawType": "Model",
+    "Flags": {
+      "IsUsable": true
+    },
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "VariantRotation": "NESW",
+    "InteractionHint": "items.RPG_Station_Anvil.hint.empty",
+    "Interactions": {
+      "Use": "RPG_Station_Anvil_Use"
+    },
+    "State": {
+      "Definitions": {
+        "Default": {
+          "InteractionHint": "items.RPG_Station_Anvil.hint.empty"
+        },
+        "WeaponPlaced": {
+          "InteractionHint": "items.RPG_Station_Anvil.hint.loaded"
+        }
+      }
+    }
+  },
+  "Tags": {
+    "Type": ["Furniture"],
+    "Family": ["MMOSkillTree"]
+  },
+  "ItemSoundSetId": "ISS_Items_Metal"
+}

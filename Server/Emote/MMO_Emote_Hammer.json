@@ -1,0 +1,7 @@
+{
+  "Name": "avatarCustomization.emotes.MMO_Emote_Hammer.name",
+  "Animation": "Characters/Animations/Items/Main_Handed/Pickaxe/Attacks/Mine/Mine.blockyanim",
+  "Icon": "Icons/Emotes/Wave@2x.png",
+  "IsLooping": false,
+  "HideItemInHand": false
+}

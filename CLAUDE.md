@@ -1,8 +1,10 @@
 # CLAUDE.md - MMOSkillStationsPack
 
-A standalone Hytale content pack shipping all **interactive work station** content: currently the
-**Sawmill** (a diegetic third-person work loop station, see `.claude/research/raw/
-rpg-stations-unified-design-2026-07-21.md` in the hyMMO monorepo). The station **engine**
+A standalone Hytale content pack shipping all **interactive work station** content: the
+**Sawmill** (a diegetic third-person work loop station) and (phase 2 leg E) the **Anvil** - a
+TWO-action station (Convert: sharpen a vanilla metal bar; Enhance: the flagship Stamp-step ritual
+that rolls stats onto a placed weapon) - see `.claude/research/raw/
+rpg-stations-unified-design-2026-07-21.md` section 9.5 in the hyMMO monorepo. The station **engine**
 (`StationService`, `StationCatalog`, `StationHoldController`, the `StationAsset`/`LootableAsset`
 Pattern A codecs, the registered `rpg_station_use` interaction type, `StationValidator`, the
 conditional-lootable `Loot`/`Roll` layer) ships in the standalone **RPG Stations** mod
@@ -79,6 +81,56 @@ INTO the station on the first F-press (whole held stack, repeat presses top up, 
 the per-cycle backpack drain the pre-leg-C engine ran is RETIRED - the implicit convert loop's
 `Consume` step reads from that placed pouch instead. `items.lang` gained the two new hint keys in
 en-US only (a later leg fills the other 8 locales).
+
+## The Anvil (RPG Stations phase 2 leg E, design section 9.5)
+
+`Server/RpgStations/Stations/Anvil.json` is the FIRST multi-action station this pack ships
+(design 9.1): an `Actions` map with `convert` (a classic repeat-loop Recipe conversion, sharpens a
+vanilla metal bar into `MMO_Sharpened_<Metal>_Bar`) and `enhance` (`Work.Repeat: false` - one
+completed program run ends the session; a `Steps` ritual of two hammer-strike `Wait` beats, a
+settling pause, then the `Stamp` step). Both actions gate on holding a hammer (station-level
+`Tool.Ids: ["Tool_Hammer_Crude","Tool_Hammer_Iron"]` - no `Tags.Family:["Hammer"]` exists on the
+real vanilla hammer items, so this pack uses the `Ids` fallback route, not the design doc's
+assumed `Tags` route). The block reuses the vanilla `Blocks/Benches/Anvil.blockymodel` (no new
+art, same "reuse a vanilla bench" convention as the Sawmill's Lumbermill) - its sibling texture
+path (`Blocks/Benches/Anvil_Texture.png`) follows the SAME `<Model>_Texture.png` convention every
+other bench in this asset family uses, UNVERIFIED against the live client (a phase-2 smoke item,
+same risk class as the standing-mount pose).
+
+- **Convert**: `Input: {ResourceTypeId: "Metal_Bars"}` selects this action for any held vanilla
+  bar in that family (10 of the 11 vanilla metal bars share it; `Ingredient_Bar_Bronze` uses the
+  distinct `Copper_Iron_Bar` family and is NOT shipped as a Sharpened Bar this leg - a deliberate,
+  documented scope cut, not an oversight). `Recipe.Conversions` is EXPLICIT per metal (2 vanilla
+  bars -> 1 `MMO_Sharpened_<Metal>_Bar`, `Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json`
+  x10, `ResourceTypes:[{"Id":"MMO_Sharpened_Bar"}]` - their OWN shared family, the Stamp step's
+  `Reagents` route) - explicit over a `FromCrafting` sweep so no phantom native recipe leaks into
+  bench UIs, per design 9.5.
+- **Enhance**: `Input: {Function: "Weapon"}` selects this action for any held weapon-shaped item;
+  `Custody: {MaxQuantity: 1, Input: {Function: "Weapon"}, States: {Empty: "Default", Loaded:
+  "WeaponPlaced"}}` places the weapon (a state-dependent F, design 9.4's mechanism, reused for a
+  single metadata-preserving item this time - see RPG Stations' `station/CLAUDE.md`'s
+  `StationCustodyClaim.uniqueStack` note for why that matters). The ritual's `Steps` (`strike1`/
+  `strike2`/`settle`/`stamp`) use `Wait.DurationMs` (NOT `Beats` - `Beats` stays schema-reserved,
+  unimplemented; authoring it would have hard-failed the ritual at its first step) and reuse
+  ONLY verified sound/particle ids (`SFX_Metal_Hit`, `Block_Gem_Sparks`,
+  `SFX_Chest_Legendary_FirstOpen_Player` - all already load-bearing elsewhere in this repo). The
+  `Stamp` step's `Reagents` (2x `MMO_Sharpened_Bar` family) come straight from the player's
+  INVENTORY (never a second custody claim); its `Stats.Pool` references
+  `Server/RpgStations/RollPools/AnvilWeaponPool.json` (global weapon-adjacent stats -
+  `MMO_CritChance`/`MMO_CritMultiplier`/`MMO_Lifesteal`/`MMO_CooldownReduction`/`MMO_Luck`/
+  `MMO_BonusXp`, matching the MMO's OWN `item.ItemEnhanceRoll` weapon-pool ranges exactly - note
+  the REAL stat id is `MMO_CritChance`, not the design doc's placeholder `MMO_Crit_Chance`) with
+  the maintainer-approved balance numbers (`Picks: 1-2`, `Unique: true`, `Caps.PerItemBudget: 30`,
+  `Caps.PerStat.MMO_CritChance: 10`, `Caps.SkillScaledBudget: 0.5/SMITHING level`); its
+  `Durability.AddMax: 10` lands even without the MMO (RpgStations-native).
+- **SMITHING XP**: `convert` grants 6/cycle, `enhance` grants 25 per COMPLETED ritual only (no
+  free-XP fountain - the cycle event fires from inside the `Stamp` step's own success path, so a
+  cancelled/failed ritual grants nothing). SMITHING itself is a promoted MMO built-in skill
+  (`skill.SkillRegistry`, `requiresFeatures: ["stations"]`, the exact TAMING precedent) - **NOT**
+  shipped via this pack's own content at all; see RPG Stations' mod-root `CLAUDE.md` Phase 2
+  section for the m9 correction (the design doc's `custom-skills.json`-in-the-pack framing does
+  not match how that file actually loads - a local server-owner config, not a pack-authorable
+  asset).
 
 ## How it fits together
 

@@ -1,0 +1,25 @@
+{
+  "$Comment": "The anvil's Convert action output (design section 9.5): a Prisma bar sharpened for weapon enhancement. Reuses the vanilla Ingredient_Bar_Prisma model/texture/icon (no new art) - only the id/name/resource-type family differ.",
+  "TranslationProperties": {
+    "Name": "items.MMO_Sharpened_Prisma_Bar.name",
+    "Description": "items.MMO_Sharpened_Prisma_Bar.description"
+  },
+  "Categories": ["Items"],
+  "Model": "Resources/Materials/Ingot.blockymodel",
+  "Texture": "Resources/Materials/Ingot_Textures/Prisma.png",
+  "Icon": "Icons/ItemsGenerated/Ingredient_Bar_Prisma.png",
+  "PlayerAnimationsId": "Item",
+  "ResourceTypes": [
+    { "Id": "MMO_Sharpened_Bar" }
+  ],
+  "IconProperties": {
+    "Scale": 1,
+    "Translation": [0, -3],
+    "Rotation": [22.5, 45, 22.5]
+  },
+  "Tags": {
+    "Type": ["Ingredient"]
+  },
+  "ItemSoundSetId": "ISS_Items_Ingots",
+  "DropOnDeath": true
+}

@@ -1,0 +1,11 @@
+{
+  "$Comment": "The anvil's Enhance action stat pool (design section 9.5). Global (non-per-skill) weapon-adjacent stats, matching the MMO's own ItemEnhanceRoll weapon-pool ranges exactly (MMO_CritChance/MMO_CritMultiplier/MMO_Lifesteal/MMO_CooldownReduction from reward.MmoStats, MMO_Luck/MMO_BonusXp global ids) so a hand-rolled /mmoitemenhance and an anvil-enhanced weapon read the same stat vocabulary.",
+  "Entries": [
+    { "Stat": "MMO_CritChance", "Points": { "Min": 2, "Max": 6 }, "Weight": 1 },
+    { "Stat": "MMO_CritMultiplier", "Points": { "Min": 5, "Max": 15 }, "Weight": 1 },
+    { "Stat": "MMO_Lifesteal", "Points": { "Min": 2, "Max": 5 }, "Weight": 1 },
+    { "Stat": "MMO_CooldownReduction", "Points": { "Min": 2, "Max": 6 }, "Weight": 1 },
+    { "Stat": "MMO_Luck", "Points": { "Min": 3, "Max": 10 }, "Weight": 1 },
+    { "Stat": "MMO_BonusXp", "Points": { "Min": 5, "Max": 15 }, "Weight": 1 }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "$Comment": "The anvil work station (design section 9.5, phase 2 leg E): two diegetic actions selected by held/placed item - Convert (sharpen a vanilla metal bar) and Enhance (the flagship Stamp-step ritual). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel) - no new art.",
+  "Identity": {
+    "NameKey": "rpgstations.station.anvil.name",
+    "DescKey": "rpgstations.station.anvil.desc",
+    "Icon": "Ingredient_Bar_Iron"
+  },
+  "Hold": {
+    "Mount": {
+      "Surface": "Entity",
+      "Entity": { "Offset": { "X": 0.0, "Y": 0.0, "Z": 0.6 }, "DismountOnMove": true, "Steerable": false }
+    }
+  },
+  "Camera": {
+    "FaceBlock": true,
+    "Recipe": "look_rot"
+  },
+  "Tool": {
+    "Ids": ["Tool_Hammer_Crude", "Tool_Hammer_Iron"]
+  },
+  "Animation": {
+    "EmoteId": "MMO_Emote_Hammer"
+  },
+  "Completion": {
+    "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
+    "Particles": "Block_Gem_Sparks"
+  },
+  "Actions": {
+    "convert": {
+      "Input": { "ResourceTypeId": "Metal_Bars" },
+      "Work": {
+        "CycleMs": 3800,
+        "Xp": [ { "Skill": "SMITHING", "PerCycle": 6.0 } ]
+      },
+      "Recipe": {
+        "Conversions": [
+          { "Input": { "ItemId": "Ingredient_Bar_Adamantite", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Adamantite_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Cobalt", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Cobalt_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Copper", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Copper_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Gold", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Gold_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Iron", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Iron_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Mithril", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Mithril_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Onyxium", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Onyxium_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Prisma", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Prisma_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Silver", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Silver_Bar", "Quantity": 1 } },
+          { "Input": { "ItemId": "Ingredient_Bar_Thorium", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Thorium_Bar", "Quantity": 1 } }
+        ]
+      },
+      "Animation": {
+        "EmoteId": "MMO_Emote_Hammer",
+        "Swing": {
+          "IntervalMs": 950,
+          "Presentation": { "Sound": "SFX_Metal_Hit" }
+        }
+      },
+      "Presentation": { "Sound": "SFX_Metal_Hit" }
+    },
+    "enhance": {
+      "Input": { "Function": "Weapon" },
+      "Custody": {
+        "MaxQuantity": 1,
+        "Input": { "Function": "Weapon" },
+        "States": { "Empty": "Default", "Loaded": "WeaponPlaced" }
+      },
+      "Work": {
+        "CycleMs": 600,
+        "Repeat": false,
+        "Xp": [ { "Skill": "SMITHING", "PerCycle": 25.0 } ]
+      },
+      "Steps": [
+        {
+          "Id": "strike1",
+          "Type": "Wait",
+          "Wait": { "DurationMs": 650 },
+          "Presentation": { "Sound": "SFX_Metal_Hit", "Particles": "Block_Gem_Sparks" }
+        },
+        {
+          "Id": "strike2",
+          "Type": "Wait",
+          "Wait": { "DurationMs": 650 },
+          "Presentation": { "Sound": "SFX_Metal_Hit", "Particles": "Block_Gem_Sparks" }
+        },
+        {
+          "Id": "settle",
+          "Type": "Wait",
+          "Wait": { "DurationMs": 900 }
+        },
+        {
+          "Id": "stamp",
+          "Type": "Stamp",
+          "Stamp": {
+            "Reagents": [ { "ResourceTypeId": "MMO_Sharpened_Bar", "Quantity": 2 } ],
+            "Durability": { "AddMax": 10 },
+            "Stats": {
+              "Pool": "anvil_weapon_pool",
+              "Picks": { "Min": 1, "Max": 2 },
+              "Unique": true,
+              "Caps": {
+                "PerItemBudget": 30,
+                "PerStat": { "MMO_CritChance": 10 },
+                "SkillScaledBudget": { "Factor": "mmoskilltree:skill_level", "Param": "SMITHING", "PointsPerLevel": 0.5 }
+              }
+            }
+          },
+          "Presentation": { "Sound": "SFX_Chest_Legendary_FirstOpen_Player", "Particles": "Block_Gem_Sparks" }
+        }
+      ]
+    }
+  }
+}
