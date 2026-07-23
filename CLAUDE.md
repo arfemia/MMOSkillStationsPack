@@ -281,6 +281,31 @@ tick-safety hardening that landed in the SAME round, plus the new press-F custod
 feature (no pack authoring needed - every `Custody.Display`-bearing action in this pack, both the
 sawmill's logs and the anvil's `convert`/`enhance`, is now retrievable for free).
 
+## History (the puppet route + final offset re-tune, RPG Stations round-4, 2026-07-22 late)
+
+Both `Sawmill.json` and `Anvil.json` now author a station-level `Puppet` group (round-4 design,
+"mount the player, hide their player model, and spawn/display a visual of their character model
+performing the steps"; see RPG Stations' `asset/CLAUDE.md`'s `Puppet` bullet for the full schema
+and `station/CLAUDE.md`'s puppet-engine bullet for `StationPuppetController`): `Hide.Route:"Scale"`
+(the in-game-crowned self-hide mechanism), `Look.Source:"PlayerClone"` (the puppet wears a clone of
+the working player's own skin), `Offset:{X:0.0,Y:-0.4,Z:0.4}` + a station-authored `Yaw`, and
+`Prop.Source:"MirrorHeld"` (the puppet holds a live copy of whatever the player is holding). The
+anvil's `enhance` action's `stamp` step adds ONE per-step override, `Puppet.Prop.Source:"None"`, so
+the puppet's hands go empty specifically for the stamp beat instead of still gripping the hammer.
+All puppet placement values are a first-pass guess, in-game-unverified as of this pass (the
+consolidated next-session checklist section A covers the confirm).
+
+**Display offsets were re-tuned AGAIN this same round, superseding the R5 section above**: the R5
+values (`sawmill 0.05`, `anvil convert 0.35`) were themselves first-guess placeholders from the
+PRIOR smoke round, not a final confirm. Current shipped values: `Sawmill.json`'s
+`Custody.Display.Offset.Y = -0.1` (lowered from R5's `0.05`, now intentionally slightly below the
+block-top anchor) and `Anvil.json`'s `convert.Custody.Display.Offset.Y = 0.52` (raised from R5's
+`0.35`, was sitting too deep in the anvil model). `Anvil.json`'s `enhance.Custody.Display.Offset.Y`
+stays UNCHANGED at `0.55` - the maintainer flagged only the ingot this round, so the placed-weapon
+offset remains the one PENDING offset confirm (every other offset here has at least one in-game
+re-tune behind it; this one never has). Every one of these is a plain JSON leaf, maintainer-tunable
+without an engine rebuild.
+
 ## How it fits together
 
 - **A station is one `StationAsset` JSON + its block + its interaction.**
