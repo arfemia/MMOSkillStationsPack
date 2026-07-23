@@ -37,12 +37,14 @@ own durability bonus) but grant no skill XP and roll no item stats.
 | `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The emote's display name (Hytale's own `avatarCustomization` namespace) |
 | `Server/Languages/<locale>/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
+| `Server/MMOSkillTree/CustomSkills/Smithing.json` | The SMITHING skill itself (round-7 D-3 migration: a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures - reproducing the former MMO jar built-in verbatim; existing player SMITHING XP keeps working) |
+| `Server/Languages/<locale>/mmoskilltree.lang` | `skill.smithing` (the roster display name, moved verbatim from the MMO jar's own translations) + `skill.smithing.desc` (en-US only so far; the other 8 locales are filled in a follow-up lang leg) |
 
 All 9 shipped locales are key-complete for the Anvil-era content (the sharpened-bar items, the
-split empty/loaded hints, and the `rpgstations.lang` overlay). The Sawmill's display name/desc
-(`Identity.NameKey`/`DescKey`) point at `rpgstations.station.sawmill.name`/`.desc`, the keys RPG
-Stations itself ships (`rpgstations.lang`) - this pack reuses them rather than duplicating the
-translation.
+split empty/loaded hints, and the `rpgstations.lang` overlay) and carry `skill.smithing`. The
+Sawmill's display name/desc (`Identity.NameKey`/`DescKey`) point at
+`rpgstations.station.sawmill.name`/`.desc`, the keys RPG Stations itself ships (`rpgstations.lang`)
+- this pack reuses them rather than duplicating the translation.
 
 ## Build
 

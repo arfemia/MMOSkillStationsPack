@@ -42,6 +42,34 @@ OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold), which is 
 Sawmill's engine-owned XP/luck-free jar default becomes the MMO-bridged, luck-tiered one this pack
 ships.
 
+## History (round-7 fix wave: anvil rotation + SMITHING skill migration, leg F, 2026-07-23)
+
+Two round-7 defects (design `raw/rpg-stations-round7-fix-design-2026-07-23.md`, D-1 and D-3) closed
+in this pack:
+
+- **D-1, the enhance weapon lying flat**: `Anvil.json`'s `enhance.Custody.Display` gains a
+  `Rotation: {"X": 90.0}` leaf (the new nested `{X,Y,Z}` degrees group RPG Stations' `Custody`
+  codec grew this round; X is pitch, so 90 tips the upright weapon mesh onto the horizontal). The
+  full in-game tuning ladder (swap to `Z` for roll, tune `Y` last for horizontal alignment, and the
+  explicit fallback if the client ignores pitch/roll entirely for a bare item prop) is written into
+  the file's own `$Comment`. `convert.Custody.Display` and the sawmill's placed log stay
+  deliberately UNROTATED (no defect reported for either).
+- **D-3, SMITHING out of the jar roster**: this pack now ships the SMITHING skill itself, not just
+  its bridge-fed XP. New `Server/MMOSkillTree/CustomSkills/Smithing.json` (Pattern A
+  `CustomSkillAsset` - see `asset/type/CLAUDE.md` in the MMO repo) reproduces the removed MMO jar
+  built-in verbatim (Name "Smithing", Category CRAFTING, InsertAfter ENCHANTING, Description "Forge
+  weapons and armor to gain experience", Icon `Icons/ItemsGenerated/Ingredient_Bar_Iron.png`,
+  Triggers `["CRAFT_ITEM"]`, RequiresFeatures `["stations"]`). Localization moved WITH the
+  definition: every `Server/Languages/<locale>/mmoskilltree.lang` file (new family for this pack)
+  carries `skill.smithing`, its value moved VERBATIM from that locale's own MMO jar translation
+  (recovered from the jar's git history at the commit that removed it) - except it-IT, whose jar
+  value was an untranslated English copy ("Smithing"), fixed here to "Forgiatura" while moving. A
+  new key, `skill.smithing.desc`, is authored en-US only this leg ("Forge weapons and armor to gain
+  experience"); the other 8 locales are filled by a follow-up lang-fanout leg. The MMO's
+  `getMaxLevel`/registry pack-layer machinery (root repo's `skill/CLAUDE.md`) is what actually folds
+  this asset into the live roster; nothing else in this pack changed for D-3 (the empty leftover
+  `Server/MMOSkillTree/Stations/` directory from before this asset type existed was also deleted).
+
 ## History (rename, RPG Stations extraction phase 1 leg 6)
 
 Before the RPG Stations extraction this pack's Sawmill content folded through the MMO Skill Tree
@@ -171,12 +199,13 @@ same risk class as the standing-mount pose).
   `Durability.AddMax: 10` lands even without the MMO (RpgStations-native).
 - **SMITHING XP**: `convert` grants 6/cycle, `enhance` grants 25 per COMPLETED ritual only (no
   free-XP fountain - the cycle event fires from inside the `Stamp` step's own success path, so a
-  cancelled/failed ritual grants nothing). SMITHING itself is a promoted MMO built-in skill
-  (`skill.SkillRegistry`, `requiresFeatures: ["stations"]`, the exact TAMING precedent) - **NOT**
-  shipped via this pack's own content at all; see RPG Stations' mod-root `CLAUDE.md` Phase 2
-  section for the m9 correction (the design doc's `custom-skills.json`-in-the-pack framing does
-  not match how that file actually loads - a local server-owner config, not a pack-authorable
-  asset).
+  cancelled/failed ritual grants nothing). **Superseded by round-7 D-3 (see the History section
+  above): SMITHING is no longer an MMO jar built-in.** It ships as this pack's own
+  `Server/MMOSkillTree/CustomSkills/Smithing.json` (a Pattern A `CustomSkillAsset`,
+  `requiresFeatures: ["stations"]` carried over unchanged from the built-in), folded into the
+  MMO's `SkillRegistry` pack layer. Without this pack installed, SMITHING no longer exists at all
+  (not even hidden - the prior "promoted built-in, TAMING precedent" framing and the m9 correction
+  below are historical, kept for the fix-wave trail).
 
 ## History (first-boot fix wave, 2026-07-22)
 

@@ -1,5 +1,5 @@
 {
-  "$Comment": "The anvil work station (design section 9.5, phase 2 leg E): two diegetic actions selected by held/placed item - Convert (sharpen a vanilla metal bar) and Enhance (the flagship Stamp-step ritual). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel) - no new art. Smoke round R5 (2026-07-22): convert.Custody.Display.Offset.Y lowered from 0.55 to 0.35 so the placed ingot rests closer to the anvil surface - a maintainer-tunable FIRST GUESS from this round, not yet re-verified in-game (the maintainer flagged only the placed INGOT; enhance's placed-weapon offset is left at 0.55 pending separate confirmation). Identity.Icon removed: StationService#blockItemIdAt already falls back to the anchor block's own BlockType id when Identity.Icon is absent/blank, and that id equals this station's own item id (RPG_Station_Anvil, filename = item id per repo convention) - so the summary-HUD crest already shows the anvil's own block icon with zero duplicated id to drift. R7 fix-round correction (2026-07-22): that claim was FALSE at engage time for the convert action - a BarsPlaced/WeaponPlaced custody block is a distinct generated-key BlockType (e.g. *RPG_Station_Anvil_BarsPlaced), so the old getId()-only fallback resolved the UNKNOWN placeholder icon, not this station's own. Fixed engine-side: StationService#blockItemIdAt now resolves via BlockType#getItem() (the block's containing Item asset), which walks correctly through a state variant back to the base RPG_Station_Anvil item id - the fallback's original zero-duplicated-id-to-drift intent now genuinely holds. See RPG Stations' station/CLAUDE.md for the full source trail; no authoring change needed here. Work-start deny fix round (2026-07-22): the anvil denied every work-start attempt with ui.station.mount_unavailable (StationService#toggle's Entity-mount engage path denies with that exact toast whenever spawnAnchor/attach returns null/false) even holding the correct hammer, with the tool gate and custody viability already passed - StationEntityMountController's standing Entity-surface mount (design 9.2) is a phase-2 spike never verified in-game. Source reading of that same mechanism surfaced a SEPARATE, confirmed defect independent of whichever condition triggered the observed deny: the anchor entity never carried a NetworkId component, so PlayerMount/TrackerUpdate silently no-op'd against it - even a mount that DID succeed would have rendered invisibly. Hold.Mount moved to effect-mode (MovementLock + EffectId, the proven phase-1 default) rather than continuing to chase the Entity-mount spike. The engine-side NetworkId fix (StationEntityMountController) and graceful degradation (StationService#toggle now falls back to effect-mode instead of denying on a spawn/attach failure) both landed alongside this authoring change and hold regardless of which mount surface a future pack revision picks; this is the maintainer-recommended proven-hold swap, not a permanent design reversal - see additional-mods/rpg-stations station/CLAUDE.md for the full fix-round detail. Round-4 re-tune (2026-07-22): convert.Custody.Display.Offset.Y raised from 0.35 to 0.52 (maintainer-chosen) - R5's 0.35 sat the placed ingot too deep into the anvil surface; enhance's placed-weapon offset stays at 0.55, still pending its own separate confirmation. Round-4 puppet-presentation content leg (2026-07-22): authored ONE station-level Puppet group (Enabled true, Hide.Route Scale, the maintainer-crowned default; Look.Source PlayerClone; Prop.Source MirrorHeld so the puppet carries a copy of the held hammer) shared by BOTH convert and enhance - neither ActionDef overrides it, since both actions work the same anvil face and no distinct positioning is warranted; Offset/Yaw are a first-pass placement guess (world-space, kept small, same caveat as Custody.Display) pending the P7 smoke round. The enhance ritual's own stamp step DOES warrant a per-step override: Puppet.Prop.Source None on that one beat, so the puppet's hands go empty for the enchant flourish instead of still gripping the hammer mid-stamp. Positioning round-2 (2026-07-23): the sawmill's own Puppet group needed a fix round after its first in-game smoke (wrong facing, standing too close - see Sawmill.json's own $Comment) that this station's Puppet group had never independently received (it shipped in the SAME round-4 leg but was flagged 'not yet independently smoke-tested'). Since this station resolves its Puppet Offset/Yaw through the identical mechanism (StationPuppetController#spawnAndHide -> ziggfreed-common's PlayerPuppetService#offsetPosition/#spawn - a plain world-space anchor-plus-offset addition and a direct Rotation3f with no BlockMountPoint-style engine rotation on this path, same as the sawmill) and reuses a vanilla bench block the same way the sawmill does, this leg applies the SAME mirrored correction pre-emptively rather than waiting for a separate anvil-specific smoke round to rediscover the identical defect: Yaw flipped 180 from its prior guess (180.0 -> 0.0, matching the sawmill's own P-2 fix) and Offset.Z stepped back to 1.0 (matching the sawmill's now-twice-corrected final value, 0.4 -> 1.0) - both maintainer-tunable, PENDING the anvil's own in-game confirm (this station has never been independently puppet-smoked; the sawmill's proven fix pattern is a reasoned starting point, not a verified result for this block). The enhance ritual's stamp-step Puppet.Prop.Source override is untouched and keeps composing on top (per-step overrides only ever touch Clip/Prop, never Offset/Yaw).",
+  "$Comment": "Round-7 fix (design raw/rpg-stations-round7-fix-design-2026-07-23.md, D-1, leg F): enhance.Custody.Display gains Rotation: {X: 90.0} - the reported defect was the placed weapon standing upright on the anvil face instead of lying flat. X is pitch (tips the mesh onto the horizontal), authored in DEGREES (never raw radians), applied via RpgStations' resolveRotationRadians -> Rotation3f(pitch,yaw,roll). Ordered round-8 in-game tuning ladder (server-owner tunable, no engine change needed for any of these): (1) start with {X:90.0} - expect the blade horizontal, lying on the anvil face; (2) if the weapon instead stands edge-on or spins about its own length (mesh local axes differ per model), swap to {Z:90.0} (roll), then try combos ({X:90,Z:90}); (3) tune Y (yaw) last, purely for horizontal alignment along the anvil's ridge - Y is world-space, not placement-compensated, so one global value is a compromise across NESW station placements; (4) FALLBACK if pitch AND roll are visually IGNORED by the client's item-mesh renderer for a bare ItemComponent prop (the one thing server-side source cannot prove): remove the authored X/Z leaves entirely (zero visual regression vs pre-round-7, the weapon stays upright exactly as before), KEEP the Rotation schema (correct and engine-verified at the wire level down to the packet), and report the finding upstream - a lying-flat custom display block or a Blockbench prop model are the escalation options, deliberately out of this round's scope. convert.Custody.Display and the sawmill's placed log stay deliberately UNROTATED (Rotation omitted): the sawmill log takes the BlockEntity route (renders the actual block model, no defect reported), and the placed ingot's upright ItemComponent-prop default was never flagged, so both are left as-is - a one-leaf {\"Y\": 90.0} data change is all a later re-tune would need. The anvil work station (design section 9.5, phase 2 leg E): two diegetic actions selected by held/placed item - Convert (sharpen a vanilla metal bar) and Enhance (the flagship Stamp-step ritual). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel) - no new art. Smoke round R5 (2026-07-22): convert.Custody.Display.Offset.Y lowered from 0.55 to 0.35 so the placed ingot rests closer to the anvil surface - a maintainer-tunable FIRST GUESS from this round, not yet re-verified in-game (the maintainer flagged only the placed INGOT; enhance's placed-weapon offset is left at 0.55 pending separate confirmation). Identity.Icon removed: StationService#blockItemIdAt already falls back to the anchor block's own BlockType id when Identity.Icon is absent/blank, and that id equals this station's own item id (RPG_Station_Anvil, filename = item id per repo convention) - so the summary-HUD crest already shows the anvil's own block icon with zero duplicated id to drift. R7 fix-round correction (2026-07-22): that claim was FALSE at engage time for the convert action - a BarsPlaced/WeaponPlaced custody block is a distinct generated-key BlockType (e.g. *RPG_Station_Anvil_BarsPlaced), so the old getId()-only fallback resolved the UNKNOWN placeholder icon, not this station's own. Fixed engine-side: StationService#blockItemIdAt now resolves via BlockType#getItem() (the block's containing Item asset), which walks correctly through a state variant back to the base RPG_Station_Anvil item id - the fallback's original zero-duplicated-id-to-drift intent now genuinely holds. See RPG Stations' station/CLAUDE.md for the full source trail; no authoring change needed here. Work-start deny fix round (2026-07-22): the anvil denied every work-start attempt with ui.station.mount_unavailable (StationService#toggle's Entity-mount engage path denies with that exact toast whenever spawnAnchor/attach returns null/false) even holding the correct hammer, with the tool gate and custody viability already passed - StationEntityMountController's standing Entity-surface mount (design 9.2) is a phase-2 spike never verified in-game. Source reading of that same mechanism surfaced a SEPARATE, confirmed defect independent of whichever condition triggered the observed deny: the anchor entity never carried a NetworkId component, so PlayerMount/TrackerUpdate silently no-op'd against it - even a mount that DID succeed would have rendered invisibly. Hold.Mount moved to effect-mode (MovementLock + EffectId, the proven phase-1 default) rather than continuing to chase the Entity-mount spike. The engine-side NetworkId fix (StationEntityMountController) and graceful degradation (StationService#toggle now falls back to effect-mode instead of denying on a spawn/attach failure) both landed alongside this authoring change and hold regardless of which mount surface a future pack revision picks; this is the maintainer-recommended proven-hold swap, not a permanent design reversal - see additional-mods/rpg-stations station/CLAUDE.md for the full fix-round detail. Round-4 re-tune (2026-07-22): convert.Custody.Display.Offset.Y raised from 0.35 to 0.52 (maintainer-chosen) - R5's 0.35 sat the placed ingot too deep into the anvil surface; enhance's placed-weapon offset stays at 0.55, still pending its own separate confirmation. Round-4 puppet-presentation content leg (2026-07-22): authored ONE station-level Puppet group (Enabled true, Hide.Route Scale, the maintainer-crowned default; Look.Source PlayerClone; Prop.Source MirrorHeld so the puppet carries a copy of the held hammer) shared by BOTH convert and enhance - neither ActionDef overrides it, since both actions work the same anvil face and no distinct positioning is warranted; Offset/Yaw are a first-pass placement guess (world-space, kept small, same caveat as Custody.Display) pending the P7 smoke round. The enhance ritual's own stamp step DOES warrant a per-step override: Puppet.Prop.Source None on that one beat, so the puppet's hands go empty for the enchant flourish instead of still gripping the hammer mid-stamp. Positioning round-2 (2026-07-23): the sawmill's own Puppet group needed a fix round after its first in-game smoke (wrong facing, standing too close - see Sawmill.json's own $Comment) that this station's Puppet group had never independently received (it shipped in the SAME round-4 leg but was flagged 'not yet independently smoke-tested'). Since this station resolves its Puppet Offset/Yaw through the identical mechanism (StationPuppetController#spawnAndHide -> ziggfreed-common's PlayerPuppetService#offsetPosition/#spawn - a plain world-space anchor-plus-offset addition and a direct Rotation3f with no BlockMountPoint-style engine rotation on this path, same as the sawmill) and reuses a vanilla bench block the same way the sawmill does, this leg applies the SAME mirrored correction pre-emptively rather than waiting for a separate anvil-specific smoke round to rediscover the identical defect: Yaw flipped 180 from its prior guess (180.0 -> 0.0, matching the sawmill's own P-2 fix) and Offset.Z stepped back to 1.0 (matching the sawmill's now-twice-corrected final value, 0.4 -> 1.0) - both maintainer-tunable, PENDING the anvil's own in-game confirm (this station has never been independently puppet-smoked; the sawmill's proven fix pattern is a reasoned starting point, not a verified result for this block). The enhance ritual's stamp-step Puppet.Prop.Source override is untouched and keeps composing on top (per-step overrides only ever touch Clip/Prop, never Offset/Yaw).",
   "Identity": {
     "NameKey": "rpgstations.station.anvil.name",
     "DescKey": "rpgstations.station.anvil.desc"
@@ -43,20 +43,53 @@
       },
       "Work": {
         "CycleMs": 3800,
-        "Xp": [ { "Skill": "SMITHING", "PerCycle": 6.0 } ]
+        "Xp": [{ "Skill": "SMITHING", "PerCycle": 6.0 }]
       },
       "Recipe": {
         "Conversions": [
-          { "Input": { "ItemId": "Ingredient_Bar_Adamantite", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Adamantite_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Cobalt", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Cobalt_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Copper", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Copper_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Gold", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Gold_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Iron", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Iron_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Mithril", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Mithril_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Onyxium", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Onyxium_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Prisma", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Prisma_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Silver", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Silver_Bar", "Quantity": 1 } },
-          { "Input": { "ItemId": "Ingredient_Bar_Thorium", "Quantity": 2 }, "Output": { "ItemId": "MMO_Sharpened_Thorium_Bar", "Quantity": 1 } }
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Adamantite", "Quantity": 2 },
+            "Output": {
+              "ItemId": "MMO_Sharpened_Adamantite_Bar",
+              "Quantity": 1
+            }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Cobalt", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Cobalt_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Copper", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Copper_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Gold", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Gold_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Iron", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Iron_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Mithril", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Mithril_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Onyxium", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Onyxium_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Prisma", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Prisma_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Silver", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Silver_Bar", "Quantity": 1 }
+          },
+          {
+            "Input": { "ItemId": "Ingredient_Bar_Thorium", "Quantity": 2 },
+            "Output": { "ItemId": "MMO_Sharpened_Thorium_Bar", "Quantity": 1 }
+          }
         ]
       },
       "Animation": {
@@ -76,26 +109,33 @@
         "States": { "Empty": "Default", "Loaded": "WeaponPlaced" },
         "Display": {
           "Offset": { "Y": 0.55 },
-          "Scale": 1.0
+          "Scale": 1.0,
+          "Rotation": { "X": 90.0 }
         }
       },
       "Work": {
         "CycleMs": 600,
         "Repeat": false,
-        "Xp": [ { "Skill": "SMITHING", "PerCycle": 25.0 } ]
+        "Xp": [{ "Skill": "SMITHING", "PerCycle": 25.0 }]
       },
       "Steps": [
         {
           "Id": "strike1",
           "Type": "Wait",
           "Wait": { "DurationMs": 650 },
-          "Presentation": { "Sound": "SFX_Metal_Hit", "Particles": "Block_Gem_Sparks" }
+          "Presentation": {
+            "Sound": "SFX_Metal_Hit",
+            "Particles": "Block_Gem_Sparks"
+          }
         },
         {
           "Id": "strike2",
           "Type": "Wait",
           "Wait": { "DurationMs": 650 },
-          "Presentation": { "Sound": "SFX_Metal_Hit", "Particles": "Block_Gem_Sparks" }
+          "Presentation": {
+            "Sound": "SFX_Metal_Hit",
+            "Particles": "Block_Gem_Sparks"
+          }
         },
         {
           "Id": "settle",
@@ -107,7 +147,9 @@
           "Type": "Stamp",
           "Puppet": { "Prop": { "Source": "None" } },
           "Stamp": {
-            "Reagents": [ { "ResourceTypeId": "MMO_Sharpened_Bar", "Quantity": 2 } ],
+            "Reagents": [
+              { "ResourceTypeId": "MMO_Sharpened_Bar", "Quantity": 2 }
+            ],
             "Durability": { "AddMax": 10 },
             "Stats": {
               "Pool": "anvilweaponpool",
@@ -116,11 +158,18 @@
               "Caps": {
                 "PerItemBudget": 30,
                 "PerStat": { "MMO_CritChance": 10 },
-                "SkillScaledBudget": { "Factor": "mmoskilltree:skill_level", "Param": "SMITHING", "PointsPerLevel": 0.5 }
+                "SkillScaledBudget": {
+                  "Factor": "mmoskilltree:skill_level",
+                  "Param": "SMITHING",
+                  "PointsPerLevel": 0.5
+                }
               }
             }
           },
-          "Presentation": { "Sound": "SFX_Chest_Legendary_FirstOpen_Player", "Particles": "Block_Gem_Sparks" }
+          "Presentation": {
+            "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
+            "Particles": "Block_Gem_Sparks"
+          }
         }
       ]
     }

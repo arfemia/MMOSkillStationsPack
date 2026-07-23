@@ -1,0 +1,14 @@
+{
+  "$Comment": "Round-7 fix (design raw/rpg-stations-round7-fix-design-2026-07-23.md, D-3, leg F): SMITHING migrates out of the MMO jar's BUILTIN_SKILL_NAMES roster into a Pattern A CustomSkillAsset shipped by this pack (Server/MMOSkillTree/CustomSkills/*.json, asset id = filename, skill id = the id uppercased - SMITHING). Reproduces the removed jar BuiltinSkillData values verbatim (name/description/icon/category/insert-after/triggers/requires-features unchanged); existing player XP saved under the legacy 'SMITHING' key keeps working via the MMO's own legacy-codec migration (no pack-side action needed). Display.Name has no key field by design parity with the runtime model - Messages.skillNameMsg resolves the skill.smithing lang key first (shipped in this pack's own Server/Languages/<locale>/mmoskilltree.lang), so 'Smithing' below is the raw last-resort fallback only, not the authored display text.",
+  "Display": {
+    "Name": "Smithing",
+    "Description": "Forge weapons and armor to gain experience",
+    "Icon": "Icons/ItemsGenerated/Ingredient_Bar_Iron.png"
+  },
+  "Placement": {
+    "Category": "CRAFTING",
+    "InsertAfter": "ENCHANTING"
+  },
+  "Triggers": ["CRAFT_ITEM"],
+  "RequiresFeatures": ["stations"]
+}
