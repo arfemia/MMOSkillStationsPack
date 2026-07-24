@@ -388,9 +388,10 @@ without an engine rebuild.
   families - zero hardcoded conversions, matching the native Builders bench yield (the station's
   value-add is passive XP + luck loot, not better yield). Its held-tool gate matches any hatchet
   via the native `Gather` (Woods, functional) and `Tags` (Family: Hatchet) routes; `XpScale`
-  multiplies cycle XP by held-tool power (a better hatchet earns more). Its `Loot` block reproduces
-  the pre-extraction luck behavior exactly: one `Chance` Roll (`AddFactors: [{"Factor":
-  "mmoskilltree:station_luck"}]`, `CapPercent: 90`) grants a bonus output copy, and one `Ladder`
+  multiplies cycle XP by held-tool power (a better hatchet earns more). Its `Loot` block: one
+  `Chance` Roll (`AddFactors: [{"Factor": "mmoskilltree:station_luck"}]`, no `CapPercent` - the
+  bonus-copy proc runs uncapped, so max luck reaches a guaranteed proc; RollEvaluator's absent-leaf
+  default of 100 IS the natural single-roll ceiling) grants a bonus output copy, and one `Ladder`
   Roll over the same factor rolls one of three native `ItemDropList`s
   (`MMO_Station_Sawmill_T1/T2/T3`) at the 50/100/150 floors.
 - **In-world block.** The Sawmill block is a placeable furniture item reusing the vanilla

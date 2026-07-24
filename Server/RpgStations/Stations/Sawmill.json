@@ -30,8 +30,7 @@
       {
         "Chance": {
           "BasePercent": 0,
-          "AddFactors": [ { "Factor": "mmoskilltree:station_luck" } ],
-          "CapPercent": 90
+          "AddFactors": [ { "Factor": "mmoskilltree:station_luck" } ]
         },
         "Grants": { "BonusOutputCopies": 1 }
       },
