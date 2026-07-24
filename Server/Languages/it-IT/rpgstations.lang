@@ -5,3 +5,8 @@
 
 station.anvil.name = Incudine
 station.anvil.desc = Forgia barre affilate dal metallo, oppure migliora un'arma in un rituale di martellatura.
+station.cuttingboard.name = Tavola da Taglio
+station.cuttingboard.desc = Pulisci i pesci dal tuo inventario, quindi cucinali in un fuoco vicino, uno alla volta.
+station.cookingfire.name = Fuoco da Cucina
+station.cookingfire.desc = Cucina il pesce crudo sulle fiamme, uno alla volta.
+action.prepfish.label = Prepara Pesce

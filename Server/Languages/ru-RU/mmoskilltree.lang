@@ -1,2 +1,4 @@
 skill.smithing = Кузнечное дело
 skill.smithing.desc = Ковайте оружие и броню для получения опыта
+skill.cooking = Готовка
+skill.cooking.desc = Готовьте еду на рабочих станциях для получения опыта

@@ -1,2 +1,4 @@
 skill.smithing = Forge
 skill.smithing.desc = Forgez des armes et armures pour gagner de l'expérience
+skill.cooking = Cuisson
+skill.cooking.desc = Préparez et cuisinez de la nourriture aux stations de travail pour gagner de l'expérience

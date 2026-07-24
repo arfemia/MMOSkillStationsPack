@@ -1,2 +1,4 @@
 skill.smithing = Kovácsolás
 skill.smithing.desc = Fegyvereket és páncélokat kovácsol, hogy tapasztalatot szerezz
+skill.cooking = Főzés
+skill.cooking.desc = Készítsd el és főzd meg az ételeket munkaállomásokon, hogy tapasztalatot szerezz

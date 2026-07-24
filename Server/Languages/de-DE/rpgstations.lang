@@ -3,5 +3,9 @@
 # The Sawmill reuses RPG Stations' own shipped station.sawmill.* keys; the Anvil is
 # pack-exclusive content, so its station.anvil.* keys live here.
 
+station.cuttingboard.name = Zubereitungsbrett
+station.cuttingboard.desc = Filetiere Fische aus deinem Inventar, dann koche sie an einem nahegelegenen Feuer, einen nach dem anderen.
+station.cookingfire.name = Lagerfeuer
+station.cookingfire.desc = Grille rohe Fische über den Flammen, einen nach dem anderen.
 station.anvil.name = Amboss
 station.anvil.desc = Schmiede geschärfte Barren aus Metall oder verbessere eine Waffe in einem Hammerritual.

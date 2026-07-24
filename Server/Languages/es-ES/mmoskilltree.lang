@@ -1,2 +1,4 @@
 skill.smithing = Herrería
 skill.smithing.desc = Forja armas y armaduras para ganar experiencia
+skill.cooking = Cocina
+skill.cooking.desc = Prepara y cocina comida en estaciones de trabajo para ganar experiencia
