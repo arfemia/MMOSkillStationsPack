@@ -1,0 +1,32 @@
+{
+  "$Comment": "Wave-2 (scope2-w2 leg A6, gate Q4): replaces the RETIRED pack Stations/Sawmill.json full-file override's Loot block. The jar's own Sawmill.json (RPG Stations, leg A5-reauthored) stays LIVE now that this pack no longer overrides the whole station, so its own Lootables/SawmillFinds.json rolls (a BasePercent 2 tool_power-scaled bonus-copy Chance capped 25 percent, plus a Conditions-gated cycle_count Ladder to the jar's OWN small RPG_Station_Sawmill_T1/T2 drop lists) now fire ADDITIVELY alongside whatever this pack adds via Extensions/SawmillProgression.json's Loot ref. Rebalance decision (avoiding double-stacking a second bonus-copy-style roll on top of the jar's own): the pack's historical bonus-copy Chance roll (uncapped mmoskilltree:station_luck AddFactor, no CapPercent) is DROPPED here, not carried over - the jar's own tool_power-scaled bonus-copy roll now covers that gameplay niche alone, so the combined bonus-copy roll COUNT stays at one (previously also one, the pack's own, before this pack fully overrode the jar). The luck-tier LADDER is the one true carryover (design 4.5's own composition exemplar): its three floor VALUES (50/100/150) are kept BYTE-IDENTICAL to the pre-wave-2 pack Sawmill.json, and its trigger factor is now Ladder.Values (a weighted FactorRef array) summing stat/MMO_Luck + stat/MMO_Luck_WOODCUTTING (equal Weight 1.0 each) instead of the single aggregate mmoskilltree:station_luck - per decision 36 (GATE OUTCOMES, rpg-stations-scope2-unified-design-2026-07-23.md) station_luck is now a TRUE-EQUIVALENCE aggregate of exactly this factor set, so this composition is numerically equivalent to the old single-factor ladder and needed no floor renumbering. The jar's own small secondary ladder (cycle_count-gated, 15 percent chance, capped at its own T2 tier) is accepted as a bounded, minor additional stack this pack cannot edit (RPG Stations jar content is leg A5's ownership, not this pack's) - flagged for the wave-2 adversarial review leg, not resolved here. DropList ids referenced below (MMO_Station_Sawmill_T1/T2/T3) are this pack's OWN native ItemDropList assets (Server/Drops/), distinct from the jar's RPG_Station_Sawmill_T1/T2 - no id collision.",
+  "Rolls": [
+    {
+      "Ladder": {
+        "Values": [
+          { "Factor": "stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 50, "Grants": { "DropList": "MMO_Station_Sawmill_T1" } },
+          {
+            "Min": 100,
+            "Grants": { "DropList": "MMO_Station_Sawmill_T2" },
+            "Presentation": {
+              "Sound": "SFX_Coins_Land",
+              "Particles": "Block_Gem_Sparks"
+            }
+          },
+          {
+            "Min": 150,
+            "Grants": { "DropList": "MMO_Station_Sawmill_T3" },
+            "Presentation": {
+              "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
+              "Particles": "Effect_Crown_Gold"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
