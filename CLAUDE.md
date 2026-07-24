@@ -70,6 +70,37 @@ in this pack:
   this asset into the live roster; nothing else in this pack changed for D-3 (the empty leftover
   `Server/MMOSkillTree/Stations/` directory from before this asset type existed was also deleted).
 
+## History (round-8: facing-relative display + step-synced puppet swings, 2026-07-23)
+
+Two round-8 authoring changes in `Anvil.json`, both riding RPG Stations engine changes of the same
+round (no engine code lives here):
+
+- **Facing-relative `Custody.Display` (engine commit `cc52fb4`)**: `Custody.Display` `Offset`/
+  `Rotation` are now interpreted RELATIVE to the placed anvil block's own facing yaw, not absolute
+  world axes - RPG Stations reads the block's `getBlockRotationIndex` yaw at spawn, rotates the
+  horizontal `Offset` (X/Z) by it (authored `+Z` = toward the block's FRONT, `+X` = its right; `Y`
+  stays vertical) and folds the block yaw into `Rotation.Y`. A DEFAULT-orientation placement (yaw 0)
+  is the identity, so no blind re-tune was needed for existing values. `enhance.Custody.Display` was
+  re-tuned for the maintainer's placed-weapon screenshot: `Offset.X: 0.3` (a facing-relative sideways
+  pull toward the anvil-top center) and `Rotation.Z: 90.0` (roll, added to the existing `X: 90.0`
+  pitch so the hilt lies flat). `convert.Custody.Display` (placed ingot, `Offset.Y 0.52`) and the
+  sawmill's placed log (`Offset.Y -0.1`) author ONLY a vertical `Offset.Y` with no horizontal shift
+  and no `Rotation`, so the facing-relative change leaves them byte-identical at any orientation -
+  deliberately left unchanged. All the axis/sign/fallback tuning ladder lives in `Anvil.json`'s own
+  `$Comment`; every value is a plain JSON leaf, maintainer-tunable without an engine rebuild.
+- **Step-synced puppet swings (engine round-8)**: the enhance ritual's `strike1` and `strike2` steps
+  now author a per-step `Puppet.Clip` of `MMO_Emote_Hammer` so the skinned puppet visibly HAMMERS on
+  both strike beats (previously it played its engage loop once, then stood still through both
+  strikes). `MMO_Emote_Hammer` is the exact clip RPG Stations' generic swing route already resolves
+  for the held hammer here (the enhance action inherits `Animation.EmoteId` = `MMO_Emote_Hammer` from
+  the station level), authored explicitly per step. RPG Stations plays the clip once at each step's
+  ITERATION ENTRY and SUPPRESSES the generic engage/swing puppet clip for the whole ritual (the
+  step-entry clips are the sole animation driver, no double-fire). The `settle` step authors NO clip
+  on purpose (the puppet idles for the settling pause), and the `stamp` step keeps its existing
+  `Puppet.Prop.Source: "None"` empty-hands override - it authors a Prop but no Clip, so no hammer
+  swing fires on the enchant-flourish beat (composes cleanly). See RPG Stations' `station/CLAUDE.md`
+  puppet-engine bullet for the engine mechanism.
+
 ## History (rename, RPG Stations extraction phase 1 leg 6)
 
 Before the RPG Stations extraction this pack's Sawmill content folded through the MMO Skill Tree
