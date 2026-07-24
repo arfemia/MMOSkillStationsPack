@@ -161,8 +161,8 @@
                 "PerItemBudget": 30,
                 "PerStat": { "MMO_CritChance": 10 },
                 "SkillScaledBudget": {
-                  "Factor": "mmoskilltree:skill_level",
-                  "Param": "SMITHING",
+                  "Factor": "stat",
+                  "Param": "MMO_Level_SMITHING",
                   "PointsPerLevel": 0.5
                 }
               }
