@@ -167,7 +167,6 @@
             }
           },
           "Presentation": {
-            "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
             "Particles": "Block_Gem_Sparks"
           }
         }

@@ -1,7 +1,9 @@
 # CLAUDE.md - MMOSkillStationsPack
 
-A standalone Hytale content pack shipping all **interactive work station** content: the
-**Sawmill** (a diegetic third-person work loop station) and (phase 2 leg E) the **Anvil** - a
+A standalone Hytale content pack shipping the MMO-side **interactive work station** content: the
+**Sawmill progression layer** (the sawmill StationAsset itself, incl. its Puppet/log-display
+presentation defaults, lives in the RPG Stations JAR - see the 2026-07-28 History section; this
+pack extends it additively) and (phase 2 leg E) the **Anvil** - a
 TWO-action station (Convert: sharpen a vanilla metal bar; Enhance: the flagship Stamp-step ritual
 that rolls stats onto a placed weapon) - see `.claude/research/raw/
 rpg-stations-unified-design-2026-07-21.md` section 9.5 in the hyMMO monorepo. The station **engine**
@@ -23,24 +25,31 @@ skill-stations-pack/
 ├── build.ps1                                             zips with forward-slash entries, copies to Mods
 └── Server/
     ├── Item/
-    │   ├── Items/RPG_Station_Sawmill.json                the Sawmill block (reuses the vanilla Lumbermill bench model); SHARED id with RPG Stations' own jar default, overrides it via pack load order
-    │   └── RootInteractions/RPG_Station_Sawmill_Use.json object form: {"Type":"rpg_station_use","Station":"sawmill"}
-    ├── Drops/MMO_Station_Sawmill_T1/T2/T3.json           native ItemDropList luck-tier bonus loot (referenced by Sawmill.json's Loot.Rolls[1].Ladder.Floors[*].Grants.DropList); native ids, unrenamed - no collision with RPG Stations' own drop tables
-    ├── Emote/MMO_Emote_Saw.json                          the looping sawing work emote (native id, unrenamed; server-authored EmoteAsset)
-    ├── Languages/<bcp47>/
-    │   ├── items.lang                                    RPG_Station_Sawmill.name/.description/.hint.empty/.hint.loaded (native namespace; key-complete across all 9 locales)
-    │   └── avatarCustomization.lang                       emotes.MMO_Emote_Saw.name (Hytale's own avatarCustomization namespace)
+    │   ├── Items/RPG_Station_Sawmill.json + RPG_Station_Anvil.json  the two station blocks (vanilla Lumbermill / Anvil bench models); SHARED ids with RPG Stations' own jar defaults, override via pack load order
+    │   ├── Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json (x10)    the anvil convert outputs (shared MMO_Sharpened_Bar family, the Stamp step's Reagents route)
+    │   ├── ResourceTypes/MMO_Sharpened_Bar.json                     the native ResourceType those bars share
+    │   └── RootInteractions/RPG_Station_<Sawmill|Anvil>_Use.json    object form: {"Type":"rpg_station_use","Station":"<id>"}
+    ├── Drops/MMO_Station_Sawmill_T1/T2/T3.json           native ItemDropList luck-tier loot (referenced by Lootables/SawmillLuckTiers.json's Ladder floors)
+    ├── Emote/MMO_Emote_Saw.json + MMO_Emote_Hammer.json  the work emotes (native ids, server-authored EmoteAssets)
+    ├── Languages/<bcp47>/                                items.lang + avatarCustomization.lang (native namespaces), rpgstations.lang (station.anvil.*), mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales
+    ├── MMOSkillTree/CustomSkills/Smithing.json + Cooking.json  the pack-shipped skills themselves (Pattern A CustomSkillAsset, folded into the MMO's SkillRegistry pack layer)
     └── RpgStations/
-        └── Stations/Sawmill.json                         the StationAsset itself (Work/Recipe/Custody/Hold/Tool/Camera/Animation/Loot/Presentation), folds through RPG Stations' codec
+        ├── Stations/Anvil.json                           the two-action Anvil StationAsset (convert + enhance) - a FULL-FILE pack override
+        ├── Extensions/SawmillProgression.json + CookingProgression.json  additive ExtensionAssets onto the JAR's own sawmill / cooking-fire stations (XP declarations, Loot ref, the decision-59d luck roll)
+        ├── Lootables/SawmillLuckTiers.json               the sawmill luck-tier Ladder (referenced by SawmillProgression's Loot)
+        └── RollPools/AnvilWeaponPool.json                the enhance Stamp step's stat roll pool
 ```
 
 `Server/Item/**`, `Server/Drops/**`, `Server/Emote/**`, and `Server/Languages/**` load via Hytale's
 native asset pack mechanism (gated by `"IncludesAssetPack": true`), independent of RPG Stations'
 own `Control` map (which only governs `Server/RpgStations/**`). `Server/RpgStations/Stations/*.json`
 folds through RPG Stations' `StationAsset` codec (`AssetStoreRegistrar`); a station id here
-OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold), which is exactly how the
-Sawmill's engine-owned XP/luck-free jar default becomes the MMO-bridged, luck-tiered one this pack
-ships.
+OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold) - the ANVIL ships that way.
+The Sawmill does NOT (wave 2, scope-2 arc): the jar's own `Sawmill.json` stays live (it owns the
+presentation defaults - Puppet, Custody.Display, the 4805ms cadence - per decision 59), and
+`Server/RpgStations/Extensions/SawmillProgression.json` composes the MMO progression onto it
+ADDITIVELY through the `ExtensionAsset` fold (XP declarations, the SawmillLuckTiers Loot ref, and
+the decision-59d MMO-luck bonus-copy roll stacking beside the jar's own tool_power roll).
 
 ## History (round-7 fix wave: anvil rotation + SMITHING skill migration, leg F, 2026-07-23)
 
@@ -365,6 +374,32 @@ stays UNCHANGED at `0.55` - the maintainer flagged only the ingot this round, so
 offset remains the one PENDING offset confirm (every other offset here has at least one in-game
 re-tune behind it; this one never has). Every one of these is a plain JSON leaf, maintainer-tunable
 without an engine rebuild.
+
+## History (post-arc smoke fix round 1, 2026-07-28)
+
+The maintainer's first post-arc smoke caught two regressions this pack participates in, both
+closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-design.md`):
+
+- **The wave-2 Sawmill migration silently dropped Puppet + Custody.Display**: retiring the
+  full-file `Stations/Sawmill.json` override for `Extensions/SawmillProgression.json` carried
+  Loot/Xp deliberately, but NOTHING carried the `Puppet` group or `Custody.Display`
+  (`ExtensionAsset` had no such keys), so the live sawmill regressed to a visible seat-mount
+  with invisible placed logs. Restored per decision 59: the JAR's own `Sawmill.json` owns those
+  presentation defaults now (this pack authors NO sawmill presentation), and RPG Stations'
+  `ExtensionAsset` gained nullable `Puppet`/`Custody` overlay keys (recursive per-leaf merge) so
+  a pack CAN re-skin presentation when it wants to. Migration lesson, recorded in decision 59:
+  retiring a full-file override demands diffing the UNION of groups the override authored.
+- **`SawmillProgression.json` regained the MMO-luck bonus-copy roll** (decision 59d,
+  BOTH-STACK): wave 2 dropped the pack's `mmoskilltree:station_luck` bonus-copy Chance roll to
+  keep the roll count at one; the maintainer ruled both stack, so the extension adds it back
+  beside the jar's own tool_power-scaled roll (`SawmillLuckTiers.json`'s `$Comment` records the
+  supersession).
+- **The anvil completion SFX de-doubled** (decision 60): the same
+  `SFX_Chest_Legendary_FirstOpen_Player` was authored on BOTH the enhance `stamp` step's
+  `Presentation` and the station-level `Completion`; both fired at round 8c too, but in the same
+  frame - wave 2's 800ms stamp flourish pulled them apart and made the pair audible. The stamp
+  step's `Sound` leaf is deleted (its sparks stay); the single bang lands at true completion
+  with the summary HUD, and the convert loop's own end cue is untouched.
 
 ## How it fits together
 
