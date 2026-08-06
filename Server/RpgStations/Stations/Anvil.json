@@ -1,5 +1,5 @@
 {
-  "$Comment": "Anvil work station: two diegetic actions selected by held/placed item, Convert (sharpen a vanilla metal bar) and Enhance (a Stamp-step ritual that rolls stats onto a placed weapon). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel), no new art. Enhance ritual steps use the orthogonal-phase step model: strike1/strike2/settle are pure Duration beats (650/650/900ms) carrying their Puppet.Clip/Presentation. The stamp step keeps its Stamp phase group (Reagents is the shared Ingredient leaf: ResourceTypeId+Quantity) and holds an extra 800ms after the stamp commits so the empty-hands flourish reads as a deliberate pause before session completion (Puppet.Prop.Source None already shows empty hands; the added Duration makes the hold real). Caps live on the Budgets[] array: a flat {Points:30} entry plus a scaled {PointsPer:0.5, Factors:[{Factor:stat, Param:MMO_Level_SMITHING}]} entry, composed via the MIN rule (StampCapEngine) so the effective total budget matches the old flat-plus-scaled pairing in every case. PerStat is unchanged. Custody/display knobs (convert.Custody.Display, enhance.Custody.Display incl. the facing-relative Offset/Rotation weapon pose) carry over unchanged. Enhance's weapon pose derives from Weapon_Sword_Crude's actual blockymodel axes rather than a guess: the item references a real Model (Items/Weapons/Sword/Crude.blockymodel), so the ItemComponent prop renders that 3D mesh, not an icon-extruded flat billboard. Model axes (root frame, at identity): all visible geometry sits under the model's Handle node, whose orientation quaternion (-0.5,-0.5,0.5,0.5) maps Handle-local +X (the pommel-to-tip long axis) to model +Y, local +Y (blade width) to model -Z, and local +Z (blade thickness, the flat-face normal) to model -X. At identity the blade length runs along model +Y (up), the flat-normal is model +/-X (broad faces point sideways), and the cutting edges point along model +/-Z. Engine composition: RpgStations resolveRotationRadians builds Rotation3f(pitch=X, yaw=Y, roll=Z); getQuaternion uses JOML rotationYXZ(Y,X,Z) = Ry(Y)*Rx(X)*Rz(Z), so roll(Z) applies first in model space, then pitch(X), then yaw(Y); block facing yaw adds into Y (facing-relative). Target pose: blade lying flat, broad face up, edge sideways, hilt flat. With X=0, Rotation {Y:90, Z:90} maps model +X (flat normal) to world +Y (up), model +Y (length) to world +Z (block front), model +Z (edge) to world +X (block right), which is the target. In-game validation confirmed the flat-up twist but with the blade lying across the anvil rather than along it; the authored pose is {Y:0, Z:90}: Rz(90) maps flat-normal +X to up, length +Y to world -X (along the anvil's long axis), edge +Z to +Z. The hilt sits toward block right (+X, the pommel-anchored render origin); to swap hilt/tip ends, author Rotation.Y:180 and flip Offset.X's sign. Cross-checked against two other observed poses: {X:90} alone maps length +Y to world +Z (horizontal, correct) but edge +Z to world -Y (vertical, edge-up); {X:90,Z:90} maps length +Y to world -X (a 90-degree spin in the horizontal plane vs {X:90}) with the edge still vertical. {X:90,Z:90} fails because roll(Z) applies before pitch(X), so it spins the still-upright blade in-plane instead of twisting it about its own long axis; twisting via yaw(Y, applied last) is the fix, so {Y:90, Z:90} with no X pitch lays it flat. In this derived frame, Z (roll) is the flat-vs-edge twist knob (Z:90 = flat up, Z:270/-90 = flat down but still lying flat, Z:0/180 = blade stands vertical), and Y (yaw) is the horizontal-direction knob. Offset: the render origin sits near the pommel, so the mesh extends most of its length toward the tip (world +Z / block front) and overhangs that edge; Offset.X:0.4 pulls the weapon back toward the anvil-top center along its own length. Offset.Y:0.55 accounts for the flat pose sitting vertically thinner than an on-edge pose at the same offset. In-game tuning ladder for this derived frame (plain JSON leaves, no engine rebuild): (1) blade spun the wrong way in the horizontal plane -> adjust Rotation.Y by +/-90; (2) blade on its edge instead of flat -> confirm no X pitch leaf is present and keep Z:90; if flat but the wrong broad face is up, flip the twist sign Z:90 to Z:270; (3) blade standing vertical -> Z drifted to 0/180, set back to Z:90; (4) sunk into or floating above the anvil -> Offset.Y in 0.05 steps; (5) overhangs one end along the blade length -> Offset.X in 0.1 steps (smaller values slide toward the tip end, larger toward the hilt end); (6) off-center sideways -> Offset.Z in 0.1 steps; (7) hilt on the wrong end -> Rotation.Y 0 to 180 and flip Offset.X's sign. Fallback if the client's item-mesh renderer ignores pitch/yaw/roll for a bare ItemComponent prop: remove the Rotation leaves (the weapon stays upright, zero regression), keep the schema, and escalate to a lying-flat custom display block or a dedicated prop model. Facing-relative context: Custody.Display Offset/Rotation are relative to the placed block's own yaw; RpgStations reads the block's rotation index at spawn, rotates the horizontal Offset (X/Z) by it, and folds the yaw into Rotation.Y. Authored +Z = block front, +X = block right, Y vertical; a default-orientation placement (yaw 0) is the identity so the block frame equals the world frame. convert.Custody.Display (placed ingot, Offset.Y 0.52) and the sawmill's placed log (Offset.Y -0.1) author only a vertical Offset.Y with no horizontal shift and no Rotation, so both stay byte-identical at any orientation. Step-synced puppet swings: the enhance ritual's strike1/strike2 steps author a per-step Puppet.Clip of MMO_Emote_Hammer so the skinned puppet visibly hammers on both strike beats, played once at each step's iteration entry; the generic engage/swing puppet clip is suppressed for the whole ritual so there is no double-fire. settle authors no clip (the puppet idles for the settling pause), and stamp keeps its Puppet.Prop.Source None empty-hands override (a Prop but no Clip, so no hammer swing fires on the stamp beat).",
+  "$Comment": "Anvil work station: two diegetic actions selected by held/placed item, Convert (sharpen a vanilla metal bar) and Enhance (a Stamp-step ritual that rolls stats onto a placed weapon). Both gate on holding a hammer (Tool, station-level, shared). Reuses the vanilla Anvil bench model (Common/Blocks/Benches/Anvil.blockymodel), no new art. Enhance ritual steps use the orthogonal-phase step model: strike1/strike2/settle are pure Duration beats (650/650/900ms) carrying their Puppet.Clip/Presentation. The stamp step keeps its Stamp phase group (Reagents is the shared Ingredient leaf: ResourceTypeId+Quantity) and holds an extra 800ms after the stamp commits so the empty-hands flourish reads as a deliberate pause before session completion (Puppet.Prop.Source None already shows empty hands; the added Duration makes the hold real). Caps live on the Budgets[] array: a flat {Points:30} entry plus a scaled {PointsPer:0.5, Factors:[{Factor:stat, Param:MMO_Level_SMITHING}]} entry, composed via the MIN rule (StampCapEngine) so the effective total budget matches the old flat-plus-scaled pairing in every case. PerStat is unchanged. Custody/display knobs (convert.Custody.Display, enhance.Custody.Display incl. the facing-relative Offset/Rotation weapon pose) carry over unchanged. Enhance's weapon pose derives from Weapon_Sword_Crude's actual blockymodel axes rather than a guess: the item references a real Model (Items/Weapons/Sword/Crude.blockymodel), so the ItemComponent prop renders that 3D mesh, not an icon-extruded flat billboard. Model axes (root frame, at identity): all visible geometry sits under the model's Handle node, whose orientation quaternion (-0.5,-0.5,0.5,0.5) maps Handle-local +X (the pommel-to-tip long axis) to model +Y, local +Y (blade width) to model -Z, and local +Z (blade thickness, the flat-face normal) to model -X. At identity the blade length runs along model +Y (up), the flat-normal is model +/-X (broad faces point sideways), and the cutting edges point along model +/-Z. Engine composition: RpgStations resolveRotationRadians builds a Rotation3f from the Rotation group's Pitch/Yaw/Roll degrees; getQuaternion uses JOML rotationYXZ(yaw, pitch, roll) = Ry(yaw)*Rx(pitch)*Rz(roll), so Roll applies first in model space, then Pitch, then Yaw; the placed block's facing yaw adds into Yaw (facing-relative). Target pose: blade lying flat, broad face up, edge sideways, hilt flat. With Pitch 0, Rotation {Yaw:90, Roll:90} maps model +X (flat normal) to world +Y (up), model +Y (length) to world +Z (block front), model +Z (edge) to world +X (block right), which is the target. In-game validation confirmed the flat-up twist but with the blade lying across the anvil rather than along it; the authored pose is {Yaw:0, Roll:90}: the 90-degree roll maps flat-normal +X to up, length +Y to world -X (along the anvil's long axis), edge +Z to +Z. The hilt sits toward block right (+X, the pommel-anchored render origin); to swap hilt/tip ends, author Rotation.Yaw:180 and flip Offset.X's sign. Cross-checked against two other observed poses: {Pitch:90} alone maps length +Y to world +Z (horizontal, correct) but edge +Z to world -Y (vertical, edge-up); {Pitch:90,Roll:90} maps length +Y to world -X (a 90-degree spin in the horizontal plane vs {Pitch:90}) with the edge still vertical. {Pitch:90,Roll:90} fails because Roll applies before Pitch, so it spins the still-upright blade in-plane instead of twisting it about its own long axis; twisting via Yaw (applied last) is the fix, so {Yaw:90, Roll:90} with no Pitch lays it flat. In this derived frame, Roll is the flat-vs-edge twist knob (Roll:90 = flat up, Roll:270/-90 = flat down but still lying flat, Roll:0/180 = blade stands vertical), and Yaw is the horizontal-direction knob. Offset: the render origin sits near the pommel, so the mesh extends most of its length toward the tip (world +Z / block front) and overhangs that edge; Offset.X:0.4 pulls the weapon back toward the anvil-top center along its own length. Offset.Y:0.55 accounts for the flat pose sitting vertically thinner than an on-edge pose at the same offset. In-game tuning ladder for this derived frame (plain JSON leaves, no engine rebuild): (1) blade spun the wrong way in the horizontal plane -> adjust Rotation.Yaw by +/-90; (2) blade on its edge instead of flat -> confirm no Pitch leaf is present and keep Roll:90; if flat but the wrong broad face is up, flip the twist sign Roll:90 to Roll:270; (3) blade standing vertical -> Roll drifted to 0/180, set back to Roll:90; (4) sunk into or floating above the anvil -> Offset.Y in 0.05 steps; (5) overhangs one end along the blade length -> Offset.X in 0.1 steps (smaller values slide toward the tip end, larger toward the hilt end); (6) off-center sideways -> Offset.Z in 0.1 steps; (7) hilt on the wrong end -> Rotation.Yaw 0 to 180 and flip Offset.X's sign. Fallback if the client's item-mesh renderer ignores pitch/yaw/roll for a bare ItemComponent prop: remove the Rotation leaves (the weapon stays upright, zero regression), keep the schema, and escalate to a lying-flat custom display block or a dedicated prop model. Facing-relative context: Custody.Display Offset/Rotation are relative to the placed block's own yaw; RpgStations reads the block's rotation index at spawn, rotates the horizontal Offset (X/Z) by it, and folds the yaw into Rotation.Yaw. Authored +Z = block front, +X = block right, Y vertical; a default-orientation placement (yaw 0) is the identity so the block frame equals the world frame. convert.Custody.Display (placed ingot, Offset.Y 0.52) and the sawmill's placed log (Offset.Y -0.1) author only a vertical Offset.Y with no horizontal shift and no Rotation, so both stay byte-identical at any orientation. Step-synced puppet swings: the enhance ritual's strike1/strike2 steps author a per-step Puppet.Clip of MMO_Emote_Hammer so the skinned puppet visibly hammers on both strike beats, played once at each step's iteration entry; the generic engage/swing puppet clip is suppressed for the whole ritual so there is no double-fire. settle authors no clip (the puppet idles for the settling pause), and stamp keeps its Puppet.Prop.Source None empty-hands override (a Prop but no Clip, so no hammer swing fires on the stamp beat).",
   "Identity": {
     "NameKey": "rpgstations.station.anvil.name",
     "DescKey": "rpgstations.station.anvil.desc"
@@ -28,7 +28,7 @@
   },
   "Completion": {
     "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
-    "Particles": "Block_Gem_Sparks"
+    "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
   },
   "Actions": {
     "convert": {
@@ -43,52 +43,51 @@
       },
       "Work": {
         "CycleMs": 3800,
-        "Xp": [{ "Skill": "SMITHING", "PerCycle": 6.0 }]
+        "PerCycleContributions": [{ "Channel": "mmoskilltree:skill_xp", "Param": "SMITHING", "Amount": 6.0 }]
       },
       "Recipe": {
         "Conversions": [
           {
-            "Input": { "ItemId": "Ingredient_Bar_Adamantite", "Quantity": 2 },
-            "Output": {
-              "ItemId": "MMO_Sharpened_Adamantite_Bar",
-              "Quantity": 1
-            }
+            "Input": [{ "ItemId": "Ingredient_Bar_Adamantite", "Quantity": 2 }],
+            "Output": [
+              { "ItemId": "MMO_Sharpened_Adamantite_Bar", "Quantity": 1 }
+            ]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Cobalt", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Cobalt_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Cobalt", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Cobalt_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Copper", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Copper_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Copper", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Copper_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Gold", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Gold_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Gold", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Gold_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Iron", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Iron_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Iron", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Iron_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Mithril", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Mithril_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Mithril", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Mithril_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Onyxium", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Onyxium_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Onyxium", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Onyxium_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Prisma", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Prisma_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Prisma", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Prisma_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Silver", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Silver_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Silver", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Silver_Bar", "Quantity": 1 }]
           },
           {
-            "Input": { "ItemId": "Ingredient_Bar_Thorium", "Quantity": 2 },
-            "Output": { "ItemId": "MMO_Sharpened_Thorium_Bar", "Quantity": 1 }
+            "Input": [{ "ItemId": "Ingredient_Bar_Thorium", "Quantity": 2 }],
+            "Output": [{ "ItemId": "MMO_Sharpened_Thorium_Bar", "Quantity": 1 }]
           }
         ]
       },
@@ -110,13 +109,13 @@
         "Display": {
           "Offset": { "X": 0.4, "Y": 0.55 },
           "Scale": 1.0,
-          "Rotation": { "Y": 0.0, "Z": 90.0 }
+          "Rotation": { "Yaw": 0.0, "Roll": 90.0 }
         }
       },
       "Work": {
         "CycleMs": 600,
-        "Repeat": false,
-        "Xp": [{ "Skill": "SMITHING", "PerCycle": 25.0 }]
+        "Looping": false,
+        "PerCycleContributions": [{ "Channel": "mmoskilltree:skill_xp", "Param": "SMITHING", "Amount": 25.0 }]
       },
       "Steps": [
         {
@@ -125,7 +124,7 @@
           "Puppet": { "Clip": "MMO_Emote_Hammer" },
           "Presentation": {
             "Sound": "SFX_Metal_Hit",
-            "Particles": "Block_Gem_Sparks"
+            "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
           }
         },
         {
@@ -134,7 +133,7 @@
           "Puppet": { "Clip": "MMO_Emote_Hammer" },
           "Presentation": {
             "Sound": "SFX_Metal_Hit",
-            "Particles": "Block_Gem_Sparks"
+            "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
           }
         },
         {
@@ -167,7 +166,7 @@
             }
           },
           "Presentation": {
-            "Particles": "Block_Gem_Sparks"
+            "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
           }
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "$Comment": "Supplies the Loot block that the pack's Stations/Sawmill.json full-file override used to carry, now that the jar's own Sawmill.json (RPG Stations) stays live and this pack no longer overrides the whole station. The jar's own Lootables/SawmillFinds.json rolls (a BasePercent 2 tool_power-scaled bonus-copy Chance capped 25 percent, plus a Conditions-gated cycle_count Ladder to the jar's own small RPG_Station_Sawmill_T1/T2 drop lists) fire additively alongside whatever this pack adds via Extensions/SawmillProgression.json's Loot ref; the two bonus-copy rolls scale off different axes (tool power vs MMO luck) and are both intended to fire, so a better hatchet and a luckier woodcutter each earn their own independent extra plank. The luck-tier ladder is the one true carryover from the pack's retired Sawmill.json: its three floor values (50/100/150) are kept byte-identical, and its trigger factor is Ladder.Values (a weighted FactorRef array) summing stat/MMO_Luck + stat/MMO_Luck_WOODCUTTING (equal Weight 1.0 each) instead of the single aggregate mmoskilltree:station_luck; station_luck is a true-equivalence aggregate of exactly this factor set, so the composition is numerically equivalent to the old single-factor ladder and needed no floor renumbering. The jar's own small secondary ladder (cycle_count-gated, 15 percent chance, capped at its own T2 tier) is a bounded, minor additional stack this pack does not edit (RPG Stations jar content is not owned here). DropList ids referenced below (MMO_Station_Sawmill_T1/T2/T3) are this pack's own native ItemDropList assets (Server/Drops/), distinct from the jar's RPG_Station_Sawmill_T1/T2; no id collision.",
+  "$Comment": "Supplies the Loot block that the pack's Stations/Sawmill.json full-file override used to carry, now that the jar's own Sawmill.json (RPG Stations) stays live and this pack no longer overrides the whole station. The jar's own Lootables/SawmillFinds.json rolls (a BasePercent 2 tool_power-scaled bonus-copy Chance capped 25 percent, plus a Conditions-gated cycle_count Ladder to the jar's own small RPG_Station_Sawmill_T1/T2 drop lists) fire additively alongside whatever this pack adds via Extensions/SawmillProgression.json's Loot ref; the two bonus-copy rolls scale off different axes (tool power vs MMO luck) and are both intended to fire, so a better hatchet and a luckier woodcutter each earn their own independent extra plank. The luck-tier ladder is the one true carryover from the pack's retired Sawmill.json: its three floor values (50/100/150) are kept byte-identical, and its trigger factor is Ladder.Values (a weighted FactorRef array) summing stat/MMO_Luck + stat/MMO_Luck_WOODCUTTING (equal Weight 1.0 each) instead of the single aggregate mmoskilltree:station_luck; station_luck is a true-equivalence aggregate of exactly this factor set, so the composition is numerically equivalent to the old single-factor ladder and needed no floor renumbering. The jar's own small secondary ladder (cycle_count-gated, 15 percent chance, capped at its own T2 tier) is a bounded, minor additional stack this pack does not edit (RPG Stations jar content is not owned here). DropList ids referenced below (MMO_Station_Sawmill_T1/T2/T3) are this pack's own native ItemDropList assets (Server/Drops/), distinct from the jar's RPG_Station_Sawmill_T1/T2; no id collision. RPG Stations' own duplicate-factor lint (LOOT_DUPLICATE_FACTOR) is keyed on the (Factor, Param) pair, so the two entries below are clean: 'stat'/MMO_Luck and 'stat'/MMO_Luck_WOODCUTTING are different pairs, not a repeat of the same one. The retired MMO-specific double-count check (formerly LOOT_DOUBLE_LUCK, an engine check that hardcoded these exact MMO ids and was removed when RPG Stations went fully progression-agnostic) still applies as authoring advice here since the engine can no longer enforce it: compose EITHER the single mmoskilltree:station_luck aggregate factor OR this pair of per-source stat channels in one Roll, never both in the same Ladder/Chance - stacking the aggregate on top of its own constituent channels double-counts the same luck twice.",
   "Rolls": [
     {
       "Ladder": {
@@ -14,7 +14,7 @@
             "Grants": { "DropList": "MMO_Station_Sawmill_T2" },
             "Presentation": {
               "Sound": "SFX_Coins_Land",
-              "Particles": "Block_Gem_Sparks"
+              "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
             }
           },
           {
@@ -22,7 +22,7 @@
             "Grants": { "DropList": "MMO_Station_Sawmill_T3" },
             "Presentation": {
               "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
-              "Particles": "Effect_Crown_Gold"
+              "Particles": [ { "SystemId": "Effect_Crown_Gold" } ]
             }
           }
         ]

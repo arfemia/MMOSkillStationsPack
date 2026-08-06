@@ -77,7 +77,7 @@ A station is pure JSON, no plugin code:
    `{ "Interactions": [ { "Type": "rpg_station_use", "Station": "<id>" } ] }`. The
    `rpg_station_use` type is Java-registered once in the RPG Stations jar; a single interaction
    type backs any number of stations, one block + one JSON per station.
-4. **Loot (optional)**: author `Loot.Rolls` (inline) or reference `Loot.Tables` (a
+4. **Loot (optional)**: author `Loot.Rolls` (inline) or reference `Loot.Lootables` (a
    `Server/RpgStations/Lootables/<Name>.json` `LootableAsset`) for conditional bonus loot -
    `Chance`/`Ladder`/`Grants`, independently composable. See `Sawmill.json`'s `Loot` block for the
    parity shape (a proc roll + a tier ladder over `mmoskilltree:station_luck`, when the MMO bridge
