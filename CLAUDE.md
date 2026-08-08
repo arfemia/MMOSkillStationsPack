@@ -449,8 +449,11 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
   backstop for hand-written JSON and is never replaced by either.
 - **The Sawmill** derives its conversions from every native `WoodPlanks`-category crafting recipe
   (`Recipe.FromCrafting: {"Categories":["WoodPlanks"]}`) instead of hand-authoring all 11 wood
-  families - zero hardcoded conversions, matching the native Builders bench yield (the station's
-  value-add is passive XP + luck loot, not better yield). Its held-tool gate matches any hatchet
+  families - zero hardcoded conversions. Its yield is NOT the plain Builders-bench 1:1: the jar's own
+  `Sawmill.json` authors a `Recipe.Yield` (two planks per log, three off a top-rarity hatchet via a
+  `Bonus` ladder summing `rpgstations:tool_quality` and `rpgstations:tool_power`), so this pack's
+  value-add sits on top of a bench that already out-yields hand-crafting - retune it there, or
+  overlay it from here through an `ExtensionAsset`. Its held-tool gate matches any hatchet
   via the native `Gather` (Woods, functional) and `Tags` (Family: Hatchet) routes; `Tool.PowerScale`
   multiplies every `Work.PerCycleContributions` cycle Amount by held-tool power (a better hatchet earns
   more XP, whatever mod reads the `mmoskilltree:skill_xp` channel). Its `Loot` block: one
