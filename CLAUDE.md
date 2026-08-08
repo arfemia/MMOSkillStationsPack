@@ -449,11 +449,12 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
   backstop for hand-written JSON and is never replaced by either.
 - **The Sawmill** derives its conversions from every native `WoodPlanks`-category crafting recipe
   (`Recipe.FromCrafting: {"Categories":["WoodPlanks"]}`) instead of hand-authoring all 11 wood
-  families - zero hardcoded conversions. Its yield is NOT the plain Builders-bench 1:1: the jar's own
-  `Sawmill.json` authors a `Recipe.Yield` (two planks per log, three off a top-rarity hatchet via a
-  `Bonus` ladder summing `rpgstations:tool_quality` and `rpgstations:tool_power`), so this pack's
-  value-add sits on top of a bench that already out-yields hand-crafting - retune it there, or
-  overlay it from here through an `ExtensionAsset`. Its held-tool gate matches any hatchet
+  families - zero hardcoded conversions. Its yield is TOOL-DRIVEN rather than the plain
+  Builders-bench 1:1: the jar's own `Sawmill.json` authors a `Recipe.Yield` whose `Bonus` ladder sums
+  `hytale:tool_quality` + `hytale:tool_item_level` + `rpgstations:tool_power` and runs from
+  one plank per log on a starter hatchet up to four on the best (with fractional rungs between), so
+  this pack's value-add sits on top of a bench that already rewards tool progression - retune it
+  there, or overlay it from here through an `ExtensionAsset`. Its held-tool gate matches any hatchet
   via the native `Gather` (Woods, functional) and `Tags` (Family: Hatchet) routes; `Tool.PowerScale`
   multiplies every `Work.PerCycleContributions` cycle Amount by held-tool power (a better hatchet earns
   more XP, whatever mod reads the `mmoskilltree:skill_xp` channel). Its `Loot` block: one

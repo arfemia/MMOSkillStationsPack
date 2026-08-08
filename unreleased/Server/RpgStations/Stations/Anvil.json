@@ -158,7 +158,7 @@
                   { "Points": 30 },
                   {
                     "PointsPer": 0.5,
-                    "Factors": [ { "Factor": "stat", "Param": "MMO_Level_SMITHING" } ]
+                    "Factors": [ { "Factor": "hytale:stat", "Param": "MMO_Level_SMITHING" } ]
                   }
                 ],
                 "PerStat": { "MMO_CritChance": 10 }

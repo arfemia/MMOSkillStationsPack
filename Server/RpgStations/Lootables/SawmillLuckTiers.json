@@ -4,8 +4,8 @@
     {
       "Ladder": {
         "Values": [
-          { "Factor": "stat", "Param": "MMO_Luck", "Weight": 1.0 },
-          { "Factor": "stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
         ],
         "Floors": [
           { "Min": 50, "Grants": { "DropList": "MMO_Station_Sawmill_T1" } },
