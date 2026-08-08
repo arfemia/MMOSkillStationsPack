@@ -21,7 +21,9 @@ $ErrorActionPreference = 'Stop'
 # --- PER-PACK ---
 $PackName          = 'MMOSkillStationsPack'   # zip base name; the manifest Version is appended
 $ExtraExcludeNames = @()        # extra top-level file names to leave out of the zip
-$ExtraExcludeDirs  = @()        # extra top-level dir names (at the pack root) to skip
+$ExtraExcludeDirs  = @('unreleased')  # extra top-level dir names (at the pack root) to skip.
+                                # 'unreleased' holds finished content deliberately kept out of the
+                                # shipped zip (see unreleased/README.md); it must never be zipped.
 # ----------------
 
 $pack = $PSScriptRoot
