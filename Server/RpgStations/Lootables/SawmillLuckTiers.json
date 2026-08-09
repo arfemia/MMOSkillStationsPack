@@ -1,5 +1,5 @@
 {
-  "$Comment": "Supplies the sawmill's rare-find loot table (referenced by this pack's Extensions/SawmillProgression.json Bonus.Lootables). Four independent Rolls, each evaluated on its own every cycle: three luck-tier find Rolls plus a level-only bonus-output Roll. The jar's own Lootables/SawmillFinds.json roll (a separate Conditions-gated cycle_count Ladder to RPG Stations' own small RPG_Station_Sawmill_T1/T2 drop lists) fires additively alongside everything here; neither table is aware of the other. A loot Roll grants only what ELSE a cycle handed over: how much of the cycle's own output a better tool earns lives entirely in the sawmill action's own Recipe.Yield, so nothing here can multiply that number from a second file. The DropLists referenced below (MMO_Station_Sawmill_T1/T2/T3) are this pack's own native ItemDropList assets (Server/Drops/), distinct from RPG Stations' own jar-shipped drop tables of a similar name; no id collision. Composing the mmoskilltree:station_luck convenience aggregate together with the per-source stat/MMO_Luck* channels in the same Roll double-counts a player's luck (the aggregate already sums those channels), so every Roll below composes only the per-source channels and never the aggregate.\n\nRoll 1 (T1, the base find tier): no level requirement. Its Ladder sums the weighted stat/MMO_Luck plus stat/MMO_Luck_WOODCUTTING channels (equal Weight 1.0 each, read through RPG Stations' generic hytale:stat factor) and grants MMO_Station_Sawmill_T1 once that sum reaches 50, its one and only floor.\n\nRoll 2 (T2, the mid find tier): additionally gated on WOODCUTTING level 15 or higher (Conditions: {\"Factor\":\"hytale:stat\",\"Param\":\"MMO_Level_WOODCUTTING\",\"Min\":15}, the player's current skill level read through the same generic stat factor the luck channels use). Its Ladder is the same weighted luck sum as Roll 1; once the sum reaches 100 it grants MMO_Station_Sawmill_T2 plus a rare-find sound and spark burst.\n\nRoll 3 (T3, the top find tier): gated on WOODCUTTING level 30 or higher (same Condition shape, Min 30). Its Ladder is the same weighted luck sum; once the sum reaches 150 it grants MMO_Station_Sawmill_T3 plus a legendary-chest sound and gold-crown burst.\n\nBecause a level requirement can only be authored per Roll (Conditions), not per Ladder floor, each luck tier is its own Roll here rather than three floors on one shared Ladder. One consequence worth flagging: since these are now three independently evaluated Rolls instead of one Ladder's highest-floor-wins lookup, a luck sum high enough to clear more than one tier's threshold grants every tier whose own Conditions also pass, in the same cycle (T1 and T2 together, for example, once a leveled player's luck clears both). The level gates cap which tiers a low-level player can ever reach; they do not narrow a high-level player's clear back down to a single tier the way the old shared Ladder did.\n\nRoll 4 (the level-scaled bonus-output ladder): independent of luck entirely. A single Ladder over stat/MMO_Level_WOODCUTTING (Weight 1.0, no Conditions) grants Grants.OutputItems - one extra plank at level 25, still one extra at level 50, and two extra at level 75. Ladder floors are highest-wins and non-cumulative, so a level 90 woodcutter gets exactly two bonus planks from this roll, never four. OutputItems is always ADDITIVE extra output of the cycle's own primary item, never a copy of the whole produced stack, so this number stays directly comparable to (and never multiplies) the yield quantity authored in the sawmill action's own Recipe.Yield. All threshold and grant numbers in this file are initial balance and may be retuned without any engine change.",
+  "$Comment": "Supplies the sawmill's rare-find loot table (referenced by this pack's Extensions/SawmillProgression.json Bonus.Lootables). Seven independent Rolls, each evaluated on its own every cycle: five luck-tier find Rolls, one level-only bonus-output Roll, and one trophy-seam Roll. The jar's own Lootables/SawmillFinds.json roll (a separate Conditions-gated cycle_count Ladder to RPG Stations' own small RPG_Station_Sawmill_T1/T2 drop lists) fires additively alongside everything here; neither table is aware of the other. A loot Roll grants only what ELSE a cycle handed over: how much of the cycle's own output a better tool earns lives entirely in the sawmill action's own Recipe.Yield, so nothing here can multiply that number from a second file. The DropLists referenced below (MMO_Station_Sawmill_T1 through T5) are this pack's own native ItemDropList assets (Server/Drops/), distinct from RPG Stations' own jar-shipped drop tables of a similar name; no id collision. Composing the mmoskilltree:station_luck convenience aggregate together with the per-source stat/MMO_Luck* channels in the same Roll double-counts a player's luck (the aggregate already sums those channels), so every Roll below composes only the per-source channels and never the aggregate.\n\nRoll 1 (T1, the base find tier): no level requirement. Its Ladder sums the weighted stat/MMO_Luck plus stat/MMO_Luck_WOODCUTTING channels (equal Weight 1.0 each, read through RPG Stations' generic hytale:stat factor) and grants MMO_Station_Sawmill_T1 once that sum reaches 50, its one and only floor.\n\nRoll 2 (T2, the mid find tier): additionally gated on WOODCUTTING level 15 or higher (Conditions: {\"Factor\":\"hytale:stat\",\"Param\":\"MMO_Level_WOODCUTTING\",\"Min\":15}, the player's current skill level read through the same generic stat factor the luck channels use). Its Ladder is the same weighted luck sum as Roll 1; once the sum reaches 100 it grants MMO_Station_Sawmill_T2 plus a rare-find sound and spark burst.\n\nRoll 3 (T3, the upper find tier): gated on WOODCUTTING level 30 or higher (same Condition shape, Min 30). Its Ladder is the same weighted luck sum; once the sum reaches 150 it grants MMO_Station_Sawmill_T3 plus a legendary-chest sound and gold-crown burst.\n\nRoll 4 (T4, the veteran find tier): gated on WOODCUTTING level 60 or higher, luck floor 200. Grants MMO_Station_Sawmill_T4, whose own table is the first to pay concentrated life essence in multiples. Its celebration adds a spark burst on top of T3's legendary sound and gold crown.\n\nRoll 5 (T5, the level-cap find tier): gated on WOODCUTTING level 125, the cap, with a luck floor of 250 - the two heaviest requirements in the file, so this tier is the end of the ladder rather than a step on it. Grants MMO_Station_Sawmill_T5, the one find table in this pack with no empty entry: reaching the tier at all is the gate, so a T5 roll always pays. Its celebration is the grandest available, stacking the legendary-chest sound with the coin chime and both particle bursts.\n\nBecause a level requirement can only be authored per Roll (Conditions), not per Ladder floor, each luck tier is its own Roll here rather than five floors on one shared Ladder. One consequence worth flagging: since these are independently evaluated Rolls instead of one Ladder's highest-floor-wins lookup, a luck sum high enough to clear more than one tier's threshold grants every tier whose own Conditions also pass, in the same cycle (T1 and T2 together, for example, once a leveled player's luck clears both). The level gates cap which tiers a low-level player can ever reach; they do not narrow a high-level player's clear back down to a single tier the way a shared Ladder would.\n\nRoll 6 (the level-scaled bonus-output ladder): independent of luck entirely. A single Ladder over stat/MMO_Level_WOODCUTTING (Weight 1.0, no Conditions) grants Grants.OutputItems - one extra plank at level 25, still one extra at level 50, two at level 75, three at level 100, and four at the level 125 cap. Ladder floors are highest-wins and non-cumulative, so a level 90 woodcutter gets exactly two bonus planks from this roll, never four, and a capped one gets exactly four. OutputItems is always ADDITIVE extra output of the cycle's own primary item, never a copy of the whole produced stack, so this number stays directly comparable to (and never multiplies) the yield quantity authored in the sawmill action's own Recipe.Yield.\n\nRoll 7 (the trophy seam): the one Roll here gated on the TOOL rather than the player. Its three Conditions AND together on the Sawmiller's Hatchet's own three axes - quality 5 (Legendary), item level 50, and Woods gather power 0.55 (the Param-less hytale:tool_power form reads the station's own gather type) - which no vanilla hatchet clears, so only the sawmill's own trophy find opens it. There is no Ladder and no tier: one visible Chance leaf carries the whole probability, 5 percent base plus a tenth of a point per point of stat/MMO_Luck and stat/MMO_Luck_WOODCUTTING, clamped at 20 percent. That closes the loop with this pack's own copy of the hatchet, which carries plus 25 MMO_Luck_WOODCUTTING while held: the trophy alone lifts its own roll from 5 to 7.5 percent, and the cap is reached at 150 combined luck points. The payoff is Grants.OutputItems 1, an extra plank rather than a find, because this seam rewards bringing the best hatchet to the bench rather than rewarding luck a second time.\n\nAll threshold, weight and grant numbers in this file are initial balance and may be retuned without any engine change.",
   "Rolls": [
     {
       "Ladder": {
@@ -55,6 +55,57 @@
       }
     },
     {
+      "Conditions": [
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 60 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          {
+            "Min": 200,
+            "Grants": { "DropLists": ["MMO_Station_Sawmill_T4"] },
+            "Presentation": {
+              "Sounds": ["SFX_Chest_Legendary_FirstOpen_Player"],
+              "Particles": [
+                { "SystemId": "Effect_Crown_Gold" },
+                { "SystemId": "Block_Gem_Sparks" }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Conditions": [
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 125 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          {
+            "Min": 250,
+            "Grants": { "DropLists": ["MMO_Station_Sawmill_T5"] },
+            "Presentation": {
+              "Sounds": [
+                "SFX_Chest_Legendary_FirstOpen_Player",
+                "SFX_Coins_Land"
+              ],
+              "Particles": [
+                { "SystemId": "Effect_Crown_Gold" },
+                { "SystemId": "Block_Gem_Sparks" }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
       "Ladder": {
         "Factors": [
           { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Weight": 1.0 }
@@ -62,9 +113,27 @@
         "Floors": [
           { "Min": 25, "Grants": { "OutputItems": 1 } },
           { "Min": 50, "Grants": { "OutputItems": 1 } },
-          { "Min": 75, "Grants": { "OutputItems": 2 } }
+          { "Min": 75, "Grants": { "OutputItems": 2 } },
+          { "Min": 100, "Grants": { "OutputItems": 3 } },
+          { "Min": 125, "Grants": { "OutputItems": 4 } }
         ]
       }
+    },
+    {
+      "Conditions": [
+        { "Factor": "hytale:tool_quality", "Min": 5 },
+        { "Factor": "hytale:tool_item_level", "Min": 50 },
+        { "Factor": "hytale:tool_power", "Min": 0.55 }
+      ],
+      "Chance": {
+        "BasePercent": 5,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.1 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 0.1 }
+        ],
+        "CapPercent": 20
+      },
+      "Grants": { "OutputItems": 1 }
     }
   ]
 }

@@ -26,22 +26,27 @@ skill-stations-pack/
 └── Server/
     ├── Item/
     │   ├── Items/RPG_Station_Sawmill.json + RPG_Station_Anvil.json  the two station blocks (vanilla Lumbermill / Anvil bench models); SHARED ids with RPG Stations' own jar defaults, override via pack load order
+    │   ├── Items/RPG_Tool_Hatchet_Sawmiller.json                    the sawmill's drop-only trophy hatchet; SHARED id with the RPG Stations jar item, overridden wholesale to add the MMO stat payload (Utility.StatModifiers)
     │   ├── Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json (x10)    the anvil convert outputs (shared MMO_Sharpened_Bar family, the Stamp step's Reagents route)
     │   ├── ResourceTypes/MMO_Sharpened_Bar.json                     the native ResourceType those bars share
     │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
-    ├── Drops/MMO_Station_Sawmill_T1/T2/T3.json           native ItemDropList luck-tier loot (referenced by Lootables/SawmillLuckTiers.json's Ladder floors)
+    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList luck-tier loot, one per find tier (referenced by Lootables/SawmillLuckTiers.json's Ladder floors); T5 is the only one with no Empty entry
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
-    ├── Languages/<bcp47>/                                items.lang + avatarCustomization.lang (native namespaces), rpgstations.lang (station.anvil.*), mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales
-    ├── MMOSkillTree/CustomSkills/Smithing.json + Cooking.json  the pack-shipped skills themselves (Pattern A CustomSkillAsset, folded into the MMO's SkillRegistry pack layer)
+    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     └── RpgStations/
-        ├── Stations/Anvil.json                           the two-action Anvil StationAsset (convert + enhance) - a FULL-FILE pack override
-        ├── Extensions/SawmillProgression.json + CookingProgression.json  additive ExtensionAssets each targeting a JAR action by Id (Sawmill's Mill / CuttingBoard's PrepFish) (XP declarations, Bonus ref, the decision-59d luck roll)
-        ├── Lootables/SawmillLuckTiers.json               the sawmill's find-tier + level-scaled bonus-output Rolls (referenced by SawmillProgression's Bonus.Lootables), tiers level-gated on WOODCUTTING
-        └── RollPools/AnvilWeaponPool.json                the enhance Stamp step's stat roll pool
+        ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the SawmillLuckTiers Bonus ref
+        └── Lootables/SawmillLuckTiers.json               the sawmill's find-tier (T1-T5) + level-scaled bonus-output + trophy-seam Rolls (referenced by SawmillProgression's Bonus.Lootables), tiers level-gated on WOODCUTTING to the 125 cap
 ```
+
+Held back under `unreleased/` (NOT in the shipped zip; `unreleased/restore.ps1` brings each group
+back): `Stations/Anvil.json` (the two-action Anvil, a full-file pack override) + its block/Use
+files + `RollPools/AnvilWeaponPool.json` + `Extensions/CookingProgression.json` (bare Action
+target on the shared PrepFish ritual) + `MMOSkillTree/CustomSkills/Smithing.json + Cooking.json`
+(Pattern A `CustomSkillAsset`s) + `Emote/MMO_Emote_Hammer.json` + the ten sharpened-bar items'
+sources. Their lang keys stay shipped per the standing unreleased rule.
 
 `Server/Item/**`, `Server/Drops/**`, `Server/Emote/**`, and `Server/Languages/**` load via Hytale's
 native asset pack mechanism (gated by `"IncludesAssetPack": true`), independent of RPG Stations'
@@ -55,6 +60,34 @@ presentation defaults - Worker.Puppet, Custody.Display, the 4805ms cadence - per
 (the action-first schema restructure means an extension names the ACTION it adds to, not the whole
 station): XP declarations, the SawmillLuckTiers Bonus ref, and the decision-59d MMO-luck
 bonus-copy roll stacking beside the jar's own tool_power roll.
+
+**Same-id ITEM overrides this pack ships.** A `Server/Item/Items/<Id>.json` whose id matches an RPG
+Stations jar item replaces that item WHOLESALE (there is no per-leaf merge on the native item store,
+unlike the `ExtensionAsset` fold above), so each of these files reproduces every field of the jar
+copy verbatim and adds only its own delta. Two ship today:
+
+- **`RPG_Station_Sawmill.json`** - the station block. Its delta is a deliberate SUBTRACTION: the copy
+  authors no `Recipe`, so installing this pack removes the jar default's Furniture-bench craftability
+  (acquisition of the MMO-bridged sawmill is this pack's concern, gated by load order alone). See the
+  file's own `$Comment`.
+- **`RPG_Tool_Hatchet_Sawmiller.json`** - the sawmill's drop-only trophy hatchet. Its delta is an
+  ADDITION: a `Utility.StatModifiers` payload (`Stamina` +10, `MMO_BonusXp_WOODCUTTING` +25,
+  `MMO_Luck_WOODCUTTING` +25, all `Additive`, the map-of-stat-id-to-modifier-list shape
+  `ItemUtility.CODEC` decodes). The jar copy stays progression-free so the trophy is complete under
+  RPG Stations alone; this copy is the MMO-flavored one. The stats apply only while the hatchet is
+  HELD, and they are applied by the MMO's own equip stat bridge, NOT by the native stat manager - the
+  native manager reads a `Utility` stat block off the separate utility accessory slot only, never off
+  a held tool, which is exactly why the MMO's tool convention puts tool stats on `Utility` rather
+  than `Weapon` (a `Weapon` block on a tool zeroes its block-gather power engine-side).
+  `Utility.Compatible` stays `true` and `Usable` stays unauthored, as the jar authors them, so the
+  hatchet can never occupy the utility slot itself and nothing applies the payload twice. The
+  per-skill channels (`MMO_Luck_<SKILL>`, `MMO_BonusXp_<SKILL>`) are registered by the MMO at setup,
+  before any pack loads, so a pack item may reference them by id; percent-family MMO channels take
+  their PERCENT as the `Amount` and must be `Additive` (they carry a base of 0, and additive folds
+  before multiplicative, so a Multiplicative-only entry computes 0 and is inert - the MMO's own
+  startup item-stat audit warns on exactly that). No lang is re-declared: name and description reuse
+  the jar's `items.RPG_Tool_Hatchet_Sawmiller.*` keys. NO `Recipe`, matching the jar copy - the
+  hatchet stays the sawmill's chase find.
 
 ## History (round-7 fix wave: anvil rotation + SMITHING skill migration, leg F, 2026-07-23)
 
@@ -540,7 +573,8 @@ no change; author a fraction when a tier is worth half a step more than the one 
   TOOL-DRIVEN rather than the plain Builders-bench 1:1: the jar's own `Sawmill.json` authors a
   `Recipe.Yield: {Base: 1}` with the tool-quality curve moved into `Bonus.Rolls` (a whole-part
   `Ladder` plus a chance-gated Iron-half roll) and mirrored in `ContributionScale`, running from
-  one plank per log on a starter hatchet up to four on the best, so this pack's value-add sits on
+  one plank per log on a starter hatchet up to five with the jar's own drop-only trophy hatchet
+  (four on the best forgeable tool), so this pack's value-add sits on
   top of a bench that already rewards tool progression - retune it there, or overlay it from here
   through an `ExtensionAsset` targeting `Target: {Action: "Mill"}`. Its held-tool gate matches any
   hatchet via the native `Gather` (Woods, functional) and `Tags` (Family: Hatchet) routes, and its
@@ -548,16 +582,23 @@ no change; author a fraction when a tier is worth half a step more than the one 
   contributions on its own, `ContributionScale` PRE-SCALES the amount before the event fires, so
   this pack's `mmoskilltree:skill_xp` amounts are the verbatim amount to grant and a better hatchet
   is felt in both PLANKS and XP. Its `Bonus.Lootables` is the luck-tier find ladder (this pack's own
-  `SawmillLuckTiers`): three independent Rolls, each summing the same weighted MMO-luck factor pair
-  against its own single floor (`MMO_Station_Sawmill_T1/T2/T3` at 50/100/150), with the mid and top
-  Rolls additionally gated on the player's WOODCUTTING level (`Conditions` reading
-  `stat/MMO_Level_WOODCUTTING`, 15+ for the mid tier and 30+ for the top tier) - the tiers are
-  three separate Rolls rather than three floors on one shared Ladder specifically so the level gate
-  can attach, since `Conditions` sits on a `Roll`, not on a `Ladder` floor. A fourth Roll in the same
-  file scales bonus plank output by WOODCUTTING level alone (a `Ladder` over
-  `stat/MMO_Level_WOODCUTTING` with no luck involved, `Grants.OutputItems` 1/1/2 at levels 25/50/75,
-  highest floor wins, non-cumulative; whole numbers, though the leaf is fractional - a `1.5` floor
-  would pay one plank always plus a second half the time). **The MMO-luck bonus-copy roll never adds
+  `SawmillLuckTiers`, seven Rolls in total): **five** independent find Rolls, each summing the same
+  weighted MMO-luck factor pair against its own single floor (`MMO_Station_Sawmill_T1..T5` at
+  50/100/150/200/250), with every Roll above the first additionally gated on the player's
+  WOODCUTTING level (`Conditions` reading `stat/MMO_Level_WOODCUTTING`: 15+, 30+, 60+, and 125, the
+  cap) - the tiers are separate Rolls rather than five floors on one shared Ladder specifically so
+  the level gate can attach, since `Conditions` sits on a `Roll`, not on a `Ladder` floor. A sixth
+  Roll in the same file scales bonus plank output by WOODCUTTING level alone (a `Ladder` over
+  `stat/MMO_Level_WOODCUTTING` with no luck involved, `Grants.OutputItems` 1/1/2/3/4 at levels
+  25/50/75/100/125, highest floor wins, non-cumulative; whole numbers, though the leaf is fractional
+  - a `1.5` floor would pay one plank always plus a second half the time). A seventh, the **trophy
+  seam**, is the only Roll gated on the TOOL rather than the player: three ANDed `Conditions` on the
+  Sawmiller's Hatchet's own axes (`hytale:tool_quality` 5, `hytale:tool_item_level` 50,
+  `hytale:tool_power` 0.55 through the Param-less form that reads the station's own gather type), no
+  Ladder, and one `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1 per point of `MMO_Luck` and
+  `MMO_Luck_WOODCUTTING`, `CapPercent` 20) paying `Grants.OutputItems` 1. It closes the loop with
+  this pack's own trophy override: the hatchet's own +25 `MMO_Luck_WOODCUTTING` lifts its own roll
+  from 5 to 7.5 percent, and the cap lands at 150 combined luck points. **The MMO-luck bonus-copy roll never adds
   to the cycle's own output** - a loot `Roll` only ever grants `Grants.OutputItems` (additive items,
   fractional) or a
   `DropLists`/`Commands`/`Effects` reward, never a multiplier on a produced stack, so this pack can

@@ -1,0 +1,15 @@
+{
+  "$Comment": "The luck-tier T4 find table (SawmillLuckTiers' fourth tier: luck sum 200 or higher and WOODCUTTING 60 or higher): 30 percent for 5 to 7 life essence, plus 10 percent for 2 to 3 CONCENTRATED life essence, else nothing. Weights sum to 100 (60 empty), so a T4 roll pays something 40 percent of the time and the concentrated jackpot is now a real, repeatable payout rather than T3's single-unit rarity. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern. Every weight and quantity here is initial balance and tunable.",
+  "Container": {
+    "Type": "Choice",
+    "RollsMin": 1,
+    "RollsMax": 1,
+    "Containers": [
+      { "Type": "Empty", "Weight": 60 },
+      { "Type": "Single", "Weight": 30,
+        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 5, "QuantityMax": 7 } },
+      { "Type": "Single", "Weight": 10,
+        "Item": { "ItemId": "Ingredient_Life_Essence_Concentrated", "QuantityMin": 2, "QuantityMax": 3 } }
+    ]
+  }
+}

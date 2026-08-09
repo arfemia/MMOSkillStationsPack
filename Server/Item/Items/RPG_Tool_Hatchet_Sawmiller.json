@@ -1,0 +1,125 @@
+{
+  "$Comment": "This pack's copy of the Sawmiller's Hatchet, the sawmill's drop-only trophy tool. It shares its id with the RPG Stations jar item, so this file OVERRIDES that item wholesale through pack load order: a same-id asset-pack override replaces the WHOLE item, which is why every field of the jar copy is reproduced here verbatim and the Utility stat payload is the only addition. Mechanically identical to the jar copy otherwise: a standalone masterwork copy of the vanilla Mithril hatchet upgraded to Legendary quality, MaxDurability 500 (the original carries 400) and a Woods gather power of 0.55 (the original's 0.5, the highest any vanilla hatchet reaches), with no Parent so no vanilla crafting recipe can be inherited, and Tags.Family Hatchet authored explicitly (vanilla gathering tools do not carry a Family tag yet) so the station's tag gate route recognizes it beside the functional Woods gather route. No Recipe, matching the jar copy: the hatchet stays drop-only, the sawmill's chase find.\n\nThe jar copy stays deliberately progression-free so the trophy is complete with RPG Stations alone; THIS copy is the MMO-flavored trophy. Its three stats apply only while the hatchet is HELD, and they are applied by the MMO's own equip stat bridge rather than by the native stat manager: the native manager reads a Utility stat block off the separate utility accessory slot only, never off a held tool, so a held tool's Utility stats are the bridge's job. Utility.Compatible stays true and Usable stays unauthored, exactly as the jar authors them, which keeps the block a side-effect-free stat surface (the hatchet can never occupy the utility slot itself, so nothing applies these stats twice).\n\nWhat the three stats feed. Stamina 10 is a flat addition to the worker's MAXIMUM stamina, the native stat every guard and sprint drains. MMO_BonusXp_WOODCUTTING 25 is plus 25 percent Woodcutting experience, multiplied into every Woodcutting award the MMO's XP pipeline pays out, sawmill cycles included. MMO_Luck_WOODCUTTING 25 is plus 25 percentage points of Woodcutting luck, which feeds both the MMO's own luck ladders and this pack's own SawmillLuckTiers rolls: it counts toward every find-tier luck sum there and toward the trophy-seam roll's own chance, so wielding the hatchet raises the odds of the bonus plank the hatchet itself unlocks. Percent-family MMO stats author their PERCENT as the Amount, and every entry is Additive on purpose: these channels carry a base of zero, and additive folds before multiplicative, so a Multiplicative-only entry here would compute zero and be silently inert.\n\nDisplay name and description reuse the jar's own items.RPG_Tool_Hatchet_Sawmiller.name and .description keys, so this pack re-declares no lang for the trophy. All three stat amounts are initial balance and tunable without an engine change.",
+  "TranslationProperties": {
+    "Name": "items.RPG_Tool_Hatchet_Sawmiller.name",
+    "Description": "items.RPG_Tool_Hatchet_Sawmiller.description"
+  },
+  "Categories": [
+    "Items.Tools"
+  ],
+  "Set": "Tool_Stone",
+  "Icon": "Icons/ItemsGenerated/Tool_Hatchet_Mithril.png",
+  "Model": "Items/Tools/Hatchet/Mithril.blockymodel",
+  "Texture": "Items/Tools/Hatchet/Mithril_Texture.png",
+  "Quality": "Legendary",
+  "ItemLevel": 50,
+  "Tool": {
+    "Specs": [
+      { "Power": 1, "GatherType": "SoftBlocks" },
+      { "Power": 0.05, "GatherType": "Soils" },
+      { "Power": 0.55, "GatherType": "Woods" },
+      { "Power": 0.05, "GatherType": "Rocks" },
+      { "Power": 0.5, "GatherType": "Benches" },
+      { "Power": 0.017, "GatherType": "VolcanicRocks" },
+      { "Power": 0.048, "GatherType": "OreCopper" },
+      { "Power": 0.048, "GatherType": "OreIron" },
+      { "Power": 0.048, "GatherType": "OreSilver" },
+      { "Power": 0.048, "GatherType": "OreGold" },
+      { "Power": 0.046, "GatherType": "OreThorium" },
+      { "Power": 0.046, "GatherType": "OreCobalt" },
+      { "Power": 0.046, "GatherType": "OreAdamantite" },
+      { "Power": 0.042, "GatherType": "OreMithril" }
+    ],
+    "DurabilityLossBlockTypes": [
+      {
+        "BlockSets": [
+          "Stone",
+          "Rock",
+          "Ores",
+          "Soil",
+          "Wood"
+        ],
+        "DurabilityLossOnHit": 0.25
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Hatchet",
+  "Utility": {
+    "Compatible": true,
+    "StatModifiers": {
+      "Stamina": [
+        {
+          "Amount": 10,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_BonusXp_WOODCUTTING": [
+        {
+          "Amount": 25,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_Luck_WOODCUTTING": [
+        {
+          "Amount": 25,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "Interactions": {
+    "Primary": "Hatchet_Attack"
+  },
+  "InteractionVars": {
+    "Hatchet_Chop_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Hatchet_Chop_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Tool_T1_Swing",
+            "LocalSoundEventId": "SFX_Hatchet_T1_Swing_RL_Local"
+          }
+        }
+      ]
+    },
+    "Hatchet_Chop_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Hatchet_Chop_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T1_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.5,
+    "Translation": [
+      18,
+      -15
+    ],
+    "Rotation": [
+      45,
+      270,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 500,
+  "Tags": {
+    "Type": [
+      "Tool"
+    ],
+    "Family": [
+      "Hatchet"
+    ]
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

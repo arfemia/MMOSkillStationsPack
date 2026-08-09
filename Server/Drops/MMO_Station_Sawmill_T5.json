@@ -1,0 +1,14 @@
+{
+  "$Comment": "The luck-tier T5 find table, the level-cap tier (SawmillLuckTiers' top tier: luck sum 250 or higher and WOODCUTTING 125, the cap): the ONLY find table in this pack with no Empty entry - reaching it costs both a maxed skill and a heavy luck investment, so a T5 roll always pays. 80 percent for 6 to 8 life essence, 20 percent for 3 to 4 CONCENTRATED life essence. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern. Every weight and quantity here is initial balance and tunable.",
+  "Container": {
+    "Type": "Choice",
+    "RollsMin": 1,
+    "RollsMax": 1,
+    "Containers": [
+      { "Type": "Single", "Weight": 80,
+        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 6, "QuantityMax": 8 } },
+      { "Type": "Single", "Weight": 20,
+        "Item": { "ItemId": "Ingredient_Life_Essence_Concentrated", "QuantityMin": 3, "QuantityMax": 4 } }
+    ]
+  }
+}
