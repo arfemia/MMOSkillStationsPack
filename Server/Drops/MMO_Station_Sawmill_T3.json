@@ -1,4 +1,5 @@
 {
+  "$Comment": "The luck-tier T3 find table (SawmillLuckTiers' top tier: luck sum 150+ and WOODCUTTING 30+): 25 percent for 4 to 6 life essence, plus a genuinely rare 5 percent jackpot of one CONCENTRATED life essence - the trophy the tier's legendary sound and gold-crown burst announce. Weights sum to 100 (70 empty). A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern.",
   "Container": {
     "Type": "Choice",
     "RollsMin": 1,
@@ -6,7 +7,9 @@
     "Containers": [
       { "Type": "Empty", "Weight": 70 },
       { "Type": "Single", "Weight": 25,
-        "Item": { "ItemId": "Wood_Hardwood_Planks", "QuantityMin": 2, "QuantityMax": 4 } }
+        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 4, "QuantityMax": 6 } },
+      { "Type": "Single", "Weight": 5,
+        "Item": { "ItemId": "Ingredient_Life_Essence_Concentrated", "QuantityMin": 1, "QuantityMax": 1 } }
     ]
   }
 }

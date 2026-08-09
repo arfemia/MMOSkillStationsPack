@@ -1,4 +1,5 @@
 {
+  "$Comment": "The luck-tier T2 find table (SawmillLuckTiers' mid tier: luck sum 100+ and WOODCUTTING 15+): a 20 percent chance of 3 to 5 life essence, else nothing. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern.",
   "Container": {
     "Type": "Choice",
     "RollsMin": 1,
@@ -6,7 +7,7 @@
     "Containers": [
       { "Type": "Empty", "Weight": 80 },
       { "Type": "Single", "Weight": 20,
-        "Item": { "ItemId": "Wood_Hardwood_Planks", "QuantityMin": 1, "QuantityMax": 3 } }
+        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 3, "QuantityMax": 5 } }
     ]
   }
 }
