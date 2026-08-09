@@ -1,5 +1,5 @@
 {
-  "$Comment": "The luck-tier T1 find table (SawmillLuckTiers' base tier, luck sum 50+): a 10 percent chance of 2 to 3 life essence, else nothing. Richer than the engine jar's own baseline find tables because reaching it already cost a luck investment. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern.",
+  "$Comment": "The T1 find table, first floor of SawmillLuckFinds' ungated band A (score 50, which luck investment alone can reach and levels alone cannot): a 10 percent chance of 2 to 3 life essence, else nothing. Richer than the engine jar's own baseline find tables because reaching it already cost a luck investment. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern.",
   "Container": {
     "Type": "Choice",
     "RollsMin": 1,

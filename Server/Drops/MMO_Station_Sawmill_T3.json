@@ -1,5 +1,5 @@
 {
-  "$Comment": "The luck-tier T3 find table (SawmillLuckTiers' top tier: luck sum 150+ and WOODCUTTING 30+): 25 percent for 4 to 6 life essence, plus a genuinely rare 5 percent jackpot of one CONCENTRATED life essence - the trophy the tier's legendary sound and gold-crown burst announce. Weights sum to 100 (70 empty). A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern.",
+  "$Comment": "The T3 find table, first floor of SawmillLuckFinds' band B (score 150, behind that band's one WOODCUTTING 30 gate): 25 percent for 4 to 6 life essence, plus a genuinely rare 5 percent jackpot of one CONCENTRATED life essence - the prize the floor's legendary sound and gold-crown burst announce. Weights sum to 100 (70 empty). A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern.",
   "Container": {
     "Type": "Choice",
     "RollsMin": 1,

@@ -1,0 +1,24 @@
+{
+  "$Comment": "One Roll, one job: the reward for bringing the best possible hatchet to the bench. Referenced from this pack's Extensions/SawmillProgression.json Bonus.Lootables beside SawmillLuckFinds and SawmillOutputLadders. It lives in its own file because its gate reads the TOOL rather than the player, which is a different question from anything the other two tables ask, and because the pack's own copy of the Sawmiller's Hatchet is what closes its loop.\n\nThe hatchet is the sawmill's own drop-only trophy, granted by the RPG Stations jar's roughly one-in-2500 chase roll. This pack overrides that item to add an MMO stat payload (+10 Stamina, +25 MMO_BonusXp_WOODCUTTING, +25 MMO_Luck_WOODCUTTING while held), so the trophy lifts its own roll here from 5 percent to 7.5 percent the moment it is in hand, and lifts every other ladder in this pack besides. Winning it is the one moment a sawmill worker's whole progression steps up at once.\n\nAll thresholds, weights and grants here are initial balance and retune freely without any engine change.",
+  "Rolls": [
+    {
+      "$Comment": "The three Conditions AND together on the Sawmiller's Hatchet's own three axes - quality 5 (Legendary), item level 50, and Woods gather power 0.55 through the Param-less hytale:tool_power form, which reads whatever gather type the station itself declares. No vanilla hatchet clears all three (Mithril, the best forgeable, tops out at quality 4 and power 0.5), so only the trophy itself or a better modded tool opens this roll at all.\n\nNo Ladder and no tiers: the whole probability sits on one visible Chance leaf. 5 percent base, rising by a tenth of a point per point of global MMO_Luck and MMO_Luck_WOODCUTTING and by a twentieth per point of MMO_Luck_CRAFTING - the same station's-own-skill-full, adjacent-skill-half weighting every roll in this pack uses, at a fifth of the find ladder's scale so that luck sweetens the seam rather than deciding it. The 20 percent cap is reached around 150 weighted luck points. Levels are deliberately absent from this score: the seam exists to reward the tool, and a level term would let a capped worker inflate a roll that is meant to be about what is in their hands.\n\nThe payoff is Grants.OutputItems 1, an extra plank rather than a find, because this seam rewards bringing the best hatchet to the bench rather than rewarding luck a second time - the find tables in SawmillLuckFinds already do that. Its 1 is additive on the cycle's own output alongside the two ladders in SawmillOutputLadders, summed with them before the single fractional resolution.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:tool_quality", "Min": 5 },
+        { "Factor": "hytale:tool_item_level", "Min": 50 },
+        { "Factor": "hytale:tool_power", "Min": 0.55 }
+      ],
+      "Chance": {
+        "BasePercent": 5,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.1 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 0.1 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.05 }
+        ],
+        "CapPercent": 20
+      },
+      "Grants": { "OutputItems": 1 }
+    }
+  ]
+}

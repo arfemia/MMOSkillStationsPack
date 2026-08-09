@@ -1,0 +1,39 @@
+{
+  "$Comment": "The sawmill's two bonus-PLANK ladders, kept apart from the find tiers on purpose: a find is a different item shaken loose from the log (SawmillLuckFinds owns those), while everything here adds more of the very thing the cycle just made. Referenced from this pack's Extensions/SawmillProgression.json Bonus.Lootables.\n\nGrants.OutputItems is ADDITIVE extra units of the cycle's own primary output, never a copy of the produced stack, so these numbers stay directly comparable to the jar action's own Recipe.Yield and no file here can silently multiply another's quantity. The amount is FRACTIONAL: the whole part is granted every time and the leftover fraction is the chance of one more, so 1.5 pays one plank always plus a second half the time and averages exactly 1.5. Everything a cycle grants is summed before that single resolution, so two rolls paying 0.5 each average one whole plank rather than rounding twice.\n\nTWO LADDERS, ONE STATEMENT EACH. The first pays for TIME SERVED and reads MMO_Level_WOODCUTTING alone; the second pays for LUCK INVESTED and reads the luck channels alone. Neither borrows the other's factors, so what each rewards is legible from its Factors block without arithmetic. That separation is also why the two use deliberately DIFFERENT floor numbers from each other and from SawmillLuckFinds: identical Mins over three different scores would invite reading one ladder's threshold as another's.\n\nWHAT A CYCLE ACTUALLY YIELDS. The jar action's Recipe.Yield authors 1 plank, its own tool ladder adds up to 4 more on the drop-only trophy hatchet, and the two ladders here add up to 4 (levels) plus up to 2 (luck), so a fully invested worker at the cap mills about eleven planks from one log and a newcomer mills one. Retune any rung here without touching the jar; retune the tool curve in the jar's own Bonus.Rolls.\n\nAll floor thresholds and grants here are initial balance and retune freely without any engine change.",
+  "Rolls": [
+    {
+      "$Comment": "The time-served ladder: WOODCUTTING level alone, no luck and no Conditions, so it pays every worker something the moment they have levelled the skill at all. Its floors sit on round quarter-cap milestones (25/50/75/100/125), which is what makes the reward legible in game - a woodcutter knows exactly which level bought the next plank. Floors are highest-wins and NOT cumulative, so a level 90 worker gets exactly two bonus planks here and never four, and a capped one gets exactly four. The 25 and 50 floors deliberately share the same grant of 1: the second is a level milestone that pays nothing new, which is what makes 75 feel like the real step up.",
+      "Trigger": "Cycle",
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 25, "Grants": { "OutputItems": 1 } },
+          { "Min": 50, "Grants": { "OutputItems": 1 } },
+          { "Min": 75, "Grants": { "OutputItems": 2 } },
+          { "Min": 100, "Grants": { "OutputItems": 3 } },
+          { "Min": 125, "Grants": { "OutputItems": 4 } }
+        ]
+      }
+    },
+    {
+      "$Comment": "The luck-invested ladder, and the reason luck is worth stacking at a bench that already pays for levels: luck alone buys planks here, with no level term anywhere in the score. Its three factors are exactly the luck half of SawmillLuckFinds' five - global MMO_Luck plus the station's own WOODCUTTING channel at full weight and the adjacent CRAFTING channel at half, mirroring the action's own 8.0/4.0 XP split. Levels are deliberately ABSENT: the ladder above already pays for them, and reading them here too would pay the same progression twice.\n\nThe reachable band is about 179 points (98 from a full WOODCUTTING tree, 55.5 from a full CRAFTING tree after its 0.5 weight, 25 from the trophy hatchet while held, a point or two of mastery loot multiplier; global MMO_Luck ships empty and is here so gear and other packs compose for free), which is what the floors are sized against - 160 is a real destination rather than an unreachable label. See SawmillLuckFinds' own comment for the whole-percent-points unit note that governs these numbers.\n\nEvery grant is FRACTIONAL on purpose, the schema feature that lets a rung be worth half a step: the first two floors pay less than a whole plank, so early luck investment is felt as a plank arriving every few cycles rather than as nothing until some distant threshold. 0.25 means one extra plank on one cycle in four.",
+      "Trigger": "Cycle",
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 }
+        ],
+        "Floors": [
+          { "Min": 30, "Grants": { "OutputItems": 0.25 } },
+          { "Min": 60, "Grants": { "OutputItems": 0.5 } },
+          { "Min": 90, "Grants": { "OutputItems": 1.0 } },
+          { "Min": 120, "Grants": { "OutputItems": 1.5 } },
+          { "Min": 160, "Grants": { "OutputItems": 2.0 } }
+        ]
+      }
+    }
+  ]
+}

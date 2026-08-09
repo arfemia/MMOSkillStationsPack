@@ -31,14 +31,17 @@ skill-stations-pack/
     │   ├── ResourceTypes/MMO_Sharpened_Bar.json                     the native ResourceType those bars share
     │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
-    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList luck-tier loot, one per find tier (referenced by Lootables/SawmillLuckTiers.json's Ladder floors); T5 is the only one with no Empty entry
+    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors); T5 is the only one with no Empty entry
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
     ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     └── RpgStations/
-        ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the SawmillLuckTiers Bonus ref
-        └── Lootables/SawmillLuckTiers.json               the sawmill's find-tier (T1-T5) + level-scaled bonus-output + trophy-seam Rolls (referenced by SawmillProgression's Bonus.Lootables), tiers level-gated on WOODCUTTING to the 125 cap
+        ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
+        └── Lootables/                                    three tables, ONE CONCERN EACH (all three referenced from SawmillProgression's Bonus.Lootables)
+            ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
+            ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional OutputItems)
+            └── SawmillTrophySeam.json                    the single tool-gated Roll rewarding the Sawmiller's Hatchet at the bench
 ```
 
 Held back under `unreleased/` (NOT in the shipped zip; `unreleased/restore.ps1` brings each group
@@ -58,8 +61,9 @@ presentation defaults - Worker.Puppet, Custody.Display, the 4805ms cadence - per
 `Server/RpgStations/Extensions/SawmillProgression.json` composes the MMO progression onto its
 `Mill` action ADDITIVELY through the `ExtensionAsset` fold, targeting it by `Target: {Action}`
 (the action-first schema restructure means an extension names the ACTION it adds to, not the whole
-station): XP declarations, the SawmillLuckTiers Bonus ref, and the decision-59d MMO-luck
-bonus-copy roll stacking beside the jar's own tool_power roll.
+station): XP declarations plus the three `Bonus.Lootables` refs, all unioned onto the jar action's
+own `Bonus` so its session-loyalty `SawmillFinds` table and tool-ladder rolls keep firing beside
+them.
 
 **Same-id ITEM overrides this pack ships.** A `Server/Item/Items/<Id>.json` whose id matches an RPG
 Stations jar item replaces that item WHOLESALE (there is no per-leaf merge on the native item store,
@@ -455,8 +459,9 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
 - **`SawmillProgression.json` regained the MMO-luck bonus-copy roll** (decision 59d,
   BOTH-STACK): wave 2 dropped the pack's `mmoskilltree:station_luck` bonus-copy Chance roll to
   keep the roll count at one; the maintainer ruled both stack, so the extension adds it back
-  beside the jar's own tool_power-scaled roll (`SawmillLuckTiers.json`'s `$Comment` records the
-  supersession).
+  beside the jar's own tool_power-scaled roll (`SawmillLuckTiers.json`'s `$Comment` recorded the
+  supersession; that file has since been SPLIT into the three concern-scoped Lootables in the
+  layout above, and the bonus-copy roll itself was deleted by the pre-0.1.0 schema sweep below).
 - **The anvil completion SFX de-doubled** (decision 60): the same
   `SFX_Chest_Legendary_FirstOpen_Player` was authored on BOTH the enhance `stamp` step's
   `Presentation` and the station-level `Completion`; both fired at round 8c too, but in the same
@@ -479,8 +484,9 @@ warning is not content working. What changed here:
   DELETED** rather than re-pointed. `Grants.BonusOutputCopies` granted N copies of the WHOLE produced
   stack, which silently multiplied the jar sawmill's own 1-to-4-plank yield ladder from a different
   file; the `ExtensionAsset` payload matrix carries no `Recipes`/`Yield` key, so there is no additive
-  route to re-express it as a yield overlay and it is gone outright. The pack's luck-tier find ladder
-  (`SawmillLuckTiers.json`) is untouched, and progression still flows through
+  route to re-express it as a yield overlay and it is gone outright. The pack's find ladder (then
+  `SawmillLuckTiers.json`, since split into the three Lootables above) was untouched by the sweep,
+  and progression still flows through
   `PerCycleContributions`.
 - **`Tool.PowerScale` deleted** (with `StationCycleCompletedEvent.toolMultiplier()`), so this pack's
   `mmoskilltree:skill_xp` amounts are awarded at their authored value: station XP no longer scales
@@ -581,28 +587,53 @@ no change; author a fraction when a tier is worth half a step more than the one 
   better-tool reward is its own `Bonus.Rolls` ladder - the engine holds no baked tool curve over
   contributions on its own, `ContributionScale` PRE-SCALES the amount before the event fires, so
   this pack's `mmoskilltree:skill_xp` amounts are the verbatim amount to grant and a better hatchet
-  is felt in both PLANKS and XP. Its `Bonus.Lootables` is the luck-tier find ladder (this pack's own
-  `SawmillLuckTiers`, seven Rolls in total): **five** independent find Rolls, each summing the same
-  weighted MMO-luck factor pair against its own single floor (`MMO_Station_Sawmill_T1..T5` at
-  50/100/150/200/250), with every Roll above the first additionally gated on the player's
-  WOODCUTTING level (`Conditions` reading `stat/MMO_Level_WOODCUTTING`: 15+, 30+, 60+, and 125, the
-  cap) - the tiers are separate Rolls rather than five floors on one shared Ladder specifically so
-  the level gate can attach, since `Conditions` sits on a `Roll`, not on a `Ladder` floor. A sixth
-  Roll in the same file scales bonus plank output by WOODCUTTING level alone (a `Ladder` over
-  `stat/MMO_Level_WOODCUTTING` with no luck involved, `Grants.OutputItems` 1/1/2/3/4 at levels
-  25/50/75/100/125, highest floor wins, non-cumulative; whole numbers, though the leaf is fractional
-  - a `1.5` floor would pay one plank always plus a second half the time). A seventh, the **trophy
-  seam**, is the only Roll gated on the TOOL rather than the player: three ANDed `Conditions` on the
-  Sawmiller's Hatchet's own axes (`hytale:tool_quality` 5, `hytale:tool_item_level` 50,
-  `hytale:tool_power` 0.55 through the Param-less form that reads the station's own gather type), no
-  Ladder, and one `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1 per point of `MMO_Luck` and
-  `MMO_Luck_WOODCUTTING`, `CapPercent` 20) paying `Grants.OutputItems` 1. It closes the loop with
-  this pack's own trophy override: the hatchet's own +25 `MMO_Luck_WOODCUTTING` lifts its own roll
-  from 5 to 7.5 percent, and the cap lands at 150 combined luck points. **The MMO-luck bonus-copy roll never adds
-  to the cycle's own output** - a loot `Roll` only ever grants `Grants.OutputItems` (additive items,
-  fractional) or a
-  `DropLists`/`Commands`/`Effects` reward, never a multiplier on a produced stack, so this pack can
-  never silently multiply the jar's yield ladder from a second file. See the Action-first schema
+  is felt in both PLANKS and XP. Its `Bonus.Lootables` names **three** of this pack's own
+  tables, one concern each, so a file's own `$Comment`s explain ONE score rather than three at once:
+
+  - **`SawmillLuckFinds`** - the find-tier ladder, two BANDED Rolls over one shared five-factor
+    score: `stat/MMO_Luck` 1.0, `stat/MMO_Luck_WOODCUTTING` 1.0, `stat/MMO_Luck_CRAFTING` 0.5,
+    `stat/MMO_Level_WOODCUTTING` 0.5, `stat/MMO_Level_CRAFTING` 0.25. Two families, and within each
+    the station's own skill counts full while the adjacent one counts half, mirroring the action's
+    own 8.0/4.0 XP split - **re-tuning those two Amounts and re-tuning these weights are the same
+    decision expressed twice, so move them together.** Band A is ungated (floors 50 -> T1, 100 ->
+    T2), band B carries the file's ONE surviving level gate, `MMO_Level_WOODCUTTING` >= 30 (floors
+    150 -> T3, 200 -> T4, 250 -> T5). Banding exists because Rolls evaluate INDEPENDENTLY: five
+    separate tier Rolls handed a maxed player every tier at once, five drop tables per cycle, while
+    two Ladders cap that at two and keep highest-wins inside each band.
+  - **`SawmillOutputLadders`** - the two bonus-PLANK ladders, deliberately sharing no factors. One
+    reads `stat/MMO_Level_WOODCUTTING` alone (`OutputItems` 1/1/2/3/4 at 25/50/75/100/125,
+    highest-wins, non-cumulative), the other reads the luck channels alone (WC 1.0, CR 0.5, no level
+    term, `OutputItems` 0.25/0.5/1.0/1.5/2.0 at 30/60/90/120/160). The luck ladder is the one that
+    makes luck worth stacking at a bench that already pays for levels; its floors are sized against
+    the ~179-point LUCK-ONLY ceiling and use deliberately different Mins from the find ladder so no
+    one reads one score's threshold as another's. Its grants are FRACTIONAL on purpose (whole part
+    always, fraction = chance of one more), the schema feature that makes early luck felt.
+  - **`SawmillTrophySeam`** - the only Roll gated on the TOOL rather than the player: three ANDed
+    `Conditions` on the Sawmiller's Hatchet's own axes (`hytale:tool_quality` 5,
+    `hytale:tool_item_level` 50, `hytale:tool_power` 0.55 through the Param-less form that reads the
+    station's own gather type), no Ladder, and one `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1
+    per point of `MMO_Luck`/`MMO_Luck_WOODCUTTING` and 0.05 per point of `MMO_Luck_CRAFTING`,
+    `CapPercent` 20) paying `Grants.OutputItems` 1. Levels are deliberately absent: the seam rewards
+    what is in the worker's hands. It closes the loop with this pack's own trophy override, whose
+    +25 `MMO_Luck_WOODCUTTING` lifts its own roll from 5 to 7.5 percent.
+
+  **The units trap, written into `SawmillLuckFinds`' own `$Comment` and repeated here:**
+  `hytale:stat` returns the folded native MAX and the MMO luck channels store WHOLE PERCENT POINTS,
+  so a full WOODCUTTING tree reads as **98**, not 0.98. The `mmoskilltree:station_luck` convenience
+  aggregate computes the same sum but returns a FRACTION, so swapping the stat leaves for that one
+  id shifts every floor by 100x and the ladder silently never fires again. The per-source channels
+  are also the only composable route (independent weights) and avoid the double-count the MMO
+  bridge's own hook warns about when the aggregate is mixed with any `stat/MMO_Luck*` leaf.
+  Reachable ceilings at the time of authoring: ~179 luck-only (98 WOODCUTTING tree + 55.5 CRAFTING
+  tree after its 0.5 weight + 25 trophy hatchet + a point or two of mastery loot multiplier; global
+  `MMO_Luck` ships empty), ~94 levels-only, ~273 combined - which is what puts the 250 floor at the
+  genuine end of the ladder rather than beyond it.
+
+  **No table here can multiply the jar's yield.** A loot `Roll` only ever grants
+  `Grants.OutputItems` (ADDITIVE items of the cycle's own output, fractional) or a
+  `DropLists`/`Commands`/`Effects` reward, never a multiplier on a produced stack. A fully invested
+  worker at the cap mills about eleven planks from one log (1 `Recipe.Yield` + up to 4 from the jar
+  tool ladder + up to 4 level + up to 2 luck); a newcomer mills one. See the Action-first schema
   restructure section above.
 - **In-world block.** The Sawmill block is a placeable furniture item reusing the vanilla
   `Bench_Lumbermill` model/texture/icon (no new art). Its `BlockType.Interactions.Use` names a

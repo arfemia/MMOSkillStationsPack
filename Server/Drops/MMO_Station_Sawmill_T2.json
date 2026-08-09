@@ -1,5 +1,5 @@
 {
-  "$Comment": "The luck-tier T2 find table (SawmillLuckTiers' mid tier: luck sum 100+ and WOODCUTTING 15+): a 20 percent chance of 3 to 5 life essence, else nothing. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are Grants.OutputItems' concern.",
+  "$Comment": "The T2 find table, top floor of SawmillLuckFinds' ungated band A (score 100, where a committed woodcutter with most of a skill tree claimed lands): a 20 percent chance of 3 to 5 life essence, else nothing. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern.",
   "Container": {
     "Type": "Choice",
     "RollsMin": 1,
