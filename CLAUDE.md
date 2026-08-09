@@ -488,9 +488,13 @@ times"). An `ExtensionAsset` now names the ACTION it extends via `Target: {Actio
 than the whole station (`Target: {Station}` is still legal, but only for appending a brand NEW
 action to a station's ordered list); its Action-target payload keys are `Steps`, `Anchors`,
 `Bonus`, `Conversions`, `PerCycleContributions`, `ContributionScale`, `Puppet`, `Custody` - all
-directly on the extension, not nested under a `Work` group. `Roll.Grants.OutputItems` (N ADDITIVE
+directly on the extension, not nested under a `Work` group. `Roll.Grants.OutputItems` (ADDITIVE
 items of the cycle's own primary output) is the one surviving route for a conditional yield bonus;
-the old `Grants.BonusOutputCopies` (which multiplied the WHOLE produced stack) stays deleted.
+the old `Grants.BonusOutputCopies` (which multiplied the WHOLE produced stack) stays deleted. The
+amount is **fractional**: the whole part is granted every time and the leftover fraction is the
+chance of one more, so `1.5` pays one item always plus a second half the time and averages exactly
+1.5. A whole number still behaves exactly as it always did, so this pack's own integer floors need
+no change; author a fraction when a tier is worth half a step more than the one below it.
 
 ## How it fits together
 
@@ -549,8 +553,10 @@ the old `Grants.BonusOutputCopies` (which multiplied the WHOLE produced stack) s
   can attach, since `Conditions` sits on a `Roll`, not on a `Ladder` floor. A fourth Roll in the same
   file scales bonus plank output by WOODCUTTING level alone (a `Ladder` over
   `stat/MMO_Level_WOODCUTTING` with no luck involved, `Grants.OutputItems` 1/1/2 at levels 25/50/75,
-  highest floor wins, non-cumulative). **The MMO-luck bonus-copy roll never adds to the cycle's own
-  output** - a loot `Roll` only ever grants `Grants.OutputItems` (N additive items) or a
+  highest floor wins, non-cumulative; whole numbers, though the leaf is fractional - a `1.5` floor
+  would pay one plank always plus a second half the time). **The MMO-luck bonus-copy roll never adds
+  to the cycle's own output** - a loot `Roll` only ever grants `Grants.OutputItems` (additive items,
+  fractional) or a
   `DropLists`/`Commands`/`Effects` reward, never a multiplier on a produced stack, so this pack can
   never silently multiply the jar's yield ladder from a second file. See the Action-first schema
   restructure section above.
@@ -601,8 +607,9 @@ the old `Grants.BonusOutputCopies` (which multiplied the WHOLE produced stack) s
    `Conditions`/`Ladder`/`Grants` are independently composable per `Roll` - see `Sawmill.json`'s
    `Mill` action's `Bonus` block, or RPG Stations' `asset/Roll.java` javadoc for the full schema
    (`Factors` is always an array, a `Ladder` floor's only reward path is its own `Grants`, never a
-   sibling `DropList` leaf, and `Grants.OutputItems` grants N additive items of the cycle's own
-   output rather than multiplying the produced stack).
+   sibling `DropList` leaf, and
+   `Grants.OutputItems` grants additive items of the cycle's own output rather than multiplying the
+   produced stack - fractionally, so `1.5` means one item always plus a second half the time).
 
 ## Build & deploy
 
