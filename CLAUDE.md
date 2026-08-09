@@ -28,9 +28,12 @@ skill-stations-pack/
     │   ├── Items/RPG_Station_Sawmill.json + RPG_Station_Anvil.json  the two station blocks (vanilla Lumbermill / Anvil bench models); SHARED ids with RPG Stations' own jar defaults, override via pack load order
     │   ├── Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json (x10)    the anvil convert outputs (shared MMO_Sharpened_Bar family, the Stamp step's Reagents route)
     │   ├── ResourceTypes/MMO_Sharpened_Bar.json                     the native ResourceType those bars share
-    │   └── RootInteractions/RPG_Station_<Sawmill|Anvil>_Use.json    object form: {"Type":"rpg_station_use","Station":"<id>"}
+    │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
+    │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
     ├── Drops/MMO_Station_Sawmill_T1/T2/T3.json           native ItemDropList luck-tier loot (referenced by Lootables/SawmillLuckTiers.json's Ladder floors)
-    ├── Emote/MMO_Emote_Saw.json + MMO_Emote_Hammer.json  the work emotes (native ids, server-authored EmoteAssets)
+    ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
+    │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
+    │    under unreleased/ with the anvil ritual that plays it)
     ├── Languages/<bcp47>/                                items.lang + avatarCustomization.lang (native namespaces), rpgstations.lang (station.anvil.*), mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales
     ├── MMOSkillTree/CustomSkills/Smithing.json + Cooking.json  the pack-shipped skills themselves (Pattern A CustomSkillAsset, folded into the MMO's SkillRegistry pack layer)
     └── RpgStations/

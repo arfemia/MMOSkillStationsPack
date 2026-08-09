@@ -1,7 +1,3 @@
-RPG_Station_Sawmill.name = Scierie
-RPG_Station_Sawmill.description = Une station de travail qui scie les rondins en planches. Appuie sur utiliser pour commencer à travailler.
-RPG_Station_Sawmill.hint.empty = Appuie sur [{key}] pour charger les rondins
-RPG_Station_Sawmill.hint.loaded = Appuie sur [{key}] pour travailler
 RPG_Station_Anvil.name = Enclume
 RPG_Station_Anvil.description = Une station de travail qui forge des barres et améliore les armes. Appuie sur utiliser pour commencer à travailler.
 RPG_Station_Anvil.hint.empty = Appuie sur [{key}] pour placer une barre ou une arme

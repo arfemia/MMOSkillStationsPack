@@ -1,7 +1,3 @@
-RPG_Station_Sawmill.name = Sägewerk
-RPG_Station_Sawmill.description = Eine Arbeitsstation, die Baumstämme zu Brettern sägt. Drücke die Benutzen-Taste, um zu arbeiten.
-RPG_Station_Sawmill.hint.empty = Drücke [{key}] zum Laden von Baumstämmen
-RPG_Station_Sawmill.hint.loaded = Drücke [{key}] zum Arbeiten
 RPG_Station_Anvil.name = Amboss
 RPG_Station_Anvil.description = Eine Arbeitsstation, die Barren schmiedet und Waffen verbessert. Drücke die Benutzen-Taste, um zu arbeiten.
 RPG_Station_Anvil.hint.empty = Drücke [{key}] zum Einlagern eines Barren oder einer Waffe

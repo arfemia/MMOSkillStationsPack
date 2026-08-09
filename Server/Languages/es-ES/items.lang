@@ -1,7 +1,3 @@
-RPG_Station_Sawmill.name = Aserradero
-RPG_Station_Sawmill.description = Una estación de trabajo que sierra troncos para hacer tablones. Pulsa usar para empezar a trabajar.
-RPG_Station_Sawmill.hint.empty = Pulsa [{key}] para cargar troncos
-RPG_Station_Sawmill.hint.loaded = Pulsa [{key}] para trabajar
 RPG_Station_Anvil.name = Yunque
 RPG_Station_Anvil.description = Una estación de trabajo que forja barras y mejora armas. Pulsa usar para empezar a trabajar.
 RPG_Station_Anvil.hint.empty = Pulsa [{key}] para colocar una barra o arma

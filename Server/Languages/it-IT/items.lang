@@ -1,7 +1,3 @@
-RPG_Station_Sawmill.name = Segheria
-RPG_Station_Sawmill.description = Una stazione di lavoro che sega i tronchi in assi. Premi usa per iniziare a lavorare.
-RPG_Station_Sawmill.hint.empty = Premi [{key}] per caricare tronchi
-RPG_Station_Sawmill.hint.loaded = Premi [{key}] per lavorare
 RPG_Station_Anvil.name = Incudine
 RPG_Station_Anvil.description = Una stazione di lavoro che forgia barre e migliora le armi. Premi usa per iniziare a lavorare.
 RPG_Station_Anvil.hint.empty = Premi [{key}] per posizionare una barra o un'arma

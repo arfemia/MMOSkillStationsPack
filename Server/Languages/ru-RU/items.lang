@@ -1,7 +1,3 @@
-RPG_Station_Sawmill.name = Лесопилка
-RPG_Station_Sawmill.description = Рабочая станция, которая распиливает брёвна на доски. Нажмите «Использовать», чтобы начать работу.
-RPG_Station_Sawmill.hint.empty = Нажмите [{key}], чтобы загрузить брёвна
-RPG_Station_Sawmill.hint.loaded = Нажмите [{key}], чтобы работать
 RPG_Station_Anvil.name = Наковальня
 RPG_Station_Anvil.description = Рабочая станция, которая куёт слитки и улучшает оружие. Нажмите «Использовать», чтобы начать работу.
 RPG_Station_Anvil.hint.empty = Нажмите [{key}], чтобы положить слиток или оружие

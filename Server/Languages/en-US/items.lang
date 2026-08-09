@@ -1,7 +1,3 @@
-RPG_Station_Sawmill.name = Sawmill
-RPG_Station_Sawmill.description = A work station that saws logs into planks. Press use to start working.
-RPG_Station_Sawmill.hint.empty = Press [{key}] to load logs
-RPG_Station_Sawmill.hint.loaded = Press [{key}] to work
 RPG_Station_Anvil.name = Anvil
 RPG_Station_Anvil.description = A work station that forges bars and enhances weapons. Press use to start working.
 RPG_Station_Anvil.hint.empty = Press [{key}] to place a bar or weapon
