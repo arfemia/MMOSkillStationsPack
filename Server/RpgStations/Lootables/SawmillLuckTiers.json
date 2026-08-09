@@ -1,30 +1,68 @@
 {
-  "$Comment": "Supplies the Loot block that the pack's Stations/Sawmill.json full-file override used to carry, now that the jar's own Sawmill.json (RPG Stations) stays live and this pack no longer overrides the whole station. The jar's own Lootables/SawmillFinds.json rolls (a BasePercent 2 tool_power-scaled bonus-copy Chance capped 25 percent, plus a Conditions-gated cycle_count Ladder to the jar's own small RPG_Station_Sawmill_T1/T2 drop lists) fire additively alongside whatever this pack adds via Extensions/SawmillProgression.json's Loot ref; the two bonus-copy rolls scale off different axes (tool power vs MMO luck) and are both intended to fire, so a better hatchet and a luckier woodcutter each earn their own independent extra plank. The luck-tier ladder is the one true carryover from the pack's retired Sawmill.json: its three floor values (50/100/150) are kept byte-identical, and its trigger factor is Ladder.Values (a weighted FactorRef array) summing stat/MMO_Luck + stat/MMO_Luck_WOODCUTTING (equal Weight 1.0 each) instead of the single aggregate mmoskilltree:station_luck; station_luck is a true-equivalence aggregate of exactly this factor set, so the composition is numerically equivalent to the old single-factor ladder and needed no floor renumbering. The jar's own small secondary ladder (cycle_count-gated, 15 percent chance, capped at its own T2 tier) is a bounded, minor additional stack this pack does not edit (RPG Stations jar content is not owned here). DropList ids referenced below (MMO_Station_Sawmill_T1/T2/T3) are this pack's own native ItemDropList assets (Server/Drops/), distinct from the jar's RPG_Station_Sawmill_T1/T2; no id collision. RPG Stations' own duplicate-factor lint (LOOT_DUPLICATE_FACTOR) is keyed on the (Factor, Param) pair, so the two entries below are clean: 'stat'/MMO_Luck and 'stat'/MMO_Luck_WOODCUTTING are different pairs, not a repeat of the same one. The retired MMO-specific double-count check (formerly LOOT_DOUBLE_LUCK, an engine check that hardcoded these exact MMO ids and was removed when RPG Stations went fully progression-agnostic) still applies as authoring advice here since the engine can no longer enforce it: compose EITHER the single mmoskilltree:station_luck aggregate factor OR this pair of per-source stat channels in one Roll, never both in the same Ladder/Chance - stacking the aggregate on top of its own constituent channels double-counts the same luck twice.",
+  "$Comment": "Supplies the sawmill's rare-find loot table (referenced by this pack's Extensions/SawmillProgression.json Bonus.Lootables). Four independent Rolls, each evaluated on its own every cycle: three luck-tier find Rolls plus a level-only bonus-output Roll. The jar's own Lootables/SawmillFinds.json roll (a separate Conditions-gated cycle_count Ladder to RPG Stations' own small RPG_Station_Sawmill_T1/T2 drop lists) fires additively alongside everything here; neither table is aware of the other. A loot Roll grants only what ELSE a cycle handed over: how much of the cycle's own output a better tool earns lives entirely in the sawmill action's own Recipe.Yield, so nothing here can multiply that number from a second file. The DropLists referenced below (MMO_Station_Sawmill_T1/T2/T3) are this pack's own native ItemDropList assets (Server/Drops/), distinct from RPG Stations' own jar-shipped drop tables of a similar name; no id collision. Composing the mmoskilltree:station_luck convenience aggregate together with the per-source stat/MMO_Luck* channels in the same Roll double-counts a player's luck (the aggregate already sums those channels), so every Roll below composes only the per-source channels and never the aggregate.\n\nRoll 1 (T1, the base find tier): no level requirement. Its Ladder sums the weighted stat/MMO_Luck plus stat/MMO_Luck_WOODCUTTING channels (equal Weight 1.0 each, read through RPG Stations' generic hytale:stat factor) and grants MMO_Station_Sawmill_T1 once that sum reaches 50, its one and only floor.\n\nRoll 2 (T2, the mid find tier): additionally gated on WOODCUTTING level 15 or higher (Conditions: {\"Factor\":\"hytale:stat\",\"Param\":\"MMO_Level_WOODCUTTING\",\"Min\":15}, the player's current skill level read through the same generic stat factor the luck channels use). Its Ladder is the same weighted luck sum as Roll 1; once the sum reaches 100 it grants MMO_Station_Sawmill_T2 plus a rare-find sound and spark burst.\n\nRoll 3 (T3, the top find tier): gated on WOODCUTTING level 30 or higher (same Condition shape, Min 30). Its Ladder is the same weighted luck sum; once the sum reaches 150 it grants MMO_Station_Sawmill_T3 plus a legendary-chest sound and gold-crown burst.\n\nBecause a level requirement can only be authored per Roll (Conditions), not per Ladder floor, each luck tier is its own Roll here rather than three floors on one shared Ladder. One consequence worth flagging: since these are now three independently evaluated Rolls instead of one Ladder's highest-floor-wins lookup, a luck sum high enough to clear more than one tier's threshold grants every tier whose own Conditions also pass, in the same cycle (T1 and T2 together, for example, once a leveled player's luck clears both). The level gates cap which tiers a low-level player can ever reach; they do not narrow a high-level player's clear back down to a single tier the way the old shared Ladder did.\n\nRoll 4 (the level-scaled bonus-output ladder): independent of luck entirely. A single Ladder over stat/MMO_Level_WOODCUTTING (Weight 1.0, no Conditions) grants Grants.OutputItems - one extra plank at level 25, still one extra at level 50, and two extra at level 75. Ladder floors are highest-wins and non-cumulative, so a level 90 woodcutter gets exactly two bonus planks from this roll, never four. OutputItems is always ADDITIVE extra output of the cycle's own primary item, never a copy of the whole produced stack, so this number stays directly comparable to (and never multiplies) the yield quantity authored in the sawmill action's own Recipe.Yield. All threshold and grant numbers in this file are initial balance and may be retuned without any engine change.",
   "Rolls": [
     {
       "Ladder": {
-        "Values": [
+        "Factors": [
           { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
         ],
         "Floors": [
-          { "Min": 50, "Grants": { "DropList": "MMO_Station_Sawmill_T1" } },
+          { "Min": 50, "Grants": { "DropLists": ["MMO_Station_Sawmill_T1"] } }
+        ]
+      }
+    },
+    {
+      "Conditions": [
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 15 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
           {
             "Min": 100,
-            "Grants": { "DropList": "MMO_Station_Sawmill_T2" },
+            "Grants": { "DropLists": ["MMO_Station_Sawmill_T2"] },
             "Presentation": {
-              "Sound": "SFX_Coins_Land",
+              "Sounds": ["SFX_Coins_Land"],
               "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
             }
-          },
+          }
+        ]
+      }
+    },
+    {
+      "Conditions": [
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 30 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
           {
             "Min": 150,
-            "Grants": { "DropList": "MMO_Station_Sawmill_T3" },
+            "Grants": { "DropLists": ["MMO_Station_Sawmill_T3"] },
             "Presentation": {
-              "Sound": "SFX_Chest_Legendary_FirstOpen_Player",
+              "Sounds": ["SFX_Chest_Legendary_FirstOpen_Player"],
               "Particles": [ { "SystemId": "Effect_Crown_Gold" } ]
             }
           }
+        ]
+      }
+    },
+    {
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 25, "Grants": { "OutputItems": 1 } },
+          { "Min": 50, "Grants": { "OutputItems": 1 } },
+          { "Min": 75, "Grants": { "OutputItems": 2 } }
         ]
       }
     }

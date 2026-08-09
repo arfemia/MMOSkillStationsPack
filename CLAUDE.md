@@ -35,8 +35,8 @@ skill-stations-pack/
     ├── MMOSkillTree/CustomSkills/Smithing.json + Cooking.json  the pack-shipped skills themselves (Pattern A CustomSkillAsset, folded into the MMO's SkillRegistry pack layer)
     └── RpgStations/
         ├── Stations/Anvil.json                           the two-action Anvil StationAsset (convert + enhance) - a FULL-FILE pack override
-        ├── Extensions/SawmillProgression.json + CookingProgression.json  additive ExtensionAssets onto the JAR's own sawmill / cooking-fire stations (XP declarations, Loot ref, the decision-59d luck roll)
-        ├── Lootables/SawmillLuckTiers.json               the sawmill luck-tier Ladder (referenced by SawmillProgression's Loot)
+        ├── Extensions/SawmillProgression.json + CookingProgression.json  additive ExtensionAssets each targeting a JAR action by Id (Sawmill's Mill / CuttingBoard's PrepFish) (XP declarations, Bonus ref, the decision-59d luck roll)
+        ├── Lootables/SawmillLuckTiers.json               the sawmill's find-tier + level-scaled bonus-output Rolls (referenced by SawmillProgression's Bonus.Lootables), tiers level-gated on WOODCUTTING
         └── RollPools/AnvilWeaponPool.json                the enhance Stamp step's stat roll pool
 ```
 
@@ -46,10 +46,12 @@ own `Control` map (which only governs `Server/RpgStations/**`). `Server/RpgStati
 folds through RPG Stations' `StationAsset` codec (`AssetStoreRegistrar`); a station id here
 OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold) - the ANVIL ships that way.
 The Sawmill does NOT (wave 2, scope-2 arc): the jar's own `Sawmill.json` stays live (it owns the
-presentation defaults - Puppet, Custody.Display, the 4805ms cadence - per decision 59), and
-`Server/RpgStations/Extensions/SawmillProgression.json` composes the MMO progression onto it
-ADDITIVELY through the `ExtensionAsset` fold (XP declarations, the SawmillLuckTiers Loot ref, and
-the decision-59d MMO-luck bonus-copy roll stacking beside the jar's own tool_power roll).
+presentation defaults - Worker.Puppet, Custody.Display, the 4805ms cadence - per decision 59), and
+`Server/RpgStations/Extensions/SawmillProgression.json` composes the MMO progression onto its
+`Mill` action ADDITIVELY through the `ExtensionAsset` fold, targeting it by `Target: {Action}`
+(the action-first schema restructure means an extension names the ACTION it adds to, not the whole
+station): XP declarations, the SawmillLuckTiers Bonus ref, and the decision-59d MMO-luck
+bonus-copy roll stacking beside the jar's own tool_power roll.
 
 ## History (round-7 fix wave: anvil rotation + SMITHING skill migration, leg F, 2026-07-23)
 
@@ -125,7 +127,7 @@ to match (`RPG_Station_Sawmill_Use` / `rpg_station_use`); the `items.lang` keys 
 across all 9 locales). `Sawmill.json` moved to the RPG Stations fold path, its `Luck` group
 became a `Loot` block (one `Chance`+`Grants` Roll reproducing the tier-0 bonus-copy proc, one
 `Ladder` Roll reproducing the 50/100/150 tier floors - both over the MMO bridge's
-`mmoskilltree:station_luck` factor, the M3-critique-tightened `Roll` schema: `AddFactors` is an
+`mmoskilltree:station_luck` factor, the M3-critique-tightened `Roll` schema: `Factors` is an
 array, every floor reward routes through its own `Grants`, no direct floor `DropList` leaf), its
 `Identity` keys became the full `rpgstations.station.sawmill.name`/`.desc` ids (reusing RPG
 Stations' own shipped keys), its `Presentation.Feedback` leaf was dropped (the MMO's
@@ -186,20 +188,34 @@ same one `StationEntityMountController#spawnAnchor` already used) - see RPG Stat
 
 ## The Anvil (RPG Stations phase 2 leg E, design section 9.5)
 
-`Server/RpgStations/Stations/Anvil.json` is the FIRST multi-action station this pack ships
-(design 9.1): an `Actions` map with `convert` (a classic repeat-loop Recipe conversion, sharpens a
-vanilla metal bar into `MMO_Sharpened_<Metal>_Bar`) and `enhance` (`Work.Looping: false` - one
-completed program run ends the session; a `Steps` ritual of two hammer-strike `Duration` beats, a
-settling pause, then the `Stamp` step). Both actions gate on holding a hammer (station-level
-`Tool.Ids: ["Tool_Hammer_Crude","Tool_Hammer_Iron"]` - no `Tags.Family:["Hammer"]` exists on the
-real vanilla hammer items, so this pack uses the `Ids` fallback route, not the design doc's
-assumed `Tags` route). The block reuses the vanilla `Blocks/Benches/Anvil.blockymodel` (no new
-art, same "reuse a vanilla bench" convention as the Sawmill's Lumbermill) - its sibling texture
-path (`Blocks/Benches/Anvil_Texture.png`) follows the SAME `<Model>_Texture.png` convention every
-other bench in this asset family uses, UNVERIFIED against the live client (a phase-2 smoke item,
-same risk class as the standing-mount pose).
+**Schema note (action-first restructure):** `Anvil.json`'s top-level `Actions` is now an ORDERED
+ARRAY of self-contained action objects (each carrying its own `Id`, e.g. `"Convert"`/`"Enhance"`),
+not a keyed map, and every group that used to sit at STATION level (`Tool`, `Hold`, `Camera`,
+`Animation`, `Puppet`, `Completion`) is DUPLICATED INLINE into both actions instead - a station now
+supplies only `Identity`, `Block`, `Requires`, `Flairs`, and the `Actions` array itself, nothing
+else is a per-action default. The four worker-presentation groups (`Hold`/`Camera`/`Animation`/
+`Puppet`) nest under a `Worker` group per action, and `Cycle`/`Completion` nest under a `Moments`
+group per action. The old per-action `Input` leaf (which action a held/placed item selects) is
+renamed `Select`; `Custody.Input` (which item a placement ACCEPTS once selected) is unchanged and
+stays distinct. `Recipe` is a single group per action (`Recipes[]` is gone) - one recipe per action,
+two transforms mean two actions. The bullets below describe the shape as authored today; adjust the
+lowercase `convert`/`enhance` map-key references below to the current `Id: "Convert"`/`Id: "Enhance"`
+array-entry spelling.
 
-- **Convert**: `Input: {ResourceTypeId: "Metal_Bars"}` selects this action for any held vanilla
+`Server/RpgStations/Stations/Anvil.json` is the FIRST multi-action station this pack ships
+(design 9.1): an ordered `Actions` array with `Convert` (a classic repeat-loop Recipe conversion,
+sharpens a vanilla metal bar into `MMO_Sharpened_<Metal>_Bar`) and `Enhance` (`Work.Looping: false`
+- one completed program run ends the session; a `Steps` ritual of two hammer-strike `Duration`
+beats, a settling pause, then the `Stamp` step). Both actions gate on holding a hammer (each
+action's own duplicated `Tool.Ids: ["Tool_Hammer_Crude","Tool_Hammer_Iron"]` - no
+`Tags.Family:["Hammer"]` exists on the real vanilla hammer items, so this pack uses the `Ids`
+fallback route, not the design doc's assumed `Tags` route). The block reuses the vanilla
+`Blocks/Benches/Anvil.blockymodel` (no new art, same "reuse a vanilla bench" convention as the
+Sawmill's Lumbermill) - its sibling texture path (`Blocks/Benches/Anvil_Texture.png`) follows the
+SAME `<Model>_Texture.png` convention every other bench in this asset family uses, UNVERIFIED
+against the live client (a phase-2 smoke item, same risk class as the standing-mount pose).
+
+- **Convert**: `Select: {ResourceTypeId: "Metal_Bars"}` selects this action for any held vanilla
   bar in that family (10 of the 11 vanilla metal bars share it; `Ingredient_Bar_Bronze` uses the
   distinct `Copper_Iron_Bar` family and is NOT shipped as a Sharpened Bar this leg - a deliberate,
   documented scope cut, not an oversight). `Recipe.Conversions` is EXPLICIT per metal (2 vanilla
@@ -208,15 +224,15 @@ same risk class as the standing-mount pose).
   `Reagents` route). **A conversion's `Input`/`Output` are Ingredient ARRAYS** (the native
   `CraftingRecipe` shape), so each entry here reads `"Input": [{...}], "Output": [{...}]`; a
   multi-material recipe simply lists more entries - explicit over a `FromCrafting` sweep so no phantom native recipe leaks into
-  bench UIs, per design 9.5. **SMOKE-FIX S4 (2026-07-22): `convert` now ALSO authors
+  bench UIs, per design 9.5. **SMOKE-FIX S4 (2026-07-22): `Convert` now ALSO authors
   `Custody: {MaxQuantity: 100, States: {Empty: "Default", Loaded: "BarsPlaced"}}`** (no explicit
   `Custody.Input` - acceptance derives from `Recipe.Conversions`, the sawmill's zero-extra-
   authoring fallback) - leg E shipped `convert` WITHOUT a `Custody` group at all, so pressing F
-  while holding a bar fell straight through to the station-level `Tool` gate (requires a hammer),
-  denying placement entirely regardless of what was held; the fix mirrors `enhance`'s own
+  while holding a bar fell straight through to that action's own `Tool` gate (requires a hammer),
+  denying placement entirely regardless of what was held; the fix mirrors `Enhance`'s own
   placement mechanism. `RPG_Station_Anvil.json` gained the matching `BarsPlaced` block state
   (reusing the existing generic `items.RPG_Station_Anvil.hint.loaded` key - no new lang key).
-- **Enhance**: `Input: {Function: "Weapon"}` selects this action for any held weapon-shaped item;
+- **Enhance**: `Select: {Function: "Weapon"}` selects this action for any held weapon-shaped item;
   `Custody: {MaxQuantity: 1, Input: {Function: "Weapon"}, States: {Empty: "Default", Loaded:
   "WeaponPlaced"}}` places the weapon (a state-dependent F, design 9.4's mechanism, reused for a
   single metadata-preserving item this time - see RPG Stations' `station/CLAUDE.md`'s
@@ -267,7 +283,7 @@ Two content bugs surfaced on the first real boot log after phase 2 landed, both 
   `FaceBlock: true` ALONGSIDE `Hold.Mount` (the standing entity mount, leg D) - the validator's
   `MOUNT_FACE_BLOCK_CONFLICT` warning was correct (the mount already locks facing while keeping
   the camera free; the packet-level `FaceBlock` lock on top is redundant/conflicting). Removed
-  `FaceBlock` from `Camera`, keeping only `Recipe: "look_rot"`.
+  `FaceBlock` from `Camera`, keeping only `Recipe: "LookRot"`.
 - **D6 - the ten `MMO_Sharpened_<Metal>_Bar` items failed native validation (SEVERE, anvil
   unusable)**: each authors `ResourceTypes: [{"Id": "MMO_Sharpened_Bar"}]`, but no `ResourceType`
   asset with that id existed - vanilla `ResourceType` (`HytaleAssets/Schema/ResourceType.json`,
@@ -355,7 +371,7 @@ default (`MovementLock: true`, `EffectId: "RPG_Station_Hold"`, `InterruptOnDamag
 maintainer-recommended proven-hold swap while the Entity mount stays an unverified spike, NOT a
 permanent reversal of the design-9.2 standing-worker intent (the engine-side `NetworkId` fix
 landed alongside this, so a future pack revision can pick the Entity mount back up once it gets
-its own in-game confirmation pass). `Camera.Recipe: "look_rot"` is unchanged. See the engine's own
+its own in-game confirmation pass). `Camera.Recipe: "LookRot"` is unchanged. See the engine's own
 `station/CLAUDE.md` R6 bullet for the graceful-degradation + orphan-anchor-leak + teardown
 tick-safety hardening that landed in the SAME round, plus the new press-F custody RETRIEVAL
 feature (no pack authoring needed - every `Custody.Display`-bearing action in this pack, both the
@@ -412,57 +428,132 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
   step's `Sound` leaf is deleted (its sparks stay); the single bang lands at true completion
   with the summary HUD, and the convert loop's own end cue is untouched.
 
+## Pre-release schema sweep (RPG Stations 0.1.0, this pack's content re-authored onto it)
+
+RPG Stations' authoring schema was swept before 0.1.0 shipped, while a rename or removal was still
+free. Every one of this pack's own assets moved onto the new shape in lockstep; an unrecognized key
+would only ever have produced a boot-log `WARNING: Unused key(s)` line, never a load failure, but a
+warning is not content working. What changed here:
+
+- **`Recipe` -> `Recipes[]`.** The anvil's `Convert` action authors a one-element `Recipes` array.
+  A recipe entry may now carry its OWN `Tool`, which whole-group-replaces the inherited gate for that
+  entry only; the anvil needs no override, so both actions still share the one station-level hammer
+  gate. Selection is "the first entry whose `Tool` gate passes AND whose inputs are available".
+- **`Recipes[].Yield` owns output quantity end to end** - so the pack's MMO-luck **bonus-copy roll is
+  DELETED** rather than re-pointed. `Grants.BonusOutputCopies` granted N copies of the WHOLE produced
+  stack, which silently multiplied the jar sawmill's own 1-to-4-plank yield ladder from a different
+  file; the `ExtensionAsset` payload matrix carries no `Recipes`/`Yield` key, so there is no additive
+  route to re-express it as a yield overlay and it is gone outright. The pack's luck-tier find ladder
+  (`SawmillLuckTiers.json`) is untouched, and progression still flows through
+  `PerCycleContributions`.
+- **`Tool.PowerScale` deleted** (with `StationCycleCompletedEvent.toolMultiplier()`), so this pack's
+  `mmoskilltree:skill_xp` amounts are awarded at their authored value: station XP no longer scales
+  with the held tool. A better hatchet is felt in PLANKS (the yield ladder) rather than in XP.
+- **Key renames**, applied to every asset here: `AddFactors`/`Values` -> `Factors` (one name for the
+  one weighted-`FactorRef` concept), `Grants.DropList` -> `DropLists[]`, `Presentation.Sound` ->
+  `Sounds[]`, the station/action `Presentation` group -> `Cycle` (pairing with its `Completion`
+  sibling), `Tool.MinDurabilityPercent` -> `Tool.Durability.MinStartPercent`,
+  `Puppet.Look.Model.FallbackModelId` -> `Puppet.Look.FallbackModelId`.
+- **Own-asset references are authored PascalCase now**, matching the referenced file's own name
+  (`"Station": "Sawmill"`, `"Action": "PrepFish"`, `"Pool": "AnvilWeaponPool"`, action map keys
+  `Convert`/`Enhance`, step ids `Strike1`/`Strike2`/`Settle`/`Stamp`). Matching stays
+  case-insensitive, so this is readability, not a functional requirement. `Camera.Recipe` respells to
+  `"LookRot"` for the same one-convention reason.
+- **Deleted, so do not author them:** `Picker`/`Picker.ShowLocked`, `Camera.FaceBlock` (authoring
+  `Camera.Recipe` at all IS the fixed-look opt-in now), `Camera.Mode` (replaced by
+  `Camera.Enabled`), and the four reserved `Presentation` leaves (`Animation`, `AnimationItem`,
+  `AnimationSlot`, `CameraEffect`).
+
+## Action-first schema restructure (supersedes the sweep above)
+
+A second, larger restructure landed on top of the sweep above, before this cycle's release: a
+station's top-level groups STOPPED being per-action defaults, and `Recipes[]` (the sweep's own
+list-of-recipes shape) was itself replaced. The station now supplies only four things -
+`Identity`, `Block` (`{Exclusive}`), `Requires` (the station-entry gate, ANDed with an action's own),
+and `Flairs` (the cosmetic lookup table) - and `Actions` is an ORDERED ARRAY of fully
+self-contained action objects, not a keyed map: authored order IS selection priority, and every
+group that used to live at station level or in a shared `Recipes` list now lives inside the ONE
+action that needs it, duplicated verbatim wherever two actions need the same gate (the anvil's
+`Convert`/`Enhance` share an identical `Tool` this way; see The Anvil section above). An action's
+eight concerns, read top to bottom: `Select` (which held/placed material picks this action - the
+renamed `Input` leaf; `Custody.Input`, a separate placement-acceptance matcher, is unaffected),
+`Requires`/`Tool` (when it applies), `Recipe` (a SINGLE group now, `{Conversions?, FromCrafting?,
+Yield?}` - `Recipes[]` is gone, one recipe per action, two transforms mean two actions), `Work`/
+`Custody` (how the loop runs), `Anchors`/`Steps` (where it runs), `Bonus` (a `LootRef`: what ELSE a
+cycle hands over, renamed from `Loot`) plus `ContributionScale` (a factor ladder PRE-SCALING every
+`Work.PerCycleContributions` amount before the engine forwards it, replacing the deleted
+`Tool.PowerScale`), `Worker` (grouping `Hold`/`Camera`/`Animation`/`Puppet` - "how the person looks
+doing this") and `Moments` (grouping `Cycle`/`Completion` - "what it sounds and looks like, at two
+times"). An `ExtensionAsset` now names the ACTION it extends via `Target: {Action: "<id>"}` rather
+than the whole station (`Target: {Station}` is still legal, but only for appending a brand NEW
+action to a station's ordered list); its Action-target payload keys are `Steps`, `Anchors`,
+`Bonus`, `Conversions`, `PerCycleContributions`, `ContributionScale`, `Puppet`, `Custody` - all
+directly on the extension, not nested under a `Work` group. `Roll.Grants.OutputItems` (N ADDITIVE
+items of the cycle's own primary output) is the one surviving route for a conditional yield bonus;
+the old `Grants.BonusOutputCopies` (which multiplied the WHOLE produced stack) stays deleted.
+
 ## How it fits together
 
 - **A station is one `StationAsset` JSON + its block + its interaction.**
   `Server/RpgStations/Stations/<Name>.json` (filename lowercased = the station id) is decoded
-  through RPG Stations' Pattern A codec: `Identity` (name/desc/icon), `Work` (cycle cadence,
-  `PerCycleContributions[]` - opaque `{Channel, Param, Amount}` posts RPG Stations forwards verbatim on
-  every completed cycle without resolving them itself, this pack's own `mmoskilltree:skill_xp`
-  entries being one listening mod's convention, never engine vocabulary; optional `Idle` practice
-  mode; and `Looping` - `false` ends the whole session after one program run), `Recipe` (authored
-  `Conversions`, whose `Input`/`Output` are `Ingredient` ARRAYS in the native `CraftingRecipe`
-  shape, or a native-crafting-derived `FromCrafting`), `Hold` (the movement-lock effect plus the
-  `Mount` knob family), `Tool` (the held-tool gate: `Tags`/`Gather`/`Ids` routes, plus optional
-  `PowerScale` - the multiplier every `Work.PerCycleContributions` Amount is scaled by on a real cycle -
-  and a `MinDurabilityPercent` wear gate checked at engage), `Custody`
-  (session-scoped placed-input custody - a state-dependent F places materials then works them,
-  optionally `SingleFamily`-locked and rendered as a placed prop via `Display`; see the History
-  section above and RPG Stations' `asset/CLAUDE.md`), `Camera`
-  (third-person pull, optional `FaceBlock` + a `Recipe` preset id), `Animation` (the looping work
-  emote plus an optional per-swing `Swing` cadence), `Loot` (a `LootRef`: `Lootables` references
-  and/or inline `Rolls` - the conditional proc/ladder/command-reward layer), `Presentation` (the
-  per-cycle moment: `Sound`, an ARRAY of tunable `Particles` bursts, `CameraEffect`, `Shake`, plus
-  the native `Interaction`/`Effect` composition refs), `Completion` (the same shape fired at
-  session end), `Requires` (permission + factor-condition gate), `Puppet` (the "hide the player,
-  spawn a double performing the work" presentation), `Flairs` (the achievement-unlock cosmetic
-  override seam), `Picker` (multi-output picker knobs), and `Actions` (a named map of per-action
-  whole-group overrides, each optionally `Ref`ing a standalone `ActionAsset` and carrying its own
-  `Steps` program and `Anchors`). See the RPG Stations mod's `station/CLAUDE.md` for the full
-  engine-side behavior, and the MMO's `integration/stations/CLAUDE.md` for the bridge that reads
-  the `mmoskilltree:skill_xp` Contribution channel (Param = skill id) into skill XP and supplies the
+  through RPG Stations' Pattern A codec. At STATION level: `Identity` (name/desc/icon), `Block`
+  (`{Exclusive}` - one worker per placed block), `Requires` (permission + factor-condition gate,
+  ANDed with the engaged action's own), `Flairs` (per-flair-id cosmetic overrides), and `Actions`
+  (an ORDERED ARRAY - authored order is selection priority). Everything about HOW a job runs lives
+  inside its own action entry: `Select` (which held/placed material picks it), `Tool` (the
+  held-tool gate: `Tags`/`Gather`/`Ids` routes, plus a `Durability` wear gate/drain), `Recipe`
+  (`Conversions`, whose `Input`/`Output` are `Ingredient` ARRAYS in the native `CraftingRecipe`
+  shape, or a native-crafting-derived `FromCrafting`, plus the deterministic `Yield`), `Work`
+  (cycle cadence, `PerCycleContributions[]` - opaque `{Channel, Param, Amount}` posts RPG Stations
+  forwards verbatim on every completed cycle without resolving them itself, this pack's own
+  `mmoskilltree:skill_xp` entries being one listening mod's convention, never engine vocabulary;
+  optional `Idle` practice mode; and `Looping` - `false` ends the whole session after one program
+  run), `Custody` (session-scoped placed-input custody - a state-dependent F places materials then
+  works them, optionally `SingleFamily`-locked and rendered as a placed prop via `Display`; see the
+  History section above and RPG Stations' `asset/CLAUDE.md`), `Anchors`/`Steps` (the multi-station
+  seam and the authored step program), `Bonus` (a `LootRef`: `Lootables` references and/or inline
+  `Rolls` - what ELSE a cycle hands over), `ContributionScale` (the factor ladder that PRE-SCALES
+  `Work.PerCycleContributions`), `Worker` (grouping `Hold` - the movement-lock effect plus the
+  `Mount` knob family; `Camera` - third-person pull plus a `Recipe` preset id; `Animation` - the
+  looping work emote plus an optional per-swing `Swing` cadence; `Puppet` - the "hide the player,
+  spawn a double performing the work" presentation), and `Moments` (grouping the per-cycle `Cycle`
+  presentation and the session-end `Completion` presentation). See the RPG Stations mod's
+  `station/CLAUDE.md` for the full engine-side behavior, and the MMO's
+  `integration/stations/CLAUDE.md` for the bridge that reads the `mmoskilltree:skill_xp`
+  Contribution channel (Param = skill id) into skill XP and supplies the
   `mmoskilltree:station_luck`/`skill_level`/`combat_level` Factor read channels.
   **Authoring tip:** every leaf carries `.documentation` in the codec, so the generated schema
   reference in RPG Stations' `docs-site/` and the in-game Asset Editor both describe each field,
   and the Editor offers pick lists for this mod's live station/action/lootable/roll-pool/factor ids
   plus every closed union discriminator. The content validator (`/rpgstations validate`) stays the
   backstop for hand-written JSON and is never replaced by either.
-- **The Sawmill** derives its conversions from every native `WoodPlanks`-category crafting recipe
-  (`Recipe.FromCrafting: {"Categories":["WoodPlanks"]}`) instead of hand-authoring all 11 wood
-  families - zero hardcoded conversions. Its yield is TOOL-DRIVEN rather than the plain
-  Builders-bench 1:1: the jar's own `Sawmill.json` authors a `Recipe.Yield` whose `Bonus` ladder sums
-  `hytale:tool_quality` + `hytale:tool_item_level` + `rpgstations:tool_power` and runs from
-  one plank per log on a starter hatchet up to four on the best (with fractional rungs between), so
-  this pack's value-add sits on top of a bench that already rewards tool progression - retune it
-  there, or overlay it from here through an `ExtensionAsset`. Its held-tool gate matches any hatchet
-  via the native `Gather` (Woods, functional) and `Tags` (Family: Hatchet) routes; `Tool.PowerScale`
-  multiplies every `Work.PerCycleContributions` cycle Amount by held-tool power (a better hatchet earns
-  more XP, whatever mod reads the `mmoskilltree:skill_xp` channel). Its `Loot` block: one
-  `Chance` Roll (`AddFactors: [{"Factor": "mmoskilltree:station_luck"}]`, no `CapPercent` - the
-  bonus-copy proc runs uncapped, so max luck reaches a guaranteed proc; RollEvaluator's absent-leaf
-  default of 100 IS the natural single-roll ceiling) grants a bonus output copy, and one `Ladder`
-  Roll over the same factor rolls one of three native `ItemDropList`s
-  (`MMO_Station_Sawmill_T1/T2/T3`) at the 50/100/150 floors.
+- **The Sawmill** (its single action, `Mill`) derives its conversions from every native
+  `WoodPlanks`-category crafting recipe (`Recipe.FromCrafting: {"Categories":["WoodPlanks"]}`)
+  instead of hand-authoring all 11 wood families - zero hardcoded conversions. Its yield is
+  TOOL-DRIVEN rather than the plain Builders-bench 1:1: the jar's own `Sawmill.json` authors a
+  `Recipe.Yield: {Base: 1}` with the tool-quality curve moved into `Bonus.Rolls` (a whole-part
+  `Ladder` plus a chance-gated Iron-half roll) and mirrored in `ContributionScale`, running from
+  one plank per log on a starter hatchet up to four on the best, so this pack's value-add sits on
+  top of a bench that already rewards tool progression - retune it there, or overlay it from here
+  through an `ExtensionAsset` targeting `Target: {Action: "Mill"}`. Its held-tool gate matches any
+  hatchet via the native `Gather` (Woods, functional) and `Tags` (Family: Hatchet) routes, and its
+  better-tool reward is its own `Bonus.Rolls` ladder - the engine holds no baked tool curve over
+  contributions on its own, `ContributionScale` PRE-SCALES the amount before the event fires, so
+  this pack's `mmoskilltree:skill_xp` amounts are the verbatim amount to grant and a better hatchet
+  is felt in both PLANKS and XP. Its `Bonus.Lootables` is the luck-tier find ladder (this pack's own
+  `SawmillLuckTiers`): three independent Rolls, each summing the same weighted MMO-luck factor pair
+  against its own single floor (`MMO_Station_Sawmill_T1/T2/T3` at 50/100/150), with the mid and top
+  Rolls additionally gated on the player's WOODCUTTING level (`Conditions` reading
+  `stat/MMO_Level_WOODCUTTING`, 15+ for the mid tier and 30+ for the top tier) - the tiers are
+  three separate Rolls rather than three floors on one shared Ladder specifically so the level gate
+  can attach, since `Conditions` sits on a `Roll`, not on a `Ladder` floor. A fourth Roll in the same
+  file scales bonus plank output by WOODCUTTING level alone (a `Ladder` over
+  `stat/MMO_Level_WOODCUTTING` with no luck involved, `Grants.OutputItems` 1/1/2 at levels 25/50/75,
+  highest floor wins, non-cumulative). **The MMO-luck bonus-copy roll never adds to the cycle's own
+  output** - a loot `Roll` only ever grants `Grants.OutputItems` (N additive items) or a
+  `DropLists`/`Commands`/`Effects` reward, never a multiplier on a produced stack, so this pack can
+  never silently multiply the jar's yield ladder from a second file. See the Action-first schema
+  restructure section above.
 - **In-world block.** The Sawmill block is a placeable furniture item reusing the vanilla
   `Bench_Lumbermill` model/texture/icon (no new art). Its `BlockType.Interactions.Use` names a
   `RootInteraction` whose single entry is the **object form**
@@ -504,12 +595,14 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
    `StationAsset` a `rpgstations.station.<id>.name`/`.desc` key - either author it in this pack's
    own `Server/Languages/<locale>/rpgstations.lang` (per-key-additive over RPG Stations' file), or
    reuse an RPG Stations convention default if one already fits.
-5. **Loot (optional)**: author `Loot.Rolls` (inline, this pack's convention for a station-specific
-   proc/ladder) or `Loot.Lootables` (reference a `Server/RpgStations/Lootables/<Name>.json`
-   `LootableAsset` for a reusable table). `Chance`/`Conditions`/`Ladder`/`Grants` are independently
-   composable per `Roll` - see `Sawmill.json`'s `Loot` block, or RPG Stations' `asset/Roll.java`
-   javadoc for the full schema (M3-critique-tightened: `AddFactors` is always an array, a `Ladder`
-   floor's only reward path is its own `Grants`, never a sibling `DropList` leaf).
+5. **Bonus (optional)**: on the action, author `Bonus.Rolls` (inline, this pack's convention for a
+   station-specific proc/ladder) or `Bonus.Lootables` (reference a
+   `Server/RpgStations/Lootables/<Name>.json` `LootableAsset` for a reusable table). `Chance`/
+   `Conditions`/`Ladder`/`Grants` are independently composable per `Roll` - see `Sawmill.json`'s
+   `Mill` action's `Bonus` block, or RPG Stations' `asset/Roll.java` javadoc for the full schema
+   (`Factors` is always an array, a `Ladder` floor's only reward path is its own `Grants`, never a
+   sibling `DropList` leaf, and `Grants.OutputItems` grants N additive items of the cycle's own
+   output rather than multiplying the produced stack).
 
 ## Build & deploy
 
