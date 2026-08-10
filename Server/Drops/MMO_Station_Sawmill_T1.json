@@ -1,13 +1,12 @@
 {
-  "$Comment": "The T1 find table, first floor of SawmillLuckFinds' ungated band A (score 50, which luck investment alone can reach and levels alone cannot): a 10 percent chance of 2 to 3 life essence, else nothing. Richer than the engine jar's own baseline find tables because reaching it already cost a luck investment. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern.",
+  "$Comment": "The T1 find table, first floor of SawmillLuckFinds' ungated band A (score 50, which luck investment alone can reach and levels alone cannot). It pays OFFCUTS only: one pull from the shared byproduct list and nothing else. Offcuts come from RPG Stations' own shared RPG_Station_Sawmill_Byproducts list, referenced by id through a Droplist container rather than listed here, so retuning what milling yields is one edit in that file and every tier in both mods moves together. Life essence starts at T2, so reaching that tier is a change in KIND rather than just more of the same.",
   "Container": {
-    "Type": "Choice",
-    "RollsMin": 1,
-    "RollsMax": 1,
+    "Type": "Multiple",
     "Containers": [
-      { "Type": "Empty", "Weight": 90 },
-      { "Type": "Single", "Weight": 10,
-        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 2, "QuantityMax": 3 } }
+      {
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      }
     ]
   }
 }

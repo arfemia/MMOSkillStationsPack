@@ -14,12 +14,12 @@
         ],
         "Floors": [
           {
-            "$Comment": "T1, the base find: a modest life-essence table with its own empty weight, and no celebration - the first tier is a pleasant surprise, not an event, and saving the fanfare for T2 upward is what keeps the higher tiers feeling like arrivals.",
+            "$Comment": "T1, the base find: OFFCUTS only, one pull from the shared byproduct list, with no life essence and no celebration. The first tier is a pleasant surprise rather than an event, and saving both the essence and the fanfare for T2 upward is what makes the next rung read as an arrival.",
             "Min": 50,
             "Grants": { "DropLists": ["MMO_Station_Sawmill_T1"] }
           },
           {
-            "$Comment": "T2, the everyday-worker tier: a richer table plus the first celebration. The cue is judged against this floor's own Grants, so a cycle whose table resolves to its empty entry stays silent rather than chiming over an empty hand.",
+            "$Comment": "T2, the everyday-worker tier: the same offcuts plus the first life essence, and the first celebration. The cue is judged against this floor's own Grants, so a cycle whose table pays offcuts but rolls no essence still chimes, while one that pays nothing at all stays silent rather than celebrating an empty hand.",
             "Min": 100,
             "Grants": { "DropLists": ["MMO_Station_Sawmill_T2"] },
             "Presentation": {
@@ -46,7 +46,7 @@
         ],
         "Floors": [
           {
-            "$Comment": "T3, the upper tier: the first table carrying a concentrated-essence jackpot, announced with a legendary chest sound and a gold crown. Reachable on luck alone by a woodcutter who has finished their tree, or earlier with levels behind it.",
+            "$Comment": "T3, the upper tier: offcuts double to two pulls and the essence table gains its first CONCENTRATED entry, announced with a legendary chest sound and a gold crown. Reachable on luck alone by a woodcutter who has finished their tree, or earlier with levels behind it.",
             "Min": 150,
             "Grants": { "DropLists": ["MMO_Station_Sawmill_T3"] },
             "Presentation": {
@@ -55,7 +55,7 @@
             }
           },
           {
-            "$Comment": "T4, the veteran tier: the first table paying concentrated essence in multiples, and the first floor that no single source reaches on its own - it wants two trees invested and real levels behind them. Its celebration adds a spark burst over T3's.",
+            "$Comment": "T4, the veteran tier: two offcut pulls like T3, and the first table paying concentrated essence in multiples. It is also the first floor no single source reaches on its own - it wants two trees invested and real levels behind them. Its celebration adds a spark burst over T3's.",
             "Min": 200,
             "Grants": { "DropLists": ["MMO_Station_Sawmill_T4"] },
             "Presentation": {

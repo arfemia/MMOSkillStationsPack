@@ -1,13 +1,32 @@
 {
-  "$Comment": "The T2 find table, top floor of SawmillLuckFinds' ungated band A (score 100, where a committed woodcutter with most of a skill tree claimed lands): a 20 percent chance of 3 to 5 life essence, else nothing. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern.",
+  "$Comment": "The T2 find table, top floor of band A (score 100, where a committed woodcutter with most of a skill tree claimed lands). One byproduct pull plus the first life essence: a one-in-four chance of 3 to 5, richer than the jar's own second tier because reaching this one cost a luck investment. Offcuts come from RPG Stations' own shared RPG_Station_Sawmill_Byproducts list, referenced by id through a Droplist container rather than listed here, so retuning what milling yields is one edit in that file and every tier in both mods moves together.",
   "Container": {
-    "Type": "Choice",
-    "RollsMin": 1,
-    "RollsMax": 1,
+    "Type": "Multiple",
     "Containers": [
-      { "Type": "Empty", "Weight": 80 },
-      { "Type": "Single", "Weight": 20,
-        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 3, "QuantityMax": 5 } }
+      {
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 75
+          },
+          {
+            "Type": "Single",
+            "Weight": 25,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence",
+              "QuantityMin": 3,
+              "QuantityMax": 5
+            }
+          }
+        ]
+      }
     ]
   }
 }

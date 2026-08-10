@@ -1,28 +1,44 @@
 {
-  "$Comment": "The T4 find table, middle floor of SawmillLuckFinds' band B (score 200, which no single source reaches alone - it wants two skill trees invested and real levels behind them): 35 percent for 1 to 7 life essence, plus 5 percent for 1 to 2 CONCENTRATED life essence, else nothing. Weights sum to 100 (60 empty), so a T4 roll pays something 40 percent of the time and the concentrated jackpot stays as scarce as T3's while paying up to double. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern. Every weight and quantity here is initial balance and tunable.",
+  "$Comment": "The T4 find table, middle floor of band B (score 200, which no single source reaches alone - it wants two skill trees invested and real levels behind them). Two byproduct pulls, then 35 percent for 1 to 7 essence and 5 percent for 1 to 2 CONCENTRATED, so the concentrated payout doubles while staying as scarce as T3's. Offcuts come from RPG Stations' own shared RPG_Station_Sawmill_Byproducts list, referenced by id through a Droplist container rather than listed here, so retuning what milling yields is one edit in that file and every tier in both mods moves together.",
   "Container": {
-    "Type": "Choice",
-    "RollsMin": 1,
-    "RollsMax": 1,
+    "Type": "Multiple",
     "Containers": [
-      { "Type": "Empty", "Weight": 60 },
       {
-        "Type": "Single",
-        "Weight": 35,
-        "Item": {
-          "ItemId": "Ingredient_Life_Essence",
-          "QuantityMin": 1,
-          "QuantityMax": 7
-        }
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
       },
       {
-        "Type": "Single",
-        "Weight": 5,
-        "Item": {
-          "ItemId": "Ingredient_Life_Essence_Concentrated",
-          "QuantityMin": 1,
-          "QuantityMax": 2
-        }
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 60
+          },
+          {
+            "Type": "Single",
+            "Weight": 35,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence",
+              "QuantityMin": 1,
+              "QuantityMax": 7
+            }
+          },
+          {
+            "Type": "Single",
+            "Weight": 5,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence_Concentrated",
+              "QuantityMin": 1,
+              "QuantityMax": 2
+            }
+          }
+        ]
       }
     ]
   }

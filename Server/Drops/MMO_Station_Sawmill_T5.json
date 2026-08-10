@@ -1,27 +1,44 @@
 {
-  "$Comment": "The T5 find table, top floor of SawmillLuckFinds' band B and the end of the ladder (score 250, near the ceiling a fully invested worker reaches: both skill trees, high levels in both, and the trophy hatchet in hand at once): the ONLY find table in this pack with no Empty entry, so reaching the tier at all is the gate and a T5 roll always pays. 80 percent for 6 to 8 life essence, 20 percent for 1 to 3 CONCENTRATED life essence. A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern. Every weight and quantity here is initial balance and tunable.",
+  "$Comment": "The T5 find table, top floor of band B and the end of the ladder (score 250, near the ceiling a fully invested worker reaches: both skill trees, high levels in both, and the trophy hatchet in hand at once). Three byproduct pulls, the richest offcut yield anywhere on the bench, and an essence Choice with NO empty entry - reaching the tier at all is the gate, so a T5 roll always pays: 80 percent for 6 to 8 essence, 20 percent for 1 to 3 CONCENTRATED. Offcuts come from RPG Stations' own shared RPG_Station_Sawmill_Byproducts list, referenced by id through a Droplist container rather than listed here, so retuning what milling yields is one edit in that file and every tier in both mods moves together.",
   "Container": {
-    "Type": "Choice",
-    "RollsMin": 1,
-    "RollsMax": 1,
+    "Type": "Multiple",
     "Containers": [
       {
-        "Type": "Single",
-        "Weight": 90,
-        "Item": {
-          "ItemId": "Ingredient_Life_Essence",
-          "QuantityMin": 1,
-          "QuantityMax": 8
-        }
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
       },
       {
-        "Type": "Single",
-        "Weight": 10,
-        "Item": {
-          "ItemId": "Ingredient_Life_Essence_Concentrated",
-          "QuantityMin": 1,
-          "QuantityMax": 3
-        }
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Single",
+            "Weight": 80,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence",
+              "QuantityMin": 6,
+              "QuantityMax": 8
+            }
+          },
+          {
+            "Type": "Single",
+            "Weight": 20,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence_Concentrated",
+              "QuantityMin": 1,
+              "QuantityMax": 3
+            }
+          }
+        ]
       }
     ]
   }

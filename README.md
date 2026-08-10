@@ -3,18 +3,26 @@
 A standalone Hytale content pack that ships the **interactive work stations** content: the
 **Sawmill**, a diegetic third-person work loop (press use, a looping sawing emote plays, logs turn
 into planks one cycle at a time) that grants passive Woodcutting + Crafting XP, scaled by the held
-hatchet's power, with bonus loot across five find tiers scored on your Woodcutting and Crafting
-luck AND levels together (the top three tiers additionally require Woodcutting 30) and TWO
-bonus-output ladders that both pay in extra planks: one for Woodcutting level (at 25/50/75/100/125)
-and one for luck alone, so stacking luck is worth it at a bench that already rewards levels. With
-The chase for the sawmill's drop-only trophy tool also becomes luck-driven here, improving from 1 in 3000 to roughly 1 in 762 as you invest in Woodcutting luck. With
-this pack installed the sawmill's
-drop-only trophy tool, the **Sawmiller's Hatchet**, also carries an MMO stat payload while held
-(+10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck), and a tool-gated bonus roll only
-that hatchet can open pays an extra plank on top - its own luck bonus feeding the very roll it
-unlocks. Also the **Anvil**, a two-action station that sharpens
-vanilla metal bars (Convert) or runs a hammering ritual that rolls stats onto a placed weapon
-(Enhance), granting Smithing XP.
+hatchet's power.
+
+The MMO progression layered on top comes in four parts:
+
+- **Five find tiers**, scored on your Woodcutting and Crafting luck AND levels together (the top
+  three additionally require Woodcutting 30). Every tier pays offcuts - fibre, bark, sap and
+  sticks - and life essence joins from the second tier up, with concentrated essence at the top.
+- **Two bonus-plank ladders**, one for Woodcutting level (at 25/50/75/100/125) and one for luck
+  alone, so stacking luck is worth it at a bench that already rewards levels.
+- **A luck-driven chase** for the sawmill's drop-only trophy tool, improving from 1 in 3000 to
+  roughly 1 in 762 as you invest in Woodcutting luck.
+- **A reward for wielding that trophy**, the **Sawmiller's Hatchet**: it carries an MMO stat
+  payload while held (+10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck), and opens a
+  tool-gated roll no other tool can, paying a double helping of offcuts plus the occasional
+  Woodcutting XP boost token - its own luck bonus feeding the very roll it unlocks.
+
+Also the **Anvil**, a two-action station that sharpens vanilla metal bars (Convert) or runs a
+hammering ritual that rolls stats onto a placed weapon (Enhance), granting Smithing XP. The Anvil
+and its Smithing/Cooking skills are held back from the shipped zip in this release and live under
+`unreleased/` (see `unreleased/README.md`); the table below lists them for when they return.
 
 The station **engine** (work loop, camera/hold/mount/swing machinery, session-scoped placed-input
 custody, the multi-action step engine, the conditional-lootable `Bonus` layer, the registered
@@ -42,10 +50,11 @@ own durability bonus) but grant no skill XP and roll no item stats.
 | `Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` (x10) | The Anvil's Convert-action output, one per vanilla metal bar family, and the Enhance ritual's own `Stamp.Reagents` |
 | `Server/Item/ResourceTypes/MMO_Sharpened_Bar.json` | The shared `ResourceType` family the ten Sharpened Bar items list themselves under (native pack-authorable asset, Icon-only) |
 | `Server/Item/Items/RPG_Tool_Hatchet_Sawmiller.json` | The Sawmill's drop-only trophy hatchet (SHARED id with RPG Stations' own jar item, overridden wholesale) with this pack's MMO stat payload added: +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck while held |
-| `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier bonus-loot drop tables (native ids, unrenamed - no id collision with RPG Stations' own drop tables); T5, the end of the ladder, is the only one that always pays |
+| `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier drop tables. Each composes offcuts (fibre, bark, sap, sticks - pulled from RPG Stations' own shared byproduct list, more pulls as the tier rises) with its own life essence; T1 pays offcuts only, and T5 always pays |
+| `Server/Drops/MMO_Station_Sawmill_Masterwork.json` | What the Sawmiller's Hatchet shakes loose: a double helping of offcuts plus a rare Woodcutting XP boost token |
 | `Server/RpgStations/Lootables/SawmillLuckFinds.json` | The five find tiers, as two banded Rolls over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus your levels in both at a lighter weight. T1-T2 are ungated; T3-T5 additionally require Woodcutting 30 |
 | `Server/RpgStations/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
-| `Server/RpgStations/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying an extra plank for wielding it; its chance rises with your luck, which that hatchet itself grants |
+| `Server/RpgStations/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying the Masterwork table above for wielding it; its chance rises with your luck, which that hatchet itself grants |
 | `Server/RpgStations/Lootables/SawmillTrophy.json` | Replaces RPG Stations' own flat hatchet chase with a luck-scaled one: 1 in 3000 with no luck invested, improving to roughly 1 in 762 on a finished Woodcutting tree (base and Woodcutting luck only) |
 | `Server/Emote/MMO_Emote_Saw.json` | The looping sawing work emote (native id, unrenamed) |
 | `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |

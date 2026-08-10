@@ -31,7 +31,8 @@ skill-stations-pack/
     │   ├── ResourceTypes/MMO_Sharpened_Bar.json                     the native ResourceType those bars share
     │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
-    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors); T5 is the only one with no Empty entry
+    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3) with its own life-essence Choice; T1 pays offcuts ONLY (essence starts at T2) and T5's essence Choice is the only one with no Empty entry
+    ├── Drops/MMO_Station_Sawmill_Masterwork.json         the Sawmiller's Hatchet's own reward table: 2 byproduct pulls + a 2% Woodcutting XP boost token, no essence and no planks
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
@@ -41,7 +42,7 @@ skill-stations-pack/
         └── Lootables/                                    four tables, ONE CONCERN EACH
             ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
             ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional OutputItems)
-            ├── SawmillMasterworkBonus.json               the single tool-gated Roll paying +1 plank for WIELDING the Sawmiller's Hatchet (does NOT grant it)
+            ├── SawmillMasterworkBonus.json               the single tool-gated Roll rewarding a worker for WIELDING the Sawmiller's Hatchet (does NOT grant it); pays the Masterwork drop table above
             └── SawmillTrophy.json                        an ID OVERRIDE of the RPG Stations jar table of the same name: the hatchet CHASE, 1-in-3000 rising with base+WOODCUTTING luck. NOT listed in SawmillProgression's Bonus.Lootables (the jar's Sawmill already references this id; folding by id replaces it in place). The other three ARE listed there.
 ```
 
@@ -614,7 +615,9 @@ no change; author a fraction when a tier is worth half a step more than the one 
     Hatchet's own axes (`hytale:tool_quality` 5, `hytale:tool_item_level` 50, `hytale:tool_power`
     0.55 through the Param-less form that reads the station's own gather type), no Ladder, and one
     `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1 per point of `MMO_Luck`/`MMO_Luck_WOODCUTTING`
-    and 0.05 per point of `MMO_Luck_CRAFTING`, `CapPercent` 20) paying `Grants.OutputItems` 1.
+    and 0.05 per point of `MMO_Luck_CRAFTING`, `CapPercent` 20) paying `Grants.DropLists`
+    `MMO_Station_Sawmill_Masterwork` - a double byproduct pull plus a 2 percent Woodcutting XP
+    boost token, and deliberately no planks and no essence (those are the other two tables' jobs).
     Levels are deliberately absent: it rewards what is in the worker's hands. It closes the loop
     with this pack's own trophy item override, whose +25 `MMO_Luck_WOODCUTTING` lifts this very roll
     from 5 to 7.5 percent. **It is named for what it pays, not for the trophy**, so it can never be

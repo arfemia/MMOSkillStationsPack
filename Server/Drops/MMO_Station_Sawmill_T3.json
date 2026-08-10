@@ -1,15 +1,45 @@
 {
-  "$Comment": "The T3 find table, first floor of SawmillLuckFinds' band B (score 150, behind that band's one WOODCUTTING 30 gate): 25 percent for 4 to 6 life essence, plus a genuinely rare 5 percent jackpot of one CONCENTRATED life essence - the prize the floor's legendary sound and gold-crown burst announce. Weights sum to 100 (70 empty). A find is deliberately a DIFFERENT item from the cycle's own planks - extra planks are SawmillOutputLadders' concern.",
+  "$Comment": "The T3 find table, first floor of band B (score 150, behind that band's one WOODCUTTING 30 gate). Offcuts double to two pulls, and the essence Choice gains its first CONCENTRATED entry: 30 percent for 4 to 6 ordinary essence, 5 percent for a single concentrated one. That concentrated chance is what the floor's legendary sound and gold crown announce. Offcuts come from RPG Stations' own shared RPG_Station_Sawmill_Byproducts list, referenced by id through a Droplist container rather than listed here, so retuning what milling yields is one edit in that file and every tier in both mods moves together.",
   "Container": {
-    "Type": "Choice",
-    "RollsMin": 1,
-    "RollsMax": 1,
+    "Type": "Multiple",
     "Containers": [
-      { "Type": "Empty", "Weight": 70 },
-      { "Type": "Single", "Weight": 25,
-        "Item": { "ItemId": "Ingredient_Life_Essence", "QuantityMin": 4, "QuantityMax": 6 } },
-      { "Type": "Single", "Weight": 5,
-        "Item": { "ItemId": "Ingredient_Life_Essence_Concentrated", "QuantityMin": 1, "QuantityMax": 1 } }
+      {
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 65
+          },
+          {
+            "Type": "Single",
+            "Weight": 30,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence",
+              "QuantityMin": 4,
+              "QuantityMax": 6
+            }
+          },
+          {
+            "Type": "Single",
+            "Weight": 5,
+            "Item": {
+              "ItemId": "Ingredient_Life_Essence_Concentrated",
+              "QuantityMin": 1,
+              "QuantityMax": 1
+            }
+          }
+        ]
+      }
     ]
   }
 }
