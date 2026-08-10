@@ -97,9 +97,9 @@ A station is pure JSON, no plugin code:
 4. **Bonus (optional)**: on the action, author `Bonus.Rolls` (inline) or reference
    `Bonus.Lootables` (a `Server/RpgStations/Lootables/<Name>.json` `LootableAsset`) for conditional
    bonus loot - `Chance`/`Ladder`/`Grants`, independently composable. See `Sawmill.json`'s `Mill`
-   action's `Bonus` block for the parity shape (a tool-quality ladder plus a windfall chance roll,
-   and this pack's own `mmoskilltree`-luck ladder layered on top via an `ExtensionAsset`, when the
-   MMO bridge is present).
+   action's `Bonus` block for the shape (a tool-quality ladder, plus this pack's own
+   `mmoskilltree`-luck ladders layered on top via an `ExtensionAsset` when the MMO bridge is
+   present).
 
 Add item name/description/hint keys to your pack's `Server/Languages/<locale>/items.lang`, and
 give `Identity.NameKey`/`DescKey` a key in your own pack-authored `Server/Languages/<locale>/
