@@ -7,6 +7,7 @@ hatchet's power, with bonus loot across five find tiers scored on your Woodcutti
 luck AND levels together (the top three tiers additionally require Woodcutting 30) and TWO
 bonus-output ladders that both pay in extra planks: one for Woodcutting level (at 25/50/75/100/125)
 and one for luck alone, so stacking luck is worth it at a bench that already rewards levels. With
+The chase for the sawmill's drop-only trophy tool also becomes luck-driven here, improving from 1 in 3000 to roughly 1 in 762 as you invest in Woodcutting luck. With
 this pack installed the sawmill's
 drop-only trophy tool, the **Sawmiller's Hatchet**, also carries an MMO stat payload while held
 (+10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck), and a tool-gated bonus roll only
@@ -44,7 +45,8 @@ own durability bonus) but grant no skill XP and roll no item stats.
 | `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier bonus-loot drop tables (native ids, unrenamed - no id collision with RPG Stations' own drop tables); T5, the end of the ladder, is the only one that always pays |
 | `Server/RpgStations/Lootables/SawmillLuckFinds.json` | The five find tiers, as two banded Rolls over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus your levels in both at a lighter weight. T1-T2 are ungated; T3-T5 additionally require Woodcutting 30 |
 | `Server/RpgStations/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
-| `Server/RpgStations/Lootables/SawmillTrophySeam.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying an extra plank; its chance rises with your luck, which that hatchet itself grants |
+| `Server/RpgStations/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying an extra plank for wielding it; its chance rises with your luck, which that hatchet itself grants |
+| `Server/RpgStations/Lootables/SawmillTrophy.json` | Replaces RPG Stations' own flat hatchet chase with a luck-scaled one: 1 in 3000 with no luck invested, improving to roughly 1 in 762 on a finished Woodcutting tree (base and Woodcutting luck only) |
 | `Server/Emote/MMO_Emote_Saw.json` | The looping sawing work emote (native id, unrenamed) |
 | `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The emote's display name (Hytale's own `avatarCustomization` namespace) |

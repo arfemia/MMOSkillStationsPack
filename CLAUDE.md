@@ -38,10 +38,11 @@ skill-stations-pack/
     ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     └── RpgStations/
         ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
-        └── Lootables/                                    three tables, ONE CONCERN EACH (all three referenced from SawmillProgression's Bonus.Lootables)
+        └── Lootables/                                    four tables, ONE CONCERN EACH
             ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
             ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional OutputItems)
-            └── SawmillTrophySeam.json                    the single tool-gated Roll rewarding the Sawmiller's Hatchet at the bench
+            ├── SawmillMasterworkBonus.json               the single tool-gated Roll paying +1 plank for WIELDING the Sawmiller's Hatchet (does NOT grant it)
+            └── SawmillTrophy.json                        an ID OVERRIDE of the RPG Stations jar table of the same name: the hatchet CHASE, 1-in-3000 rising with base+WOODCUTTING luck. NOT listed in SawmillProgression's Bonus.Lootables (the jar's Sawmill already references this id; folding by id replaces it in place). The other three ARE listed there.
 ```
 
 Held back under `unreleased/` (NOT in the shipped zip; `unreleased/restore.ps1` brings each group
@@ -608,14 +609,31 @@ no change; author a fraction when a tier is worth half a step more than the one 
     the ~179-point LUCK-ONLY ceiling and use deliberately different Mins from the find ladder so no
     one reads one score's threshold as another's. Its grants are FRACTIONAL on purpose (whole part
     always, fraction = chance of one more), the schema feature that makes early luck felt.
-  - **`SawmillTrophySeam`** - the only Roll gated on the TOOL rather than the player: three ANDed
-    `Conditions` on the Sawmiller's Hatchet's own axes (`hytale:tool_quality` 5,
-    `hytale:tool_item_level` 50, `hytale:tool_power` 0.55 through the Param-less form that reads the
-    station's own gather type), no Ladder, and one `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1
-    per point of `MMO_Luck`/`MMO_Luck_WOODCUTTING` and 0.05 per point of `MMO_Luck_CRAFTING`,
-    `CapPercent` 20) paying `Grants.OutputItems` 1. Levels are deliberately absent: the seam rewards
-    what is in the worker's hands. It closes the loop with this pack's own trophy override, whose
-    +25 `MMO_Luck_WOODCUTTING` lifts its own roll from 5 to 7.5 percent.
+  - **`SawmillMasterworkBonus`** - the only Roll gated on the TOOL rather than the player, and it
+    pays for WIELDING the trophy, never grants it: three ANDed `Conditions` on the Sawmiller's
+    Hatchet's own axes (`hytale:tool_quality` 5, `hytale:tool_item_level` 50, `hytale:tool_power`
+    0.55 through the Param-less form that reads the station's own gather type), no Ladder, and one
+    `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1 per point of `MMO_Luck`/`MMO_Luck_WOODCUTTING`
+    and 0.05 per point of `MMO_Luck_CRAFTING`, `CapPercent` 20) paying `Grants.OutputItems` 1.
+    Levels are deliberately absent: it rewards what is in the worker's hands. It closes the loop
+    with this pack's own trophy item override, whose +25 `MMO_Luck_WOODCUTTING` lifts this very roll
+    from 5 to 7.5 percent. **It is named for what it pays, not for the trophy**, so it can never be
+    misread as the chase - which is `SawmillTrophy`, below.
+
+  **The fourth table is an ID OVERRIDE, not a `Bonus.Lootables` entry.** `SawmillTrophy.json` carries
+  the id of a table the RPG Stations JAR already references from its own Sawmill's `Bonus`, and
+  `LootableCatalog.fold` is a `putAll`, so folding it REPLACES the jar's version in place - the pack's
+  chase runs where the jar's did, only one of the two can ever fire, and naming it in
+  `SawmillProgression` as well would reference the same table twice. The jar's copy is a flat 1-in-2500
+  with no factors (it cannot read MMO channels); this one is **1-in-3000 at its floor** (`BasePercent`
+  0.0333) rising by `Weight` 0.001 per point of `MMO_Luck` and `MMO_Luck_WOODCUTTING`, `CapPercent`
+  0.25. Deliberately NOT `MMO_Luck_CRAFTING` (every other table here folds it at half weight; this
+  one rewards the woodcutter specifically), and the trophy's own +25 never counts, since nobody holds
+  it while chasing it. Odds against ~124 cycles per session: 1 in 3000 at zero luck (~1 per 24
+  sessions), 1 in 1200 at 50, 1 in 762 at 98 (a finished WOODCUTTING tree, ~1 per 6 sessions); the cap
+  lands at 217 points, beyond the tree alone, so it only ever bounds a heavily geared or modded source.
+  **The jar splits its own Sawmill lootables one roll per file precisely so this override costs one
+  small file** rather than a verbatim copy of its loyalty ladder - keep that shape when overriding.
 
   **The units trap, written into `SawmillLuckFinds`' own `$Comment` and repeated here:**
   `hytale:stat` returns the folded native MAX and the MMO luck channels store WHOLE PERCENT POINTS,

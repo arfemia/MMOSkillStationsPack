@@ -32,9 +32,10 @@ Groups: `Anvil`, `Cooking`, `All` (default).
 - **Every `.lang` key stayed in `Server/Languages/`,** all 9 locales, including the anvil, hammer
   emote, Sharpened bar, Smithing, and Cooking keys. An unreferenced lang key is invisible at
   runtime, so holding them back would only have risked losing translation work.
-- Everything the Sawmill needs: `Drops/MMO_Station_Sawmill_T1..T3.json`, `Emote/MMO_Emote_Saw.json`,
+- Everything the Sawmill needs: `Drops/MMO_Station_Sawmill_T1..T5.json`, `Emote/MMO_Emote_Saw.json`,
   `Item/Items/RPG_Station_Sawmill.json`, `Item/RootInteractions/RPG_Station_Sawmill_Use.json`,
-  `RpgStations/Extensions/SawmillProgression.json`, `RpgStations/Lootables/SawmillLuckTiers.json`.
+  `RpgStations/Extensions/SawmillProgression.json`, and its four Lootables
+  (`SawmillLuckFinds`, `SawmillOutputLadders`, `SawmillMasterworkBonus`, `SawmillTrophy`).
   `SawmillProgression` contributes only to `WOODCUTTING` and `CRAFTING`, both built-in MMO skills,
   so it never depended on the held-back Smithing or Cooking skills.
 
