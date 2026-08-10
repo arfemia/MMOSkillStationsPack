@@ -727,6 +727,18 @@ FAILED`. In-game: craft or `/give` the Sawmill block, place it, and press use.
 
 ## Conventions (shared with the bounty pack)
 
+**A shipped `$Comment` is a TIP or an EXPLANATION for the server owner / pack author reading the
+file, never a record of how it came to look this way.** These ship inside the zip. Write what the
+asset DOES, what each number means in game, how to tune it, what to watch out for. NEVER write
+authoring history or the decision behind it: no "X was removed/retired/renamed", no "this used to
+live in Y", no "supersedes Z", no "we chose A over B", no reason-we-split-this-file narration.
+**If a sentence would make no sense to someone opening the file for the first time with no memory
+of any prior version, cut it.** Rationale for a rejected alternative belongs in the commit message
+or the mod's `CHANGELOG.md`. Forward-looking guidance the reader can act on is welcome ("override
+this file by id to re-tune the chase", "author a fraction for a half-step tier") - phrase it as
+advice, not as a decision already taken. The root repo's `CommentHygieneTest` scans this pack and
+fails the build on the catchable phrasings.
+
 Filenames PascalCase (the asset key). Item + RootInteraction JSON keys start upper-case (Hytale
 codec requirement). `StationAsset`/`Roll`/`LootableAsset` keys are PascalCase per RPG Stations'
 Pattern A codec convention. See `bounty-contracts-pack/CLAUDE.md` for the shared native-asset-pack
