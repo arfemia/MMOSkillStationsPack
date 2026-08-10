@@ -77,8 +77,7 @@
         "Animation": {
           "EmoteId": "MMO_Emote_Hammer",
           "Swing": {
-            "IntervalMs": 950,
-            "Presentation": { "Sounds": ["SFX_Metal_Hit"] }
+            "IntervalMs": 950
           }
         },
         "Puppet": {
@@ -86,11 +85,12 @@
           "Hide": { "Route": "Scale" },
           "Look": { "Source": "PlayerClone" },
           "Offset": { "X": 0.0, "Y": -0.4, "Z": 1.0 },
-          "Yaw": 0.0,
+          "Rotation": { "Yaw": 0.0 },
           "Prop": { "Source": "MirrorHeld", "Slot": "Hotbar" }
         }
       },
       "Moments": {
+        "Swing": { "Sounds": ["SFX_Metal_Hit"] },
         "Cycle": { "Sounds": ["SFX_Metal_Hit"] },
         "Completion": {
           "Sounds": ["SFX_Chest_Legendary_FirstOpen_Player"],
@@ -187,7 +187,7 @@
           "Hide": { "Route": "Scale" },
           "Look": { "Source": "PlayerClone" },
           "Offset": { "X": 0.0, "Y": -0.4, "Z": 1.0 },
-          "Yaw": 0.0,
+          "Rotation": { "Yaw": 0.0 },
           "Prop": { "Source": "MirrorHeld", "Slot": "Hotbar" }
         }
       },
