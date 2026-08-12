@@ -46,10 +46,10 @@ You need both mods installed. This pack is just the content between them.
 
 All of it is content in the zip. Nothing here needs a code change to retune:
 
-- Find tiers, their thresholds, and which level opens the deep ones: `Server/RpgStations/Lootables/SawmillLuckFinds.json`
+- Find tiers, their thresholds, and which level opens the deep ones: `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json`
 - What a find hands over: `Server/Drops/`. The offcut mix is shared with RPG Stations' own tables, so one edit changes it across the whole bench.
-- The two plank ladders, one for levels and one for luck: `Server/RpgStations/Lootables/SawmillOutputLadders.json`
-- Trophy chase odds: `Server/RpgStations/Lootables/SawmillTrophy.json`
+- The two plank ladders, one for levels and one for luck: `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json`
+- Trophy chase odds: `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json`
 - XP per cycle: `Server/RpgStations/Extensions/SawmillProgression.json`
 
 Without MMO Skill Tree the sawmill still runs and still pays its own finds, it just grants no skill XP. Without RPG Stations there are no stations at all.

@@ -6,26 +6,51 @@
       "Trigger": "Cycle",
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
-          { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Weight": 0.5 },
-          { "Factor": "hytale:stat", "Param": "MMO_Level_CRAFTING", "Weight": 0.25 }
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_CRAFTING",
+            "Weight": 0.25
+          }
         ],
         "Floors": [
           {
             "$Comment": "T1, the base find: OFFCUTS only, one pull from the shared byproduct list, with no life essence and no celebration. The first tier is a pleasant surprise rather than an event, and saving both the essence and the fanfare for T2 upward is what makes the next rung read as an arrival.",
             "Min": 50,
-            "Grants": { "DropLists": ["MMO_Station_Sawmill_T1"] }
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T1"
+              ]
+            }
           },
           {
             "$Comment": "T2, the everyday-worker tier: the same offcuts plus the first life essence, and the first celebration. The cue is judged against this floor's own Grants, so a cycle whose table pays offcuts but rolls no essence still chimes, while one that pays nothing at all stays silent rather than celebrating an empty hand.",
             "Min": 100,
-            "Grants": { "DropLists": ["MMO_Station_Sawmill_T2"] },
-            "Presentation": {
-              "Sounds": ["SFX_Coins_Land"],
-              "Particles": [ { "SystemId": "Block_Gem_Sparks" } ]
-            }
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T2"
+              ]
+            },
+            "Cue": "rare_find"
           }
         ]
       }
@@ -34,52 +59,70 @@
       "$Comment": "Band B, the deep tiers, behind the file's one level gate: WOODCUTTING 30. The level terms inside the score already pace these tiers by themselves, so a per-tier gate on each floor would be redundant - but a single hard Condition on the band is not, because the score alone cannot tell a level-3 player in borrowed luck gear from a veteran, and the deep tiers should read as earned rather than equipped. A player below level 30 never evaluates this Roll at all, so band A is their whole ladder.",
       "Trigger": "Cycle",
       "Conditions": [
-        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 30 }
+        {
+          "Factor": "hytale:stat",
+          "Param": "MMO_Level_WOODCUTTING",
+          "Min": 30
+        }
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
-          { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Weight": 0.5 },
-          { "Factor": "hytale:stat", "Param": "MMO_Level_CRAFTING", "Weight": 0.25 }
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_CRAFTING",
+            "Weight": 0.25
+          }
         ],
         "Floors": [
           {
             "$Comment": "T3, the upper tier: offcuts double to two pulls and the essence table gains its first CONCENTRATED entry, announced with a legendary chest sound and a gold crown. Reachable on luck alone by a woodcutter who has finished their tree, or earlier with levels behind it.",
             "Min": 150,
-            "Grants": { "DropLists": ["MMO_Station_Sawmill_T3"] },
-            "Presentation": {
-              "Sounds": ["SFX_Chest_Legendary_FirstOpen_Player"],
-              "Particles": [ { "SystemId": "Effect_Crown_Gold" } ]
-            }
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T3"
+              ]
+            },
+            "Cue": "cue:find_deep"
           },
           {
             "$Comment": "T4, the veteran tier: two offcut pulls like T3, and the first table paying concentrated essence in multiples. It is also the first floor no single source reaches on its own - it wants two trees invested and real levels behind them. Its celebration adds a spark burst over T3's.",
             "Min": 200,
-            "Grants": { "DropLists": ["MMO_Station_Sawmill_T4"] },
-            "Presentation": {
-              "Sounds": ["SFX_Chest_Legendary_FirstOpen_Player"],
-              "Particles": [
-                { "SystemId": "Effect_Crown_Gold" },
-                { "SystemId": "Block_Gem_Sparks" }
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T4"
               ]
-            }
+            },
+            "Cue": "cue:find_deep"
           },
           {
             "$Comment": "T5, the end of the ladder. 250 sits near the ceiling a fully invested worker can reach, so this floor asks for both skill trees, high levels in both, and the trophy hatchet in hand - the point where every source this file reads is contributing at once. Its table is the one find table in this pack with no empty entry, so a T5 roll always pays, and its celebration is the grandest available.",
             "Min": 250,
-            "Grants": { "DropLists": ["MMO_Station_Sawmill_T5"] },
-            "Presentation": {
-              "Sounds": [
-                "SFX_Chest_Legendary_FirstOpen_Player",
-                "SFX_Coins_Land"
-              ],
-              "Particles": [
-                { "SystemId": "Effect_Crown_Gold" },
-                { "SystemId": "Block_Gem_Sparks" }
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T5"
               ]
-            }
+            },
+            "Cue": "cue:find_apex"
           }
         ]
       }

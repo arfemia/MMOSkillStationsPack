@@ -4,20 +4,47 @@
     {
       "Trigger": "Cycle",
       "Conditions": [
-        { "Factor": "hytale:tool_quality", "Min": 5 },
-        { "Factor": "hytale:tool_item_level", "Min": 50 },
-        { "Factor": "hytale:tool_power", "Min": 0.55 }
+        {
+          "Factor": "hytale:tool_quality",
+          "Min": 5
+        },
+        {
+          "Factor": "hytale:tool_item_level",
+          "Min": 50
+        },
+        {
+          "Factor": "hytale:tool_power",
+          "Min": 0.55
+        }
       ],
       "Chance": {
-        "BasePercent": 5,
+        "Base": 5,
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.1 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 0.1 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.05 }
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.1
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.1
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.05
+          }
         ],
-        "CapPercent": 20
+        "Clamp": {
+          "Max": 20
+        }
       },
-      "Grants": { "DropLists": ["MMO_Station_Sawmill_Masterwork"] }
+      "Grants": {
+        "DropLists": [
+          "MMO_Station_Sawmill_Masterwork"
+        ]
+      }
     }
   ]
 }

@@ -1,5 +1,23 @@
 # CLAUDE.md - MMOSkillStationsPack
 
+**SHARED-LOOT RE-BASE (pre-release, current state - read before touching a Lootable here).** The
+loot MODEL is `ziggfreed-common`'s now, not RPG Stations' own, so this pack's tables moved and their
+shape changed:
+- **Files live at `Server/ZiggfreedCommon/Lootables/*.json`** (and the anvil's roll pool at
+  `Server/ZiggfreedCommon/RollPools/`), both registered by the shared library. Ids and fold
+  semantics are unchanged: a table folds by id and a later layer replaces the whole FILE, which is
+  still why `SawmillTrophy` can be overridden here in one small file.
+- **A `Chance` is `{Base, Factors, Clamp:{Max}}`** - `BasePercent`/`CapPercent` are gone. Every
+  `Factors` array is the shared weighted factor TERM (`{Factor, Param?, Weight?}`), unchanged in
+  shape.
+- **A floor or roll cue is `Cue`, a MOMENT ID string**, not an inline `Presentation`. The station
+  decides what a cue sounds like, so this pack's find tiers name the jar Sawmill's published
+  palette - `rare_find` for the everyday tiers, `cue:find_deep` for T3/T4, `cue:find_apex` for T5,
+  `cue:trophy` for the hatchet win - and author no presentation of their own.
+- **`Grants.OutputItems` is the `rpgstations:output_items` REWARD**:
+  `{"Rewards": [{"Kind": "rpgstations:output_items", "Params": {"Count": "1.5"}}]}`. The number, its
+  fractional meaning and the summed-once resolution are all unchanged.
+
 A standalone Hytale content pack shipping the MMO-side **interactive work station** content: the
 **Sawmill progression layer** (the sawmill StationAsset itself, incl. its Puppet/log-display
 presentation defaults, lives in the RPG Stations JAR - see the 2026-07-28 History section; this
@@ -39,16 +57,19 @@ skill-stations-pack/
     ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     └── RpgStations/
         ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
+        └── (loot tables live under Server/ZiggfreedCommon/Lootables/ - the SHARED library's store)
+
+    Server/ZiggfreedCommon/
         └── Lootables/                                    four tables, ONE CONCERN EACH
             ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
-            ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional OutputItems)
+            ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional extra output, an rpgstations:output_items reward)
             ├── SawmillMasterworkBonus.json               the single tool-gated Roll rewarding a worker for WIELDING the Sawmiller's Hatchet (does NOT grant it); pays the Masterwork drop table above
             └── SawmillTrophy.json                        an ID OVERRIDE of the RPG Stations jar table of the same name: the hatchet CHASE, 1-in-3000 rising with base+WOODCUTTING luck. NOT listed in SawmillProgression's Bonus.Lootables (the jar's Sawmill already references this id; folding by id replaces it in place). The other three ARE listed there.
 ```
 
 Held back under `unreleased/` (NOT in the shipped zip; `unreleased/restore.ps1` brings each group
 back): `Stations/Anvil.json` (the two-action Anvil, a full-file pack override) + its block/Use
-files + `RollPools/AnvilWeaponPool.json` + `Extensions/CookingProgression.json` (bare Action
+files + `ZiggfreedCommon/RollPools/AnvilWeaponPool.json` + `Extensions/CookingProgression.json` (bare Action
 target on the shared PrepFish ritual) + `MMOSkillTree/CustomSkills/Smithing.json + Cooking.json`
 (Pattern A `CustomSkillAsset`s) + `Emote/MMO_Emote_Hammer.json` + the ten sharpened-bar items'
 sources. Their lang keys stay shipped per the standing unreleased rule.
@@ -296,7 +317,7 @@ against the live client (a phase-2 smoke item, same risk class as the standing-m
   playback-preserving defaults. The
   `Stamp` step's `Reagents` (2x `MMO_Sharpened_Bar` family) come straight from the player's
   INVENTORY (never a second custody claim); its `Stats.Pool` references
-  `Server/RpgStations/RollPools/AnvilWeaponPool.json` (global weapon-adjacent stats -
+  `Server/ZiggfreedCommon/RollPools/AnvilWeaponPool.json` (global weapon-adjacent stats -
   `MMO_CritChance`/`MMO_CritMultiplier`/`MMO_Lifesteal`/`MMO_CooldownReduction`/`MMO_Luck`/
   `MMO_BonusXp`, matching the MMO's OWN `item.ItemEnhanceRoll` weapon-pool ranges exactly - note
   the REAL stat id is `MMO_CritChance`, not the design doc's placeholder `MMO_Crit_Chance`) with
@@ -494,7 +515,7 @@ warning is not content working. What changed here:
   `mmoskilltree:skill_xp` amounts are awarded at their authored value: station XP no longer scales
   with the held tool. A better hatchet is felt in PLANKS (the yield ladder) rather than in XP.
 - **Key renames**, applied to every asset here: `AddFactors`/`Values` -> `Factors` (one name for the
-  one weighted-`FactorRef` concept), `Grants.DropList` -> `DropLists[]`, `Presentation.Sound` ->
+  one weighted factor-term concept), `Grants.DropList` -> `DropLists[]`, `Presentation.Sound` ->
   `Sounds[]`, the station/action `Presentation` group -> `Cycle` (pairing with its `Completion`
   sibling), `Tool.MinDurabilityPercent` -> `Tool.Durability.MinStartPercent`,
   `Puppet.Look.Model.FallbackModelId` -> `Puppet.Look.FallbackModelId`.
@@ -614,8 +635,8 @@ no change; author a fraction when a tier is worth half a step more than the one 
     pays for WIELDING the trophy, never grants it: three ANDed `Conditions` on the Sawmiller's
     Hatchet's own axes (`hytale:tool_quality` 5, `hytale:tool_item_level` 50, `hytale:tool_power`
     0.55 through the Param-less form that reads the station's own gather type), no Ladder, and one
-    `Chance` leaf (`BasePercent` 5 plus `Weight` 0.1 per point of `MMO_Luck`/`MMO_Luck_WOODCUTTING`
-    and 0.05 per point of `MMO_Luck_CRAFTING`, `CapPercent` 20) paying `Grants.DropLists`
+    `Chance` leaf (`Base` 5 plus `Weight` 0.1 per point of `MMO_Luck`/`MMO_Luck_WOODCUTTING`
+    and 0.05 per point of `MMO_Luck_CRAFTING`, `Clamp.Max` 20) paying `Grants.DropLists`
     `MMO_Station_Sawmill_Masterwork` - a double byproduct pull plus a 2 percent Woodcutting XP
     boost token, and deliberately no planks and no essence (those are the other two tables' jobs).
     Levels are deliberately absent: it rewards what is in the worker's hands. It closes the loop
@@ -625,11 +646,11 @@ no change; author a fraction when a tier is worth half a step more than the one 
 
   **The fourth table is an ID OVERRIDE, not a `Bonus.Lootables` entry.** `SawmillTrophy.json` carries
   the id of a table the RPG Stations JAR already references from its own Sawmill's `Bonus`, and
-  `LootableCatalog.fold` is a `putAll`, so folding it REPLACES the jar's version in place - the pack's
+  the shared lootable store folds by id, so folding it REPLACES the jar's version in place - the pack's
   chase runs where the jar's did, only one of the two can ever fire, and naming it in
   `SawmillProgression` as well would reference the same table twice. The jar's copy is a flat 1-in-2500
-  with no factors (it cannot read MMO channels); this one is **1-in-3000 at its floor** (`BasePercent`
-  0.0333) rising by `Weight` 0.001 per point of `MMO_Luck` and `MMO_Luck_WOODCUTTING`, `CapPercent`
+  with no factors (it cannot read MMO channels); this one is **1-in-3000 at its floor** (`Base`
+  0.0333) rising by `Weight` 0.001 per point of `MMO_Luck` and `MMO_Luck_WOODCUTTING`, `Clamp.Max`
   0.25. Deliberately NOT `MMO_Luck_CRAFTING` (every other table here folds it at half weight; this
   one rewards the woodcutter specifically), and the trophy's own +25 never counts, since nobody holds
   it while chasing it. Odds against ~124 cycles per session: 1 in 3000 at zero luck (~1 per 24
@@ -699,9 +720,9 @@ no change; author a fraction when a tier is worth half a step more than the one 
    reuse an RPG Stations convention default if one already fits.
 5. **Bonus (optional)**: on the action, author `Bonus.Rolls` (inline, this pack's convention for a
    station-specific proc/ladder) or `Bonus.Lootables` (reference a
-   `Server/RpgStations/Lootables/<Name>.json` `LootableAsset` for a reusable table). `Chance`/
+   `Server/ZiggfreedCommon/Lootables/<Name>.json` `LootableAsset` for a reusable table). `Chance`/
    `Conditions`/`Ladder`/`Grants` are independently composable per `Roll` - see `Sawmill.json`'s
-   `Mill` action's `Bonus` block, or RPG Stations' `asset/Roll.java` javadoc for the full schema
+   `Mill` action's `Bonus` block, or the shared library's `loot/Roll.java` javadoc for the full schema
    (`Factors` is always an array, a `Ladder` floor's only reward path is its own `Grants`, never a
    sibling `DropList` leaf, and
    `Grants.OutputItems` grants additive items of the cycle's own output rather than multiplying the

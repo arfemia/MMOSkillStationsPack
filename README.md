@@ -33,7 +33,7 @@ it via pack load order, so its `StationAsset` (`Server/RpgStations/Stations/Sawm
 the one that loads. The MMO Skill Tree bridge (a soft extension the MMO registers when it detects
 RPG Stations, no hard coupling either direction) turns the work loop into skill XP, aggregated
 luck (`mmoskilltree:station_luck`), mastery bonuses, and (for the Anvil's Enhance ritual) rolled
-item stats via a registered `EnhanceStamper`. This pack is a **hard dependency** on BOTH mods,
+item stats via a registered `Stamper`. This pack is a **hard dependency** on BOTH mods,
 declared in `manifest.json`; without RPG Stations installed, stations do not exist at all, and
 without the MMO installed the Sawmill and Anvil still work (loot proc + tier ladder / the ritual's
 own durability bonus) but grant no skill XP and roll no item stats.
@@ -44,7 +44,7 @@ own durability bonus) but grant no skill XP and roll no item stats.
 |------|------------|
 | `Server/RpgStations/Stations/Sawmill.json` | The Sawmill's `StationAsset` (work loop, placed-input custody, `Bonus` proc + tier ladder, tool gate, camera, animation, presentation, a placed-log display entity) |
 | `Server/RpgStations/Stations/Anvil.json` | The Anvil's `StationAsset`: an ordered `Actions` array of two fully self-contained actions, `Convert` (sharpen a vanilla metal bar) and `Enhance` (the weapon-enhancement ritual, a `Stamp`-step program) |
-| `Server/RpgStations/RollPools/AnvilWeaponPool.json` | The weighted stat pool the Enhance ritual's `Stamp` step rolls from |
+| `Server/ZiggfreedCommon/RollPools/AnvilWeaponPool.json` | The weighted stat pool the Enhance ritual's `Stamp` step rolls from |
 | `Server/Item/Items/RPG_Station_Sawmill.json` / `RPG_Station_Anvil.json` | The two placeable station blocks (reuse the vanilla Lumbermill / Anvil bench models; the Sawmill id is SHARED with RPG Stations' jar default) |
 | `Server/Item/RootInteractions/RPG_Station_Sawmill_Use.json` / `RPG_Station_Anvil_Use.json` | Each block's interaction, `{ "Type": "rpg_station_use", "Station": "<id>" }` |
 | `Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` (x10) | The Anvil's Convert-action output, one per vanilla metal bar family, and the Enhance ritual's own `Stamp.Reagents` |
@@ -52,10 +52,10 @@ own durability bonus) but grant no skill XP and roll no item stats.
 | `Server/Item/Items/RPG_Tool_Hatchet_Sawmiller.json` | The Sawmill's drop-only trophy hatchet (SHARED id with RPG Stations' own jar item, overridden wholesale) with this pack's MMO stat payload added: +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck while held |
 | `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier drop tables. Each composes offcuts (fibre, bark, sap, sticks - pulled from RPG Stations' own shared byproduct list, more pulls as the tier rises) with its own life essence; T1 pays offcuts only, and T5 always pays |
 | `Server/Drops/MMO_Station_Sawmill_Masterwork.json` | What the Sawmiller's Hatchet shakes loose: a double helping of offcuts plus a rare Woodcutting XP boost token |
-| `Server/RpgStations/Lootables/SawmillLuckFinds.json` | The five find tiers, as two banded Rolls over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus your levels in both at a lighter weight. T1-T2 are ungated; T3-T5 additionally require Woodcutting 30 |
-| `Server/RpgStations/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
-| `Server/RpgStations/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying the Masterwork table above for wielding it; its chance rises with your luck, which that hatchet itself grants |
-| `Server/RpgStations/Lootables/SawmillTrophy.json` | Replaces RPG Stations' own flat hatchet chase with a luck-scaled one: 1 in 3000 with no luck invested, improving to roughly 1 in 762 on a finished Woodcutting tree (base and Woodcutting luck only) |
+| `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json` | The five find tiers, as two banded Rolls over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus your levels in both at a lighter weight. T1-T2 are ungated; T3-T5 additionally require Woodcutting 30 |
+| `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
+| `Server/ZiggfreedCommon/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying the Masterwork table above for wielding it; its chance rises with your luck, which that hatchet itself grants |
+| `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json` | Replaces RPG Stations' own flat hatchet chase with a luck-scaled one: 1 in 3000 with no luck invested, improving to roughly 1 in 762 on a finished Woodcutting tree (base and Woodcutting luck only) |
 | `Server/Emote/MMO_Emote_Saw.json` | The looping sawing work emote (native id, unrenamed) |
 | `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The emote's display name (Hytale's own `avatarCustomization` namespace) |
@@ -104,7 +104,7 @@ A station is pure JSON, no plugin code:
    `rpg_station_use` type is Java-registered once in the RPG Stations jar; a single interaction
    type backs any number of stations, one block + one JSON per station.
 4. **Bonus (optional)**: on the action, author `Bonus.Rolls` (inline) or reference
-   `Bonus.Lootables` (a `Server/RpgStations/Lootables/<Name>.json` `LootableAsset`) for conditional
+   `Bonus.Lootables` (a `Server/ZiggfreedCommon/Lootables/<Name>.json` `LootableAsset`) for conditional
    bonus loot - `Chance`/`Ladder`/`Grants`, independently composable. See `Sawmill.json`'s `Mill`
    action's `Bonus` block for the shape (a tool-quality ladder, plus this pack's own
    `mmoskilltree`-luck ladders layered on top via an `ExtensionAsset` when the MMO bridge is

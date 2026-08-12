@@ -1,7 +1,7 @@
 {
   "Group": "Ziggfreed",
   "Name": "MMOSkillStationsPack",
-  "Version": "0.1.0",
+  "Version": "0.2.0",
   "Description": "MMO Skill Tree - interactive work stations. Ships the Sawmill: press use to saw logs into planks in a diegetic third-person work loop, earning passive Woodcutting + Crafting XP, tool-power-scaled, with luck-tiered bonus loot. Adds the station content, the in-world block, and the sawing loop's flavor assets. The station ENGINE ships in the standalone RPG Stations mod; the MMO Skill Tree bridge turns the loop into skill XP + luck. Both are hard dependencies; stations are dormant without this pack.",
   "Authors": [
     {
@@ -13,6 +13,6 @@
   "IncludesAssetPack": true,
   "Dependencies": {
     "Ziggfreed:RpgStations": ">=0.1.0",
-    "Ziggfreed:MMOSkillTree": ">=1.6.0"
+    "Ziggfreed:MMOSkillTree": "^1.6.0"
   }
 }

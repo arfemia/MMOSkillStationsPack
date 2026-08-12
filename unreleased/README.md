@@ -24,7 +24,7 @@ Groups: `Anvil`, `Cooking`, `All` (default).
 
 | Group | Files | Note |
 | --- | --- | --- |
-| `Anvil` | `RpgStations/Stations/Anvil.json`, `RpgStations/RollPools/AnvilWeaponPool.json`, `Item/Items/RPG_Station_Anvil.json`, `Item/RootInteractions/RPG_Station_Anvil_Use.json`, `Emote/MMO_Emote_Hammer.json`, `MMOSkillTree/CustomSkills/Smithing.json`, `Item/ResourceTypes/MMO_Sharpened_Bar.json`, `Item/Items/Ingredient/MMO_Sharpened_*_Bar.json` (10) | The Sharpened bar items and their ResourceType are referenced by `Anvil.json` and nothing else, so they travel with it. Smithing exists only to receive anvil progression. |
+| `Anvil` | `RpgStations/Stations/Anvil.json`, `ZiggfreedCommon/RollPools/AnvilWeaponPool.json`, `Item/Items/RPG_Station_Anvil.json`, `Item/RootInteractions/RPG_Station_Anvil_Use.json`, `Emote/MMO_Emote_Hammer.json`, `MMOSkillTree/CustomSkills/Smithing.json`, `Item/ResourceTypes/MMO_Sharpened_Bar.json`, `Item/Items/Ingredient/MMO_Sharpened_*_Bar.json` (10) | The Sharpened bar items and their ResourceType are referenced by `Anvil.json` and nothing else, so they travel with it. Smithing exists only to receive anvil progression. |
 | `Cooking` | `RpgStations/Extensions/CookingProgression.json`, `MMOSkillTree/CustomSkills/Cooking.json` | `CookingProgression` targets the `cookingfire` station, which is held back on the RPG Stations jar side. Restoring this without restoring that leaves the extension pointing at a station that does not exist. |
 
 ## What deliberately did NOT move

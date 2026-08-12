@@ -28,7 +28,7 @@ $bars = @('Adamantite','Cobalt','Copper','Gold','Iron','Mithril','Onyxium','Pris
 $groups = @{
     Anvil   = @(
         'RpgStations/Stations/Anvil.json',
-        'RpgStations/RollPools/AnvilWeaponPool.json',
+        'ZiggfreedCommon/RollPools/AnvilWeaponPool.json',
         'Item/Items/RPG_Station_Anvil.json',
         'Item/RootInteractions/RPG_Station_Anvil_Use.json',
         'Item/ResourceTypes/MMO_Sharpened_Bar.json',

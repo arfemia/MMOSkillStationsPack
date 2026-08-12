@@ -6,14 +6,78 @@
       "Trigger": "Cycle",
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Weight": 1.0 }
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 1.0
+          }
         ],
         "Floors": [
-          { "Min": 25, "Grants": { "OutputItems": 1 } },
-          { "Min": 50, "Grants": { "OutputItems": 1 } },
-          { "Min": 75, "Grants": { "OutputItems": 2 } },
-          { "Min": 100, "Grants": { "OutputItems": 3 } },
-          { "Min": 125, "Grants": { "OutputItems": 4 } }
+          {
+            "Min": 25,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 50,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 75,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "2"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 100,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "3"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 125,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "4"
+                  }
+                }
+              ]
+            }
+          }
         ]
       }
     },
@@ -22,16 +86,88 @@
       "Trigger": "Cycle",
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 }
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          }
         ],
         "Floors": [
-          { "Min": 30, "Grants": { "OutputItems": 0.25 } },
-          { "Min": 60, "Grants": { "OutputItems": 0.5 } },
-          { "Min": 90, "Grants": { "OutputItems": 1.0 } },
-          { "Min": 120, "Grants": { "OutputItems": 1.5 } },
-          { "Min": 160, "Grants": { "OutputItems": 2.0 } }
+          {
+            "Min": 30,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.25"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 60,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.5"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 90,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1.0"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 120,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1.5"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 160,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "2.0"
+                  }
+                }
+              ]
+            }
+          }
         ]
       }
     }
