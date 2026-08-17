@@ -2,3 +2,6 @@ skill.smithing = Ferraria
 skill.smithing.desc = Forja armas e armaduras para ganhar experiência
 skill.cooking = Culinária
 skill.cooking.desc = Prepare e cozinhe comida em estações de trabalho para ganhar experiência
+
+quest.timber_rights.title = Direito de Corte
+quest.timber_rights.flavor = O guia guarda uma Serraria para quem provar que sabe operá-la. Traga madeira e tábuas e ela será sua, transformando toras em tábuas mais rápido que qualquer bancada manual.

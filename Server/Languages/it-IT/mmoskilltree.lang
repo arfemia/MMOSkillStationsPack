@@ -2,3 +2,6 @@ skill.smithing = Forgiatura
 skill.smithing.desc = Forgia armi e armature per guadagnare esperienza
 skill.cooking = Cucina
 skill.cooking.desc = Prepara e cucina il cibo presso le stazioni di lavoro per guadagnare esperienza
+
+quest.timber_rights.title = Diritto di Taglio
+quest.timber_rights.flavor = La guida tiene da parte una Segheria per chi dimostra di saperla far funzionare. Porta legname e assi e sarà tua, capace di trasformare tronchi in assi più in fretta di qualsiasi banco da lavoro manuale.

@@ -2,3 +2,6 @@ skill.smithing = Demircilik
 skill.smithing.desc = Silah ve zırh dövmek için deneyim kazanın
 skill.cooking = Pişirme
 skill.cooking.desc = İş istasyonlarında yemek hazırlayın ve pişirin, deneyim kazanmak için
+
+quest.timber_rights.title = Kereste Hakkı
+quest.timber_rights.flavor = Rehber, onu çalıştırabileceğini kanıtlayan herkes için bir Bıçkıhane saklıyor. Kütük ve kereste getir, senin olsun - kütükleri elle çalışan herhangi bir tezgahtan çok daha hızlı kerestelere dönüştürür.

@@ -2,3 +2,6 @@ skill.smithing = Schmieden
 skill.smithing.desc = Schmiede Waffen und Rüstung um Erfahrung zu gewinnen
 skill.cooking = Kochen
 skill.cooking.desc = Bereite Speisen an Arbeitsstationen zu und koche sie um Erfahrung zu gewinnen
+
+quest.timber_rights.title = Holzschlagrecht
+quest.timber_rights.flavor = Der Wegweiser hält eine Sägemühle für jeden bereit, der beweist, dass er sie zu bedienen weiß. Bring Holz und Bretter zurück, und sie gehört dir - sie verarbeitet Stämme schneller zu Bauholz als jede Werkbank von Hand.

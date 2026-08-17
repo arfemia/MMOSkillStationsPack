@@ -2,3 +2,6 @@ skill.smithing = Forge
 skill.smithing.desc = Forgez des armes et armures pour gagner de l'expérience
 skill.cooking = Cuisson
 skill.cooking.desc = Préparez et cuisinez de la nourriture aux stations de travail pour gagner de l'expérience
+
+quest.timber_rights.title = Droit de Coupe
+quest.timber_rights.flavor = Le guide garde une Scierie en réserve pour quiconque prouve qu'il sait s'en servir. Rapporte du bois et des planches et elle sera à toi, transformant les rondins en planches plus vite qu'aucun établi à la main.

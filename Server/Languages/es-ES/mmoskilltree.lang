@@ -2,3 +2,6 @@ skill.smithing = Herrería
 skill.smithing.desc = Forja armas y armaduras para ganar experiencia
 skill.cooking = Cocina
 skill.cooking.desc = Prepara y cocina comida en estaciones de trabajo para ganar experiencia
+
+quest.timber_rights.title = Derecho de Tala
+quest.timber_rights.flavor = El guía guarda un Aserradero para quien demuestre que sabe usarlo. Trae madera y tablones y será tuyo, capaz de convertir troncos en tablones más rápido que cualquier banco de trabajo manual.

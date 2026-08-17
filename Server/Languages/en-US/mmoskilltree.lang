@@ -2,3 +2,6 @@ skill.smithing = Smithing
 skill.smithing.desc = Forge weapons and armor to gain experience
 skill.cooking = Cooking
 skill.cooking.desc = Prepare and cook food at work stations to gain experience
+
+quest.timber_rights.title = Timber Rights
+quest.timber_rights.flavor = The guide keeps a Sawmill in reserve for whoever proves they can feed it. Bring back timber and planks and it is yours to run, turning logs into lumber faster than any hand bench ever could.

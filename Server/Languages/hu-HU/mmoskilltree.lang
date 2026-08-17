@@ -2,3 +2,6 @@ skill.smithing = Kovácsolás
 skill.smithing.desc = Fegyvereket és páncélokat kovácsol, hogy tapasztalatot szerezz
 skill.cooking = Főzés
 skill.cooking.desc = Készítsd el és főzd meg az ételeket munkaállomásokon, hogy tapasztalatot szerezz
+
+quest.timber_rights.title = Favágási Jog
+quest.timber_rights.flavor = A kalauz félretesz egy Fűrészmalmot annak, aki bebizonyítja, hogy tudja kezelni. Hozz fát és deszkát, és a tiéd lesz - gyorsabban alakítja rönkökből a deszkát, mint bármelyik kézi munkapad.

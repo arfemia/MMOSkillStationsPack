@@ -1,0 +1,90 @@
+{
+  "$Comment": [
+    "The reward quest that hands a new player the Sawmill: gather the makings, then deliver them",
+    "back to the guide at the hub.",
+    "",
+    "Both gathering steps sit on Order 1, so the wood and the planks can be worked in either order;",
+    "the delivery step is Order 2 and only unlocks once both are done. Its own TurnInNpcId 'giver'",
+    "locks the hand-in to Npc.ViewId (the hub), so the planks can only be delivered there. AutoClaim",
+    "pays the Sawmill and the Woodcutting XP out the instant that delivery is made, so there is never",
+    "a finished-but-uncollected quest sitting around waiting on a separate turn-in trip.",
+    "",
+    "Target 'Wood' on the chop step and '_Planks' on the craft and delivery steps both match on",
+    "CONTAINS, so every wood species counts toward the total rather than one specific type; '_Planks'",
+    "also happens to catch the half-plank cut of each species, which is a fair reading of 'planks'.",
+    "",
+    "AutoAccept is off deliberately: this is an optional beat off the main tutorial branch, offered",
+    "from the guide's quest list once gather_the_basics is finished, not forced on everybody.",
+    "",
+    "To retune the grind, edit the three Amounts; to change the payout, edit Rewards - the Sawmill",
+    "itself is the first entry, so replacing or removing it changes what this quest is actually for."
+  ],
+  "Text": {
+    "TitleKey": "quest.timber_rights.title",
+    "FlavorKey": "quest.timber_rights.flavor"
+  },
+  "Listing": {
+    "Category": "main",
+    "SortOrder": 20,
+    "Tags": [
+      "Stations"
+    ]
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true,
+    "AutoClaim": true
+  },
+  "Visibility": {
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Npc": {
+    "ViewId": "MMO_Hub"
+  },
+  "CompletionDialogue": "Mmo_Hub_Intro",
+  "Requires": {
+    "Quests": [
+      "gather_the_basics"
+    ]
+  },
+  "Objectives": {
+    "chop_wood": {
+      "Kind": "BREAK_BLOCK",
+      "Target": "Wood",
+      "Amount": 30,
+      "Order": 1
+    },
+    "craft_planks": {
+      "Kind": "CRAFT_ITEM",
+      "Target": "_Planks",
+      "Amount": 20,
+      "MatchMode": "CONTAINS",
+      "Order": 1
+    },
+    "deliver_planks": {
+      "Kind": "TURN_IN",
+      "Target": "_Planks",
+      "Amount": 10,
+      "MatchMode": "CONTAINS",
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": [
+    {
+      "Kind": "Item",
+      "Params": {
+        "Item": "RPG_Station_Sawmill",
+        "Count": "1"
+      }
+    },
+    {
+      "Kind": "Mmo_Xp",
+      "Params": {
+        "Skill": "WOODCUTTING",
+        "Amount": "500"
+      }
+    }
+  ]
+}
