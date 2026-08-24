@@ -6,8 +6,8 @@
     "Both gathering steps sit on Order 1, so the wood and the planks can be worked in either order;",
     "the delivery step is Order 2 and only unlocks once both are done. Its own TurnInNpcId 'giver'",
     "locks the hand-in to Npc.ViewId (the hub), so the planks can only be delivered there. AutoClaim",
-    "pays the Sawmill and the Woodcutting XP out the instant that delivery is made, so there is never",
-    "a finished-but-uncollected quest sitting around waiting on a separate turn-in trip.",
+    "is off, so the Sawmill and the Woodcutting XP wait in the quest log once that delivery is made,",
+    "until the player collects them themselves.",
     "",
     "Target 'Wood' on the chop step and '_Planks' on the craft and delivery steps both match on",
     "CONTAINS, so every wood species counts toward the total rather than one specific type; '_Planks'",
@@ -33,7 +33,7 @@
   "Flow": {
     "AutoAccept": false,
     "AutoTrack": true,
-    "AutoClaim": true
+    "AutoClaim": false
   },
   "Visibility": {
     "Hidden": true,
