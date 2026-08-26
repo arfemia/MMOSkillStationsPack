@@ -5,8 +5,8 @@
     "",
     "Both gathering steps sit on Order 1, so the wood and the planks can be worked in either order;",
     "the delivery step is Order 2 and only unlocks once both are done. Its own TurnInNpcId 'giver'",
-    "locks the hand-in to Npc.ViewId (the hub), so the planks can only be delivered there. AutoClaim",
-    "is off, so the Sawmill and the Woodcutting XP wait in the quest log once that delivery is made,",
+    "locks the hand-in to Npc.ViewId (the hub), so the planks can only be delivered there. The reward",
+    "sits in the Claim bucket, so the Sawmill and the Woodcutting XP wait in the quest log once that delivery is made,",
     "until the player collects them themselves.",
     "",
     "Target 'Wood' on the chop step and '_Planks' on the craft and delivery steps both match on",
@@ -28,16 +28,13 @@
     "SortOrder": 20,
     "Tags": [
       "Stations"
-    ]
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
   },
   "Flow": {
     "AutoAccept": false,
-    "AutoTrack": true,
-    "AutoClaim": false
-  },
-  "Visibility": {
-    "Hidden": true,
-    "RequirePrerequisites": true
+    "AutoTrack": true
   },
   "Npc": {
     "ViewId": "MMO_Hub"
@@ -71,20 +68,22 @@
       "TurnInNpcId": "giver"
     }
   },
-  "Rewards": [
-    {
-      "Kind": "Item",
-      "Params": {
-        "Item": "RPG_Station_Sawmill",
-        "Count": "1"
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Station_Sawmill",
+          "Count": "1"
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": "500"
+        }
       }
-    },
-    {
-      "Kind": "Mmo_Xp",
-      "Params": {
-        "Skill": "WOODCUTTING",
-        "Amount": "500"
-      }
-    }
-  ]
+    ]
+  }
 }
