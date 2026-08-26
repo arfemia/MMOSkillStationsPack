@@ -37,7 +37,7 @@
     "AutoTrack": true
   },
   "Npc": {
-    "ViewId": "MMO_Hub"
+    "ViewId": "Mmo_Hub"
   },
   "CompletionDialogue": "Mmo_Hub_Intro",
   "Requires": {

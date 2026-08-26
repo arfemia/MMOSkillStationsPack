@@ -6,6 +6,6 @@
     { "Channel": "mmoskilltree:skill_xp", "Param": "CRAFTING", "Amount": 4.0 }
   ],
   "Bonus": {
-    "Lootables": ["SawmillLuckFinds", "SawmillOutputLadders", "SawmillTrophySeam"]
+    "Lootables": ["SawmillLuckFinds", "SawmillOutputLadders", "SawmillMasterworkBonus"]
   }
 }

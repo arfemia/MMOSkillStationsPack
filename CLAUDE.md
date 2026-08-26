@@ -43,13 +43,11 @@ skill-stations-pack/
 ├── build.ps1                                             zips with forward-slash entries, copies to Mods
 └── Server/
     ├── Item/
-    │   ├── Items/RPG_Station_Sawmill.json + RPG_Station_Anvil.json  the two station blocks (vanilla Lumbermill / Anvil bench models); SHARED ids with RPG Stations' own jar defaults, override via pack load order
+    │   ├── Items/RPG_Station_Sawmill.json                          the station block (vanilla Lumbermill bench model); SHARED id with RPG Stations' own jar default, override via pack load order (the anvil's own block file is under unreleased/)
     │   ├── Items/RPG_Tool_Hatchet_Sawmiller.json                    the sawmill's drop-only trophy hatchet; SHARED id with the RPG Stations jar item, overridden wholesale to add the MMO stat payload (Utility.StatModifiers)
-    │   ├── Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json (x10)    the anvil convert outputs (shared MMO_Sharpened_Bar family, the Stamp step's Reagents route)
-    │   ├── ResourceTypes/MMO_Sharpened_Bar.json                     the native ResourceType those bars share
     │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
-    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3) with its own life-essence Choice; T1 pays offcuts ONLY (essence starts at T2) and T5's essence Choice is the only one with no Empty entry
+    ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3); T2-T5 each add a life-essence Choice and T5's is the only one with no Empty entry. T1 has no Choice and pays offcuts only (essence starts at T2): one pull plus a guaranteed 1-3 Ingredient_Fibre, which is also the concrete entry the tier needs to load at all, since a container tree built purely from Droplist references fails validation with "Container must have something to drop!" and takes the pack down with it (T2-T5 satisfy that through the Singles inside their Choice; T1's own $Comment carries the detail)
     ├── Drops/MMO_Station_Sawmill_Masterwork.json         the Sawmiller's Hatchet's own reward table: 2 byproduct pulls + a 2% Woodcutting XP boost token, no essence and no planks
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
@@ -65,15 +63,17 @@ skill-stations-pack/
         │   ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional extra output, an rpgstations:output_items reward)
         │   ├── SawmillMasterworkBonus.json               the single tool-gated Roll rewarding a worker for WIELDING the Sawmiller's Hatchet (does NOT grant it); pays the Masterwork drop table above
         │   └── SawmillTrophy.json                        an ID OVERRIDE of the RPG Stations jar table of the same name: the hatchet CHASE, 1-in-3000 rising with base+WOODCUTTING luck. NOT listed in SawmillProgression's Bonus.Lootables (the jar's Sawmill already references this id; folding by id replaces it in place). The other three ARE listed there.
-        └── Quests/MMOSkillTree/Stations/Timber_Rights.json  the Sawmill acquisition quest (id timber_rights, an unmarked folder so the id is the plain filename): gated on the jar's gather_the_basics, offered at the hub, pays out the Sawmill itself plus Woodcutting XP on delivering milled planks
+        └── Quests/MMOSkillTree/Stations/Timber_Rights.json  the Sawmill acquisition quest (id timber_rights, an unmarked folder so the id is the plain filename): gated on the jar's gather_the_basics, offered at the hub, delivering milled planks puts the Sawmill itself plus 500 Woodcutting XP in the quest log's Claim bucket, collected by the player rather than granted on hand-in
 ```
 
 Held back under `unreleased/` (NOT in the shipped zip; `unreleased/restore.ps1` brings each group
 back): `Stations/Anvil.json` (the two-action Anvil, a full-file pack override) + its block/Use
 files + `ZiggfreedCommon/RollPools/AnvilWeaponPool.json` + `Extensions/CookingProgression.json` (bare Action
 target on the shared PrepFish ritual) + `MMOSkillTree/CustomSkills/Smithing.json + Cooking.json`
-(Pattern A `CustomSkillAsset`s) + `Emote/MMO_Emote_Hammer.json` + the ten sharpened-bar items'
-sources. Their lang keys stay shipped per the standing unreleased rule.
+(Pattern A `CustomSkillAsset`s) + `Emote/MMO_Emote_Hammer.json` + the ten
+`Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` files and their shared
+`Item/ResourceTypes/MMO_Sharpened_Bar.json`. Their lang keys stay shipped per the standing
+unreleased rule.
 
 `Server/Item/**`, `Server/Drops/**`, `Server/Emote/**`, and `Server/Languages/**` load via Hytale's
 native asset pack mechanism (gated by `"IncludesAssetPack": true`), independent of RPG Stations'
@@ -83,10 +83,12 @@ OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold) - the ANVI
 The Sawmill does NOT (wave 2, scope-2 arc): the jar's own `Sawmill.json` stays live (it owns the
 presentation defaults - Worker.Puppet, Custody.Display, the 4805ms cadence - per decision 59), and
 `Server/RpgStations/Extensions/SawmillProgression.json` composes the MMO progression onto its
-`Mill` action ADDITIVELY through the `ExtensionAsset` fold, targeting it by `Target: {Action}`
-(the action-first schema restructure means an extension names the ACTION it adds to, not the whole
-station): XP declarations plus the three `Bonus.Lootables` refs, all unioned onto the jar action's
-own `Bonus` so its session-loyalty `SawmillFinds` table and tool-ladder rolls keep firing beside
+`Mill` action ADDITIVELY through the `ExtensionAsset` fold, targeting it by the scoped
+`Target: {Station: "Sawmill", Action: "Mill"}` (an extension names the ACTION it adds to rather than
+the whole station; naming the station beside it pins this progression to the jar's own sawmill,
+since an action id is not globally unique): XP declarations plus the three `Bonus.Lootables` refs,
+all unioned onto the jar action's
+own `Bonus` so its session-loyalty `SawmillFinds` table and tool-ladder roll keep firing beside
 them.
 
 **Same-id ITEM overrides this pack ships.** A `Server/Item/Items/<Id>.json` whose id matches an RPG
@@ -156,9 +158,10 @@ round (no engine code lives here):
   horizontal `Offset` (X/Z) by it (authored `+Z` = toward the block's FRONT, `+X` = its right; `Y`
   stays vertical) and folds the block yaw into `Rotation.Yaw`. A DEFAULT-orientation placement (yaw 0)
   is the identity, so no blind re-tune was needed for existing values. `enhance.Custody.Display` was
-  re-tuned for the maintainer's placed-weapon screenshot: `Offset.X: 0.3` (a facing-relative sideways
-  pull toward the anvil-top center) and `Rotation.Roll: 90.0` (the flat-vs-edge twist, paired with
-  `Rotation.Yaw: 0.0` so the hilt lies flat along the anvil). `convert.Custody.Display` (placed ingot, `Offset.Y 0.52`) and the
+  re-tuned for the maintainer's placed-weapon screenshot: `Offset.X: 0.4` (a facing-relative pull
+  back toward the anvil-top center along the weapon's own length) and `Rotation.Roll: 90.0` (the
+  flat-vs-edge twist, paired with `Rotation.Yaw: 0.0` so the hilt lies flat along the anvil).
+  `convert.Custody.Display` (placed ingot, `Offset.Y 0.52`) and the
   sawmill's placed log (`Offset.Y -0.1`) author ONLY a vertical `Offset.Y` with no horizontal shift
   and no `Rotation`, so the facing-relative change leaves them byte-identical at any orientation -
   deliberately left unchanged. All the axis/sign/fallback tuning ladder lives in `Anvil.json`'s own
@@ -258,8 +261,8 @@ not a keyed map, and every group that used to sit at STATION level (`Tool`, `Hol
 `Animation`, `Puppet`, `Completion`) is DUPLICATED INLINE into both actions instead - a station now
 supplies only `Identity`, `Block`, `Requires`, `Flairs`, and the `Actions` array itself, nothing
 else is a per-action default. The four worker-presentation groups (`Hold`/`Camera`/`Animation`/
-`Puppet`) nest under a `Worker` group per action, and `Cycle`/`Completion` nest under a `Moments`
-group per action. The old per-action `Input` leaf (which action a held/placed item selects) is
+`Puppet`) nest under a `Worker` group per action, and the moment presentations (`Cycle`,
+`Completion` and the rest) nest under a `Moments` map per action. The old per-action `Input` leaf (which action a held/placed item selects) is
 renamed `Select`; `Custody.Input` (which item a placement ACCEPTS once selected) is unchanged and
 stays distinct. `Recipe` is a single group per action (`Recipes[]` is gone) - one recipe per action,
 two transforms mean two actions. The bullets below describe the shape as authored today; adjust the
@@ -455,6 +458,11 @@ the puppet's hands go empty specifically for the stamp beat instead of still gri
 All puppet placement values are a first-pass guess, in-game-unverified as of this pass (the
 consolidated next-session checklist section A covers the confirm).
 
+**Superseded since:** the group is a per-ACTION `Worker.Puppet` now (see the action-first
+restructure section), this pack ships no `Sawmill.json` at all (the jar's own owns the sawmill
+puppet, at `Offset.Z 1.15`), the anvil's two actions each carry `Offset:{X:0.0,Y:-0.4,Z:1.0}`, and
+the yaw leaf is the nested `Rotation:{Yaw}` group rather than a scalar `Yaw`.
+
 **Display offsets were re-tuned AGAIN this same round, superseding the R5 section above**: the R5
 values (`sawmill 0.05`, `anvil convert 0.35`) were themselves first-guess placeholders from the
 PRIOR smoke round, not a final confirm. Current shipped values: `Sawmill.json`'s
@@ -549,8 +557,11 @@ Yield?}` - `Recipes[]` is gone, one recipe per action, two transforms mean two a
 cycle hands over, renamed from `Loot`) plus `ContributionScale` (a factor ladder PRE-SCALING every
 `Work.PerCycleContributions` amount before the engine forwards it, replacing the deleted
 `Tool.PowerScale`), `Worker` (grouping `Hold`/`Camera`/`Animation`/`Puppet` - "how the person looks
-doing this") and `Moments` (grouping `Cycle`/`Completion` - "what it sounds and looks like, at two
-times"). An `ExtensionAsset` now names the ACTION it extends via `Target: {Action: "<id>"}` rather
+doing this") and `Moments` (an OPEN `momentId -> Presentation` map, matched case-insensitively -
+Convert authors `Swing`/`Cycle`/`Completion` and Enhance just `Completion`; the other ids an action
+can key are `Impact`, one `step:<actionId>:<stepId>` per beat of a `Steps` program, and any `cue:`
+id a loot roll or ladder floor names). An `ExtensionAsset` now names the ACTION it extends via
+`Target: {Action: "<id>"}` rather
 than the whole station (`Target: {Station}` is still legal, but only for appending a brand NEW
 action to a station's ordered list); its Action-target payload keys are `Steps`, `Anchors`,
 `Bonus`, `Conversions`, `PerCycleContributions`, `ContributionScale`, `Puppet`, `Custody` - all
@@ -586,8 +597,11 @@ no change; author a fraction when a tier is worth half a step more than the one 
   `Work.PerCycleContributions`), `Worker` (grouping `Hold` - the movement-lock effect plus the
   `Mount` knob family; `Camera` - third-person pull plus a `Recipe` preset id; `Animation` - the
   looping work emote plus an optional per-swing `Swing` cadence; `Puppet` - the "hide the player,
-  spawn a double performing the work" presentation), and `Moments` (grouping the per-cycle `Cycle`
-  presentation and the session-end `Completion` presentation). See the RPG Stations mod's
+  spawn a double performing the work" presentation), and `Moments` (an OPEN `momentId ->
+  Presentation` map: the per-cycle `Cycle`, the session-end `Completion`, `Swing`/`Impact`, one
+  `step:<actionId>:<stepId>` per authored beat, or any `cue:` id a loot roll or ladder floor names;
+  keys are matched case-insensitively, and a presentation the engine already holds for a moment - a
+  step's own, a loot floor's - wins over the entry here). See the RPG Stations mod's
   `station/CLAUDE.md` for the full engine-side behavior, and the MMO's
   `integration/stations/CLAUDE.md` for the bridge that reads the `mmoskilltree:skill_xp`
   Contribution channel (Param = skill id) into skill XP and supplies the
@@ -598,11 +612,13 @@ no change; author a fraction when a tier is worth half a step more than the one 
   plus every closed union discriminator. The content validator (`/rpgstations validate`) stays the
   backstop for hand-written JSON and is never replaced by either.
 - **The Sawmill** (its single action, `Mill`) derives its conversions from every native
-  `WoodPlanks`-category crafting recipe (`Recipe.FromCrafting: {"Categories":["WoodPlanks"]}`)
-  instead of hand-authoring all 11 wood families - zero hardcoded conversions. Its yield is
-  TOOL-DRIVEN rather than the plain Builders-bench 1:1: the jar's own `Sawmill.json` authors a
-  `Recipe.Yield: {Base: 1}` with the tool-quality curve moved into `Bonus.Rolls` (a whole-part
-  `Ladder` plus a chance-gated Iron-half roll) and mirrored in `ContributionScale`, running from
+  plank-category crafting recipe (`Recipe.FromCrafting: {"Categories":["WoodPlanks","DecorativePlanks","OrnatePlanks"]}`,
+  33 conversions in all, and the same three cuts the sneak+F picker offers - the first entry is the
+  plain-F default) instead of hand-authoring all 11 wood families - zero hardcoded conversions. Its
+  yield is TOOL-DRIVEN rather than the plain Builders-bench 1:1: the jar's own `Sawmill.json`
+  authors a `Recipe.Yield: {Base: 1}` with the tool-quality curve moved into `Bonus.Rolls` (one
+  `Ladder`, its 22.0 floor paying a fractional 1.5 so the mid-tier half-step falls out of the same
+  ladder) and mirrored in `ContributionScale`, running from
   one plank per log on a starter hatchet up to five with the jar's own drop-only trophy hatchet
   (four on the best forgeable tool), so this pack's value-add sits on
   top of a bench that already rewards tool progression - retune it there, or overlay it from here
@@ -685,15 +701,18 @@ no change; author a fraction when a tier is worth half a step more than the one 
   reads the `Station` field and toggles that station's work loop for the pressing player. This is
   why N stations in a pack is N blocks + N RootInteractions, but still one Java interaction type -
   the mod-side pattern mirrors the bounty pack's `mmo_bounty_board_open` object-form param exactly.
-- **Native-namespace lang stays with the block/emote.** `items.lang` (block name/description/
-  interaction hint) and `avatarCustomization.lang` (the emote's display name in Hytale's own
-  client-owned namespace) ship here, per locale, because they belong to the native asset the pack
-  authors, mirroring how the bounty pack ships `items.lang`/`npcs.lang` for its blocks/NPCs. RPG
+- **Native-namespace lang stays with the block/emote.** `items.lang` (the Anvil block's
+  name/description/interaction hints, plus the name and description of each of the ten sharpened
+  bars) and `avatarCustomization.lang` (the emote's display name in Hytale's own client-owned
+  namespace) ship here, per locale, because they belong to the native assets this pack authors,
+  mirroring how the bounty pack ships `items.lang`/`npcs.lang` for its blocks/NPCs. The Sawmill
+  block's own `items.lang` keys ship in the RPG Stations jar alongside the block it names. RPG
   Stations' own `rpgstations.lang` convention keys (`station.sawmill.name`/`.desc`, all
   `ui.station.*` UI strings) stay in ITS jar - they are RPG Stations' generic per-station-id
-  convention, not native-namespace content, and apply to any pack's stations equally. This pack's
-  `Sawmill.json` reuses those shipped keys directly (`rpgstations.station.sawmill.name`/`.desc`)
-  rather than duplicating the translation.
+  convention, not native-namespace content, and apply to any pack's stations equally. The jar's own
+  `Sawmill.json` points its `Identity.NameKey`/`.DescKey` straight at those shipped keys, so this
+  pack duplicates no station translation; the Anvil is pack-exclusive, so its `station.anvil.*` keys
+  are the only ones in this pack's `rpgstations.lang`.
 
 ## Authoring a new station
 
