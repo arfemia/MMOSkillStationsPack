@@ -21,14 +21,18 @@ shape changed:
 A standalone Hytale content pack shipping the MMO-side **interactive work station** content: the
 **Sawmill progression layer** (the sawmill StationAsset itself, incl. its Puppet/log-display
 presentation defaults, lives in the RPG Stations JAR - see the 2026-07-28 History section; this
-pack extends it additively) and (phase 2 leg E) the **Anvil** - a
-TWO-action station (Convert: sharpen a vanilla metal bar; Enhance: the flagship Stamp-step ritual
-that rolls stats onto a placed weapon) - see `.claude/research/raw/
-rpg-stations-unified-design-2026-07-21.md` section 9.5 in the hyMMO monorepo. The station **engine**
-(`StationService`, `StationCatalog`, `StationHoldController`, the `StationAsset`/`LootableAsset`
-Pattern A codecs, the registered `rpg_station_use` interaction type, `StationValidator`, the
-conditional-lootable `Loot`/`Roll` layer) ships in the standalone **RPG Stations** mod
-(`additional-mods/rpg-stations`, package `com.ziggfreed.rpgstations`), not the MMO Skill Tree jar.
+pack extends it additively) plus the Sawmill's acquisition quest. The **Anvil** - a TWO-action
+station (Convert: sharpen a vanilla metal bar; Enhance: the flagship Stamp-step ritual that rolls
+stats onto a placed weapon), see `.claude/research/raw/
+rpg-stations-unified-design-2026-07-21.md` section 9.5 in the hyMMO monorepo - is authored but HELD
+BACK under `unreleased/` and is not in the shipped zip (see the Held-back section below); every
+Anvil section in this file describes that held-back content. The station **engine**
+(`StationService`, `StationCatalog`, `StationHoldController`, the `StationAsset` Pattern A codec,
+the registered `rpg_station_use` interaction type, `StationValidator`, and the per-action `Bonus`
+`LootRef` that names loot tables) ships in the standalone **RPG Stations** mod
+(`additional-mods/rpg-stations`, package `com.ziggfreed.rpgstations`), not the MMO Skill Tree jar;
+the `LootableAsset`/`Roll` loot MODEL itself is `ziggfreed-common`'s (`zc-loot`, store registered by
+its `FrameworkAssetRegistrar`).
 This pack has NO content without RPG Stations installed. The **MMO Skill Tree** mod is a SECOND
 hard dependency: it registers a soft bridge (native events + typed registries, no coupling in the
 other direction) that turns the work loop into skill XP, aggregated luck
@@ -52,7 +56,7 @@ skill-stations-pack/
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
-    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + mmoskilltree.lang (skill.smithing/.cooking) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
+    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + mmoskilltree.lang (quest.timber_rights.* for the shipped quest, plus skill.smithing/.cooking for the held-back skills) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     └── RpgStations/
         ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
         └── (loot tables live under Server/ZiggfreedCommon/Lootables/ - the SHARED library's store)
@@ -77,9 +81,14 @@ unreleased rule.
 
 `Server/Item/**`, `Server/Drops/**`, `Server/Emote/**`, and `Server/Languages/**` load via Hytale's
 native asset pack mechanism (gated by `"IncludesAssetPack": true`), independent of RPG Stations'
-own `Control` map (which only governs `Server/RpgStations/**`). `Server/RpgStations/Stations/*.json`
+asset stores, which ship no pack-control map at all - every `Server/RpgStations/**` fold is
+unconditionally additive (`replace=false`), so a pack cannot switch a jar layer off, only override
+an id. `Server/RpgStations/Stations/*.json`
 folds through RPG Stations' `StationAsset` codec (`AssetStoreRegistrar`); a station id here
-OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold) - the ANVIL ships that way.
+OVERRIDES a same-id RPG Stations jar default (`defaults < pack` fold) - no station asset ships from
+this pack today. The held-back Anvil is the only one authored as a whole `Stations/` asset, and it
+is a net-new station rather than an override (the jar ships `Sawmill.json` alone);
+`unreleased/restore.ps1` puts it back in the zip.
 The Sawmill does NOT (wave 2, scope-2 arc): the jar's own `Sawmill.json` stays live (it owns the
 presentation defaults - Worker.Puppet, Custody.Display, the 4805ms cadence - per decision 59), and
 `Server/RpgStations/Extensions/SawmillProgression.json` composes the MMO progression onto its
@@ -520,9 +529,11 @@ warning is not content working. What changed here:
   `SawmillLuckTiers.json`, since split into the three Lootables above) was untouched by the sweep,
   and progression still flows through
   `PerCycleContributions`.
-- **`Tool.PowerScale` deleted** (with `StationCycleCompletedEvent.toolMultiplier()`), so this pack's
-  `mmoskilltree:skill_xp` amounts are awarded at their authored value: station XP no longer scales
-  with the held tool. A better hatchet is felt in PLANKS (the yield ladder) rather than in XP.
+- **`Tool.PowerScale` deleted** (with `StationCycleCompletedEvent.toolMultiplier()`), so the engine
+  holds no baked tool curve over contributions of its own. Tool scaling is authored instead, as the
+  action's own `ContributionScale` ladder, which PRE-SCALES every `Work.PerCycleContributions`
+  amount before the cycle event fires - so this pack's `mmoskilltree:skill_xp` amounts are still the
+  verbatim amount to grant, and a better hatchet is felt in both PLANKS and XP.
 - **Key renames**, applied to every asset here: `AddFactors`/`Values` -> `Factors` (one name for the
   one weighted factor-term concept), `Grants.DropList` -> `DropLists[]`, `Presentation.Sound` ->
   `Sounds[]`, the station/action `Presentation` group -> `Cycle` (pairing with its `Completion`
@@ -606,8 +617,9 @@ no change; author a fraction when a tier is worth half a step more than the one 
   `integration/stations/CLAUDE.md` for the bridge that reads the `mmoskilltree:skill_xp`
   Contribution channel (Param = skill id) into skill XP and supplies the
   `mmoskilltree:station_luck`/`skill_level`/`combat_level` Factor read channels.
-  **Authoring tip:** every leaf carries `.documentation` in the codec, so the generated schema
-  reference in RPG Stations' `docs-site/` and the in-game Asset Editor both describe each field,
+  **Authoring tip:** every leaf carries `.documentation` in the codec, so the codec-generated
+  `SCHEMA.md` at RPG Stations' repo root (beside its `docs/` guides) and the in-game Asset Editor
+  both describe each field,
   and the Editor offers pick lists for this mod's live station/action/lootable/roll-pool/factor ids
   plus every closed union discriminator. The content validator (`/rpgstations validate`) stays the
   backstop for hand-written JSON and is never replaced by either.
@@ -766,8 +778,9 @@ script just builds the zip.
 
 Start the server with the RPG Stations mod jar, the MMO Skill Tree mod jar, and this zip all in
 `Mods/`. Confirm in the log: a Station asset layer fold line naming `sawmill` (RPG Stations),
-plus the bridge's one-line "RPG Stations detected" INFO log (MMO), plus no `Asset validation
-FAILED`. In-game: craft or `/give` the Sawmill block, place it, and press use.
+plus the bridge's one-line `[RpgStationsBridge] RpgStations detected - bridge installed` INFO log
+(MMO), plus no `Asset validation FAILED`. In-game: craft or `/give` the Sawmill block, place it,
+and press use.
 
 ## Conventions (shared with the bounty pack)
 
@@ -784,6 +797,6 @@ advice, not as a decision already taken. The root repo's `CommentHygieneTest` sc
 fails the build on the catchable phrasings.
 
 Filenames PascalCase (the asset key). Item + RootInteraction JSON keys start upper-case (Hytale
-codec requirement). `StationAsset`/`Roll`/`LootableAsset` keys are PascalCase per RPG Stations'
-Pattern A codec convention. See `bounty-contracts-pack/CLAUDE.md` for the shared native-asset-pack
-conventions this pack follows.
+codec requirement). `StationAsset` keys are PascalCase per RPG Stations' Pattern A codec
+convention, and `Roll`/`LootableAsset` keys per `ziggfreed-common`'s own (`zc-loot`). See
+`bounty-contracts-pack/CLAUDE.md` for the shared native-asset-pack conventions this pack follows.
