@@ -1,9 +1,9 @@
 # MMO Skill Stations Pack
 
 A standalone Hytale content pack that ships the **interactive work stations** content: the
-**Sawmill**, a diegetic third-person work loop (press use, a looping sawing emote plays, logs turn
-into planks one cycle at a time) that grants passive Woodcutting + Crafting XP, scaled by the held
-hatchet's power.
+**Sawmill**, a diegetic third-person work loop (press use and your character visibly saws, logs
+turning into planks one cycle at a time) that grants passive Woodcutting + Crafting XP, scaled by
+the held hatchet's power.
 
 The MMO progression layered on top comes in four parts:
 
@@ -27,10 +27,12 @@ and its Smithing/Cooking skills are held back from the shipped zip in this relea
 The station **engine** (work loop, camera/hold/mount/swing machinery, session-scoped placed-input
 custody, the multi-action step engine, the conditional-lootable `Bonus` layer, the registered
 `rpg_station_use` interaction type) ships in the standalone
-[RPG Stations](https://github.com/arfemia/hytale-rpg-stations) mod. This pack's Sawmill block
-carries the SAME id (`RPG_Station_Sawmill`) as RPG Stations' own jar-default sawmill and overrides
-it via pack load order, so its `StationAsset` (`Server/RpgStations/Stations/Sawmill.json`) becomes
-the one that loads. The MMO Skill Tree bridge (a soft extension the MMO registers when it detects
+[RPG Stations](https://github.com/arfemia/hytale-rpg-stations) mod. This pack's Sawmill BLOCK
+carries the SAME id (`RPG_Station_Sawmill`) as RPG Stations' own jar-default block and overrides
+it via pack load order (deliberately dropping the jar copy's crafting recipe - the bench is earned
+through this pack's Timber Rights quest instead); the sawmill `StationAsset` itself stays the
+jar's own, and this pack composes progression onto its `Mill` action additively through
+`Server/RpgStations/Extensions/SawmillProgression.json`. The MMO Skill Tree bridge (a soft extension the MMO registers when it detects
 RPG Stations, no hard coupling either direction) turns the work loop into skill XP, aggregated
 luck (`mmoskilltree:station_luck`), mastery bonuses, and (for the Anvil's Enhance ritual) rolled
 item stats via a registered `Stamper`. This pack is a **hard dependency** on BOTH mods,
@@ -42,13 +44,14 @@ own durability bonus) but grant no skill XP and roll no item stats.
 
 | Path | What it is |
 |------|------------|
-| `Server/RpgStations/Stations/Sawmill.json` | The Sawmill's `StationAsset` (work loop, placed-input custody, `Bonus` proc + tier ladder, tool gate, camera, animation, presentation, a placed-log display entity) |
-| `Server/RpgStations/Stations/Anvil.json` | The Anvil's `StationAsset`: an ordered `Actions` array of two fully self-contained actions, `Convert` (sharpen a vanilla metal bar) and `Enhance` (the weapon-enhancement ritual, a `Stamp`-step program) |
-| `Server/ZiggfreedCommon/RollPools/AnvilWeaponPool.json` | The weighted stat pool the Enhance ritual's `Stamp` step rolls from |
-| `Server/Item/Items/RPG_Station_Sawmill.json` / `RPG_Station_Anvil.json` | The two placeable station blocks (reuse the vanilla Lumbermill / Anvil bench models; the Sawmill id is SHARED with RPG Stations' jar default) |
-| `Server/Item/RootInteractions/RPG_Station_Sawmill_Use.json` / `RPG_Station_Anvil_Use.json` | Each block's interaction, `{ "Type": "rpg_station_use", "Station": "<id>" }` |
-| `Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` (x10) | The Anvil's Convert-action output, one per vanilla metal bar family, and the Enhance ritual's own `Stamp.Reagents` |
-| `Server/Item/ResourceTypes/MMO_Sharpened_Bar.json` | The shared `ResourceType` family the ten Sharpened Bar items list themselves under (native pack-authorable asset, Icon-only) |
+| `Server/RpgStations/Extensions/SawmillProgression.json` | The Sawmill progression layer: an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action - per-cycle Woodcutting/Crafting XP on the `mmoskilltree:skill_xp` channel plus the three add-on `Bonus.Lootables` references below |
+| `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Timber_Rights.json` | The Sawmill acquisition quest: offered at the hub once the starter gathering quest is done; deliver milled planks and collect the Sawmill itself plus 500 Woodcutting XP from the quest log |
+| `Server/Item/Items/RPG_Station_Sawmill.json` | The placeable Sawmill block (reuses the vanilla Lumbermill bench model; SHARED id with RPG Stations' jar default, overridden wholesale - this copy authors no crafting recipe, so acquisition goes through the quest above) |
+| `unreleased/Server/RpgStations/Stations/Anvil.json` | HELD BACK: the Anvil's `StationAsset`, an ordered `Actions` array of two fully self-contained actions, `Convert` (sharpen a vanilla metal bar) and `Enhance` (the weapon-enhancement ritual, a `Stamp`-step program) |
+| `unreleased/Server/ZiggfreedCommon/RollPools/AnvilWeaponPool.json` | HELD BACK: the weighted stat pool the Enhance ritual's `Stamp` step rolls from |
+| `unreleased/Server/Item/Items/RPG_Station_Anvil.json` + `RootInteractions/RPG_Station_Anvil_Use.json` | HELD BACK: the Anvil block and its `{ "Type": "rpg_station_use", "Station": "anvil" }` interaction |
+| `unreleased/Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` (x10) | HELD BACK: the Anvil's Convert-action output, one per vanilla metal bar family, and the Enhance ritual's own `Stamp.Reagents` |
+| `unreleased/Server/Item/ResourceTypes/MMO_Sharpened_Bar.json` | HELD BACK: the shared `ResourceType` family the ten Sharpened Bar items list themselves under (native pack-authorable asset, Icon-only) |
 | `Server/Item/Items/RPG_Tool_Hatchet_Sawmiller.json` | The Sawmill's drop-only trophy hatchet (SHARED id with RPG Stations' own jar item, overridden wholesale) with this pack's MMO stat payload added: +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck while held |
 | `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier drop tables. Each composes offcuts (fibre, bark, sap, sticks - pulled from RPG Stations' own shared byproduct list, more pulls as the tier rises) with its own life essence; T1 pays offcuts only, and T5 always pays |
 | `Server/Drops/MMO_Station_Sawmill_Masterwork.json` | What the Sawmiller's Hatchet shakes loose: a double helping of offcuts plus a rare Woodcutting XP boost token |
@@ -56,15 +59,16 @@ own durability bonus) but grant no skill XP and roll no item stats.
 | `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
 | `Server/ZiggfreedCommon/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying the Masterwork table above for wielding it; its chance rises with your luck, which that hatchet itself grants |
 | `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json` | Replaces RPG Stations' own flat hatchet chase with a luck-scaled one: 1 in 3000 with no luck invested, improving to roughly 1 in 762 on a finished Woodcutting tree (base and Woodcutting luck only) |
-| `Server/Emote/MMO_Emote_Saw.json` | The looping sawing work emote (native id, unrenamed) |
-| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` |
-| `Server/Languages/<locale>/avatarCustomization.lang` | The emote's display name (Hytale's own `avatarCustomization` namespace) |
+| `unreleased/Server/Emote/MMO_Emote_Hammer.json` | HELD BACK: the Anvil ritual's hammering emote |
+| `unreleased/Server/RpgStations/Extensions/CookingProgression.json` + `MMOSkillTree/CustomSkills/Cooking.json` | HELD BACK: the Cooking progression layer (targets a station held back on the RPG Stations jar side, so the two repos restore together) |
+| `unreleased/Server/MMOSkillTree/CustomSkills/Smithing.json` | HELD BACK: the SMITHING skill itself (a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures) |
+| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` (held-back content's keys deliberately stay shipped) |
+| `Server/Languages/<locale>/avatarCustomization.lang` | The hammer emote's display name (Hytale's own `avatarCustomization` namespace) |
 | `Server/Languages/<locale>/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
-| `Server/MMOSkillTree/CustomSkills/Smithing.json` | The SMITHING skill itself (round-7 D-3 migration: a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures - reproducing the former MMO jar built-in verbatim; existing player SMITHING XP keeps working) |
-| `Server/Languages/<locale>/mmoskilltree.lang` | `skill.smithing` (the roster display name, moved verbatim from the MMO jar's own translations) + `skill.smithing.desc` (en-US only so far; the other 8 locales are filled in a follow-up lang leg) |
+| `Server/Languages/<locale>/mmoskilltree.lang` | `quest.timber_rights.*` for the shipped quest, plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
 
-All 9 shipped locales are key-complete for the Anvil-era content (the sharpened-bar items, the
-split empty/loaded hints, and the `rpgstations.lang` overlay) and carry `skill.smithing`. The
+All 9 shipped locales are key-complete, held-back content included (an unreferenced lang key is
+invisible at runtime, so the keys stay shipped rather than risking translation work). The
 Sawmill's display name/desc (`Identity.NameKey`/`DescKey`) point at
 `rpgstations.station.sawmill.name`/`.desc`, the keys RPG Stations itself ships (`rpgstations.lang`)
 - this pack reuses them rather than duplicating the translation.
@@ -81,7 +85,8 @@ the bundled `.lang` files need). The script is cross-platform (`pwsh ./build.ps1
 macOS/Linux). To have it also copy the zip into your Hytale `Mods/` folder, set `HYTALE_MODS_DIR`
 once to that folder (or pass `-ModsDir <path>`); without it the script just builds the zip. Start a
 server with the RPG Stations mod jar, the MMO Skill Tree mod jar, and this zip all in `Mods/`, then
-craft and place a Sawmill block in the world and press use.
+earn the Sawmill through the Timber Rights quest (or `/give` it as an admin), place it, and press
+use.
 
 ## Author your own station
 
@@ -92,8 +97,9 @@ A station is pure JSON, no plugin code:
    station supplies only `Identity`/`Block`/`Requires`/`Flairs` plus an ORDERED `Actions` array -
    every self-contained action carries its own `Select`/`Tool`/`Recipe`/`Work`/`Custody`/`Bonus`/
    `ContributionScale`/`Worker` (grouping `Hold`/`Camera`/`Animation`/`Puppet`)/`Moments` (grouping
-   `Cycle`/`Completion`), nothing is inherited from the station or from another action. See
-   `Sawmill.json` for a single-action station (its one action, `Mill`), or `Anvil.json` for a
+   `Cycle`/`Completion`), nothing is inherited from the station or from another action. See the
+   RPG Stations jar's own `Sawmill.json` for a single-action station (its one action, `Mill`), or
+   this repo's held-back `unreleased/Server/RpgStations/Stations/Anvil.json` for a
    multi-action station whose two actions, `Convert` and `Enhance`, each duplicate the same `Tool`/
    `Worker` groups inline rather than sharing a station-level default - see RPG Stations' own
    `CLAUDE.md` for the full authoring reference.
@@ -105,10 +111,9 @@ A station is pure JSON, no plugin code:
    type backs any number of stations, one block + one JSON per station.
 4. **Bonus (optional)**: on the action, author `Bonus.Rolls` (inline) or reference
    `Bonus.Lootables` (a `Server/ZiggfreedCommon/Lootables/<Name>.json` `LootableAsset`) for conditional
-   bonus loot - `Chance`/`Ladder`/`Grants`, independently composable. See `Sawmill.json`'s `Mill`
-   action's `Bonus` block for the shape (a tool-quality ladder, plus this pack's own
-   `mmoskilltree`-luck ladders layered on top via an `ExtensionAsset` when the MMO bridge is
-   present).
+   bonus loot - `Chance`/`Ladder`/`Grants`, independently composable. See the RPG Stations jar's
+   own `Sawmill.json` `Mill` action's `Bonus` block for the shape (a tool-quality ladder, plus this
+   pack's own `mmoskilltree`-luck ladders layered on top via `Extensions/SawmillProgression.json`).
 
 Add item name/description/hint keys to your pack's `Server/Languages/<locale>/items.lang`, and
 give `Identity.NameKey`/`DescKey` a key in your own pack-authored `Server/Languages/<locale>/
@@ -118,4 +123,4 @@ Stations' `rpgstations.station.<id>.name`/`.desc` convention keys directly, as t
 
 ## Requires
 
-RPG Stations 1.0.0 or newer, and MMO Skill Tree 1.6.0 or newer (for the skill-XP + luck bridge).
+RPG Stations 0.1.0 or newer, and MMO Skill Tree 1.6.0 or newer (for the skill-XP + luck bridge).

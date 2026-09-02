@@ -42,8 +42,9 @@ Groups: `Anvil`, `Cooking`, `All` (default).
 ## Companion change in the RPG Stations jar
 
 `additional-mods/rpg-stations/unreleased/` holds the CookingFire, CuttingBoard, and MountSpike
-stations for the same release. Restore the two together when the anvil and cooking come back: the
-jar's `CookingFire` is what this pack's `CookingProgression` targets.
+stations plus the buildable CookingPit family for the same release. Restore the two together when
+the anvil and cooking come back: the jar's `CookingFire` is what this pack's `CookingProgression`
+targets.
 
 ## Version note
 

@@ -22,12 +22,13 @@ You need both mods installed. This pack is just the content between them.
 - Luck pays out in planks too, not just rare finds. Even a little is worth stacking: you start seeing an extra plank every few cycles, with no far-off threshold to wait on. It stacks with the plank ladder that pays for Woodcutting level at 25, 50, 75, 100 and 125.
 - A real chase for the Sawmiller's Hatchet. Around 1 in 3000 cycles with nothing invested, down to about 1 in 762 once your Woodcutting tree is finished. Luck is what shortens it.
 - Once you have that hatchet: +10 maximum stamina, +25% Woodcutting XP and +25 Woodcutting luck while held. It also opens a bonus roll nothing else in the game can reach, paying double offcuts and the occasional Woodcutting XP boost. Its own luck bonus feeds the roll it unlocks.
+- The Timber Rights quest, offered at the hub once the starter gathering quest is done. Deliver milled planks and the Sawmill itself is yours, with 500 Woodcutting XP beside it.
 - Translated into 9 languages. Anything a translation misses falls back to English.
 
 ## How it works
 
 1. Install RPG Stations, MMO Skill Tree, and this pack.
-2. Craft the Sawmill at a tier 2 Workbench (a crude hatchet, any log, four planks), or have an admin give you one. Place it.
+2. Earn the Sawmill through the Timber Rights quest at the hub - deliver a load of milled planks to the guide and collect the bench itself, plus Woodcutting XP, from your quest log - or have an admin give you one. Place it. (With this pack installed the bench is quest-earned, not crafted: the pack's copy of the block removes the standalone crafting recipe on purpose.)
 3. Hold logs, press F to load up to 100 into the bench.
 4. Press F again holding a hatchet. Your character mills the pile one cycle at a time while you watch.
 5. Walk off, take a hit, or run the pile dry and the session ends with a summary. Anything still in the bench comes back to you.
