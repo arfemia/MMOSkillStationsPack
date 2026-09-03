@@ -4,4 +4,104 @@ skill.cooking = Cooking
 skill.cooking.desc = Prepare and cook food at work stations to gain experience
 
 quest.timber_rights.title = Timber Rights
-quest.timber_rights.flavor = The guide keeps a Sawmill in reserve for whoever proves they can feed it. Bring back timber and planks and it is yours to run, turning logs into lumber faster than any hand bench ever could.
+quest.timber_rights.flavor = I've a Sawmill going spare and I don't hand them to just anybody. Chop timber, cut planks on a hand bench, bring me a share. Then the mill's yours.
+quest.first_cut.title = First Cut
+quest.first_cut.flavor = You've a mill now. Feed it logs, work it till you've a stack of planks, and bring some back so I can see how you cut.
+quest.reading_the_grain.title = Reading the Grain
+quest.reading_the_grain.flavor = A log's got more than one cut in it and the mill knows every one. Crouch as you use the block and it'll ask which. Mill me plain planks, then the decorative, then the ornate.
+quest.second_bench.title = A Second Bench
+quest.second_bench.flavor = One mill's a start. Put a proper load of lumber through yours and bring me the sap it sweats out, and I'll find you another.
+quest.deep_in_the_wood.title = Deep in the Wood
+quest.deep_in_the_wood.flavor = Old wood holds more than planks. Work enough of it through the mill and something comes out that isn't bark and isn't sap. Bring me a load of that.
+quest.a_finer_edge.title = A Finer Edge
+quest.a_finer_edge.flavor = You've done the short jobs. Now do a long one. Stand at that mill till your arms know the work, and get your woodcutting up to where I'd call you a sawyer.
+quest.standing_order.title = Standing Order
+quest.standing_order.flavor = Same order every day: planks and bark, delivered here. Fill it and I'll pay you out of the yard. Miss a day, and it'll still be waiting tomorrow.
+
+objective.text.stations.mill_lumber = Mill {0} pieces of lumber
+
+achievement.category.stations = Stations
+flair.sawmiller.name = Sawmiller's Crown
+
+achievement.sawmill_first_log.title = First Log
+achievement.sawmill_first_log.desc = Run your first log through a Sawmill.
+achievement.sawmill_shift_t1.title = Sawdust
+achievement.sawmill_shift_t2.title = Steady Hand
+achievement.sawmill_shift_t3.title = Mill Hand
+achievement.sawmill_cycles.desc = Work {0} cycles at the Sawmill.
+achievement.sawmill_lumber_t1.title = Green Lumber
+achievement.sawmill_lumber_t2.title = Stacked High
+achievement.sawmill_lumber_t3.title = The Whole Yard
+achievement.sawmill_lumber.desc = Mill {0} pieces of lumber at the Sawmill.
+achievement.sawmill_essence_t1.title = Something in the Grain
+achievement.sawmill_essence_t2.title = Sap and Spirit
+achievement.sawmill_essence_t3.title = Heartwood
+achievement.sawmill_essence.desc = Shake {0} life essence loose at the Sawmill.
+achievement.sawmill_distilled.title = Distilled
+achievement.sawmill_distilled.desc = Fill a pouch with concentrated life essence from the Sawmill.
+achievement.sawmill_nothing_wasted.title = Nothing Wasted
+achievement.sawmill_nothing_wasted.desc = Keep everything the Sawmill throws off: the bark, the sap, the fibre, the sticks. A full load of each.
+achievement.sawmill_every_grain.title = Every Grain
+achievement.sawmill_every_grain.desc = Put a load of every species of log through the Sawmill.
+achievement.sawmill_lucky_shavings.title = Lucky Shavings
+achievement.sawmill_lucky_shavings.desc = Find a boost token in the shavings under the Sawmill.
+achievement.sawmiller.title = Sawmiller
+achievement.sawmiller.desc = Pull the Sawmiller's Hatchet out of the mill.
+achievement.sawmiller_server_first.title = First Sawmiller
+achievement.sawmiller_server_first.desc = Be the first on the server to pull the Sawmiller's Hatchet out of a mill.
+achievement.sawmill_standing_account.title = Standing Account
+achievement.sawmill_standing_account.desc = Keep filling Sawyer Marn's standing order, day after day.
+achievement.sawmill_master_sawyer.title = Master Sawyer
+achievement.sawmill_master_sawyer.desc = See Sawyer Marn's last job through.
+
+achievement.announce.sawmill_shift_t3.title = Mill Hand!
+achievement.announce.sawmill_lumber_t3.title = The Whole Yard!
+achievement.announce.sawmill_essence_t3.title = Heartwood!
+achievement.announce.sawmiller.title = Sawmiller!
+achievement.announce.sawmiller_server_first.title = SERVER FIRST: Sawmiller!
+achievement.announce.sawmiller_server_first.body = {0} pulled the server's first Sawmiller's Hatchet out of a mill: {1}
+achievement.announce.sawmill_master_sawyer.title = Master Sawyer!
+
+dialogue.mmo_sawyer.first_words.text = Hm. Calluses on your palms and bark on your boots. You'll do.\nName's Marn. I saw timber. Down here in the <color is="#ffd97a">Forgotten Temple</color> it's all stone and no trees, so a sawyer's a rare thing, and I keep a mill or two for whoever can feed one. Say hello and we'll talk.
+dialogue.mmo_sawyer.first_words.opt.hail = Hello, Marn.
+dialogue.mmo_sawyer.menu.text = Marn's still here. Logs don't saw themselves, so say what you need.
+dialogue.mmo_sawyer.trophy_hail.text = Hold on. Show me that.\nThat's a <color is="#ffd97a">Sawmiller's Hatchet</color>. Mithril, balanced at a mill and nowhere else. I've not seen its like in years, and never in a hand this green.\nThe mill hands one of those out about as often as a log splits itself. Keep it sharp.
+dialogue.mmo_sawyer.trophy_hail.opt.show = It came out of the mill.
+dialogue.mmo_sawyer.trophy_talk.text = Still carrying the <color is="#ffd97a">Sawmiller's Hatchet</color>. Good. A blade like that wants working, so don't let it hang on a wall. What do you need?
+dialogue.mmo_sawyer.rights_offer.text = I've a <b>Sawmill</b> going spare. I don't hand them to just anybody, mind.\nGo chop <b>timber</b>. Cut <b>planks</b> on a hand bench till you know what a plank costs in sweat, and bring me a share. Do that and the mill's yours.
+dialogue.mmo_sawyer.rights_offer.opt.accept = I'll bring you planks.
+dialogue.mmo_sawyer.rights_brief.text = <b>Timber</b> off the tree and <b>planks</b> off a hand bench. That's the job. The hand bench is slow, I know it. That's the point. You'll want the mill all the more for it.
+dialogue.mmo_sawyer.rights_ready.text = Let's see them. <b>Planks</b>, hand-cut, edges all over the place. Good. You'll not cut another one like that once the mill's running. Hand them over and it's yours.
+dialogue.mmo_sawyer.rights_ready.opt.turnin = Here are the planks.
+dialogue.mmo_sawyer.cut_offer.text = Set the <b>Sawmill</b> down somewhere flat. Walk up with <b>logs</b> in hand and use the block, and the mill takes them off you. Use it again and you're sawing.\nRun it a while, mill me some lumber, and bring back a stack of <b>planks</b> so I can see your cut.
+dialogue.mmo_sawyer.cut_offer.opt.accept = I'll get it running.
+dialogue.mmo_sawyer.grain_offer.text = Every <b>log</b> has more in it than plain boards. The mill knows the decorative <b>cut</b> and the ornate one too, it only wants telling. Crouch as you use the block and it'll ask which.\nMill me some of each, so I know you can read a grain.
+dialogue.mmo_sawyer.grain_offer.opt.accept = I'll try every cut.
+dialogue.mmo_sawyer.bench_offer.text = One mill's a start. It's no yard. Put a proper load of lumber through yours, the kind of load that empties a hillside, and bring me the <b>sap</b> it sweats out while you're at it.\nDo that and I'll find you a second <b>Sawmill</b>.
+dialogue.mmo_sawyer.bench_offer.opt.accept = I'll bring the sap.
+dialogue.mmo_sawyer.essence_offer.text = You've the hang of planks. Now the other thing.\nOld <b>wood</b> holds something that isn't sap and isn't bark, and a mill with a good hand on it shakes it loose. <b>Life essence</b>, the alchemists call it. I call it the fat of the log. Mill till you've a load of it, and bring me a share.
+dialogue.mmo_sawyer.essence_offer.opt.accept = I'll bring you essence.
+dialogue.mmo_sawyer.essence_offer.opt.what = What's in the wood?
+dialogue.mmo_sawyer.essence_ready.text = There it is. <b>Life essence</b>, still warm from the cut. Most sawyers go a lifetime and never spot it in the sawdust. Hand it over.
+dialogue.mmo_sawyer.essence_ready.opt.turnin = Here's the essence.
+dialogue.mmo_sawyer.edge_offer.text = Short jobs are done. Now a long one.\nStand at that mill for a shift that'd wear out a lesser back, and get your woodcutting up to where I'd call you a sawyer to your face. Nothing to hand in. Come back when it's done and I'll know.
+dialogue.mmo_sawyer.edge_offer.opt.accept = I'll put the shift in.
+dialogue.mmo_sawyer.order_ready.text = The day's order. <b>Planks</b> and <b>bark</b>, counted, stacked square. That's how I like a delivery. Same again tomorrow, if you're up for it.
+dialogue.mmo_sawyer.order_ready.opt.turnin = Here's today's order.
+dialogue.mmo_sawyer.ready_generic.text = You've the look of somebody carrying a finished job. Put it down and we'll settle.
+dialogue.mmo_sawyer.ready_generic.opt.turnin = Here's what I've done.
+dialogue.mmo_sawyer.active_generic.text = Still on the job, then. The mill won't run without you standing at it. Go on.
+dialogue.mmo_sawyer.yard_talk.text = Sawyer. That's what I call you now, and I don't say it to many.\nYou've a yard of your own to run. Mine's this corner of the <color is="#ffd97a">Forgotten Temple</color>, and it's enough. Come by when you want to talk wood.
+dialogue.mmo_sawyer.bench_talk.text = You've a mill now. Keep it fed. Planks come first, and the longer you stand at it the more a log gives up. There's work here when you want it.
+dialogue.mmo_sawyer.how_it_works.text = <b>Logs</b> in hand, use the block, and the mill takes them off you. Use it again and you're sawing.\nYour <b>hatchet</b> does the cutting, so a better one means more planks a cycle, and more of everything else the mill turns up in a log, bark to essence. Crouch as you use the block and it'll ask which <b>cut</b> you want.\nThat's the whole of it. The rest is standing there.
+dialogue.mmo_sawyer.how_it_works.opt.wood = What else is in a log?
+dialogue.mmo_sawyer.how_it_works.opt.back = Got it.
+dialogue.mmo_sawyer.what_is_in_wood.text = Bark. Sap. Fibre. Sticks. Every log's got those and the mill throws them off with the sawdust.\nOld wood keeps something else, deeper in, down in the heartwood. The alchemists boil it and call it <b>life essence</b>. I call it the fat of the log. A steady hand and a good hatchet shake it loose. A clumsy one gets sawdust.
+dialogue.mmo_sawyer.what_is_in_wood.opt.back = Good to know.
+dialogue.mmo_sawyer.hatchet_tease.text = There's a <color is="#ffd97a">Sawmiller's Hatchet</color>. Mithril, balanced at the mill, keener than anything a forge puts out. Nobody makes it.\nNow and then a mill hands one to a sawyer who's stood at it long enough with a fine blade already in hand. And I mean now and then. I've seen it happen. Not to me.
+dialogue.mmo_sawyer.hatchet_tease.opt.back = I'll keep sawing.
+dialogue.mmo_sawyer.opt.returned = I'm back with what you asked for.
+dialogue.mmo_sawyer.opt.quests = Anything need cutting?
+dialogue.mmo_sawyer.opt.how = How does the mill work?
+dialogue.mmo_sawyer.opt.edge = Ever seen a better edge?
+dialogue.mmo_sawyer.opt.nothing = Nothing for now.
