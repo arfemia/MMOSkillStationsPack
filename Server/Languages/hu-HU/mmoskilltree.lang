@@ -20,7 +20,9 @@ quest.standing_order.flavor = Ugyanaz a megbízás, minden nap: deszka és kére
 
 objective.text.stations.mill_lumber = Faragj meg {0} darab fát
 
-achievement.category.stations = Fűrészmalom
+achievement.category.stations = Állomások
+ui.quest.tag.sawmill = Fűrészmalom
+ui.quest.tag.stations = Állomások
 flair.sawmiller.name = Fűrészmalmos Korona
 
 achievement.sawmill_first_log.title = Az Első Rönk

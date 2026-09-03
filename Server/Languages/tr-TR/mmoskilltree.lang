@@ -21,6 +21,8 @@ quest.standing_order.flavor = Aynı sipariş her gün, keresteler ve kabuk, bura
 objective.text.stations.mill_lumber = {0} parça kereste bıçkıla
 
 achievement.category.stations = İstasyonlar
+ui.quest.tag.sawmill = Bıçkıhane
+ui.quest.tag.stations = İstasyonlar
 flair.sawmiller.name = Bıçkıcının Tacı
 
 achievement.sawmill_first_log.title = İlk Kütük
@@ -98,7 +100,7 @@ dialogue.mmo_sawyer.how_it_works.opt.wood = Ağaçta başka ne var?
 dialogue.mmo_sawyer.how_it_works.opt.back = Anladım.
 dialogue.mmo_sawyer.what_is_in_wood.text = Kabuk. Özsuy. Lif. Çıta. Her kütüğün bu var ve değirmen talaşla bunları fırlatıyor.\nEski ağaç başka bir şey tutar, daha derin, kalp ağacında. Kimyacılar kaynatıp <b>yaşam özü</b> derler. Benim derlerim odun yağı. Kararlı bir el ve iyi bir balta onu sallar. Hantal olursan talaş.
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = İyi bilmek.
-dialogue.mmo_sawyer.hatchet_tease.text = Var bir <color is="#ffd97a">Hızarcı Baltası</color>. Mitril, değirmende ayarlanmış, bir demircinin yapmadığından daha keskin. Kimse yapmıyor.\nArada bir değirmen bunu iyi bir balta daha tutuşa tutuşa öyle bir bıçkıcıya veriyor. Ve demek daha yavaş. Olur, gördüm. Bana değil.
+dialogue.mmo_sawyer.hatchet_tease.text = Var bir <color is="#ffd97a">Hızarcı Baltası</color>. Mitril, değirmende ayarlanmış, bir demircinin yapmadığından daha keskin. Kimse yapmıyor.\nArada bir değirmen bunu iyi bir balta daha tutuşa tutuşa öyle bir bıçkıcıya veriyor. Yani arada bir. Olur, gördüm. Bana değil.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Kesmeye devam edeceğim.
 dialogue.mmo_sawyer.opt.returned = Istediğini getirdim.
 dialogue.mmo_sawyer.opt.quests = Kesilecek bir şey var mı?

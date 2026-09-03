@@ -21,6 +21,8 @@ quest.standing_order.flavor = Mismo pedido cada día: tablones y corteza, entreg
 objective.text.stations.mill_lumber = Aserradea {0} piezas de madera
 
 achievement.category.stations = Estaciones
+ui.quest.tag.sawmill = Aserradero
+ui.quest.tag.stations = Estaciones
 flair.sawmiller.name = Corona del Aserrador
 
 achievement.sawmill_first_log.title = Primer Tronco
@@ -65,9 +67,9 @@ achievement.announce.sawmill_master_sawyer.title = Maestro Aserrador
 dialogue.mmo_sawyer.first_words.text = Hm. Callosidades en las palmas y corteza en las botas. Servirás.\nMe llamo Marn. Yo asierro madera. Abajo aquí en el <color is="#ffd97a">Templo Olvidado</color> es todo piedra sin árboles, así que un aserrador es algo raro, y mantengo un aserradero o dos para quien pueda alimentar uno. Saluda y hablaremos.
 dialogue.mmo_sawyer.first_words.opt.hail = Hola, Marn.
 dialogue.mmo_sawyer.menu.text = Marn sigue aquí. Los troncos no se asierran solos, así que dime qué necesitas.
-dialogue.mmo_sawyer.trophy_hail.text = Espera. Déjame verlo.\nEso es un Hacha del Aserrador. Mithril, equilibrada en un aserradero y en ningún otro lugar. No he visto nada igual en años, y nunca en manos tan nuevas.\nUn aserradero entrega una de esas tan a menudo como un tronco se divide a sí mismo. Mantenla afilada.
+dialogue.mmo_sawyer.trophy_hail.text = Espera. Déjame verlo.\nEso es un <color is="#ffd97a">Hacha del Aserrador</color>. Mithril, equilibrada en un aserradero y en ningún otro lugar. No he visto nada igual en años, y nunca en manos tan nuevas.\nUn aserradero entrega una de esas tan a menudo como un tronco se divide a sí mismo. Mantenla afilada.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Salió del aserradero.
-dialogue.mmo_sawyer.trophy_talk.text = Todavía cargas el Hacha del Aserrador. Bien. Una cuchilla así quiere trabajar, así que no la dejes colgada en una pared. Qué necesitas?
+dialogue.mmo_sawyer.trophy_talk.text = Todavía cargas el <color is="#ffd97a">Hacha del Aserrador</color>. Bien. Una cuchilla así quiere trabajar, así que no la dejes colgada en una pared. Qué necesitas?
 dialogue.mmo_sawyer.rights_offer.text = Tengo un <b>Aserradero</b> disponible. No se lo entrego a cualquiera, mira.\nVe a cortar <b>madera</b>. Corta <b>tablones</b> en un banco manual hasta que sepas lo que cuestan los tablones en sudor, y trae mi parte. Haz eso y el aserradero es tuyo.
 dialogue.mmo_sawyer.rights_offer.opt.accept = Traerá tablones.
 dialogue.mmo_sawyer.rights_brief.text = <b>Madera</b> del árbol y <b>tablones</b> de un banco manual. Ese es el trabajo. Sé que el banco manual es lento. Por eso. Lo querrás más cuando tengas el aserradero.
@@ -98,7 +100,7 @@ dialogue.mmo_sawyer.how_it_works.opt.wood = Qué más hay en un tronco?
 dialogue.mmo_sawyer.how_it_works.opt.back = Entendido.
 dialogue.mmo_sawyer.what_is_in_wood.text = Corteza. Savia. Fibra. Palillos. Cada tronco tiene eso y el aserradero lo tira con el aserrín.\nLa madera vieja guarda algo más, más adentro, en el duramen. Los alquimistas la hierven y la llaman <b>esencia vital</b>. Yo la llamo la grasa del tronco. Una mano firme y un hacha buena la sueltan. Una torpe solo consigue aserrín.
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bien saber.
-dialogue.mmo_sawyer.hatchet_tease.text = Hay un Hacha del Aserrador. Mithril, equilibrada en el aserradero, más afilada que nada que una fragua produce. Nadie la fabrica.\nDe vez en cuando un aserradero se la entrega a un aserrador que ha estado en él lo suficiente con un hacha fina ya en mano. Y quiero decir de vez en cuando. Lo he visto pasar. No me ha pasado a mí.
+dialogue.mmo_sawyer.hatchet_tease.text = Hay un <color is="#ffd97a">Hacha del Aserrador</color>. Mithril, equilibrada en el aserradero, más afilada que nada que una fragua produce. Nadie la fabrica.\nDe vez en cuando un aserradero se la entrega a un aserrador que ha estado en él lo suficiente con un hacha fina ya en mano. Y quiero decir de vez en cuando. Lo he visto pasar. No me ha pasado a mí.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Seguiré aserrando.
 dialogue.mmo_sawyer.opt.returned = Vuelvo con lo que me pediste.
 dialogue.mmo_sawyer.opt.quests = Hay algo que cortar?

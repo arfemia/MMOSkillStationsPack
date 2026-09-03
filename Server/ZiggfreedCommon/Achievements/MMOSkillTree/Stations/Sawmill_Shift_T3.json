@@ -1,5 +1,5 @@
 {
-  "$Comment": "Sawmill cycles worked, rung 3 of the sawmill_cycles ladder. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Every STATION_OUTPUT criterion carries Qualifier 'Sawmill', so only what this station hands over counts.",
+  "$Comment": "Sawmill cycles worked, rung 3 of the sawmill_cycles ladder. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file.",
   "Name": "Sawmill_Shift_T3",
   "Text": {
     "TitleKey": "achievement.sawmill_shift_t3.title",

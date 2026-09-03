@@ -21,6 +21,8 @@ quest.standing_order.flavor = Jeden Tag das Gleiche: Bretter und Rinde, hier gel
 objective.text.stations.mill_lumber = {0} Einheiten Holz in der Mühle bearbeiten
 
 achievement.category.stations = Stationen
+ui.quest.tag.sawmill = Sägewerk
+ui.quest.tag.stations = Stationen
 flair.sawmiller.name = Säger-Krone
 achievement.sawmill_first_log.title = Erster Stamm
 achievement.sawmill_first_log.desc = Bearbeite deinen ersten Stamm in einer Sägemühle.
@@ -45,9 +47,9 @@ achievement.sawmill_every_grain.desc = Schick von jeder Holzart ne Ladung durch 
 achievement.sawmill_lucky_shavings.title = Glückliche Späne
 achievement.sawmill_lucky_shavings.desc = Find' nen Glücks-Token in den Spänen unter der Sägemühle.
 achievement.sawmiller.title = Säger
-achievement.sawmiller.desc = Zieh' das Sägewerker-Axt aus der Mühle.
+achievement.sawmiller.desc = Zieh' die Sägewerker-Axt aus der Mühle.
 achievement.sawmiller_server_first.title = Erster Säger
-achievement.sawmiller_server_first.desc = Sei der erste auf dem Server der das Sägewerker-Axt aus einer Mühle zieht.
+achievement.sawmiller_server_first.desc = Sei der erste auf dem Server der die Sägewerker-Axt aus einer Mühle zieht.
 achievement.sawmill_standing_account.title = Regelmäßiger Kunde
 achievement.sawmill_standing_account.desc = Erfüll Säger Marns Tagesauftrag, Tag für Tag.
 achievement.sawmill_master_sawyer.title = Meister-Säger
@@ -57,15 +59,15 @@ achievement.announce.sawmill_lumber_t3.title = Ganzer Hof!
 achievement.announce.sawmill_essence_t3.title = Kernholz!
 achievement.announce.sawmiller.title = Säger!
 achievement.announce.sawmiller_server_first.title = SERVER-ERSTE: Säger!
-achievement.announce.sawmiller_server_first.body = {0} hat das Sägewerker-Axt aus einer Mühle gezogen: {1}
+achievement.announce.sawmiller_server_first.body = {0} hat die Sägewerker-Axt aus einer Mühle gezogen: {1}
 achievement.announce.sawmill_master_sawyer.title = Meister-Säger!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Schwielen an den Handflächen und Rinde an den Stiefeln. Du wirst's tun.\nIch heiß Marn. Ich bin Säger. Hier unten im <color is="#ffd97a">Vergessenen Tempel</color> gibt's keine Bäume, nur Stein. Da ist nen Säger selten, und ich halte ein paar Mühlen für die die eine füttern können. Sag Hallo, dann reden wir.
 dialogue.mmo_sawyer.first_words.opt.hail = Hallo, Marn.
 dialogue.mmo_sawyer.menu.text = Marn steht noch hier. Die Stämme sägen sich nicht selbst. Was brauchst du?
-dialogue.mmo_sawyer.trophy_hail.text = Moment. Zeig mir das mal.\nDas ist nen Sägewerker-Axt. Mithril, ausgewogen am Mühlenstein und nirgendswo sonst. So was hab' ich Jahre nicht gesehen, und nie in so grüner Hand.\nDie Mühle gibt so eins aus wenn'n Stamm sich von selbst spaltet. Halt die Klinge scharf.
+dialogue.mmo_sawyer.trophy_hail.text = Moment. Zeig mir das mal.\nDas ist ne <color is="#ffd97a">Sägewerker-Axt</color>. Mithril, ausgewogen am Mühlenstein und nirgendswo sonst. So was hab' ich Jahre nicht gesehen, und nie in so grüner Hand.\nDie Mühle gibt so eine ungefähr so oft her, wie sich ein Stamm von selbst spaltet. Halt die Klinge scharf.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Es kam aus der Mühle.
-dialogue.mmo_sawyer.trophy_talk.text = Noch immer das Sägewerker-Axt dabei. Gut. So ne Klinge will benutzt werden, nicht an der Wand hängen. Was brauchst du?
+dialogue.mmo_sawyer.trophy_talk.text = Noch immer die <color is="#ffd97a">Sägewerker-Axt</color> dabei. Gut. So ne Klinge will benutzt werden, nicht an der Wand hängen. Was brauchst du?
 dialogue.mmo_sawyer.rights_offer.text = Mir steht ne <b>Sägemühle</b> leer. Nicht für jeden, versteht sich.\nHol <b>Holz</b>. Schneid <b>Bretter</b> an der Werkbank bis du weißt was Bretter kosten, und bring' mir welche. Dann ist die Mühle dein.
 dialogue.mmo_sawyer.rights_offer.opt.accept = Ich bring dir Bretter.
 dialogue.mmo_sawyer.rights_brief.text = <b>Holz</b> vom Baum und <b>Bretter</b> von der Werkbank. Das ist der Job. Die Werkbank ist langsam, ich weiß. Das ist die Absicht. Die Mühle wird dir danach viel wertvoller sein.

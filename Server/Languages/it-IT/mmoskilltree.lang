@@ -21,6 +21,8 @@ quest.standing_order.flavor = Stesso ordine ogni giorno: assi e corteccia, conse
 objective.text.stations.mill_lumber = Travasa {0} pezzi di legname
 
 achievement.category.stations = Stazioni
+ui.quest.tag.sawmill = Segheria
+ui.quest.tag.stations = Stazioni
 flair.sawmiller.name = Corona del Segantino
 
 achievement.sawmill_first_log.title = Primo Tronco
@@ -65,9 +67,9 @@ achievement.announce.sawmill_master_sawyer.title = Segantino Maestro!
 dialogue.mmo_sawyer.first_words.text = Hm. Calli nei palmi e corteccia negli stivali. Andrai bene.\nMi chiamo Marn. Sego legname. Quaggiù nel <color is="#ffd97a">Tempio Dimenticato</color> è tutto pietra e niente alberi, così un segantino è cosa rara, e io tengo una segheria o due per chiunque possa alimentarne una. Salutami e parleremo.
 dialogue.mmo_sawyer.first_words.opt.hail = Ciao, Marn.
 dialogue.mmo_sawyer.menu.text = Marn è ancora qui. I tronchi non si segano da soli, così dimmi cosa ti serve.
-dialogue.mmo_sawyer.trophy_hail.text = Aspetta. Mostrami quella.\nQuesta è l'Ascia del Segantino. Mithril, equilibrata a una segheria e da nessun'altra parte. Non ho mai visto nulla del genere in anni, e mai in mani così verdi.\nLa segheria regala una di quelle quasi mai, come un tronco che si spacca da solo. Mantienila affilata.
+dialogue.mmo_sawyer.trophy_hail.text = Aspetta. Mostrami quella.\nQuesta è l'<color is="#ffd97a">Ascia del Segantino</color>. Mithril, equilibrata a una segheria e da nessun'altra parte. Non ho mai visto nulla del genere in anni, e mai in mani così verdi.\nLa segheria regala una di quelle quasi mai, come un tronco che si spacca da solo. Mantienila affilata.
 dialogue.mmo_sawyer.trophy_hail.opt.show = È uscita dalla segheria.
-dialogue.mmo_sawyer.trophy_talk.text = Ancora con l'Ascia del Segantino. Bene. Una lama così richiede lavoro, quindi non lasciarla appesa al muro. Cosa ti serve?
+dialogue.mmo_sawyer.trophy_talk.text = Ancora con l'<color is="#ffd97a">Ascia del Segantino</color>. Bene. Una lama così richiede lavoro, quindi non lasciarla appesa al muro. Cosa ti serve?
 dialogue.mmo_sawyer.rights_offer.text = Ho una <b>Segheria</b> da avanzare. Non la do a tutti, ascolta.\nVai a tagliare <b>legname</b>. Crea <b>assi</b> su un banco manuale finché non sai quanto costa un asse in sudore, e portami la tua parte. Fai così e la segheria è tua.
 dialogue.mmo_sawyer.rights_offer.opt.accept = Ti porterò delle assi.
 dialogue.mmo_sawyer.rights_brief.text = <b>Legname</b> dall'albero e <b>assi</b> da un banco manuale. È il lavoro. So che il banco è lento. È il punto. Vorrai ancora di più la segheria.
@@ -98,7 +100,7 @@ dialogue.mmo_sawyer.how_it_works.opt.wood = Cos'altro c'è in un tronco?
 dialogue.mmo_sawyer.how_it_works.opt.back = Capito.
 dialogue.mmo_sawyer.what_is_in_wood.text = Corteccia. Linfa. Fibra. Bastoncini. Ogni tronco ce l'ha e la segheria li butta via con la segatura.\nIl legno antico ha qualcosa d'altro, più profondo, giù nel cuore del legno. Gli alchimisti lo bollono e lo chiamano <b>essenza vitale</b>. Io lo chiamo il grasso del tronco. Una mano ferma e un'ascia buona la liberano. Una maldestra prende segatura.
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bene a sapersi.
-dialogue.mmo_sawyer.hatchet_tease.text = C'è l'Ascia del Segantino. Mithril, equilibrata alla segheria, più affilata di qualsiasi cosa una forgia sforna. Nessuno la fa.\nDi tanto in tanto una segheria la da a un segantino che ci ha steso davanti abbastanza a lungo con una lama già buona in mano. E intendo di tanto in tanto. L'ho visto succedere. Non a me.
+dialogue.mmo_sawyer.hatchet_tease.text = C'è l'<color is="#ffd97a">Ascia del Segantino</color>. Mithril, equilibrata alla segheria, più affilata di qualsiasi cosa una forgia sforna. Nessuno la fa.\nDi tanto in tanto una segheria la da a un segantino che ci ha steso davanti abbastanza a lungo con una lama già buona in mano. E intendo di tanto in tanto. L'ho visto succedere. Non a me.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Continuerò a segare.
 dialogue.mmo_sawyer.opt.returned = Son tornato con quello che mi hai chiesto.
 dialogue.mmo_sawyer.opt.quests = C'è qualcosa da segare?

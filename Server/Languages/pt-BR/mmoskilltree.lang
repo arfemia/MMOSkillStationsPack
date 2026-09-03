@@ -21,6 +21,8 @@ quest.standing_order.flavor = Mesma encomenda todo dia: tábuas e casca, entregu
 objective.text.stations.mill_lumber = Processe {0} peças de madeira
 
 achievement.category.stations = Estações
+ui.quest.tag.sawmill = Serraria
+ui.quest.tag.stations = Estações
 flair.sawmiller.name = Coroa do Serrador
 
 achievement.sawmill_first_log.title = Primeira Tora

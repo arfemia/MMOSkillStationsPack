@@ -21,6 +21,8 @@ quest.standing_order.flavor = La même commande tous les jours : planches et éc
 objective.text.stations.mill_lumber = Scier {0} pièces de bois
 
 achievement.category.stations = Stations
+ui.quest.tag.sawmill = Scierie
+ui.quest.tag.stations = Stations
 flair.sawmiller.name = Couronne de Scieur
 
 achievement.sawmill_first_log.title = Premier Rondin
