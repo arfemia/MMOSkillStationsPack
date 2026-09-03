@@ -1,0 +1,18 @@
+{
+  "$Comment": "The Sawmiller flair: the cosmetic the Sawmiller achievement grants once the trophy hatchet has come out of the mill. Stations names the station ids this flair dresses, lower-cased; leave it out to dress every station. Moments is keyed by the moment ids a station's own action Moments map spells (Rare_Find and Completion here, matched case-insensitively) and each entry is a PER-LEAF overlay on the base presentation: only the leaves written here change, so authoring Particles alone keeps the base sounds exactly as the Sawmill plays them. Both particle systems are ones the Sawmill's own trophy cue already uses, so a player wearing this flair sees a gold crown and a spark burst on every rare find and every finished session. Add a Sounds list to a moment to replace its sound as well, or a step:<action>:<step> key to dress one step of a work loop. A moment id nothing emits is a validator warning (/rpgstations validate), never an error. The flair id is this file's name lower-cased (sawmiller): an achievement grants it with {\"Kind\": \"Flair\", \"Params\": {\"Flair\": \"sawmiller\"}}, /zigflair grant hands it out by the same id, and its display name reads from flair.sawmiller.name in a language file.",
+  "Stations": ["sawmill"],
+  "Moments": {
+    "Rare_Find": {
+      "Particles": [
+        { "SystemId": "Effect_Crown_Gold" },
+        { "SystemId": "Block_Gem_Sparks" }
+      ]
+    },
+    "Completion": {
+      "Particles": [
+        { "SystemId": "Effect_Crown_Gold" },
+        { "SystemId": "Block_Gem_Sparks" }
+      ]
+    }
+  }
+}

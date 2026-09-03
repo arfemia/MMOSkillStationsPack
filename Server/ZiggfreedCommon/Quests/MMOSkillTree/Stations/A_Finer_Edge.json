@@ -1,0 +1,96 @@
+{
+  "$Comment": [
+    "The chain's last rung, a long shift: four hundred Sawmill cycles and Woodcutting level forty,",
+    "both on Order 1 so they progress together.",
+    "",
+    "long_shifts is WORK_STATION on the station id; reach_forty is STAT_THRESHOLD, which reads a",
+    "native stat channel by id (MMO_Level_WOODCUTTING) and holds the high-water reading, so a level",
+    "already reached counts the moment the quest is taken. No hand-in: TurnInId 'giver' still",
+    "settles it at Marn. Rewards sit in Claim: XP, a longer and stronger personal boost token, and a",
+    "stack of concentrated essence. Completing this quest is also what the Master Sawyer",
+    "achievement counts, so a retune here changes what that achievement asks."
+  ],
+  "Name": "A_Finer_Edge",
+  "Text": {
+    "TitleKey": "quest.a_finer_edge.title",
+    "FlavorKey": "quest.a_finer_edge.flavor"
+  },
+  "Listing": {
+    "Category": "main",
+    "SortOrder": 24,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "sawmill",
+        "Tier": 5
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "deep_in_the_wood"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "long_shifts": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 400,
+      "Order": 1
+    },
+    "reach_forty": {
+      "Kind": "STAT_THRESHOLD",
+      "Target": "MMO_Level_WOODCUTTING",
+      "MatchMode": "EXACT",
+      "Amount": 40,
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 3000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Multiplier": 2.5,
+          "DurationMinutes": 120
+        }
+      },
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "Ingredient_Life_Essence_Concentrated",
+          "Count": 5
+        }
+      }
+    ]
+  }
+}

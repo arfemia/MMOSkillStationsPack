@@ -1,0 +1,98 @@
+{
+  "$Comment": [
+    "The essence quest: life essence is what a lucky, practised woodcutter shakes loose from a log",
+    "on top of the planks, and this quest asks for it in numbers.",
+    "",
+    "find_essence counts essence the Sawmill hands over (STATION_OUTPUT, exact id, qualified to the",
+    "Sawmill, so essence from any other source does not count); deliver_essence is Order 2, an",
+    "exact-id hand-in to Marn. Requires carries the Woodcutting level gate beside the stations",
+    "feature: the deeper find tiers open at level 30 in this pack's own find ladder, and a player",
+    "below it would be asked for something the mill will not pay them yet. Rewards: a personal",
+    "Woodcutting boost token (the Mmo_Boost_Token kind: Skill, Multiplier, DurationMinutes) and XP.",
+    "Retune the level gate here together with the find ladder's level condition, or one will",
+    "promise what the other withholds."
+  ],
+  "Name": "Deep_In_The_Wood",
+  "Text": {
+    "TitleKey": "quest.deep_in_the_wood.title",
+    "FlavorKey": "quest.deep_in_the_wood.flavor"
+  },
+  "Listing": {
+    "Category": "main",
+    "SortOrder": 23,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "sawmill",
+        "Tier": 4
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "reading_the_grain"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      },
+      {
+        "Factor": "hytale:stat",
+        "Param": "MMO_Level_WOODCUTTING",
+        "Min": 30
+      }
+    ]
+  },
+  "Objectives": {
+    "find_essence": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 40,
+      "Order": 1
+    },
+    "deliver_essence": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 25,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 1500
+        }
+      }
+    ]
+  }
+}

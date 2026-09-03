@@ -1,0 +1,44 @@
+{
+  "$Comment": "The first real Sawmill cycle. WORK_STATION counts completed cycles at the station whose id its Target names (the station id as its asset spells it, never the block id), so one finished cut earns it. Requires carries the stations feature: the achievement does not exist on a server without RPG Stations switched on.",
+  "Name": "Sawmill_First_Log",
+  "Text": {
+    "TitleKey": "achievement.sawmill_first_log.title",
+    "FlavorKey": "achievement.sawmill_first_log.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 0
+  },
+  "Scoring": {
+    "Points": 5
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "work-sawmill": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 100
+        }
+      }
+    ]
+  }
+}

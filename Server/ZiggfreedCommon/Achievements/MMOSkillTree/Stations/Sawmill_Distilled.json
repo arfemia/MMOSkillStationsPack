@@ -1,0 +1,45 @@
+{
+  "$Comment": "Concentrated life essence out of the Sawmill, the deep find tiers' own reward. An exact item id qualified to the Sawmill, so essence bought, traded or found elsewhere never counts. Retune the Amount to match how often the find ladder pays it.",
+  "Name": "Sawmill_Distilled",
+  "Text": {
+    "TitleKey": "achievement.sawmill_distilled.title",
+    "FlavorKey": "achievement.sawmill_distilled.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 10
+  },
+  "Scoring": {
+    "Points": 100
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "find-concentrated": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence_Concentrated",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 10000
+        }
+      }
+    ]
+  }
+}

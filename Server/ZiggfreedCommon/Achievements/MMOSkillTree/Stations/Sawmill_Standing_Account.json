@@ -1,0 +1,44 @@
+{
+  "$Comment": "Marn's Standing Order delivered day after day. COMPLETE_QUEST on a repeatable counts every completion, so the Amount is a number of days the order was filled. Retune it to change how long the habit must hold.",
+  "Name": "Sawmill_Standing_Account",
+  "Text": {
+    "TitleKey": "achievement.sawmill_standing_account.title",
+    "FlavorKey": "achievement.sawmill_standing_account.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 16
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "fill-standing-order": {
+      "Kind": "COMPLETE_QUEST",
+      "Target": "standing_order",
+      "MatchMode": "EXACT",
+      "Amount": 25
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

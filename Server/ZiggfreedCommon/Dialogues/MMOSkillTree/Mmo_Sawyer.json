@@ -1,0 +1,556 @@
+{
+  "Name": "Mmo_Sawyer",
+  "$Comment": "Sawyer Marn's conversation, the one file behind every line he says in the Forgotten Temple. HOW A BEAT IS PICKED. Start is declared in sections and the engine walks them in a fixed order: First (top to bottom), then a quest that is READY to hand in, then one this character can OFFER, then one that is ACTIVE, then Then (top to bottom), then Fallback. So write each beat where it belongs and the order takes care of itself. First holds the beats that outrank anything about quests: the two trophy beats, shown only while the player is holding the Sawmiller's Hatchet (a Factor condition on hytale:held_item, which answers 1 when the held item's id matches Param), and the first-meeting line, shown until the greeting has been spent. Quests holds one row per quest, keyed by quest id, saying which screen opens at each of that quest's three moments. Within one band the row order settles ties, so the main chain is written first, the side quest behind it and the daily last: while a chain quest and the daily are both in play, Marn talks about the chain. Then holds the steady state, tried in the order written: the finished-chain line, then the owns-a-mill line. Fallback is the menu, the answer of last resort, so the player is never shown an empty conversation. ADDING A QUEST. Name Mmo_Sawyer as its giver (Npc.ViewId) and the footer's 'anything needs cutting' line already reaches it, since that line opens this character's quest list. Add a Quests row when you want a bespoke screen for one of its moments; point a row at a SCREEN, never a bare true, which would route to the quest list with no line at all. THE OFFER SCREENS carry the accept line (the Accept shorthand takes the quest on, then Goto shows the next line) plus the short footer, so the player can still ask a question or walk away. THE READY SCREENS carry the hand-in line: TurnIn delivers whatever the quest asks for at this character, and the Open that follows lands the player on the quest list with that quest called out, which is where a Claim reward is collected. The line shows only while ReadyToTurnIn says it will actually go through. ready_generic is the shared version for quests that need no bespoke line, and active_generic the shared 'still working on it' screen; a row can point at either. THE MEMORIES. Two seen-ness flags, both declared in Memories and both scoped Where to the temple's own gameplay-config id, so they are remembered per temple rather than once per character everywhere. sawyer_greeted is written by the first-meeting hail, which also carries MarkTalked, the one action that credits a talk step; opening the menu or leaving spends nothing. trophy_seen is written by the trophy hail, so the first sight of the hatchet is greeted once and every later visit while holding it gets the steady trophy line. Quest-driven visibility always derives from QuestState, never from a memory. THE FRAGMENTS. sawyer_footer is the full footer every steady screen carries: 'I have returned' only while something can be handed in here, 'anything needs cutting' opening the quest list, the how-does-the-mill-work question, the better-edge question (hidden while the trophy is in hand, the same Not-over-Factor gate the hatchet_tease screen itself carries), then goodbye. sawyer_tail is the short form for screens that lead with their own accept or hand-in line: the two questions and goodbye. The Header line mirrors the player's tracked objective at the top of the conversation. To reword any line, override the dialogue.mmo_sawyer.* keys in a language file; to replace the conversation wholesale, ship a file of this id from a pack loading after this one, or point a file of your own at it with Parent and restate only the screens you want to change.",
+  "Header": [
+    "ActiveObjective"
+  ],
+  "Memories": {
+    "sawyer_greeted": {
+      "Where": {
+        "GameplayConfig": [
+          "ForgottenTemple"
+        ]
+      }
+    },
+    "trophy_seen": {
+      "Where": {
+        "GameplayConfig": [
+          "ForgottenTemple"
+        ]
+      }
+    }
+  },
+  "Start": {
+    "First": [
+      {
+        "Node": "trophy_hail",
+        "When": [
+          {
+            "Type": "Factor",
+            "Factor": "hytale:held_item",
+            "Param": "RPG_Tool_Hatchet_Sawmiller",
+            "Min": 1
+          },
+          {
+            "Type": "NotRemembered",
+            "Memory": "trophy_seen"
+          },
+          {
+            "Type": "Remembered",
+            "Memory": "sawyer_greeted"
+          }
+        ]
+      },
+      {
+        "Node": "trophy_talk",
+        "When": [
+          {
+            "Type": "Factor",
+            "Factor": "hytale:held_item",
+            "Param": "RPG_Tool_Hatchet_Sawmiller",
+            "Min": 1
+          },
+          {
+            "Type": "Remembered",
+            "Memory": "sawyer_greeted"
+          }
+        ]
+      },
+      {
+        "Node": "first_words",
+        "When": [
+          {
+            "Type": "NotRemembered",
+            "Memory": "sawyer_greeted"
+          }
+        ]
+      }
+    ],
+    "Quests": {
+      "timber_rights": {
+        "Offerable": "rights_offer",
+        "Active": "rights_brief",
+        "Ready": "rights_ready"
+      },
+      "first_cut": {
+        "Offerable": "cut_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "reading_the_grain": {
+        "Offerable": "grain_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "deep_in_the_wood": {
+        "Offerable": "essence_offer",
+        "Active": "active_generic",
+        "Ready": "essence_ready"
+      },
+      "a_finer_edge": {
+        "Offerable": "edge_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "second_bench": {
+        "Offerable": "bench_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "standing_order": {
+        "Ready": "order_ready"
+      }
+    },
+    "Then": [
+      {
+        "Node": "yard_talk",
+        "When": [
+          {
+            "Type": "QuestState",
+            "Quest": "a_finer_edge",
+            "State": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "Node": "bench_talk",
+        "When": [
+          {
+            "Type": "QuestState",
+            "Quest": "timber_rights",
+            "State": "COMPLETED"
+          }
+        ]
+      }
+    ],
+    "Fallback": "menu"
+  },
+  "Nodes": {
+    "first_words": {
+      "TextKey": "dialogue.mmo_sawyer.first_words.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.first_words.opt.hail",
+          "Actions": [
+            {
+              "Type": "MarkTalked",
+              "Target": "@self"
+            },
+            {
+              "Type": "Remember",
+              "Memory": "sawyer_greeted"
+            },
+            {
+              "Type": "Goto",
+              "Node": "menu"
+            }
+          ]
+        }
+      ]
+    },
+    "menu": {
+      "TextKey": "dialogue.mmo_sawyer.menu.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
+    },
+    "trophy_hail": {
+      "TextKey": "dialogue.mmo_sawyer.trophy_hail.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.trophy_hail.opt.show",
+          "Actions": [
+            {
+              "Type": "Remember",
+              "Memory": "trophy_seen"
+            },
+            {
+              "Type": "Goto",
+              "Node": "menu"
+            }
+          ]
+        }
+      ]
+    },
+    "trophy_talk": {
+      "TextKey": "dialogue.mmo_sawyer.trophy_talk.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
+    },
+    "rights_offer": {
+      "TextKey": "dialogue.mmo_sawyer.rights_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.rights_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            {
+              "Accept": "timber_rights"
+            },
+            {
+              "Goto": "rights_brief"
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "rights_brief": {
+      "TextKey": "dialogue.mmo_sawyer.rights_brief.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
+    },
+    "rights_ready": {
+      "TextKey": "dialogue.mmo_sawyer.rights_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.rights_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            {
+              "Type": "ReadyToTurnIn",
+              "Quest": "timber_rights"
+            }
+          ],
+          "Do": [
+            {
+              "TurnIn": "timber_rights"
+            },
+            {
+              "Open": {
+                "Type": "Quests",
+                "Highlight": "timber_rights"
+              }
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "cut_offer": {
+      "TextKey": "dialogue.mmo_sawyer.cut_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.cut_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            {
+              "Accept": "first_cut"
+            },
+            {
+              "Goto": "active_generic"
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "grain_offer": {
+      "TextKey": "dialogue.mmo_sawyer.grain_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.grain_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            {
+              "Accept": "reading_the_grain"
+            },
+            {
+              "Goto": "active_generic"
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "bench_offer": {
+      "TextKey": "dialogue.mmo_sawyer.bench_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.bench_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            {
+              "Accept": "second_bench"
+            },
+            {
+              "Goto": "active_generic"
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "essence_offer": {
+      "TextKey": "dialogue.mmo_sawyer.essence_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.essence_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            {
+              "Accept": "deep_in_the_wood"
+            },
+            {
+              "Goto": "active_generic"
+            }
+          ]
+        },
+        {
+          "LabelKey": "dialogue.mmo_sawyer.essence_offer.opt.what",
+          "Style": "neutral",
+          "Goto": "what_is_in_wood"
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "essence_ready": {
+      "TextKey": "dialogue.mmo_sawyer.essence_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.essence_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            {
+              "Type": "ReadyToTurnIn",
+              "Quest": "deep_in_the_wood"
+            }
+          ],
+          "Do": [
+            {
+              "TurnIn": "deep_in_the_wood"
+            },
+            {
+              "Open": {
+                "Type": "Quests",
+                "Highlight": "deep_in_the_wood"
+              }
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "edge_offer": {
+      "TextKey": "dialogue.mmo_sawyer.edge_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.edge_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            {
+              "Accept": "a_finer_edge"
+            },
+            {
+              "Goto": "active_generic"
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "order_ready": {
+      "TextKey": "dialogue.mmo_sawyer.order_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.order_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            {
+              "Type": "ReadyToTurnIn",
+              "Quest": "standing_order"
+            }
+          ],
+          "Do": [
+            {
+              "TurnIn": "standing_order"
+            },
+            {
+              "Open": {
+                "Type": "Quests",
+                "Highlight": "standing_order"
+              }
+            }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "ready_generic": {
+      "TextKey": "dialogue.mmo_sawyer.ready_generic.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.ready_generic.opt.turnin",
+          "Style": "turnin",
+          "Open": "Quests"
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "active_generic": {
+      "TextKey": "dialogue.mmo_sawyer.active_generic.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
+    },
+    "yard_talk": {
+      "TextKey": "dialogue.mmo_sawyer.yard_talk.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
+    },
+    "bench_talk": {
+      "TextKey": "dialogue.mmo_sawyer.bench_talk.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
+    },
+    "how_it_works": {
+      "TextKey": "dialogue.mmo_sawyer.how_it_works.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.how_it_works.opt.wood",
+          "Style": "neutral",
+          "Goto": "what_is_in_wood"
+        },
+        {
+          "LabelKey": "dialogue.mmo_sawyer.how_it_works.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "what_is_in_wood": {
+      "TextKey": "dialogue.mmo_sawyer.what_is_in_wood.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.what_is_in_wood.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "hatchet_tease": {
+      "TextKey": "dialogue.mmo_sawyer.hatchet_tease.text",
+      "Conditions": [
+        {
+          "Type": "Not",
+          "Of": [
+            {
+              "Type": "Factor",
+              "Factor": "hytale:held_item",
+              "Param": "RPG_Tool_Hatchet_Sawmiller",
+              "Min": 1
+            }
+          ]
+        }
+      ],
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.hatchet_tease.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    }
+  },
+  "Fragments": {
+    "sawyer_footer": [
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.returned",
+        "Style": "accept",
+        "Conditions": [
+          {
+            "Type": "HasReadyToTurnIn"
+          }
+        ],
+        "Open": "Quests"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.quests",
+        "Style": "neutral",
+        "Open": "Quests"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.how",
+        "Style": "neutral",
+        "Goto": "how_it_works"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.edge",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Not",
+            "Of": [
+              {
+                "Type": "Factor",
+                "Factor": "hytale:held_item",
+                "Param": "RPG_Tool_Hatchet_Sawmiller",
+                "Min": 1
+              }
+            ]
+          }
+        ],
+        "Goto": "hatchet_tease"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.nothing",
+        "Style": "farewell",
+        "Close": true
+      }
+    ],
+    "sawyer_tail": [
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.how",
+        "Style": "neutral",
+        "Goto": "how_it_works"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.edge",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Not",
+            "Of": [
+              {
+                "Type": "Factor",
+                "Factor": "hytale:held_item",
+                "Param": "RPG_Tool_Hatchet_Sawmiller",
+                "Min": 1
+              }
+            ]
+          }
+        ],
+        "Goto": "hatchet_tease"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.nothing",
+        "Style": "farewell",
+        "Close": true
+      }
+    ]
+  }
+}

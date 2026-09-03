@@ -1,0 +1,55 @@
+{
+  "$Comment": "The race for the first trophy hatchet on the server: Meta.mmoskilltree.ServerFirst true means only the first player to satisfy the criterion keeps it, and Announce carries both a title and a body so the whole server hears who. The criterion is the same exact-id station output the Sawmiller achievement counts.",
+  "Name": "Sawmiller_Server_First",
+  "Text": {
+    "TitleKey": "achievement.sawmiller_server_first.title",
+    "FlavorKey": "achievement.sawmiller_server_first.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 15,
+    "Hidden": true
+  },
+  "Scoring": {
+    "Points": 100
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "trophy-hatchet": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Tool_Hatchet_Sawmiller",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 2500
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "ServerFirst": true,
+      "Announce": {
+        "TitleKey": "achievement.announce.sawmiller_server_first.title",
+        "BodyKey": "achievement.announce.sawmiller_server_first.body"
+      }
+    }
+  }
+}

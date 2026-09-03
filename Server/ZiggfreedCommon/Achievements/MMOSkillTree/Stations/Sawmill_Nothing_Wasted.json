@@ -1,0 +1,66 @@
+{
+  "$Comment": "Every byproduct the Sawmill pays, each in quantity: fibre, bark, sap and sticks. Four criteria, and EVERY criterion must complete, so a worker who only ever sees fibre keeps working until the rarer offcuts catch up. Each is an exact item id qualified to the Sawmill. Add a criterion here when a byproduct table gains an item.",
+  "Name": "Sawmill_Nothing_Wasted",
+  "Text": {
+    "TitleKey": "achievement.sawmill_nothing_wasted.title",
+    "FlavorKey": "achievement.sawmill_nothing_wasted.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 11
+  },
+  "Scoring": {
+    "Points": 25
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "fibre": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Fibre",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 250
+    },
+    "bark": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Tree_Bark",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 250
+    },
+    "sap": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Tree_Sap",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 250
+    },
+    "stick": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Stick",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 250
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

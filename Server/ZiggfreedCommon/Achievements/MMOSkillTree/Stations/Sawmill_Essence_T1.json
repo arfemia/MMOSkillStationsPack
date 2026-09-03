@@ -1,0 +1,56 @@
+{
+  "$Comment": "Life essence the Sawmill shook loose, rung 1 of the sawmill_essence ladder. An exact item id, so only the plain essence counts here; the concentrated form has its own achievement. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Every STATION_OUTPUT criterion carries Qualifier 'Sawmill', so only what this station hands over counts.",
+  "Name": "Sawmill_Essence_T1",
+  "Text": {
+    "TitleKey": "achievement.sawmill_essence_t1.title",
+    "FlavorKey": "achievement.sawmill_essence.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 7,
+    "Chains": [
+      {
+        "Id": "sawmill_essence",
+        "Tier": 1
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 15
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "find-essence": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 100
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 750
+        }
+      }
+    ]
+  }
+}

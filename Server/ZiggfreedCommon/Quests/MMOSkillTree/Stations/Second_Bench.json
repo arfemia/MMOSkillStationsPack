@@ -1,0 +1,85 @@
+{
+  "$Comment": [
+    "A second Sawmill for a worker who has proven the first one earns its keep: a thousand pieces",
+    "of lumber milled, then sap delivered.",
+    "",
+    "The volume step counts every cut of every species the mill hands over ('Wood_' on PREFIX,",
+    "qualified to the Sawmill) and carries the shared mill_lumber TextKey; bring_sap is Order 2, an",
+    "exact-id hand-in to Marn. Tree sap is a Sawmill byproduct, so the delivery is paid for by",
+    "running the mill, not by a detour. This quest branches off the chain after Reading the Grain",
+    "rather than sitting in it, so it carries no Chains entry and its SortOrder places it after the",
+    "chain's rungs. The reward is the mill itself; remove that entry and the quest is a plain XP job."
+  ],
+  "Name": "Second_Bench",
+  "Text": {
+    "TitleKey": "quest.second_bench.title",
+    "FlavorKey": "quest.second_bench.flavor"
+  },
+  "Listing": {
+    "Category": "main",
+    "SortOrder": 25,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "reading_the_grain"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "volume": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 1000,
+      "TextKey": "objective.text.stations.mill_lumber",
+      "Order": 1
+    },
+    "bring_sap": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Tree_Sap",
+      "MatchMode": "EXACT",
+      "Amount": 20,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Station_Sawmill",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 1000
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$Comment": [
+    "Sawyer Marn, standing in the Forgotten Temple beside the Rootling merchant's spawn marker,",
+    "across from the Mastery Trainer. Marn is this pack's character end to end: his role, this",
+    "placement and the conversation pressing F opens all ship here, so a server without the pack",
+    "has no sawyer to stand up. Interact names a conversation rather than a screen because Marn",
+    "has quests to hand out and lines to say before any list opens; a screen name there would open",
+    "that screen with no conversation at all. Author Open or Dialogue, never both.",
+    "",
+    "To take Marn out without editing this file, set Enabled false in",
+    "mods/ziggfreedcommon/npc-placements.json.",
+    "",
+    "Where targets the temple by its GameplayConfig key rather than by name: that key is the",
+    "engine's own per-world gameplay-config id ('ForgottenTemple' ships with the base game) and",
+    "it is the same every time the temple is entered, while the world NAME carries a fresh uuid",
+    "each time.",
+    "",
+    "Requires keeps Marn away until the stations feature is on, which means RPG Stations is",
+    "installed and switched on; with it off his quests do not exist either, so nothing dangles.",
+    "Lifecycle keeps his chunk loaded, puts him back if something removes him, and raises his",
+    "health beyond anything that can be dealt. All three matter for a quest giver: a delivery",
+    "quest whose character is not standing where the player is parks unpaid until they find him.",
+    "This placement authors no Identity.NpcId, so the character IS his role: the Sawmill quests",
+    "bind to Mmo_Sawyer, and any second placement of that role is the same sawyer, offering and",
+    "taking hand-ins for the same quests.",
+    "",
+    "Marn stands beside the temple's own Rootling Merchant spawn marker rather than at the raw",
+    "portal-landing point, so he moves with the temple's actual layout instead of an offset that",
+    "can land inside a wall. The Mastery Trainer anchors to the same marker on the positive X side,",
+    "so Marn takes the negative side. To move him, edit Anchor.Structure.Offset, keeping it small",
+    "enough to stay out of the walls, and Yaw to turn which way he faces. /mmonpc list",
+    "--arg1=structures shows the marker ids the engine has seen when an anchor resolves nothing."
+  ],
+  "Name": "Mmo_Sawyer_Temple",
+  "Enabled": true,
+  "Where": {
+    "GameplayConfig": [
+      "ForgottenTemple"
+    ]
+  },
+  "Identity": {
+    "Role": "Mmo_Sawyer"
+  },
+  "Anchor": {
+    "Structure": {
+      "MarkerIds": ["Temple_Kweebec_Merchant_Static"],
+      "Offset": {
+        "X": -3
+      },
+      "Yaw": 180.0
+    }
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Lifecycle": {
+    "KeepAlive": true,
+    "Respawn": true,
+    "Fortify": true
+  },
+  "Interact": {
+    "Dialogue": "Mmo_Sawyer"
+  }
+}

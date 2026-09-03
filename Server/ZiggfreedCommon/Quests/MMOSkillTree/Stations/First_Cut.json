@@ -1,0 +1,111 @@
+{
+  "$Comment": [
+    "Marn's first job for a new mill owner: run the Sawmill, mill lumber on it, bring some back.",
+    "The three steps teach the loop in the order it happens.",
+    "",
+    "run_cycles counts real Sawmill cycles (WORK_STATION, Target = the station id as its asset",
+    "spells it, never the block id). mill_lumber counts what the mill hands over (STATION_OUTPUT",
+    "with Qualifier 'Sawmill', so only this station's output counts): its Target 'Wood_' on PREFIX",
+    "catches every species and every cut the mill can make, and the step carries its own TextKey",
+    "because the kind's default line names one item and this step means 'any lumber'. The",
+    "qualifier suffix is added to the line automatically, so the key's text never says where. Both",
+    "sit on Order 1; bring_planks is Order 2, a hand-in to Marn only (TurnInNpcId 'giver').",
+    "",
+    "Rewards sit in Claim: the copper hatchet is the first rung of the tool ladder (a better hatchet",
+    "is more planks per cycle and more of everything else the mill pays), and the XP split favours",
+    "the skill the mill trains. Retune the three Amounts freely; the item on the first reward is",
+    "what this quest is for."
+  ],
+  "Name": "First_Cut",
+  "Text": {
+    "TitleKey": "quest.first_cut.title",
+    "FlavorKey": "quest.first_cut.flavor"
+  },
+  "Listing": {
+    "Category": "main",
+    "SortOrder": 21,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "sawmill",
+        "Tier": 2
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "timber_rights"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "run_cycles": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 10,
+      "Order": 1
+    },
+    "mill_lumber": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 20,
+      "TextKey": "objective.text.stations.mill_lumber",
+      "Order": 1
+    },
+    "bring_planks": {
+      "Kind": "TURN_IN",
+      "Target": "_Planks",
+      "MatchMode": "CONTAINS",
+      "Amount": 10,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "Tool_Hatchet_Copper",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 400
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 200
+        }
+      }
+    ]
+  }
+}

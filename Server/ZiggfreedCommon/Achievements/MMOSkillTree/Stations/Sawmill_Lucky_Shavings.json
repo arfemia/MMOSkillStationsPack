@@ -1,0 +1,46 @@
+{
+  "$Comment": "A Woodcutting boost token out of the Sawmill itself: the masterwork bonus table pays one to a worker bringing the trophy hatchet to the bench. Hidden, so the surprise is the point; an exact item id qualified to the Sawmill.",
+  "Name": "Sawmill_Lucky_Shavings",
+  "Text": {
+    "TitleKey": "achievement.sawmill_lucky_shavings.title",
+    "FlavorKey": "achievement.sawmill_lucky_shavings.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 13,
+    "Hidden": true
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "find-boost-token": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "BoostToken_Woodcutting_Personal_Standard",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

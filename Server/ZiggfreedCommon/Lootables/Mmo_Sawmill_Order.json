@@ -1,0 +1,189 @@
+{
+  "$Comment": [
+    "What Sawyer Marn pays for a Standing Order. The daily's whole payout is this one table, so",
+    "retune the daily here and the quest file never changes.",
+    "",
+    "ROLLS EVALUATE INDEPENDENTLY. Every roll whose Chance passes pays out on the same claim, so a",
+    "good day hands over several at once. The first roll always pays, and each one after it is a",
+    "bonus on top.",
+    "",
+    "Chance is a percentage, 0 to 100: the chance that roll fires at all; a roll with no Chance",
+    "always fires. Count and CountMax together are a range, rolled per grant.",
+    "",
+    "THE FIRST ROLL IS A LADDER, which is what makes the daily grow with the woodcutter instead of",
+    "paying a beginner and a veteran the same handful. Its Factors are summed into one score and the",
+    "Floors are read against that score; floors are NOT cumulative, so the highest one reached wins",
+    "and only its Grants fire. Two things feed the score, weighted equally: the Woodcutting level, so",
+    "the order pays better as the skill grows, and Woodcutting luck, so a luck-heavy skill tree pays",
+    "here as well as at the bench. Each floor pays Woodcutting XP through a Rewards entry (the",
+    "Mmo_Xp kind: Skill plus Amount) and a little tree sap on the side.",
+    "",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_Luck_WOODCUTTING",
+    "stores whole percent points, so a fully claimed Woodcutting tree reads near a hundred rather",
+    "than near one, and MMO_Level_WOODCUTTING is a level, not a fraction. The floors below are",
+    "therefore written on a scale of roughly 0 to 250, the ceiling a capped level with a full tree",
+    "and the trophy hatchet in hand can reach. Never swap these two leaves for the",
+    "mmoskilltree:station_luck aggregate: that one returns a FRACTION, which would shift every floor",
+    "by a factor of a hundred, and composing it beside a luck channel counts the same investment",
+    "twice.",
+    "",
+    "The three chance rolls carry a Cue, the celebration id a roll may author beside its Grants. It",
+    "fires only when the grants beside it genuinely paid out. Rare_Find is the everyday chime the",
+    "MMO jar ships as a toast; the concentrated essence names the Sawmill's own deep-find cue so a",
+    "rare day sounds like a rare cycle. Author a new Cue value plus a",
+    "Server/ZiggfreedCommon/FeedbackMoments file of that name for a celebration of your own.",
+    "",
+    "All the odds and floors here are opening balance. Retune them and the daily changes with no",
+    "other edit."
+  ],
+  "Name": "Mmo_Sawmill_Order",
+  "Rolls": [
+    {
+      "$Comment": "Always pays, and pays more the further along the woodcutter is. Floor 0 is what somebody who has only just earned a mill receives; the top floor wants a high level and a full luck tree together rather than one alone.",
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "The starting tier, reachable by anybody, since a score of 0 always passes.",
+            "Min": 0,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 300
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 2,
+                  "CountMax": 4
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "A woodcutter past the early levels, or one who has claimed a few luck rewards.",
+            "Min": 40,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 800
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 3,
+                  "CountMax": 6
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "A committed woodcutter: a solid level with real luck investment behind it.",
+            "Min": 90,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 1800
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 4,
+                  "CountMax": 8
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "The top of the ladder, needing both halves near their ceiling rather than one alone.",
+            "Min": 160,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 3500
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 6,
+                  "CountMax": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "The everyday bonus, roughly two days in five: a handful of life essence, the thing the mill pays a lucky woodcutter on top of the planks.",
+      "Chance": { "Base": 40.0 },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 5,
+            "CountMax": 15
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The uncommon bonus, roughly one day in ten: a personal Woodcutting boost token.",
+      "Chance": { "Base": 10.0 },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "BoostToken_Woodcutting_Personal_Standard",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The rare pull, roughly one day in thirty-three: one concentrated essence, announced with the Sawmill's own deep-find cue.",
+      "Chance": { "Base": 3.0 },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence_Concentrated",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "cue:find_deep"
+    }
+  ]
+}

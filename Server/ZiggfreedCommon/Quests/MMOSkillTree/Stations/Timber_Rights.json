@@ -1,20 +1,29 @@
 {
   "$Comment": [
-    "The reward quest that hands a new player the Sawmill: gather the makings, then deliver them",
-    "back to the guide at the hub.",
+    "The quest that hands a new player the Sawmill: gather the makings, then deliver them to Sawyer",
+    "Marn in the Forgotten Temple. It opens once meet_at_the_temple is claimed, because Marn stands",
+    "in the temple and nowhere else; a quest whose giver the player cannot reach would sit parked",
+    "and unpaid. It is the first rung of the sawmill chain, so the quest book lists its successors",
+    "under it.",
     "",
     "Both gathering steps sit on Order 1, so the wood and the planks can be worked in either order;",
     "the delivery step is Order 2 and only unlocks once both are done. Its own TurnInNpcId 'giver'",
-    "locks the hand-in to Npc.ViewId (the hub), so the planks can only be delivered there. The reward",
-    "sits in the Claim bucket, so the Sawmill and the Woodcutting XP wait in the quest log once that delivery is made,",
-    "until the player collects them themselves.",
+    "locks the hand-in to Npc.ViewId (Marn), so the planks can only be delivered to him. The reward",
+    "sits in the Claim bucket, so the Sawmill and the Woodcutting XP wait in the quest log once that",
+    "delivery is made, until the player collects them themselves. CompletionDialogue names Marn's own",
+    "conversation, so settling it at him plays his next line, which is where he offers the next job.",
     "",
     "Target 'Wood' on the chop step and '_Planks' on the craft and delivery steps both match on",
     "CONTAINS, so every wood species counts toward the total rather than one specific type; '_Planks'",
     "also happens to catch the half-plank cut of each species, which is a fair reading of 'planks'.",
+    "The planks here are hand-bench planks (CRAFT_ITEM): nobody owns a mill yet, and that is the",
+    "point of the quest.",
+    "",
+    "Requires.Factors carries the stations feature, which is on when RPG Stations is installed and",
+    "enabled; with it off this quest does not exist, and neither does Marn.",
     "",
     "AutoAccept is off deliberately: this is an optional beat off the main tutorial branch, offered",
-    "from the guide's quest list once gather_the_basics is finished, not forced on everybody.",
+    "from Marn's own lines once the temple has been reached, not forced on everybody.",
     "",
     "To retune the grind, edit the three Amounts; to change the payout, edit Rewards - the Sawmill",
     "itself is the first entry, so replacing or removing it changes what this quest is actually for."
@@ -29,6 +38,12 @@
     "Tags": [
       "Stations"
     ],
+    "Chains": [
+      {
+        "Id": "sawmill",
+        "Tier": 1
+      }
+    ],
     "Hidden": true,
     "RequirePrerequisites": true
   },
@@ -37,12 +52,20 @@
     "AutoTrack": true
   },
   "Npc": {
-    "ViewId": "Mmo_Hub"
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
   },
-  "CompletionDialogue": "Mmo_Hub_Intro",
+  "CompletionDialogue": "Mmo_Sawyer",
   "Requires": {
     "Quests": [
-      "gather_the_basics"
+      "meet_at_the_temple"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
     ]
   },
   "Objectives": {

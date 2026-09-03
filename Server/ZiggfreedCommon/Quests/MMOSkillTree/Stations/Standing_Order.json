@@ -1,0 +1,94 @@
+{
+  "$Comment": [
+    "Marn's daily: a fixed order of planks and bark, paid from one table.",
+    "",
+    "Repeat.Reset with Period Daily is a CALENDAR daily, not a rolling wait: the allowance refreshes",
+    "at the day boundary on server time, so a player who finishes late in the evening can go again",
+    "the next morning rather than waiting a fixed number of hours from whenever they last claimed.",
+    "Author AtMinutes on the Reset block to move the boundary off midnight, or replace Period with",
+    "an Every block to set any other length.",
+    "",
+    "It opens once First Cut is claimed, so every player who takes it owns a mill and knows how to",
+    "feed it. Both deliveries sit on Order 1 and hand in to Marn only (TurnInNpcId 'giver'): the",
+    "planks match any species and any half-plank cut on CONTAINS, the bark is an exact id and a",
+    "Sawmill byproduct, so a day's milling covers both.",
+    "",
+    "The whole payout is ONE Lootable reward, Lootables/Mmo_Sawmill_Order.json, which grows with the",
+    "player's Woodcutting level and luck and carries the daily's chance rolls; retune the odds",
+    "there, and nothing in this file needs to change to make the daily more or less generous. The",
+    "reward sits in the Claim bucket, so the roll happens when the player collects it.",
+    "",
+    "Listing puts it in the misc category with the Repeatable tag, the same shelf as the temple's",
+    "own daily."
+  ],
+  "Name": "Standing_Order",
+  "Text": {
+    "TitleKey": "quest.standing_order.title",
+    "FlavorKey": "quest.standing_order.flavor"
+  },
+  "Listing": {
+    "Category": "misc",
+    "SortOrder": 200,
+    "Tags": [
+      "Stations",
+      "Repeatable"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Repeat": {
+    "Reset": {
+      "Period": "Daily"
+    },
+    "CooldownFrom": "Complete"
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "first_cut"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "deliver_planks": {
+      "Kind": "TURN_IN",
+      "Target": "_Planks",
+      "MatchMode": "CONTAINS",
+      "Amount": 64,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "deliver_bark": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Tree_Bark",
+      "MatchMode": "EXACT",
+      "Amount": 6,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Sawmill_Order"
+        }
+      }
+    ]
+  }
+}

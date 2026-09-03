@@ -1,0 +1,62 @@
+{
+  "$Comment": "Sawmill cycles worked, rung 3 of the sawmill_cycles ladder. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Every STATION_OUTPUT criterion carries Qualifier 'Sawmill', so only what this station hands over counts.",
+  "Name": "Sawmill_Shift_T3",
+  "Text": {
+    "TitleKey": "achievement.sawmill_shift_t3.title",
+    "FlavorKey": "achievement.sawmill_cycles.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 3,
+    "Chains": [
+      {
+        "Id": "sawmill_cycles",
+        "Tier": 3
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "work-sawmill": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 7500
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 25000
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.sawmill_shift_t3.title"
+      }
+    }
+  }
+}

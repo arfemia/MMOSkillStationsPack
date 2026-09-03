@@ -1,0 +1,97 @@
+{
+  "$Comment": [
+    "The cut-selection lesson: the Sawmill mills three cuts of every species (plain planks,",
+    "decorative, ornate) and sneak-F at the block picks which, previewing whatever log is placed.",
+    "",
+    "Three STATION_OUTPUT steps, one per cut, all on Order 1 and all qualified to the Sawmill:",
+    "'_Planks' catches plain planks and the half-plank cut of every species, '_Decorative' and",
+    "'_Ornate' the other two. No hand-in: with TurnInId 'giver' the quest still settles at Marn, so",
+    "the player comes back to be paid and hear his next line. The iron hatchet is the second rung of",
+    "the tool ladder. Retune the three Amounts to change how long the lesson runs."
+  ],
+  "Name": "Reading_The_Grain",
+  "Text": {
+    "TitleKey": "quest.reading_the_grain.title",
+    "FlavorKey": "quest.reading_the_grain.flavor"
+  },
+  "Listing": {
+    "Category": "main",
+    "SortOrder": 22,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "sawmill",
+        "Tier": 3
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "first_cut"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "plain_cut": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "_Planks",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Sawmill",
+      "Amount": 40,
+      "Order": 1
+    },
+    "fancy_cut": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "_Decorative",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Sawmill",
+      "Amount": 15,
+      "Order": 1
+    },
+    "fine_cut": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "_Ornate",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Sawmill",
+      "Amount": 15,
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "Tool_Hatchet_Iron",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 750
+        }
+      }
+    ]
+  }
+}

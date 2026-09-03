@@ -1,0 +1,59 @@
+{
+  "$Comment": "The sawmill quest chain finished: COMPLETE_QUEST on its last rung, A Finer Edge, which is only reachable through every quest before it. Announced to the server. Point the Target at a different quest id to move the capstone.",
+  "Name": "Sawmill_Master_Sawyer",
+  "Text": {
+    "TitleKey": "achievement.sawmill_master_sawyer.title",
+    "FlavorKey": "achievement.sawmill_master_sawyer.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 17
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "finish-the-chain": {
+      "Kind": "COMPLETE_QUEST",
+      "Target": "a_finer_edge",
+      "MatchMode": "EXACT",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 5000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ALL",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.sawmill_master_sawyer.title"
+      }
+    }
+  }
+}

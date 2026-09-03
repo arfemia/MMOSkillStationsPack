@@ -1,0 +1,10 @@
+{
+  "$Comment": "Sawyer Marn, the character who hands out the Sawmill quests and takes their deliveries. A thin variant: Template_Mmo_QuestGiver (shipped in the MMO Skill Tree jar) holds the entire body - the idle / watch / interact behaviour and the press-F action - and this file only says what makes Marn look and read as Marn. Point a placement's Identity.Role at \"Mmo_Sawyer\" to stand him somewhere; this pack does so in NpcPlacements/Mmo_Sawyer_Temple.json. Modify may name ONLY the parameters that template declares: Appearance, NameTranslationKey, Weapons, OffHand, DefaultOffHandSlot. Naming anything else makes the engine refuse the whole role, which shows up in game as a character who never appears. Appearance is a Model asset id, so any vanilla model works here - swap it and Marn looks like someone else with no other change. Weapons is what he holds, first entry in hand; an iron hatchet reads as a sawyer at a glance. NameTranslationKey is his nameplate, shipped in this pack's npcs.lang. The press-F prompt is baked into the template and shared with every giver using it; to give one its own prompt, copy that template, edit the copy's Hint, and Reference the copy instead.",
+  "Type": "Variant",
+  "Reference": "Template_Mmo_QuestGiver",
+  "Modify": {
+    "Appearance": "Slothian_Villager",
+    "NameTranslationKey": "npcs.Mmo_Sawyer.name",
+    "Weapons": ["Tool_Hatchet_Iron"]
+  }
+}

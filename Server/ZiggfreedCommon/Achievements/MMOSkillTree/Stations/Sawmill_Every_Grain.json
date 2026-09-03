@@ -1,0 +1,115 @@
+{
+  "$Comment": "Lumber of every wood species, milled: one criterion per species, each 'Wood_<Species>_' on PREFIX so any cut of that species counts, and every one of the eleven must complete. A species missing from this list is simply not asked for; add a criterion to ask for one a pack introduces.",
+  "Name": "Sawmill_Every_Grain",
+  "Text": {
+    "TitleKey": "achievement.sawmill_every_grain.title",
+    "FlavorKey": "achievement.sawmill_every_grain.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 12
+  },
+  "Scoring": {
+    "Points": 100
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "blackwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Blackwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "darkwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Darkwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "deadwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Deadwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "drywood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Drywood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "goldenwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Goldenwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "greenwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Greenwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "hardwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Hardwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "lightwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Lightwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "redwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Redwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "softwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Softwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    },
+    "tropicalwood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_Tropicalwood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 50
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 10000
+        }
+      }
+    ]
+  }
+}

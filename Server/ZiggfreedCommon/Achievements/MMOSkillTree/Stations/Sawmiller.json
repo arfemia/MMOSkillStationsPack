@@ -1,0 +1,67 @@
+{
+  "$Comment": "The trophy: the Sawmiller's Hatchet coming out of the mill. The hatchet is an item grant on the trophy table, so it is reported as station output the moment it lands and this exact-id criterion advances on it. Hidden until earned, announced to the server, and its Claim carries the Flair reward: {\"Kind\": \"Flair\", \"Params\": {\"Flair\": \"sawmiller\"}} unlocks the Sawmiller flair (Server/RpgStations/Flairs/Sawmiller.json) for the player, which re-dresses the mill's rare-find and completion moments. A flair the player already holds is a no-op.",
+  "Name": "Sawmiller",
+  "Text": {
+    "TitleKey": "achievement.sawmiller.title",
+    "FlavorKey": "achievement.sawmiller.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 14,
+    "Hidden": true
+  },
+  "Scoring": {
+    "Points": 250
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "trophy-hatchet": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Tool_Hatchet_Sawmiller",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 25000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Multiplier": 2.5,
+          "DurationMinutes": 120
+        }
+      },
+      {
+        "Kind": "Flair",
+        "Params": {
+          "Flair": "sawmiller"
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.sawmiller.title"
+      }
+    }
+  }
+}
