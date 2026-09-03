@@ -21,6 +21,10 @@ its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both decla
   one for Woodcutting level and one for luck alone), `SawmillMasterworkBonus` (the tool-gated roll
   only the Sawmiller's Hatchet reaches), and `SawmillTrophy` (an id OVERRIDE of the jar's own
   hatchet-chase table, retuned to improve with invested Woodcutting luck).
+- **The trophy hatchet is an item grant.** `SawmillTrophy` pays `RPG_Tool_Hatchet_Sawmiller`
+  through `Grants.Items` (hotbar, then backpack, then the ground at the block when the bag is
+  full), so the win is countable station output: the Sawmiller achievements below watch for it,
+  and the `cue:trophy` fanfare plays only when the hatchet actually landed.
 - **Adds the find-tier drop tables** (`Server/Drops/MMO_Station_Sawmill_T1..T5.json` plus
   `MMO_Station_Sawmill_Masterwork.json`): offcuts at every tier, life essence from the second tier,
   concentrated essence at the top, and the masterwork roll's double offcuts plus the occasional
@@ -30,12 +34,38 @@ its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both decla
   pack removes the jar's standalone craftability and acquisition goes through the quest below) and
   `RPG_Tool_Hatchet_Sawmiller` (the trophy hatchet, carrying an MMO stat payload while held:
   +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck).
-- **Adds the Timber Rights quest**
-  (`Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Timber_Rights.json`): offered at the hub
-  once the starter gathering quest is done; deliver milled planks and collect the Sawmill itself
-  plus 500 Woodcutting XP from the quest log.
+- **Adds Sawyer Marn**, the pack's quest giver: `Server/NPC/Roles/Passive/Mmo_Sawyer.json` (a
+  `Variant` of the MMO jar's `Template_Mmo_QuestGiver`: a Slothian villager with an iron hatchet in
+  hand, nameplate from `npcs.lang`), `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json`
+  (standing in the Forgotten Temple beside the merchant's marker, across from the Mastery Trainer;
+  gated on the `stations` feature, kept alive, respawned, fortified) and
+  `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` (21 screens: a first meeting, a
+  screen per quest state, two steady beats, three help screens, and a separate greeting for a
+  player holding the Sawmiller's Hatchet). The MMO jar's guide points a temple visitor at him.
+- **Adds the seven Sawmill quests** (`Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`), every
+  one offered by and handed in to Marn, every reward collected from the quest log: **Timber
+  Rights** (open once the temple has been reached; chop timber, hand-cut planks, deliver a share;
+  pays the Sawmill itself plus Woodcutting XP), then the `sawmill` chain **First Cut**, **Reading
+  the Grain**, **Deep in the Wood** (Woodcutting 30, the level the deeper finds open at) and **A
+  Finer Edge**, the side branch **A Second Bench** (a second mill), and **Standing Order**, a
+  calendar daily (planks and bark, refreshing at the day boundary) paid from
+  `Lootables/Mmo_Sawmill_Order.json`, a ladder over Woodcutting level and luck with three
+  independent chance rolls on top. Everything the mill hands over is counted through the
+  `STATION_OUTPUT` kind, qualified to the Sawmill, and cycles through `WORK_STATION`; both are
+  RPG Stations' own.
+- **Adds eighteen achievements and the Stations category**
+  (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`,
+  `AchievementCategories/MMOSkillTree/Stations.json` with a `sawmill` subcategory): three ladders
+  (cycles worked, lumber milled, life essence found; the top rung of each announces), Nothing
+  Wasted, Every Grain, Distilled, the hidden Lucky Shavings, the hidden Sawmiller, the hidden
+  server-first First Sawmiller, Standing Account and Master Sawyer.
+- **Adds the `sawmiller` flair** (`Server/RpgStations/Flairs/Sawmiller.json`, "Sawmiller's
+  Crown"): gold crown and spark particles over the Sawmill's `Rare_Find` and `Completion` moments,
+  granted by the Sawmiller achievement through ziggfreed-common's `Flair` reward kind.
 - **Ships key-complete localization in all 9 locales** (`items.lang`, `rpgstations.lang`,
-  `mmoskilltree.lang`, `avatarCustomization.lang`).
+  `mmoskilltree.lang`, `avatarCustomization.lang`, `npcs.lang`): every quest title and flavor
+  line, the mill-lumber step line, every achievement title, description and announcement, the
+  category title, the flair name and every line of Marn's conversation.
 
 **Release scope: the Sawmill only.** The Anvil (a two-action Convert/Enhance station with the
 weapon-enhancement Stamp ritual), the `AnvilWeaponPool` roll pool, the Smithing and Cooking custom
