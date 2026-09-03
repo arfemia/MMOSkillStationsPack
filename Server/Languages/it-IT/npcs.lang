@@ -1,0 +1,8 @@
+# MMOSkillStationsPack - Nome visualizzato del Segantino Marn.
+# Hytale's I18nModule prepends the filename, so each key loads as npcs.<key>
+# (npcs.Mmo_Sawyer.name). The role JSON references it via its NameTranslationKey.
+# Add a <locale>/npcs.lang with the same key to translate; a missing key falls
+# back to the raw key text. The press-F prompt comes from the MMO jar's
+# quest-giver template, so no hint key lives here.
+
+Mmo_Sawyer.name = Segantino Marn

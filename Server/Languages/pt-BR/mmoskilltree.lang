@@ -4,4 +4,104 @@ skill.cooking = Culinária
 skill.cooking.desc = Prepare e cozinhe comida em estações de trabalho para ganhar experiência
 
 quest.timber_rights.title = Direito de Corte
-quest.timber_rights.flavor = O guia guarda uma Serraria para quem provar que sabe operá-la. Traga madeira e tábuas e ela será sua, transformando toras em tábuas mais rápido que qualquer bancada manual.
+quest.timber_rights.flavor = Tenho uma Serraria sobrando e não entrego para qualquer um. Corte madeira, transforme toras em tábuas em uma bancada manual, me traga uma parte. Depois a serraria é sua.
+quest.first_cut.title = Primeiro Corte
+quest.first_cut.flavor = Tem uma serraria agora. Alimente-a com toras, trabalhe até acumular uma pilha de tábuas e traga algumas para eu ver como você corta.
+quest.reading_the_grain.title = Lendo a Veia
+quest.reading_the_grain.flavor = Toda tora tem mais de um corte e a serraria conhece cada um. Agache-se ao usar o bloco que ela pergunta qual. Processe tábuas comuns, depois as decorativas, depois as ornadas.
+quest.second_bench.title = Uma Segunda Serraria
+quest.second_bench.flavor = Uma serraria é o começo. Processe uma boa quantidade de madeira na sua e me traga a seiva que ela expele, que eu acho você outra.
+quest.deep_in_the_wood.title = Fundo na Madeira
+quest.deep_in_the_wood.flavor = Madeira velha tem mais que tábuas. Processe o bastante na serraria e sai algo que não é casca nem seiva. Me traga uma carregada disso.
+quest.a_finer_edge.title = Um Fio Mais Fino
+quest.a_finer_edge.flavor = Os trabalhinhos pequenos acabaram. Agora faz um grande. Fica na serraria até seus braços conhecerem o trabalho e sobe seu corte de madeira para onde eu chamo você de serrador.
+quest.standing_order.title = Encomenda Padrão
+quest.standing_order.flavor = Mesma encomenda todo dia: tábuas e casca, entregues aqui. Cumpra e pago da tesoraria. Falte um dia e ela segue esperando amanhã.
+
+objective.text.stations.mill_lumber = Processe {0} peças de madeira
+
+achievement.category.stations = Estações
+flair.sawmiller.name = Coroa do Serrador
+
+achievement.sawmill_first_log.title = Primeira Tora
+achievement.sawmill_first_log.desc = Processe a primeira tora em uma Serraria.
+achievement.sawmill_shift_t1.title = Serragem
+achievement.sawmill_shift_t2.title = Mão Segura
+achievement.sawmill_shift_t3.title = Mão de Serrador
+achievement.sawmill_cycles.desc = Complete {0} ciclos na Serraria.
+achievement.sawmill_lumber_t1.title = Madeira Verde
+achievement.sawmill_lumber_t2.title = Empilhado Alto
+achievement.sawmill_lumber_t3.title = Inteira a Serraria
+achievement.sawmill_lumber.desc = Processe {0} peças de madeira na Serraria.
+achievement.sawmill_essence_t1.title = Algo na Veia
+achievement.sawmill_essence_t2.title = Seiva e Espírito
+achievement.sawmill_essence_t3.title = Madeira Nobre
+achievement.sawmill_essence.desc = Solte {0} essências de vida na Serraria.
+achievement.sawmill_distilled.title = Destilado
+achievement.sawmill_distilled.desc = Encha uma bolsa com essência de vida concentrada da Serraria.
+achievement.sawmill_nothing_wasted.title = Nada Desperdiçado
+achievement.sawmill_nothing_wasted.desc = Guarde tudo que a Serraria joga: a casca, a seiva, a fibra, os gravetos. Uma carregada de cada.
+achievement.sawmill_every_grain.title = Toda Veia
+achievement.sawmill_every_grain.desc = Processe uma carregada de toda espécie de tora na Serraria.
+achievement.sawmill_lucky_shavings.title = Lascas de Sorte
+achievement.sawmill_lucky_shavings.desc = Ache um token de impulso nas lascas sob a Serraria.
+achievement.sawmiller.title = Serrador
+achievement.sawmiller.desc = Puxe a Machado do Serrador da serraria.
+achievement.sawmiller_server_first.title = Primeiro Serrador
+achievement.sawmiller_server_first.desc = Seja o primeiro no servidor a puxar a Machado do Serrador de uma serraria.
+achievement.sawmill_standing_account.title = Conta Contínua
+achievement.sawmill_standing_account.desc = Continue preenchendo a encomenda padrão de Marn, dia após dia.
+achievement.sawmill_master_sawyer.title = Mestre Serrador
+achievement.sawmill_master_sawyer.desc = Veja o último trabalho de Sawyer Marn até o fim.
+
+achievement.announce.sawmill_shift_t3.title = Mão de Serrador!
+achievement.announce.sawmill_lumber_t3.title = Inteira a Serraria!
+achievement.announce.sawmill_essence_t3.title = Madeira Nobre!
+achievement.announce.sawmiller.title = Serrador!
+achievement.announce.sawmiller_server_first.title = PRIMEIRO NO SERVIDOR: Serrador!
+achievement.announce.sawmiller_server_first.body = {0} puxou a primeira Machado do Serrador do servidor de uma serraria: {1}
+achievement.announce.sawmill_master_sawyer.title = Mestre Serrador!
+
+dialogue.mmo_sawyer.first_words.text = Hm. Calos nas palmas e casca na bota. Você serve.\nMeu nome é Marn. Sou serrador. Aqui embaixo no <color is="#ffd97a">Templo Esquecido</color> é só pedra e nenhuma árvore, então serrador é coisa rara, e mantenho uma serraria ou duas para quem consegue alimentar. Diz oi e a gente conversa.
+dialogue.mmo_sawyer.first_words.opt.hail = Olá, Marn.
+dialogue.mmo_sawyer.menu.text = Marn segue aqui. Tora não serra sozinha, então fala o que precisa.
+dialogue.mmo_sawyer.trophy_hail.text = Espera aí. Me mostra.\nEssa é a <color is="#ffd97a">Machado do Serrador</color>. Mithril, equilibrada na serraria e em nenhum outro lugar. Não via nada parecido em anos, e nunca numa mão tão verde.\nSerraria entrega uma dessas aí sobre como tora se divide sozinha. Mantém afiada.
+dialogue.mmo_sawyer.trophy_hail.opt.show = Saiu da serraria.
+dialogue.mmo_sawyer.trophy_talk.text = Ainda carregando a <color is="#ffd97a">Machado do Serrador</color>. Bom. Lâmina assim quer trabalho, então não deixa pendurada na parede. Que precisa?
+dialogue.mmo_sawyer.rights_offer.text = Tenho uma <b>Serraria</b> sobrando. Não entrego para qualquer um, fica ciente.\nVai cortar <b>madeira</b>. Transforma <b>tábuas</b> em uma bancada manual até você saber quanto uma tábua custa em suor, e me traga uma parte. Faz isso e a serraria é sua.
+dialogue.mmo_sawyer.rights_offer.opt.accept = Trago você tábuas.
+dialogue.mmo_sawyer.rights_brief.text = <b>Madeira</b> da árvore e <b>tábuas</b> de uma bancada manual. Esse é o trabalho. A bancada é lenta, eu sei. Pois é. Você vai querer a serraria bem mais depois.
+dialogue.mmo_sawyer.rights_ready.text = Deixa ver. <b>Tábuas</b>, cortadas na mão, bordas por tudo que é lado. Bom. Não vai cortar outra igual dessas quando a serraria estiver rodando. Passa para cá e é sua.
+dialogue.mmo_sawyer.rights_ready.opt.turnin = Aqui estão as tábuas.
+dialogue.mmo_sawyer.cut_offer.text = Monta a <b>Serraria</b> num lugar plano. Vem com <b>toras</b> na mão e usa o bloco, que a serraria tira deles de você. Usa de novo e você está serrando.\nRoda um pouco, me serra umas tábuas e traz uma pilha de <b>tábuas</b> para eu ver seu corte.
+dialogue.mmo_sawyer.cut_offer.opt.accept = Vou ativar.
+dialogue.mmo_sawyer.grain_offer.text = Toda <b>tora</b> tem mais que tábuas comuns. A serraria conhece o <b>corte</b> decorativo e o ornado também, é só falar. Agacha ao usar o bloco que ela pergunta qual.\nSerra uns de cada tipo para eu saber que você lê uma veia.
+dialogue.mmo_sawyer.grain_offer.opt.accept = Vou testar cada corte.
+dialogue.mmo_sawyer.bench_offer.text = Uma serraria é o começo. Não é uma tesoraria inteira. Processa uma boa quantidade de madeira na sua, do tipo de quantidade que esvazia uma encosta, e traz a <b>seiva</b> que ela expele enquanto faz.\nFaz isso e eu acho você uma segunda <b>Serraria</b>.
+dialogue.mmo_sawyer.bench_offer.opt.accept = Trago a seiva.
+dialogue.mmo_sawyer.essence_offer.text = Pegou o jeito das tábuas. Agora a outra coisa.\nMadeira velha guarda algo que não é seiva nem casca, e uma serraria com uma boa mão no trabalho solta. <b>Essência de vida</b>, é como alquimistas chamam. Eu chamo de gordura da tora. Serra até ter uma carregada disso e me traz uma parte.
+dialogue.mmo_sawyer.essence_offer.opt.accept = Trago essência para você.
+dialogue.mmo_sawyer.essence_offer.opt.what = O que tem na madeira?
+dialogue.mmo_sawyer.essence_ready.text = Aí está. <b>Essência de vida</b>, ainda quente do corte. A maioria dos serradors passa a vida toda e nunca vê nas lascas. Passa para cá.
+dialogue.mmo_sawyer.essence_ready.opt.turnin = Aqui está a essência.
+dialogue.mmo_sawyer.edge_offer.text = Os trabalhinhos pequeninhos acabaram. Agora um grande.\nFica na serraria por um turno que cansava um cara mais fraco, e sobe seu corte de madeira para onde eu chamo você de serrador na sua cara. Nada para trazer. Volta quando tiver feito que eu vejo.
+dialogue.mmo_sawyer.edge_offer.opt.accept = Vou cumprir o turno.
+dialogue.mmo_sawyer.order_ready.text = A encomenda do dia. <b>Tábuas</b> e <b>casca</b>, contadas, empilhadas reto. É assim que eu gosto de entrega. Mesma coisa amanhã se você se animar.
+dialogue.mmo_sawyer.order_ready.opt.turnin = Aqui está a encomenda de hoje.
+dialogue.mmo_sawyer.ready_generic.text = Você tem cara de quem carrega um trabalho pronto. Coloca aí que a gente acerta.
+dialogue.mmo_sawyer.ready_generic.opt.turnin = Aqui está o que fiz.
+dialogue.mmo_sawyer.active_generic.text = Ainda no trabalho então. Serraria não roda sem você na frente. Vai.
+dialogue.mmo_sawyer.yard_talk.text = Serrador. É isso que chamo você agora, e não falo para muita gente.\nTem uma tesoraria sua para rodar. A minha é esse canto do <color is="#ffd97a">Templo Esquecido</color> e é o bastante. Vem aqui quando quiser conversar sobre madeira.
+dialogue.mmo_sawyer.bench_talk.text = Tem uma serraria agora. Mantém alimentada. Tábua vem em primeiro, e quanto mais tempo fica na frente mais uma tora solta. Tem trabalho aqui quando quiser.
+dialogue.mmo_sawyer.how_it_works.text = <b>Toras</b> na mão, usa o bloco, serraria tira de você. Usa de novo e você está serrando.\nSua <b>lâmina</b> faz o corte, então uma melhor significa mais tábuas um ciclo, e mais de tudo que a serraria tira de uma tora, casca para essência. Agacha ao usar o bloco que ela pergunta qual <b>corte</b> quer.\nPronto. O resto é ficar ali.
+dialogue.mmo_sawyer.how_it_works.opt.wood = O que mais tem numa tora?
+dialogue.mmo_sawyer.how_it_works.opt.back = Entendi.
+dialogue.mmo_sawyer.what_is_in_wood.text = Casca. Seiva. Fibra. Gravetos. Toda tora tem esses e a serraria joga com as lascas.\nMadeira velha guarda algo a mais, fundo, na madeira nobre. Alquimistas destilam e chamam <b>essência de vida</b>. Eu chamo de gordura da tora. Uma mão segura e uma boa lâmina soltam. Uma desastrada pega serragem.
+dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bom saber.
+dialogue.mmo_sawyer.hatchet_tease.text = Tem a <color is="#ffd97a">Machado do Serrador</color> aí. Mithril, equilibrada na serraria, mais afiada que qualquer coisa que uma forja tira. Ninguém faz.\nDe vez em quando uma serraria entrega uma para um serrador que ficou tempo suficiente na frente com uma lâmina já boa na mão. E eu digo de vez em quando. Vi acontecer. Não comigo.
+dialogue.mmo_sawyer.hatchet_tease.opt.back = Vou seguir serrando.
+dialogue.mmo_sawyer.opt.returned = Voltei com o que pediu.
+dialogue.mmo_sawyer.opt.quests = Tem algo que precisa cortar?
+dialogue.mmo_sawyer.opt.how = Como funciona a serraria?
+dialogue.mmo_sawyer.opt.edge = Já viu um fio melhor?
+dialogue.mmo_sawyer.opt.nothing = Nada por enquanto.

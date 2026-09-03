@@ -1,0 +1,4 @@
+# MMOSkillStationsPack - Kereste Bıçkıcısı Marn adının gösterimi.
+# Hytale'in I18nModule dosya adını başına ekler, bu nedenle her anahtar npcs.<anahtar> olarak yüklenir (npcs.Mmo_Sawyer.name). Rol JSON'u bunu NameTranslationKey aracılığıyla referans alır.
+
+Mmo_Sawyer.name = Bıçkıcı Marn

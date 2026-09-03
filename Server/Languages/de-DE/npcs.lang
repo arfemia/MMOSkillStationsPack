@@ -1,0 +1,4 @@
+# Skill-Stationen-Pack - Anzeigename von Säger Marn.
+# Das Spiel stellt dem Dateinamen die Schlüssel voran, also wird jeder Schlüssel als npcs.<key> geladen.
+
+Mmo_Sawyer.name = Säger Marn

@@ -4,4 +4,104 @@ skill.cooking = Cuisson
 skill.cooking.desc = Préparez et cuisinez de la nourriture aux stations de travail pour gagner de l'expérience
 
 quest.timber_rights.title = Droit de Coupe
-quest.timber_rights.flavor = Le guide garde une Scierie en réserve pour quiconque prouve qu'il sait s'en servir. Rapporte du bois et des planches et elle sera à toi, transformant les rondins en planches plus vite qu'aucun établi à la main.
+quest.timber_rights.flavor = J'ai une Scierie qui traîne et je la donne pas à n'importe qui. Va couper du bois, taille des planches sur un établi à la main, et rapporte-moi ta part. Là, elle est à toi.
+quest.first_cut.title = Première Coupe
+quest.first_cut.flavor = T'as la Scierie maintenant. Alimente-la avec des rondins, travaille jusqu'à avoir une charge de planches, et rapporte-moi un peu pour que je voie comment tu coupes.
+quest.reading_the_grain.title = Lire le Grain
+quest.reading_the_grain.flavor = Un rondin c'est plus qu'une seule coupe et la Scierie connaît chacune d'elles. Accroupis-toi en utilisant le bloc et elle te demandera laquelle. Taille-moi d'abord des planches lisses, puis les décoratives, puis les ouvragées.
+quest.second_bench.title = Un Deuxième Établi
+quest.second_bench.flavor = Une Scierie c'est un début. Fais passer une vraie charge de bois à travers la tienne et rapporte-moi la sève qu'elle transpire, je vais te trouver une autre.
+quest.deep_in_the_wood.title = Au Cœur du Bois
+quest.deep_in_the_wood.flavor = Le vieux bois c'est plus que des planches. Fais passer assez de bois à travers la Scierie et il sort quelque chose qui n'est pas de l'écorce et pas de la sève. Rapporte-moi une charge de ça.
+quest.a_finer_edge.title = Un Meilleur Tranchant
+quest.a_finer_edge.flavor = T'as fait les petits travaux. Fais-en un gros maintenant. Tiens-toi à cette Scierie jusqu'à ce que tes bras connaissent le travail, et remonte ton bûcheronnage à où je t'appellerais un scieur.
+quest.standing_order.title = Commande Régulière
+quest.standing_order.flavor = La même commande tous les jours : planches et écorce, livrées ici. Remplis-la et je te paierai de la cour. Manque un jour, elle sera quand même là demain.
+
+objective.text.stations.mill_lumber = Scier {0} pièces de bois
+
+achievement.category.stations = Stations
+flair.sawmiller.name = Couronne de Scieur
+
+achievement.sawmill_first_log.title = Premier Rondin
+achievement.sawmill_first_log.desc = Fais passer ton premier rondin à travers une Scierie.
+achievement.sawmill_shift_t1.title = Sciure
+achievement.sawmill_shift_t2.title = Main Sûre
+achievement.sawmill_shift_t3.title = Main de Scierie
+achievement.sawmill_cycles.desc = Travaille {0} cycles à la Scierie.
+achievement.sawmill_lumber_t1.title = Bois Vert
+achievement.sawmill_lumber_t2.title = Empilé Haut
+achievement.sawmill_lumber_t3.title = La Cour Entière
+achievement.sawmill_lumber.desc = Scie {0} pièces de bois à la Scierie.
+achievement.sawmill_essence_t1.title = Quelque Chose dans le Grain
+achievement.sawmill_essence_t2.title = Sève et Esprit
+achievement.sawmill_essence_t3.title = Aubier
+achievement.sawmill_essence.desc = Libère {0} essence de vie à la Scierie.
+achievement.sawmill_distilled.title = Distillée
+achievement.sawmill_distilled.desc = Remplis une sacoche avec l'essence de vie concentrée de la Scierie.
+achievement.sawmill_nothing_wasted.title = Rien de Perdu
+achievement.sawmill_nothing_wasted.desc = Garde tout ce que la Scierie rejette : l'écorce, la sève, la fibre, les bâtons. Une charge complète de chacun.
+achievement.sawmill_every_grain.title = Chaque Grain
+achievement.sawmill_every_grain.desc = Fais passer une charge de chaque espèce de rondin à travers la Scierie.
+achievement.sawmill_lucky_shavings.title = Copeaux de Chance
+achievement.sawmill_lucky_shavings.desc = Trouve un jeton de bonus dans les copeaux sous la Scierie.
+achievement.sawmiller.title = Scieur
+achievement.sawmiller.desc = Tire la Hache du Scieur de la Scierie.
+achievement.sawmiller_server_first.title = Premier Scieur
+achievement.sawmiller_server_first.desc = Sois le premier sur le serveur à tirer la Hache du Scieur d'une Scierie.
+achievement.sawmill_standing_account.title = Compte Régulier
+achievement.sawmill_standing_account.desc = Continue à remplir la commande régulière du Scieur Marn, jour après jour.
+achievement.sawmill_master_sawyer.title = Maître Scieur
+achievement.sawmill_master_sawyer.desc = Va au bout de la dernière commande du Scieur Marn.
+
+achievement.announce.sawmill_shift_t3.title = Main de Scierie !
+achievement.announce.sawmill_lumber_t3.title = La Cour Entière !
+achievement.announce.sawmill_essence_t3.title = Aubier !
+achievement.announce.sawmiller.title = Scieur !
+achievement.announce.sawmiller_server_first.title = PREMIER SERVEUR : Scieur !
+achievement.announce.sawmiller_server_first.body = {0} a tiré la Hache du Scieur d'une Scierie : {1}
+achievement.announce.sawmill_master_sawyer.title = Maître Scieur !
+
+dialogue.mmo_sawyer.first_words.text = Hm. Des callosités aux paumes et de l'écorce aux bottes. T'iras.\nC'est Marn. Je scie le bois. Ici en bas au <color is="#ffd97a">Temple Oublié</color> c'est que de la pierre et pas un arbre, alors un scieur c'est rare, et je garde une Scierie ou deux pour quiconque peut l'alimenter. Salue-moi et on parlera.
+dialogue.mmo_sawyer.first_words.opt.hail = Salut, Marn.
+dialogue.mmo_sawyer.menu.text = Marn est toujours là. Les rondins se sciaient pas tout seuls, alors dis-moi ce qu'il te faut.
+dialogue.mmo_sawyer.trophy_hail.text = Attends voir. Montre-moi ça.\nC'est une <color is="#ffd97a">Hache du Scieur</color>. Du mithril, équilibrée à la Scierie et nulle part ailleurs. J'en ai pas vu de semblable en années, et jamais dans une main aussi verte.\nUne Scierie en sort une de ces haches-là aussi souvent qu'un rondin se fend tout seul. Garde-la aiguisée.
+dialogue.mmo_sawyer.trophy_hail.opt.show = Elle vient de la Scierie.
+dialogue.mmo_sawyer.trophy_talk.text = T'as encore la <color is="#ffd97a">Hache du Scieur</color>. Bien. Une lame comme ça c'est faite pour travailler, alors la laisse pas moisir sur un mur. Qu'est-ce qu'il te faut?
+dialogue.mmo_sawyer.rights_offer.text = J'ai une <b>Scierie</b> qui traîne. Je la donne pas à n'importe qui, remarque.\nVa couper du <b>bois</b>. Taille des <b>planches</b> sur un établi à la main jusqu'à savoir ce qu'une planche coûte en sueur, et rapporte-moi ta part. Fais ça et elle est à toi.
+dialogue.mmo_sawyer.rights_offer.opt.accept = Je vais te rapporter des planches.
+dialogue.mmo_sawyer.rights_brief.text = Du <b>bois</b> de l'arbre et des <b>planches</b> de l'établi à la main. C'est le travail. L'établi à la main c'est lent, je le sais. C'est le point. Tu voudras la Scierie d'autant plus.
+dialogue.mmo_sawyer.rights_ready.text = Montre voir. Des <b>planches</b>, taillées à la main, les bords partout. Bien. Pas une de taillée comme ça une fois que la Scierie roulera. Donne-les-moi et elle est à toi.
+dialogue.mmo_sawyer.rights_ready.opt.turnin = Voilà les planches.
+dialogue.mmo_sawyer.cut_offer.text = Pose la <b>Scierie</b> quelque part de plat. Arrive avec des <b>rondins</b> à la main et utilise le bloc, la Scierie te les enlève. Utilise-la encore et tu scies.\nTiens-la un moment, taille-moi du <b>bois</b>, et rapporte-moi une charge de <b>planches</b> pour que je voie ta coupe.
+dialogue.mmo_sawyer.cut_offer.opt.accept = Je vais la mettre en marche.
+dialogue.mmo_sawyer.grain_offer.text = Chaque <b>rondin</b> c'est plus que des planches lisses. La Scierie connaît la <b>coupe</b> décorative et celle ouvragée aussi, elle veut juste qu'on lui dise. Accroupis-toi en utilisant le bloc et elle demandera laquelle.\nTaille-moi un peu de chacune, pour que je voie que tu lis un grain.
+dialogue.mmo_sawyer.grain_offer.opt.accept = Je vais essayer chaque coupe.
+dialogue.mmo_sawyer.bench_offer.text = Une Scierie c'est un début. C'est pas une cour. Fais passer une vraie charge de bois à travers la tienne, le genre de charge qui vide une colline, et rapporte-moi la <b>sève</b> qu'elle transpire en même temps.\nFais ça et je vais te trouver une deuxième <b>Scierie</b>.
+dialogue.mmo_sawyer.bench_offer.opt.accept = Je vais te rapporter la sève.
+dialogue.mmo_sawyer.essence_offer.text = T'es au point sur les planches. Maintenant l'autre chose.\nLe vieux <b>bois</b> c'est quelque chose qui est pas de la sève et pas de l'écorce, et une Scierie avec une bonne main la secoue pour la libérer. De l'<b>essence de vie</b>, les alchimistes disent. Moi j'appelle ça la graisse du rondin. Scie jusqu'à avoir une charge et rapporte-moi une part.
+dialogue.mmo_sawyer.essence_offer.opt.accept = Je vais te rapporter l'essence.
+dialogue.mmo_sawyer.essence_offer.opt.what = Qu'est-ce qu'il y a dans le bois?
+dialogue.mmo_sawyer.essence_ready.text = Là voilà. De l'<b>essence de vie</b>, encore chaude de la coupe. La plupart des scieurs vont une vie et la voient jamais dans la sciure. Donne-la-moi.
+dialogue.mmo_sawyer.essence_ready.opt.turnin = Voilà l'essence.
+dialogue.mmo_sawyer.edge_offer.text = Les petits travaux c'est fini. Fais un gros maintenant.\nTiens-toi à cette Scierie pour un quart qui fatiguerait un dos moins solide, et remonte ton bûcheronnage là où je dirais que t'es un scieur. Rien à remettre. Reviens quand c'est fait et je vais savoir.
+dialogue.mmo_sawyer.edge_offer.opt.accept = Je vais faire le quart.
+dialogue.mmo_sawyer.order_ready.text = La commande du jour. Des <b>planches</b> et de l'<b>écorce</b>, comptées, empilées carrées. C'est comme ça que j'aime une livraison. Pareil demain, si t'es partant.
+dialogue.mmo_sawyer.order_ready.opt.turnin = Voilà la commande du jour.
+dialogue.mmo_sawyer.ready_generic.text = T'as l'air de quelqu'un qui porte un travail fini. Pose-le et on va régler.
+dialogue.mmo_sawyer.ready_generic.opt.turnin = Voilà ce que j'ai fait.
+dialogue.mmo_sawyer.active_generic.text = Tu bosses encore alors. La Scierie roulera pas sans toi qui la regardes. Allez.
+dialogue.mmo_sawyer.yard_talk.text = Scieur. C'est ce que je t'appelle maintenant, et je le dis pas à beaucoup.\nT'as une cour à toi maintenant. La mienne c'est ce coin du <color is="#ffd97a">Temple Oublié</color>, et c'est assez. Repasse quand tu veux parler du bois.
+dialogue.mmo_sawyer.bench_talk.text = T'as une Scierie maintenant. Tiens-la nourrie. Les planches d'abord, et plus longtemps tu te tiens à la Scierie, plus un rondin crache. Y a du travail ici quand tu veux.
+dialogue.mmo_sawyer.how_it_works.text = Des <b>rondins</b> à la main, utilise le bloc, et la Scierie te les enlève. Utilise-la encore et tu scies.\nTa <b>hache</b> fait la coupe, donc une meilleure ça veut dire plus de planches un cycle, et plus de tout ce que la Scierie sort d'un rondin, écorce à essence. Accroupis-toi en utilisant le bloc et elle demandera quelle <b>coupe</b> tu veux.\nC'est tout le truc. Le reste c'est rester là.
+dialogue.mmo_sawyer.how_it_works.opt.wood = C'est quoi d'autre dans un rondin?
+dialogue.mmo_sawyer.how_it_works.opt.back = Pigé.
+dialogue.mmo_sawyer.what_is_in_wood.text = De l'écorce. De la sève. De la fibre. Des bâtons. Chaque rondin a ça et la Scierie les jette avec la sciure.\nLe vieux bois c'est quelque chose d'autre, plus profond, au cœur du bois. Les alchimistes le boivent et l'appellent de l'<b>essence de vie</b>. Moi j'appelle ça la graisse du rondin. Une main sûre et une bonne hache la secoue pour la libérer. Une main maladroite ne récolte que de la sciure.
+dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bon à savoir.
+dialogue.mmo_sawyer.hatchet_tease.text = Voilà une <color is="#ffd97a">Hache du Scieur</color>. Du mithril, équilibrée à la Scierie, plus pointue que n'importe quoi qu'une forge sort. Personne la fabrique.\nDe temps en temps une Scierie en remet une à un scieur qui a tenu assez longtemps avec une belle lame déjà en main. Et je veux dire de temps en temps. J'ai vu ça arriver. Pas pour moi.
+dialogue.mmo_sawyer.hatchet_tease.opt.back = Je vais continuer à scier.
+dialogue.mmo_sawyer.opt.returned = Je suis revenu avec ce que tu as demandé.
+dialogue.mmo_sawyer.opt.quests = Y a quelque chose à scier?
+dialogue.mmo_sawyer.opt.how = Comment marche la Scierie?
+dialogue.mmo_sawyer.opt.edge = T'as jamais vu un tranchant meilleur?
+dialogue.mmo_sawyer.opt.nothing = Rien pour maintenant.

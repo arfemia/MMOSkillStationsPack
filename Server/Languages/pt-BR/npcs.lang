@@ -1,0 +1,4 @@
+# MMOSkillStationsPack - Nome de exibição de Sawyer Marn.
+# Hytale's I18nModule prepends the filename, so each key loads as npcs.<key>
+
+Mmo_Sawyer.name = Serrador Marn

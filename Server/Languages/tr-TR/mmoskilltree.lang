@@ -4,4 +4,104 @@ skill.cooking = Pişirme
 skill.cooking.desc = İş istasyonlarında yemek hazırlayın ve pişirin, deneyim kazanmak için
 
 quest.timber_rights.title = Kereste Hakkı
-quest.timber_rights.flavor = Rehber, onu çalıştırabileceğini kanıtlayan herkes için bir Bıçkıhane saklıyor. Kütük ve kereste getir, senin olsun - kütükleri elle çalışan herhangi bir tezgahtan çok daha hızlı kerestelere dönüştürür.
+quest.timber_rights.flavor = Boş duran bir Bıçkıhane var ama onu herkes için vermem. Kereste kes, el tezgahında keresteler yap, bana bir pay getir. Sonra bıçkıhane senindir.
+quest.first_cut.title = İlk Kesim
+quest.first_cut.flavor = Artık bir bıçkıhanen var. İçine kütükler koy, çalıştır ta ki keresteler yığının boyasına gelsin ve bana da biraz getir, nasıl kestiğini görmek için.
+quest.reading_the_grain.title = Ağacın Dokusunu Okumak
+quest.reading_the_grain.flavor = Her kütükte birden fazla kesim var ve değirmen hepsini biliyor. Blok kullanırken çömel, ne sorcağını sorar. Bana düz keresteler yap, sonra dekoratif, sonra da süslü olanları.
+quest.second_bench.title = İkinci Tezgah
+quest.second_bench.flavor = Bir değirmen bir başlangıç. Elindekine iyi bir yığın kereste geçir ve bana onda çıkan özsuyu getir, sana da bir tane daha buluruz.
+quest.deep_in_the_wood.title = Ağacın Derininde
+quest.deep_in_the_wood.flavor = Eski ağaç sadece keresteden daha fazlasını tutar. Değirmenden yeterince ağaç geçir ve ortaya çıkar ki bu ne kabuk ne de özsuy. Bana bir yığın getir.
+quest.a_finer_edge.title = Daha Keskin Bir Kenar
+quest.a_finer_edge.flavor = Kısa işleri hallettin. Şimdi uzun birini yap. O değirmende durmuş durmuş durmuş, kolların işi tanısın, ve kereste kesme seviyeni beni bıçkıcı diye çağırttığım yere getir.
+quest.standing_order.title = Günlük Sipariş
+quest.standing_order.flavor = Aynı sipariş her gün, keresteler ve kabuk, buraya getirilecek. Tamamla ve sana bahçenin dışından para verirsiniz. Bir gün atla, yarın da orada durmaya devam edicek.
+
+objective.text.stations.mill_lumber = {0} parça kereste bıçkıla
+
+achievement.category.stations = İstasyonlar
+flair.sawmiller.name = Bıçkıcının Tacı
+
+achievement.sawmill_first_log.title = İlk Kütük
+achievement.sawmill_first_log.desc = İlk kütüğünü Bıçkıhane'den geçir.
+achievement.sawmill_shift_t1.title = Testeregözü
+achievement.sawmill_shift_t2.title = Kararlı El
+achievement.sawmill_shift_t3.title = Değirmenci
+achievement.sawmill_cycles.desc = Bıçkıhane'de {0} döngü çalıştır.
+achievement.sawmill_lumber_t1.title = Yeşil Kereste
+achievement.sawmill_lumber_t2.title = Yığın Yığına Yığılmış
+achievement.sawmill_lumber_t3.title = Bütün Bahçe
+achievement.sawmill_lumber.desc = Bıçkıhane'de {0} parça kereste değirmen.
+achievement.sawmill_essence_t1.title = Ağaçta Bir Şeyler
+achievement.sawmill_essence_t2.title = Özsuy ve Ruh
+achievement.sawmill_essence_t3.title = Kalp Ağacı
+achievement.sawmill_essence.desc = Bıçkıhane'de {0} yaşam özü salla.
+achievement.sawmill_distilled.title = Damıtılmış
+achievement.sawmill_distilled.desc = Bıçkıhane'den yoğunlaştırılmış yaşam özüyle bir keseni doldur.
+achievement.sawmill_nothing_wasted.title = Bir Şey Boşa Gitmedi
+achievement.sawmill_nothing_wasted.desc = Bıçkıhane'nin çıkardığı her şeyi sakla: kabuk, özsuy, lif, çıtalar. Herbiri tam bir yığın.
+achievement.sawmill_every_grain.title = Her Doku
+achievement.sawmill_every_grain.desc = Bıçkıhane'de her tür kütüğün bir yığınını geçir.
+achievement.sawmill_lucky_shavings.title = Şanslı Talaşlar
+achievement.sawmill_lucky_shavings.desc = Bıçkıhane'nin altındaki talaşlarda bir güç jöntüsü bul.
+achievement.sawmiller.title = Bıçkıcı
+achievement.sawmiller.desc = Hızarcı Baltası'nı bıçkıhaneden çek.
+achievement.sawmiller_server_first.title = İlk Bıçkıcı
+achievement.sawmiller_server_first.desc = Sunucuda ilk olarak Hızarcı Baltası'nı bir bıçkıhaneden çeken sen ol.
+achievement.sawmill_standing_account.title = Sürekli Hesap
+achievement.sawmill_standing_account.desc = Kereste Bıçkıcısı Marn'ın günlük siparişini gün geçtikçe doldurmaya devam et.
+achievement.sawmill_master_sawyer.title = Ustabıçkıcı
+achievement.sawmill_master_sawyer.desc = Kereste Bıçkıcısı Marn'ın son işini tamamla.
+
+achievement.announce.sawmill_shift_t3.title = Değirmenci!
+achievement.announce.sawmill_lumber_t3.title = Bütün Bahçe!
+achievement.announce.sawmill_essence_t3.title = Kalp Ağacı!
+achievement.announce.sawmiller.title = Bıçkıcı!
+achievement.announce.sawmiller_server_first.title = SUNUCU BİRİNCİSİ: Bıçkıcı!
+achievement.announce.sawmiller_server_first.body = {0} sunucunun ilk Hızarcı Baltası'nı bir bıçkıhaneden çekti: {1}
+achievement.announce.sawmill_master_sawyer.title = Ustabıçkıcı!
+
+dialogue.mmo_sawyer.first_words.text = Hm. Avuçlarında çatlaklı ve botlarında kabuk. Olur.\nAdım Marn. Benim işim kereste kesim. <color is="#ffd97a">Unutulan Tapınak</color>'ta burası taş ve ağaç yok, bu yüzden bıçkıcı nadir, ben de bir iki değirmen tutarım birini besleyebilecek herkes için. Selam ver, konuşuruz.
+dialogue.mmo_sawyer.first_words.opt.hail = Merhaba, Marn.
+dialogue.mmo_sawyer.menu.text = Marn hâlâ burada. Kereste kendisi kesilmiyor, söyle ne lazım.
+dialogue.mmo_sawyer.trophy_hail.text = Bekle. Bunu göster.\nBu <color is="#ffd97a">Hızarcı Baltası</color>. Mitril, değirmende ayarlanmış başka hiçbir yerde değil. Yıllar oldu böylesi görmemiştim, böyle yeşil bir elde hiç.\nDeğirmen böyle bir baltayı hemen her değirmenci kadar sık dağıtır. Keskin tutun.
+dialogue.mmo_sawyer.trophy_hail.opt.show = Değirmenciden çıktı.
+dialogue.mmo_sawyer.trophy_talk.text = <color is="#ffd97a">Hızarcı Baltası</color>'nı hâlâ taşıyorsun. İyi. Böyle bir bıçak çalışılmak ister, duvar dibine asma. Ne lazım?
+dialogue.mmo_sawyer.rights_offer.text = Elim de boş duran bir <b>Bıçkıhane</b> var. Onu herkes için vermem, dur.\n<b>Kereste</b> keseceksin. <b>Keresteler</b> el tezgahında yap ta çok ağlasın, sonra bana bir pay getir. Yap, değirmenci senin olur.
+dialogue.mmo_sawyer.rights_offer.opt.accept = Keresteler getireceğim.
+dialogue.mmo_sawyer.rights_brief.text = <b>Ağaçtan kereste</b> ve <b>tezgahta keresteler</b>. İşte o kadar. El tezgahı yavaş, biliyorum. Bunun için böyle. Değirmeni daha çok isteyeceksin.
+dialogue.mmo_sawyer.rights_ready.text = Göster bakalım. <b>Keresteler</b>, elle kesim, kenarlar dağınık. İyi. Değirmen çalışmaya başlayınca bir daha böyle kesmeyeceksin. Ver, senin olsun.
+dialogue.mmo_sawyer.rights_ready.opt.turnin = İşte keresteler.
+dialogue.mmo_sawyer.cut_offer.text = <b>Bıçkıhane</b>'yi düz bir yere koy. <b>Kütükler</b> elimde çık, blokla çalış, değirmen seni alıyor. Yeniden çalış ve kesiyorsun.\nBiraz çalıştır, bana <b>keresteler</b> yap, bir yığın getir ta ki kesişini görebileyim.
+dialogue.mmo_sawyer.cut_offer.opt.accept = Başlatacağım.
+dialogue.mmo_sawyer.grain_offer.text = Her <b>kütüğün</b> içinde düz tahtalardan fazla var. Değirmen dekoratif <b>kesimi</b> de bilir, süslü olanı da, sadece söyle lazım. Blokla çalışırken çömel ve ne sorması biliyor.\nBana her birinden yap, dokuyu okuyabildiğini görmek için.
+dialogue.mmo_sawyer.grain_offer.opt.accept = Her kesimi deneyelim.
+dialogue.mmo_sawyer.bench_offer.text = Bir değirmen bir başlangıç. Bahçe değil. Eline değirmende iyi bir yığın geçir, tepeleri boşaltacak gibi, ve bana onda çıkan <b>özsuyu</b> da getir.\nYap, sana ikinci <b>Bıçkıhane</b> buluyorum.
+dialogue.mmo_sawyer.bench_offer.opt.accept = Özsuyu getireceğim.
+dialogue.mmo_sawyer.essence_offer.text = Keresteler konusunda yeterli oldun. Şimdi öbür taraf.\nEski <b>ağaç</b> özsuyu olmayan, kabuk olmayan bir şey tutar, ve iyi eline alınmış bir değirmen onu sallar. <b>Yaşam özü</b>, kimyacılar derler. Benim derlerim odun yağı. Değirmenden bir yığın eline geçir, bana bir pay getir.
+dialogue.mmo_sawyer.essence_offer.opt.accept = Özsuyu getireceğim.
+dialogue.mmo_sawyer.essence_offer.opt.what = Ağaçta ne var?
+dialogue.mmo_sawyer.essence_ready.text = İşte orada. <b>Yaşam özü</b>, kesiş ısısında. Çoğu bıçkıcı ömrünü geçer, talaşlarda görmezler. Ver.
+dialogue.mmo_sawyer.essence_ready.opt.turnin = İşte özsuyu.
+dialogue.mmo_sawyer.edge_offer.text = Kısa işler bitti. Şimdi uzun bir.\nO değirmende öyle bir saat dur ki daha zayıf bir sırt yorulur, ve kereste kesme seviyeni beni yüzüne bıçkıcı diye çağırttığın yere getir. Getirmek yok. Bittiğinde geri gel, biliyorum.
+dialogue.mmo_sawyer.edge_offer.opt.accept = Çalışacağım.
+dialogue.mmo_sawyer.order_ready.text = Günün siparişi. <b>Keresteler</b> ve <b>kabuk</b>, sayılı, düz yığın. Böyle getiriş severim. Yarın da aynısı, gücü yetiş.
+dialogue.mmo_sawyer.order_ready.opt.turnin = İşte bugünün siparişi.
+dialogue.mmo_sawyer.ready_generic.text = Bitmek üzere bir iş taşıyan biri gibi görünüyorsun. Koy, hesabı kapatalım.
+dialogue.mmo_sawyer.ready_generic.opt.turnin = Bu benim bitirdiklerim.
+dialogue.mmo_sawyer.active_generic.text = İşi henüz halletmemişsin, demek. Değirmen sensiz çalışmıyor. Devam et.
+dialogue.mmo_sawyer.yard_talk.text = Bıçkıcı. Öyle çağırırım seni, çoğuna söylemiyorum.\nSenin bahçen var artık. Benimki <color is="#ffd97a">Unutulan Tapınak</color>'ın burası, yeterli. Kereste konuşmak istersen gel.
+dialogue.mmo_sawyer.bench_talk.text = Artık değirmen var. Besle onu. Keresteler ilk, ve daha çok durudukça ağaçtan daha fazla çıkar. İşi burada gerekirse yaparsın.
+dialogue.mmo_sawyer.how_it_works.text = <b>Kütükler</b> elinde, blokla çalış, değirmen seni alıyor. Yeniden çalış ve kesiyorsun.\n<b>Baltanın</b> kesme yapıyor, daha iyisi daha fazla kereste bir döngüde demek, ve değirmende kütükten çıkan her şeyin daha fazlası, kabuğa özsuya kadar. Blokla çalışırken çömel ve hangi <b>kesimi</b> istediğini biliyor.\nİşte o kadar. Gerisi durmak.
+dialogue.mmo_sawyer.how_it_works.opt.wood = Ağaçta başka ne var?
+dialogue.mmo_sawyer.how_it_works.opt.back = Anladım.
+dialogue.mmo_sawyer.what_is_in_wood.text = Kabuk. Özsuy. Lif. Çıta. Her kütüğün bu var ve değirmen talaşla bunları fırlatıyor.\nEski ağaç başka bir şey tutar, daha derin, kalp ağacında. Kimyacılar kaynatıp <b>yaşam özü</b> derler. Benim derlerim odun yağı. Kararlı bir el ve iyi bir balta onu sallar. Hantal olursan talaş.
+dialogue.mmo_sawyer.what_is_in_wood.opt.back = İyi bilmek.
+dialogue.mmo_sawyer.hatchet_tease.text = Var bir <color is="#ffd97a">Hızarcı Baltası</color>. Mitril, değirmende ayarlanmış, bir demircinin yapmadığından daha keskin. Kimse yapmıyor.\nArada bir değirmen bunu iyi bir balta daha tutuşa tutuşa öyle bir bıçkıcıya veriyor. Ve demek daha yavaş. Olur, gördüm. Bana değil.
+dialogue.mmo_sawyer.hatchet_tease.opt.back = Kesmeye devam edeceğim.
+dialogue.mmo_sawyer.opt.returned = Istediğini getirdim.
+dialogue.mmo_sawyer.opt.quests = Kesilecek bir şey var mı?
+dialogue.mmo_sawyer.opt.how = Değirmen nasıl çalışıyor?
+dialogue.mmo_sawyer.opt.edge = Daha keskin bir kenar görürsen?
+dialogue.mmo_sawyer.opt.nothing = Şimdilik hiçbir şey yok.
