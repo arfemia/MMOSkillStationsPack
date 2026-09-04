@@ -5,8 +5,3 @@
 
 station.anvil.name = Enclume
 station.anvil.desc = Forgez des barres aiguisées à partir de métal, ou améliorez une arme dans un rituel de martelage.
-station.cuttingboard.name = Planche à Découper
-station.cuttingboard.desc = Écaillez les poissons de votre inventaire, puis cuisinez-les près d'un feu, un à la fois.
-station.cookingfire.name = Feu de Cuisson
-station.cookingfire.desc = Grille les poissons crus sur les flammes, un à la fois.
-action.prepfish.label = Préparer le Poisson

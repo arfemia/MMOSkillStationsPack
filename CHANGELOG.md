@@ -9,6 +9,7 @@ RPG Stations sawmill through the engine's generic contribution channels; it ship
 its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both declared in
 `manifest.json`.
 
+- **The pack's `rpgstations.lang` files carry only the pack-exclusive `station.anvil.*` pair in every locale.** The station keys the RPG Stations jar ships itself (`station.cuttingboard.*`, `station.cookingfire.*`, `action.prepfish.label`) are gone from the de-DE, fr-FR and it-IT files, so a key is defined once on a server and the boot log loses the three `has multiple definitions` warnings the Italian copies raised.
 - **Adds the Sawmill progression layer** (`Server/RpgStations/Extensions/SawmillProgression.json`,
   an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action): every
   completed cycle posts 8 Woodcutting XP and 4 Crafting XP on the `mmoskilltree:skill_xp` channel,
