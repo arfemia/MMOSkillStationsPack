@@ -36,8 +36,8 @@ its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both decla
   `RPG_Tool_Hatchet_Sawmiller` (the trophy hatchet, carrying an MMO stat payload while held:
   +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck).
 - **Adds Sawyer Marn**, the pack's quest giver: `Server/NPC/Roles/Passive/Mmo_Sawyer.json` (a
-  `Variant` of the MMO jar's `Template_Mmo_QuestGiver`: a Slothian villager with an iron hatchet in
-  hand, nameplate from `npcs.lang`), `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json`
+  `Variant` of the MMO jar's `Template_Mmo_QuestGiver`: an elder Kweebec treesinger with an iron
+  hatchet in hand, nameplate from `npcs.lang`), `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json`
   (standing in the Forgotten Temple beside the merchant's marker, across from the Mastery Trainer;
   gated on the `stations` feature, kept alive, respawned, fortified) and
   `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` (21 screens: a first meeting, a

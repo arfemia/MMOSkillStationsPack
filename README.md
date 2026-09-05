@@ -56,7 +56,7 @@ bonus) but grant no skill XP and roll no item stats.
 | Path | What it is |
 |------|------------|
 | `Server/RpgStations/Extensions/SawmillProgression.json` | The Sawmill progression layer: an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action - per-cycle Woodcutting/Crafting XP on the `mmoskilltree:skill_xp` channel plus the three add-on `Bonus.Lootables` references below |
-| `Server/NPC/Roles/Passive/Mmo_Sawyer.json` | Sawyer Marn: a `Variant` of the MMO jar's quest-giver template, a Slothian villager with an iron hatchet in hand |
+| `Server/NPC/Roles/Passive/Mmo_Sawyer.json` | Sawyer Marn: a `Variant` of the MMO jar's quest-giver template, an elder Kweebec treesinger with an iron hatchet in hand |
 | `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json` | Where he stands: the Forgotten Temple, beside the merchant's marker across from the Mastery Trainer, gated on the stations feature, kept alive and respawned |
 | `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` | His conversation: the first meeting, a screen per quest (offer, in progress, ready), what he says once you own a mill and once you have finished his chain, three help screens, and a different greeting when you walk up holding the Sawmiller's Hatchet |
 | `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/*.json` | The seven quests, all his: `Timber_Rights` (chop timber, hand-cut planks, deliver; collect the Sawmill itself plus Woodcutting XP from the quest log), `First_Cut`, `Reading_The_Grain`, `Deep_In_The_Wood` (Woodcutting 30), `A_Finer_Edge` (the chain), `Second_Bench` (a side branch paying a second mill), `Standing_Order` (the daily). Everything the mill hands over is counted as station output from the Sawmill only |

@@ -63,7 +63,7 @@ skill-stations-pack/
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
     ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + npcs.lang (Mmo_Sawyer.name, the sawyer's nameplate) + mmoskilltree.lang (quest.<id>.title/.flavor for the seven quests, objective.text.stations.mill_lumber, achievement.* titles / descriptions / announce keys for the eighteen, achievement.category.stations, flair.sawmiller.name, dialogue.mmo_sawyer.* for every screen and option, plus skill.smithing/.cooking for the held-back skills) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
-    ├── NPC/Roles/Passive/Mmo_Sawyer.json                 Sawyer Marn's role: a Variant of the MMO jar's Template_Mmo_QuestGiver (Slothian_Villager, an iron hatchet in hand, nameplate from npcs.lang); only the five Modify parameters that template declares may be named
+    ├── NPC/Roles/Passive/Mmo_Sawyer.json                 Sawyer Marn's role: a Variant of the MMO jar's Template_Mmo_QuestGiver (Kweebec_Sapling_Treesinger, an iron hatchet in hand, nameplate from npcs.lang); only the five Modify parameters that template declares may be named
     └── RpgStations/
         ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
         ├── Flairs/Sawmiller.json                         the sawmiller flair (Stations [sawmill]): a per-leaf particle overlay (Effect_Crown_Gold + Block_Gem_Sparks) on the Sawmill's Rare_Find and Completion moments; granted by the Sawmiller achievement's Flair reward, display name flair.sawmiller.name
@@ -148,7 +148,7 @@ The `content-authoring` skill in the monorepo carries the schemas, the id rules 
 this content is written under; the facts below are the shape as authored.
 
 **The sawyer.** `Server/NPC/Roles/Passive/Mmo_Sawyer.json` is a `Variant` of the MMO jar's
-`Template_Mmo_QuestGiver` (`Appearance` `Slothian_Villager`, `NameTranslationKey`
+`Template_Mmo_QuestGiver` (`Appearance` `Kweebec_Sapling_Treesinger`, `NameTranslationKey`
 `npcs.Mmo_Sawyer.name`, `Weapons ["Tool_Hatchet_Iron"]`; `Modify` may name ONLY the five parameters
 that template declares, or the engine refuses the whole role). `Server/ZiggfreedCommon/NpcPlacements/
 Mmo_Sawyer_Temple.json` stands him in the Forgotten Temple: `Where {GameplayConfig
