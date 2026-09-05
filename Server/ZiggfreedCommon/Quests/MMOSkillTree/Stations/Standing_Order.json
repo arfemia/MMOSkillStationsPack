@@ -30,8 +30,7 @@
     "Category": "misc",
     "SortOrder": 200,
     "Tags": [
-      "Stations",
-      "Repeatable"
+      "Stations"
     ],
     "Hidden": true,
     "RequirePrerequisites": true
