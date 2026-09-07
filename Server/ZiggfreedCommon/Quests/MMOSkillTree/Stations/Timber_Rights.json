@@ -1,10 +1,11 @@
 {
   "$Comment": [
     "The quest that hands a new player the Sawmill: gather the makings, then deliver them to Sawyer",
-    "Marn in the Forgotten Temple. It opens once meet_at_the_temple is claimed, because Marn stands",
-    "in the temple and nowhere else; a quest whose giver the player cannot reach would sit parked",
-    "and unpaid. It is the first rung of the sawmill chain, so the quest book lists its successors",
-    "under it.",
+    "Marn in the Forgotten Temple. It opens once the introduction to him is claimed, so his first",
+    "real job is offered to somebody who has already stood in front of him; that introduction in",
+    "turn waits on the temple being found, because Marn stands in the temple and nowhere else and a",
+    "quest whose giver the player cannot reach would sit parked and unpaid. It is the first rung of",
+    "the sawmill chain, so the quest book lists its successors under it.",
     "",
     "Both gathering steps sit on Order 1, so the wood and the planks can be worked in either order;",
     "the delivery step is Order 2 and only unlocks once both are done. Its own TurnInNpcId 'giver'",
@@ -33,6 +34,7 @@
     "FlavorKey": "quest.timber_rights.flavor"
   },
   "Listing": {
+    "Icon": "RPG_Station_Sawmill",
     "Category": "main",
     "SortOrder": 20,
     "Tags": [
@@ -58,7 +60,7 @@
   "CompletionDialogue": "Mmo_Sawyer",
   "Requires": {
     "Quests": [
-      "meet_at_the_temple"
+      "meet_the_sawyer"
     ],
     "Factors": [
       {

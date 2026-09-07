@@ -22,6 +22,7 @@
     "FlavorKey": "quest.first_cut.flavor"
   },
   "Listing": {
+    "Icon": "Tool_Hatchet_Copper",
     "Category": "main",
     "SortOrder": 21,
     "Tags": [

@@ -27,6 +27,7 @@
     "FlavorKey": "quest.standing_order.flavor"
   },
   "Listing": {
+    "Icon": "Ingredient_Tree_Bark",
     "Category": "misc",
     "SortOrder": 200,
     "Tags": [

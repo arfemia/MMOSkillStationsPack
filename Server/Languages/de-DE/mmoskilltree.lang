@@ -3,6 +3,8 @@ skill.smithing.desc = Schmiede Waffen und Rüstung um Erfahrung zu gewinnen
 skill.cooking = Kochen
 skill.cooking.desc = Bereite Speisen an Arbeitsstationen zu und koche sie um Erfahrung zu gewinnen
 
+quest.meet_the_sawyer.title = Ein Wort mit Marn
+quest.meet_the_sawyer.flavor = Ein Säger arbeitet auf der anderen Seite des Absatzes, und er ist schon länger hier als ich. Geh hinüber und sag Hallo.
 quest.timber_rights.title = Holzschlagrecht
 quest.timber_rights.flavor = Mir steht ne Sägemühle leer. Geb' ich nicht an jeden. Holz schlagen, Bretter an der Werkbank schneiden, mir welche mitbringen. Dann ist sie dein.
 quest.first_cut.title = Erster Schnitt
@@ -64,6 +66,8 @@ achievement.announce.sawmill_master_sawyer.title = Meister-Säger!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Schwielen an den Handflächen und Rinde an den Stiefeln. Du wirst's tun.\nIch heiß Marn. Ich bin Säger. Hier unten im <color is="#ffd97a">Vergessenen Tempel</color> gibt's keine Bäume, nur Stein. Da ist nen Säger selten, und ich halte ein paar Mühlen für die die eine füttern können. Sag Hallo, dann reden wir.
 dialogue.mmo_sawyer.first_words.opt.hail = Hallo, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = Der Führer hat dich also runtergeschickt. Der redet, ich weiß.\nSagt, du siehst aus wie einer der eine Mühle füttern kann. Komm, sag's anständig, dann sind wir uns vorgestellt.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Hallo, Marn.
 dialogue.mmo_sawyer.menu.text = Marn steht noch hier. Die Stämme sägen sich nicht selbst. Was brauchst du?
 dialogue.mmo_sawyer.trophy_hail.text = Moment. Zeig mir das mal.\nDas ist ne <color is="#ffd97a">Sägewerker-Axt</color>. Mithril, ausgewogen am Mühlenstein und nirgendswo sonst. So was hab' ich Jahre nicht gesehen, und nie in so grüner Hand.\nDie Mühle gibt so eine ungefähr so oft her, wie sich ein Stamm von selbst spaltet. Halt die Klinge scharf.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Es kam aus der Mühle.

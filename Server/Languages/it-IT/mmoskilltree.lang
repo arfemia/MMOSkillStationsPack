@@ -3,6 +3,8 @@ skill.smithing.desc = Forgia armi e armature per guadagnare esperienza
 skill.cooking = Cucina
 skill.cooking.desc = Prepara e cucina il cibo presso le stazioni di lavoro per guadagnare esperienza
 
+quest.meet_the_sawyer.title = Una Parola con Marn
+quest.meet_the_sawyer.flavor = C'è un segantino dall'altra parte del pianerottolo, ed è qui da più a lungo di me. Attraversa e salutalo.
 quest.timber_rights.title = Diritto di Taglio
 quest.timber_rights.flavor = Ho una Segheria da avanzare e non la do a tutti. Taglia legname, crea assi su un banco manuale, portami la tua parte. Allora sarà tua.
 quest.first_cut.title = Primo Taglio
@@ -66,6 +68,8 @@ achievement.announce.sawmill_master_sawyer.title = Segantino Maestro!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Calli nei palmi e corteccia negli stivali. Andrai bene.\nMi chiamo Marn. Sego legname. Quaggiù nel <color is="#ffd97a">Tempio Dimenticato</color> è tutto pietra e niente alberi, così un segantino è cosa rara, e io tengo una segheria o due per chiunque possa alimentarne una. Salutami e parleremo.
 dialogue.mmo_sawyer.first_words.opt.hail = Ciao, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = Mi manda giù la Guida, allora. Parla sempre, quel tipo.\nDice che hai l'aria giusta per alimentare una segheria. Su, dillo come si deve e sei introdotto.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Ciao, Marn.
 dialogue.mmo_sawyer.menu.text = Marn è ancora qui. I tronchi non si segano da soli, così dimmi cosa ti serve.
 dialogue.mmo_sawyer.trophy_hail.text = Aspetta. Mostrami quella.\nQuesta è l'<color is="#ffd97a">Ascia del Segantino</color>. Mithril, equilibrata a una segheria e da nessun'altra parte. Non ho mai visto nulla del genere in anni, e mai in mani così verdi.\nLa segheria regala una di quelle quasi mai, come un tronco che si spacca da solo. Mantienila affilata.
 dialogue.mmo_sawyer.trophy_hail.opt.show = È uscita dalla segheria.

@@ -6,7 +6,8 @@
     "Three STATION_OUTPUT steps, one per cut, all on Order 1 and all qualified to the Sawmill:",
     "'_Planks' catches plain planks and the half-plank cut of every species, '_Decorative' and",
     "'_Ornate' the other two. No hand-in: with TurnInId 'giver' the quest still settles at Marn, so",
-    "the player comes back to be paid and hear his next line. The iron hatchet is the second rung of",
+    "the player comes back to be paid and hear his next line. Flow.HideLockedSteps keeps that walk",
+    "back off the step list until all three cuts are milled. The iron hatchet is the second rung of",
     "the tool ladder. Retune the three Amounts to change how long the lesson runs."
   ],
   "Name": "Reading_The_Grain",
@@ -15,6 +16,7 @@
     "FlavorKey": "quest.reading_the_grain.flavor"
   },
   "Listing": {
+    "Icon": "Tool_Hatchet_Iron",
     "Category": "main",
     "SortOrder": 22,
     "Tags": [
@@ -31,7 +33,8 @@
   },
   "Flow": {
     "AutoAccept": false,
-    "AutoTrack": true
+    "AutoTrack": true,
+    "HideLockedSteps": true
   },
   "Npc": {
     "ViewId": "Mmo_Sawyer",

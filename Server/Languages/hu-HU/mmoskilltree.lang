@@ -3,6 +3,8 @@ skill.smithing.desc = Fegyvereket és páncélokat kovácsol, hogy tapasztalatot
 skill.cooking = Főzés
 skill.cooking.desc = Készítsd el és főzd meg az ételeket munkaállomásokon, hogy tapasztalatot szerezz
 
+quest.meet_the_sawyer.title = Egy Szó Marnnál
+quest.meet_the_sawyer.flavor = A pihenő túloldalán egy fűrészmalmos dolgozik, már régebben van itt, mint én. Menj át, és köszönjél.
 quest.timber_rights.title = Favágási Jog
 quest.timber_rights.flavor = Van egy fűrészmalm, ami kívül marad. Nem adok csak úgy akárkinek. Csap fát, vágj deszkát egy kézi padon, hozz nekem egy részt. Akkor a malom a tiéd.
 quest.first_cut.title = Az Első Vágás
@@ -66,6 +68,8 @@ achievement.announce.sawmill_master_sawyer.title = Mester Fűrészmalmos!
 
 dialogue.mmo_sawyer.first_words.text = Hmm. Szaruképek a tenyereden, kéreg a csizmádon. Megteszel.\nMarn a nevem. Malmozok. Lent a <color is="#ffd97a">Feledett Templomban</color> kő van, fa nincs. Ritka egy fűrészmalmos. Pár malmom van, aki után tudnak etni. Köszönjél, majd beszélgetünk.
 dialogue.mmo_sawyer.first_words.opt.hail = Halló, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = A Kalauz leküldet, hát. Beszédes az.\nAzt mondja, olyan vagy, aki tudna malmot etetni. No, mondd rendesen, majd megismerkedünk.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Halló, Marn.
 dialogue.mmo_sawyer.menu.text = Marn még itt van. A rönkök nem maguk faragják, úgyhogy mondd meg, mit kell.
 dialogue.mmo_sawyer.trophy_hail.text = Várj. Mutasd meg azt.\nEz egy <color is="#ffd97a">Fűrészmalmi balta</color>. Mitril, malmban egyensúlyozott, másutt nem. Nem láttam még ilyet, és soha zöld kezekben.\nA malom alig olyan gyakran ad ki ilyet, mint egy rönk széthasítja magát. Tartsd élesnek.
 dialogue.mmo_sawyer.trophy_hail.opt.show = A malmomból jött ki.

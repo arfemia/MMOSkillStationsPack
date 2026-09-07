@@ -9,6 +9,8 @@ RPG Stations sawmill through the engine's generic contribution channels; it ship
 its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both declared in
 `manifest.json`.
 
+- **`Meet_The_Sawyer` names `Mmo_Sawyer` as its `CompletionDialogue`.** The introduction is collected at Marn (`TurnInAt`), and collecting a quest at a character hands off to the conversation it names; without one, pressing Collect left the player on the quest list. His conversation then walks its own Start ladder, and with the introduction settled the first job he can offer is `timber_rights`, so the player lands on `rights_offer` with the accept line in front of them. Nothing else moved: the hand-off only plays when the player is at a character, so collecting from the book out in the world still just pays.
+- **All eight quests name a `Listing.Icon`**, so each is drawn with a picture beside it wherever it is listed and on the notice when it finishes: `Tool_Hatchet_Crude` for the introduction, `RPG_Station_Sawmill` for the quest that hands the mill over, the copper and iron hatchets for the two quests that pay them, life essence for the two that are about it, sap and bark for the deliveries. Needs MMO Skill Tree 1.6.1, which carries the quest picture onto a finished-quest notice.
 - **The pack's `rpgstations.lang` files carry only the pack-exclusive `station.anvil.*` pair in every locale.** The station keys the RPG Stations jar ships itself (`station.cuttingboard.*`, `station.cookingfire.*`, `action.prepfish.label`) are gone from the de-DE, fr-FR and it-IT files, so a key is defined once on a server and the boot log loses the three `has multiple definitions` warnings the Italian copies raised.
 - **Adds the Sawmill progression layer** (`Server/RpgStations/Extensions/SawmillProgression.json`,
   an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action): every
@@ -40,12 +42,21 @@ its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both decla
   hatchet in hand, nameplate from `npcs.lang`), `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json`
   (standing in the Forgotten Temple beside the merchant's marker, across from the Mastery Trainer;
   gated on the `stations` feature, kept alive, respawned, fortified) and
-  `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` (21 screens: a first meeting, a
-  screen per quest state, two steady beats, three help screens, and a separate greeting for a
-  player holding the Sawmiller's Hatchet). The MMO jar's guide points a temple visitor at him.
+  `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` (22 screens: a first meeting, a
+  hail for a player sent down to introduce themselves, a screen per quest state, two steady beats,
+  three help screens, and a separate greeting for a player holding the Sawmiller's Hatchet). The
+  MMO jar's guide points a temple visitor at him.
+- **Adds A Word with Marn**, the introduction: the Adventurer's Guide offers it in the Forgotten
+  Temple once the meeting down there is claimed, and it asks for nothing but crossing the landing
+  and saying hello. It is taken from the Guide and finished at Marn (`TurnInAt`, so the Woodcutting
+  experience it pays is collected from his own quest list, and the quest sits on nobody else's),
+  which is what makes the sawmill read as somewhere the player is sent rather than a chain that
+  appears on its own. Marn's first-meeting line credits it, and so does the hail behind that line
+  for a player who had already wandered down and said hello. It needs the `stations` feature, so a
+  server without the station engine never sees it.
 - **Adds the seven Sawmill quests** (`Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`), every
   one offered by and handed in to Marn, every reward collected from the quest log: **Timber
-  Rights** (open once the temple has been reached; chop timber, hand-cut planks, deliver a share;
+  Rights** (open once the introduction is claimed; chop timber, hand-cut planks, deliver a share;
   pays the Sawmill itself plus Woodcutting XP), then the `sawmill` chain **First Cut**, **Reading
   the Grain**, **Deep in the Wood** (Woodcutting 30, the level the deeper finds open at) and **A
   Finer Edge**, the side branch **A Second Bench** (a second mill), and **Standing Order**, a

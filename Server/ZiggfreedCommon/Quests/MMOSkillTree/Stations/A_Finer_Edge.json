@@ -1,7 +1,9 @@
 {
   "$Comment": [
     "The chain's last rung, a long shift: four hundred Sawmill cycles and Woodcutting level forty,",
-    "both on Order 1 so they progress together.",
+    "both on Order 1 so they progress together. Flow.HideLockedSteps keeps the walk back to Marn",
+    "off the step list until that shift is behind the player, so the quest reads as the work it is",
+    "asking for.",
     "",
     "long_shifts is WORK_STATION on the station id; reach_forty is STAT_THRESHOLD, which reads a",
     "native stat channel by id (MMO_Level_WOODCUTTING) and holds the high-water reading, so a level",
@@ -16,6 +18,7 @@
     "FlavorKey": "quest.a_finer_edge.flavor"
   },
   "Listing": {
+    "Icon": "Ingredient_Life_Essence_Concentrated",
     "Category": "main",
     "SortOrder": 24,
     "Tags": [
@@ -32,7 +35,8 @@
   },
   "Flow": {
     "AutoAccept": false,
-    "AutoTrack": true
+    "AutoTrack": true,
+    "HideLockedSteps": true
   },
   "Npc": {
     "ViewId": "Mmo_Sawyer",

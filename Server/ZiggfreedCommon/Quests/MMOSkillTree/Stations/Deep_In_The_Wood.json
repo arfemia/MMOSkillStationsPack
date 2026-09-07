@@ -18,6 +18,7 @@
     "FlavorKey": "quest.deep_in_the_wood.flavor"
   },
   "Listing": {
+    "Icon": "Ingredient_Life_Essence",
     "Category": "main",
     "SortOrder": 23,
     "Tags": [

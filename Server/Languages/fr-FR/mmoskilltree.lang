@@ -3,6 +3,8 @@ skill.smithing.desc = Forgez des armes et armures pour gagner de l'expérience
 skill.cooking = Cuisson
 skill.cooking.desc = Préparez et cuisinez de la nourriture aux stations de travail pour gagner de l'expérience
 
+quest.meet_the_sawyer.title = Un Mot avec Marn
+quest.meet_the_sawyer.flavor = Il y a un scieur qui travaille de l'autre côté du palier, et il est ici depuis plus longtemps que moi. Traverse et salue-le.
 quest.timber_rights.title = Droit de Coupe
 quest.timber_rights.flavor = J'ai une Scierie qui traîne et je la donne pas à n'importe qui. Va couper du bois, taille des planches sur un établi à la main, et rapporte-moi ta part. Là, elle est à toi.
 quest.first_cut.title = Première Coupe
@@ -66,6 +68,8 @@ achievement.announce.sawmill_master_sawyer.title = Maître Scieur !
 
 dialogue.mmo_sawyer.first_words.text = Hm. Des callosités aux paumes et de l'écorce aux bottes. T'iras.\nC'est Marn. Je scie le bois. Ici en bas au <color is="#ffd97a">Temple Oublié</color> c'est que de la pierre et pas un arbre, alors un scieur c'est rare, et je garde une Scierie ou deux pour quiconque peut l'alimenter. Salue-moi et on parlera.
 dialogue.mmo_sawyer.first_words.opt.hail = Salut, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = Le Guide t'a envoyé alors. Il cause celui-là.\nDit que t'as l'air de quelqu'un qui peut nourrir une Scierie. Allez, dis-le bien et on va être présentés.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Salut, Marn.
 dialogue.mmo_sawyer.menu.text = Marn est toujours là. Les rondins se sciaient pas tout seuls, alors dis-moi ce qu'il te faut.
 dialogue.mmo_sawyer.trophy_hail.text = Attends voir. Montre-moi ça.\nC'est une <color is="#ffd97a">Hache du Scieur</color>. Du mithril, équilibrée à la Scierie et nulle part ailleurs. J'en ai pas vu de semblable en années, et jamais dans une main aussi verte.\nUne Scierie en sort une de ces haches-là aussi souvent qu'un rondin se fend tout seul. Garde-la aiguisée.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Elle vient de la Scierie.

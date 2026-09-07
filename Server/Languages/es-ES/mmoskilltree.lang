@@ -3,6 +3,8 @@ skill.smithing.desc = Forja armas y armaduras para ganar experiencia
 skill.cooking = Cocina
 skill.cooking.desc = Prepara y cocina comida en estaciones de trabajo para ganar experiencia
 
+quest.meet_the_sawyer.title = Una Palabra con Marn
+quest.meet_the_sawyer.flavor = Hay un aserrador trabajando al otro lado del rellano, y lleva más tiempo aquí que yo. Cruza y saluda.
 quest.timber_rights.title = Derecho de Tala
 quest.timber_rights.flavor = Tengo un Aserradero disponible y no se lo entrego a cualquiera. Trae madera, corta tablones en un banco manual, trae mi parte. Entonces será tuyo.
 quest.first_cut.title = Primer Corte
@@ -66,6 +68,8 @@ achievement.announce.sawmill_master_sawyer.title = Maestro Aserrador
 
 dialogue.mmo_sawyer.first_words.text = Hm. Callosidades en las palmas y corteza en las botas. Servirás.\nMe llamo Marn. Yo asierro madera. Abajo aquí en el <color is="#ffd97a">Templo Olvidado</color> es todo piedra sin árboles, así que un aserrador es algo raro, y mantengo un aserradero o dos para quien pueda alimentar uno. Saluda y hablaremos.
 dialogue.mmo_sawyer.first_words.opt.hail = Hola, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = El Guía te mandó para abajo, entonces. Ese sí que habla.\nDice que tienes pinta de poder alimentar un aserradero. Vamos, saluda bien y quedamos presentados.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Hola, Marn.
 dialogue.mmo_sawyer.menu.text = Marn sigue aquí. Los troncos no se asierran solos, así que dime qué necesitas.
 dialogue.mmo_sawyer.trophy_hail.text = Espera. Déjame verlo.\nEso es un <color is="#ffd97a">Hacha del Aserrador</color>. Mithril, equilibrada en un aserradero y en ningún otro lugar. No he visto nada igual en años, y nunca en manos tan nuevas.\nUn aserradero entrega una de esas tan a menudo como un tronco se divide a sí mismo. Mantenla afilada.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Salió del aserradero.

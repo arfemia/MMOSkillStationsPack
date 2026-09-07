@@ -3,6 +3,8 @@ skill.smithing.desc = Forja armas e armaduras para ganhar experiência
 skill.cooking = Culinária
 skill.cooking.desc = Prepare e cozinhe comida em estações de trabalho para ganhar experiência
 
+quest.meet_the_sawyer.title = Uma Conversa com Marn
+quest.meet_the_sawyer.flavor = Tem um serrador do outro lado do patamar. Está por aqui há mais tempo que eu. Vai lá, se apresenta.
 quest.timber_rights.title = Direito de Corte
 quest.timber_rights.flavor = Tenho uma Serraria sobrando e não entrego para qualquer um. Corte madeira, transforme toras em tábuas em uma bancada manual, me traga uma parte. Depois a serraria é sua.
 quest.first_cut.title = Primeiro Corte
@@ -66,6 +68,8 @@ achievement.announce.sawmill_master_sawyer.title = Mestre Serrador!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Calos nas palmas e casca na bota. Você serve.\nMeu nome é Marn. Sou serrador. Aqui embaixo no <color is="#ffd97a">Templo Esquecido</color> é só pedra e nenhuma árvore, então serrador é coisa rara, e mantenho uma serraria ou duas para quem consegue alimentar. Diz oi e a gente conversa.
 dialogue.mmo_sawyer.first_words.opt.hail = Olá, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = O Guia te mandou descer, então. Fala bastante, esse.\nDiz que você tem cara de quem consegue alimentar uma serraria. Vai, se apresenta e a gente se conhece.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Olá, Marn.
 dialogue.mmo_sawyer.menu.text = Marn segue aqui. Tora não serra sozinha, então fala o que precisa.
 dialogue.mmo_sawyer.trophy_hail.text = Espera aí. Me mostra.\nEssa é a <color is="#ffd97a">Machado do Serrador</color>. Mithril, equilibrada na serraria e em nenhum outro lugar. Não via nada parecido em anos, e nunca numa mão tão verde.\nSerraria entrega uma dessas aí sobre como tora se divide sozinha. Mantém afiada.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Saiu da serraria.

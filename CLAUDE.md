@@ -188,7 +188,8 @@ line names a single item.
 
 | id | title | chain | requires | steps |
 |---|---|---|---|---|
-| `timber_rights` | Timber Rights | `sawmill` T1 | `meet_at_the_temple` | BREAK_BLOCK `Wood` + CRAFT_ITEM `_Planks` (Order 1, hand-bench planks: nobody owns a mill yet); TURN_IN `_Planks` (Order 2). Claim: the Sawmill + Woodcutting XP |
+| `meet_the_sawyer` | A Word with Marn | none (the introduction, SortOrder ahead of the chain) | `meet_at_the_temple` + the `stations` feature | TALK_TO_NPC `Mmo_Sawyer` EXACT. Offered by the guide (`Npc.ViewId Mmo_Hub_Temple`), `TurnInAt Mmo_Sawyer` so the reward is collected at Marn. Claim: Woodcutting XP |
+| `timber_rights` | Timber Rights | `sawmill` T1 | `meet_the_sawyer` | BREAK_BLOCK `Wood` + CRAFT_ITEM `_Planks` (Order 1, hand-bench planks: nobody owns a mill yet); TURN_IN `_Planks` (Order 2). Claim: the Sawmill + Woodcutting XP |
 | `first_cut` | First Cut | T2 | `timber_rights` | WORK_STATION `Sawmill` + STATION_OUTPUT `Wood_` PREFIX (Order 1); TURN_IN `_Planks`. Claim: `Tool_Hatchet_Copper` + XP |
 | `reading_the_grain` | Reading the Grain | T3 | `first_cut` | three STATION_OUTPUT steps, `_Planks` / `_Decorative` / `_Ornate` on CONTAINS (the crouch-and-use cut picker); no hand-in. Claim: `Tool_Hatchet_Iron` + XP |
 | `deep_in_the_wood` | Deep in the Wood | T4 | `reading_the_grain` + `hytale:stat MMO_Level_WOODCUTTING Min 30` (the level the pack's T3-T5 find band opens at; retune both together) | STATION_OUTPUT `Ingredient_Life_Essence` EXACT; TURN_IN essence. Claim: a Woodcutting boost token + XP |
@@ -253,16 +254,19 @@ what lets the Sawmiller achievements count it (a `Grants.Commands` payout is inv
 
 **How a player finds Marn.** The MMO jar's guide conversation (`Mmo_Hub_Intro`, its temple
 steady-state screen) shows one extra option, "Who's the one with the hatchet?", gated on
-`meet_at_the_temple` claimed, the library's `ziggfreedcommon:quest_known timber_rights` factor
-(the shared catalogue holds the quest at all - never a pack name), and `QuestState timber_rights
-NOT_STARTED`; it opens a pointer screen naming Marn and where he stands, then returns. It carries
-no accept: Timber Rights is offered by Marn, from his own conversation, and delivered to him.
+`meet_at_the_temple` claimed, the library's `ziggfreedcommon:quest_known meet_the_sawyer` factor
+(the shared catalogue holds the quest at all - never a pack name), and `QuestState
+meet_the_sawyer NOT_STARTED`; it opens a pointer screen naming Marn and where he stands, whose
+own line takes on the introduction. That is all the guide hands out: Marn's own jobs, Timber
+Rights first, are offered from his conversation and delivered to him. The talk step is credited
+by the `MarkTalked` beat on his first-meeting hail, or by the errand hail behind it for a player
+who had already met him, so re-pointing the step means moving one of those beats with it.
 
-**Lang inventory** (`Server/Languages/<locale>/mmoskilltree.lang`, nine locales): fourteen
+**Lang inventory** (`Server/Languages/<locale>/mmoskilltree.lang`, nine locales): sixteen
 `quest.<id>.title` / `.flavor` keys, `objective.text.stations.mill_lumber`, eighteen
 `achievement.<id>.title`, nine `achievement.<id>.desc` singles + three chain-shared
 `achievement.sawmill_{cycles,lumber,essence}.desc`, seven `achievement.announce.*` keys (six titles
-+ the server-first body), `achievement.category.stations`, `flair.sawmiller.name`, 21
++ the server-first body), `achievement.category.stations`, `flair.sawmiller.name`, 22
 `dialogue.mmo_sawyer.<screen>.text` bodies, the per-screen `.opt.*` labels and the five fragment
 labels `dialogue.mmo_sawyer.opt.{returned,quests,how,edge,nothing}`; `npcs.lang` carries the one
 nameplate key. No digits in any `quest.*` / `achievement.*` / `dialogue.*` value (counts ride

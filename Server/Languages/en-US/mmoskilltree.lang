@@ -3,6 +3,8 @@ skill.smithing.desc = Forge weapons and armor to gain experience
 skill.cooking = Cooking
 skill.cooking.desc = Prepare and cook food at work stations to gain experience
 
+quest.meet_the_sawyer.title = A Word with Marn
+quest.meet_the_sawyer.flavor = There's a sawyer working the far side of the landing, and he's been down here longer than I have. Cross over and say hello.
 quest.timber_rights.title = Timber Rights
 quest.timber_rights.flavor = I've a Sawmill going spare and I don't hand them to just anybody. Chop timber, cut planks on a hand bench, bring me a share. Then the mill's yours.
 quest.first_cut.title = First Cut
@@ -66,6 +68,8 @@ achievement.announce.sawmill_master_sawyer.title = Master Sawyer!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Calluses on your palms and bark on your boots. You'll do.\nName's Marn. I saw timber. Down here in the <color is="#ffd97a">Forgotten Temple</color> it's all stone and no trees, so a sawyer's a rare thing, and I keep a mill or two for whoever can feed one. Say hello and we'll talk.
 dialogue.mmo_sawyer.first_words.opt.hail = Hello, Marn.
+dialogue.mmo_sawyer.sent_by_guide.text = The Guide sent you down, then. He talks, that one.\nSays you've the look of somebody who could feed a mill. Go on, say it properly and we'll call you introduced.
+dialogue.mmo_sawyer.sent_by_guide.opt.hail = Hello, Marn.
 dialogue.mmo_sawyer.menu.text = Marn's still here. Logs don't saw themselves, so say what you need.
 dialogue.mmo_sawyer.trophy_hail.text = Hold on. Show me that.\nThat's a <color is="#ffd97a">Sawmiller's Hatchet</color>. Mithril, balanced at a mill and nowhere else. I've not seen its like in years, and never in a hand this green.\nThe mill hands one of those out about as often as a log splits itself. Keep it sharp.
 dialogue.mmo_sawyer.trophy_hail.opt.show = It came out of the mill.

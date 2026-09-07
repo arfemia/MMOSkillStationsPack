@@ -16,6 +16,7 @@
     "FlavorKey": "quest.second_bench.flavor"
   },
   "Listing": {
+    "Icon": "Ingredient_Tree_Sap",
     "Category": "main",
     "SortOrder": 25,
     "Tags": [
