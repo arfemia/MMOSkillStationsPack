@@ -9,9 +9,14 @@
     "an Every block to set any other length.",
     "",
     "It opens once First Cut is claimed, so every player who takes it owns a mill and knows how to",
-    "feed it. Both deliveries sit on Order 1 and hand in to Marn only (TurnInNpcId 'giver'): the",
-    "planks match any species and any half-plank cut on CONTAINS, the bark is an exact id and a",
-    "Sawmill byproduct, so a day's milling covers both.",
+    "feed it. All three steps sit on Order 1, so they run together: a shift of twenty cycles at the",
+    "mill, and two deliveries that hand in to Marn only (TurnInNpcId 'giver'). The planks match any",
+    "species and any half-plank cut on CONTAINS, the bark is an exact id and a Sawmill byproduct,",
+    "so one day's milling covers all three. WORK_STATION counts only real cycles, which is what",
+    "keeps the shift honest: a stocked chest can fill the two deliveries, but the twenty are earned",
+    "at the block, and idle practice with nothing loaded does not tick. Its Target is the station",
+    "id as the station's own asset spells it, never the block's item id. Raise or lower any of the",
+    "three Amounts to change how long a day's order takes.",
     "",
     "The whole payout is ONE Lootable reward, Lootables/Mmo_Sawmill_Order.json, which grows with the",
     "player's Woodcutting level and luck and carries the daily's chance rolls; retune the odds",
@@ -64,6 +69,13 @@
     ]
   },
   "Objectives": {
+    "mill_shift": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 20,
+      "Order": 1
+    },
     "deliver_planks": {
       "Kind": "TURN_IN",
       "Target": "_Planks",
