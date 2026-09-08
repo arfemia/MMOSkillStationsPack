@@ -34,9 +34,7 @@
   "Name": "Mmo_Sawyer_Temple",
   "Enabled": true,
   "Where": {
-    "GameplayConfig": [
-      "ForgottenTemple"
-    ]
+    "GameplayConfig": ["ForgottenTemple"]
   },
   "Identity": {
     "Role": "Mmo_Sawyer"
@@ -45,7 +43,8 @@
     "Structure": {
       "MarkerIds": ["Temple_Kweebec_Merchant_Static"],
       "Offset": {
-        "X": -3
+        "X": -3,
+        "Z": -1
       },
       "Yaw": 180.0
     }
