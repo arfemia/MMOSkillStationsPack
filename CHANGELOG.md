@@ -6,7 +6,7 @@ No em-dashes.
 
 First public release, the Sawmill. This pack layers MMO Skill Tree progression onto the standalone
 RPG Stations sawmill through the engine's generic contribution channels; it ships no engine code of
-its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both declared in
+its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.1`, both declared in
 `manifest.json`.
 
 - **`Meet_The_Sawyer` names `Mmo_Sawyer` as its `CompletionDialogue`.** The introduction is collected at Marn (`TurnInAt`), and collecting a quest at a character hands off to the conversation it names; without one, pressing Collect left the player on the quest list. His conversation then walks its own Start ladder, and with the introduction settled the first job he can offer is `timber_rights`, so the player lands on `rights_offer` with the accept line in front of them. Nothing else moved: the hand-off only plays when the player is at a character, so collecting from the book out in the world still just pays.
@@ -65,12 +65,23 @@ its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.0`, both decla
   independent chance rolls on top. Everything the mill hands over is counted through the
   `STATION_OUTPUT` kind, qualified to the Sawmill, and cycles through `WORK_STATION`; both are
   RPG Stations' own.
-- **Adds eighteen achievements and the Stations category**
+- **Adds twenty-four achievements and the Stations category**
   (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`,
   `AchievementCategories/MMOSkillTree/Stations.json` with a `sawmill` subcategory): three ladders
-  (cycles worked, lumber milled, life essence found; the top rung of each announces), Nothing
-  Wasted, Every Grain, Distilled, the hidden Lucky Shavings, the hidden Sawmiller, the hidden
-  server-first First Sawmiller, Standing Account and Master Sawyer.
+  (cycles worked and life essence found at three rungs each, lumber milled at nine, from 500
+  pieces to ten million; each ladder announces at its third rung and the lumber one announces
+  again at its ninth), Nothing Wasted, Every Grain, Distilled, the hidden Lucky Shavings, the
+  hidden Sawmiller, the hidden server-first First Sawmiller, Standing Account and Master Sawyer.
+  Every award that names a skill pays Woodcutting and Crafting together at 2:1, the same ratio the
+  bench itself pays per cycle (`SawmillProgression.json`, Woodcutting 8.0 / Crafting 4.0), so the
+  two move together when either is re-tuned; the four that pay `ALL` are unchanged by that rule.
+- **Adds the Millwright's Hatchet** (`Server/Item/Items/MMO_Tool_Hatchet_Millwright.json`), the
+  claim reward on `Sawmill_Lumber_T9` and the only achievement in the pack that pays an item. It
+  is the earned counterpart to the luck-dropped Sawmiller's Hatchet: identical `Tool` block and
+  `MaxDurability`, Epic rather than Legendary, an Onyxium head so the two are never confused in a
+  hotbar, and a `Utility.StatModifiers` payload a notch under the trophy's (`Stamina` +5,
+  `MMO_BonusXp_WOODCUTTING` +20, `MMO_Luck_WOODCUTTING` +20) plus a `MMO_BonusXp_CRAFTING` +5 the
+  trophy does not carry. No flair, no `Recipe`, and no tool-gated roll of its own.
 - **Adds the `sawmiller` flair** (`Server/RpgStations/Flairs/Sawmiller.json`, "Sawmiller's
   Crown"): gold crown and spark particles over the Sawmill's `Rare_Find` and `Completion` moments,
   granted by the Sawmiller achievement through ziggfreed-common's `Flair` reward kind.

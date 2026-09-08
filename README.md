@@ -19,13 +19,17 @@ The MMO progression layered on top comes in five parts:
   payload while held (+10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck), and opens a
   tool-gated roll no other tool can, paying a double helping of offcuts plus the occasional
   Woodcutting XP boost token - its own luck bonus feeding the very roll it unlocks.
+- **A hatchet for the ones the trophy never drops for**, the **Millwright's Hatchet**: the reward
+  on the last rung of the lumber ladder, ten million pieces milled. It cuts and wears exactly like
+  the trophy, and every stat sits a notch under it (+5 maximum stamina, +20% Woodcutting XP, +5%
+  Crafting XP, +20 Woodcutting luck). No crown comes with it, and it opens no tool-gated roll.
 - **Sawyer Marn's work.** Seven quests, all offered and handed in at the temple: Timber Rights
   hands over the Sawmill; First Cut, Reading the Grain, Deep in the Wood and A Finer Edge each
   teach one thing the mill does and pay hatchets, boost tokens and XP; A Second Bench pays a
   second mill; Standing Order is a calendar daily paid from a ladder that grows with your
-  Woodcutting level and luck. Eighteen achievements sit under a Stations category of their own,
-  and the capstone, Sawmiller, pays the **Sawmiller's Crown**: a cosmetic flair that dresses every
-  rare find and every finished session at the bench in gold crown particles.
+  Woodcutting level and luck. Twenty-four achievements sit under a Stations category of their
+  own, and the capstone, Sawmiller, pays the **Sawmiller's Crown**: a cosmetic flair that dresses
+  every rare find and every finished session at the bench in gold crown particles.
 
 Also the **Anvil**, a two-action station that sharpens vanilla metal bars (Convert) or runs a
 hammering ritual that rolls stats onto a placed weapon (Enhance), granting Smithing XP. The Anvil
@@ -62,8 +66,9 @@ bonus) but grant no skill XP and roll no item stats.
 | `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/*.json` | The seven quests, all his: `Timber_Rights` (chop timber, hand-cut planks, deliver; collect the Sawmill itself plus Woodcutting XP from the quest log), `First_Cut`, `Reading_The_Grain`, `Deep_In_The_Wood` (Woodcutting 30), `A_Finer_Edge` (the chain), `Second_Bench` (a side branch paying a second mill), `Standing_Order` (the daily). Everything the mill hands over is counted as station output from the Sawmill only |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json` | What Standing Order pays: a ladder over Woodcutting level and luck (XP plus tree sap, the highest floor reached wins) and three independent chance rolls for life essence, a Woodcutting boost token and a concentrated essence |
 | `Server/ZiggfreedCommon/AchievementCategories/MMOSkillTree/Stations.json` | The Stations achievement category (its Sawmill subcategory), sorted between Crafting and Leveling |
-| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json` | Eighteen achievements: three ladders (cycles worked, lumber milled, life essence found), every offcut kept, every wood species milled, concentrated essence, a hidden one for finding a boost token in the shavings, the hidden Sawmiller and the server-first First Sawmiller for the trophy hatchet, Standing Account for the daily, Master Sawyer for finishing the chain |
+| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json` | Twenty-four achievements: three ladders (cycles worked, life essence found, and lumber milled, which runs nine rungs from five hundred pieces to ten million and pays the Millwright's Hatchet at the top), every offcut kept, every wood species milled, concentrated essence, a hidden one for finding a boost token in the shavings, the hidden Sawmiller and the server-first First Sawmiller for the trophy hatchet, Standing Account for the daily, Master Sawyer for finishing the chain |
 | `Server/RpgStations/Flairs/Sawmiller.json` | The Sawmiller's Crown: gold crown and spark particles on the Sawmill's rare finds and session ends, for a player who has claimed the Sawmiller achievement |
+| `Server/Item/Items/MMO_Tool_Hatchet_Millwright.json` | The Millwright's Hatchet, the hatchet you earn rather than find: Onyxium head, Epic, the same cut and wear as the trophy with every stat a notch under it and no flair. Handed over by the last rung of the lumber ladder |
 | `Server/Item/Items/RPG_Station_Sawmill.json` | The placeable Sawmill block (reuses the vanilla Lumbermill bench model; SHARED id with RPG Stations' jar default, overridden wholesale - this copy authors no crafting recipe, so acquisition goes through Timber Rights) |
 | `unreleased/Server/RpgStations/Stations/Anvil.json` | HELD BACK: the Anvil's `StationAsset`, an ordered `Actions` array of two fully self-contained actions, `Convert` (sharpen a vanilla metal bar) and `Enhance` (the weapon-enhancement ritual, a `Stamp`-step program) |
 | `unreleased/Server/ZiggfreedCommon/RollPools/AnvilWeaponPool.json` | HELD BACK: the weighted stat pool the Enhance ritual's `Stamp` step rolls from |
@@ -148,4 +153,4 @@ Stations' `rpgstations.station.<id>.name`/`.desc` convention keys directly, as t
 
 ## Requires
 
-RPG Stations 0.1.0 or newer, and MMO Skill Tree 1.6.0 or newer (for the skill-XP + luck bridge).
+RPG Stations 0.1.0 or newer, and MMO Skill Tree 1.6.1 or newer (for the skill-XP + luck bridge).

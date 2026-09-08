@@ -1,8 +1,8 @@
 {
-  "$Comment": "Lumber the Sawmill handed over, rung 2 of the sawmill_lumber ladder. Target 'Wood_' on PREFIX catches every species and every cut the mill makes: base yield, the tool-ladder bonus and any find alike. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Every STATION_OUTPUT criterion carries Qualifier 'Sawmill', so only what this station hands over counts.",
-  "Name": "Sawmill_Lumber_T2",
+  "$Comment": "Lumber the Sawmill handed over, rung 4 of the sawmill_lumber ladder. Target 'Wood_' on PREFIX catches every species and every cut the mill makes: base yield, the tool-ladder bonus and any find alike. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Every STATION_OUTPUT criterion carries Qualifier 'Sawmill', so only what this station hands over counts.",
+  "Name": "Sawmill_Lumber_T4",
   "Text": {
-    "TitleKey": "achievement.sawmill_lumber_t2.title",
+    "TitleKey": "achievement.sawmill_lumber_t4.title",
     "FlavorKey": "achievement.sawmill_lumber.desc",
     "TextArgs": {
       "Flavor": [
@@ -13,16 +13,16 @@
   "Listing": {
     "Category": "stations",
     "Subcategory": "sawmill",
-    "SortOrder": 5,
+    "SortOrder": 7,
     "Chains": [
       {
         "Id": "sawmill_lumber",
-        "Tier": 2
+        "Tier": 4
       }
     ]
   },
   "Scoring": {
-    "Points": 40
+    "Points": 250
   },
   "Requires": {
     "Factors": [
@@ -39,7 +39,7 @@
       "Target": "Wood_",
       "MatchMode": "PREFIX",
       "Qualifier": "Sawmill",
-      "Amount": 5000
+      "Amount": 100000
     }
   },
   "Rewards": {
@@ -48,14 +48,14 @@
         "Kind": "Mmo_Xp",
         "Params": {
           "Skill": "WOODCUTTING",
-          "Amount": 3300
+          "Amount": 22000
         }
       },
       {
         "Kind": "Mmo_Xp",
         "Params": {
           "Skill": "CRAFTING",
-          "Amount": 1650
+          "Amount": 11000
         }
       }
     ]

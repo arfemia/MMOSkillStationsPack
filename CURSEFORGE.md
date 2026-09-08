@@ -22,7 +22,8 @@ You need both mods installed. This pack is just the content between them.
 - Luck pays out in planks too, not just rare finds. Even a little is worth stacking: you start seeing an extra plank every few cycles, with no far-off threshold to wait on. It stacks with the plank ladder that pays for Woodcutting level at 25, 50, 75, 100 and 125.
 - A real chase for the Sawmiller's Hatchet. Around 1 in 3000 cycles with nothing invested, down to about 1 in 762 once your Woodcutting tree is finished. Luck is what shortens it.
 - Once you have that hatchet: +10 maximum stamina, +25% Woodcutting XP and +25 Woodcutting luck while held. It also opens a bonus roll nothing else in the game can reach, paying double offcuts and the occasional Woodcutting XP boost. Its own luck bonus feeds the roll it unlocks.
-- Sawyer Marn, in the Forgotten Temple, with seven quests, a daily and eighteen achievements about the mill. Details below.
+- Sawyer Marn, in the Forgotten Temple, with seven quests, a daily and twenty-four achievements about the mill. Details below.
+- A second hatchet, the Millwright's, for anyone the trophy never drops for. Mill ten million pieces and it is yours. Cuts the same, wears the same, every bonus a notch smaller.
 - Translated into 9 languages. Anything a translation misses falls back to English.
 
 ## Sawyer Marn
@@ -33,7 +34,7 @@ His first job is Timber Rights. Chop timber, cut planks on a hand bench, bring h
 
 Standing Order is his daily. Planks and bark, delivered to him, once a day on the calendar. What he pays out of the yard grows with your Woodcutting level and luck. Some days there is Life Essence on top, or a Woodcutting boost token; once in a while a Concentrated Life Essence.
 
-Eighteen achievements sit under a Stations category of their own. Ladders for cycles worked, lumber milled and Life Essence found. One for every wood species put through the mill, one for keeping every offcut, one for a pouch of Concentrated Life Essence. A hidden one for finding a boost token in the shavings. Two for the Sawmiller's Hatchet itself, and one of those is a server first: the whole server hears who pulled the first one out of a mill.
+Twenty-four achievements sit under a Stations category of their own. Ladders for cycles worked, lumber milled and Life Essence found. The lumber one is the long haul: nine rungs, five hundred pieces at the bottom and ten million at the top, and the last rung hands over the Millwright's Hatchet. One for every wood species put through the mill, one for keeping every offcut, one for a pouch of Concentrated Life Essence. A hidden one for finding a boost token in the shavings. Two for the Sawmiller's Hatchet itself, and one of those is a server first: the whole server hears who pulled the first one out of a mill.
 
 Pull that hatchet out of a mill and the Sawmiller achievement pays the Sawmiller's Crown. Gold crown particles over every rare find and every finished session at the bench, for as long as you play there. Cosmetic only, and yours for good.
 

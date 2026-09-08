@@ -1,0 +1,77 @@
+{
+  "$Comment": "Lumber the Sawmill handed over, rung 9 and the top of the sawmill_lumber ladder. Target 'Wood_' on PREFIX catches every species and every cut the mill makes: base yield, the tool-ladder bonus and any find alike. Every STATION_OUTPUT criterion carries Qualifier 'Sawmill', so only what this station hands over counts. Announced to the server. Its Claim hands over the Millwright's Hatchet (Server/Item/Items/MMO_Tool_Hatchet_Millwright.json), the earned counterpart to the Sawmiller's Hatchet the mill drops by luck: a shade weaker in every channel, and reachable by working rather than by rolling. An Item reward is fit-checked before the claim goes through, so a full bag parks the claim rather than eating the hatchet. Retune the whole ladder by editing each rung's Amount and nothing in a language file.",
+  "Name": "Sawmill_Lumber_T9",
+  "Text": {
+    "TitleKey": "achievement.sawmill_lumber_t9.title",
+    "FlavorKey": "achievement.sawmill_lumber.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 12,
+    "Chains": [
+      {
+        "Id": "sawmill_lumber",
+        "Tier": 9
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 1200
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "mill-lumber": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 10000000
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "MMO_Tool_Hatchet_Millwright",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 66000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 33000
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.sawmill_lumber_t9.title"
+      }
+    }
+  }
+}

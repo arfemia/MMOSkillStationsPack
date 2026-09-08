@@ -8,7 +8,7 @@
   "Listing": {
     "Category": "stations",
     "Subcategory": "sawmill",
-    "SortOrder": 11
+    "SortOrder": 17
   },
   "Scoring": {
     "Points": 25
@@ -57,8 +57,15 @@
       {
         "Kind": "Mmo_Xp",
         "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 1650
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
           "Skill": "CRAFTING",
-          "Amount": 2500
+          "Amount": 825
         }
       }
     ]

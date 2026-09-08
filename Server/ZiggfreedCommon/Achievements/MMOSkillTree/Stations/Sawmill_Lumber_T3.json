@@ -47,8 +47,15 @@
       {
         "Kind": "Mmo_Xp",
         "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 16500
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
           "Skill": "CRAFTING",
-          "Amount": 25000
+          "Amount": 8250
         }
       }
     ]

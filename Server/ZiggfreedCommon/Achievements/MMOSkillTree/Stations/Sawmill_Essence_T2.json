@@ -13,7 +13,7 @@
   "Listing": {
     "Category": "stations",
     "Subcategory": "sawmill",
-    "SortOrder": 8,
+    "SortOrder": 14,
     "Chains": [
       {
         "Id": "sawmill_essence",
@@ -48,7 +48,14 @@
         "Kind": "Mmo_Xp",
         "Params": {
           "Skill": "WOODCUTTING",
-          "Amount": 7500
+          "Amount": 5000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 2500
         }
       }
     ]

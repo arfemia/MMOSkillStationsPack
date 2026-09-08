@@ -13,7 +13,7 @@
   "Listing": {
     "Category": "stations",
     "Subcategory": "sawmill",
-    "SortOrder": 9,
+    "SortOrder": 15,
     "Chains": [
       {
         "Id": "sawmill_essence",

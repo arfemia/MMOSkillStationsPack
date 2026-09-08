@@ -25,7 +25,7 @@ A standalone Hytale content pack shipping the MMO-side **interactive work statio
 presentation defaults, lives in the RPG Stations JAR - see the 2026-07-28 History section; this
 pack extends it additively) plus the Sawmill's PROGRESSION CONTENT: **Sawyer Marn**, a quest-giver
 character standing in the Forgotten Temple, his seven Sawmill quests (the hand-out, a four-rung
-chain, a side branch and a calendar daily), eighteen achievements under a `stations` category of
+chain, a side branch and a calendar daily), twenty-four achievements under a `stations` category of
 their own, and the `sawmiller` cosmetic flair the capstone achievement grants - see the Content
 section below. The **Anvil** - a TWO-action
 station (Convert: sharpen a vanilla metal bar; Enhance: the flagship Stamp-step ritual that rolls
@@ -55,6 +55,7 @@ skill-stations-pack/
     ├── Item/
     │   ├── Items/RPG_Station_Sawmill.json                          the station block (vanilla Lumbermill bench model); SHARED id with RPG Stations' own jar default, override via pack load order (the anvil's own block file is under unreleased/)
     │   ├── Items/RPG_Tool_Hatchet_Sawmiller.json                    the sawmill's drop-only trophy hatchet; SHARED id with the RPG Stations jar item, overridden wholesale to add the MMO stat payload (Utility.StatModifiers)
+    │   ├── Items/MMO_Tool_Hatchet_Millwright.json                   the sawmill's EARNED hatchet, pack-owned (no shared id): Onyxium art, Epic, the same cut and wear as the trophy with every stat a notch under it and no flair; claim reward on Sawmill_Lumber_T9
     │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
     ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3); T2-T5 each add a life-essence Choice and T5's is the only one with no Empty entry. T1 has no Choice and pays offcuts only (essence starts at T2): one pull plus a guaranteed 1-3 Ingredient_Fibre, which is also the concrete entry the tier needs to load at all, since a container tree built purely from Droplist references fails validation with "Container must have something to drop!" and takes the pack down with it (T2-T5 satisfy that through the Singles inside their Choice; T1's own $Comment carries the detail)
@@ -62,7 +63,7 @@ skill-stations-pack/
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
-    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + npcs.lang (Mmo_Sawyer.name, the sawyer's nameplate) + mmoskilltree.lang (quest.<id>.title/.flavor for the seven quests, objective.text.stations.mill_lumber, achievement.* titles / descriptions / announce keys for the eighteen, achievement.category.stations, flair.sawmiller.name, dialogue.mmo_sawyer.* for every screen and option, plus skill.smithing/.cooking for the held-back skills) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
+    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys + the Millwright's Hatchet pair) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + npcs.lang (Mmo_Sawyer.name, the sawyer's nameplate) + mmoskilltree.lang (quest.<id>.title/.flavor for the seven quests, objective.text.stations.mill_lumber, achievement.* titles / descriptions / announce keys for the twenty-four, achievement.category.stations, flair.sawmiller.name, dialogue.mmo_sawyer.* for every screen and option, plus skill.smithing/.cooking for the held-back skills) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     ├── NPC/Roles/Passive/Mmo_Sawyer.json                 Sawyer Marn's role: a Variant of the MMO jar's Template_Mmo_QuestGiver (Kweebec_Sapling_Treesinger, an iron hatchet in hand, nameplate from npcs.lang); only the five Modify parameters that template declares may be named
     └── RpgStations/
         ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
@@ -71,7 +72,7 @@ skill-stations-pack/
 
     Server/ZiggfreedCommon/
         ├── AchievementCategories/MMOSkillTree/Stations.json  the stations achievement category (Order 25, Icon RPG_Station_Sawmill, Subcategories [sawmill]); header title achievement.category.stations
-        ├── Achievements/MMOSkillTree/Stations/*.json     eighteen Sawmill achievements (Sawmill_* / Sawmiller*), every one Listing {Category stations, Subcategory sawmill} + the stations feature gate - see the Content section
+        ├── Achievements/MMOSkillTree/Stations/*.json     twenty-four Sawmill achievements (Sawmill_* / Sawmiller*), every one Listing {Category stations, Subcategory sawmill} + the stations feature gate - see the Content section
         ├── Dialogues/MMOSkillTree/Mmo_Sawyer.json        Sawyer Marn's conversation (21 screens, keys dialogue.mmo_sawyer.*): the first-meeting and trophy beats, one Start.Quests row per quest, the two steady beats, three help screens, two footer fragments
         ├── Lootables/                                    five tables, ONE CONCERN EACH
         │   ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
@@ -211,18 +212,20 @@ three INDEPENDENT `Chance` rolls (`Base` 40 / 10 / 3, percent) paying life essen
 `Rare_Find` / `cue:find_deep`. Never swap those two stat leaves for the `mmoskilltree:station_luck`
 aggregate (a FRACTION; every floor would shift a hundredfold).
 
-**Achievements** (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json`, eighteen).
+**Achievements** (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json`, twenty-four).
 Every file: `Listing {Category stations, Subcategory sawmill}`, the `stations` feature gate, rewards
 in `Claim`, every `STATION_OUTPUT` criterion `Qualifier "Sawmill"`. The category asset
 `AchievementCategories/MMOSkillTree/Stations.json` is `{Order 25, Icon RPG_Station_Sawmill,
 Subcategories ["sawmill"]}` (25 seats it between the jar's Crafting and Leveling; no `TitleKey`, the
 header resolves `achievement.category.stations` by convention). Three chains, each rung sharing one
-`FlavorKey` with `TextArgs.Flavor ["@amount"]` and each T3 announcing:
+`FlavorKey` with `TextArgs.Flavor ["@amount"]`. `sawmill_cycles` and `sawmill_essence` run three
+rungs and announce at T3; `sawmill_lumber` runs NINE, from 500 pieces to ten million, announcing at
+T3 and again at its T9 capstone, which is the one rung anywhere in the pack that pays an item:
 
 | chain | rungs (titles) | criterion |
 |---|---|---|
 | `sawmill_cycles` | Sawdust / Steady Hand / Mill Hand | WORK_STATION `Sawmill` |
-| `sawmill_lumber` | Green Lumber / Stacked High / The Whole Yard | STATION_OUTPUT `Wood_` PREFIX |
+| `sawmill_lumber` | Green Lumber / Stacked High / The Whole Yard / Board Feet / Winter Stock / A Town's Worth / Half the Forest / Nothing Left Standing / Millwright | STATION_OUTPUT `Wood_` PREFIX |
 | `sawmill_essence` | Something in the Grain / Sap and Spirit / Heartwood | STATION_OUTPUT `Ingredient_Life_Essence` EXACT |
 
 The singles: **First Log** (WORK_STATION x1), **Distilled** (`Ingredient_Life_Essence_Concentrated`),
@@ -263,9 +266,9 @@ by the `MarkTalked` beat on his first-meeting hail, or by the errand hail behind
 who had already met him, so re-pointing the step means moving one of those beats with it.
 
 **Lang inventory** (`Server/Languages/<locale>/mmoskilltree.lang`, nine locales): sixteen
-`quest.<id>.title` / `.flavor` keys, `objective.text.stations.mill_lumber`, eighteen
+`quest.<id>.title` / `.flavor` keys, `objective.text.stations.mill_lumber`, twenty-four
 `achievement.<id>.title`, nine `achievement.<id>.desc` singles + three chain-shared
-`achievement.sawmill_{cycles,lumber,essence}.desc`, seven `achievement.announce.*` keys (six titles
+`achievement.sawmill_{cycles,lumber,essence}.desc`, eight `achievement.announce.*` keys (seven titles
 + the server-first body), `achievement.category.stations`, `flair.sawmiller.name`, 22
 `dialogue.mmo_sawyer.<screen>.text` bodies, the per-screen `.opt.*` labels and the five fragment
 labels `dialogue.mmo_sawyer.opt.{returned,quests,how,edge,nothing}`; `npcs.lang` carries the one
@@ -318,7 +321,7 @@ round (no engine code lives here):
   back toward the anvil-top center along the weapon's own length) and `Rotation.Roll: 90.0` (the
   flat-vs-edge twist, paired with `Rotation.Yaw: 0.0` so the hilt lies flat along the anvil).
   `convert.Custody.Display` (placed ingot, `Offset.Y 0.52`) and the
-  sawmill's placed log (`Offset.Y -0.1`) author ONLY a vertical `Offset.Y` with no horizontal shift
+  sawmill's placed log (`Offset.Y 0.2`) author ONLY a vertical `Offset.Y` with no horizontal shift
   and no `Rotation`, so the facing-relative change leaves them byte-identical at any orientation -
   deliberately left unchanged. All the axis/sign/fallback tuning ladder lives in `Anvil.json`'s own
   `$Comment`; every value is a plain JSON leaf, maintainer-tunable without an engine rebuild.
