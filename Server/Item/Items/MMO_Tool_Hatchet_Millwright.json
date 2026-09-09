@@ -47,19 +47,19 @@
       ],
       "MMO_BonusXp_WOODCUTTING": [
         {
-          "Amount": 20,
+          "Amount": 22,
           "CalculationType": "Additive"
         }
       ],
       "MMO_BonusXp_CRAFTING": [
         {
-          "Amount": 5,
+          "Amount": 12,
           "CalculationType": "Additive"
         }
       ],
       "MMO_Luck_WOODCUTTING": [
         {
-          "Amount": 20,
+          "Amount": 22,
           "CalculationType": "Additive"
         }
       ]
