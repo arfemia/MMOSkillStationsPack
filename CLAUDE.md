@@ -65,6 +65,7 @@ skill-stations-pack/
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
     ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3); T2-T5 each add a life-essence Choice and T5's is the only one with no Empty entry. T1 has no Choice and pays offcuts only (essence starts at T2): one pull plus a guaranteed 1-3 Ingredient_Fibre, which is also the concrete entry the tier needs to load at all, since a container tree built purely from Droplist references fails validation with "Container must have something to drop!" and takes the pack down with it (T2-T5 satisfy that through the Singles inside their Choice; T1's own $Comment carries the detail)
     ├── Drops/MMO_Station_Sawmill_Masterwork.json         the Sawmiller's Hatchet's own reward table: 2 byproduct pulls + a 2% Woodcutting XP boost token, no essence and no planks
+    ├── Drops/MMO_Station_Trim_Offcuts_T1..T4.json        native ItemDropList byproducts for Trim Work's four wage tiers (fibre/bark/sapling Choice slots widening tier to tier), each pulled by its matching Lootables/Mmo_Sawmill_Trim_Wage_* file's DropLists array; a tier's higher floors repeat the SAME id two or three times in one Grants.DropLists list, which the engine rolls as that many independent pulls rather than a mistake worth deduplicating
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
@@ -80,16 +81,20 @@ skill-stations-pack/
         ├── Achievements/MMOSkillTree/Stations/*.json     twenty-six Sawmill achievements (Sawmill_* / Sawmiller*), every one Listing {Category stations, Subcategory sawmill} + the stations feature gate - see the Content section
         ├── Bounties/MMOSkillTree/Stations/*.json         seven Sawmill bounty contracts hanging on the shared bounty pack's boards by id (two Bihourly, four Daily, one Weekly), self-contained with no Parent (the skeleton they would otherwise inherit lives in a pack that may not be installed) and carrying the stations feature gate; ship from THIS pack because a board draws its slots without consulting a bounty's own Requires - a stations contract living in the bounty pack would still be posted on a server with no RPG Stations and would refuse only at Accept
         ├── Dialogues/MMOSkillTree/Mmo_Sawyer.json        Sawyer Marn's conversation (29 screens, keys dialogue.mmo_sawyer.*): the first-meeting and trophy beats, one Start.Quests row per quest (eleven rows), three Then beats, three help screens, two footer fragments (the full footer now six options, the short tail three)
-        ├── Lootables/                                    nine tables, ONE CONCERN EACH
+        ├── Lootables/                                    thirteen tables, ONE CONCERN EACH
         │   ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
         │   ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional extra output, an rpgstations:output_items reward)
         │   ├── SawmillMasterworkBonus.json               the single tool-gated Roll rewarding a worker for WIELDING the Sawmiller's Hatchet (does NOT grant it); pays the Masterwork drop table above
         │   ├── SawmillTrophy.json                        an ID OVERRIDE of the RPG Stations jar table of the same name: the hatchet CHASE, 1-in-3000 rising with base+WOODCUTTING luck, paid as a Grants.Items item so the win is countable station output. NOT listed in SawmillProgression's Bonus.Lootables (the jar's Sawmill already references this id; folding by id replaces it in place). The other three station tables ARE listed there.
         │   ├── Mmo_Sawmill_Order.json                    what the Standing Order daily pays: a level+luck Ladder (Woodcutting XP + tree sap) plus three independent percent-chance rolls (essence / a boost token / concentrated essence), each with a Cue; the quest's ONE Lootable reward (a quest payout, named by no station), so the daily retunes here
-        │   ├── Mmo_Sawmill_Trim_Pay.json                 the trim order's wage: a Ladder over the same level+luck score paying a widening XP range plus byproducts at five floors, plus a second coin-flip Ladder over the same score paying a smaller XP top-up alone
-        │   ├── Mmo_Sawmill_Trim_Supply.json               tools and upkeep off the same order: two level-only Chance+Ladder rolls (a spare hatchet up to Cobalt, and repair kits), deliberately luck-blind
-        │   ├── Mmo_Sawmill_Trim_Finds.json                the order's occasional extras: concentrated essence behind a WOODCUTTING 55 Condition, and a boost token, both plain percent Chances
-        │   └── Mmo_Woodcutters_Kit.json                   the ONLY table anywhere that pays the woodcutter's kit: four independent Chance rolls, one per piece, the jerkin the rare one on the Sawmill's own deep-find cue
+        │   ├── Mmo_Sawmill_Trim_Pay.json                 the trim order's wage ROUTER: level picks the floor, luck decides how good it is (the pack's default paradigm for a two-channel payout - see content-authoring's Lootable payouts section). ONE Ladder over Woodcutting LEVEL alone, floors at 0/25/55/85, and every floor's only Grant is a nested `{"Kind": "Lootable", "Params": {"Lootable": "<tier>"}}` pointing at one of the four Wage tables below; the router itself never pays anything and carries no Cue
+        │   ├── Mmo_Sawmill_Trim_Wage_Green.json          the Green tier's actual payout, nested from the router's Min 0 floor: one Ladder over Woodcutting LUCK alone (floors 0/30/70/110), each floor a WOODCUTTING XP range plus essence plus 1-2 pulls of Drops/MMO_Station_Trim_Offcuts_T1; no Cue anywhere in this tier
+        │   ├── Mmo_Sawmill_Trim_Wage_Hand.json           the Hand tier, nested from the router's Min 25 floor: the same luck-Ladder shape over Drops/MMO_Station_Trim_Offcuts_T2, larger XP/essence/pull counts than Green; no Cue
+        │   ├── Mmo_Sawmill_Trim_Wage_Sawyer.json         the Sawyer tier, nested from the router's Min 55 floor: the same shape over Drops/MMO_Station_Trim_Offcuts_T3, larger again; no Cue
+        │   ├── Mmo_Sawmill_Trim_Wage_Master.json         the Master tier, nested from the router's Min 85 floor: the same shape over Drops/MMO_Station_Trim_Offcuts_T4, the largest XP/essence/pull counts; its OWN top floor (Min 110, luck) alone carries `cue:find_deep`, since a maxed level AND that much luck together is genuinely occasional
+        │   ├── Mmo_Sawmill_Trim_Supply.json               tools and upkeep off the same order: two level-only Chance+Ladder rolls (a spare hatchet up to Thorium, and repair kits) plus a third, luck-only, uncapped Ladder (no Chance) for saplings and a lantern; the two tool rolls are deliberately luck-blind
+        │   ├── Mmo_Sawmill_Trim_Finds.json                the order's occasional extras: concentrated essence behind a WOODCUTTING 55 Condition, a boost token, both plain percent Chances, plus a third, luck-only, uncapped Ladder (no Chance) for fibre and a bonus concentrated essence at its top floor
+        │   └── Mmo_Woodcutters_Kit.json                   the ONLY table anywhere that pays the woodcutter's kit: four independent Chance rolls, one per piece, no Ladder and no factor of any kind - deliberately flat, so the set chase is predictable and is not slowed for a low-luck player; the jerkin the rare one, cued with the Sawmill's own deep-find cue
         ├── NpcPlacements/Mmo_Sawyer_Temple.json          stands Marn in the Forgotten Temple (Where.GameplayConfig, a Structure anchor on the merchant marker at Offset.X -3, the stations feature gate, KeepAlive/Respawn/Fortify, Interact.Dialogue Mmo_Sawyer)
         └── Quests/MMOSkillTree/Stations/                 the twelve Sawmill quests (id = lower-cased filename; an unmarked folder, so no folder segment joins the id): Meet_The_Sawyer (the introduction), Timber_Rights (the hand-out), First_Cut, Reading_The_Grain, Deep_In_The_Wood, A_Finer_Edge (the sawmill chain), Second_Bench (a side branch), Standing_Order (a calendar daily), Straight_Grain, Cold_Metal, The_Fitting (the Marn's Edge chain, opened once A_Finer_Edge is claimed), Trim_Work (a repeatable, `Repeat.Reset.Every.Hours 3`) - all offered by and handed in to Marn
 ```
@@ -244,19 +249,42 @@ essence, a `BoostToken_Woodcutting_Personal_Standard`, and one concentrated esse
 `STATION_OUTPUT` on the two specialty cuts (`_Decorative` / `_Ornate` on CONTAINS) and the fibre
 byproduct, then `TURN_IN` on decorative planks (CONTAINS) and bark (EXACT) to Marn. Its Claim
 carries FOUR `Lootable` rewards, one concern each, so a retune is an edit to one small table rather
-than a hunt through a long one: `Mmo_Sawmill_Trim_Pay` (the wage - a `Ladder` over the same
-level+luck score paying a widening XP range plus byproducts at five floors, growing with the tier
-rather than simply scaling, plus a second coin-flip `Ladder` over the same score paying a smaller
-XP top-up alone, with no Cue since the wage's own chime already covers the order), `Mmo_Sawmill_Trim_Supply`
-(upkeep - two level-only `Chance`+`Ladder` rolls, a spare hatchet capped at Cobalt on purpose and
-repair kits, both deliberately luck-blind so a luck build gets the same spanner as anyone else at
-that level), `Mmo_Sawmill_Trim_Finds` (the occasional extra - concentrated essence behind a
-`hytale:stat MMO_Level_WOODCUTTING Min 55` Condition, and a boost token, both plain percent
-`Chance`s), and `Mmo_Woodcutters_Kit` (the ONLY table anywhere that pays the woodcutter's kit: four
-independent `Chance` rolls, one per piece, the Woodcutter's Jerkin deliberately the rare one and cued
-with the Sawmill's own deep-find cue rather than the everyday chime). All four read the same
-whole-points level/luck convention as the tables above; never swap those leaves for the
-`mmoskilltree:station_luck` fraction here either.
+than a hunt through a long one, and every one of the four follows the pack's default paradigm for
+a payout scored on both channels (content-authoring's Lootable payouts section): LEVEL picks the
+floor, LUCK decides how good that floor turns out.
+
+`Mmo_Sawmill_Trim_Pay` is the wage, and it is a ROUTER rather than a payout: one Ladder over
+Woodcutting LEVEL alone, floors at 0/25/55/85, and every floor's only Grant is a nested `Lootable`
+reward naming one of `Mmo_Sawmill_Trim_Wage_{Green,Hand,Sawyer,Master}`. Each of those four files
+is where the wage actually lives, scored on Woodcutting LUCK alone (its own Ladder, floors at
+0/30/70/110) and paying a widening WOODCUTTING XP range plus essence plus one or more pulls of its
+own `Drops/MMO_Station_Trim_Offcuts_T{1,2,3,4}` list (a higher floor repeats the same offcuts id
+two or three times in `Grants.DropLists`, rolling it that many times, not a duplication mistake);
+figures grow tier to tier as well as floor to floor. Only the Master tier's own top floor carries
+a Cue (`cue:find_deep`): a maxed level AND that much luck together is genuinely occasional, and
+every other floor in every tier stays silent so the chime keeps its meaning.
+
+`Mmo_Sawmill_Trim_Supply` (upkeep) pairs a level-only `Chance`+`Ladder` for a spare hatchet
+(Copper/Iron/Thorium, then a repair kit past the point a spare hatchet is worth anything) with a
+second level-only `Chance`+`Ladder` for repair kits alone, both deliberately luck-blind so a luck
+build gets the same spanner as anyone else at that level, and adds a THIRD roll, an
+uncapped Ladder with no Chance, scored on luck alone, for saplings and a lantern.
+`Mmo_Sawmill_Trim_Finds` (the occasional extra) pairs a plain percent `Chance` for concentrated
+essence, gated behind a `hytale:stat MMO_Level_WOODCUTTING Min 55` Condition, with a second plain
+percent `Chance` for a boost token, and likewise adds a third roll, an uncapped Ladder with no
+Chance, scored on luck alone, paying fibre and a bonus concentrated essence at its top floor. In
+both files that third, always-resolving Ladder is the table's own luck side sitting beside its
+level-gated rolls; its zero floor always pays something rather than nothing, and neither authors a
+Cue on it. `Mmo_Woodcutters_Kit` is the one table in the Claim that reads neither channel: four
+independent `Chance` rolls, one per piece, no Ladder and no factor of any kind, deliberately flat
+so the set chase is predictable and is not slowed for a low-luck player; the Woodcutter's Jerkin
+is deliberately the rare one and cues with the Sawmill's own deep-find cue rather than the
+everyday chime.
+
+Every Ladder in trim_work's Claim (Mmo_Sawmill_Trim_Pay, its four wage tiers, and the luck rolls
+in Mmo_Sawmill_Trim_Supply and Mmo_Sawmill_Trim_Finds) reads Woodcutting luck and level as WHOLE
+points; Mmo_Woodcutters_Kit reads neither. Never swap either channel for the
+`mmoskilltree:station_luck` fraction here, which would shift every floor a hundredfold.
 
 **Achievements** (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json`, twenty-six).
 Every file: `Listing {Category stations, Subcategory sawmill}`, the `stations` feature gate, rewards

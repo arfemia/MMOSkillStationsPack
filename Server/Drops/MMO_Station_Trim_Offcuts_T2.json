@@ -1,0 +1,87 @@
+{
+  "$Comment": "What Trim Work's Hand wage shakes loose per pull: richer fibre and bark than the Green table, tree sap starting to turn up, and a wider sapling slot across four species. Still no sticks and no light at this tier - those are what the Sawyer and Master tables add. Each byproduct is its own Choice with an Empty counterweight, so richer means both a heavier Single Weight and a higher quantity range rather than a guarantee. Raise the sap Choice's Single Weight to bring it forward faster; add a fifth species Single beside the sapling Choice's Empty to widen the pool.",
+  "Container": {
+    "Type": "Multiple",
+    "Containers": [
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 10
+          },
+          {
+            "Type": "Single",
+            "Weight": 90,
+            "Item": { "ItemId": "Ingredient_Fibre", "QuantityMin": 2, "QuantityMax": 4 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 25
+          },
+          {
+            "Type": "Single",
+            "Weight": 75,
+            "Item": { "ItemId": "Ingredient_Tree_Bark", "QuantityMin": 1, "QuantityMax": 3 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 70
+          },
+          {
+            "Type": "Single",
+            "Weight": 30,
+            "Item": { "ItemId": "Ingredient_Tree_Sap", "QuantityMin": 1, "QuantityMax": 2 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 75
+          },
+          {
+            "Type": "Single",
+            "Weight": 7,
+            "Item": { "ItemId": "Plant_Sapling_Oak", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 6,
+            "Item": { "ItemId": "Plant_Sapling_Birch", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 6,
+            "Item": { "ItemId": "Plant_Sapling_Maple", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 6,
+            "Item": { "ItemId": "Plant_Sapling_Spruce", "QuantityMin": 1, "QuantityMax": 1 }
+          }
+        ]
+      }
+    ]
+  }
+}

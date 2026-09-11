@@ -1,0 +1,129 @@
+{
+  "$Comment": "What Trim Work's Sawyer wage shakes loose per pull: fibre, bark and sap all richer again, sticks joining the mix for the first time, a five-species sapling slot, and a first, thin chance at light (a torch far more often than a lantern). Each byproduct is its own Choice with an Empty counterweight; the light slot is deliberately still mostly Empty here, since a real chance at a lantern is what sets the Master table apart. Raise the sticks Choice's Single Weight to bring it forward faster than the essence tables do; widen the light Choice's Single Weights slowly rather than all at once, or every tier reads the same.",
+  "Container": {
+    "Type": "Multiple",
+    "Containers": [
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 6
+          },
+          {
+            "Type": "Single",
+            "Weight": 94,
+            "Item": { "ItemId": "Ingredient_Fibre", "QuantityMin": 3, "QuantityMax": 6 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 18
+          },
+          {
+            "Type": "Single",
+            "Weight": 82,
+            "Item": { "ItemId": "Ingredient_Tree_Bark", "QuantityMin": 2, "QuantityMax": 4 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 55
+          },
+          {
+            "Type": "Single",
+            "Weight": 45,
+            "Item": { "ItemId": "Ingredient_Tree_Sap", "QuantityMin": 2, "QuantityMax": 4 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 65
+          },
+          {
+            "Type": "Single",
+            "Weight": 35,
+            "Item": { "ItemId": "Ingredient_Stick", "QuantityMin": 2, "QuantityMax": 5 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 65
+          },
+          {
+            "Type": "Single",
+            "Weight": 8,
+            "Item": { "ItemId": "Plant_Sapling_Oak", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 7,
+            "Item": { "ItemId": "Plant_Sapling_Birch", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 7,
+            "Item": { "ItemId": "Plant_Sapling_Maple", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 7,
+            "Item": { "ItemId": "Plant_Sapling_Spruce", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 6,
+            "Item": { "ItemId": "Plant_Sapling_Ash", "QuantityMin": 1, "QuantityMax": 1 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 96
+          },
+          {
+            "Type": "Single",
+            "Weight": 3,
+            "Item": { "ItemId": "Furniture_Crude_Torch", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 1,
+            "Item": { "ItemId": "Deco_Lantern", "QuantityMin": 1, "QuantityMax": 1 }
+          }
+        ]
+      }
+    ]
+  }
+}

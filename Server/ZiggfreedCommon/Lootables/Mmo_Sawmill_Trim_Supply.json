@@ -1,29 +1,30 @@
 {
   "$Comment": [
     "Tools, paid out by Trim Work. A sawyer wears a hatchet down, so the yard keeps them in",
-    "gear: a spare hatchet now and then, and repair kits more often than that.",
+    "gear: a spare hatchet now and then, repair kits more often than that, and a small sapling and",
+    "light bonus for a well-invested luck tree.",
     "",
-    "BOTH ROLLS READ WOODCUTTING LEVEL ALONE, deliberately. The wage table pays on level and luck",
-    "together, which rewards investment; this one is about where the worker is in their trade, so a",
-    "luck-heavy build gets the same spanner as anyone else at that level.",
+    "THE TWO TOOL ROLLS READ WOODCUTTING LEVEL ALONE, deliberately, matching the paradigm this pack",
+    "follows everywhere: level picks the floor, so a hatchet or a repair kit tracks where the worker",
+    "is in their trade rather than how lucky the run was. The third roll below is the one place in",
+    "this file that reads luck, on its own ladder with its own floors.",
     "",
-    "EACH ROLL PAIRS A CHANCE WITH A LADDER, which is what keeps this two rolls rather than six. The",
-    "Chance decides whether anything is handed over at all; the Ladder then decides WHICH tier, and",
-    "because floors are highest-wins and not cumulative, exactly one item comes out of each roll. A",
-    "worker at level ninety gets the top tier and nothing else, never one of each.",
+    "EACH TOOL ROLL PAIRS A CHANCE WITH A LADDER, which is what keeps the two of them to two rolls",
+    "rather than six. The Chance decides whether anything is handed over at all; the Ladder then",
+    "decides WHICH tier, and because floors are highest-wins and not cumulative, exactly one item",
+    "comes out of each roll. A worker at level ninety gets the top tier and nothing else, never one",
+    "of each.",
     "",
-    "BOTH LADDERS START AT ZERO on purpose, below the level the quest that opens Trim Work asks for.",
+    "EVERY LADDER STARTS AT ZERO on purpose, below the level the quest that opens Trim Work asks for.",
     "A ladder grants NOTHING when every floor sits above the worker's reading, so the bottom rung is",
     "what keeps a roll that fired from handing over an empty hand if a level ever comes in lower than",
     "the quest's gate implies. Keep it when you re-tune the rungs above it.",
     "",
-    "THE HATCHET LADDER STOPS AT COBALT on purpose. The questline Trim Work sits beside ends with a",
-    "cobalt-headed hatchet carrying stats no vanilla tool has, so a hatchet handed out here must never",
-    "reach past it. Raise a floor if you want a tier to arrive later; do not add a rung above cobalt.",
-    "The top rung is a plain vanilla cobalt hatchet, so be clear about what it does and does not",
-    "match: it cuts exactly as fast as the questline's own and shares its quality and item level,",
-    "while the questline's keeps the longer wear and the three stat channels to itself. A worker who",
-    "already carries that one is being handed a spare here, not a rival to it.",
+    "THE HATCHET LADDER'S TOP FLOOR IS A REPAIR KIT, not a hatchet, and that is deliberate: the",
+    "questline Trim Work sits beside ends in a hatchet carrying stats no vanilla tool has, so anybody",
+    "standing at this floor already carries something better than anything this table could hand",
+    "over. A spare Copper, Iron or Thorium hatchet below that floor is still a genuine upgrade for",
+    "whoever has not reached the questline's own reward yet.",
     "",
     "Repair kits come on roughly one run in eight, against a hatchet at about one run in twenty,",
     "because a kit is upkeep and a hatchet is a small event. Only the hatchet roll carries a Cue: a",
@@ -70,7 +71,7 @@
             }
           },
           {
-            "Min": 50,
+            "Min": 55,
             "Grants": {
               "Items": [
                 {
@@ -81,12 +82,14 @@
             }
           },
           {
-            "Min": 80,
+            "$Comment": "A repair kit instead of a hatchet: anybody reading this high already carries a hatchet no spare here could match.",
+            "Min": 85,
             "Grants": {
               "Items": [
                 {
-                  "Item": "Tool_Hatchet_Cobalt",
-                  "Count": 1
+                  "Item": "Tool_Repair_Kit_Rare",
+                  "Count": 2,
+                  "CountMax": 3
                 }
               ]
             }
@@ -123,7 +126,7 @@
             }
           },
           {
-            "Min": 50,
+            "Min": 55,
             "Grants": {
               "Items": [
                 {
@@ -135,11 +138,74 @@
             }
           },
           {
-            "Min": 80,
+            "Min": 85,
             "Grants": {
               "Items": [
                 {
                   "Item": "Tool_Repair_Kit_Rare",
+                  "Count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "A small bonus for a well-invested luck tree: extra saplings, and a lantern once that investment is heavy. Reads MMO_Luck_WOODCUTTING alone, on its own floors, with no Chance gating it - it always resolves, and its zero floor pays a token sapling rather than nothing.",
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 0,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Plant_Sapling_Oak",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 40,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Plant_Sapling_Oak",
+                  "Count": 1
+                },
+                {
+                  "Item": "Plant_Sapling_Birch",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 90,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Plant_Sapling_Oak",
+                  "Count": 1
+                },
+                {
+                  "Item": "Plant_Sapling_Birch",
+                  "Count": 1
+                },
+                {
+                  "Item": "Plant_Sapling_Maple",
+                  "Count": 1
+                },
+                {
+                  "Item": "Deco_Lantern",
                   "Count": 1
                 }
               ]

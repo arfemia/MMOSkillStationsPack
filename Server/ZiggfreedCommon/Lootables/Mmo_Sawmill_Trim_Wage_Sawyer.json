@@ -1,0 +1,143 @@
+{
+  "$Comment": [
+    "The Sawyer wage: what a woodcutter at the Sawyer floor of Trim Work earns for one order,",
+    "once luck decides how the run actually went. Mmo_Sawmill_Trim_Pay routes here on level alone;",
+    "everything below reads Woodcutting LUCK alone, so within this tier a lucky run pays noticeably",
+    "more than an unlucky one even though both workers stand at the same point in the trade.",
+    "",
+    "UNITS, the one trap worth knowing. MMO_Luck_WOODCUTTING is a WHOLE-NUMBER percent reading, not a",
+    "fraction: a fully claimed Woodcutting tree, the trophy hatchet in hand and the woodcutter's kit",
+    "worn together read somewhere near a hundred and sixty-six, which is what the top floor here is",
+    "sized against. Never swap this for the mmoskilltree:station_luck aggregate: that one returns a",
+    "FRACTION and would shift every floor by a factor of a hundred.",
+    "",
+    "RANGES pay experience and essence drawn evenly between Amount/Count and their Max, decided once",
+    "per claim, which is what keeps two runs at the same floor from reading identically.",
+    "",
+    "PULLS. Each floor's DropLists array names MMO_Station_Trim_Offcuts_T3 once per pull; listing the",
+    "same id twice rolls it twice, independently, so the count of entries IS the number of pulls."
+  ],
+  "Name": "Mmo_Sawmill_Trim_Wage_Sawyer",
+  "Rolls": [
+    {
+      "$Comment": "Luck alone decides the floor. Retune a number here without touching the level router.",
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 0,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 1800,
+                    "AmountMax": 2800
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 4,
+                  "CountMax": 8
+                }
+              ],
+              "DropLists": [
+                "MMO_Station_Trim_Offcuts_T3",
+                "MMO_Station_Trim_Offcuts_T3"
+              ]
+            }
+          },
+          {
+            "Min": 30,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 2400,
+                    "AmountMax": 3600
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 5,
+                  "CountMax": 10
+                }
+              ],
+              "DropLists": [
+                "MMO_Station_Trim_Offcuts_T3",
+                "MMO_Station_Trim_Offcuts_T3"
+              ]
+            }
+          },
+          {
+            "Min": 70,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 3200,
+                    "AmountMax": 4800
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 6,
+                  "CountMax": 12
+                }
+              ],
+              "DropLists": [
+                "MMO_Station_Trim_Offcuts_T3",
+                "MMO_Station_Trim_Offcuts_T3",
+                "MMO_Station_Trim_Offcuts_T3"
+              ]
+            }
+          },
+          {
+            "Min": 110,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 4000,
+                    "AmountMax": 6000
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 8,
+                  "CountMax": 14
+                }
+              ],
+              "DropLists": [
+                "MMO_Station_Trim_Offcuts_T3",
+                "MMO_Station_Trim_Offcuts_T3",
+                "MMO_Station_Trim_Offcuts_T3"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

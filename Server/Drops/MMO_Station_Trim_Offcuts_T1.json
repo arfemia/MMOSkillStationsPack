@@ -1,0 +1,66 @@
+{
+  "$Comment": "What Trim Work's Green wage shakes loose per pull: mostly fibre and bark, an occasional sapling, no sap, no sticks, no light. Fibre and bark each roll on their own Choice slot (an Empty counterweight beside the Single, so neither is truly guaranteed), and the sapling slot is one Choice among three species plus a large Empty share, which is what makes a sapling here feel like a small bonus rather than a rule. Raise a Single's Weight (and lower its Choice's Empty to match) to make that item more common; add a Single beside Empty in the sapling Choice to widen which species can turn up.",
+  "Container": {
+    "Type": "Multiple",
+    "Containers": [
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 15
+          },
+          {
+            "Type": "Single",
+            "Weight": 85,
+            "Item": { "ItemId": "Ingredient_Fibre", "QuantityMin": 1, "QuantityMax": 3 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 40
+          },
+          {
+            "Type": "Single",
+            "Weight": 60,
+            "Item": { "ItemId": "Ingredient_Tree_Bark", "QuantityMin": 1, "QuantityMax": 2 }
+          }
+        ]
+      },
+      {
+        "Type": "Choice",
+        "RollsMin": 1,
+        "RollsMax": 1,
+        "Containers": [
+          {
+            "Type": "Empty",
+            "Weight": 90
+          },
+          {
+            "Type": "Single",
+            "Weight": 4,
+            "Item": { "ItemId": "Plant_Sapling_Oak", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 3,
+            "Item": { "ItemId": "Plant_Sapling_Birch", "QuantityMin": 1, "QuantityMax": 1 }
+          },
+          {
+            "Type": "Single",
+            "Weight": 3,
+            "Item": { "ItemId": "Plant_Sapling_Maple", "QuantityMin": 1, "QuantityMax": 1 }
+          }
+        ]
+      }
+    ]
+  }
+}
