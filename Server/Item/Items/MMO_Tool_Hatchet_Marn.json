@@ -1,0 +1,106 @@
+{
+  "$Comment": "Marn's Hatchet, the questline's tool: the Claim reward on The Fitting, the last rung of Marn's Edge, so anyone who walks that questline to its end leaves with a hatchet of Marn's own pattern. It is a standalone copy of the vanilla cobalt hatchet (Tool_Hatchet_Cobalt): the same icon, model and texture, the same Tool.Specs ladder with a Woods gather power of 0.5, Rare quality and item level 35, with MaxDurability 400 where the vanilla cobalt hatchet carries 325, so it outlasts the tool it is patterned on. It sits a notch below the pack's two 0.55 hatchets on purpose: the Sawmiller's is the chase find and the Millwright's the long-haul earn, and a questline that anyone can finish must not outcut either. No Parent and no Recipe, so no vanilla crafting or salvage recipe can be inherited and the hatchet stays reward-only. Tags.Family Hatchet is authored explicitly (vanilla gathering tools carry no Family tag) so the station's tag gate recognizes it beside the functional Woods gather route.\n\nThe three stats apply only while the hatchet is HELD, and the MMO's equip stat bridge applies them: the native stat manager reads a Utility block off the separate utility accessory slot only, never off a held tool. Utility.Compatible stays true and Usable stays unauthored, which keeps the block a side-effect-free stat surface (the hatchet can never occupy the utility slot itself, so nothing applies these stats twice).\n\nWhat the three stats feed. Stamina 2 is a flat addition to the worker's MAXIMUM stamina, the native stat every guard and sprint drains. MMO_BonusXp_WOODCUTTING 5 is plus 5 percent Woodcutting experience, multiplied into every Woodcutting award the MMO pays out, sawmill cycles included. MMO_Luck_WOODCUTTING 10 is plus 10 percentage points of Woodcutting luck, feeding the MMO's luck ladders and every scored roll this pack ships: SawmillLuckFinds' find-tier score, SawmillOutputLadders' bonus-plank ladder, SawmillMasterworkBonus' chance and the two dailies' payout ladders. Percent-family MMO stats author their PERCENT as the Amount, and every entry is Additive on purpose: these channels carry a base of zero, and additive folds before multiplicative, so a Multiplicative-only entry here would compute zero and be silently inert.\n\nAll three amounts are opening balance and tunable without an engine change; keep them under the Millwright's if the questline's hatchet is to stay the lesser of the three.",
+  "TranslationProperties": {
+    "Name": "items.MMO_Tool_Hatchet_Marn.name",
+    "Description": "items.MMO_Tool_Hatchet_Marn.description"
+  },
+  "Categories": ["Items.Tools"],
+  "Set": "Tool_Stone",
+  "Icon": "Icons/ItemsGenerated/Tool_Hatchet_Cobalt.png",
+  "Model": "Items/Tools/Hatchet/Cobalt.blockymodel",
+  "Texture": "Items/Tools/Hatchet/Cobalt_Texture.png",
+  "Quality": "Rare",
+  "ItemLevel": 35,
+  "Tool": {
+    "Specs": [
+      { "Power": 1, "GatherType": "SoftBlocks" },
+      { "Power": 0.05, "GatherType": "Soils" },
+      { "Power": 0.5, "GatherType": "Woods" },
+      { "Power": 0.05, "GatherType": "Rocks" },
+      { "Power": 0.5, "GatherType": "Benches" },
+      { "Power": 0.017, "GatherType": "VolcanicRocks" },
+      { "Power": 0.046, "GatherType": "OreCopper" },
+      { "Power": 0.046, "GatherType": "OreIron" },
+      { "Power": 0.046, "GatherType": "OreSilver" },
+      { "Power": 0.046, "GatherType": "OreGold" },
+      { "Power": 0.042, "GatherType": "OreThorium" },
+      { "Power": 0.042, "GatherType": "OreCobalt" },
+      { "Power": 0.036, "GatherType": "OreAdamantite" },
+      { "Power": 0.032, "GatherType": "OreMithril" }
+    ],
+    "DurabilityLossBlockTypes": [
+      {
+        "BlockSets": ["Stone", "Rock", "Ores", "Soil", "Wood"],
+        "DurabilityLossOnHit": 0.25
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Hatchet",
+  "Utility": {
+    "Compatible": true,
+    "StatModifiers": {
+      "Stamina": [
+        {
+          "Amount": 2,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_BonusXp_WOODCUTTING": [
+        {
+          "Amount": 5,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_Luck_WOODCUTTING": [
+        {
+          "Amount": 10,
+          "CalculationType": "Additive"
+        }
+      ]
+    }
+  },
+  "Interactions": {
+    "Primary": "Hatchet_Attack"
+  },
+  "InteractionVars": {
+    "Hatchet_Chop_Effect": {
+      "Interactions": [
+        {
+          "Parent": "Hatchet_Chop_Effect",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Tool_T1_Swing",
+            "LocalSoundEventId": "SFX_Hatchet_T1_Swing_RL_Local"
+          }
+        }
+      ]
+    },
+    "Hatchet_Chop_Damage": {
+      "Interactions": [
+        {
+          "Parent": "Hatchet_Chop_Damage",
+          "DamageCalculator": {
+            "Type": "Dps",
+            "BaseDamage": {
+              "Physical": 5
+            }
+          },
+          "DamageEffects": {
+            "WorldSoundEventId": "SFX_Light_Melee_T1_Impact"
+          }
+        }
+      ]
+    }
+  },
+  "IconProperties": {
+    "Scale": 0.5,
+    "Translation": [18, -15],
+    "Rotation": [45, 270, 0]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxDurability": 400,
+  "Tags": {
+    "Type": ["Tool"],
+    "Family": ["Hatchet"]
+  },
+  "ItemSoundSetId": "ISS_Weapons_Wood"
+}

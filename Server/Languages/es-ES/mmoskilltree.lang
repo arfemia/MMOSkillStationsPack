@@ -19,6 +19,29 @@ quest.a_finer_edge.title = Un Filo Más Fino
 quest.a_finer_edge.flavor = Terminaste los trabajos rápidos. Ahora uno largo. Permanece en ese aserradero hasta que tus brazos conozcan el trabajo, y sube tu corte de madera a donde yo te llamaría aserrador.
 quest.standing_order.title = Pedido Diario
 quest.standing_order.flavor = Mismo pedido cada día: tablones y corteza, entregados aquí. Cúmplelo y te pagaré del patio. Pierde un día y seguirá esperando mañana.
+quest.straight_grain.title = Grano Recto
+quest.straight_grain.flavor = Te estoy haciendo un hacha, y un hacha es un asta antes que nada. Grano recto, sin nudos. Aserradea stock hasta que no aguantes la vista, luego trae tablones y buscaré el asta en la pila.
+quest.cold_metal.title = Metal Frío
+quest.cold_metal.flavor = Cobalto en la cabeza, y el cobalto no sale de un tronco. Ve a buscar una fragua y trae barras, y no dejes que el aserradero se enfríe mientras estás fuera.
+quest.the_fitting.title = El Ajuste
+quest.the_fitting.flavor = Asta y cabeza, y ahora tienen que unirse. Trabaja un turno largo, hasta que la esencia sale de la sierra más rápido de lo que puedas embolsarla, luego trae cuero pesado y una bolsa del tipo concentrado. Después de eso es un hacha.
+quest.trim_work.title = Corte de Adorno
+quest.trim_work.flavor = Adorno, esta vez. El corte decorativo y el ornamental, y guarda la fibra que la sierra tira mientras lo haces. Trae tu parte del adorno y corteza. El pedido vuelve a salir antes de que acabe el día.
+
+quest.bounty_quick_mill.title = Aserradero Rápido
+quest.bounty_quick_mill.flavor = Una corrida rápida en un Aserradero antes de que el tablero cambie. Cárgalo y permanece ahí.
+quest.bounty_quick_boards.title = Tablones Rápidos
+quest.bounty_quick_boards.flavor = Una pila rápida de tablones de un Aserradero, cualquier corte. El banco manual no sirve.
+quest.bounty_mill_shift.title = Turno de Aserradero
+quest.bounty_mill_shift.flavor = Un turno completo en el Aserradero, de principio a fin. Mantén los troncos viniendo.
+quest.bounty_plank_delivery.title = Entrega de Tablones
+quest.bounty_plank_delivery.flavor = Los constructores escasean de tablones y el tablero paga por la carga. Cualquier especie, entregada aquí.
+quest.bounty_lumber_order.title = Pedido de Madera
+quest.bounty_lumber_order.flavor = Un pedido apropiado de madera aserradeada, todo corte bienvenido. Ejecuta el Aserradero hasta que se llene.
+quest.bounty_essence_run.title = Carrera de Esencia
+quest.bounty_essence_run.flavor = Los alquimistas quieren esencia vital directo de la sierra. Aserradea madera vieja hasta que se suelte lo suficiente.
+quest.bounty_mill_marathon.title = El Turno Largo
+quest.bounty_mill_marathon.flavor = Una semana en el Aserradero, y el tablero cuenta cada ciclo. Nadie llena este en una tarde.
 
 objective.text.stations.mill_lumber = Aserradea {0} piezas de madera
 
@@ -63,6 +86,10 @@ achievement.sawmill_standing_account.title = Cuenta Permanente
 achievement.sawmill_standing_account.desc = Continúa cumpliendo el pedido permanente de Sawyer Marn, día tras día.
 achievement.sawmill_master_sawyer.title = Maestro Aserrador
 achievement.sawmill_master_sawyer.desc = Termina el último trabajo de Sawyer Marn.
+achievement.sawmill_trim_account.title = Cuenta de Adorno
+achievement.sawmill_trim_account.desc = Continúa cumpliendo el pedido de adorno de Sawyer Marn, día tras día.
+achievement.sawmill_marns_own.title = De Marn
+achievement.sawmill_marns_own.desc = Trae a Sawyer Marn los componentes de un hacha, desde el asta hasta la cabeza, y deja que la ajuste.
 
 achievement.announce.sawmill_shift_t3.title = Peón de Aserradero
 achievement.announce.sawmill_lumber_t3.title = Todo el Patio
@@ -72,6 +99,7 @@ achievement.announce.sawmiller.title = Aserrador
 achievement.announce.sawmiller_server_first.title = PRIMERO EN SERVIDOR: Aserrador
 achievement.announce.sawmiller_server_first.body = {0} sacó el Hacha del Aserrador del servidor en un aserradero: {1}
 achievement.announce.sawmill_master_sawyer.title = Maestro Aserrador
+achievement.announce.sawmill_marns_own.title = ¡De Marn!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Callosidades en las palmas y corteza en las botas. Servirás.\nMe llamo Marn. Yo asierro madera. Abajo aquí en el <color is="#ffd97a">Templo Olvidado</color> es todo piedra sin árboles, así que un aserrador es algo raro, y mantengo un aserradero o dos para quien pueda alimentar uno. Saluda y hablaremos.
 dialogue.mmo_sawyer.first_words.opt.hail = Hola, Marn.
@@ -99,8 +127,18 @@ dialogue.mmo_sawyer.essence_ready.text = Ahí está. <b>Esencia vital</b>, todav
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Aquí está la esencia.
 dialogue.mmo_sawyer.edge_offer.text = Los trabajos rápidos se terminaron. Ahora uno largo.\nPermanece en ese aserradero durante un turno que agotaría una espalda menor, y sube tu corte de madera a donde yo te llamaría aserrador a la cara. Nada que entregar. Vuelve cuando esté hecho y lo sabré.
 dialogue.mmo_sawyer.edge_offer.opt.accept = Haré el turno.
+dialogue.mmo_sawyer.grain_stock_offer.text = Aserrador, y empuñando un hacha que cualquier herrero podría haber hecho. Eso me ha estado molestando.\nTe estoy haciendo una. Mi propio patrón, y comienza con el asta. Grano recto, sin nudos, y no lo encuentras mirando. Pasa <b>stock</b> por el aserradero hasta que el patio esté lleno y trae tablones. Buscaré el asta ahí.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = Aserradeará el stock.
+dialogue.mmo_sawyer.metal_offer.text = Ese es un asta. Ahora necesita algo en la punta.\nLa cabeza es cobalto, y el cobalto no sale de un tronco, así que por una vez te estoy enviando lejos del aserradero. Busca una fragua y trae <b>barras de cobalto</b>. Mantén el aserradero en marcha mientras estés fuera, mira. Un asta sin nada es un palo.
+dialogue.mmo_sawyer.metal_offer.opt.accept = Traerá cobalto.
+dialogue.mmo_sawyer.fitting_offer.text = Asta y cabeza. Ahora tienen que unirse, y esa es la parte que nadie se apresura.\nLa cabeza está templada en <b>esencia vital</b> y el atado es <b>cuero pesado</b>. Permanece en ese aserradero durante un turno largo, hasta que está soltando esencia a puñados, y en algún momento la cosa profunda se presenta. Trae el cuero y una bolsa de <b>esencia concentrada</b>, y haré el ajuste.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = Traerá lo que necesita.
+dialogue.mmo_sawyer.fitting_ready.text = <b>Cuero pesado</b>, y una bolsa de la <b>esencia concentrada</b>. Dámela.\nListo. Cobalto en un asta recto, atado lo suficiente para durarnos a ambos. No cortará como el que el aserradero entrega, y no pretenderé que lo hace. Corta como el mío. <color is="#ffd97a">Hacha de Marn</color>, y no hay otra. Tómala.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Aquí está el cuero y la bolsa.
 dialogue.mmo_sawyer.order_ready.text = El pedido del día. <b>Tablones</b> y <b>corteza</b>, contados, apilados cuadrados. Así me gusta una entrega. Mañana lo mismo, si tienes para ello.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Aquí está el pedido de hoy.
+dialogue.mmo_sawyer.trim_ready.text = El adorno. <b>Cortes decorativos</b>, bordes limpios, y <b>corteza</b> a brazadas. Alguien ha estado leyendo la veta. Habrá otro pronto, si el aserradero sigue en pie.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Aquí está el adorno de hoy.
 dialogue.mmo_sawyer.ready_generic.text = Tienes la pinta de alguien que carga un trabajo terminado. Ponlo abajo y nos arreglamos.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Aquí está lo que he hecho.
 dialogue.mmo_sawyer.active_generic.text = Todavía en el trabajo, pues. El aserradero no corre sin ti parado en él. Vamos.
@@ -113,8 +151,12 @@ dialogue.mmo_sawyer.what_is_in_wood.text = Corteza. Savia. Fibra. Palillos. Cada
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bien saber.
 dialogue.mmo_sawyer.hatchet_tease.text = Hay un <color is="#ffd97a">Hacha del Aserrador</color>. Mithril, equilibrada en el aserradero, más afilada que nada que una fragua produce. Nadie la fabrica.\nDe vez en cuando un aserradero se la entrega a un aserrador que ha estado en él lo suficiente con un hacha fina ya en mano. Y quiero decir de vez en cuando. Lo he visto pasar. No me ha pasado a mí.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Seguiré aserrando.
+dialogue.mmo_sawyer.edge_talk.text = Tienes un hacha mío y un nombre que no entrego a muchos. No queda nada más en esta esquina que pueda hacerte.\nEl aserradero es otro asunto. Tiene sus propias ideas sobre a quién le entrega un filo, y estar en él es la única forma de enterarse. Hay trabajo aquí cuando lo quieras, como siempre.
+dialogue.mmo_sawyer.kit_talk.text = Ese gorro que te di es un comienzo, y no pretenderé que es más. Hay un equipo apropiado.\nCuero de leñador, el juego completo. Gorro, jubón, guantes, calzas, todo cortado para un día en la sierra, y nadie lo vende. Lo pago del adorno, una pieza de vez en cuando cuando el corte del día es bueno, y el jubón sale menos de todos. Úsalos todos y el aserradero comienza a notarte.
+dialogue.mmo_sawyer.kit_talk.opt.back = Seguiré haciendo el adorno.
 dialogue.mmo_sawyer.opt.returned = Vuelvo con lo que me pediste.
 dialogue.mmo_sawyer.opt.quests = Hay algo que cortar?
 dialogue.mmo_sawyer.opt.how = Cómo funciona el aserradero?
 dialogue.mmo_sawyer.opt.edge = Has visto un filo mejor?
+dialogue.mmo_sawyer.opt.kit = Qué complementa este gorro?
 dialogue.mmo_sawyer.opt.nothing = Nada por ahora.

@@ -1,0 +1,107 @@
+{
+  "$Comment": [
+    "The first rung of Marn's Edge, the questline that ends with Marn's own hatchet: plain stock in",
+    "quantity, milled and delivered.",
+    "",
+    "It opens once A Finer Edge is claimed, so it is only ever offered to a woodcutter who has",
+    "finished the sawmill chain and owns a well-run mill. mill_stock counts every cut of every",
+    "species the Sawmill hands over ('Wood_' on PREFIX, qualified to the Sawmill, so lumber from a",
+    "hand bench does not count) and carries the shared mill_lumber TextKey, since the kind's default",
+    "line names a single item; run_cycles is WORK_STATION on the station id, as the station's own",
+    "asset spells it, and counts real cycles only, so idle practice with nothing loaded does not",
+    "tick. Both sit on Order 1 and fill through the same shift. deliver_stock is Order 2, a hand-in",
+    "to Marn only (TurnInNpcId 'giver') that matches any species and any half-plank cut on CONTAINS,",
+    "so the shift that fills the first two steps also stocks the third.",
+    "",
+    "Rewards sit in Claim: Woodcutting XP, with a smaller Crafting cut for the milling itself. The",
+    "Chains entry files it as tier 1 of marns_edge, its own ladder in the quest book beside the",
+    "sawmill chain it follows. Raise or lower the three Amounts together to change how long the",
+    "rung takes; the shift and the delivery are sized so one fills the other."
+  ],
+  "Name": "Straight_Grain",
+  "Text": {
+    "TitleKey": "quest.straight_grain.title",
+    "FlavorKey": "quest.straight_grain.flavor"
+  },
+  "Listing": {
+    "Icon": "Wood_Redwood_Planks",
+    "Category": "main",
+    "SortOrder": 26,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "marns_edge",
+        "Tier": 1
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "a_finer_edge"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "mill_stock": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 600,
+      "TextKey": "objective.text.stations.mill_lumber",
+      "Order": 1
+    },
+    "run_cycles": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 60,
+      "Order": 1
+    },
+    "deliver_stock": {
+      "Kind": "TURN_IN",
+      "Target": "_Planks",
+      "MatchMode": "CONTAINS",
+      "Amount": 96,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 2500
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 800
+        }
+      }
+    ]
+  }
+}

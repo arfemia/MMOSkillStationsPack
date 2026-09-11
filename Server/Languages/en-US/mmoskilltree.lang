@@ -19,6 +19,29 @@ quest.a_finer_edge.title = A Finer Edge
 quest.a_finer_edge.flavor = You've done the short jobs. Now do a long one. Stand at that mill till your arms know the work, and get your woodcutting up to where I'd call you a sawyer.
 quest.standing_order.title = Standing Order
 quest.standing_order.flavor = Same order every day: planks and bark, delivered here. Fill it and I'll pay you out of the yard. Miss a day, and it'll still be waiting tomorrow.
+quest.straight_grain.title = Straight Grain
+quest.straight_grain.flavor = I'm making you a hatchet, and a hatchet's a haft before it's anything else. Straight grain, no knots. Mill stock till you're sick of the sight of it, then bring me planks and I'll find a haft in the stack.
+quest.cold_metal.title = Cold Metal
+quest.cold_metal.flavor = Cobalt for the head, and cobalt doesn't come out of a log. Go find a furnace and bring me bars, and don't let the mill go cold while you're away.
+quest.the_fitting.title = The Fitting
+quest.the_fitting.flavor = Haft and head, and now they've to be joined. Work a long shift, till the essence comes off the saw faster than you can pocket it, then bring me heavy leather and a pouch of the concentrated kind. After that it's a hatchet.
+quest.trim_work.title = Trim Work
+quest.trim_work.flavor = Trim, this time. The decorative cut and the ornate, and keep the fibre the saw throws off while you're at it. Bring me a share of the trim and some bark. The order comes up again before the day's out.
+
+quest.bounty_quick_mill.title = Quick Mill
+quest.bounty_quick_mill.flavor = A short run at a Sawmill before the board turns over. Load it and stand there.
+quest.bounty_quick_boards.title = Quick Boards
+quest.bounty_quick_boards.flavor = A short stack of boards off a Sawmill, any cut. The hand bench will not do.
+quest.bounty_mill_shift.title = Mill Shift
+quest.bounty_mill_shift.flavor = A full shift at the Sawmill, start to finish. Keep the logs coming.
+quest.bounty_plank_delivery.title = Plank Delivery
+quest.bounty_plank_delivery.flavor = The builders are short of planks and the board pays by the load. Any species, handed in here.
+quest.bounty_lumber_order.title = Lumber Order
+quest.bounty_lumber_order.flavor = A proper order of milled lumber, every cut welcome. Run the Sawmill until it is filled.
+quest.bounty_essence_run.title = Essence Run
+quest.bounty_essence_run.flavor = The alchemists want life essence straight off the saw. Mill old wood until enough shakes loose.
+quest.bounty_mill_marathon.title = The Long Shift
+quest.bounty_mill_marathon.flavor = A week at the Sawmill, and the board counts every cycle. Nobody fills this one in an afternoon.
 
 objective.text.stations.mill_lumber = Mill {0} pieces of lumber
 
@@ -63,6 +86,10 @@ achievement.sawmill_standing_account.title = Standing Account
 achievement.sawmill_standing_account.desc = Keep filling Sawyer Marn's standing order, day after day.
 achievement.sawmill_master_sawyer.title = Master Sawyer
 achievement.sawmill_master_sawyer.desc = See Sawyer Marn's last job through.
+achievement.sawmill_trim_account.title = Trim Account
+achievement.sawmill_trim_account.desc = Fill Sawyer Marn's trim order, day after day.
+achievement.sawmill_marns_own.title = Marn's Own
+achievement.sawmill_marns_own.desc = Bring Sawyer Marn the makings of a hatchet, haft to head, and let him fit it.
 
 achievement.announce.sawmill_shift_t3.title = Mill Hand!
 achievement.announce.sawmill_lumber_t3.title = The Whole Yard!
@@ -72,6 +99,7 @@ achievement.announce.sawmiller.title = Sawmiller!
 achievement.announce.sawmiller_server_first.title = SERVER FIRST: Sawmiller!
 achievement.announce.sawmiller_server_first.body = {0} pulled the server's first Sawmiller's Hatchet out of a mill: {1}
 achievement.announce.sawmill_master_sawyer.title = Master Sawyer!
+achievement.announce.sawmill_marns_own.title = Marn's Own!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Calluses on your palms and bark on your boots. You'll do.\nName's Marn. I saw timber. Down here in the <color is="#ffd97a">Forgotten Temple</color> it's all stone and no trees, so a sawyer's a rare thing, and I keep a mill or two for whoever can feed one. Say hello and we'll talk.
 dialogue.mmo_sawyer.first_words.opt.hail = Hello, Marn.
@@ -99,11 +127,22 @@ dialogue.mmo_sawyer.essence_ready.text = There it is. <b>Life essence</b>, still
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Here's the essence.
 dialogue.mmo_sawyer.edge_offer.text = Short jobs are done. Now a long one.\nStand at that mill for a shift that'd wear out a lesser back, and get your woodcutting up to where I'd call you a sawyer to your face. Nothing to hand in. Come back when it's done and I'll know.
 dialogue.mmo_sawyer.edge_offer.opt.accept = I'll put the shift in.
+dialogue.mmo_sawyer.grain_stock_offer.text = Sawyer, and swinging a hatchet any smith could've made. That's been bothering me.\nI'm making you one. My own pattern, and it starts at the haft. Straight grain, no knots, and you don't find that by looking. Put <b>stock</b> through the mill till the yard's full and bring me <b>planks</b>. I'll find the haft in there.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = I'll mill the stock.
+dialogue.mmo_sawyer.metal_offer.text = That's a haft. Now it wants something on the end of it.\nThe head's cobalt, and cobalt doesn't come out of a log, so for once I'm sending you away from the mill. Find a furnace and bring me <b>cobalt bars</b>. Keep the saw turning while you're gone, mind. A haft with nothing on it is a stick.
+dialogue.mmo_sawyer.metal_offer.opt.accept = I'll bring you cobalt.
+dialogue.mmo_sawyer.fitting_offer.text = Haft and head. Now they've to be joined, and that's the part nobody hurries.\nThe head's tempered in <b>life essence</b> and the binding's <b>heavy leather</b>. Stand at that mill for a long shift, till it's shaking essence loose by the handful, and somewhere in there the deep stuff turns up. Bring me the leather and a pouch of <b>concentrated essence</b>, and I'll do the fitting.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = I'll bring what it needs.
+dialogue.mmo_sawyer.fitting_ready.text = <b>Heavy leather</b>, and a pouch of the <b>concentrated essence</b>. Give them here.\nThere. Cobalt on a straight haft, bound tight enough to outlast the pair of us. It'll not cut like the one the mill hands out, and I'll not pretend it does. It cuts like mine. <color is="#ffd97a">Marn's Hatchet</color>, and there's no other. Take it.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Here's the leather and the pouch.
 dialogue.mmo_sawyer.order_ready.text = The day's order. <b>Planks</b> and <b>bark</b>, counted, stacked square. That's how I like a delivery. Same again tomorrow, if you're up for it.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Here's today's order.
+dialogue.mmo_sawyer.trim_ready.text = The trim. <b>Decorative cuts</b>, edges clean, and <b>bark</b> by the armful. Somebody's been reading the grain. There'll be another up before long, if the mill's still standing.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Here's today's trim.
 dialogue.mmo_sawyer.ready_generic.text = You've the look of somebody carrying a finished job. Put it down and we'll settle.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Here's what I've done.
 dialogue.mmo_sawyer.active_generic.text = Still on the job, then. The mill won't run without you standing at it. Go on.
+dialogue.mmo_sawyer.edge_talk.text = You've a hatchet of mine and a name I don't hand out. There's nothing left in this corner I can make you.\nThe mill's another matter. It's got its own ideas about who it hands an edge to, and standing at it is the only way to find out. There's work here when you want it, same as ever.
 dialogue.mmo_sawyer.yard_talk.text = Sawyer. That's what I call you now, and I don't say it to many.\nYou've a yard of your own to run. Mine's this corner of the <color is="#ffd97a">Forgotten Temple</color>, and it's enough. Come by when you want to talk wood.
 dialogue.mmo_sawyer.bench_talk.text = You've a mill now. Keep it fed. Planks come first, and the longer you stand at it the more a log gives up. There's work here when you want it.
 dialogue.mmo_sawyer.how_it_works.text = <b>Logs</b> in hand, use the block, and the mill takes them off you. Use it again and you're sawing.\nYour <b>hatchet</b> does the cutting, so a better one means more planks a cycle, and more of everything else the mill turns up in a log, bark to essence. Crouch as you use the block and it'll ask which <b>cut</b> you want.\nThat's the whole of it. The rest is standing there.
@@ -113,8 +152,11 @@ dialogue.mmo_sawyer.what_is_in_wood.text = Bark. Sap. Fibre. Sticks. Every log's
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Good to know.
 dialogue.mmo_sawyer.hatchet_tease.text = There's a <color is="#ffd97a">Sawmiller's Hatchet</color>. Mithril, balanced at the mill, keener than anything a forge puts out. Nobody makes it.\nNow and then a mill hands one to a sawyer who's stood at it long enough with a fine blade already in hand. And I mean now and then. I've seen it happen. Not to me.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = I'll keep sawing.
+dialogue.mmo_sawyer.kit_talk.text = That cap I gave you is a start, and I'll not pretend it's more. There's a proper kit.\nWoodcutter's leather, the full set of it. Cap, jerkin, gloves, breeches, all cut for a day at the saw, and nobody sells it. I pay it out of the <b>trim work</b>, a piece now and then when the day's cut is good, and the jerkin comes up least of all. Wear the lot and the mill starts to notice you.
+dialogue.mmo_sawyer.kit_talk.opt.back = I'll keep at the trim.
 dialogue.mmo_sawyer.opt.returned = I'm back with what you asked for.
 dialogue.mmo_sawyer.opt.quests = Anything need cutting?
 dialogue.mmo_sawyer.opt.how = How does the mill work?
 dialogue.mmo_sawyer.opt.edge = Ever seen a better edge?
+dialogue.mmo_sawyer.opt.kit = What goes with this cap?
 dialogue.mmo_sawyer.opt.nothing = Nothing for now.

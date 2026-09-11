@@ -1,0 +1,52 @@
+{
+  "$Comment": "The weekly warrant for a sawyer: a long week at the Sawmill. WORK_STATION counts real cycles only, so a stocked chest cannot fill it, and its Target is the station id as the station's own asset spells it, never the block's item id. It hangs on the Weekly board's hard band, which that board gates through its own AcceptRequires, so nothing about who may take it is written here beyond the stations feature. This file spells out its whole step and pay rather than inheriting a shared skeleton, so it loads with nothing but this pack, RPG Stations and the MMO installed; on a server with no board of that id it is simply never posted. The stations feature gate in Requires is for a server where stations have been switched off: a board draws its slots without reading a contract's Requires, so the gate refuses at Accept rather than keeping the contract off the board.",
+  "Text": {
+    "TitleKey": "quest.bounty_mill_marathon.title",
+    "FlavorKey": "quest.bounty_mill_marathon.flavor"
+  },
+  "Listing": {
+    "Category": "bounty"
+  },
+  "Boards": [
+    {
+      "Board": "Weekly",
+      "Difficulty": "Hard",
+      "Weight": 1
+    }
+  ],
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "main": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 300
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Currency",
+        "Params": {
+          "Currency": "bounty_token",
+          "Amount": 1000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 10000
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$Comment": "The chest piece of the woodcutter's kit, and deliberately the rarest of the four: its roll in Lootables/Mmo_Woodcutters_Kit.json, one of the four tables behind Trim Work, fires least often, so a full set is a real stretch of runs at the mill. It is a standalone copy of the vanilla soft leather jerkin (Armor_Leather_Soft_Chest): the same icon, model, texture and Health line, at Uncommon quality, item level 30 and MaxDurability 180 in place of the vanilla piece's Common, 10 and 120, with its own Physical and Projectile resistances of 0.1 apiece against the vanilla jerkin's 0.09 each. No Parent and no Recipe, so no vanilla crafting or salvage recipe can be inherited and the piece stays reward-only. Everything the vanilla jerkin takes from its own iron parent is spelled out here for the same reason: Categories, the Block animation set, the leather sound set, DurabilityLossOnHit, the Tags, and the Interactions block whose Primary and Secondary each run an EquipItem step. That block is what makes the piece wearable at all, so keep it if you copy this file for a piece of your own.\n\nThe stats live in Armor.StatModifiers beside the vanilla Health line and the ENGINE applies them while the piece is worn, exactly as it applies the Health. MMO_BonusXp_WOODCUTTING 15 is plus 15 percent Woodcutting experience and MMO_BonusXp_CRAFTING 15 plus 15 percent Crafting experience, each multiplied into its own skill's awards, sawmill cycles included; MMO_Luck_WOODCUTTING 15 is plus 15 percentage points of Woodcutting luck, feeding the MMO's luck ladders and every scored roll this pack ships. It carries the heaviest stat load of the four pieces, which is exactly why it is the long pole in finishing the set. Percent-family MMO stats author their PERCENT as the Amount, and every entry is Additive on purpose: these channels carry a base of zero, and additive folds before multiplicative, so a Multiplicative-only entry here would compute zero and be silently inert.\n\nWorn together the four pieces add plus 33 percent Woodcutting experience, plus 23 percent Crafting experience, plus 43 points of Woodcutting luck and plus 3 maximum stamina, on top of the Health and resistances each piece carries on its own: more Woodcutting experience and more Woodcutting luck than any single hatchet in this pack gives while held, though only the mill's own two hatchets add more stamina than that. The kit is four armor slots given over to the trade, and whatever combat armor would otherwise have sat there. All amounts are opening balance and tunable without an engine change.",
+  "TranslationProperties": {
+    "Name": "items.MMO_Armor_Woodcutter_Chest.name",
+    "Description": "items.MMO_Armor_Woodcutter_Chest.description"
+  },
+  "Categories": ["Items.Armors"],
+  "Quality": "Uncommon",
+  "ItemLevel": 30,
+  "PlayerAnimationsId": "Block",
+  "ItemSoundSetId": "ISS_Armor_Leather",
+  "Icon": "Icons/ItemsGenerated/Armor_Leather_Soft_Chest.png",
+  "IconProperties": {
+    "Rotation": [22.5, 45, 22.5],
+    "Scale": 0.43,
+    "Translation": [0, -12.9]
+  },
+  "Model": "Items/Armors/Leather_Soft/Chest.blockymodel",
+  "Texture": "Items/Armors/Leather_Soft/Chest_Texture.png",
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "EquipItem"
+        }
+      ]
+    }
+  },
+  "Armor": {
+    "ArmorSlot": "Chest",
+    "BaseDamageResistance": 0,
+    "CosmeticsToHide": ["Overtop"],
+    "StatModifiers": {
+      "Health": [
+        {
+          "Amount": 17,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_BonusXp_WOODCUTTING": [
+        {
+          "Amount": 15,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_BonusXp_CRAFTING": [
+        {
+          "Amount": 15,
+          "CalculationType": "Additive"
+        }
+      ],
+      "MMO_Luck_WOODCUTTING": [
+        {
+          "Amount": 15,
+          "CalculationType": "Additive"
+        }
+      ]
+    },
+    "DamageResistance": {
+      "Physical": [
+        {
+          "Amount": 0.1,
+          "CalculationType": "Percent"
+        }
+      ],
+      "Projectile": [
+        {
+          "Amount": 0.1,
+          "CalculationType": "Percent"
+        }
+      ]
+    }
+  },
+  "MaxDurability": 180,
+  "DurabilityLossOnHit": 0.5,
+  "Tags": {
+    "Type": ["Armor"],
+    "Family": ["Leather"]
+  }
+}

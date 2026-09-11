@@ -1,0 +1,152 @@
+{
+  "$Comment": [
+    "Tools, paid out by Trim Work. A sawyer wears a hatchet down, so the yard keeps them in",
+    "gear: a spare hatchet now and then, and repair kits more often than that.",
+    "",
+    "BOTH ROLLS READ WOODCUTTING LEVEL ALONE, deliberately. The wage table pays on level and luck",
+    "together, which rewards investment; this one is about where the worker is in their trade, so a",
+    "luck-heavy build gets the same spanner as anyone else at that level.",
+    "",
+    "EACH ROLL PAIRS A CHANCE WITH A LADDER, which is what keeps this two rolls rather than six. The",
+    "Chance decides whether anything is handed over at all; the Ladder then decides WHICH tier, and",
+    "because floors are highest-wins and not cumulative, exactly one item comes out of each roll. A",
+    "worker at level ninety gets the top tier and nothing else, never one of each.",
+    "",
+    "BOTH LADDERS START AT ZERO on purpose, below the level the quest that opens Trim Work asks for.",
+    "A ladder grants NOTHING when every floor sits above the worker's reading, so the bottom rung is",
+    "what keeps a roll that fired from handing over an empty hand if a level ever comes in lower than",
+    "the quest's gate implies. Keep it when you re-tune the rungs above it.",
+    "",
+    "THE HATCHET LADDER STOPS AT COBALT on purpose. The questline Trim Work sits beside ends with a",
+    "cobalt-headed hatchet carrying stats no vanilla tool has, so a hatchet handed out here must never",
+    "reach past it. Raise a floor if you want a tier to arrive later; do not add a rung above cobalt.",
+    "The top rung is a plain vanilla cobalt hatchet, so be clear about what it does and does not",
+    "match: it cuts exactly as fast as the questline's own and shares its quality and item level,",
+    "while the questline's keeps the longer wear and the three stat channels to itself. A worker who",
+    "already carries that one is being handed a spare here, not a rival to it.",
+    "",
+    "Repair kits come on roughly one run in eight, against a hatchet at about one run in twenty,",
+    "because a kit is upkeep and a hatchet is a small event. Only the hatchet roll carries a Cue: a",
+    "repair kit lands too often to make each one feel special, and a chime for it would cheapen the",
+    "ones that matter."
+  ],
+  "Name": "Mmo_Sawmill_Trim_Supply",
+  "Rolls": [
+    {
+      "$Comment": "A spare hatchet, at the tier the worker's level has earned.",
+      "Chance": {
+        "Base": 5.0
+      },
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "The safety net, under the level the quest that opens Trim Work asks for. A ladder grants nothing when every floor sits above the worker, so this rung is what keeps the roll honest for anyone who arrives lower than expected.",
+            "Min": 0,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Hatchet_Copper",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 25,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Hatchet_Iron",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 50,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Hatchet_Thorium",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 80,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Hatchet_Cobalt",
+                  "Count": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "Repair kits, the everyday upkeep, at the tier the worker's level has earned.",
+      "Chance": {
+        "Base": 12.0
+      },
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "The crude kit covers everything below the iron rung, starting at zero so the roll always has a floor to land on.",
+            "Min": 0,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Repair_Kit_Crude",
+                  "Count": 1,
+                  "CountMax": 2
+                }
+              ]
+            }
+          },
+          {
+            "Min": 50,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Repair_Kit_Iron",
+                  "Count": 1,
+                  "CountMax": 2
+                }
+              ]
+            }
+          },
+          {
+            "Min": 80,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Tool_Repair_Kit_Rare",
+                  "Count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

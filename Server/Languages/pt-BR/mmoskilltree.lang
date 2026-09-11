@@ -19,6 +19,29 @@ quest.a_finer_edge.title = Um Fio Mais Fino
 quest.a_finer_edge.flavor = Os trabalhinhos pequenos acabaram. Agora faz um grande. Fica na serraria até seus braços conhecerem o trabalho e sobe seu corte de madeira para onde eu chamo você de serrador.
 quest.standing_order.title = Encomenda Padrão
 quest.standing_order.flavor = Mesma encomenda todo dia: tábuas e casca, entregues aqui. Cumpra e pago da tesoraria. Falte um dia e ela segue esperando amanhã.
+quest.straight_grain.title = Grão Reto
+quest.straight_grain.flavor = Tô fazendo um machado para você, e machado é cabo antes de ser outra coisa. Grão reto, sem nó. Processa estoque até estar cansado de ver, depois me traz tábuas que eu acho um cabo na pilha.
+quest.cold_metal.title = Metal Frio
+quest.cold_metal.flavor = Cobalto na cabeça e cobalto não sai de uma tora. Vai procura uma fornalha e me traz barras, e não deixa a serraria esfriar enquanto se ausenta.
+quest.the_fitting.title = O Encaixe
+quest.the_fitting.flavor = Cabo e cabeça, e agora têm que se unir. Trabalha um turno longo, até a essência sair da serra mais rápido que você consegue guardar, depois me traz couro pesado e uma bolsa da concentrada. Depois é um machado.
+quest.trim_work.title = Trabalho de Acabamento
+quest.trim_work.flavor = Acabamento, dessa vez. O corte decorativo e o ornado, e fica com a fibra que a serra joga enquanto trabalha. Me traga uma parte do acabamento e um pouco de casca. Tem encomenda nova de novo antes do dia acabar.
+
+quest.bounty_quick_mill.title = Serraria Rápida
+quest.bounty_quick_mill.flavor = Uma correria rápida na Serraria antes do quadro virar. Carregue e fique ali.
+quest.bounty_quick_boards.title = Tábuas Rápidas
+quest.bounty_quick_boards.flavor = Uma pilha curta de tábuas de uma Serraria, qualquer corte. A bancada manual não vale.
+quest.bounty_mill_shift.title = Turno de Serraria
+quest.bounty_mill_shift.flavor = Um turno completo na Serraria, do início ao fim. Mantenha as toras chegando.
+quest.bounty_plank_delivery.title = Entrega de Tábuas
+quest.bounty_plank_delivery.flavor = Os construtores estão sem tábuas e o quadro paga por carregada. Qualquer tipo, entregue aqui.
+quest.bounty_lumber_order.title = Encomenda de Madeira
+quest.bounty_lumber_order.flavor = Uma encomenda apropriada de madeira serrada, todo corte bem-vindo. Ativa a Serraria até encher.
+quest.bounty_essence_run.title = Correria de Essência
+quest.bounty_essence_run.flavor = Os alquimistas querem essência de vida saída fresca da serra. Processa madeira velha até sair o suficiente.
+quest.bounty_mill_marathon.title = O Turno Comprido
+quest.bounty_mill_marathon.flavor = Uma semana na Serraria, e o quadro conta cada ciclo. Ninguém preenche esse em uma tarde.
 
 objective.text.stations.mill_lumber = Processe {0} peças de madeira
 
@@ -63,6 +86,10 @@ achievement.sawmill_standing_account.title = Conta Contínua
 achievement.sawmill_standing_account.desc = Continue preenchendo a encomenda padrão de Marn, dia após dia.
 achievement.sawmill_master_sawyer.title = Mestre Serrador
 achievement.sawmill_master_sawyer.desc = Veja o último trabalho de Sawyer Marn até o fim.
+achievement.sawmill_trim_account.title = Conta de Acabamento
+achievement.sawmill_trim_account.desc = Preencha a encomenda de acabamento de Marn, dia após dia.
+achievement.sawmill_marns_own.title = Coisa de Marn
+achievement.sawmill_marns_own.desc = Traga para Sawyer Marn os componentes de um machado, cabo até cabeça, e deixe ele encaixar.
 
 achievement.announce.sawmill_shift_t3.title = Mão de Serrador!
 achievement.announce.sawmill_lumber_t3.title = Inteira a Serraria!
@@ -72,6 +99,7 @@ achievement.announce.sawmiller.title = Serrador!
 achievement.announce.sawmiller_server_first.title = PRIMEIRO NO SERVIDOR: Serrador!
 achievement.announce.sawmiller_server_first.body = {0} puxou a primeira Machado do Serrador do servidor de uma serraria: {1}
 achievement.announce.sawmill_master_sawyer.title = Mestre Serrador!
+achievement.announce.sawmill_marns_own.title = Coisa de Marn!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Calos nas palmas e casca na bota. Você serve.\nMeu nome é Marn. Sou serrador. Aqui embaixo no <color is="#ffd97a">Templo Esquecido</color> é só pedra e nenhuma árvore, então serrador é coisa rara, e mantenho uma serraria ou duas para quem consegue alimentar. Diz oi e a gente conversa.
 dialogue.mmo_sawyer.first_words.opt.hail = Olá, Marn.
@@ -99,11 +127,22 @@ dialogue.mmo_sawyer.essence_ready.text = Aí está. <b>Essência de vida</b>, ai
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Aqui está a essência.
 dialogue.mmo_sawyer.edge_offer.text = Os trabalhinhos pequeninhos acabaram. Agora um grande.\nFica na serraria por um turno que cansava um cara mais fraco, e sobe seu corte de madeira para onde eu chamo você de serrador na sua cara. Nada para trazer. Volta quando tiver feito que eu vejo.
 dialogue.mmo_sawyer.edge_offer.opt.accept = Vou cumprir o turno.
+dialogue.mmo_sawyer.grain_stock_offer.text = Serrador, e balançando um machado que qualquer ferreiro poderia ter feito. Isso me incomoda.\nEstou fazendo um para você. Meu próprio padrão, e começa no cabo. Grão reto, sem nó, e você não acha só olhando. Processa <b>estoque</b> na serraria até a tesoraria encher e me traz <b>tábuas</b>. Eu acho o cabo naquela pilha.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = Vou processar o estoque.
+dialogue.mmo_sawyer.metal_offer.text = Esse é o cabo. Agora quer algo na ponta dele.\nA cabeça é cobalto, e cobalto não sai de uma tora, então por uma vez tô te mandando longe da serraria. Acha uma fornalha e me traz <b>barras de cobalto</b>. Mantém a serra rodando enquanto se ausenta, fica ciente. Um cabo com nada na ponta é um graveto.
+dialogue.mmo_sawyer.metal_offer.opt.accept = Trago cobalto para você.
+dialogue.mmo_sawyer.fitting_offer.text = Cabo e cabeça. Agora têm que se unir, e essa é a parte que ninguém se apressa.\nA cabeça é temperada em <b>essência de vida</b> e a amarração é <b>couro pesado</b>. Fica na serraria por um turno comprido, até estar soltando essência aos punhados, e em algum lugar daquilo a coisa funda aparece. Me traz o couro e uma bolsa de <b>essência concentrada</b>, que eu faço o encaixe.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = Trago o que precisa.
+dialogue.mmo_sawyer.fitting_ready.text = <b>Couro pesado</b>, e uma bolsa de <b>essência concentrada</b>. Coloca aqui.\nAí está. Cobalto num cabo reto, amarrado firme o bastante para nos durar a dois. Não vai cortar como aquela que a serraria entrega, e não pretendo fingir que faz. Corta como a minha. <color is="#ffd97a">Machado de Marn</color>, e não tem outra igual. Leva.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Aqui está o couro e a bolsa.
 dialogue.mmo_sawyer.order_ready.text = A encomenda do dia. <b>Tábuas</b> e <b>casca</b>, contadas, empilhadas reto. É assim que eu gosto de entrega. Mesma coisa amanhã se você se animar.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Aqui está a encomenda de hoje.
+dialogue.mmo_sawyer.trim_ready.text = O acabamento. <b>Cortes decorativos</b>, bordas limpas, e <b>casca</b> aos braçados. Alguém estava lendo a veia. Tem outra vindo logo, se a serraria ainda estiver de pé.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Aqui está o acabamento de hoje.
 dialogue.mmo_sawyer.ready_generic.text = Você tem cara de quem carrega um trabalho pronto. Coloca aí que a gente acerta.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Aqui está o que fiz.
 dialogue.mmo_sawyer.active_generic.text = Ainda no trabalho então. Serraria não roda sem você na frente. Vai.
+dialogue.mmo_sawyer.edge_talk.text = Você tem um machado meu e um nome que não dou para qualquer um. Não sobra mais nada nesse canto que eu possa fazer para você.\nA serraria é outra história. Ela tem as próprias ideias sobre para quem entrega um fio, e ficar na frente dela é o único jeito de descobrir. Tem trabalho aqui quando você quiser, como sempre.
 dialogue.mmo_sawyer.yard_talk.text = Serrador. É isso que chamo você agora, e não falo para muita gente.\nTem uma tesoraria sua para rodar. A minha é esse canto do <color is="#ffd97a">Templo Esquecido</color> e é o bastante. Vem aqui quando quiser conversar sobre madeira.
 dialogue.mmo_sawyer.bench_talk.text = Tem uma serraria agora. Mantém alimentada. Tábua vem em primeiro, e quanto mais tempo fica na frente mais uma tora solta. Tem trabalho aqui quando quiser.
 dialogue.mmo_sawyer.how_it_works.text = <b>Toras</b> na mão, usa o bloco, serraria tira de você. Usa de novo e você está serrando.\nSua <b>lâmina</b> faz o corte, então uma melhor significa mais tábuas um ciclo, e mais de tudo que a serraria tira de uma tora, casca para essência. Agacha ao usar o bloco que ela pergunta qual <b>corte</b> quer.\nPronto. O resto é ficar ali.
@@ -113,8 +152,11 @@ dialogue.mmo_sawyer.what_is_in_wood.text = Casca. Seiva. Fibra. Gravetos. Toda t
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bom saber.
 dialogue.mmo_sawyer.hatchet_tease.text = Tem a <color is="#ffd97a">Machado do Serrador</color> aí. Mithril, equilibrada na serraria, mais afiada que qualquer coisa que uma forja tira. Ninguém faz.\nDe vez em quando uma serraria entrega uma para um serrador que ficou tempo suficiente na frente com uma lâmina já boa na mão. E eu digo de vez em quando. Vi acontecer. Não comigo.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Vou seguir serrando.
+dialogue.mmo_sawyer.kit_talk.text = Aquele boné que dei é um começo, e não vou fingir que é mais. Tem um kit apropriado.\nCouro de cortador de madeira, o conjunto inteiro. Boné, jaqueta, luvas, calças, tudo cortado para um dia na serra, e ninguém vende. Eu pago saído do <b>trabalho de acabamento</b>, uma peça aqui e ali quando o corte do dia é bom, e a jaqueta sai menos de todas. Veste o lote inteiro e a serraria começa a te notar.
+dialogue.mmo_sawyer.kit_talk.opt.back = Vou continuar no acabamento.
 dialogue.mmo_sawyer.opt.returned = Voltei com o que pediu.
 dialogue.mmo_sawyer.opt.quests = Tem algo que precisa cortar?
 dialogue.mmo_sawyer.opt.how = Como funciona a serraria?
 dialogue.mmo_sawyer.opt.edge = Já viu um fio melhor?
+dialogue.mmo_sawyer.opt.kit = O que vem com esse boné?
 dialogue.mmo_sawyer.opt.nothing = Nada por enquanto.

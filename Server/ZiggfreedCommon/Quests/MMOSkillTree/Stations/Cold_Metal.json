@@ -1,0 +1,96 @@
+{
+  "$Comment": [
+    "The second rung of Marn's Edge: the metal for the head. Cobalt bars come from a smelter, not",
+    "the mill, so for once the woodcutter is sent to the furnace, and the mill keeps running in the",
+    "meantime.",
+    "",
+    "bring_bars is an exact-id hand-in of cobalt bars to Marn only (TurnInNpcId 'giver'); run_cycles",
+    "is WORK_STATION on the station id and counts real cycles only. Both sit on Order 1, so the",
+    "errand and the shift run side by side and the rung settles once both are in. The seven bars",
+    "are the count the vanilla cobalt hatchet's own recipe asks for, so a player who has read that",
+    "recipe knows why the number is what it is.",
+    "",
+    "Rewards sit in Claim: Woodcutting XP and a personal Woodcutting boost token (the Mmo_Boost_Token",
+    "kind: Skill, Multiplier, DurationMinutes). The Chains entry files it as tier 2 of marns_edge.",
+    "Retune the bar count to make the errand longer or shorter, and the cycle count to change how",
+    "much milling is expected alongside it."
+  ],
+  "Name": "Cold_Metal",
+  "Text": {
+    "TitleKey": "quest.cold_metal.title",
+    "FlavorKey": "quest.cold_metal.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Bar_Cobalt",
+    "Category": "main",
+    "SortOrder": 27,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "marns_edge",
+        "Tier": 2
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "straight_grain"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "bring_bars": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Bar_Cobalt",
+      "MatchMode": "EXACT",
+      "Amount": 7,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "run_cycles": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 80,
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 3000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      }
+    ]
+  }
+}

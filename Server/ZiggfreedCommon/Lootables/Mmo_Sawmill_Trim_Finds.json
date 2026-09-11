@@ -1,0 +1,62 @@
+{
+  "$Comment": [
+    "The occasional extras Trim Work turns up, beside the wage and the tools. Two rolls,",
+    "both bonuses: neither is anybody's reason for filling the order, and a run that pays neither is",
+    "an ordinary run rather than a bad one.",
+    "",
+    "THE DEEP FIND is gated on Woodcutting level alone through a Condition rather than a Ladder,",
+    "because there are no tiers here: either the worker is deep enough into the trade to shake",
+    "concentrated essence out of a log, or they are not. Below that level the roll never fires at all.",
+    "Move the Min to change when the mill starts giving up the good stuff.",
+    "",
+    "A Chance is a percentage from zero to one hundred, and rolls evaluate INDEPENDENTLY, so both of",
+    "these can land on the same claim.",
+    "",
+    "Each carries a Cue, the celebration id a roll may author beside its Grants; it fires only when",
+    "the grants beside it genuinely paid out. Rare_Find is the everyday chime the MMO jar ships as a",
+    "toast; the concentrated essence names the Sawmill's own deep-find cue so a rare find sounds like",
+    "a rare cycle. Author a new Cue value plus a Server/ZiggfreedCommon/FeedbackMoments file of that",
+    "name for a celebration of your own."
+  ],
+  "Name": "Mmo_Sawmill_Trim_Finds",
+  "Rolls": [
+    {
+      "$Comment": "Concentrated essence, for a worker deep enough into the trade to find it.",
+      "Conditions": [
+        {
+          "Factor": "hytale:stat",
+          "Param": "MMO_Level_WOODCUTTING",
+          "Min": 55
+        }
+      ],
+      "Chance": {
+        "Base": 8.0
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence_Concentrated",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      },
+      "Cue": "cue:find_deep"
+    },
+    {
+      "$Comment": "A personal Woodcutting boost token, roughly one run in twenty.",
+      "Chance": {
+        "Base": 5.0
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "BoostToken_Woodcutting_Personal_Standard",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    }
+  ]
+}

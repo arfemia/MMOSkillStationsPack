@@ -1,0 +1,116 @@
+{
+  "$Comment": [
+    "The last rung of Marn's Edge, and the one that pays the hatchet: a long shift for the essence",
+    "that tempers the head, then the leather and the concentrated essence to bind it.",
+    "",
+    "find_essence counts life essence the Sawmill hands over (STATION_OUTPUT, exact id, qualified to",
+    "the Sawmill, so essence from any other source does not count) and long_shift is WORK_STATION",
+    "on the station id, real cycles only; both sit on Order 1 and fill through the same shift.",
+    "bring_leather and bring_essence are Order 2, exact-id hand-ins to Marn only (TurnInNpcId",
+    "'giver'). Flow.HideLockedSteps keeps those two off the step list until the shift is behind the",
+    "player, so the quest reads as the work it is asking for. The two heavy leather are the count",
+    "the vanilla cobalt hatchet's own recipe asks for; the concentrated essence is the mill's deep",
+    "find and the Standing Order's rarest roll, so the three asked for here are earned at the block",
+    "over time rather than bought.",
+    "",
+    "Rewards sit in Claim: Marn's Hatchet itself (Item/Items/MMO_Tool_Hatchet_Marn.json, whose stats",
+    "and cut are tuned in that file) and Woodcutting XP. The Chains entry files it as tier 3 of",
+    "marns_edge. Completing this quest is also what the Marn's Own achievement counts, so a retune",
+    "here changes what that achievement asks. Remove the Item entry and the questline is a plain",
+    "XP arc; point it at another item id to hand over a different tool."
+  ],
+  "Name": "The_Fitting",
+  "Text": {
+    "TitleKey": "quest.the_fitting.title",
+    "FlavorKey": "quest.the_fitting.flavor"
+  },
+  "Listing": {
+    "Icon": "MMO_Tool_Hatchet_Marn",
+    "Category": "main",
+    "SortOrder": 28,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "marns_edge",
+        "Tier": 3
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true,
+    "HideLockedSteps": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "cold_metal"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "find_essence": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 120,
+      "Order": 1
+    },
+    "long_shift": {
+      "Kind": "WORK_STATION",
+      "Target": "Sawmill",
+      "MatchMode": "EXACT",
+      "Amount": 120,
+      "Order": 1
+    },
+    "bring_leather": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Leather_Heavy",
+      "MatchMode": "EXACT",
+      "Amount": 2,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    },
+    "bring_essence": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence_Concentrated",
+      "MatchMode": "EXACT",
+      "Amount": 3,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "MMO_Tool_Hatchet_Marn",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 6000
+        }
+      }
+    ]
+  }
+}

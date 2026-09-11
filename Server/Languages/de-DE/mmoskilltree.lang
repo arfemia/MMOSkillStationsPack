@@ -19,6 +19,29 @@ quest.a_finer_edge.title = Schärfere Klinge
 quest.a_finer_edge.flavor = Mit den kleinen Jobs bist du fertig. Jetzt kommt ein großer. Steh' an der Mühle bis deine Arme die Arbeit kennen, bring' dein Holzfällen bis ich dir Säger nenne.
 quest.standing_order.title = Tagesauftrag
 quest.standing_order.flavor = Jeden Tag das Gleiche: Bretter und Rinde, hier geliefert. Erfüll den Auftrag und ich bezahl' dich aus dem Hof. Miss einen Tag und er wartet trotzdem.
+quest.straight_grain.title = Gerade Maserung
+quest.straight_grain.flavor = Ich mach dir ne Axt, und ne Axt ist erst mal nen Schaft. Gerade Maserung, keine Knoten. Mahl Stämme bis dir der Sinn danach vergeht, bring' mir dann Bretter und ich find' nen Schaft in dem Stapel.
+quest.cold_metal.title = Kalter Stahl
+quest.cold_metal.flavor = Kobalt für den Kopf, und Kobalt kommt nicht aus nem Stamm. Geh find eine Esse und bring' mir Barren, und lass die Mühle nicht erkalten während du weg bist.
+quest.the_fitting.title = Das Zusammensetzen
+quest.the_fitting.flavor = Schaft und Kopf, jetzt müssen sie zusammen. Steh ne lange Schicht, bis die Essenz schneller von der Säge kommt als du sie einstecken kannst, bring' mir dann schweres Leder und einen Beutel vom konzentrierten Zeug. Dann ist's ne Axt.
+quest.trim_work.title = Zierliche Arbeiten
+quest.trim_work.flavor = Diesmal zierlich. Den zierlichen Schnitt und den kunstvollen, und sammel die Fasern die die Säge auswirft. Bring' mir ne Ladung vom Zierlichen und Rinde. Der Auftrag kommt nochmal, eh der Tag rum ist.
+
+quest.bounty_quick_mill.title = Schnelle Mühle
+quest.bounty_quick_mill.flavor = Eine kurze Schicht an der Sägemühle bevor sich der Auftrag ändert. Stämme rein und dran stehen.
+quest.bounty_quick_boards.title = Schnelle Bretter
+quest.bounty_quick_boards.flavor = Ein schneller Stapel Bretter von der Sägemühle, beliebiger Schnitt. Die Werkbank zählt nicht.
+quest.bounty_mill_shift.title = Mühlenschicht
+quest.bounty_mill_shift.flavor = Eine volle Schicht an der Sägemühle, von Anfang bis Ende. Stämme rein.
+quest.bounty_plank_delivery.title = Bretterlieferung
+quest.bounty_plank_delivery.flavor = Die Baumeister brauchen Bretter und der Auftrag bezahlt pro Ladung. Jede Holzart, hier abgeliefert.
+quest.bounty_lumber_order.title = Holzbestellung
+quest.bounty_lumber_order.flavor = Ein echtes Holzgebot, jeder Schnitt zählt. Mühle laufen lassen bis es erfüllt ist.
+quest.bounty_essence_run.title = Essenz-Lauf
+quest.bounty_essence_run.flavor = Die Alchemisten wollen Lebensessenz direkt von der Säge. Altes Holz mahlen bis genug rausschüttelt.
+quest.bounty_mill_marathon.title = Die lange Schicht
+quest.bounty_mill_marathon.flavor = Eine Woche an der Sägemühle, und der Auftrag zählt jede Schicht. Das füllt keiner in nen Nachmittag.
 
 objective.text.stations.mill_lumber = {0} Einheiten Holz in der Mühle bearbeiten
 
@@ -62,6 +85,10 @@ achievement.sawmill_standing_account.title = Regelmäßiger Kunde
 achievement.sawmill_standing_account.desc = Erfüll Säger Marns Tagesauftrag, Tag für Tag.
 achievement.sawmill_master_sawyer.title = Meister-Säger
 achievement.sawmill_master_sawyer.desc = Bring Säger Marns letzten Job zu Ende.
+achievement.sawmill_trim_account.title = Zierliche Arbeiten
+achievement.sawmill_trim_account.desc = Erfüll Säger Marns zierliche Aufträge, Tag für Tag.
+achievement.sawmill_marns_own.title = Marns Axt
+achievement.sawmill_marns_own.desc = Bring Säger Marn die Teile für ne Axt, Schaft bis Kopf, und lass ihn sie zusammensetzen.
 achievement.announce.sawmill_shift_t3.title = Müller!
 achievement.announce.sawmill_lumber_t3.title = Ganzer Hof!
 achievement.announce.sawmill_lumber_t9.title = Mühlenmeister!
@@ -70,6 +97,7 @@ achievement.announce.sawmiller.title = Säger!
 achievement.announce.sawmiller_server_first.title = SERVER-ERSTE: Säger!
 achievement.announce.sawmiller_server_first.body = {0} hat die Sägewerker-Axt aus einer Mühle gezogen: {1}
 achievement.announce.sawmill_master_sawyer.title = Meister-Säger!
+achievement.announce.sawmill_marns_own.title = Marns Axt!
 
 dialogue.mmo_sawyer.first_words.text = Hm. Schwielen an den Handflächen und Rinde an den Stiefeln. Du wirst's tun.\nIch heiß Marn. Ich bin Säger. Hier unten im <color is="#ffd97a">Vergessenen Tempel</color> gibt's keine Bäume, nur Stein. Da ist nen Säger selten, und ich halte ein paar Mühlen für die die eine füttern können. Sag Hallo, dann reden wir.
 dialogue.mmo_sawyer.first_words.opt.hail = Hallo, Marn.
@@ -97,11 +125,22 @@ dialogue.mmo_sawyer.essence_ready.text = Da ist sie. <b>Lebensessenz</b>, noch w
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Hier die Essenz.
 dialogue.mmo_sawyer.edge_offer.text = Mit den kleinen Jobs bist du durch. Jetzt kommt nen langer.\nSteh' so lang an der Mühle bis nen schwächerer Rücken nicht mehr würde, und bring' dein Holzfällen bis ich dir Säger nenne. Nix abzugeben. Komm wieder wenn's getan ist und ich weiß es.
 dialogue.mmo_sawyer.edge_offer.opt.accept = Ich steh die Schicht.
+dialogue.mmo_sawyer.grain_stock_offer.text = Säger, aber schwingst ne Axt, die jeder Schmied hätte machen können. Das stört mich.\nIch mach dir eine. Mein Muster, und sie fängt beim Schaft an. Gerade Maserung, keine Knoten, und das siehst du nicht nur so. Schick <b>Stämme</b> durch die Mühle bis der Hof voll ist und bring' mir <b>Bretter</b>. Ich find' nen Schaft in dem Stapel.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = Ich mahl die Stämme.
+dialogue.mmo_sawyer.metal_offer.text = Das ist ein Schaft. Jetzt braucht's was an der Spitze.\nDer Kopf ist Kobalt, und Kobalt kommt nicht aus nem Stamm, also send' ich dich diesmal weg von der Mühle. Find eine Esse und bring' mir <b>Kobalt-Barren</b>. Die Mühle läuft weiter während du weg bist, verstanden? Ein Schaft ohne was drauf ist ein Stock.
+dialogue.mmo_sawyer.metal_offer.opt.accept = Ich bring dir Kobalt.
+dialogue.mmo_sawyer.fitting_offer.text = Schaft und Kopf. Jetzt müssen sie zusammen, und da eilt es nicht. Der Kopf wird in <b>Lebensessenz</b> gehärtet und die Bindung ist <b>schweres Leder</b>. Steh ne lange Schicht an der Mühle, bis sie Essenz zu Dutzenden ausschüttelt, und irgendwann kommt die tiefe Essenz raus. Bring' mir das Leder und einen Beutel <b>konzentrierte Essenz</b>, und ich mach das Zusammensetzen.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = Ich bring, was nötig ist.
+dialogue.mmo_sawyer.fitting_ready.text = <b>Schweres Leder</b> und ein Beutel <b>konzentrierte Essenz</b>. Gib her.\nDa. Kobalt auf nem geraden Schaft, fest genug gebunden dass es uns beide überdauert. Sie schneidet nicht wie die die die Mühle rausgibt, und ich tu nicht so. Sie schneidet wie meine. <color is="#ffd97a">Marns Axt</color>, und keine andere. Nimm sie.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Hier sind Leder und Beutel.
 dialogue.mmo_sawyer.order_ready.text = Der Tagesauftrag. <b>Bretter</b> und <b>Rinde</b>, gezählt, im Quadrat gestapelt. So mag ich nen Auftrag geliefert. Morgen wieder, wenn du Lust hast.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Hier der Tagesauftrag.
+dialogue.mmo_sawyer.trim_ready.text = Die zierlichen Schnitte. <b>Zierliche Schnitte</b>, Kanten sauber, und <b>Rinde</b> zu Armvoll. Jemand liest die Fasern. Bald wieder eine, wenn die Mühle noch steht.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Hier die zierlichen Schnitte von heute.
 dialogue.mmo_sawyer.ready_generic.text = Du siehst aus als würdest du nen Job mitbringen. Leg her und wir regeln's.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Das hab' ich fertig.
 dialogue.mmo_sawyer.active_generic.text = Du bist still am Job. Die Mühle läuft nicht wenn du nicht davor stehst. Weiter.
+dialogue.mmo_sawyer.edge_talk.text = Du hast ne Axt von mir und nen Namen den ich nicht jedem geb. Hier in der Ecke gibt's für mich nix mehr zu machen.\nDie Mühle ist ne andere Sache. Die hat ihre eignen Ideen über wem sie ne scharfe Klinge gibt, und daran stellen ist der einzige Weg rausfinden. Hier gibt's Arbeit wenn du Zeit hast, wie immer.
 dialogue.mmo_sawyer.yard_talk.text = Säger. Das nenn' ich dich jetzt, und das sag' ich nicht zu vielen.\nDu hast nen Hof zu führen. Der meine ist dieser Winkel des <color is="#ffd97a">Vergessenen Tempels</color>, und mir reicht's. Komm vorbei wenn du über Holz reden willst.
 dialogue.mmo_sawyer.bench_talk.text = Ne Mühle hast du. Fütt'r sie. Bretter zuerst, und je länger du dran stehst desto mehr gibt nen Stamm her. Es gibt Arbeit wenn du Zeit hast.
 dialogue.mmo_sawyer.how_it_works.text = <b>Stämme</b> in der Hand, Block benutzen, Mühle nimmt sie. Nochmal benutzen und du sägt.\nDein <b>Beil</b> macht den Schnitt, besseres Beil heißt mehr Bretter pro Schicht, mehr von allem was die Mühle im Stamm findet, Rinde bis Essenz. Hock' dich hin wenn du benutzt und sie fragt welcher <b>Schnitt</b>.\nDas ist alles. Der Rest ist Stehen.
@@ -111,8 +150,11 @@ dialogue.mmo_sawyer.what_is_in_wood.text = Rinde. Harz. Fasern. Stöcke. Jeder S
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Gut zu wissen.
 dialogue.mmo_sawyer.hatchet_tease.text = Es gibt nen <color is="#ffd97a">Sägewerker-Axt</color>. Mithril, ausgewogen am Stein, schärfer als alles aus der Schmiede. Niemand macht das.\nHier und da gibt die Mühle eins einem Säger der lang genug dran gestanden hat mit gutem Beil schon in der Hand. Und ich mein Hier und da. Ich hab's sehn. Mir nicht.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Ich bleib' am Sägen.
+dialogue.mmo_sawyer.kit_talk.text = Die Kappe die ich dir gab ist nen Anfang, und ich tu nicht so dass sie mehr ist. Es gibt ne richtige Garnitur.\nHolzfäller-Leder, der ganze Satz. Kappe, Wams, Handschuhe, Hosen, alles geschnitten für nen Tag an der Säge, und keiner verkauft's. Ich geb's aus den zierlichen Arbeiten, immer ein Teil wenn der Tag gut war, und das Wams kommt am seltensten raus. Trag das ganze Set und die Mühle fängt an dich zu beachten.
+dialogue.mmo_sawyer.kit_talk.opt.back = Ich bleib bei den zierlichen Arbeiten.
 dialogue.mmo_sawyer.opt.returned = Ich bin zurück mit dem was du brauchst.
 dialogue.mmo_sawyer.opt.quests = Gibts was zu sägen?
 dialogue.mmo_sawyer.opt.how = Wie funktioniert die Mühle?
 dialogue.mmo_sawyer.opt.edge = Schon mal ne bessere Klinge gesehn?
+dialogue.mmo_sawyer.opt.kit = Was passt zu dieser Kappe?
 dialogue.mmo_sawyer.opt.nothing = Jetzt nicht.

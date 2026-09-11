@@ -1,0 +1,87 @@
+{
+  "$Comment": [
+    "The woodcutter's kit: four leather pieces, and this table is the ONLY place any of them is paid.",
+    "Nothing crafts them and nothing sells them, so a full set is a stretch of days at the mill.",
+    "",
+    "FOUR INDEPENDENT ROLLS, one per piece. Rolls evaluate independently, so a day can pay two pieces",
+    "or none, and a piece already owned can land again: these are ordinary items, and a spare is a",
+    "spare. There is no memory of what the worker already has.",
+    "",
+    "THE CHEST IS THE RARE ONE. It carries the heaviest stat load of the four, so it is deliberately",
+    "the long pole in finishing the set, and it names the Sawmill's own deep-find cue rather than the",
+    "everyday chime. Lower all four chances together to stretch the set out; raise the chest's alone",
+    "to take the sting out of the tail without making the whole set quick.",
+    "",
+    "A Chance is a percentage from zero to one hundred, rolled once each time the order is filled.",
+    "The order comes round several times a day, so read these odds as a number of RUNS rather than a",
+    "number of days: the cap is around ten runs, the jerkin around fifty. Somebody",
+    "who fills the order whenever it refreshes earns the set in weeks; somebody who fills it when",
+    "they happen to be at the mill takes considerably longer, which is the intended spread.",
+    "",
+    "This table is named for the kit rather than for the order that pays it, so a second source can",
+    "reference it later without the name reading wrong."
+  ],
+  "Name": "Mmo_Woodcutters_Kit",
+  "Rolls": [
+    {
+      "$Comment": "The cap.",
+      "Chance": {
+        "Base": 10.0
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "MMO_Armor_Woodcutter_Head",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The gloves.",
+      "Chance": {
+        "Base": 5.0
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "MMO_Armor_Woodcutter_Hands",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The breeches.",
+      "Chance": {
+        "Base": 5.0
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "MMO_Armor_Woodcutter_Legs",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The jerkin, the rare one, announced with the Sawmill's own deep-find cue.",
+      "Chance": {
+        "Base": 2.0
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "MMO_Armor_Woodcutter_Chest",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "cue:find_deep"
+    }
+  ]
+}

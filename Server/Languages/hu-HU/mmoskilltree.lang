@@ -19,6 +19,29 @@ quest.a_finer_edge.title = Élesebb Él
 quest.a_finer_edge.flavor = Az apró munkák vége. Most egy hosszú. Állj a malmom mellett, amíg az egyik kezed ismeri a munkát, és szállítsd a fát vágásra arra a szintre, ahol már fűrészesnek szólítanálak.
 quest.standing_order.title = Szállítási Megbízás
 quest.standing_order.flavor = Ugyanaz a megbízás, minden nap: deszka és kéreg, ideadva. Töltsd be, én meg kifizetem az udvarból. Maradj el egy napot, és holnap is itt lesz.
+quest.straight_grain.title = Egyenes Rost
+quest.straight_grain.flavor = Fejszét csinálok neked. Nyél nélkül nem fejsze. Egyenes rost, semmi csomó. Molj fát, amíg meg nem untad, aztán hozz deszkát, és találok a rakásban egy nyelet.
+quest.cold_metal.title = Hideg Fém
+quest.cold_metal.flavor = Kobalt a fejhez, és kobalt nem jön ki a fából. Keress egy kovácsműhelyt, hozz rúdakat. Közben ne hagyd a malmot hidegre fordulni.
+quest.the_fitting.title = Az Illesztés
+quest.the_fitting.flavor = Nyél és fej. Most össze kell illeszteni. Dolgozz egy hosszú műsak, amíg az életnedv gyorsabban jön ki, mint zsebrevághatod. Aztán hozz nehéz bőrt és egy zacskó koncentráltat. Utána fejsze.
+quest.trim_work.title = Díszítő Munka
+quest.trim_work.flavor = Díszítés, most. Dekoratív, ékesített, és gyűjtsd a szálat. Hozz a díszítésből részét és kérget. Még a nap vége előtt jön egy újabb megbízás.
+
+quest.bounty_quick_mill.title = Gyors Malmozás
+quest.bounty_quick_mill.flavor = Rövid malmozás egy Fűrészmalmom a tábla fordulása előtt. Betöltsd és dolgozz.
+quest.bounty_quick_boards.title = Gyors Deszkák
+quest.bounty_quick_boards.flavor = Rövid rakásnyit a Fűrészmalmomból, bármilyen vágás. Kézi pad nem jó.
+quest.bounty_mill_shift.title = Malmműködtetés
+quest.bounty_mill_shift.flavor = Teljes műsak a Fűrészmalmomon. Tolj rönköket.
+quest.bounty_plank_delivery.title = Deszka Szállítás
+quest.bounty_plank_delivery.flavor = Az építőknek kell deszka, a tábla rakásonként fizet. Bármilyen fajta, ideadva.
+quest.bounty_lumber_order.title = Fa Megbízás
+quest.bounty_lumber_order.flavor = Egy rendes faragott fa megbízás, minden vágás számít. Futtasd a malmot, amíg kész.
+quest.bounty_essence_run.title = Életnedv Futam
+quest.bounty_essence_run.flavor = A kémikusok életnedvet akarnak, közvetlenül a malmból. Molj öreg fát, amíg nincs elég.
+quest.bounty_mill_marathon.title = Az Utolsó Műsak
+quest.bounty_mill_marathon.flavor = Egy heti malmozás, a tábla számlál minden ciklust. Senki nem végzi el egy délután alatt.
 
 objective.text.stations.mill_lumber = Faragj meg {0} darab fát
 
@@ -63,6 +86,10 @@ achievement.sawmill_standing_account.title = Állandó Megbízás
 achievement.sawmill_standing_account.desc = Teljesítsd Marn fűrészmalmos szállítási megbízását, nap után nap.
 achievement.sawmill_master_sawyer.title = Mester Fűrészmalmos
 achievement.sawmill_master_sawyer.desc = Végezd el Marn fűrészmalmos utolsó munkáját.
+achievement.sawmill_trim_account.title = Díszítő Megbízás
+achievement.sawmill_trim_account.desc = Töltsd Marn malmozó díszítő megbízását, nap után nap.
+achievement.sawmill_marns_own.title = Marni
+achievement.sawmill_marns_own.desc = Hozd Marn malmozónak egy fejsze anyagait, nyéltől végéig, és hagyd összeillészteni.
 
 achievement.announce.sawmill_shift_t3.title = Malmász!
 achievement.announce.sawmill_lumber_t3.title = Az Egész Udvar!
@@ -72,6 +99,7 @@ achievement.announce.sawmiller.title = Fűrészmalmos!
 achievement.announce.sawmiller_server_first.title = SZERVER ELSŐ: Fűrészmalmos!
 achievement.announce.sawmiller_server_first.body = {0} emelte ki a szerver első Fűrészmalmos Fejszéjét egy malmomból: {1}
 achievement.announce.sawmill_master_sawyer.title = Mester Fűrészmalmos!
+achievement.announce.sawmill_marns_own.title = Marni!
 
 dialogue.mmo_sawyer.first_words.text = Hmm. Szaruképek a tenyereden, kéreg a csizmádon. Megteszel.\nMarn a nevem. Malmozok. Lent a <color is="#ffd97a">Feledett Templomban</color> kő van, fa nincs. Ritka egy fűrészmalmos. Pár malmom van, aki után tudnak etni. Köszönjél, majd beszélgetünk.
 dialogue.mmo_sawyer.first_words.opt.hail = Halló, Marn.
@@ -99,11 +127,22 @@ dialogue.mmo_sawyer.essence_ready.text = Ott van. <b>Életnedv</b>, még meleg a
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Nézd, az életnedvet.
 dialogue.mmo_sawyer.edge_offer.text = Az apró munkák vége. Most egy hosszú.\nÁllj a malmom mellett egy műsak hosszáig, ami kifárasztana sok embert, és szállítsd a fát vágásra arra a szintre, ahol már fűrészmalmosnak szólítanálak az arcod előtt. Nincs mit leadni. Gyere vissza, ha kész, én majd tudom.
 dialogue.mmo_sawyer.edge_offer.opt.accept = Bemegyek a műsakra.
+dialogue.mmo_sawyer.grain_stock_offer.text = Fűrészmalmos, és egy fejszét, amit bárki kovácsolt volna. Gondolkodtam rajta.\nCsinálok neked egyet. Az én mintám, nyéllel kezdődik. Egyenes rost, semmi csomó, nem találod csak nézegetéssel. Tolj fát a malmomon, amíg az udvar meg nem telik, és hozz deszkát. Találok a rakásban egy nyelet.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = Tolok majd az anyagot.
+dialogue.mmo_sawyer.metal_offer.text = Ez egy nyél. Most valami kell a végére.\nA fej kobalt, és kobalt nem jön ki a fából. Egyszer el kell küldjelek a malmtól. Keress egy kovácsműhelyt, hozz kobalt rudakat. Tartsd a malmot működésben, érted. Nyél semmi nélkül csak egy bot.
+dialogue.mmo_sawyer.metal_offer.opt.accept = Hozok majd kobaltot.
+dialogue.mmo_sawyer.fitting_offer.text = Nyél és fej. Most össze kell illeszteni, és ez az a rész, amit senki nem siet.\nA fej életnedvben edzett, és a kötés <b>nehéz bőr</b>. Állj a malmom mellett egy hosszú műsakot, amíg marokval jön az életnedv, és benne valahol az összetett anyag megjelenik. Hozz nekem a bőrt és egy zacskó <b>koncentrált életnedvet</b>, és megyek az illesztéshez.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = Hozom majd, ami kell.
+dialogue.mmo_sawyer.fitting_ready.text = <b>Nehéz bőr</b>, és egy zacskó <b>koncentrált életnedv</b>. Add át.\nNa. Kobalt egyenes nyélen, szorosan kötve. Nem vág úgy, mint amit a malom kiad, és nem játszom, hogy igen. Úgy vág, mint az enyém. <color is="#ffd97a">Marn Fejszéje</color>, és nincs más. Vedd.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Nézd, a bőr és a zacskó.
 dialogue.mmo_sawyer.order_ready.text = A nap megbízása. <b>Deszka</b> és <b>kéreg</b>, számlálva, négyzetre pakolva. Így szeretem. Holnap ugyanez, ha még akarsz.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Nézd, a mai megbízást.
+dialogue.mmo_sawyer.trim_ready.text = A díszítés. <b>Dekoratív vágások</b>, tiszta élek, és <b>kéreg</b> szálas. Valaki olvasta a rostot. Nemsokára jön még egy, ha még áll a malom.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Nézd, a mai díszítést.
 dialogue.mmo_sawyer.ready_generic.text = Úgy nézel ki, mint aki egy befejezett munkát cipel. Tedd le és elszámolunk.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Nézd, a munkámat.
 dialogue.mmo_sawyer.active_generic.text = Még mindig a munka, hát. A malom nem fut nélküled. Gyere.
+dialogue.mmo_sawyer.edge_talk.text = Van egy fejszéd az enyém közül, és egy név, amit nem adok ki. Ebben a sarokban nincs már semmi, amit neked csinálhatnék.\nA malmok másként működnek. Megvan a maga gondolata, kinek ad élt, és csak rajta állva lehet megismerni. Van munka, amikor akarod.
 dialogue.mmo_sawyer.yard_talk.text = Fűrészmalmos. Azt hívlak most, és nem mondok így sokaknak.\nVan egy udvarod, ami az tiéd. Az enyém ez a sarok a <color is="#ffd97a">Feledett Templomban</color>, és ez elég. Gyere, ha fáról akarsz beszélni.
 dialogue.mmo_sawyer.bench_talk.text = Van egy malmad most. Tartsd rendesen etetve. Az első a deszka, és minél tovább állsz rajta, annál több jön ki egy rönkből. Van munka, amikor akarod.
 dialogue.mmo_sawyer.how_it_works.text = <b>Rönköket</b> a kezedben, használd a blokkot, a malom ellát. Újra használd és faragsz.\nA <b>fejszéd</b> végzi a vágást, szóval jobb fejsze több deszkát egy körben, és többet mindent, amit a malom kihúz egy rönkből, kéregtől az életnedvig. Guggolj fel, ahogy használod a blokkot, és azt kérdezi, milyen <b>vágást</b> akarsz.\nEz az egész. A többi az, hogy ott állsz.
@@ -113,8 +152,11 @@ dialogue.mmo_sawyer.what_is_in_wood.text = Kéreg. Nedv. Szál. Vesszők. Minden
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Jó tudni.
 dialogue.mmo_sawyer.hatchet_tease.text = Ott van egy <color is="#ffd97a">Fűrészmalmi balta</color>. Mitril, malmban egyensúlyban tartva, élesebb, mint amit a kovácsműhely kiad. Senki nem készíti.\nMáskor egy malom ad egyet egy fűrészmalmosnak, aki már elég hosszú ideig áll rajta egy finom pengével. Máskor. Láttam történni. Nem nekem.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Majd vágok tovább.
+dialogue.mmo_sawyer.kit_talk.text = Az a sapka kezdet, nem játszom, hogy több. Van igazi felszerelés.\nFavágó bőr, az egész garnitúra. Sapka, kabát, kesztyű, nadrág, malmozásra vágva, és senki sem árulja. Kifizettem a <b>díszítő munkámból</b>, egy darab itt-ott, jó vágásonként. A kabát jön utolsónak. Viselj mindent, a malom majd észrevesz.
+dialogue.mmo_sawyer.kit_talk.opt.back = Majd folytatok a díszítéssel.
 dialogue.mmo_sawyer.opt.returned = Visszajöttem, amit kértél.
 dialogue.mmo_sawyer.opt.quests = Van valami, mit kellene vágni?
 dialogue.mmo_sawyer.opt.how = Hogy működik a malom?
 dialogue.mmo_sawyer.opt.edge = Láttál már élesebb élt?
+dialogue.mmo_sawyer.opt.kit = Mi jár ehhez a sapkához?
 dialogue.mmo_sawyer.opt.nothing = Egyelőre semmi.

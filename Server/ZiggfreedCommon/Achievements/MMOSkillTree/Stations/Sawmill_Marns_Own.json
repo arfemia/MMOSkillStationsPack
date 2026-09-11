@@ -1,0 +1,59 @@
+{
+  "$Comment": "Marn's Edge finished: COMPLETE_QUEST on its last rung, The Fitting, which is only reachable through the two rungs before it and the whole sawmill chain before those. Announced to the server. Its Claim is Woodcutting XP and a personal Woodcutting boost token, on top of the hatchet the quest itself hands over. Point the Target at a different quest id to move the capstone.",
+  "Name": "Sawmill_Marns_Own",
+  "Text": {
+    "TitleKey": "achievement.sawmill_marns_own.title",
+    "FlavorKey": "achievement.sawmill_marns_own.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 25
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "finish-marns-edge": {
+      "Kind": "COMPLETE_QUEST",
+      "Target": "the_fitting",
+      "MatchMode": "EXACT",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 5000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 90
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.sawmill_marns_own.title"
+      }
+    }
+  }
+}

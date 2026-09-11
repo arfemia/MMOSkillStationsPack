@@ -1,0 +1,52 @@
+{
+  "$Comment": "An easy delivery: a load of planks, handed back at the board. TURN_IN on '_Planks' with CONTAINS takes any species and any half-plank cut, and a contract is always handed back at the board that posted it, so there is no place to author. Weight 2 makes it twice as likely as an even rival for the same easy slot, which is how a staple contract stays common without crowding the band out. This file spells out its whole step and pay rather than inheriting a shared skeleton, so it loads with nothing but this pack, RPG Stations and the MMO installed; it hangs on the Daily board by id, and on a server with no board of that id it is simply never posted. The stations feature gate in Requires is for a server where stations have been switched off: a board draws its slots without reading a contract's Requires, so the gate refuses at Accept rather than keeping the contract off the board.",
+  "Text": {
+    "TitleKey": "quest.bounty_plank_delivery.title",
+    "FlavorKey": "quest.bounty_plank_delivery.flavor"
+  },
+  "Listing": {
+    "Category": "bounty"
+  },
+  "Boards": [
+    {
+      "Board": "Daily",
+      "Difficulty": "Easy",
+      "Weight": 2
+    }
+  ],
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "main": {
+      "Kind": "TURN_IN",
+      "Target": "_Planks",
+      "MatchMode": "CONTAINS",
+      "Amount": 128
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Currency",
+        "Params": {
+          "Currency": "bounty_token",
+          "Amount": 75
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 700
+        }
+      }
+    ]
+  }
+}

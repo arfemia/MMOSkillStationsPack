@@ -1,0 +1,54 @@
+{
+  "$Comment": "A normal daily: a proper order of lumber off the Sawmill. STATION_OUTPUT counts every cut of every species the mill hands over ('Wood_' on PREFIX, qualified to the Sawmill, so lumber from a hand bench does not count) and carries the shared mill_lumber TextKey, since the kind's default line names a single item. Weight 2 makes it twice as likely as an even rival for the same normal slot. This file spells out its whole step and pay rather than inheriting a shared skeleton, so it loads with nothing but this pack, RPG Stations and the MMO installed; it hangs on the Daily board by id, and on a server with no board of that id it is simply never posted. The stations feature gate in Requires is for a server where stations have been switched off: a board draws its slots without reading a contract's Requires, so the gate refuses at Accept rather than keeping the contract off the board.",
+  "Text": {
+    "TitleKey": "quest.bounty_lumber_order.title",
+    "FlavorKey": "quest.bounty_lumber_order.flavor"
+  },
+  "Listing": {
+    "Category": "bounty"
+  },
+  "Boards": [
+    {
+      "Board": "Daily",
+      "Difficulty": "Normal",
+      "Weight": 2
+    }
+  ],
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "main": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Wood_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Sawmill",
+      "Amount": 150,
+      "TextKey": "objective.text.stations.mill_lumber"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Currency",
+        "Params": {
+          "Currency": "bounty_token",
+          "Amount": 150
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 1200
+        }
+      }
+    ]
+  }
+}

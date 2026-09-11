@@ -19,6 +19,29 @@ quest.a_finer_edge.title = Un Meilleur Tranchant
 quest.a_finer_edge.flavor = T'as fait les petits travaux. Fais-en un gros maintenant. Tiens-toi à cette Scierie jusqu'à ce que tes bras connaissent le travail, et remonte ton bûcheronnage à où je t'appellerais un scieur.
 quest.standing_order.title = Commande Régulière
 quest.standing_order.flavor = La même commande tous les jours : planches et écorce, livrées ici. Remplis-la et je te paierai de la cour. Manque un jour, elle sera quand même là demain.
+quest.straight_grain.title = Grain Droit
+quest.straight_grain.flavor = Je te fais une hache, et une hache c'est un fût avant tout le reste. Grain droit, sans nœuds. Fais passer du stock à travers la Scierie jusqu'à en avoir marre, puis rapporte-moi des planches et je trouverai un fût dans la pile.
+quest.cold_metal.title = Métal Froid
+quest.cold_metal.flavor = Du cobalt pour la tête, et le cobalt ça vient pas d'un rondin. Va trouver une forge et rapporte-moi des barres, et laisse pas la Scierie refroidir pendant ce temps.
+quest.the_fitting.title = L'Assemblage
+quest.the_fitting.flavor = Fût et tête, et faut qu'ils soient joints. Tiens la Scierie un long quart, jusqu'à ce que l'essence s'échappe plus vite que tu peux la pocher, puis rapporte-moi du cuir lourd et une sacoche du genre concentré. Après ça c'est une hache.
+quest.trim_work.title = Travail de Finition
+quest.trim_work.flavor = De la finition cette fois. La coupe décorative et l'ouvragée, et garde les fibres que la scie crache en même temps. Rapporte-moi une part de la finition et de l'écorce. Y a une nouvelle commande avant la fin de la journée.
+
+quest.bounty_quick_mill.title = Scierie Rapide
+quest.bounty_quick_mill.flavor = Un court passage à une Scierie avant que le tableau tourne. Charge-la et tiens-toi à côté.
+quest.bounty_quick_boards.title = Planches Rapides
+quest.bounty_quick_boards.flavor = Une courte pile de planches d'une Scierie, n'importe quelle coupe. L'établi à la main ne compte pas.
+quest.bounty_mill_shift.title = Quart à la Scierie
+quest.bounty_mill_shift.flavor = Un quart complet à la Scierie, du début à la fin. Tiens les rondins qui arrivent.
+quest.bounty_plank_delivery.title = Livraison de Planches
+quest.bounty_plank_delivery.flavor = Les constructeurs manquent de planches et le tableau paie à la charge. N'importe quelle espèce, remise ici.
+quest.bounty_lumber_order.title = Commande de Bois
+quest.bounty_lumber_order.flavor = Une vraie commande de bois scié, toutes coupes bienvenues. Fais rouler la Scierie jusqu'à ce qu'elle soit remplie.
+quest.bounty_essence_run.title = Course à l'Essence
+quest.bounty_essence_run.flavor = Les alchimistes veulent de l'essence de vie fraîche du bord de la scie. Scie du vieux bois jusqu'à ce qu'assez se libère.
+quest.bounty_mill_marathon.title = Le Long Quart
+quest.bounty_mill_marathon.flavor = Une semaine à la Scierie, et le tableau compte chaque cycle. Personne ne remplit celle-ci dans une après-midi.
 
 objective.text.stations.mill_lumber = Scier {0} pièces de bois
 
@@ -63,6 +86,10 @@ achievement.sawmill_standing_account.title = Compte Régulier
 achievement.sawmill_standing_account.desc = Continue à remplir la commande régulière du Scieur Marn, jour après jour.
 achievement.sawmill_master_sawyer.title = Maître Scieur
 achievement.sawmill_master_sawyer.desc = Va au bout de la dernière commande du Scieur Marn.
+achievement.sawmill_trim_account.title = Compte de Finition
+achievement.sawmill_trim_account.desc = Remplis la commande de finition du Scieur Marn, jour après jour.
+achievement.sawmill_marns_own.title = Propriété de Marn
+achievement.sawmill_marns_own.desc = Apporte au Scieur Marn les constituants d'une hache, fût à tête, et laisse-le l'assembler.
 
 achievement.announce.sawmill_shift_t3.title = Main de Scierie !
 achievement.announce.sawmill_lumber_t3.title = La Cour Entière !
@@ -72,6 +99,7 @@ achievement.announce.sawmiller.title = Scieur !
 achievement.announce.sawmiller_server_first.title = PREMIER SERVEUR : Scieur !
 achievement.announce.sawmiller_server_first.body = {0} a tiré la Hache du Scieur d'une Scierie : {1}
 achievement.announce.sawmill_master_sawyer.title = Maître Scieur !
+achievement.announce.sawmill_marns_own.title = Propriété de Marn !
 
 dialogue.mmo_sawyer.first_words.text = Hm. Des callosités aux paumes et de l'écorce aux bottes. T'iras.\nC'est Marn. Je scie le bois. Ici en bas au <color is="#ffd97a">Temple Oublié</color> c'est que de la pierre et pas un arbre, alors un scieur c'est rare, et je garde une Scierie ou deux pour quiconque peut l'alimenter. Salue-moi et on parlera.
 dialogue.mmo_sawyer.first_words.opt.hail = Salut, Marn.
@@ -99,11 +127,22 @@ dialogue.mmo_sawyer.essence_ready.text = Là voilà. De l'<b>essence de vie</b>,
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Voilà l'essence.
 dialogue.mmo_sawyer.edge_offer.text = Les petits travaux c'est fini. Fais un gros maintenant.\nTiens-toi à cette Scierie pour un quart qui fatiguerait un dos moins solide, et remonte ton bûcheronnage là où je dirais que t'es un scieur. Rien à remettre. Reviens quand c'est fait et je vais savoir.
 dialogue.mmo_sawyer.edge_offer.opt.accept = Je vais faire le quart.
+dialogue.mmo_sawyer.grain_stock_offer.text = Scieur, et tu balances une hache que n'importe quel forgeron aurait pu faire. Ça m'a tracassé.\nJe t'en fabrique une. Mon propre modèle, et ça commence par le fût. Grain droit, sans nœuds, et tu trouves pas ça en regardant. Fais passer du <b>stock</b> à travers la Scierie jusqu'à ce que la cour soit pleine et rapporte-moi des <b>planches</b>. Je trouverai le fût dans la pile.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = Je vais scier le stock.
+dialogue.mmo_sawyer.metal_offer.text = C'est un fût. Maintenant faut quelque chose au bout.\nLa tête c'est du cobalt, et le cobalt ça vient pas d'un rondin, alors pour une fois je te renvoie loin de la Scierie. Trouve une forge et rapporte-moi des <b>barres de cobalt</b>. Tiens la scie qui tourne pendant ce temps, remarque. Un fût sans rien dessus c'est juste un bâton.
+dialogue.mmo_sawyer.metal_offer.opt.accept = Je vais te rapporter du cobalt.
+dialogue.mmo_sawyer.fitting_offer.text = Fût et tête. Faut qu'ils soient joints, et c'est la partie que personne ne bâcle.\nLa tête c'est trempé dans l'<b>essence de vie</b> et le lien c'est du <b>cuir lourd</b>. Tiens la Scierie un long quart, jusqu'à ce qu'elle crache l'essence par poignées, et quelque part là-dedans le truc profond remonte. Rapporte-moi le cuir et une sacoche de l'<b>essence concentrée</b>, et je vais faire l'assemblage.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = Je vais te rapporter ce qu'il faut.
+dialogue.mmo_sawyer.fitting_ready.text = Du <b>cuir lourd</b>, et une sacoche de l'<b>essence concentrée</b>. Donne-les-moi.\nVoilà. Du cobalt sur un fût droit, serré assez fort pour nous deux. Coupe pas comme celle que la Scierie sort, et je prétendrai pas le contraire. Coupe comme la mienne. <color is="#ffd97a">Hache de Marn</color>, et y en a pas d'autre. Prends-la.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Voilà le cuir et la sacoche.
 dialogue.mmo_sawyer.order_ready.text = La commande du jour. Des <b>planches</b> et de l'<b>écorce</b>, comptées, empilées carrées. C'est comme ça que j'aime une livraison. Pareil demain, si t'es partant.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Voilà la commande du jour.
+dialogue.mmo_sawyer.trim_ready.text = La finition. Des <b>coupes décoratives</b>, bords propres, et de l'<b>écorce</b> à brassées. Quelqu'un lit bien le grain. Y en aura une autre avant longtemps, si la Scierie tient encore debout.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Voilà la finition du jour.
 dialogue.mmo_sawyer.ready_generic.text = T'as l'air de quelqu'un qui porte un travail fini. Pose-le et on va régler.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Voilà ce que j'ai fait.
 dialogue.mmo_sawyer.active_generic.text = Tu bosses encore alors. La Scierie roulera pas sans toi qui la regardes. Allez.
+dialogue.mmo_sawyer.edge_talk.text = T'as une hache de moi et un nom que je donne pas. Y a plus rien dans ce coin que je peux te fabriquer.\nLa Scierie c'est une autre histoire. Elle a ses propres idées sur qui elle donne un tranchant, et se tenir à côté c'est la seule façon de le découvrir. Y a du travail ici quand tu veux, comme avant.
 dialogue.mmo_sawyer.yard_talk.text = Scieur. C'est ce que je t'appelle maintenant, et je le dis pas à beaucoup.\nT'as une cour à toi maintenant. La mienne c'est ce coin du <color is="#ffd97a">Temple Oublié</color>, et c'est assez. Repasse quand tu veux parler du bois.
 dialogue.mmo_sawyer.bench_talk.text = T'as une Scierie maintenant. Tiens-la nourrie. Les planches d'abord, et plus longtemps tu te tiens à la Scierie, plus un rondin crache. Y a du travail ici quand tu veux.
 dialogue.mmo_sawyer.how_it_works.text = Des <b>rondins</b> à la main, utilise le bloc, et la Scierie te les enlève. Utilise-la encore et tu scies.\nTa <b>hache</b> fait la coupe, donc une meilleure ça veut dire plus de planches un cycle, et plus de tout ce que la Scierie sort d'un rondin, écorce à essence. Accroupis-toi en utilisant le bloc et elle demandera quelle <b>coupe</b> tu veux.\nC'est tout le truc. Le reste c'est rester là.
@@ -113,8 +152,11 @@ dialogue.mmo_sawyer.what_is_in_wood.text = De l'écorce. De la sève. De la fibr
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Bon à savoir.
 dialogue.mmo_sawyer.hatchet_tease.text = Voilà une <color is="#ffd97a">Hache du Scieur</color>. Du mithril, équilibrée à la Scierie, plus pointue que n'importe quoi qu'une forge sort. Personne la fabrique.\nDe temps en temps une Scierie en remet une à un scieur qui a tenu assez longtemps avec une belle lame déjà en main. Et je veux dire de temps en temps. J'ai vu ça arriver. Pas pour moi.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Je vais continuer à scier.
+dialogue.mmo_sawyer.kit_talk.text = Cette casquette que je t'ai donnée c'est un début, et je prétendrai pas que c'est plus. Y a un vrai kit.\nDu cuir de bûcheron, toute la série. Casquette, tunique, gants, culotte, tout taillé pour un jour à la scie, et personne le vend. Je le paie de la finition, un morceau de temps en temps quand la coupe du jour est bonne, et la tunique c'est celle que je lâche en dernier. Porte le tout et la Scierie commence à te remarquer.
+dialogue.mmo_sawyer.kit_talk.opt.back = Je vais continuer la finition.
 dialogue.mmo_sawyer.opt.returned = Je suis revenu avec ce que tu as demandé.
 dialogue.mmo_sawyer.opt.quests = Y a quelque chose à scier?
 dialogue.mmo_sawyer.opt.how = Comment marche la Scierie?
 dialogue.mmo_sawyer.opt.edge = T'as jamais vu un tranchant meilleur?
+dialogue.mmo_sawyer.opt.kit = Qu'est-ce qui va avec cette casquette?
 dialogue.mmo_sawyer.opt.nothing = Rien pour maintenant.

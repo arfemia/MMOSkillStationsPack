@@ -19,8 +19,31 @@ quest.a_finer_edge.title = Острее лезвие
 quest.a_finer_edge.flavor = Мелкие работы закончил. Теперь за крупную. Стой у лесопилки, пока руки не начнут помнить движения, подними мастерство в лесоруб работу. Вернёшься, когда будешь готов.
 quest.standing_order.title = Ежедневный заказ
 quest.standing_order.flavor = Каждый день один порядок: доски и кора, доставить сюда. Выполняй - будешь получать. Пропустишь день - завтра ждёт.
+quest.straight_grain.title = Прямое волокно
+quest.straight_grain.flavor = Делаю тебе топор, а топор - это сначала топорище, всё остальное - потом. Прямое волокно, без сучков. Гони брёвна через лесопилку, пока не надоест, и принеси мне доски. Топорище я найду в стопке.
+quest.cold_metal.title = Холодный металл
+quest.cold_metal.flavor = Кобальт на боевую часть, а кобальт из брёвна не добыть. Сходи в кузню, принеси мне слитки. И не дай лесопилке остыть, покуда тебя нет.
+quest.the_fitting.title = Примерка
+quest.the_fitting.flavor = Топорище и боевая часть. Соединить их - дело не спешное.\nБоевая часть закалена в жизненной эссенции, обвязка - тяжелая кожа. Работай долгую смену, пока жизненная эссенция не начнёт сыпаться горстями, и откуда-то найдётся глубокое. Принеси мне тяжелую кожу и мешочек концентрированной эссенции, примерку я сделаю.
+quest.trim_work.title = Нарядный спил
+quest.trim_work.flavor = Нарядный спил на этот раз. Нарядный и изящный, да волокно не потеряй, что со стружек валится. Принеси мне доли нарядных досок и коры. Ещё до конца дня придёт новый заказ.
 
 objective.text.stations.mill_lumber = Обработай {0} досок на лесопилке
+
+quest.bounty_quick_mill.title = Быстрый спил
+quest.bounty_quick_mill.flavor = Спил на лесопилке, пока доска не сменилась. Загружай и работай.
+quest.bounty_quick_boards.title = Быстрые доски
+quest.bounty_quick_boards.flavor = Быстрая стопка досок с лесопилки, любой спил. Верстак не подойдёт.
+quest.bounty_mill_shift.title = Смена у лесопилки
+quest.bounty_mill_shift.flavor = Полная смена на лесопилке от начала до конца. Не переставай загружать брёвна.
+quest.bounty_plank_delivery.title = Доставка досок
+quest.bounty_plank_delivery.flavor = Строители ждут досок, доска платит за груз. Любой вид древесины, сдай здесь.
+quest.bounty_lumber_order.title = Заказ дерева
+quest.bounty_lumber_order.flavor = Полный заказ досок всех спилов. Работай, пока заказ не заполнится.
+quest.bounty_essence_run.title = Добыча эссенции
+quest.bounty_essence_run.flavor = Алхимики ждут жизненную эссенцию прямо со стружек. Работай со старым деревом, пока не наберется.
+quest.bounty_mill_marathon.title = Долгая смена
+quest.bounty_mill_marathon.flavor = Неделя на лесопилке, все циклы в счёт. Никто за день это не выполнит.
 
 achievement.category.stations = Станции
 ui.quest.tag.sawmill = Лесопилка
@@ -63,6 +86,10 @@ achievement.sawmill_standing_account.title = Постоянный счёт
 achievement.sawmill_standing_account.desc = День за днём выполняй ежедневный заказ Пильщика Марна.
 achievement.sawmill_master_sawyer.title = Мастер лесопила
 achievement.sawmill_master_sawyer.desc = Доведи последнюю работу Пильщика Марна до конца.
+achievement.sawmill_trim_account.title = Нарядный счёт
+achievement.sawmill_trim_account.desc = День за днём выполняй ежедневный заказ нарядных досок Пильщика Марна.
+achievement.sawmill_marns_own.title = Марнов топор
+achievement.sawmill_marns_own.desc = Собери детали топора для Пильщика Марна, от топорища до боевой части, и дай ему его собрать.
 
 achievement.announce.sawmill_shift_t3.title = Работник лесопилки!
 achievement.announce.sawmill_lumber_t3.title = Весь двор!
@@ -72,6 +99,7 @@ achievement.announce.sawmiller.title = Лесопильщик!
 achievement.announce.sawmiller_server_first.title = ПЕРВЫЙ НА СЕРВЕРЕ: Лесопильщик!
 achievement.announce.sawmiller_server_first.body = {0} извлекла первый Топор лесопильщика из лесопилки: {1}
 achievement.announce.sawmill_master_sawyer.title = Мастер лесопила!
+achievement.announce.sawmill_marns_own.title = Марнов топор!
 
 dialogue.mmo_sawyer.first_words.text = Хм. Мозоли на руках, кора на сапогах. Ты подойдёшь.\nЯ Марн. Пилю древесину. В этом <color is="#ffd97a">Забытом Храме</color> - один камень, деревьев нет. Лесопил редкий товар здесь. У меня парочка лесопилок есть, для того, кто кормить её сумеет. Поздоровайся, поговорим.
 dialogue.mmo_sawyer.first_words.opt.hail = Привет, Марн.
@@ -99,11 +127,22 @@ dialogue.mmo_sawyer.essence_ready.text = Вот оно. <b>Жизненная э
 dialogue.mmo_sawyer.essence_ready.opt.turnin = Вот эссенция.
 dialogue.mmo_sawyer.edge_offer.text = Мелкие работы кончились. Теперь крупная.\nСтой у лесопилки смену, что спину сломит, и подними мастерство в лесорубе дело так, чтоб я назвал тебя лесопилом в лицо. Сдавать нечего. Придёшь - я сам узнаю.
 dialogue.mmo_sawyer.edge_offer.opt.accept = Отрублю смену.
+dialogue.mmo_sawyer.grain_stock_offer.text = Лесопил, но в руках - кузнечный топор. Раздражает.\nДелаю тебе свой. По-моему сделан, и с топорища начнём. Прямое волокно, без сучков - такое не ищут попросту. Гони <b>брёвна</b> через лесопилку, пока двор не заполнится, и принеси мне <b>доски</b>. Топорище я найду в них.
+dialogue.mmo_sawyer.grain_stock_offer.opt.accept = Буду пилить дерево.
+dialogue.mmo_sawyer.metal_offer.text = Топорище готово. Теперь ему нужна боевая часть.\nКобальт - и кобальт из брёвна не добыть. В первый раз шлю тебя от лесопилки. Найди кузню, принеси мне <b>кобальтовые слитки</b>. И не дай лесопилке остыть, покуда тебя нет. Топорище без боевой части - палка.
+dialogue.mmo_sawyer.metal_offer.opt.accept = Принесу кобальт.
+dialogue.mmo_sawyer.fitting_offer.text = Топорище и боевая часть. Теперь их соединить, и это не торопливое дело.\nБоевая часть закалена в <b>жизненной эссенции</b>, обвязка - <b>тяжелая кожа</b>. Стой у лесопилки долгую смену, пока эссенция не начнёт сыпаться горстями, и откуда-то вырвется глубокое. Принеси мне <b>тяжелую кожу</b> и мешочек <b>концентрированной эссенции</b>, примерку я сделаю.
+dialogue.mmo_sawyer.fitting_offer.opt.accept = Принесу нужное.
+dialogue.mmo_sawyer.fitting_ready.text = <b>Тяжелая кожа</b> и мешочек <b>концентрированной эссенции</b>. Давай мне.\nВот. Кобальт на прямом топорище, обвязка держит крепче нас обоих. Не режет, как лесопилкин топор - и не буду врать. Режет, как мой. <color is="#ffd97a">Марнов топор</color> - и больше никакого. Возьми.
+dialogue.mmo_sawyer.fitting_ready.opt.turnin = Вот кожа и мешочек.
 dialogue.mmo_sawyer.order_ready.text = Дневной заказ. <b>Доски</b> да <b>кора</b>, считано, сложено квадратом. Так я люблю доставку. Завтра то же самое, если осилишь.
 dialogue.mmo_sawyer.order_ready.opt.turnin = Вот дневной заказ.
+dialogue.mmo_sawyer.trim_ready.text = Нарядные доски. <b>Нарядный спил</b>, кромки чистые, <b>кора</b> охапками. Волокна прочитаны. Скоро будет ещё одна, если лесопилка держит.
+dialogue.mmo_sawyer.trim_ready.opt.turnin = Вот дневной нарядный спил.
 dialogue.mmo_sawyer.ready_generic.text = Вид у тебя такой, как будто работа готова. Кладь сюда, рассчитаемся.
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Вот что я сделал.
 dialogue.mmo_sawyer.active_generic.text = Ещё в работе, значит. Лесопилка без тебя не запустится. Давай, иди.
+dialogue.mmo_sawyer.edge_talk.text = Мой топор в руках, и имя мне досталось тебе - редко дарю. В этом углу мне нечего больше тебя учить.\nЛесопилка - другое. Она сама решает, кого наточить на мастерство. Только работа - вот способ узнать. Работа тут, когда захочешь.
 dialogue.mmo_sawyer.yard_talk.text = Лесопил. Вот как я тебя теперь зову, да не каждого.\nУ тебя теперь свой двор. Мой - этот угол <color is="#ffd97a">Забытого Храма</color>, и его хватает. Приходи, когда хочешь о дереве поговорить.
 dialogue.mmo_sawyer.bench_talk.text = Лесопилка теперь твоя. Кормишь - значит живёшь. Доски в приоритете, чем дольше стоишь - тем больше из брёвна выжимаешь. Работа здесь есть, когда захочешь.
 dialogue.mmo_sawyer.how_it_works.text = <b>Брёвна</b> в руках, используешь блок, лесопилка их забирает. Используешь снова - пилишь.\nТвой <b>топор</b> режет, так что острее топор - больше досок за цикл, да и всего прочего из брёвна больше выходит, от коры до эссенции. Присядешь, используя блок, выберешь, какой <b>спил</b>.\nВот и всё. Остальное - стоять.
@@ -113,8 +152,11 @@ dialogue.mmo_sawyer.what_is_in_wood.text = Кора. Смола. Волокно.
 dialogue.mmo_sawyer.what_is_in_wood.opt.back = Знаю теперь.
 dialogue.mmo_sawyer.hatchet_tease.text = Есть такой <color is="#ffd97a">Топор лесопильщика</color>. Мифрил, в лесопилке заточен, острее, чем в кузне что-то. Никто его не делает.\nИногда лесопилка дарует его лесопилу, что стоял у неё с хорошим топором в руках достаточно долго. Иногда. Видал я. Мне не досталось.
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Буду пилить.
+dialogue.mmo_sawyer.kit_talk.text = Ту кепку дал я - только начало, не больше. Есть настоящий комплект.\nЛесорубская кожа, весь набор. Кепка, рубаха, рукавицы, штаны - всё скроено для работы у лесопилки, не продаётся. Даю я это из <b>нарядной работы</b>, по куску, когда спил удался, рубаха же выходит редче. Оденешь всё - узнает тебя лесопилка.
+dialogue.mmo_sawyer.kit_talk.opt.back = Буду в нарядной работе.
 dialogue.mmo_sawyer.opt.returned = Я вернулся с тем, что ты просил.
 dialogue.mmo_sawyer.opt.quests = Что-нибудь спилить?
 dialogue.mmo_sawyer.opt.how = Как лесопилка работает?
 dialogue.mmo_sawyer.opt.edge = Видал ты поострее?
+dialogue.mmo_sawyer.opt.kit = Что идёт с кепкой?
 dialogue.mmo_sawyer.opt.nothing = Сейчас ничего.

@@ -6,7 +6,7 @@ turning into planks one cycle at a time) that grants passive Woodcutting + Craft
 the held hatchet's power, and **Sawyer Marn**, the character in the Forgotten Temple who hands the
 mill out and has work for whoever can feed one.
 
-The MMO progression layered on top comes in five parts:
+The MMO progression layered on top comes in these parts:
 
 - **Five find tiers**, scored on your Woodcutting and Crafting luck AND levels together (the top
   three additionally require Woodcutting 30). Every tier pays offcuts - fibre, bark, sap and
@@ -21,15 +21,22 @@ The MMO progression layered on top comes in five parts:
   Woodcutting XP boost token - its own luck bonus feeding the very roll it unlocks.
 - **A hatchet for the ones the trophy never drops for**, the **Millwright's Hatchet**: the reward
   on the last rung of the lumber ladder, ten million pieces milled. It cuts and wears exactly like
-  the trophy, and every stat sits a notch under it (+5 maximum stamina, +20% Woodcutting XP, +5%
-  Crafting XP, +20 Woodcutting luck). No crown comes with it, and it opens no tool-gated roll.
-- **Sawyer Marn's work.** Seven quests, all offered and handed in at the temple: Timber Rights
+  the trophy, and every stat sits a notch under it (+5 maximum stamina, +22% Woodcutting XP, +12%
+  Crafting XP, +22 Woodcutting luck). No crown comes with it, and it opens no tool-gated roll.
+- **Sawyer Marn's work.** Eleven quests, all offered and handed in at the temple: Timber Rights
   hands over the Sawmill; First Cut, Reading the Grain, Deep in the Wood and A Finer Edge each
   teach one thing the mill does and pay hatchets, boost tokens and XP; A Second Bench pays a
   second mill; Standing Order is a calendar daily paid from a ladder that grows with your
-  Woodcutting level and luck. Twenty-four achievements sit under a Stations category of their
-  own, and the capstone, Sawmiller, pays the **Sawmiller's Crown**: a cosmetic flair that dresses
-  every rare find and every finished session at the bench in gold crown particles.
+  Woodcutting level and luck. Once A Finer Edge is claimed, two more things open: **Trim Work**, a
+  standing trim order that comes round several times a day and pays a wage, tool upkeep, occasional
+  finds, and the only rolls anywhere for the four-piece **woodcutter's kit**; and **Marn's Edge**, a three-quest arc (Straight Grain, Cold
+  Metal, The Fitting) that ends with a hatchet of Marn's own pattern. Twenty-six achievements sit
+  under a Stations category of their own, and the capstone, Sawmiller, pays the **Sawmiller's
+  Crown**: a cosmetic flair that dresses every rare find and every finished session at the bench in
+  gold crown particles.
+- **Seven bounty contracts** on the shared bounty board (two on the two-hour board, four daily, one
+  weekly), self-contained so they load with nothing installed but this pack, RPG Stations and MMO
+  Skill Tree, and posted only while the `stations` feature is on.
 
 Also the **Anvil**, a two-action station that sharpens vanilla metal bars (Convert) or runs a
 hammering ritual that rolls stats onto a placed weapon (Enhance), granting Smithing XP. The Anvil
@@ -62,13 +69,18 @@ bonus) but grant no skill XP and roll no item stats.
 | `Server/RpgStations/Extensions/SawmillProgression.json` | The Sawmill progression layer: an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action - per-cycle Woodcutting/Crafting XP on the `mmoskilltree:skill_xp` channel plus the three add-on `Bonus.Lootables` references below |
 | `Server/NPC/Roles/Passive/Mmo_Sawyer.json` | Sawyer Marn: a `Variant` of the MMO jar's quest-giver template, an elder Kweebec treesinger with an iron hatchet in hand |
 | `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json` | Where he stands: the Forgotten Temple, beside the merchant's marker across from the Mastery Trainer, gated on the stations feature, kept alive and respawned |
-| `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` | His conversation: the first meeting, a screen per quest (offer, in progress, ready), what he says once you own a mill and once you have finished his chain, three help screens, and a different greeting when you walk up holding the Sawmiller's Hatchet |
-| `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/*.json` | The seven quests, all his: `Timber_Rights` (chop timber, hand-cut planks, deliver; collect the Sawmill itself plus Woodcutting XP from the quest log), `First_Cut`, `Reading_The_Grain`, `Deep_In_The_Wood` (Woodcutting 30), `A_Finer_Edge` (the chain), `Second_Bench` (a side branch paying a second mill), `Standing_Order` (the daily). Everything the mill hands over is counted as station output from the Sawmill only |
+| `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` | His conversation (29 screens): the first meeting, a screen per quest across all eleven (offer, in progress, ready), what he says once you own a mill, once you have finished the sawmill chain and once you have finished Marn's Edge, three help screens plus a fourth about the woodcutter's kit, and a different greeting when you walk up holding the Sawmiller's Hatchet |
+| `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/*.json` | The twelve quests: eleven Marn offers himself, plus `Meet_The_Sawyer`, the introduction the Adventurer's Guide hands out and Marn settles. `Meet_The_Sawyer` (the introduction), `Timber_Rights` (chop timber, hand-cut planks, deliver; collect the Sawmill itself plus Woodcutting XP from the quest log), `First_Cut`, `Reading_The_Grain`, `Deep_In_The_Wood` (Woodcutting 20), `A_Finer_Edge` (the sawmill chain's last rung, Woodcutting 25, opens Marn's Edge and Trim Work), `Second_Bench` (a side branch paying a second mill), `Standing_Order` (the daily); then `Straight_Grain`, `Cold_Metal`, `The_Fitting` (Marn's Edge, paying Marn's own hatchet), and `Trim_Work` (a short-cycle repeatable). Everything the mill hands over is counted as station output from the Sawmill only |
+| `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/*.json` | Seven bounty contracts on the shared bounty board, self-contained (no Parent, since the skeleton a bounty pack contract would inherit may not be installed): two on the two-hour board, four daily, one weekly, all paying `bounty_token` plus Woodcutting XP |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json` | What Standing Order pays: a ladder over Woodcutting level and luck (XP plus tree sap, the highest floor reached wins) and three independent chance rolls for life essence, a Woodcutting boost token and a concentrated essence |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Trim_Pay.json`, `_Trim_Supply.json`, `_Trim_Finds.json`, `Mmo_Woodcutters_Kit.json` | What Trim Work pays, one concern per table: the order's wage (a ladder over Woodcutting level and luck), tool and repair-kit upkeep (level alone), the occasional extra find, and the only rolls anywhere for the four-piece woodcutter's kit |
 | `Server/ZiggfreedCommon/AchievementCategories/MMOSkillTree/Stations.json` | The Stations achievement category (its Sawmill subcategory), sorted between Crafting and Leveling |
-| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json` | Twenty-four achievements: three ladders (cycles worked, life essence found, and lumber milled, which runs nine rungs from five hundred pieces to ten million and pays the Millwright's Hatchet at the top), every offcut kept, every wood species milled, concentrated essence, a hidden one for finding a boost token in the shavings, the hidden Sawmiller and the server-first First Sawmiller for the trophy hatchet, Standing Account for the daily, Master Sawyer for finishing the chain |
+| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json` | Twenty-six achievements: three ladders (cycles worked, life essence found, and lumber milled, which runs nine rungs from five hundred pieces to ten million and pays the Millwright's Hatchet at the top), every offcut kept, every wood species milled, concentrated essence, a hidden one for finding a boost token in the shavings, the hidden Sawmiller and the server-first First Sawmiller for the trophy hatchet, Standing Account for keeping the daily up, Master Sawyer for finishing the sawmill chain, Trim Account for keeping the trim order filled, and Marn's Own for finishing Marn's Edge |
 | `Server/RpgStations/Flairs/Sawmiller.json` | The Sawmiller's Crown: gold crown and spark particles on the Sawmill's rare finds and session ends, for a player who has claimed the Sawmiller achievement |
 | `Server/Item/Items/MMO_Tool_Hatchet_Millwright.json` | The Millwright's Hatchet, the hatchet you earn rather than find: Onyxium head, Epic, the same cut and wear as the trophy with every stat a notch under it and no flair. Handed over by the last rung of the lumber ladder |
+| `Server/Item/Items/MMO_Tool_Hatchet_Marn.json` | Marn's Hatchet, the reward for finishing Marn's Edge: a Cobalt-pattern hatchet, Rare, a notch under the trophy and the Millwright's hatchet on purpose |
+| `Server/Item/Items/MMO_Armor_Woodcutter_{Head,Chest,Hands,Legs}.json` | The woodcutter's kit: four Uncommon leather pieces paid only by Trim Work's own table, nothing crafts or sells them |
+| `Server/Item/Items/MMO_Armor_Woodcutter_Novice_Head.json` | The Woodcutter's Novice Cap, the graduation piece A Finer Edge hands over; a smaller taste of the kit's bonuses, not part of the kit itself |
 | `Server/Item/Items/RPG_Station_Sawmill.json` | The placeable Sawmill block (reuses the vanilla Lumbermill bench model; SHARED id with RPG Stations' jar default, overridden wholesale - this copy authors no crafting recipe, so acquisition goes through Timber Rights) |
 | `unreleased/Server/RpgStations/Stations/Anvil.json` | HELD BACK: the Anvil's `StationAsset`, an ordered `Actions` array of two fully self-contained actions, `Convert` (sharpen a vanilla metal bar) and `Enhance` (the weapon-enhancement ritual, a `Stamp`-step program) |
 | `unreleased/Server/ZiggfreedCommon/RollPools/AnvilWeaponPool.json` | HELD BACK: the weighted stat pool the Enhance ritual's `Stamp` step rolls from |
@@ -85,11 +97,11 @@ bonus) but grant no skill XP and roll no item stats.
 | `unreleased/Server/Emote/MMO_Emote_Hammer.json` | HELD BACK: the Anvil ritual's hammering emote |
 | `unreleased/Server/RpgStations/Extensions/CookingProgression.json` + `MMOSkillTree/CustomSkills/Cooking.json` | HELD BACK: the Cooking progression layer (targets a station held back on the RPG Stations jar side, so the two repos restore together) |
 | `unreleased/Server/MMOSkillTree/CustomSkills/Smithing.json` | HELD BACK: the SMITHING skill itself (a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures) |
-| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, and the sharpened-bar item names, keyed `RPG_Station_Sawmill.*` / `RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*` (held-back content's keys deliberately stay shipped) |
+| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, the sharpened-bar item names (`RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*`, held-back content's keys deliberately stay shipped), and the name/description of every item this pack ships outright: the Millwright's Hatchet, Marn's Hatchet, the woodcutter's kit and its Novice Cap |
 | `Server/Languages/<locale>/npcs.lang` | Sawyer Marn's nameplate (`Mmo_Sawyer.name`, Hytale's own `npcs` namespace) |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The hammer emote's display name (Hytale's own `avatarCustomization` namespace) |
 | `Server/Languages/<locale>/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
-| `Server/Languages/<locale>/mmoskilltree.lang` | Every quest title and flavor line, the "Mill N pieces of lumber" step line, every achievement title, description and announcement, the Stations category title, the Sawmiller's Crown name and every line of Marn's conversation, plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
+| `Server/Languages/<locale>/mmoskilltree.lang` | Every quest and bounty title and flavor line, the "Mill N pieces of lumber" step line, every achievement title, description and announcement, the Stations category title, the Sawmiller's Crown name and every line of Marn's conversation, plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
 
 All 9 shipped locales are key-complete, held-back content included (an unreferenced lang key is
 invisible at runtime, so the keys stay shipped rather than risking translation work). The

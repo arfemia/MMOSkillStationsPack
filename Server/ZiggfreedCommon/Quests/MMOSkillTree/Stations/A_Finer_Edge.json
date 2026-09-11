@@ -1,16 +1,20 @@
 {
   "$Comment": [
-    "The chain's last rung, a long shift: four hundred Sawmill cycles and Woodcutting level forty,",
-    "both on Order 1 so they progress together. Flow.HideLockedSteps keeps the walk back to Marn",
-    "off the step list until that shift is behind the player, so the quest reads as the work it is",
-    "asking for.",
+    "The chain's last rung, a long shift: four hundred Sawmill cycles and Woodcutting level",
+    "twenty-five, both on Order 1 so they progress together. Flow.HideLockedSteps keeps the walk",
+    "back to Marn off the step list until that shift is behind the player, so the quest reads as the",
+    "work it is asking for.",
     "",
-    "long_shifts is WORK_STATION on the station id; reach_forty is STAT_THRESHOLD, which reads a",
+    "long_shifts is WORK_STATION on the station id; reach_the_level is STAT_THRESHOLD, which reads a",
     "native stat channel by id (MMO_Level_WOODCUTTING) and holds the high-water reading, so a level",
     "already reached counts the moment the quest is taken. No hand-in: TurnInId 'giver' still",
-    "settles it at Marn. Rewards sit in Claim: XP, a longer and stronger personal boost token, and a",
-    "stack of concentrated essence. Completing this quest is also what the Master Sawyer",
-    "achievement counts, so a retune here changes what that achievement asks."
+    "settles it at Marn. Rewards sit in Claim: XP, one concentrated essence, and the Woodcutter's",
+    "Novice Cap, the graduation piece: a small head piece on plain wooden-helm art that carries a",
+    "first taste of the Woodcutting bonuses the woodcutter's kit is built around, so the chase for",
+    "the kit's four leather pieces (paid only by Trim Work, the order this quest opens) is legible",
+    "before it starts. Claiming this quest also opens Marn's Edge, the questline that pays his own",
+    "hatchet. Completing it is what the Master Sawyer achievement counts, so a retune here changes",
+    "what that achievement asks."
   ],
   "Name": "A_Finer_Edge",
   "Text": {
@@ -63,11 +67,11 @@
       "Amount": 400,
       "Order": 1
     },
-    "reach_forty": {
+    "reach_the_level": {
       "Kind": "STAT_THRESHOLD",
       "Target": "MMO_Level_WOODCUTTING",
       "MatchMode": "EXACT",
-      "Amount": 40,
+      "Amount": 25,
       "Order": 1
     }
   },
@@ -81,18 +85,17 @@
         }
       },
       {
-        "Kind": "Mmo_Boost_Token",
+        "Kind": "Item",
         "Params": {
-          "Skill": "WOODCUTTING",
-          "Multiplier": 2.5,
-          "DurationMinutes": 120
+          "Item": "Ingredient_Life_Essence_Concentrated",
+          "Count": 1
         }
       },
       {
         "Kind": "Item",
         "Params": {
-          "Item": "Ingredient_Life_Essence_Concentrated",
-          "Count": 5
+          "Item": "MMO_Armor_Woodcutter_Novice_Head",
+          "Count": 1
         }
       }
     ]

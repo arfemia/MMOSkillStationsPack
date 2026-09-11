@@ -1,0 +1,53 @@
+{
+  "$Comment": "A normal daily: life essence shaken loose at the Sawmill. STATION_OUTPUT on the exact essence id, qualified to the Sawmill, so essence from any other source does not count; the mill pays it as a lucky find on top of the planks, so this contract rewards a practised woodcutter rather than a stocked chest. Weight 1 keeps it an even draw against its rivals for the normal slot. This file spells out its whole step and pay rather than inheriting a shared skeleton, so it loads with nothing but this pack, RPG Stations and the MMO installed; it hangs on the Daily board by id, and on a server with no board of that id it is simply never posted. The stations feature gate in Requires is for a server where stations have been switched off: a board draws its slots without reading a contract's Requires, so the gate refuses at Accept rather than keeping the contract off the board.",
+  "Text": {
+    "TitleKey": "quest.bounty_essence_run.title",
+    "FlavorKey": "quest.bounty_essence_run.flavor"
+  },
+  "Listing": {
+    "Category": "bounty"
+  },
+  "Boards": [
+    {
+      "Board": "Daily",
+      "Difficulty": "Normal",
+      "Weight": 1
+    }
+  ],
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "main": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 20
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Currency",
+        "Params": {
+          "Currency": "bounty_token",
+          "Amount": 150
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 1200
+        }
+      }
+    ]
+  }
+}

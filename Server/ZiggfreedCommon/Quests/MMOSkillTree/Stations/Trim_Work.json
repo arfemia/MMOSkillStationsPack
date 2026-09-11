@@ -1,0 +1,149 @@
+{
+  "$Comment": [
+    "Marn's standing trim order, for a finished sawyer: the specialty cuts and the offcuts, milled",
+    "AND delivered.",
+    "",
+    "Repeat.Reset with an Every block is a SPAN cadence rather than a calendar one, which is what",
+    "three hours needs: a calendar has no three-hour boundary, so Period cannot express it. Author",
+    "Every for any window that is not Daily or Weekly, and never both in the same Reset. Widen or",
+    "narrow the Hours here to change how often the order comes round; the engine buckets anything",
+    "shorter than a day as repeatable rather than daily, so the quest list badges it that way and a",
+    "finish-so-many-dailies objective elsewhere will not count it.",
+    "",
+    "It opens once A Finer Edge is claimed, so it runs beside the Standing Order for a player who has",
+    "finished the sawmill chain, and the two never pay the same thing. All five steps sit on",
+    "Order 1, so they run together. cut_decorative and cut_ornate count the two specialty cuts the",
+    "crouch-and-use picker offers, any species on CONTAINS and qualified to the Sawmill, so lumber",
+    "from a hand bench does not count; pull_offcuts counts plant fibre the mill sheds as a byproduct,",
+    "exact id and Sawmill-qualified the same way. deliver_trim and deliver_offcuts hand in to Marn",
+    "only (TurnInNpcId 'giver'): decorative planks of any species on CONTAINS, and bark by exact id,",
+    "another Sawmill byproduct. One session at the mill covers all five: the cut steps fill the delivery",
+    "of trim, and the offcuts of the same shift fill both byproduct steps. Raise or lower any of the",
+    "five Amounts to change how long one order takes to fill.",
+    "",
+    "The payout is four Lootable rewards, one per concern, so a retune is an edit to one small table",
+    "rather than a hunt through a long one. Mmo_Sawmill_Trim_Pay is the wage, growing with the",
+    "player's Woodcutting level and luck. Mmo_Sawmill_Trim_Supply keeps the worker in hatchets and",
+    "repair kits, read off their level alone. Mmo_Sawmill_Trim_Finds is the occasional extra.",
+    "Mmo_Woodcutters_Kit carries the only rolls anywhere that pay the woodcutter's kit. All four sit",
+    "in the Claim bucket, so every roll happens when the player collects; nothing in this file needs",
+    "to change to make the order more or less generous.",
+    "",
+    "Listing puts it in the misc category on the same shelf as the Standing Order, one place after",
+    "it."
+  ],
+  "Name": "Trim_Work",
+  "Text": {
+    "TitleKey": "quest.trim_work.title",
+    "FlavorKey": "quest.trim_work.flavor"
+  },
+  "Listing": {
+    "Icon": "Wood_Redwood_Decorative",
+    "Category": "misc",
+    "SortOrder": 201,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Repeat": {
+    "Reset": {
+      "Every": {
+        "Hours": 3
+      }
+    },
+    "CooldownFrom": "Complete"
+  },
+  "Npc": {
+    "ViewId": "Mmo_Sawyer",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "a_finer_edge"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "cut_decorative": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "_Decorative",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Sawmill",
+      "Amount": 32,
+      "Order": 1
+    },
+    "cut_ornate": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "_Ornate",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Sawmill",
+      "Amount": 32,
+      "Order": 1
+    },
+    "pull_offcuts": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Fibre",
+      "MatchMode": "EXACT",
+      "Qualifier": "Sawmill",
+      "Amount": 24,
+      "Order": 1
+    },
+    "deliver_trim": {
+      "Kind": "TURN_IN",
+      "Target": "_Decorative",
+      "MatchMode": "CONTAINS",
+      "Amount": 24,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "deliver_offcuts": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Tree_Bark",
+      "MatchMode": "EXACT",
+      "Amount": 12,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Sawmill_Trim_Pay"
+        }
+      },
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Sawmill_Trim_Supply"
+        }
+      },
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Sawmill_Trim_Finds"
+        }
+      },
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Woodcutters_Kit"
+        }
+      }
+    ]
+  }
+}

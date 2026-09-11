@@ -24,10 +24,12 @@ A standalone Hytale content pack shipping the MMO-side **interactive work statio
 **Sawmill progression layer** (the sawmill StationAsset itself, incl. its Puppet/log-display
 presentation defaults, lives in the RPG Stations JAR - see the 2026-07-28 History section; this
 pack extends it additively) plus the Sawmill's PROGRESSION CONTENT: **Sawyer Marn**, a quest-giver
-character standing in the Forgotten Temple, his seven Sawmill quests (the hand-out, a four-rung
-chain, a side branch and a calendar daily), twenty-four achievements under a `stations` category of
-their own, and the `sawmiller` cosmetic flair the capstone achievement grants - see the Content
-section below. The **Anvil** - a TWO-action
+character standing in the Forgotten Temple, his eleven Sawmill quests (the hand-out, the four-rung
+sawmill chain, a side branch, the three-rung Marn's Edge chain the finished sawmill chain opens, a
+calendar daily and a short-cycle repeatable), twenty-six achievements under a `stations` category
+of their own, seven
+bounty contracts on the shared bounty board, and the `sawmiller` cosmetic flair the capstone
+achievement grants - see the Content section below. The **Anvil** - a TWO-action
 station (Convert: sharpen a vanilla metal bar; Enhance: the flagship Stamp-step ritual that rolls
 stats onto a placed weapon), see `.claude/research/raw/
 rpg-stations-unified-design-2026-07-21.md` section 9.5 in the hyMMO monorepo - is authored but HELD
@@ -56,6 +58,9 @@ skill-stations-pack/
     │   ├── Items/RPG_Station_Sawmill.json                          the station block (vanilla Lumbermill bench model); SHARED id with RPG Stations' own jar default, override via pack load order (the anvil's own block file is under unreleased/)
     │   ├── Items/RPG_Tool_Hatchet_Sawmiller.json                    the sawmill's drop-only trophy hatchet; SHARED id with the RPG Stations jar item, overridden wholesale to add the MMO stat payload (Utility.StatModifiers)
     │   ├── Items/MMO_Tool_Hatchet_Millwright.json                   the sawmill's EARNED hatchet, pack-owned (no shared id): Onyxium art, Epic, the same cut and wear as the trophy with every stat a notch under it and no flair; claim reward on Sawmill_Lumber_T9
+    │   ├── Items/MMO_Tool_Hatchet_Marn.json                         Marn's Edge questline's tool, pack-owned (no shared id): a standalone Cobalt-pattern hatchet, Rare, MaxDurability 400 (above the vanilla cobalt hatchet it copies), sized a notch under the pack's two 0.55-power hatchets on purpose; claim reward on The_Fitting
+    │   ├── Items/MMO_Armor_Woodcutter_{Head,Chest,Hands,Legs}.json   the woodcutter's kit, pack-owned: four Uncommon leather pieces on vanilla Leather_Soft art, paid ONLY by Lootables/Mmo_Woodcutters_Kit.json (nothing crafts or sells them); worn together +33% Woodcutting XP, +23% Crafting XP, +43 Woodcutting luck, +3 max stamina
+    │   ├── Items/MMO_Armor_Woodcutter_Novice_Head.json               the graduation piece, pack-owned: a Common head slot on vanilla Wood-helm art, NOT part of the four-piece kit (its own smaller stat taste); claim reward on A_Finer_Edge
     │   └── (RootInteractions: none shipped - the sawmill block's Use resolves to the identically named
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
     ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3); T2-T5 each add a life-essence Choice and T5's is the only one with no Empty entry. T1 has no Choice and pays offcuts only (essence starts at T2): one pull plus a guaranteed 1-3 Ingredient_Fibre, which is also the concrete entry the tier needs to load at all, since a container tree built purely from Droplist references fails validation with "Container must have something to drop!" and takes the pack down with it (T2-T5 satisfy that through the Singles inside their Choice; T1's own $Comment carries the detail)
@@ -63,7 +68,7 @@ skill-stations-pack/
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
-    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys + the Millwright's Hatchet pair) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + npcs.lang (Mmo_Sawyer.name, the sawyer's nameplate) + mmoskilltree.lang (quest.<id>.title/.flavor for the seven quests, objective.text.stations.mill_lumber, achievement.* titles / descriptions / announce keys for the twenty-four, achievement.category.stations, flair.sawmiller.name, dialogue.mmo_sawyer.* for every screen and option, plus skill.smithing/.cooking for the held-back skills) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
+    ├── Languages/<bcp47>/                                items.lang (anvil + sharpened-bar keys, the Millwright's Hatchet pair, and the six items Marn's Edge and the woodcutter's kit ship) + avatarCustomization.lang (hammer emote) + rpgstations.lang (station.anvil.*) + npcs.lang (Mmo_Sawyer.name, the sawyer's nameplate) + mmoskilltree.lang (quest.<id>.title/.flavor for the twelve station quests and the seven bounty contracts, objective.text.stations.mill_lumber, achievement.* titles / descriptions / announce keys for the twenty-six, achievement.category.stations, flair.sawmiller.name, dialogue.mmo_sawyer.* for every screen and option, plus skill.smithing/.cooking for the held-back skills) - key-complete across all 9 locales; the held-back content's keys deliberately STAY shipped
     ├── NPC/Roles/Passive/Mmo_Sawyer.json                 Sawyer Marn's role: a Variant of the MMO jar's Template_Mmo_QuestGiver (Kweebec_Sapling_Treesinger, an iron hatchet in hand, nameplate from npcs.lang); only the five Modify parameters that template declares may be named
     └── RpgStations/
         ├── Extensions/SawmillProgression.json            the additive ExtensionAsset targeting the JAR Sawmill's Mill action (station-scoped {Station, Action}): XP declarations + the three Lootable refs below
@@ -72,16 +77,21 @@ skill-stations-pack/
 
     Server/ZiggfreedCommon/
         ├── AchievementCategories/MMOSkillTree/Stations.json  the stations achievement category (Order 25, Icon RPG_Station_Sawmill, Subcategories [sawmill]); header title achievement.category.stations
-        ├── Achievements/MMOSkillTree/Stations/*.json     twenty-four Sawmill achievements (Sawmill_* / Sawmiller*), every one Listing {Category stations, Subcategory sawmill} + the stations feature gate - see the Content section
-        ├── Dialogues/MMOSkillTree/Mmo_Sawyer.json        Sawyer Marn's conversation (21 screens, keys dialogue.mmo_sawyer.*): the first-meeting and trophy beats, one Start.Quests row per quest, the two steady beats, three help screens, two footer fragments
-        ├── Lootables/                                    five tables, ONE CONCERN EACH
+        ├── Achievements/MMOSkillTree/Stations/*.json     twenty-six Sawmill achievements (Sawmill_* / Sawmiller*), every one Listing {Category stations, Subcategory sawmill} + the stations feature gate - see the Content section
+        ├── Bounties/MMOSkillTree/Stations/*.json         seven Sawmill bounty contracts hanging on the shared bounty pack's boards by id (two Bihourly, four Daily, one Weekly), self-contained with no Parent (the skeleton they would otherwise inherit lives in a pack that may not be installed) and carrying the stations feature gate; ship from THIS pack because a board draws its slots without consulting a bounty's own Requires - a stations contract living in the bounty pack would still be posted on a server with no RPG Stations and would refuse only at Accept
+        ├── Dialogues/MMOSkillTree/Mmo_Sawyer.json        Sawyer Marn's conversation (29 screens, keys dialogue.mmo_sawyer.*): the first-meeting and trophy beats, one Start.Quests row per quest (eleven rows), three Then beats, three help screens, two footer fragments (the full footer now six options, the short tail three)
+        ├── Lootables/                                    nine tables, ONE CONCERN EACH
         │   ├── SawmillLuckFinds.json                     the find-tier ladder: 2 banded Rolls (T1-T2 ungated, T3-T5 behind WOODCUTTING 30) over one 5-factor luck+level score
         │   ├── SawmillOutputLadders.json                 the two bonus-PLANK ladders: one level-only, one luck-only (fractional extra output, an rpgstations:output_items reward)
         │   ├── SawmillMasterworkBonus.json               the single tool-gated Roll rewarding a worker for WIELDING the Sawmiller's Hatchet (does NOT grant it); pays the Masterwork drop table above
         │   ├── SawmillTrophy.json                        an ID OVERRIDE of the RPG Stations jar table of the same name: the hatchet CHASE, 1-in-3000 rising with base+WOODCUTTING luck, paid as a Grants.Items item so the win is countable station output. NOT listed in SawmillProgression's Bonus.Lootables (the jar's Sawmill already references this id; folding by id replaces it in place). The other three station tables ARE listed there.
-        │   └── Mmo_Sawmill_Order.json                    what the Standing Order daily pays: a level+luck Ladder (Woodcutting XP + tree sap) plus three independent percent-chance rolls (essence / a boost token / concentrated essence), each with a Cue; the quest's ONE Lootable reward (a quest payout, named by no station), so the daily retunes here
+        │   ├── Mmo_Sawmill_Order.json                    what the Standing Order daily pays: a level+luck Ladder (Woodcutting XP + tree sap) plus three independent percent-chance rolls (essence / a boost token / concentrated essence), each with a Cue; the quest's ONE Lootable reward (a quest payout, named by no station), so the daily retunes here
+        │   ├── Mmo_Sawmill_Trim_Pay.json                 the trim order's wage: a Ladder over the same level+luck score paying a widening XP range plus byproducts at five floors, plus a second coin-flip Ladder over the same score paying a smaller XP top-up alone
+        │   ├── Mmo_Sawmill_Trim_Supply.json               tools and upkeep off the same order: two level-only Chance+Ladder rolls (a spare hatchet up to Cobalt, and repair kits), deliberately luck-blind
+        │   ├── Mmo_Sawmill_Trim_Finds.json                the order's occasional extras: concentrated essence behind a WOODCUTTING 55 Condition, and a boost token, both plain percent Chances
+        │   └── Mmo_Woodcutters_Kit.json                   the ONLY table anywhere that pays the woodcutter's kit: four independent Chance rolls, one per piece, the jerkin the rare one on the Sawmill's own deep-find cue
         ├── NpcPlacements/Mmo_Sawyer_Temple.json          stands Marn in the Forgotten Temple (Where.GameplayConfig, a Structure anchor on the merchant marker at Offset.X -3, the stations feature gate, KeepAlive/Respawn/Fortify, Interact.Dialogue Mmo_Sawyer)
-        └── Quests/MMOSkillTree/Stations/                 the seven Sawmill quests (id = lower-cased filename; an unmarked folder, so no folder segment joins the id): Timber_Rights (the hand-out), First_Cut, Reading_The_Grain, Deep_In_The_Wood, A_Finer_Edge (the sawmill chain), Second_Bench (a side branch), Standing_Order (the calendar daily) - all offered by and handed in to Marn
+        └── Quests/MMOSkillTree/Stations/                 the twelve Sawmill quests (id = lower-cased filename; an unmarked folder, so no folder segment joins the id): Meet_The_Sawyer (the introduction), Timber_Rights (the hand-out), First_Cut, Reading_The_Grain, Deep_In_The_Wood, A_Finer_Edge (the sawmill chain), Second_Bench (a side branch), Standing_Order (a calendar daily), Straight_Grain, Cold_Metal, The_Fitting (the Marn's Edge chain, opened once A_Finer_Edge is claimed), Trim_Work (a repeatable, `Repeat.Reset.Every.Hours 3`) - all offered by and handed in to Marn
 ```
 
 Held back under `unreleased/` (NOT in the shipped zip; `unreleased/restore.ps1` brings each group
@@ -142,7 +152,7 @@ copy verbatim and adds only its own delta. Two ship today:
   the jar's `items.RPG_Tool_Hatchet_Sawmiller.*` keys. NO `Recipe`, matching the jar copy - the
   hatchet stays the sawmill's chase find.
 
-## Content: Sawyer Marn, the Sawmill quests, the achievements and the flair
+## Content: Sawyer Marn, the Sawmill quests, the achievements, the bounties and the flair
 
 Everything here is content the shared library and the MMO jar fold at boot; the pack ships no Java.
 The `content-authoring` skill in the monorepo carries the schemas, the id rules and the voice rule
@@ -159,22 +169,28 @@ Yaw 180}` (the Mastery Trainer anchors to the same marker at `+3`), `Requires.Fa
 `Lifecycle {KeepAlive, Respawn, Fortify}`, `Interact {Dialogue Mmo_Sawyer}`. No `Identity.NpcId`, so
 the character IS the role and the quests bind to `Mmo_Sawyer`. `Server/Languages/<locale>/npcs.lang`
 carries his nameplate (`Mmo_Sawyer.name = Sawyer Marn`, one key per locale). His conversation is
-`Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` (keys `dialogue.mmo_sawyer.*`, 21
+`Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` (keys `dialogue.mmo_sawyer.*`, 29
 screens): `Header ["ActiveObjective"]`; two temple-scoped `Memories` (`sawyer_greeted`,
 `trophy_seen`); `Start.First` = `trophy_hail` (holding `RPG_Tool_Hatchet_Sawmiller`, read through
 `hytale:held_item`, first time) / `trophy_talk` (holding it, after) / `first_words` (not yet
-greeted) - both trophy beats also require `Remembered sawyer_greeted`, so the introduction always
-plays first; `Start.Quests` rows for all seven quests (bespoke `rights_offer` / `rights_brief` /
-`rights_ready`, `cut_offer`, `grain_offer`, `bench_offer`, `essence_offer` / `essence_ready`,
-`edge_offer`, `order_ready`, plus the shared `active_generic` / `ready_generic`; `standing_order`
-has a `Ready` row only, since the daily is taken from the quest list); `Then` beats `yard_talk` (the
-chain finished) and `bench_talk` (owns a mill); `Fallback menu`; help screens `how_it_works`,
+greeted) / `sent_by_guide` (the errand hail, for a player who arrives with `meet_the_sawyer` already
+active) - both trophy beats also require `Remembered sawyer_greeted`, so the introduction always
+plays first; `Start.Quests` rows for all eleven quests, band order settling ties (the sawmill chain
+first, then Marn's Edge, then the side branch, then the daily and the repeatable last): bespoke `rights_offer` /
+`rights_brief` / `rights_ready`, `cut_offer`, `grain_offer`, `bench_offer`, `essence_offer` /
+`essence_ready`, `edge_offer`, `grain_stock_offer`, `metal_offer`, `fitting_offer` /
+`fitting_ready`, plus the shared `active_generic` / `ready_generic`; `standing_order` and
+`trim_work` each carry a `Ready` row only (`order_ready`, `trim_ready`), since a repeating job is
+taken from the quest list; `Then` beats, tried in order, `edge_talk` (Marn's Edge finished), `yard_talk` (the
+sawmill chain finished) and `bench_talk` (owns a mill); `Fallback menu`; help screens `how_it_works`,
 `what_is_in_wood`, `hatchet_tease` (shown only while NOT holding the trophy, a `Not` over the
-held-item factor); fragments `sawyer_footer` (the full option tail on steady screens) and
-`sawyer_tail` (the short one on offer / ready screens). Marn names no key: the controls read "use
-the block" / "crouch as you use the block". A bespoke ready screen's hand-in option runs
-`Do [{TurnIn}, {Open Quests highlighted}]`, because every reward sits in `Claim` and the quest list
-is where it is collected.
+held-item factor), and `kit_talk` (roleplay only, shown once `a_finer_edge` is claimed, a `Factor`
+condition on `ziggfreedcommon:quest_completed` the fragment option below carries too); fragments
+`sawyer_footer` (the full option tail on steady screens, now six options: returned / quests / how /
+edge / kit / nothing) and `sawyer_tail` (the short one on offer / ready screens, still three: how /
+edge / nothing). Marn names no key: the controls read "use the block" / "crouch as you use the
+block". A bespoke ready screen's hand-in option runs `Do [{TurnIn}, {Open Quests highlighted}]`,
+because every reward sits in `Claim` and the quest list is where it is collected.
 
 **The quest chain** (`Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/<Name>.json`, id =
 lower-cased filename). Every file: `Npc {ViewId Mmo_Sawyer, TurnInId giver}`, `CompletionDialogue
@@ -193,26 +209,56 @@ line names a single item.
 | `timber_rights` | Timber Rights | `sawmill` T1 | `meet_the_sawyer` | BREAK_BLOCK `Wood` + CRAFT_ITEM `_Planks` (Order 1, hand-bench planks: nobody owns a mill yet); TURN_IN `_Planks` (Order 2). Claim: the Sawmill + Woodcutting XP |
 | `first_cut` | First Cut | T2 | `timber_rights` | WORK_STATION `Sawmill` + STATION_OUTPUT `Wood_` PREFIX (Order 1); TURN_IN `_Planks`. Claim: `Tool_Hatchet_Copper` + XP |
 | `reading_the_grain` | Reading the Grain | T3 | `first_cut` | three STATION_OUTPUT steps, `_Planks` / `_Decorative` / `_Ornate` on CONTAINS (the crouch-and-use cut picker); no hand-in. Claim: `Tool_Hatchet_Iron` + XP |
-| `deep_in_the_wood` | Deep in the Wood | T4 | `reading_the_grain` + `hytale:stat MMO_Level_WOODCUTTING Min 30` (the level the pack's T3-T5 find band opens at; retune both together) | STATION_OUTPUT `Ingredient_Life_Essence` EXACT; TURN_IN essence. Claim: a Woodcutting boost token + XP |
-| `a_finer_edge` | A Finer Edge | T5 | `deep_in_the_wood` | WORK_STATION `Sawmill` + STAT_THRESHOLD `MMO_Level_WOODCUTTING` (both Order 1); no hand-in. Claim: XP + a longer boost token + concentrated essence |
+| `deep_in_the_wood` | Deep in the Wood | T4 | `reading_the_grain` + `hytale:stat MMO_Level_WOODCUTTING Min 20` (one step below the level the last rung asks for, so the climb reads as a climb; retune both together) | STATION_OUTPUT `Ingredient_Life_Essence` EXACT; TURN_IN essence. Claim: a Woodcutting boost token + XP |
+| `a_finer_edge` | A Finer Edge | T5 | `deep_in_the_wood` | WORK_STATION `Sawmill` + STAT_THRESHOLD `MMO_Level_WOODCUTTING` 25 (both Order 1); no hand-in. Claim: XP + one concentrated essence + the Woodcutter's Novice Cap. Claiming it also opens Marn's Edge and Trim Work |
 | `second_bench` | A Second Bench | none (a side branch, SortOrder after the chain) | `reading_the_grain` | STATION_OUTPUT `Wood_` PREFIX; TURN_IN `Ingredient_Tree_Sap`. Claim: a second `RPG_Station_Sawmill` + XP |
-| `standing_order` | Standing Order | none (`Category misc`, `Tags [Stations, Repeatable]`) | `first_cut` | TURN_IN `_Planks` CONTAINS + TURN_IN `Ingredient_Tree_Bark` EXACT (both Order 1). Claim: ONE `Lootable` reward, `Mmo_Sawmill_Order` |
+| `standing_order` | Standing Order | none (`Category misc`, `Tags [Stations]`, a calendar daily) | `first_cut` | TURN_IN `_Planks` CONTAINS + TURN_IN `Ingredient_Tree_Bark` EXACT (both Order 1). Claim: ONE `Lootable` reward, `Mmo_Sawmill_Order` |
+| `straight_grain` | Straight Grain | `marns_edge` T1 | `a_finer_edge` | STATION_OUTPUT `Wood_` PREFIX + WORK_STATION `Sawmill` (both Order 1); TURN_IN `_Planks` CONTAINS (Order 2, any species and any half-plank cut). Claim: Woodcutting XP + a smaller Crafting cut |
+| `cold_metal` | Cold Metal | T2 | `straight_grain` | TURN_IN `Ingredient_Bar_Cobalt` EXACT (7, the vanilla cobalt hatchet's own recipe count) + WORK_STATION `Sawmill` (both Order 1). Claim: Woodcutting XP + a Woodcutting boost token |
+| `the_fitting` | The Fitting | T3 | `cold_metal` | STATION_OUTPUT `Ingredient_Life_Essence` EXACT + WORK_STATION `Sawmill` (both Order 1); TURN_IN `Ingredient_Leather_Heavy` + TURN_IN `Ingredient_Life_Essence_Concentrated` (both Order 2, hidden until the shift is behind the player). Claim: `MMO_Tool_Hatchet_Marn` + Woodcutting XP. Completing it is what the Marn's Own achievement counts |
+| `trim_work` | Trim Work | none (`Category misc`, `Tags [Stations]`, `Repeat.Reset.Every.Hours 3`) | `a_finer_edge` | five STATION_OUTPUT/TURN_IN steps, all Order 1: the decorative and ornate cuts and the fibre byproduct counted as station output, decorative planks and bark handed in. Claim: FOUR `Lootable` rewards, `Mmo_Sawmill_Trim_Pay` / `_Trim_Supply` / `_Trim_Finds` / `Mmo_Woodcutters_Kit` |
 
 Amounts and XP figures are balance data: read them off the files, and retune them there.
 
-**The daily.** `standing_order` carries `Repeat {Reset {Period "Daily"}, CooldownFrom "Complete"}`:
-a CALENDAR daily (the allowance refreshes at the day boundary on server time), which the engine's
-cadence rule buckets as DAILY, so it counts toward "finish N dailies" achievements beside the jar's
-Temple Tribute. `Period` is sugar for `Reset.Every {Days 1}`; write an `Every` group for any other
-window. Its whole payout is `Lootables/Mmo_Sawmill_Order.json`, rolled when the player collects the
-Claim reward: one `Ladder` over `hytale:stat` `MMO_Level_WOODCUTTING` + `MMO_Luck_WOODCUTTING`
-(WHOLE points, weight 1 each, highest floor wins, paying `Mmo_Xp` WOODCUTTING plus tree sap), then
-three INDEPENDENT `Chance` rolls (`Base` 40 / 10 / 3, percent) paying life essence, a
-`BoostToken_Woodcutting_Personal_Standard`, and one concentrated essence, cued `Rare_Find` /
-`Rare_Find` / `cue:find_deep`. Never swap those two stat leaves for the `mmoskilltree:station_luck`
-aggregate (a FRACTION; every floor would shift a hundredfold).
+**The daily and the repeatable.** `standing_order` opens off `first_cut`, well before the sawmill
+chain finishes, and carries `Repeat {Reset {Period "Daily"}, CooldownFrom "Complete"}`: a CALENDAR
+daily (the allowance refreshes at the day boundary on server time), which the engine's cadence rule
+buckets as DAILY, so it counts toward "finish N dailies" achievements beside the jar's Temple
+Tribute. `Period` is sugar for `Reset.Every {Days 1}`. `trim_work` opens once `a_finer_edge` is
+claimed, gated on the finished sawmill chain so the two never compete for the same milling and
+never pay the same thing; it carries `Repeat {Reset {Every {Hours 3}}, CooldownFrom "Complete"}`
+instead of a `Period`, since three hours has no calendar boundary a `Period` could express. The
+engine buckets any window shorter than a day as REPEATABLE rather than DAILY, so the quest list
+badges Trim Work that way and a "finish N dailies" achievement does not count it; author `Every` for
+any window that is not Daily or Weekly, and never both in the same `Reset`.
 
-**Achievements** (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json`, twenty-four).
+`standing_order`'s whole payout is `Lootables/Mmo_Sawmill_Order.json`, rolled when the player
+collects the Claim reward: one `Ladder` over `hytale:stat` `MMO_Level_WOODCUTTING` +
+`MMO_Luck_WOODCUTTING` (WHOLE points, weight 1 each, highest floor wins, paying `Mmo_Xp` WOODCUTTING
+plus tree sap), then three INDEPENDENT `Chance` rolls (`Base` 40 / 10 / 3, percent) paying life
+essence, a `BoostToken_Woodcutting_Personal_Standard`, and one concentrated essence, cued
+`Rare_Find` / `Rare_Find` / `cue:find_deep`. Never swap those two stat leaves for the
+`mmoskilltree:station_luck` aggregate (a FRACTION; every floor would shift a hundredfold).
+
+`trim_work`'s five steps sit on Order 1, so one session at the mill fills all of them together:
+`STATION_OUTPUT` on the two specialty cuts (`_Decorative` / `_Ornate` on CONTAINS) and the fibre
+byproduct, then `TURN_IN` on decorative planks (CONTAINS) and bark (EXACT) to Marn. Its Claim
+carries FOUR `Lootable` rewards, one concern each, so a retune is an edit to one small table rather
+than a hunt through a long one: `Mmo_Sawmill_Trim_Pay` (the wage - a `Ladder` over the same
+level+luck score paying a widening XP range plus byproducts at five floors, growing with the tier
+rather than simply scaling, plus a second coin-flip `Ladder` over the same score paying a smaller
+XP top-up alone, with no Cue since the wage's own chime already covers the order), `Mmo_Sawmill_Trim_Supply`
+(upkeep - two level-only `Chance`+`Ladder` rolls, a spare hatchet capped at Cobalt on purpose and
+repair kits, both deliberately luck-blind so a luck build gets the same spanner as anyone else at
+that level), `Mmo_Sawmill_Trim_Finds` (the occasional extra - concentrated essence behind a
+`hytale:stat MMO_Level_WOODCUTTING Min 55` Condition, and a boost token, both plain percent
+`Chance`s), and `Mmo_Woodcutters_Kit` (the ONLY table anywhere that pays the woodcutter's kit: four
+independent `Chance` rolls, one per piece, the Woodcutter's Jerkin deliberately the rare one and cued
+with the Sawmill's own deep-find cue rather than the everyday chime). All four read the same
+whole-points level/luck convention as the tables above; never swap those leaves for the
+`mmoskilltree:station_luck` fraction here either.
+
+**Achievements** (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json`, twenty-six).
 Every file: `Listing {Category stations, Subcategory sawmill}`, the `stations` feature gate, rewards
 in `Claim`, every `STATION_OUTPUT` criterion `Qualifier "Sawmill"`. The category asset
 `AchievementCategories/MMOSkillTree/Stations.json` is `{Order 25, Icon RPG_Station_Sawmill,
@@ -235,7 +281,9 @@ The singles: **First Log** (WORK_STATION x1), **Distilled** (`Ingredient_Life_Es
 boost token and `{"Kind": "Flair", "Params": {"Flair": "sawmiller"}}`), **First Sawmiller** (hidden,
 `Meta.mmoskilltree.ServerFirst true`, its announce `BodyKey` binding `{0}` player / `{1}` title, the
 server-wide reveal), **Standing Account** (COMPLETE_QUEST `standing_order` x25), **Master Sawyer**
-(COMPLETE_QUEST `a_finer_edge`, announces). Non-chain descriptions are count-free imperatives; the
+(COMPLETE_QUEST `a_finer_edge`, announces), **Trim Account** (COMPLETE_QUEST `trim_work` x100, the
+trim order's own habit tracker) and **Marn's Own** (COMPLETE_QUEST `the_fitting` x1, announces -
+the Marn's Edge questline's capstone). Non-chain descriptions are count-free imperatives; the
 chain descriptions and the mill-lumber line carry `{0}`.
 
 **The flair and the capstone.** `Server/RpgStations/Flairs/Sawmiller.json` (id `sawmiller`,
@@ -255,6 +303,23 @@ when the bag is full). An item grant is reported as station output the moment it
 what lets the Sawmiller achievements count it (a `Grants.Commands` payout is invisible to
 `STATION_OUTPUT`), and `cue:trophy` fires only over something actually granted.
 
+**The bounties** (`Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/*.json`, seven). Every file
+carries `Listing {Category bounty}`, a `Boards` entry pinning it to one board by id and difficulty
+(`Bounty_Quick_Mill` and `Bounty_Quick_Boards` on `Bihourly`/Easy; `Bounty_Mill_Shift`,
+`Bounty_Plank_Delivery`, `Bounty_Lumber_Order` and `Bounty_Essence_Run` on `Daily`, spread Easy to
+Normal; `Bounty_Mill_Marathon` alone on `Weekly`/Hard), a `Weight` that sets its odds against other
+contracts on the same board slot, the `stations` feature gate, and pays `Currency bounty_token` plus
+Woodcutting XP in `Claim`. Each spells out its whole objective and payout rather than inheriting a
+shared skeleton, so a bounty here loads with nothing installed but this pack, RPG Stations and the
+MMO - the skeleton a bounty pack contract would otherwise inherit lives in a pack that may not be
+present. **They ship from this pack rather than the bounty pack on purpose**: a board draws its
+posted slots without reading a contract's own `Requires`, so a stations contract authored in the
+bounty pack would still be posted on a server with no RPG Stations installed and would only ever
+refuse at Accept; shipping them here means the `stations` gate keeps them off the board entirely
+when the station engine is absent. Objectives read the same `WORK_STATION` / `STATION_OUTPUT` /
+`TURN_IN` kinds the quests use, qualified to the Sawmill the same way, and the two lumber-counting
+contracts share the pack's one `objective.text.stations.mill_lumber` TextKey.
+
 **How a player finds Marn.** The MMO jar's guide conversation (`Mmo_Hub_Intro`, its temple
 steady-state screen) shows one extra option, "Who's the one with the hatchet?", gated on
 `meet_at_the_temple` claimed, the library's `ziggfreedcommon:quest_known meet_the_sawyer` factor
@@ -265,18 +330,23 @@ Rights first, are offered from his conversation and delivered to him. The talk s
 by the `MarkTalked` beat on his first-meeting hail, or by the errand hail behind it for a player
 who had already met him, so re-pointing the step means moving one of those beats with it.
 
-**Lang inventory** (`Server/Languages/<locale>/mmoskilltree.lang`, nine locales): sixteen
-`quest.<id>.title` / `.flavor` keys, `objective.text.stations.mill_lumber`, twenty-four
-`achievement.<id>.title`, nine `achievement.<id>.desc` singles + three chain-shared
-`achievement.sawmill_{cycles,lumber,essence}.desc`, eight `achievement.announce.*` keys (seven titles
-+ the server-first body), `achievement.category.stations`, `flair.sawmiller.name`, 22
-`dialogue.mmo_sawyer.<screen>.text` bodies, the per-screen `.opt.*` labels and the five fragment
-labels `dialogue.mmo_sawyer.opt.{returned,quests,how,edge,nothing}`; `npcs.lang` carries the one
-nameplate key. No digits in any `quest.*` / `achievement.*` / `dialogue.*` value (counts ride
-`TextArgs` / `{N}`); rich text (`<b>`, `<color is="#ffd97a">`) only inside `dialogue.*.text`
-bodies. The root repo's `PackLangFileIntegrityTest` holds every non-English file to this pack's own
-en-US for placeholder parity and tag balance, and `DialogueContentResolutionTest` walks
-`Mmo_Sawyer.json` with every other pack conversation.
+**Lang inventory** (`Server/Languages/<locale>/mmoskilltree.lang`, nine locales): thirty-eight
+`quest.<id>.title` / `.flavor` keys (twenty-four for the twelve station quests, fourteen for the
+seven bounty contracts, which are authored under the same `quest.*` namespace), the shared
+`objective.text.stations.mill_lumber` (used by quest and bounty steps alike), twenty-six
+`achievement.<id>.title`, eleven `achievement.<id>.desc` singles + three chain-shared
+`achievement.sawmill_{cycles,lumber,essence}.desc`, nine `achievement.announce.*` keys (eight titles
++ the server-first body), `achievement.category.stations`, `flair.sawmiller.name`, 29
+`dialogue.mmo_sawyer.<screen>.text` bodies, the per-screen `.opt.*` labels (twenty-four) and the six
+fragment labels `dialogue.mmo_sawyer.opt.{returned,quests,how,edge,kit,nothing}`; `npcs.lang`
+carries the one nameplate key, and `items.lang` carries name/description pairs for the pack's own
+shipped items (the Millwright's Hatchet, Marn's Hatchet, the four-piece woodcutter's kit and the
+Novice Cap - twelve keys for the six items this wave added). No digits in any `quest.*` /
+`achievement.*` / `dialogue.*` value (counts ride `TextArgs` / `{N}`); rich text (`<b>`,
+`<color is="#ffd97a">`) only inside `dialogue.*.text` bodies. The root repo's
+`PackLangFileIntegrityTest` holds every non-English file to this pack's own en-US for placeholder
+parity and tag balance, and `DialogueContentResolutionTest` walks `Mmo_Sawyer.json` with every other
+pack conversation.
 
 ## History (round-7 fix wave: anvil rotation + SMITHING skill migration, leg F, 2026-07-23)
 
@@ -868,9 +938,11 @@ no change; author a fraction when a tier is worth half a step more than the one 
   why N stations in a pack is N blocks + N RootInteractions, but still one Java interaction type -
   the mod-side pattern mirrors the bounty pack's `mmo_bounty_board_open` object-form param exactly.
 - **Native-namespace lang stays with the block/emote.** `items.lang` (the Anvil block's
-  name/description/interaction hints, plus the name and description of each of the ten sharpened
-  bars) and `avatarCustomization.lang` (the emote's display name in Hytale's own client-owned
-  namespace) ship here, per locale, because they belong to the native assets this pack authors,
+  name/description/interaction hints, the name and description of each of the ten sharpened bars,
+  and the name and description of every item this pack ships outright - the Millwright's Hatchet,
+  Marn's Hatchet, the four-piece woodcutter's kit and its Novice Cap) and `avatarCustomization.lang`
+  (the emote's display name in Hytale's own client-owned namespace) ship here, per locale, because
+  they belong to the native assets this pack authors,
   mirroring how the bounty pack ships `items.lang`/`npcs.lang` for its blocks/NPCs. The Sawmill
   block's own `items.lang` keys ship in the RPG Stations jar alongside the block it names. RPG
   Stations' own `rpgstations.lang` convention keys (`station.sawmill.name`/`.desc`, all

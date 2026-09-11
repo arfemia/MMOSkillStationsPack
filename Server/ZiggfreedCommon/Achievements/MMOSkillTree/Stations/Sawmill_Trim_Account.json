@@ -1,0 +1,44 @@
+{
+  "$Comment": "Marn's trim order filled over and over. COMPLETE_QUEST on a repeatable counts every completion, so the Amount is a number of ORDERS filled rather than a number of days: the order comes round several times a day, and this asks for enough of them to be a habit rather than a weekend. Retune it alongside the quest's own Repeat window, since shortening that window makes this cheaper without the number here changing at all.",
+  "Name": "Sawmill_Trim_Account",
+  "Text": {
+    "TitleKey": "achievement.sawmill_trim_account.title",
+    "FlavorKey": "achievement.sawmill_trim_account.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "sawmill",
+    "SortOrder": 24
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "fill-trim-work": {
+      "Kind": "COMPLETE_QUEST",
+      "Target": "trim_work",
+      "MatchMode": "EXACT",
+      "Amount": 100
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

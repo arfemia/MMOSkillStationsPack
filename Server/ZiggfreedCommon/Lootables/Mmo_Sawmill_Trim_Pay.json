@@ -1,0 +1,357 @@
+{
+  "$Comment": [
+    "What Trim Work is worth. This is the wage: it always pays, and it pays more the",
+    "further along the woodcutter is. Trim Work names three other tables beside this one, so keep",
+    "this file about the wage alone and retune tools, finds and the kit where they live.",
+    "",
+    "THE FIRST ROLL IS A LADDER. Its Factors are summed into one score and the Floors are read",
+    "against that score. Floors are NOT cumulative: the highest one reached wins and only its Grants",
+    "fire. Two things feed the score, weighted equally: the Woodcutting level, so the wage grows with",
+    "the skill, and Woodcutting luck, so a luck-heavy tree pays here as well as at the bench.",
+    "",
+    "WHERE THE FLOORS SIT. The quest that opens Trim Work asks for a Woodcutting level first, so in",
+    "an ordinary game the twenty-five floor is the lowest anybody stands on and the ones above it are",
+    "the real ladder. The top floor wants both halves of the score well along rather than one alone.",
+    "",
+    "THE ZERO FLOOR IS A SAFETY NET, and worth keeping even though it looks unreachable. A ladder",
+    "grants NOTHING when every floor sits above the worker's score, so if a score ever comes in lower",
+    "than the quest's own gate implies, a level reset, a server that has re-tuned what the quest asks,",
+    "a wallet of luck that reads zero, the run would otherwise pay nothing at all. It is written low",
+    "on purpose: it is a floor under the floor, not a tier anybody is meant to sit on.",
+    "",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_Luck_WOODCUTTING",
+    "stores whole percent points, so a fully claimed Woodcutting tree reads near a hundred rather",
+    "than near one, and MMO_Level_WOODCUTTING is a level, not a fraction. The floors are therefore",
+    "written on a scale of roughly twenty-five to two hundred and sixty, the ceiling a capped level",
+    "with a full tree, the trophy hatchet in hand and the woodcutter's kit worn. Never swap these two",
+    "leaves for the mmoskilltree:station_luck aggregate: that one returns a FRACTION, which would",
+    "shift every floor by a factor of a hundred, and composing it beside a luck channel counts the",
+    "same investment twice.",
+    "",
+    "RANGES. Amount with AmountMax pays experience drawn evenly between the two, and Count with",
+    "CountMax does the same for a stack, each decided once when the payout is. That is what keeps two",
+    "runs at the same tier from reading identically. Widen a pair to make a run swingier, or set",
+    "the two halves equal to make a line pay a flat number again.",
+    "",
+    "THE SECOND ROLL is the same ladder again behind a coin flip, paying a smaller slice of",
+    "experience and nothing else. Rolls evaluate INDEPENDENTLY, so on about half of runs it lands on",
+    "top of the wage and the run reads as a good one. It carries no Cue on purpose: the wage has",
+    "already been announced, and a second chime for a top-up is noise.",
+    "",
+    "The byproducts widen with the tier rather than simply growing: fibre and bark at every floor,",
+    "sap from the second, sticks from the third, which is what makes a higher tier feel like a",
+    "different run rather than a bigger number."
+  ],
+  "Name": "Mmo_Sawmill_Trim_Pay",
+  "Rolls": [
+    {
+      "$Comment": "The wage. Always pays, at exactly one of the five floors.",
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "The safety net, under the level the quest itself asks for. A score can only land here if something outside this table put the worker below it, and a run still pays.",
+            "Min": 0,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 250,
+                    "AmountMax": 450
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 1,
+                  "CountMax": 3
+                },
+                {
+                  "Item": "Ingredient_Fibre",
+                  "Count": 2,
+                  "CountMax": 6
+                },
+                {
+                  "Item": "Ingredient_Tree_Bark",
+                  "Count": 1,
+                  "CountMax": 4
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "The starting tier: a woodcutter who has only just earned the order.",
+            "Min": 25,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 500,
+                    "AmountMax": 900
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 2,
+                  "CountMax": 5
+                },
+                {
+                  "Item": "Ingredient_Fibre",
+                  "Count": 4,
+                  "CountMax": 10
+                },
+                {
+                  "Item": "Ingredient_Tree_Bark",
+                  "Count": 2,
+                  "CountMax": 6
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "Past the early levels, or a few luck rewards claimed. Sap starts here.",
+            "Min": 70,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 1200,
+                    "AmountMax": 2000
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 4,
+                  "CountMax": 8
+                },
+                {
+                  "Item": "Ingredient_Fibre",
+                  "Count": 8,
+                  "CountMax": 16
+                },
+                {
+                  "Item": "Ingredient_Tree_Bark",
+                  "Count": 4,
+                  "CountMax": 10
+                },
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 2,
+                  "CountMax": 5
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "A committed woodcutter: a solid level with real luck behind it. Sticks start here.",
+            "Min": 130,
+            "Cue": "Rare_Find",
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 2400,
+                    "AmountMax": 4000
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 6,
+                  "CountMax": 12
+                },
+                {
+                  "Item": "Ingredient_Fibre",
+                  "Count": 12,
+                  "CountMax": 24
+                },
+                {
+                  "Item": "Ingredient_Tree_Bark",
+                  "Count": 6,
+                  "CountMax": 14
+                },
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 4,
+                  "CountMax": 9
+                },
+                {
+                  "Item": "Ingredient_Stick",
+                  "Count": 6,
+                  "CountMax": 14
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "The top of the ladder, wanting both halves of the score near their ceiling.",
+            "Min": 200,
+            "Cue": "cue:find_deep",
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 4500,
+                    "AmountMax": 7500
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 10,
+                  "CountMax": 18
+                },
+                {
+                  "Item": "Ingredient_Fibre",
+                  "Count": 18,
+                  "CountMax": 32
+                },
+                {
+                  "Item": "Ingredient_Tree_Bark",
+                  "Count": 10,
+                  "CountMax": 20
+                },
+                {
+                  "Item": "Ingredient_Tree_Sap",
+                  "Count": 6,
+                  "CountMax": 14
+                },
+                {
+                  "Item": "Ingredient_Stick",
+                  "Count": 10,
+                  "CountMax": 20
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "A good run: the same ladder behind a coin flip, paying a slice of experience on top of the wage and nothing else.",
+      "Chance": {
+        "Base": 50.0
+      },
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "The same safety net as the wage ladder's, so a score below the quest's own gate still gets the top-up rather than silently nothing.",
+            "Min": 0,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 100,
+                    "AmountMax": 200
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 25,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 200,
+                    "AmountMax": 400
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 70,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 500,
+                    "AmountMax": 900
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 130,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 1000,
+                    "AmountMax": 1800
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 200,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "WOODCUTTING",
+                    "Amount": 1800,
+                    "AmountMax": 3200
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
