@@ -1,23 +1,19 @@
 {
-  "$Comment": "What Trim Work's Sawyer wage shakes loose per pull: fibre, bark and sap all richer again, sticks joining the mix for the first time, a five-species sapling slot, and a first, thin chance at light (a torch far more often than a lantern). Each byproduct is its own Choice with an Empty counterweight; the light slot is deliberately still mostly Empty here, since a real chance at a lantern is what sets the Master table apart. Raise the sticks Choice's Single Weight to bring it forward faster than the essence tables do; widen the light Choice's Single Weights slowly rather than all at once, or every tier reads the same.",
+  "$Comment": "A practised sawyer's offcuts: the byproduct list twice over, a sapling look, and a real if uncommon chance at light for the yard.\n\nByproducts are NOT listed here: the Droplist entries above pull the sawmill's own shared RPG_Station_Sawmill_Byproducts list, so retuning what milling yields is one edit in that file and every tier moves with it. Saplings work the same way through MMO_Station_Trim_Saplings. A richer tier pulls a list more than once rather than authoring bigger numbers, which is why an id can appear twice above.\n\nThe Choice at the end is this tier's own flavour, and it also carries the one CONCRETE item this file needs: a container tree built purely from Droplist references fails validation with \"Container must have something to drop!\" and takes the pack down with it, so the extra handful of fibre is load-bearing as well as generous. Inside a Choice the Weights are relative odds against each other and exactly one child is picked, Empty included.",
   "Container": {
     "Type": "Multiple",
     "Containers": [
       {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 6
-          },
-          {
-            "Type": "Single",
-            "Weight": 94,
-            "Item": { "ItemId": "Ingredient_Fibre", "QuantityMin": 3, "QuantityMax": 6 }
-          }
-        ]
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Droplist",
+        "DroplistId": "MMO_Station_Trim_Saplings"
       },
       {
         "Type": "Choice",
@@ -26,101 +22,34 @@
         "Containers": [
           {
             "Type": "Empty",
-            "Weight": 18
+            "Weight": 70
           },
           {
             "Type": "Single",
-            "Weight": 82,
-            "Item": { "ItemId": "Ingredient_Tree_Bark", "QuantityMin": 2, "QuantityMax": 4 }
-          }
-        ]
-      },
-      {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 55
-          },
-          {
-            "Type": "Single",
-            "Weight": 45,
-            "Item": { "ItemId": "Ingredient_Tree_Sap", "QuantityMin": 2, "QuantityMax": 4 }
-          }
-        ]
-      },
-      {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 65
-          },
-          {
-            "Type": "Single",
-            "Weight": 35,
-            "Item": { "ItemId": "Ingredient_Stick", "QuantityMin": 2, "QuantityMax": 5 }
-          }
-        ]
-      },
-      {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 65
-          },
-          {
-            "Type": "Single",
-            "Weight": 8,
-            "Item": { "ItemId": "Plant_Sapling_Oak", "QuantityMin": 1, "QuantityMax": 1 }
-          },
-          {
-            "Type": "Single",
-            "Weight": 7,
-            "Item": { "ItemId": "Plant_Sapling_Birch", "QuantityMin": 1, "QuantityMax": 1 }
-          },
-          {
-            "Type": "Single",
-            "Weight": 7,
-            "Item": { "ItemId": "Plant_Sapling_Maple", "QuantityMin": 1, "QuantityMax": 1 }
-          },
-          {
-            "Type": "Single",
-            "Weight": 7,
-            "Item": { "ItemId": "Plant_Sapling_Spruce", "QuantityMin": 1, "QuantityMax": 1 }
-          },
-          {
-            "Type": "Single",
-            "Weight": 6,
-            "Item": { "ItemId": "Plant_Sapling_Ash", "QuantityMin": 1, "QuantityMax": 1 }
-          }
-        ]
-      },
-      {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 96
+            "Weight": 26,
+            "Item": {
+              "ItemId": "Ingredient_Fibre",
+              "QuantityMin": 4,
+              "QuantityMax": 8
+            }
           },
           {
             "Type": "Single",
             "Weight": 3,
-            "Item": { "ItemId": "Furniture_Crude_Torch", "QuantityMin": 1, "QuantityMax": 1 }
+            "Item": {
+              "ItemId": "Furniture_Crude_Torch",
+              "QuantityMin": 1,
+              "QuantityMax": 2
+            }
           },
           {
             "Type": "Single",
             "Weight": 1,
-            "Item": { "ItemId": "Deco_Lantern", "QuantityMin": 1, "QuantityMax": 1 }
+            "Item": {
+              "ItemId": "Deco_Lantern",
+              "QuantityMin": 1,
+              "QuantityMax": 1
+            }
           }
         ]
       }

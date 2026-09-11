@@ -1,0 +1,68 @@
+{
+  "$Comment": "The saplings a trim order pays: what the yard hands back for the trees that fed the mill. This is the sapling VOCABULARY in one place - every Trim Work offcut tier references it by id through a Droplist container rather than listing species itself, so adding a species or re-weighting them is a single edit here and every tier moves together.\n\nThe container is a Choice, which picks exactly ONE child per roll, so the Weights below are relative odds against each other rather than percentages: Empty is the largest slice, which is what makes a sapling an occasional thing rather than a guaranteed line. Watch that distinction, because inside a Multiple container a child's Weight is instead its own independent percent chance.\n\nA tier that should hand back MORE saplings references this list several times rather than authoring bigger quantities here, the same way the sawmill's own byproduct tiers pull their shared list more than once.\n\nThe species are the common temperate ones a player is most likely to have felled. Add a Single here for any species your world actually grows; the item id is the sapling's own asset filename.",
+  "Container": {
+    "Type": "Choice",
+    "RollsMin": 1,
+    "RollsMax": 1,
+    "Containers": [
+      {
+        "Type": "Empty",
+        "Weight": 40
+      },
+      {
+        "Type": "Single",
+        "Weight": 20,
+        "Item": {
+          "ItemId": "Plant_Sapling_Oak",
+          "QuantityMin": 1,
+          "QuantityMax": 2
+        }
+      },
+      {
+        "Type": "Single",
+        "Weight": 15,
+        "Item": {
+          "ItemId": "Plant_Sapling_Birch",
+          "QuantityMin": 1,
+          "QuantityMax": 2
+        }
+      },
+      {
+        "Type": "Single",
+        "Weight": 10,
+        "Item": {
+          "ItemId": "Plant_Sapling_Maple",
+          "QuantityMin": 1,
+          "QuantityMax": 2
+        }
+      },
+      {
+        "Type": "Single",
+        "Weight": 8,
+        "Item": {
+          "ItemId": "Plant_Sapling_Spruce",
+          "QuantityMin": 1,
+          "QuantityMax": 2
+        }
+      },
+      {
+        "Type": "Single",
+        "Weight": 5,
+        "Item": {
+          "ItemId": "Plant_Sapling_Redwood",
+          "QuantityMin": 1,
+          "QuantityMax": 1
+        }
+      },
+      {
+        "Type": "Single",
+        "Weight": 2,
+        "Item": {
+          "ItemId": "Plant_Sapling_Ash",
+          "QuantityMin": 1,
+          "QuantityMax": 1
+        }
+      }
+    ]
+  }
+}

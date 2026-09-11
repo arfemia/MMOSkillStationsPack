@@ -1,22 +1,27 @@
 {
   "$Comment": [
-    "The occasional extras Trim Work turns up, beside the wage and the tools. Three rolls, all",
-    "bonuses: neither the deep find nor the boost token is anybody's reason for filling the order, and",
-    "a run that pays none of the three is an ordinary run rather than a bad one.",
+    "The occasional extras a trim order turns up, beside the wage and the tools. Two rolls, both",
+    "bonuses: neither is anybody's reason for filling the order, and a run that pays neither is an",
+    "ordinary run rather than a bad one.",
     "",
-    "THE DEEP FIND is gated on Woodcutting level alone through a Condition rather than a Ladder,",
-    "because there are no tiers here: either the worker is deep enough into the trade to shake",
-    "concentrated essence out of a log, or they are not. Below that level the roll never fires at all.",
-    "Move the Min to change when the mill starts giving up the good stuff.",
+    "LUCK ACTS ON THE ODDS HERE, not on the size of what lands, and that is the difference between",
+    "this file and the wage. A wage is a quantity, so luck decides how big it is there. A find is a",
+    "yes or a no, so luck decides how often it happens here. Keep that split when you author a table",
+    "of your own: luck acting on both axes inside one table pays the same investment twice.",
     "",
-    "THE LUCK LADDER is the one roll here that reads Woodcutting LUCK rather than level, on its own",
-    "floors, with no Chance gating it: it always resolves, and its zero floor pays a small handful of",
-    "fibre rather than nothing. Concentrated essence rides only the top floor, so a heavily invested",
-    "luck tree is what it takes to shake loose an extra one here, on top of whatever the deep find",
-    "above already paid.",
+    "A Chance is a percentage from zero to one hundred. Base is what the roll reads at no luck at",
+    "all, each Factors entry adds its Weight per whole point of the channel it names, and Clamp.Max",
+    "is the ceiling however much luck is stacked on top. MMO_Luck_WOODCUTTING stores WHOLE percent",
+    "points, so a fully claimed Woodcutting tree reads near a hundred and a geared worker past a",
+    "hundred and sixty; the Weights below are sized against that scale. Never swap the channel for",
+    "the mmoskilltree:station_luck aggregate, which returns a FRACTION and would make the term vanish.",
     "",
-    "A Chance is a percentage from zero to one hundred, and rolls evaluate INDEPENDENTLY, so more than",
-    "one of these can land on the same claim.",
+    "Rolls evaluate INDEPENDENTLY, so both of these can land on the same claim.",
+    "",
+    "THE DEEP FIND also carries a level Condition, which is a hard gate rather than a scaling term:",
+    "below that level the roll never fires at all, however lucky the worker is. Either they are deep",
+    "enough into the trade to shake concentrated essence out of a log or they are not. Move the Min",
+    "to change when the mill starts giving up the good stuff.",
     "",
     "Each carries a Cue, the celebration id a roll may author beside its Grants; it fires only when",
     "the grants beside it genuinely paid out. Rare_Find is the everyday chime the MMO jar ships as a",
@@ -27,7 +32,7 @@
   "Name": "Mmo_Sawmill_Trim_Finds",
   "Rolls": [
     {
-      "$Comment": "Concentrated essence, for a worker deep enough into the trade to find it.",
+      "$Comment": "Concentrated essence, for a worker deep enough into the trade to find it at all, and likelier the more luck they have put into the tree.",
       "Conditions": [
         {
           "Factor": "hytale:stat",
@@ -36,7 +41,17 @@
         }
       ],
       "Chance": {
-        "Base": 8.0
+        "Base": 8.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.05
+          }
+        ],
+        "Clamp": {
+          "Max": 20.0
+        }
       },
       "Grants": {
         "Items": [
@@ -50,9 +65,19 @@
       "Cue": "cue:find_deep"
     },
     {
-      "$Comment": "A personal Woodcutting boost token, roughly one run in twenty.",
+      "$Comment": "A personal Woodcutting boost token, on a gentler luck curve than the deep find and a lower ceiling, so it stays a pleasant surprise rather than a supply line.",
       "Chance": {
-        "Base": 5.0
+        "Base": 5.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.03
+          }
+        ],
+        "Clamp": {
+          "Max": 12.0
+        }
       },
       "Grants": {
         "Items": [
@@ -63,61 +88,6 @@
         ]
       },
       "Cue": "Rare_Find"
-    },
-    {
-      "$Comment": "Luck alone, on its own floors: a small handful of fibre at the bottom, more at the middle floor, and one extra concentrated essence once the reading is this high.",
-      "Ladder": {
-        "Factors": [
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
-            "Weight": 1.0
-          }
-        ],
-        "Floors": [
-          {
-            "Min": 0,
-            "Grants": {
-              "Items": [
-                {
-                  "Item": "Ingredient_Fibre",
-                  "Count": 1,
-                  "CountMax": 2
-                }
-              ]
-            }
-          },
-          {
-            "Min": 50,
-            "Grants": {
-              "Items": [
-                {
-                  "Item": "Ingredient_Fibre",
-                  "Count": 3,
-                  "CountMax": 5
-                }
-              ]
-            }
-          },
-          {
-            "Min": 100,
-            "Cue": "cue:find_deep",
-            "Grants": {
-              "Items": [
-                {
-                  "Item": "Ingredient_Fibre",
-                  "Count": 3,
-                  "CountMax": 5
-                },
-                {
-                  "Item": "Ingredient_Life_Essence_Concentrated",
-                  "Count": 1
-                }
-              ]
-            }
-          }
-        ]
-      }
     }
   ]
 }

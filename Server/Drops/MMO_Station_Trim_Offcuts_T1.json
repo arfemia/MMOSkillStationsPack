@@ -1,23 +1,15 @@
 {
-  "$Comment": "What Trim Work's Green wage shakes loose per pull: mostly fibre and bark, an occasional sapling, no sap, no sticks, no light. Fibre and bark each roll on their own Choice slot (an Empty counterweight beside the Single, so neither is truly guaranteed), and the sapling slot is one Choice among three species plus a large Empty share, which is what makes a sapling here feel like a small bonus rather than a rule. Raise a Single's Weight (and lower its Choice's Empty to match) to make that item more common; add a Single beside Empty in the sapling Choice to widen which species can turn up.",
+  "$Comment": "The leanest trim order's offcuts, for a woodcutter still early in the trade. One pull of the mill's byproducts, one look at the sapling pile, and a small handful of fibre on the side.\n\nByproducts are NOT listed here: the Droplist entries above pull the sawmill's own shared RPG_Station_Sawmill_Byproducts list, so retuning what milling yields is one edit in that file and every tier moves with it. Saplings work the same way through MMO_Station_Trim_Saplings. A richer tier pulls a list more than once rather than authoring bigger numbers, which is why an id can appear twice above.\n\nThe Choice at the end is this tier's own flavour, and it also carries the one CONCRETE item this file needs: a container tree built purely from Droplist references fails validation with \"Container must have something to drop!\" and takes the pack down with it, so the extra handful of fibre is load-bearing as well as generous. Inside a Choice the Weights are relative odds against each other and exactly one child is picked, Empty included.",
   "Container": {
     "Type": "Multiple",
     "Containers": [
       {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 15
-          },
-          {
-            "Type": "Single",
-            "Weight": 85,
-            "Item": { "ItemId": "Ingredient_Fibre", "QuantityMin": 1, "QuantityMax": 3 }
-          }
-        ]
+        "Type": "Droplist",
+        "DroplistId": "RPG_Station_Sawmill_Byproducts"
+      },
+      {
+        "Type": "Droplist",
+        "DroplistId": "MMO_Station_Trim_Saplings"
       },
       {
         "Type": "Choice",
@@ -26,38 +18,16 @@
         "Containers": [
           {
             "Type": "Empty",
-            "Weight": 40
+            "Weight": 80
           },
           {
             "Type": "Single",
-            "Weight": 60,
-            "Item": { "ItemId": "Ingredient_Tree_Bark", "QuantityMin": 1, "QuantityMax": 2 }
-          }
-        ]
-      },
-      {
-        "Type": "Choice",
-        "RollsMin": 1,
-        "RollsMax": 1,
-        "Containers": [
-          {
-            "Type": "Empty",
-            "Weight": 90
-          },
-          {
-            "Type": "Single",
-            "Weight": 4,
-            "Item": { "ItemId": "Plant_Sapling_Oak", "QuantityMin": 1, "QuantityMax": 1 }
-          },
-          {
-            "Type": "Single",
-            "Weight": 3,
-            "Item": { "ItemId": "Plant_Sapling_Birch", "QuantityMin": 1, "QuantityMax": 1 }
-          },
-          {
-            "Type": "Single",
-            "Weight": 3,
-            "Item": { "ItemId": "Plant_Sapling_Maple", "QuantityMin": 1, "QuantityMax": 1 }
+            "Weight": 20,
+            "Item": {
+              "ItemId": "Ingredient_Fibre",
+              "QuantityMin": 2,
+              "QuantityMax": 4
+            }
           }
         ]
       }

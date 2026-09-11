@@ -65,7 +65,8 @@ skill-stations-pack/
     │        RPG_Station_Sawmill_Use the RPG Stations jar ships; the anvil's own Use file is under unreleased/)
     ├── Drops/MMO_Station_Sawmill_T1..T5.json             native ItemDropList find loot, one per tier (referenced by Lootables/SawmillLuckFinds.json's Ladder floors). Each is a Multiple composing N Droplist pulls of the JAR's shared RPG_Station_Sawmill_Byproducts (1/1/2/2/3); T2-T5 each add a life-essence Choice and T5's is the only one with no Empty entry. T1 has no Choice and pays offcuts only (essence starts at T2): one pull plus a guaranteed 1-3 Ingredient_Fibre, which is also the concrete entry the tier needs to load at all, since a container tree built purely from Droplist references fails validation with "Container must have something to drop!" and takes the pack down with it (T2-T5 satisfy that through the Singles inside their Choice; T1's own $Comment carries the detail)
     ├── Drops/MMO_Station_Sawmill_Masterwork.json         the Sawmiller's Hatchet's own reward table: 2 byproduct pulls + a 2% Woodcutting XP boost token, no essence and no planks
-    ├── Drops/MMO_Station_Trim_Offcuts_T1..T4.json        native ItemDropList byproducts for Trim Work's four wage tiers (fibre/bark/sapling Choice slots widening tier to tier), each pulled by its matching Lootables/Mmo_Sawmill_Trim_Wage_* file's DropLists array; a tier's higher floors repeat the SAME id two or three times in one Grants.DropLists list, which the engine rolls as that many independent pulls rather than a mistake worth deduplicating
+    ├── Drops/MMO_Station_Trim_Offcuts_T1..T4.json        native ItemDropList offcuts for Trim Work's four wage tiers, each pulled by its matching Lootables/Mmo_Sawmill_Trim_Wage_* file's DropLists array; a tier's higher floors repeat the SAME id two or three times in one Grants.DropLists list, which the engine rolls as that many independent pulls rather than a mistake worth deduplicating. Each tier COMPOSES rather than lists: N Droplist pulls of the RPG Stations jar's shared RPG_Station_Sawmill_Byproducts (so a retune of what milling yields moves every tier in both mods at once), M pulls of MMO_Station_Trim_Saplings below, and one small Choice carrying this tier's own flavour - a widening handful of fibre plus, from T2 up, a torch or a lantern. That fibre Single is load-bearing as well as generous: a container tree built purely from Droplist references fails validation with "Container must have something to drop!"
+    ├── Drops/MMO_Station_Trim_Saplings.json              the sapling VOCABULARY in one place, referenced by every offcut tier rather than re-listed in each: a Choice over six temperate species with an Empty slice, so a sapling is occasional. A tier wanting more saplings pulls this list twice rather than raising quantities here
     ├── (Emote: none shipped - MMO_Emote_Saw was deleted as dead once station presentation moved into
     │    the jar and the work animation became the held tool's Action-slot clip; MMO_Emote_Hammer lives
     │    under unreleased/ with the anvil ritual that plays it)
@@ -93,7 +94,7 @@ skill-stations-pack/
         │   ├── Mmo_Sawmill_Trim_Wage_Sawyer.json         the Sawyer tier, nested from the router's Min 55 floor: the same shape over Drops/MMO_Station_Trim_Offcuts_T3, larger again; no Cue
         │   ├── Mmo_Sawmill_Trim_Wage_Master.json         the Master tier, nested from the router's Min 85 floor: the same shape over Drops/MMO_Station_Trim_Offcuts_T4, the largest XP/essence/pull counts; its OWN top floor (Min 110, luck) alone carries `cue:find_deep`, since a maxed level AND that much luck together is genuinely occasional
         │   ├── Mmo_Sawmill_Trim_Supply.json               tools and upkeep off the same order: two level-only Chance+Ladder rolls (a spare hatchet up to Thorium, and repair kits) plus a third, luck-only, uncapped Ladder (no Chance) for saplings and a lantern; the two tool rolls are deliberately luck-blind
-        │   ├── Mmo_Sawmill_Trim_Finds.json                the order's occasional extras: concentrated essence behind a WOODCUTTING 55 Condition, a boost token, both plain percent Chances, plus a third, luck-only, uncapped Ladder (no Chance) for fibre and a bonus concentrated essence at its top floor
+        │   ├── Mmo_Sawmill_Trim_Finds.json                the order's occasional extras, and the one table where LUCK ACTS ON THE ODDS: concentrated essence behind a WOODCUTTING 55 Condition on a luck-weighted Chance (Base 8, +0.05 per luck point, Clamp.Max 20) and a boost token on a gentler one (Base 5, +0.03, Clamp.Max 12); no Ladder anywhere, because a find is a yes or a no rather than a quantity
         │   └── Mmo_Woodcutters_Kit.json                   the ONLY table anywhere that pays the woodcutter's kit: four independent Chance rolls, one per piece, no Ladder and no factor of any kind - deliberately flat, so the set chase is predictable and is not slowed for a low-luck player; the jerkin the rare one, cued with the Sawmill's own deep-find cue
         ├── NpcPlacements/Mmo_Sawyer_Temple.json          stands Marn in the Forgotten Temple (Where.GameplayConfig, a Structure anchor on the merchant marker at Offset.X -3, the stations feature gate, KeepAlive/Respawn/Fortify, Interact.Dialogue Mmo_Sawyer)
         └── Quests/MMOSkillTree/Stations/                 the twelve Sawmill quests (id = lower-cased filename; an unmarked folder, so no folder segment joins the id): Meet_The_Sawyer (the introduction), Timber_Rights (the hand-out), First_Cut, Reading_The_Grain, Deep_In_The_Wood, A_Finer_Edge (the sawmill chain), Second_Bench (a side branch), Standing_Order (a calendar daily), Straight_Grain, Cold_Metal, The_Fitting (the Marn's Edge chain, opened once A_Finer_Edge is claimed), Trim_Work (a repeatable, `Repeat.Reset.Every.Hours 3`) - all offered by and handed in to Marn
@@ -269,13 +270,16 @@ every other floor in every tier stays silent so the chime keeps its meaning.
 second level-only `Chance`+`Ladder` for repair kits alone, both deliberately luck-blind so a luck
 build gets the same spanner as anyone else at that level, and adds a THIRD roll, an
 uncapped Ladder with no Chance, scored on luck alone, for saplings and a lantern.
-`Mmo_Sawmill_Trim_Finds` (the occasional extra) pairs a plain percent `Chance` for concentrated
-essence, gated behind a `hytale:stat MMO_Level_WOODCUTTING Min 55` Condition, with a second plain
-percent `Chance` for a boost token, and likewise adds a third roll, an uncapped Ladder with no
-Chance, scored on luck alone, paying fibre and a bonus concentrated essence at its top floor. In
-both files that third, always-resolving Ladder is the table's own luck side sitting beside its
-level-gated rolls; its zero floor always pays something rather than nothing, and neither authors a
-Cue on it. `Mmo_Woodcutters_Kit` is the one table in the Claim that reads neither channel: four
+`Mmo_Sawmill_Trim_Finds` (the occasional extra) is the one table where luck acts on the ODDS
+rather than on the size of what lands, and it carries only two rolls because of it: concentrated
+essence behind a `hytale:stat MMO_Level_WOODCUTTING Min 55` Condition on a `Chance` of `Base` 8
+rising 0.05 per whole point of `MMO_Luck_WOODCUTTING` to a `Clamp.Max` of 20, and a boost token on
+a gentler `Base` 5 rising 0.03 to a `Clamp.Max` of 12. **That split is the rule, not a local
+choice: a wage is a quantity so luck sizes it, a find is a yes or a no so luck makes it likelier,
+and luck acting on both axes inside one table pays the same investment twice.** The level
+Condition stays a hard gate rather than a scaling term, so no amount of luck opens the deep find
+below that level. Supply's own luck side is its third Ladder, so its tool `Chance` values stay
+flat for the same reason. `Mmo_Woodcutters_Kit` is the one table in the Claim that reads neither channel: four
 independent `Chance` rolls, one per piece, no Ladder and no factor of any kind, deliberately flat
 so the set chase is predictable and is not slowed for a low-luck player; the Woodcutter's Jerkin
 is deliberately the rare one and cues with the Sawmill's own deep-find cue rather than the
