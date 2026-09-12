@@ -152,12 +152,17 @@
       }
     },
     {
-      "$Comment": "A small bonus for a well-invested luck tree: extra saplings, and a lantern once that investment is heavy. Reads MMO_Luck_WOODCUTTING alone, on its own floors, with no Chance gating it - it always resolves, and its zero floor pays a token sapling rather than nothing.",
+      "$Comment": "A small bonus for a well-invested luck tree: extra saplings, and a lantern once that investment is heavy. Reads the woodcutter's own Woodcutting luck and the global luck channel at equal weight, on its own floors, with no Chance gating it - it always resolves, and its zero floor pays a token sapling rather than nothing.",
       "Ladder": {
         "Factors": [
           {
             "Factor": "hytale:stat",
             "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
             "Weight": 1.0
           }
         ],

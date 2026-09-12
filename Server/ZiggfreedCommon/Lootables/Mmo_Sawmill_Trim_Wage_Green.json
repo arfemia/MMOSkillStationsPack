@@ -2,14 +2,17 @@
   "$Comment": [
     "The Green wage: what a woodcutter just past the Green floor of Trim Work earns for one",
     "order, once luck decides how the run actually went. Mmo_Sawmill_Trim_Pay routes here on level",
-    "alone; everything below reads Woodcutting LUCK alone, so within this tier a lucky run pays",
-    "noticeably more than an unlucky one even though both workers stand at the same point in the",
-    "trade.",
+    "alone; everything below reads the woodcutter's own Woodcutting luck and the global luck channel",
+    "at equal weight (this is the mill's own trade, so Crafting luck is left out), so within this",
+    "tier a lucky run pays noticeably more than an unlucky one even though both workers stand at the",
+    "same point in the trade.",
     "",
-    "UNITS, the one trap worth knowing. MMO_Luck_WOODCUTTING is a WHOLE-NUMBER percent reading, not a",
-    "fraction: a fully claimed Woodcutting tree, the trophy hatchet in hand and the woodcutter's kit",
-    "worn together read somewhere near a hundred and sixty-six, which is what the top floor here is",
-    "sized against. Never swap this for the mmoskilltree:station_luck aggregate: that one returns a",
+    "UNITS, the one trap worth knowing. MMO_Luck_WOODCUTTING and MMO_Luck both store WHOLE-NUMBER",
+    "percent readings, not fractions: a fully claimed Woodcutting tree, the trophy hatchet in hand",
+    "and the woodcutter's kit worn together read somewhere near a hundred and sixty-six on the",
+    "station's own channel, which is what the top floor here is sized against; MMO_Luck ships empty",
+    "by default, so a server or pack that grants global luck is respected here without moving that",
+    "ceiling. Never swap either for the mmoskilltree:station_luck aggregate: that one returns a",
     "FRACTION and would shift every floor by a factor of a hundred.",
     "",
     "RANGES pay experience and essence drawn evenly between Amount/Count and their Max, decided once",
@@ -27,6 +30,11 @@
           {
             "Factor": "hytale:stat",
             "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
             "Weight": 1.0
           }
         ],

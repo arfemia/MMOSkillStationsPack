@@ -78,6 +78,25 @@ its own. Requires RPG Stations `>=0.1.0` and MMO Skill Tree `^1.6.1`, both decla
   (`Mmo_Sawmill_Trim_Pay` the order's wage, `Mmo_Sawmill_Trim_Supply` tool and repair-kit upkeep,
   `Mmo_Sawmill_Trim_Finds` the occasional extra, and `Mmo_Woodcutters_Kit`, the only table anywhere
   that pays the four-piece woodcutter's kit).
+- **Adds the level-picks-the-floor, luck-decides-the-quality paradigm to every table Trim Work
+  pays from.** `Mmo_Sawmill_Trim_Pay` is a router: a Ladder over `MMO_Level_WOODCUTTING` alone
+  (floors 0/25/55/85) whose floors carry nothing but a nested `Lootable` grant naming one of
+  `Mmo_Sawmill_Trim_Wage_{Green,Hand,Sawyer,Master}`, and each of those runs its own Ladder over
+  luck (floors 0/30/70/110) paying a widening XP range, essence and offcut pulls. Nesting a table
+  inside a floor's grants is composition the engine allows four deep with a cycle guard, and a
+  nested roll folds into the receipt so a toast still lists what it produced. Where a payout is a
+  yes or a no rather than a quantity, luck weights the `Chance` instead: `Mmo_Sawmill_Trim_Finds`
+  and all four `Mmo_Woodcutters_Kit` rolls. Luck acting on both axes inside one table would pay the
+  same investment twice, which is why the tool rolls in `Mmo_Sawmill_Trim_Supply` stay flat beside
+  its own luck Ladder. Every luck term reads `MMO_Luck_WOODCUTTING` and the global `MMO_Luck` at
+  equal weight and deliberately not `MMO_Luck_CRAFTING`, the same call `SawmillTrophy` makes.
+- **Adds `Drops/MMO_Station_Trim_Offcuts_T1..T4` and `Drops/MMO_Station_Trim_Saplings`.** A tier
+  COMPOSES rather than lists: N pulls of the RPG Stations jar's shared
+  `RPG_Station_Sawmill_Byproducts`, M pulls of the shared sapling list, and one small Choice for
+  that tier's own flavour, a widening handful of fibre plus a torch or lantern from T2 up. A
+  retune of what milling yields therefore moves every tier in both mods at once. The fibre Single
+  is load-bearing as well as generous: a container tree built purely from Droplist references
+  fails validation with "Container must have something to drop!".
 - **Adds twenty-six achievements and the Stations category**
   (`Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`,
   `AchievementCategories/MMOSkillTree/Stations.json` with a `sawmill` subcategory): three ladders

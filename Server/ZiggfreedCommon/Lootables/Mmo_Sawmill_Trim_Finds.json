@@ -11,9 +11,10 @@
     "",
     "A Chance is a percentage from zero to one hundred. Base is what the roll reads at no luck at",
     "all, each Factors entry adds its Weight per whole point of the channel it names, and Clamp.Max",
-    "is the ceiling however much luck is stacked on top. MMO_Luck_WOODCUTTING stores WHOLE percent",
+    "is the ceiling however much luck is stacked on top. Both rolls below read the woodcutter's own",
+    "Woodcutting luck and the global luck channel at equal weight, and each stores WHOLE percent",
     "points, so a fully claimed Woodcutting tree reads near a hundred and a geared worker past a",
-    "hundred and sixty; the Weights below are sized against that scale. Never swap the channel for",
+    "hundred and sixty; the Weights below are sized against that scale. Never swap either channel for",
     "the mmoskilltree:station_luck aggregate, which returns a FRACTION and would make the term vanish.",
     "",
     "Rolls evaluate INDEPENDENTLY, so both of these can land on the same claim.",
@@ -47,6 +48,11 @@
             "Factor": "hytale:stat",
             "Param": "MMO_Luck_WOODCUTTING",
             "Weight": 0.05
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.05
           }
         ],
         "Clamp": {
@@ -72,6 +78,11 @@
           {
             "Factor": "hytale:stat",
             "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.03
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
             "Weight": 0.03
           }
         ],

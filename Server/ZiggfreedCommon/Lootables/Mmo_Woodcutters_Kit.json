@@ -3,20 +3,41 @@
     "The woodcutter's kit: four leather pieces, and this table is the ONLY place any of them is paid.",
     "Nothing crafts them and nothing sells them, so a full set is a stretch of days at the mill.",
     "",
-    "FOUR INDEPENDENT ROLLS, one per piece. Rolls evaluate independently, so a day can pay two pieces",
+    "FOUR INDEPENDENT ROLLS, one per piece. Rolls evaluate independently, so a run can pay two pieces",
     "or none, and a piece already owned can land again: these are ordinary items, and a spare is a",
     "spare. There is no memory of what the worker already has.",
     "",
+    "LUCK ACTS ON THE ODDS, not on what lands, because a piece is a yes or a no rather than a",
+    "quantity. Each Chance reads Base at no luck at all, adds its Factors Weight per whole point of",
+    "the woodcutter's own Woodcutting luck and the global luck channel, at equal weight, and stops at",
+    "Clamp.Max however much is stacked on top. That is the same rule the finds table follows and the",
+    "opposite of the wage, where luck sizes a payout instead; luck acting on both axes inside one",
+    "table would pay the same investment twice.",
+    "",
+    "The loop this closes is worth knowing before you retune it: the kit ITSELF grants Woodcutting",
+    "luck, so each piece found makes the next one likelier. A worker who has the cap, the gloves and",
+    "the breeches is hunting the jerkin at better odds than they started with, which is what keeps",
+    "the long tail of the set from feeling flat. Raise the Weights and that loop tightens; drop them",
+    "to zero and the set goes back to a fixed grind.",
+    "",
+    "UNITS: MMO_Luck_WOODCUTTING and MMO_Luck both store WHOLE percent points, so a fully claimed",
+    "Woodcutting tree reads near a hundred on the station's own channel, and a worker with the",
+    "trophy hatchet and the finished kit past a hundred and sixty. The Weights below are sized",
+    "against that scale. Never swap either channel for the mmoskilltree:station_luck aggregate,",
+    "which returns a FRACTION and would make the term vanish.",
+    "",
     "THE CHEST IS THE RARE ONE. It carries the heaviest stat load of the four, so it is deliberately",
     "the long pole in finishing the set, and it names the Sawmill's own deep-find cue rather than the",
-    "everyday chime. Lower all four chances together to stretch the set out; raise the chest's alone",
-    "to take the sting out of the tail without making the whole set quick.",
+    "everyday chime. It also has the shallowest luck curve and the lowest ceiling, so investment",
+    "shortens the tail without erasing it. Lower all four Bases together to stretch the set out;",
+    "raise the chest's alone to take the sting out of the tail without making the whole set quick.",
     "",
     "A Chance is a percentage from zero to one hundred, rolled once each time the order is filled.",
     "The order comes round several times a day, so read these odds as a number of RUNS rather than a",
-    "number of days: the cap is around ten runs, the jerkin around fifty. Somebody",
-    "who fills the order whenever it refreshes earns the set in weeks; somebody who fills it when",
-    "they happen to be at the mill takes considerably longer, which is the intended spread.",
+    "number of days: at no luck the cap is around ten runs and the jerkin around fifty, and at a",
+    "heavily invested tree nearer six and twenty-two. Somebody who fills the order whenever it",
+    "refreshes earns the set in weeks; somebody who fills it when they happen to be at the mill takes",
+    "considerably longer, which is the intended spread.",
     "",
     "This table is named for the kit rather than for the order that pays it, so a second source can",
     "reference it later without the name reading wrong."
@@ -24,9 +45,24 @@
   "Name": "Mmo_Woodcutters_Kit",
   "Rolls": [
     {
-      "$Comment": "The cap.",
+      "$Comment": "The cap, the one that starts the set. The steepest curve of the four, so early luck is felt on the piece a worker is most likely to be chasing first.",
       "Chance": {
-        "Base": 10.0
+        "Base": 10.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.04
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.04
+          }
+        ],
+        "Clamp": {
+          "Max": 18.0
+        }
       },
       "Grants": {
         "Items": [
@@ -41,7 +77,22 @@
     {
       "$Comment": "The gloves.",
       "Chance": {
-        "Base": 5.0
+        "Base": 5.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.025
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.025
+          }
+        ],
+        "Clamp": {
+          "Max": 10.0
+        }
       },
       "Grants": {
         "Items": [
@@ -54,9 +105,24 @@
       "Cue": "Rare_Find"
     },
     {
-      "$Comment": "The breeches.",
+      "$Comment": "The breeches, on the same curve as the gloves.",
       "Chance": {
-        "Base": 5.0
+        "Base": 5.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.025
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.025
+          }
+        ],
+        "Clamp": {
+          "Max": 10.0
+        }
       },
       "Grants": {
         "Items": [
@@ -69,9 +135,24 @@
       "Cue": "Rare_Find"
     },
     {
-      "$Comment": "The jerkin, the rare one, announced with the Sawmill's own deep-find cue.",
+      "$Comment": "The jerkin, the rare one, announced with the Sawmill's own deep-find cue. The shallowest curve and the lowest ceiling of the four, so luck shortens the tail rather than removing it.",
       "Chance": {
-        "Base": 2.0
+        "Base": 2.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 0.015
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.015
+          }
+        ],
+        "Clamp": {
+          "Max": 5.0
+        }
       },
       "Grants": {
         "Items": [
