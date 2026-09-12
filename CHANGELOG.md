@@ -2,7 +2,7 @@
 
 No em-dashes.
 
-## [1.0.0] (first release)
+## [1.0.0] - 2026-09-12 (first release)
 
 First public release, the Sawmill. This pack layers MMO Skill Tree progression onto the standalone
 RPG Stations sawmill through the engine's generic contribution channels; it ships no engine code of
