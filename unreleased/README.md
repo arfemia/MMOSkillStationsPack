@@ -1,6 +1,6 @@
-# unreleased/ - content held back from the 0.1.0 pack
+# unreleased/ - content held back from the 1.0.0 pack
 
-**Nothing here is deleted or broken.** This is finished content held back from the 0.1.0 release,
+**Nothing here is deleted or broken.** This is finished content held back from the 1.0.0 release,
 which ships the Sawmill only. The directory mirrors the pack's own `Server/` layout exactly, so
 restoring is a move, not a rewrite.
 
@@ -48,6 +48,6 @@ targets.
 
 ## Version note
 
-The pack was renumbered `1.0.0 -> 0.1.0` alongside the mod, and its manifest dependency floor moved
-to `"Ziggfreed:RpgStations": ">=0.1.0"`. Restoring this content means bumping the pack version again
-and raising that floor to whatever RPG Stations release carries the cooking fire back.
+The pack ships as 1.0.0 with a manifest dependency floor of `"Ziggfreed:RpgStations": ">=1.0.0"`.
+Restoring this content means bumping the pack version and raising that floor to whatever RPG
+Stations release carries the cooking fire back.

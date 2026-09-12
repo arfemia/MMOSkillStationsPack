@@ -22,7 +22,7 @@ You need both mods installed. This pack is just the content between them.
 - Luck pays out in planks too, not just rare finds. Even a little is worth stacking: you start seeing an extra plank every few cycles, with no far-off threshold to wait on. It stacks with the plank ladder that pays for Woodcutting level at 25, 50, 75, 100 and 125.
 - A real chase for the Sawmiller's Hatchet. Around 1 in 3000 cycles with nothing invested, down to about 1 in 762 once your Woodcutting tree is finished. Luck is what shortens it.
 - Once you have that hatchet: +10 maximum stamina, +25% Woodcutting XP and +25 Woodcutting luck while held. It also opens a bonus roll nothing else in the game can reach, paying double offcuts and the occasional Woodcutting XP boost. Its own luck bonus feeds the roll it unlocks.
-- Sawyer Marn, in the Forgotten Temple, with eleven quests (a daily and a short-cycle repeatable among them) and twenty-six achievements about the mill. Details below.
+- Sawyer Marn, in the Forgotten Temple, with twelve quests (a daily and a short-cycle repeatable among them) and twenty-six achievements about the mill. Details below.
 - A second hatchet, the Millwright's, for anyone the trophy never drops for. Mill ten million pieces and it is yours. Cuts the same, wears the same, every bonus a notch smaller.
 - A third hatchet, Marn's own, the end of a short questline once you have proven yourself at the mill. A four-piece woodcutter's kit too, earned a piece at a time from Marn's standing trim order.
 - Seven bounty contracts on the shared bounty board, once you have that installed.

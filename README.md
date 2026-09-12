@@ -165,4 +165,4 @@ Stations' `rpgstations.station.<id>.name`/`.desc` convention keys directly, as t
 
 ## Requires
 
-RPG Stations 0.1.0 or newer, and MMO Skill Tree 1.6.1 or newer (for the skill-XP + luck bridge).
+RPG Stations 1.0.0 or newer, and MMO Skill Tree 1.6.1 or newer (for the skill-XP + luck bridge).

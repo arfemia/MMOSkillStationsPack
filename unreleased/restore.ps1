@@ -1,4 +1,4 @@
-# Restore pack content held back from the 0.1.0 (Sawmill-only) release.
+# Restore pack content held back from the 1.0.0 (Sawmill-only) release.
 #
 # Moves files from unreleased/ back into Server/, preserving the mirrored layout.
 # Uses `git mv` when the file is tracked so history keeps following it, plain Move-Item otherwise.

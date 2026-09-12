@@ -763,7 +763,7 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
   keep the roll count at one; the maintainer ruled both stack, so the extension adds it back
   beside the jar's own tool_power-scaled roll (`SawmillLuckTiers.json`'s `$Comment` recorded the
   supersession; that file has since been SPLIT into the three concern-scoped Lootables in the
-  layout above, and the bonus-copy roll itself was deleted by the pre-0.1.0 schema sweep below).
+  layout above, and the bonus-copy roll itself was deleted by the pre-1.0.0 schema sweep below).
 - **The anvil completion SFX de-doubled** (decision 60): the same
   `SFX_Chest_Legendary_FirstOpen_Player` was authored on BOTH the enhance `stamp` step's
   `Presentation` and the station-level `Completion`; both fired at round 8c too, but in the same
@@ -771,9 +771,9 @@ closed this round (decisions 59-60 in the monorepo's `rpg-stations-extraction-de
   step's `Sound` leaf is deleted (its sparks stay); the single bang lands at true completion
   with the summary HUD, and the convert loop's own end cue is untouched.
 
-## Pre-release schema sweep (RPG Stations 0.1.0, this pack's content re-authored onto it)
+## Pre-release schema sweep (RPG Stations 1.0.0, this pack's content re-authored onto it)
 
-RPG Stations' authoring schema was swept before 0.1.0 shipped, while a rename or removal was still
+RPG Stations' authoring schema was swept before 1.0.0 shipped, while a rename or removal was still
 free. Every one of this pack's own assets moved onto the new shape in lockstep; an unrecognized key
 would only ever have produced a boot-log `WARNING: Unused key(s)` line, never a load failure, but a
 warning is not content working. What changed here:
