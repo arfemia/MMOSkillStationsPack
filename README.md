@@ -138,7 +138,7 @@ A station is pure JSON, no plugin code:
    this repo's held-back `unreleased/Server/RpgStations/Stations/Anvil.json` for a
    multi-action station whose two actions, `Convert` and `Enhance`, each duplicate the same `Tool`/
    `Worker` groups inline rather than sharing a station-level default - see RPG Stations' own
-   `CLAUDE.md` for the full authoring reference.
+   `SCHEMA.md` (every field of every type) and its `docs/your-first-station.md` walkthrough for the full authoring reference.
 2. **The block**: `Server/Item/Items/<Id>.json`, a native Hytale block item whose
    `BlockType.Interactions.Use` points at a `RootInteraction`.
 3. **The interaction**: `Server/Item/RootInteractions/<Id>_Use.json`, a 3-line stub:
