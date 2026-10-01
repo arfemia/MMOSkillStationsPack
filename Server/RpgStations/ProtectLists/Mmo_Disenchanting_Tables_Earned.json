@@ -1,0 +1,7 @@
+{
+  "$Comment": "What this pack adds to the list of things neither Disenchanting Table will take: Orrin's Grimoire, the book Enchanter Orrin hands over at the end of his questline, so a book earned is never unmade by accident. Every file in RpgStations/ProtectLists adds to one server-wide list, so this file sits beside the jar's own Disenchanting_Tables.json (rocks, plants, ammunition, bait, the repair kits and the like) and takes nothing away from it. Keep this file's name distinct: a file with the jar's name would REPLACE the jar's list and drop every entry on it. Stations scopes it to the two tables (ids matched without regard to case). The check runs before any custody socket is offered the piece, so it covers the lesser table's one place and all three of the greater table's sockets alike, and the player hears the table's Refused:Protected answer. To protect another piece of your own at the tables, ship one more file like this one.",
+  "Stations": ["Disenchanting_Table", "Disenchanting_Table_Greater"],
+  "Protects": [
+    { "ItemId": "MMO_Weapon_Spellbook_Grimoire_Orrin" }
+  ]
+}

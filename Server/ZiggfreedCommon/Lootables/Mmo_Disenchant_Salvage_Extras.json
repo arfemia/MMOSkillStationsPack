@@ -1,0 +1,37 @@
+{
+  "$Comment": "Sometimes a little more of the salvage return: extra units of the ritual's primary output, the main material the matched salvage row hands back (mithril ore off a mithril piece, silk off a silk one). Named by Extensions/DisenchantingProgression.json and rolled once per ritual at the Payout beat, after the Unmake beat's conversion has set that primary output, at both tables. A piece that only the essence route takes has no primary output, so nothing lands for it here.\n\nrpgstations:output_items is ADDITIVE and FRACTIONAL: the whole part always lands and the leftover fraction is the chance of one more, and every grant in a ritual is summed before that one resolution, so 0.25 plus 0.5 is one extra unit three rituals in four. At most one extra unit can land per ritual from this file.\n\nTWO LADDERS, ONE STATEMENT EACH. The first reads the Enchanting level alone and pays for time served; the second reads luck alone (whole-point Enchanting luck plus the global channel) and pays for luck invested. Neither reads the other's factors, and the two sit on different thresholds so one is never mistaken for the other.\n\nWHY SO SMALL, AND WHY THE GATE. Unmaking crafted gear must always lose materials. Vanilla's salvage return is already a quarter to a half of a recipe's main material, and on the tightest pieces (cloth and leather gloves, two bolts in and one back) the room left is a single unit. Both ladders together top out at 0.75 of a unit on average, so even a capped, lucky enchanter gets back less than went in. Both rolls also need gear of item level 15 or more: the crude, wooden and copper tier hands back nearly its whole recipe already (a copper sickle returns its one bar as one ore), so any extra there would mint metal.\n\nEvery threshold and count is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Time served: a quarter of a unit at Enchanting 50, half a unit at 100.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 15 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Level_ENCHANTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 50, "Grants": { "Rewards": [ { "Kind": "rpgstations:output_items", "Params": { "Count": "0.25" } } ] } },
+          { "Min": 100, "Grants": { "Rewards": [ { "Kind": "rpgstations:output_items", "Params": { "Count": "0.5" } } ] } }
+        ]
+      }
+    },
+    {
+      "$Comment": "Luck invested: a quarter of a unit once Enchanting luck plus global luck reach 45, about what the full kit and part of the mastery give.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 15 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 45, "Grants": { "Rewards": [ { "Kind": "rpgstations:output_items", "Params": { "Count": "0.25" } } ] } }
+        ]
+      }
+    }
+  ]
+}

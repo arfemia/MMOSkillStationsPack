@@ -1,0 +1,61 @@
+{
+  "$Comment": "The disenchanter's kit at the table, luck-weighted. This file carries the id of a table the RPG Stations jar ships and both of its Disenchant actions already list, so folding this pack REPLACES that table in place at both tables: only this version is live, and nothing names it from an extension (listing it there would roll it twice). It keeps the jar's four piece grants and its Cue:Kit_Find cue, and swaps its flat odds for luck-weighted ones.\n\nFOUR INDEPENDENT ROLLS, one per cloth piece, rolled once per ritual at the Payout beat. Rolls evaluate independently, so a ritual can pay two pieces or none, and a piece already owned can land again: a spare is a spare.\n\nLUCK ACTS ON THE ODDS, not on what lands, because a piece is a yes or a no rather than a quantity. Each Chance reads Base with no luck at all, adds its Weight per whole point of Enchanting luck and of the global luck channel, at equal weight, and stops at Clamp.Max. The loop this closes: this pack's copies of the four pieces carry Enchanting luck themselves, so each piece found makes the next one likelier. Raise the Weights and that loop tightens; set them to zero and the kit goes back to a fixed grind.\n\nTHE ROBE IS THE RARE ONE. It carries the largest share of the kit's proficiency and luck, so it is the long pole in finishing the set, with the lowest base, the shallowest curve and the lowest ceiling.\n\nNo Conditions on any roll, on purpose: the table reads only the worker's own luck, never the piece, the station or a tool, so a quest Claim (which rolls with no piece in context) can name it and still pay. Every roll authors Trigger Cycle, the moment the Payout beat's roll fires; a Claim rolls every trigger, so it needs none of its own.\n\nUNITS. Both channels store whole percent points. With nothing invested the odds are the Bases below; with the full kit, a grimoire in hand and the mastery bought (around 75 points) the hood sits near 3 percent and the robe near 1.7 per ritual. Never swap either channel for mmoskilltree:station_luck, which reads a fraction.\n\nEvery chance is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "The hood, the piece that usually starts the set: the steepest curve of the four.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Base": 1.5,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.02 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.02 }
+        ],
+        "Clamp": { "Max": 4.0 }
+      },
+      "Grants": { "Items": [ { "Item": "RPG_Armor_Disenchanter_Head", "Count": 1 } ] },
+      "Cue": "Cue:Kit_Find"
+    },
+    {
+      "$Comment": "The robe, the rare one: the lowest base, the shallowest curve and the lowest ceiling, so luck shortens the tail without removing it.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Base": 0.75,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.0125 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.0125 }
+        ],
+        "Clamp": { "Max": 2.5 }
+      },
+      "Grants": { "Items": [ { "Item": "RPG_Armor_Disenchanter_Chest", "Count": 1 } ] },
+      "Cue": "Cue:Kit_Find"
+    },
+    {
+      "$Comment": "The gloves.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Base": 1.5,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.02 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.02 }
+        ],
+        "Clamp": { "Max": 4.0 }
+      },
+      "Grants": { "Items": [ { "Item": "RPG_Armor_Disenchanter_Hands", "Count": 1 } ] },
+      "Cue": "Cue:Kit_Find"
+    },
+    {
+      "$Comment": "The leggings, a little behind the hood and gloves.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Base": 1.25,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.0175 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.0175 }
+        ],
+        "Clamp": { "Max": 3.5 }
+      },
+      "Grants": { "Items": [ { "Item": "RPG_Armor_Disenchanter_Legs", "Count": 1 } ] },
+      "Cue": "Cue:Kit_Find"
+    }
+  ]
+}

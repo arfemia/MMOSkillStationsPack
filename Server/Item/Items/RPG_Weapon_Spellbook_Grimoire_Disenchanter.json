@@ -1,0 +1,75 @@
+{
+  "$Comment": "This pack's copy of the Disenchanter's Grimoire, the Disenchanting Tables' trophy chase (Lootables/DisenchantTrophy.json, this pack's luck-scaled copy of the jar's table). It shares its id with the RPG Stations jar item, so this file overrides that item wholesale through pack load order, which is why every field of the jar's file is restated here in the jar's order: a WORKING spellbook on the vanilla purple grimoire's model, texture, icon, animation set, casting interactions and mana costs, Rare, one per stack, no Parent and no Recipe. The only delta is two lines in Weapon.StatModifiers beside the jar's Disenchanting Proficiency: MMO_Luck_ENCHANTING 20 is plus 20 points of Enchanting luck and MMO_BonusXp_ENCHANTING 15 plus 15 percent Enchanting experience. The engine applies a held weapon's StatModifiers natively, so all three apply while the book is in hand, with nothing else installed for them; they sit in the Weapon block for that reason, never a Utility block. The luck feeds every luck-scored roll this pack ships at the tables except the chase for this book itself, since nobody holds it while chasing it. It stays the held member of the jar's disenchanter's kit set, and the tables still refuse it as input. The name and description reuse the jar's own items.RPG_Weapon_Spellbook_Grimoire_Disenchanter.* keys. Amounts are opening balance; keep them above Orrin's Grimoire if the find is to stay the better book.",
+  "TranslationProperties": {
+    "Name": "items.RPG_Weapon_Spellbook_Grimoire_Disenchanter.name",
+    "Description": "items.RPG_Weapon_Spellbook_Grimoire_Disenchanter.description"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Icon": "Icons/ItemsGenerated/Weapon_Spellbook_Grimoire_Purple.png",
+  "Quality": "Rare",
+  "ItemLevel": 40,
+  "Model": "Items/Weapons/Spellbook/Grimoire.blockymodel",
+  "Texture": "Items/Weapons/Spellbook/Grimoire_Purple_Texture.png",
+  "PlayerAnimationsId": "Spellbook",
+  "IconProperties": {
+    "Scale": 0.745,
+    "Translation": [-7.8, -7.8],
+    "Rotation": [45, 90, 0]
+  },
+  "Interactions": {
+    "Primary": "Spellbook_Primary",
+    "Secondary": "Spellbook_Primary"
+  },
+  "InteractionVars": {
+    "Spellbook_Cast_Hurl_Charged": {
+      "Interactions": [
+        {
+          "Parent": "Spellbook_Cast_Hurl_Charged",
+          "Costs": {
+            "Mana": 100
+          }
+        }
+      ]
+    },
+    "Spellbook_Cast_Hurl_Cost": {
+      "Interactions": [
+        {
+          "Parent": "Spellbook_Cast_Cost",
+          "StatModifiers": {
+            "Mana": -100
+          }
+        }
+      ]
+    },
+    "Spellbook_Cast_Hurl_Launch": "Spellbook_Cast_Launch",
+    "Spellbook_Cast_Hurl_Effect": "Spellbook_Cast_Effect",
+    "Spellbook_Cast_Hurl_Fail": "Spellbook_Cast_Fail",
+    "Block_Effect": "Block_Swing_Down_Effect",
+    "Block_Swing_Left_Damage": "Block_Swing_Left_Damage",
+    "Block_Swing_Right_Damage": "Block_Swing_Right_Damage",
+    "Block_Swing_Down_Damage": "Block_Swing_Down_Damage"
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "MaxStack": 1,
+  "Scale": 1.2,
+  "Tags": {
+    "Type": ["Weapon"],
+    "Family": ["Spellbook"]
+  },
+  "Weapon": {
+    "StatModifiers": {
+      "RPG_Disenchanting_Proficiency": [
+        { "Amount": 14, "CalculationType": "Additive", "Target": "Max" }
+      ],
+      "MMO_Luck_ENCHANTING": [
+        { "Amount": 20, "CalculationType": "Additive", "Target": "Max" }
+      ],
+      "MMO_BonusXp_ENCHANTING": [
+        { "Amount": 15, "CalculationType": "Additive", "Target": "Max" }
+      ]
+    }
+  },
+  "ItemSoundSetId": "ISS_Weapons_Books"
+}

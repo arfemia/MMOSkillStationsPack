@@ -1,0 +1,43 @@
+{
+  "$Comment": "Luck-weighted void finds, beside the jar's own Disenchant_Void (whose chances rise with the piece's level and ignore luck). Named by Extensions/DisenchantingProgression.json and rolled once per ritual at the Payout beat, at both tables. Both rolls are FINDS: no Expected leaf, so they land as gold rows, and each names the cue the jar's Disenchant action dresses.\n\nThe piece's level gates each roll and luck makes it likelier, never larger: a find is a yes or a no, so luck acts on the Chance and the grant stays one item. Luck here is whole points of Enchanting luck plus the global channel, a twentieth of a percent per point for the essence and a two-hundredth for the heart.\n\nTHE GUARDRAIL, checked at mithril, the gear whose recipes hold Void essence. Mithril gloves take 20 Void essence and salvage for 5. With every void roll at both tables firing on the same ritual (the jar's 1 to 2, the greater table's 1 and this file's 1) a pair still comes back with at most 9, and on average at full luck about 5.6, so unmaking never mints Void essence; the chest (80 in, 20 back) is further off still. A mithril weapon costs a Voidheart to forge, and the heart here starts at a fifth of a percent and stops at 0.8: with the jar's own 0.8 that is about one heart per hundred mithril weapons unmade at no luck and one per seventy at full luck, each of which cost a heart to make.\n\nEvery chance and gate is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Void essence: gear of item level 30 and up, 1 percent plus a twentieth per luck point, held under 6 percent.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 30 }
+      ],
+      "Chance": {
+        "Base": 1.0,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.05 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.05 }
+        ],
+        "Clamp": { "Max": 6.0 }
+      },
+      "Grants": {
+        "Items": [ { "Item": "Ingredient_Void_Essence", "Count": 1 } ]
+      },
+      "Cue": "Cue:Void_Find"
+    },
+    {
+      "$Comment": "The Voidheart: gear of item level 45 and up, a fifth of a percent plus a two-hundredth per luck point, held under 0.8 percent.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 45 }
+      ],
+      "Chance": {
+        "Base": 0.2,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.005 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.005 }
+        ],
+        "Clamp": { "Max": 0.8 }
+      },
+      "Grants": {
+        "Items": [ { "Item": "Ingredient_Voidheart", "Count": 1 } ]
+      },
+      "Cue": "Cue:Voidheart"
+    }
+  ]
+}

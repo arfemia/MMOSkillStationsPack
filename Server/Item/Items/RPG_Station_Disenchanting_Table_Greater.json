@@ -1,0 +1,91 @@
+{
+  "$Comment": "This pack's copy of the Greater Disenchanting Table block. It shares its id with the RPG Stations jar item, so this file overrides that ITEM wholesale through pack load order (the station itself, Stations/Disenchanting_Table_Greater.json, stays the jar's; this pack adds to its action through Extensions/DisenchantingGreaterProgression.json). A same-id copy replaces the whole item, which is why every field of the jar's file is restated here in the jar's order. Two things differ, on purpose: there is no Recipe (the jar's is an upgrade of the lesser table at the Arcane bench), so with this pack installed Enchanter Orrin's questline is the only way to get one; and Tags.Family reads MMOSkillTree rather than RpgStations, the same as this pack's Sawmill block. The model is the vanilla Arcane table's, two blocks wide, with its lit texture and idle animation on the Working and Drawing states the ritual flips; every state name a station or a step names must exist here, so keep all four if you copy this file. The name, description and hints reuse the jar's own items.RPG_Station_Disenchanting_Table_Greater.* keys.",
+  "TranslationProperties": {
+    "Name": "items.RPG_Station_Disenchanting_Table_Greater.name",
+    "Description": "items.RPG_Station_Disenchanting_Table_Greater.description"
+  },
+  "PlayerAnimationsId": "Block",
+  "Categories": ["Furniture.Furniture"],
+  "Icon": "Icons/ItemsGenerated/Bench_Arcane.png",
+  "IconProperties": {
+    "Scale": 0.35,
+    "Rotation": [22.5, 45.0, 22.5],
+    "Translation": [11.4, -18.6]
+  },
+  "MaxStack": 1,
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "BlockType": {
+    "BlockParticleSetId": "Wood",
+    "ParticleColor": "#6e4a2f",
+    "BlockSoundSetId": "Stone",
+    "PhysicalMaterialId": "Stone",
+    "CustomModel": "Blocks/Benches/ArcaneTable.blockymodel",
+    "CustomModelTexture": [
+      { "Texture": "Blocks/Benches/ArcaneTable_Texture.png", "Weight": 1 }
+    ],
+    "DrawType": "Model",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "Gathering": {
+      "Breaking": { "GatherType": "Benches" }
+    },
+    "HitboxType": "Bench_Alchemy",
+    "Support": {
+      "Down": [ { "FaceType": "Full" } ]
+    },
+    "VariantRotation": "NESW",
+    "TextureComputedColor": "#4A3728",
+    "InteractionHint": "items.RPG_Station_Disenchanting_Table_Greater.hint.empty",
+    "Interactions": {
+      "Use": "RPG_Station_Disenchanting_Table_Greater_Use"
+    },
+    "State": {
+      "Definitions": {
+        "Default": {
+          "InteractionHint": "items.RPG_Station_Disenchanting_Table_Greater.hint.empty"
+        },
+        "Loaded": {
+          "InteractionHint": "items.RPG_Station_Disenchanting_Table_Greater.hint.loaded"
+        },
+        "Working": {
+          "InteractionHint": "items.RPG_Station_Disenchanting_Table_Greater.hint.working",
+          "Looping": true,
+          "Light": { "Color": "#96c" },
+          "CustomModelTexture": [
+            { "Texture": "Blocks/Benches/ArcaneTable_Texture_On.png", "Weight": 1 }
+          ],
+          "CustomModelAnimation": "Blocks/Benches/ArcaneTable_Idle.blockyanim",
+          "AmbientSoundEventId": "RPG_SFX_Disenchant_Hum",
+          "Particles": [
+            { "SystemId": "Block_Gem_Sparks", "TargetNodeName": "Gem", "Color": "#7fe0d8", "Scale": 0.6 },
+            { "SystemId": "Candle_Fire", "TargetNodeName": "Flame", "Scale": 0.5 },
+            { "SystemId": "Block_Top_Glow", "TargetNodeName": "Plate", "Scale": 0.8 }
+          ]
+        },
+        "Drawing": {
+          "InteractionHint": "items.RPG_Station_Disenchanting_Table_Greater.hint.working",
+          "Looping": true,
+          "Light": { "Color": "#b7f" },
+          "CustomModelTexture": [
+            { "Texture": "Blocks/Benches/ArcaneTable_Texture_On.png", "Weight": 1 }
+          ],
+          "CustomModelAnimation": "Blocks/Benches/ArcaneTable_Idle.blockyanim",
+          "AmbientSoundEventId": "RPG_SFX_Disenchant_Hum",
+          "Particles": [
+            { "SystemId": "Block_Gem_Sparks", "TargetNodeName": "Gem", "Color": "#c85dff", "Scale": 0.9 },
+            { "SystemId": "Candle_Fire", "TargetNodeName": "Flame", "Scale": 0.5 },
+            { "SystemId": "Corrupted_Bubbles", "TargetNodeName": "Plate", "Scale": 0.7 }
+          ]
+        }
+      }
+    }
+  },
+  "Tags": {
+    "Type": ["Furniture"],
+    "Family": ["MMOSkillTree"]
+  },
+  "ItemSoundSetId": "ISS_Blocks_Wood"
+}

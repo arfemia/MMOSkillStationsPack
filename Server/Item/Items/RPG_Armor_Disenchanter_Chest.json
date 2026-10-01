@@ -1,0 +1,46 @@
+{
+  "$Comment": "This pack's copy of the robe of the disenchanter's kit. It shares its id with the RPG Stations jar item, so this file overrides that item wholesale through pack load order, which is why every field of the jar's file is restated here in the jar's order; the only delta is two lines in Armor.StatModifiers, beside the jar's Health, Mana and Disenchanting Proficiency. MMO_Luck_ENCHANTING 12 is plus 12 points of Enchanting luck while worn, which feeds every luck-scored roll this pack ships at the Disenchanting Tables (more Life essence, the salvage extras, the void finds, the grimoire chase and the kit itself, so each piece found makes the next likelier); MMO_BonusXp_ENCHANTING 6 is plus 6 percent Enchanting experience. The engine applies both natively while the piece is worn, exactly as it applies the Health line; percent-family MMO stats author their PERCENT as the Amount, and both are Additive because these channels carry a base of zero, so a Multiplicative-only entry would compute nothing. The jar's set file (ZiggfreedCommon/GearSets/RPG_Disenchanters_Kit.json) still carries the set tiers and the look, so this pack ships no set file of its own. Family Disenchanter keeps the piece off the tables as input. The name and description reuse the jar's own items.RPG_Armor_Disenchanter_Chest.* keys. All amounts are opening balance.",
+  "TranslationProperties": {
+    "Name": "items.RPG_Armor_Disenchanter_Chest.name",
+    "Description": "items.RPG_Armor_Disenchanter_Chest.description"
+  },
+  "Categories": ["Items.Armors"],
+  "Quality": "Uncommon",
+  "ItemLevel": 35,
+  "PlayerAnimationsId": "Block",
+  "ItemSoundSetId": "ISS_Armor_Cloth",
+  "Icon": "Icons/ItemsGenerated/Armor_Cloth_Silk_Chest.png",
+  "IconProperties": {
+    "Rotation": [9, 47.3, 5.6],
+    "Scale": 0.425,
+    "Translation": [-4.2, -30.6]
+  },
+  "Model": "Items/Armors/Silk/Chest.blockymodel",
+  "Texture": "Items/Armors/Silk/Chest_Texture.png",
+  "Interactions": {
+    "Primary": { "Interactions": [ { "Type": "EquipItem" } ] },
+    "Secondary": { "Interactions": [ { "Type": "EquipItem" } ] }
+  },
+  "Armor": {
+    "ArmorSlot": "Chest",
+    "BaseDamageResistance": 0,
+    "CosmeticsToHide": ["Overtop"],
+    "StatModifiers": {
+      "Health": [ { "Amount": 17, "CalculationType": "Additive" } ],
+      "Mana": [ { "Amount": 22, "CalculationType": "Additive" } ],
+      "RPG_Disenchanting_Proficiency": [ { "Amount": 12, "CalculationType": "Additive" } ],
+      "MMO_Luck_ENCHANTING": [ { "Amount": 12, "CalculationType": "Additive" } ],
+      "MMO_BonusXp_ENCHANTING": [ { "Amount": 6, "CalculationType": "Additive" } ]
+    },
+    "DamageResistance": {
+      "Physical": [ { "Amount": 0.09, "CalculationType": "Percent" } ],
+      "Projectile": [ { "Amount": 0.09, "CalculationType": "Percent" } ]
+    }
+  },
+  "MaxDurability": 120,
+  "DurabilityLossOnHit": 0.5,
+  "Tags": {
+    "Type": ["Armor"],
+    "Family": ["Disenchanter"]
+  }
+}
