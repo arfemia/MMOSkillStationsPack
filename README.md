@@ -4,7 +4,11 @@ A standalone Hytale content pack that ships the **interactive work stations** co
 **Sawmill**, a diegetic third-person work loop (press use and your character visibly saws, logs
 turning into planks one cycle at a time) that grants passive Woodcutting + Crafting XP, scaled by
 the held hatchet's power, and **Sawyer Marn**, the character in the Forgotten Temple who hands the
-mill out and has work for whoever can feed one.
+mill out and has work for whoever can feed one. Since 1.1.0 (held) it also carries the MMO layer of
+the **Disenchanting Table** and the **Greater Disenchanting Table** (a long staged ritual unmakes
+one piece of gear, three queued at the greater table, for Enchanting + Crafting XP, Life Essence
+and luck-weighted finds) and **Enchanter Orrin**, the turned Outlander priest who hands both tables
+out.
 
 The MMO progression layered on top comes in these parts:
 
@@ -37,6 +41,34 @@ The MMO progression layered on top comes in these parts:
 - **Seven bounty contracts** on the shared bounty board (two on the two-hour board, four daily, one
   weekly), self-contained so they load with nothing installed but this pack, RPG Stations and MMO
   Skill Tree, and posted only while the `stations` feature is on.
+- **The woodcutter's kit is a gear set** (1.1.0): the four leather pieces plus any one of the three
+  hatchets. Two pieces on add a little Woodcutting luck and XP, all four worn add more plus
+  Crafting XP and a gold-spark look, and all four with a hatchet in hand add the most; the tiers
+  stack, and the Novice Cap is not a member.
+
+At the Disenchanting Tables (1.1.0, held):
+
+- **Enchanting XP for unmaking gear**: 30 Enchanting and 15 Crafting XP per piece, scaled by the
+  piece (item level, quality, wear and stamped enhancement) from 1x for crude gear to 2x for
+  mithril and 2.5x for enhanced mithril. The first Enchanting XP source that needs no enchanting
+  mod.
+- **A trained enchanter works faster**: the Enchanting level shortens the ritual on top of the
+  table's own Disenchanting Proficiency, from 38 seconds untrained down to 15 (about 26 seconds at
+  level 100 alone, the 15-second floor with the full kit on and the Disenchanter's Grimoire in
+  hand).
+- **Luck sizes the extra Life Essence** (up to 1 more for crude gear, 2 for iron, 3 for cobalt to
+  adamantite, 4 for mithril), and the Enchanting level and luck each pay a chance of a little
+  more of the salvage, never a whole extra unit.
+- **Luck makes the finds likelier**: Void Essence from item level 30, the Voidheart from 45, the
+  four-piece disenchanter's kit and the Disenchanter's Grimoire. The kit pieces (36 Enchanting luck
+  and 18% Enchanting XP across the four) and the grimoire (20 luck, 15% XP while held) grant
+  Enchanting luck themselves.
+- **Enchanter Orrin's work**: eighteen quests (an introduction Sawyer Marn offers, an eight-rung
+  unmaking chain that hands over both tables, a side branch paying a second lesser table, Orrin's
+  own four-rung chain ending in **Orrin's Grimoire**, a crossover carrying iron to Marn, a daily, a
+  three-hourly order and a weekly), thirty-two achievements in a Disenchanting subcategory, nine
+  bounty contracts, and the **Disenchanter's Halo** flair. With this pack installed neither table
+  can be crafted: the questline hands them out.
 
 Also the **Anvil**, a two-action station that sharpens vanilla metal bars (Convert) or runs a
 hammering ritual that rolls stats onto a placed weapon (Enhance), granting Smithing XP. The Anvil
@@ -51,9 +83,13 @@ carries the SAME id (`RPG_Station_Sawmill`) as RPG Stations' own jar-default blo
 it via pack load order (deliberately dropping the jar copy's crafting recipe - the bench is earned
 through this pack's Timber Rights quest instead); the sawmill `StationAsset` itself stays the
 jar's own, and this pack composes progression onto its `Mill` action additively through
-`Server/RpgStations/Extensions/SawmillProgression.json`. RPG Stations also fires the two station
-objective kinds the quests and achievements here count (`WORK_STATION`, one per real cycle, and
-`STATION_OUTPUT`, one per stack the mill hands you) into the shared progression runtime itself. The
+`Server/RpgStations/Extensions/SawmillProgression.json`. The Disenchanting Tables follow the same
+split: the two table blocks are same-id copies with no recipe, the stations and their actions stay
+the jar's, and `Extensions/DisenchantingProgression.json` (plus its greater-table child) adds the
+progression. RPG Stations also fires the three station objective kinds the quests and achievements
+here count (`WORK_STATION`, one per real cycle, `STATION_OUTPUT`, one per stack a station hands
+you, and `STATION_INPUT`, one per piece a station consumes) into the shared progression runtime
+itself. The
 MMO Skill Tree bridge (a soft extension the MMO registers when it detects RPG Stations, no hard
 coupling either direction) turns the work loop into skill XP, aggregated luck
 (`mmoskilltree:station_luck`), mastery bonuses, and (for the Anvil's Enhance ritual) rolled item
@@ -97,11 +133,25 @@ bonus) but grant no skill XP and roll no item stats.
 | `unreleased/Server/Emote/MMO_Emote_Hammer.json` | HELD BACK: the Anvil ritual's hammering emote |
 | `unreleased/Server/RpgStations/Extensions/CookingProgression.json` + `MMOSkillTree/CustomSkills/Cooking.json` | HELD BACK: the Cooking progression layer (targets a station held back on the RPG Stations jar side, so the two repos restore together) |
 | `unreleased/Server/MMOSkillTree/CustomSkills/Smithing.json` | HELD BACK: the SMITHING skill itself (a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures) |
-| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, the sharpened-bar item names (`RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*`, held-back content's keys deliberately stay shipped), and the name/description of every item this pack ships outright: the Millwright's Hatchet, Marn's Hatchet, the woodcutter's kit and its Novice Cap |
-| `Server/Languages/<locale>/npcs.lang` | Sawyer Marn's nameplate (`Mmo_Sawyer.name`, Hytale's own `npcs` namespace) |
+| `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, a pace ladder over the Enchanting level, and the three add-on tables below. The greater file is a `Parent` child that changes only its target |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json` | Extra Life Essence sized by luck within the piece's band, the occasional extra unit of salvage, and the luck-weighted Void Essence and Voidheart finds |
+| `Server/ZiggfreedCommon/Lootables/Disenchant_Kit.json`, `DisenchantTrophy.json` | Same-id replacements of RPG Stations' own kit and grimoire tables, luck-weighted |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Enchanter_Rites.json`, `Mmo_Enchanter_Threads.json` | What Orrin's daily and three-hourly order pay when you collect them |
+| `Server/Item/Items/RPG_Station_Disenchanting_Table.json`, `RPG_Station_Disenchanting_Table_Greater.json` | The two table blocks (SHARED ids with RPG Stations' own, overridden wholesale with no crafting recipe, so the questline hands them out) |
+| `Server/Item/Items/RPG_Armor_Disenchanter_{Head,Chest,Hands,Legs}.json`, `RPG_Weapon_Spellbook_Grimoire_Disenchanter.json` | The disenchanter's kit and the Disenchanter's Grimoire (SHARED ids with RPG Stations' own), each adding Enchanting luck and Enchanting XP to the jar item |
+| `Server/Item/Items/MMO_Weapon_Spellbook_Grimoire_Orrin.json` | Orrin's Grimoire, the Uncommon spellbook his own questline ends with |
+| `Server/RpgStations/ProtectLists/Mmo_Disenchanting_Tables_Earned.json` | Keeps Orrin's Grimoire off both tables, beside RPG Stations' own list |
+| `Server/NPC/Roles/Passive/Mmo_Enchanter.json`, `Server/ZiggfreedCommon/NpcPlacements/Mmo_Enchanter_Temple.json`, `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Enchanter.json` | Enchanter Orrin: an Outlander priest with a grimoire in hand, where he stands in the Forgotten Temple, and his conversation (44 screens) |
+| `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Disenchanting/*.json` | Orrin's eighteen quests |
+| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/Disenchanting/*.json` | Thirty-two achievements in the Stations category's Disenchanting subcategory |
+| `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/Bounty_*.json` | Nine bounty contracts for the tables beside the seven for the mill (two on the two-hour board, five daily, two weekly) |
+| `Server/RpgStations/Flairs/Disenchanter.json` | The Disenchanter's Halo, on every find and both tables' unmaking beat |
+| `Server/ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json`, `Server/Entity/Effects/MMOSkillStationsPack/Woodcutters_Kit_Set.json` | The woodcutter's kit as a gear set (three stacking tiers) and its gold-spark look |
+| `Server/Languages/<locale>/items.lang` | Block name/description/state-dependent interaction hints, the sharpened-bar item names (`RPG_Station_Anvil.*` / `MMO_Sharpened_<Metal>_Bar.*`, held-back content's keys deliberately stay shipped), and the name/description of every item this pack ships outright: the Millwright's Hatchet, Marn's Hatchet, the woodcutter's kit (each of the four descriptions names the Woodcutter's Kit set), its Novice Cap and Orrin's Grimoire |
+| `Server/Languages/<locale>/npcs.lang` | Sawyer Marn's and Enchanter Orrin's nameplates (`Mmo_Sawyer.name`, `Mmo_Enchanter.name`, Hytale's own `npcs` namespace) |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The hammer emote's display name (Hytale's own `avatarCustomization` namespace) |
 | `Server/Languages/<locale>/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
-| `Server/Languages/<locale>/mmoskilltree.lang` | Every quest and bounty title and flavor line, the "Mill N pieces of lumber" step line, every achievement title, description and announcement, the Stations category title, the Sawmiller's Crown name and every line of Marn's conversation, plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
+| `Server/Languages/<locale>/mmoskilltree.lang` | Every quest and bounty title and flavor line (Orrin's questline included), the "Mill N pieces of lumber" and unmaking step lines, every achievement title, description and announcement, the Stations category and its Disenchanting subcategory titles, the Sawmiller's Crown and Disenchanter's Halo names, every line of Marn's and Orrin's conversations, the Woodcutter's Kit set title and tier lines (`gearset.woodcutters_kit.*`), plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
 
 All 9 shipped locales are key-complete, held-back content included (an unreferenced lang key is
 invisible at runtime, so the keys stay shipped rather than risking translation work). The
@@ -151,9 +201,10 @@ A station is pure JSON, no plugin code:
    own `Sawmill.json` `Mill` action's `Bonus` block for the shape (a tool-quality ladder, plus this
    pack's own `mmoskilltree`-luck ladders layered on top via `Extensions/SawmillProgression.json`).
 5. **Quests and achievements for it (optional)**: a `WORK_STATION` step counts real cycles at a
-   station (target = the station id), a `STATION_OUTPUT` step counts what it hands over (target =
-   the item id, `Qualifier` = the station id to count that station alone). Both kinds are RPG
-   Stations' own, so a pack ships nothing to make them count; this pack's
+   station (target = the station id), a `STATION_OUTPUT` step counts what it hands over and a
+   `STATION_INPUT` step what it consumes (target = the item id, `Qualifier` = the station id to
+   count that station alone; `QualifierMatchMode PREFIX` with `Disenchanting_Table` counts both
+   tables). All three kinds are RPG Stations' own, so a pack ships nothing to make them count; this pack's
    `Quests/MMOSkillTree/Stations/` and `Achievements/MMOSkillTree/Stations/` folders are the worked
    example.
 
@@ -165,4 +216,5 @@ Stations' `rpgstations.station.<id>.name`/`.desc` convention keys directly, as t
 
 ## Requires
 
-RPG Stations 1.0.0 or newer, and MMO Skill Tree 1.6.1 or newer (for the skill-XP + luck bridge).
+RPG Stations 1.1.0 or newer, ZiggfreedCommon 2.2.0 or newer (the gear-set store), and MMO Skill
+Tree 1.7.0 or newer (for the skill-XP + luck bridge and the `STATION_INPUT` quests).

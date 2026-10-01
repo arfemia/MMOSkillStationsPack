@@ -1,10 +1,10 @@
 # MMO Skill Stations Pack
 
-**Working the sawmill levels you up.**
+**Milling logs and unmaking gear level you up.**
 
-RPG Stations gives you a sawmill you can place and work by hand. This pack wires it into [MMO Skill Tree](https://www.curseforge.com/hytale/mods/mmo-skill-tree), so every log you mill pays Woodcutting and Crafting XP, and what falls out of the bench depends on how far you have come. It also puts a sawyer in the Forgotten Temple with work for you.
+RPG Stations gives you a sawmill and two disenchanting tables you can place and work by hand. This pack wires them into [MMO Skill Tree](https://www.curseforge.com/hytale/mods/mmo-skill-tree), so every log you mill pays Woodcutting and Crafting XP and every piece of gear you unmake pays Enchanting and Crafting XP. What falls out depends on how far you have come. It also puts a sawyer and an enchanter in the Forgotten Temple with work for you.
 
-You need both mods installed. This pack is just the content between them.
+You need both mods installed, RPG Stations 1.1.0 and MMO Skill Tree 1.7.0, plus ZiggfreedCommon 2.2.0 or newer. This pack is just the content between them.
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/5NFdZsUxHZ) [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/ziggfreed) [![Documentation](https://img.shields.io/badge/Docs-Read%20More-0ea5e9?style=for-the-badge)](https://mmo-skill-tree-docs.ziggfreed.com)
 
@@ -23,9 +23,13 @@ You need both mods installed. This pack is just the content between them.
 - A real chase for the Sawmiller's Hatchet. Around 1 in 3000 cycles with nothing invested, down to about 1 in 762 once your Woodcutting tree is finished. Luck is what shortens it.
 - Once you have that hatchet: +10 maximum stamina, +25% Woodcutting XP and +25 Woodcutting luck while held. It also opens a bonus roll nothing else in the game can reach, paying double offcuts and the occasional Woodcutting XP boost. Its own luck bonus feeds the roll it unlocks.
 - Sawyer Marn, in the Forgotten Temple, with twelve quests (a daily and a short-cycle repeatable among them) and twenty-six achievements about the mill. Details below.
+- **XP for unmaking gear.** Every piece you break down at a Disenchanting Table pays 30 Enchanting XP and 15 Crafting XP, and better gear pays more: double for mithril. Enchanting gets an XP source that needs no enchanting mod.
+- A trained enchanter works faster. A ritual takes 38 seconds untrained. Your Enchanting level cuts that down, and with the full kit on and the Disenchanter's Grimoire in hand it gets to 15.
+- Luck sizes the extra Life Essence each piece gives up. It also makes Void Essence, the Voidheart, the four-piece disenchanter's kit and the Disenchanter's Grimoire turn up more often, and the kit and the grimoire grant Enchanting luck themselves.
+- Enchanter Orrin, an Outlander priest who left the cult, with eighteen quests and thirty-two achievements about the tables. He hands out both of them, and his own grimoire at the end of his story.
 - A second hatchet, the Millwright's, for anyone the trophy never drops for. Mill ten million pieces and it is yours. Cuts the same, wears the same, every bonus a notch smaller.
-- A third hatchet, Marn's own, the end of a short questline once you have proven yourself at the mill. A four-piece woodcutter's kit too, earned a piece at a time from Marn's standing trim order.
-- Seven bounty contracts on the shared bounty board, once you have that installed.
+- A third hatchet, Marn's own, the end of a short questline once you have proven yourself at the mill. A four-piece woodcutter's kit too, earned a piece at a time from Marn's standing trim order. Worn together it is a set: all four give off gold sparks and a bit more Woodcutting luck, and any of the three hatchets in hand on top adds the most.
+- Sixteen bounty contracts on the shared bounty board, once you have that installed: seven for the mill, nine for the tables.
 - Translated into 9 languages. Anything a translation misses falls back to English.
 
 ## Sawyer Marn
@@ -42,14 +46,21 @@ Twenty-six achievements sit under a Stations category of their own. Ladders for 
 
 Pull that hatchet out of a mill and the Sawmiller achievement pays the Sawmiller's Crown. Gold crown particles over every rare find and every finished session at the bench, for as long as you play there. Cosmetic only, and yours for good.
 
+## Enchanter Orrin
+
+Orrin stands in the Forgotten Temple too, a grimoire in his hand, formal to a fault. He was a priest of the Outlanders' cult until he walked out, and now he draws the void back out of gear at a table. Ask Marn about the priest in the corner and he sends you over. Bring Orrin iron bars and Life Essence and he builds you a Disenchanting Table. With this pack installed neither table can be crafted, so he is where they come from. His next jobs have you work it properly (the later ones want some Enchanting behind you), and the last one hands over the Greater Disenchanting Table: three pieces at once, and it pays more.
+
+His own story is about why he left the cult. It ends with forty pieces unmade at the greater table and a Voidheart from wherever you can find one, and pays Orrin's Grimoire, a working spellbook that speeds the ritual up and gives Enchanting luck while you hold it. Neither table will take it. He keeps three repeatable jobs going, one with its own roll for the disenchanter's kit, and a favour for Marn: unmake a few iron hatchets and carry the ore to the mill. Thirty-two achievements go with his work. Two hidden ones wait on the Disenchanter's Grimoire: one is a server first, and the other pays the Disenchanter's Halo, a gold crown over every find at either table, with sparks and green motes as each piece comes apart.
+
 ## How it works
 
 1. Install RPG Stations, MMO Skill Tree, and this pack.
-2. Reach the Forgotten Temple and find Sawyer Marn. Chop timber, cut planks on a hand bench, deliver him a share, and collect the Sawmill itself plus Woodcutting XP from your quest log. Or have an admin give you one. Place it. (With this pack installed the bench is quest-earned, not crafted: the pack's copy of the block removes the standalone crafting recipe on purpose.)
+2. Reach the Forgotten Temple and find Sawyer Marn. Chop timber, cut planks on a hand bench, deliver him a share, and collect the Sawmill itself plus Woodcutting XP from your quest log. Or have an admin give you one. Place it. (With this pack installed the bench has no crafting recipe, so Marn is where it comes from.)
 3. Hold logs, press F to load up to 100 into the bench.
 4. Press F again holding a hatchet. Your character mills the pile one cycle at a time while you watch. Crouch as you press F to pick which cut you want from the log in the bench.
 5. Walk off, take a hit, or run the pile dry and the session ends with a summary. Anything still in the bench comes back to you.
 6. Go back to Marn. Every job hands in to him, and each one he settles opens the next.
+7. Later, get a Disenchanting Table from Orrin and place it. Hold a piece of gear and press F to set it on the table, then F again to start. Watch the ritual: when the piece comes apart you get back what the Salvager's Workbench would, plus Life Essence and sometimes a find. The greater table takes three, one after another.
 
 ## What decides your rewards
 
@@ -63,6 +74,11 @@ Pull that hatchet out of a mill and the Sawmiller achievement pays the Sawmiller
 | Woodcutting 30 | Opens the top three find tiers |
 | Holding the Sawmiller's Hatchet | Opens a bonus roll only it can reach, plus luck and XP on top |
 | Woodcutting level + luck together | What Standing Order and Trim Work pay |
+| The piece you unmake | The XP it pays and how much extra essence is on offer. Only good gear gives up void |
+| Enchanting + global luck | Extra Life Essence, the void finds, the kit pieces and the grimoire |
+| Enchanting level | How fast a ritual runs, and the odd extra salvage |
+| A grimoire in hand | A faster ritual, plus Enchanting luck and XP |
+| The woodcutter's kit worn as a set | More Woodcutting luck and XP, more again with a hatchet in hand |
 
 ## For server owners
 
@@ -76,9 +92,23 @@ All of it is content in the zip. Nothing here needs a code change to retune:
 - Marn's quests and what they pay: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`. Standing Order's whole payout is one table, `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json`; Trim Work's is four, one concern each, alongside it: `Mmo_Sawmill_Trim_Pay.json`, `_Trim_Supply.json`, `_Trim_Finds.json` and `Mmo_Woodcutters_Kit.json`.
 - The achievements and their points: `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`
 - The bounty contracts and their pay: `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/`
-- Take Marn out without editing the pack: set his placement to `"Enabled": false` in `mods/ziggfreedcommon/npc-placements.json`. His quests hide with the stations feature, so nothing dangles if RPG Stations is switched off.
+- The disenchanting tables' XP and how much the Enchanting level speeds a ritual: `Server/RpgStations/Extensions/` (the greater table follows the lesser one). Their extra essence and salvage, the void finds and the kit and grimoire odds: `Server/ZiggfreedCommon/Lootables/`
+- Orrin's quests: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Disenchanting/`. The woodcutter's kit set and its tiers: `Server/ZiggfreedCommon/GearSets/`
+- Take Marn or Orrin out without editing the pack: set the placement to `"Enabled": false` in `mods/ziggfreedcommon/npc-placements.json`. Their quests hide with the stations feature, so nothing dangles if RPG Stations is switched off.
 
-Without MMO Skill Tree the sawmill still runs and still pays its own finds, it just grants no skill XP; this pack itself, Marn included, needs both mods installed to load at all. Without RPG Stations there are no stations at all.
+Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and still pay their own finds, they just grant no skill XP, and the tables go back to being crafted; this pack itself, Marn and Orrin included, needs both mods installed to load at all. Without RPG Stations there are no stations at all.
+
+## Versions
+
+### [Full Changelog](https://github.com/arfemia/MMOSkillStationsPack/blob/main/CHANGELOG.md)
+
+### v1.1.0 (unreleased, held)
+
+The Disenchanting Table and the Greater Disenchanting Table, with Enchanting and Crafting XP for every piece unmade and luck-weighted essence and finds. Enchanter Orrin and his eighteen quests, thirty-two achievements, nine bounties, the Disenchanter's Halo and Orrin's Grimoire. The woodcutter's kit becomes a set. Needs RPG Stations 1.1.0 and MMO Skill Tree 1.7.0, plus ZiggfreedCommon 2.2.0.
+
+### v1.0.0
+
+First release: the Sawmill, Sawyer Marn and his work.
 
 ## Links
 
