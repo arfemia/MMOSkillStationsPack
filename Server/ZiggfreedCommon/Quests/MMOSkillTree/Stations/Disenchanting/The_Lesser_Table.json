@@ -1,0 +1,105 @@
+{
+  "$Comment": [
+    "The quest that hands a player the Disenchanting Table: bring Enchanter Orrin the makings and",
+    "he builds it. It opens once the introduction to him is claimed, so his first real job is",
+    "offered to somebody who has already stood in front of him; that introduction in turn waits on",
+    "the sawyer's, because Orrin stands in the temple and nowhere else and a quest whose giver the",
+    "player cannot reach would sit parked and unpaid. It is the first rung of the disenchanting",
+    "chain, so the quest book lists its successors under it.",
+    "",
+    "The two deliveries are the iron and the Life essence the table's own recipe asks for (the wood",
+    "and stone Orrin has to hand), so a player who has read that recipe knows why the counts are",
+    "what they are. Both sit on Order 1 and hand in to Orrin only (TurnInNpcId 'giver'), so they",
+    "can be brought in either order. The reward sits in the Claim bucket, so the table and the",
+    "Enchanting XP wait in the quest log once both are delivered, until the player collects them.",
+    "CompletionDialogue names Orrin's conversation, so settling it at him plays his next line, which",
+    "is where he offers the next job.",
+    "",
+    "With this pack installed the table is never crafted: the pack ships the block with no Recipe,",
+    "so this quest (and A Second Table after it) is where a table comes from. Requires.Factors",
+    "carries the stations feature, which is on when RPG Stations is installed and enabled; with it",
+    "off this quest does not exist, and neither does Orrin. AutoAccept is off deliberately: an",
+    "optional beat off the main tutorial branch, offered from Orrin's own lines.",
+    "",
+    "To retune the ask, edit the two Amounts; to change the payout, edit Rewards. The table itself",
+    "is the first entry, so replacing or removing it changes what this quest is actually for."
+  ],
+  "Name": "The_Lesser_Table",
+  "Text": {
+    "TitleKey": "quest.the_lesser_table.title",
+    "FlavorKey": "quest.the_lesser_table.flavor"
+  },
+  "Listing": {
+    "Icon": "RPG_Station_Disenchanting_Table",
+    "Category": "main",
+    "SortOrder": 31,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 1
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "meet_the_enchanter"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "bring_iron": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Bar_Iron",
+      "MatchMode": "EXACT",
+      "Amount": 6,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "bring_essence": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 12,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Station_Disenchanting_Table",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 500
+        }
+      }
+    ]
+  }
+}

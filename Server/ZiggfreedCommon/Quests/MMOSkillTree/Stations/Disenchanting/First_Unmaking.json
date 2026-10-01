@@ -1,0 +1,108 @@
+{
+  "$Comment": [
+    "Orrin's first job for a new table owner: place a piece of gear, run the ritual, bring back",
+    "the essence it drew. The two steps teach the loop in the order it happens.",
+    "",
+    "unmake_pieces counts pieces the table took apart (STATION_INPUT, the kind RPG Stations fires",
+    "the moment a station consumes a stack). Its Target is blank, which matches every item, so any",
+    "gear counts, and the step carries its own TextKey because the kind's default line names one",
+    "item and this step means 'any piece'. Qualifier 'Disenchanting_Table' with QualifierMatchMode",
+    "PREFIX counts BOTH tables (the greater table's station id starts with the lesser's), and",
+    "leaving the qualifier out would count the same item at the Sawmill too, so every disenchanting",
+    "count in this pack names it. The qualifier suffix is added to the line automatically, so the",
+    "key's text never says where. bring_essence is Order 2, a hand-in to Orrin only (TurnInNpcId",
+    "'giver'): the table pays Life essence for every piece, so one short session covers both.",
+    "",
+    "Rewards sit in Claim: a Disenchanter's Draught (the jar's potion, which hurries the ritual",
+    "along for a few minutes, so the player tastes a fast ritual before they can earn one), and XP",
+    "split the way the table pays it, Enchanting first and Crafting half. Retune the two Amounts",
+    "freely."
+  ],
+  "Name": "First_Unmaking",
+  "Text": {
+    "TitleKey": "quest.first_unmaking.title",
+    "FlavorKey": "quest.first_unmaking.flavor"
+  },
+  "Listing": {
+    "Icon": "RPG_Potion_Disenchanters_Draught",
+    "Category": "main",
+    "SortOrder": 32,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 2
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "the_lesser_table"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "unmake_pieces": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    },
+    "bring_essence": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 3,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Potion_Disenchanters_Draught",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 400
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 200
+        }
+      }
+    ]
+  }
+}

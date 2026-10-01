@@ -1,0 +1,99 @@
+{
+  "$Comment": [
+    "The second rung of Orrin's Vow: Void essence, found at the table and brought to him. The",
+    "tables find void in good gear (iron grade and up, the odds rising with the piece's level), so",
+    "this rung asks the player to feed the table something better than crude blades.",
+    "",
+    "draw_void counts Void essence the tables hand over (STATION_OUTPUT, exact id, qualified to",
+    "'Disenchanting_Table' on PREFIX so both tiers count); deliver_void is Order 2, an exact-id",
+    "hand-in to Orrin only (TurnInNpcId 'giver'). Requires carries an Enchanting level gate beside",
+    "the stations feature, one step on the questline's own level curve. Rewards sit in Claim:",
+    "Enchanting XP and a personal Enchanting boost token. The Chains entry files it as tier 2 of",
+    "orrins_vow. Retune the two Amounts together; the find rate is in the void table, not here."
+  ],
+  "Name": "A_Thread_Of_Void",
+  "Text": {
+    "TitleKey": "quest.a_thread_of_void.title",
+    "FlavorKey": "quest.a_thread_of_void.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Void_Essence",
+    "Category": "main",
+    "SortOrder": 41,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "orrins_vow",
+        "Tier": 2
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "shadoweave"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      },
+      {
+        "Factor": "hytale:stat",
+        "Param": "MMO_Level_ENCHANTING",
+        "Min": 12
+      }
+    ]
+  },
+  "Objectives": {
+    "draw_void": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Void_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 5,
+      "Order": 1
+    },
+    "deliver_void": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Void_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 3,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 2500
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 45
+        }
+      }
+    ]
+  }
+}

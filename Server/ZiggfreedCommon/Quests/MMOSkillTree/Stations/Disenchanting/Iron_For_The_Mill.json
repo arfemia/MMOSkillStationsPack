@@ -1,0 +1,98 @@
+{
+  "$Comment": [
+    "The crossover between the two characters: Orrin asks for worn iron hatchets to be unmade at",
+    "the table, and the iron they give back carried across the landing to Sawyer Marn, who is",
+    "forever short of it.",
+    "",
+    "Npc.ViewId names Orrin, so he is who OFFERS it; there is no TurnInId, because the quest does",
+    "not end at him. unmake_hatchets counts iron hatchets the tables took apart ('Tool_Hatchet_Iron'",
+    "on EXACT, since only the iron grade's salvage returns iron ore, qualified to",
+    "'Disenchanting_Table' on PREFIX so both tiers count, with its own TextKey so the objective",
+    "reads as the errand rather than the kind's generic line). carry_iron is Order 2, an exact-id hand-in of iron",
+    "ore whose TurnInNpcId names the SAWYER's role id rather than 'giver', so the ore can only be",
+    "delivered to Marn: an iron hatchet's salvage return is two iron ore, so three iron hatchets",
+    "fill the count. Keep the two Amounts in step if either changes. TurnInAt names Marn as well, so the",
+    "reward is collected from his quest list, and CompletionDialogue names his conversation, so",
+    "settling it plays his next line. Marn's own footer already carries a hand-in line for anything",
+    "ready at him, so his conversation needs no row of its own for this quest.",
+    "",
+    "Requires names both characters' first jobs (a table to unmake at, a mill to carry to) beside",
+    "the stations feature. Rewards sit in Claim: Enchanting XP for the unmaking and Woodcutting XP",
+    "for the mill, split evenly, since the job belongs to both."
+  ],
+  "Name": "Iron_For_The_Mill",
+  "Text": {
+    "TitleKey": "quest.iron_for_the_mill.title",
+    "FlavorKey": "quest.iron_for_the_mill.flavor"
+  },
+  "Listing": {
+    "Icon": "Ore_Iron",
+    "Category": "main",
+    "SortOrder": 44,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter"
+  },
+  "TurnInAt": "Mmo_Sawyer",
+  "CompletionDialogue": "Mmo_Sawyer",
+  "Requires": {
+    "Quests": [
+      "first_unmaking",
+      "timber_rights"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "unmake_hatchets": {
+      "Kind": "STATION_INPUT",
+      "Target": "Tool_Hatchet_Iron",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3,
+      "TextKey": "objective.text.stations.unmake_hatchets",
+      "Order": 1
+    },
+    "carry_iron": {
+      "Kind": "TURN_IN",
+      "Target": "Ore_Iron",
+      "MatchMode": "EXACT",
+      "Amount": 6,
+      "Order": 2,
+      "TurnInNpcId": "Mmo_Sawyer"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 1000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "WOODCUTTING",
+          "Amount": 1000
+        }
+      }
+    ]
+  }
+}

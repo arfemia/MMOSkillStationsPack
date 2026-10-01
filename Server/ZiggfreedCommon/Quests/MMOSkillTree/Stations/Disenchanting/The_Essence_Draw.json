@@ -1,0 +1,99 @@
+{
+  "$Comment": [
+    "The essence quest: Life essence is the table's ordinary wage, drawn out of every piece, and",
+    "this quest asks for it in numbers.",
+    "",
+    "draw_essence counts essence the tables hand over (STATION_OUTPUT, exact id, qualified to",
+    "'Disenchanting_Table' on PREFIX so both tiers count and the Sawmill, which also pays Life",
+    "essence, does not); deliver_essence is Order 2, an exact-id hand-in to Orrin. Requires carries",
+    "an Enchanting level gate beside the stations feature, one step on the chain's own level curve:",
+    "it sits below the level the Steady Hands rung asks for, so the two read as a climb rather than",
+    "a wall. Keep it under that figure if you retune either. Rewards: a personal Enchanting boost",
+    "token (the Mmo_Boost_Token kind: Skill, Multiplier, DurationMinutes) and XP."
+  ],
+  "Name": "The_Essence_Draw",
+  "Text": {
+    "TitleKey": "quest.the_essence_draw.title",
+    "FlavorKey": "quest.the_essence_draw.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Life_Essence",
+    "Category": "main",
+    "SortOrder": 34,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 4
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "three_kinds_of_gear"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      },
+      {
+        "Factor": "hytale:stat",
+        "Param": "MMO_Level_ENCHANTING",
+        "Min": 10
+      }
+    ]
+  },
+  "Objectives": {
+    "draw_essence": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 40,
+      "Order": 1
+    },
+    "deliver_essence": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 20,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 1500
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,993 @@
+{
+  "Name": "Mmo_Enchanter",
+  "$Comment": "Enchanter Orrin's conversation, the one file behind every line he says in the Forgotten Temple. He is an Outlander priest who walked away from the cult, and he speaks the way he was taught to: formally, and never with a contraction. HOW A BEAT IS PICKED. Start is declared in sections and the engine walks them in a fixed order: First (top to bottom), then a quest that is READY to hand in, then one this character can OFFER, then one that is ACTIVE, then Then (top to bottom), then Fallback. So write each beat where it belongs and the order takes care of itself. First holds the beats that outrank anything about quests: the two trophy beats, shown only while the player is holding the Disenchanter's Grimoire (a Factor condition on hytale:held_item, which answers 1 when the held item's id matches Param), and the first-meeting line, shown until the greeting has been spent, with the errand hail behind it for a player who was sent over by the sawyer after having already met him. Both of those lines carry MarkTalked, so the introduction quest is credited whichever one the player is shown. The two trophy beats also require the introduction quest to be anything other than ACTIVE, so a player who was greeted once but still owes it the talk credit (the errand-hail case) is never blocked from reaching that line by holding the grimoire; once the introduction is out of the way, the trophy beats resume outranking everything as normal. Quests holds one row per quest, keyed by quest id, saying which screen opens at each of that quest's three moments. Within one band the row order settles ties, so the disenchanting chain is written first, Orrin's Vow (the questline that pays his own grimoire) behind it, the sawyer's errand and the second table after that, and the three repeatables last: while a chain quest and a daily are both in play, Orrin talks about the chain. The errand that ends at the sawyer carries no Ready row, since it is handed in at him and not here; the three repeatables carry a Ready row only, since they are taken from the quest list rather than offered in conversation. Then holds the steady state, tried in the order written: the finished-questline line (the Voidheart claimed), the finished-chain line (the greater table owned), then the owns-a-table line. Fallback is the menu, the answer of last resort, so the player is never shown an empty conversation. ADDING A QUEST. Name Mmo_Enchanter as its giver (Npc.ViewId) and the footer's 'anything to unmake' line already reaches it, since that line opens this character's quest list. Add a Quests row when you want a bespoke screen for one of its moments; point a row at a SCREEN, never a bare true, which would route to the quest list with no line at all. THE OFFER SCREENS carry the accept line (the Accept shorthand takes the quest on, then Goto shows the next line) plus the short footer, so the player can still ask a question or walk away. THE READY SCREENS carry the hand-in line: TurnIn delivers whatever the quest asks for at this character, and the Open that follows lands the player on the quest list with that quest called out, which is where a Claim reward is collected. The line shows only while ReadyToTurnIn says it will actually go through. ready_generic is the shared version for quests that need no bespoke line, and active_generic the shared 'still working on it' screen; a row can point at either. THE MEMORIES. Two seen-ness flags, both declared in Memories and both scoped Where to the temple's own gameplay-config id, so they are remembered per temple rather than once per character everywhere. A memory scoped this way answers every read as forgotten and takes every write as a no-op anywhere outside that scope, so both writing beats (first_words' hail, trophy_hail's show) carry the matching World condition too, alongside the memory check, and would keep working correctly even if Orrin were ever placed a second time outside the temple. enchanter_greeted is written by the first-meeting hail, and opening the menu or leaving spends nothing. The errand hail sits behind that line and so is only ever reached once the greeting has been spent, which is why it writes no memory of its own and only credits the talk. grimoire_seen is written by the trophy hail, so the first sight of the book is greeted once and every later visit while holding it gets the steady trophy line. Quest-driven visibility always derives from QuestState, never from a memory. THE HELP SCREENS. how_it_works is the table, what_it_takes is the gear it accepts, the_bench is the vanilla Salvage bench in the corner set against this table, and the_greater_how is the wider table's three sockets; the last shows only once the player owns a greater table (a Factor condition on ziggfreedcommon:quest_completed naming the quest that pays it). what_is_void is reached from the offers that first mention void and from the story screen; why_i_left is his own story, reached from the first offer of his questline (shadoweave_offer), so a player may ask before taking that rung, and from the footer once that rung is claimed. THE FRAGMENTS. enchanter_footer is the full footer every steady screen carries: 'I have returned' only while something can be handed in here, 'anything to unmake' opening the quest list, the four help questions (the greater table's gated as above), the grimoire question (hidden while the trophy is in hand, the same Not-over-Factor gate the grimoire_tease screen itself carries), the kit question (shown once the greater table is owned, because that is what opens the Loose Threads order whose tables pay the kit; there is no condition for wearing a piece, since the held-item factor reads the hand and nothing reads an armour slot), the story question, then goodbye. enchanter_tail is the short form for screens that lead with their own accept or hand-in line: two questions and goodbye. The Header line mirrors the player's tracked objective at the top of the conversation. To reword any line, override the dialogue.mmo_enchanter.* keys in a language file; to replace the conversation wholesale, ship a file of this id from a pack loading after this one, or point a file of your own at it with Parent and restate only the screens you want to change.",
+  "Header": [
+    "ActiveObjective"
+  ],
+  "Memories": {
+    "enchanter_greeted": {
+      "Where": {
+        "GameplayConfig": [
+          "ForgottenTemple"
+        ]
+      }
+    },
+    "grimoire_seen": {
+      "Where": {
+        "GameplayConfig": [
+          "ForgottenTemple"
+        ]
+      }
+    }
+  },
+  "Start": {
+    "First": [
+      {
+        "Node": "trophy_hail",
+        "When": [
+          {
+            "Type": "World",
+            "Where": { "GameplayConfig": ["ForgottenTemple"] }
+          },
+          {
+            "Type": "Factor",
+            "Factor": "hytale:held_item",
+            "Param": "RPG_Weapon_Spellbook_Grimoire_Disenchanter",
+            "Min": 1
+          },
+          {
+            "Type": "NotRemembered",
+            "Memory": "grimoire_seen"
+          },
+          {
+            "Type": "Remembered",
+            "Memory": "enchanter_greeted"
+          },
+          {
+            "Type": "Not",
+            "Of": [
+              {
+                "Type": "QuestState",
+                "Quest": "meet_the_enchanter",
+                "State": "ACTIVE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Node": "trophy_talk",
+        "When": [
+          {
+            "Type": "Factor",
+            "Factor": "hytale:held_item",
+            "Param": "RPG_Weapon_Spellbook_Grimoire_Disenchanter",
+            "Min": 1
+          },
+          {
+            "Type": "Remembered",
+            "Memory": "enchanter_greeted"
+          },
+          {
+            "Type": "Not",
+            "Of": [
+              {
+                "Type": "QuestState",
+                "Quest": "meet_the_enchanter",
+                "State": "ACTIVE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Node": "first_words",
+        "When": [
+          {
+            "Type": "World",
+            "Where": { "GameplayConfig": ["ForgottenTemple"] }
+          },
+          {
+            "Type": "NotRemembered",
+            "Memory": "enchanter_greeted"
+          }
+        ]
+      },
+      {
+        "Node": "sent_by_sawyer",
+        "When": [
+          {
+            "Type": "QuestState",
+            "Quest": "meet_the_enchanter",
+            "State": "ACTIVE"
+          }
+        ]
+      }
+    ],
+    "Quests": {
+      "the_lesser_table": {
+        "Offerable": "table_offer",
+        "Active": "table_brief",
+        "Ready": "table_ready"
+      },
+      "first_unmaking": {
+        "Offerable": "unmaking_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "three_kinds_of_gear": {
+        "Offerable": "kinds_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "the_essence_draw": {
+        "Offerable": "draw_offer",
+        "Active": "active_generic",
+        "Ready": "draw_ready"
+      },
+      "worn_through": {
+        "Offerable": "worn_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "mithril_unmade": {
+        "Offerable": "mithril_offer",
+        "Active": "active_generic",
+        "Ready": "mithril_ready"
+      },
+      "steady_hands": {
+        "Offerable": "hands_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "the_greater_table": {
+        "Offerable": "greater_offer",
+        "Active": "greater_brief",
+        "Ready": "greater_ready"
+      },
+      "shadoweave": {
+        "Offerable": "shadoweave_offer",
+        "Active": "active_generic",
+        "Ready": "shadoweave_ready"
+      },
+      "a_thread_of_void": {
+        "Offerable": "thread_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "outlander_steel": {
+        "Offerable": "steel_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "the_voidheart": {
+        "Offerable": "voidheart_offer",
+        "Active": "voidheart_brief",
+        "Ready": "voidheart_ready"
+      },
+      "iron_for_the_mill": {
+        "Offerable": "iron_offer",
+        "Active": "active_generic"
+      },
+      "a_second_table": {
+        "Offerable": "second_offer",
+        "Active": "active_generic",
+        "Ready": "ready_generic"
+      },
+      "unmaking_rites": {
+        "Ready": "rites_ready"
+      },
+      "loose_threads": {
+        "Ready": "threads_ready"
+      },
+      "a_weeks_unmaking": {
+        "Ready": "week_ready"
+      }
+    },
+    "Then": [
+      {
+        "Node": "vow_talk",
+        "When": [
+          {
+            "Type": "QuestState",
+            "Quest": "the_voidheart",
+            "State": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "Node": "greater_talk",
+        "When": [
+          {
+            "Type": "QuestState",
+            "Quest": "the_greater_table",
+            "State": "COMPLETED"
+          }
+        ]
+      },
+      {
+        "Node": "table_talk",
+        "When": [
+          {
+            "Type": "QuestState",
+            "Quest": "the_lesser_table",
+            "State": "COMPLETED"
+          }
+        ]
+      }
+    ],
+    "Fallback": "menu"
+  },
+  "Nodes": {
+    "first_words": {
+      "TextKey": "dialogue.mmo_enchanter.first_words.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.first_words.opt.hail",
+          "Actions": [
+            {
+              "Type": "MarkTalked",
+              "Target": "@self"
+            },
+            {
+              "Type": "Remember",
+              "Memory": "enchanter_greeted"
+            },
+            {
+              "Type": "Goto",
+              "Node": "menu"
+            }
+          ]
+        }
+      ]
+    },
+    "sent_by_sawyer": {
+      "TextKey": "dialogue.mmo_enchanter.sent_by_sawyer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.sent_by_sawyer.opt.hail",
+          "Actions": [
+            {
+              "Type": "MarkTalked",
+              "Target": "@self"
+            },
+            {
+              "Type": "Goto",
+              "Node": "menu"
+            }
+          ]
+        }
+      ]
+    },
+    "menu": {
+      "TextKey": "dialogue.mmo_enchanter.menu.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "trophy_hail": {
+      "TextKey": "dialogue.mmo_enchanter.trophy_hail.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.trophy_hail.opt.show",
+          "Actions": [
+            {
+              "Type": "Remember",
+              "Memory": "grimoire_seen"
+            },
+            {
+              "Type": "Goto",
+              "Node": "menu"
+            }
+          ]
+        }
+      ]
+    },
+    "trophy_talk": {
+      "TextKey": "dialogue.mmo_enchanter.trophy_talk.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "table_offer": {
+      "TextKey": "dialogue.mmo_enchanter.table_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.table_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "the_lesser_table" },
+            { "Goto": "table_brief" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "table_brief": {
+      "TextKey": "dialogue.mmo_enchanter.table_brief.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "table_ready": {
+      "TextKey": "dialogue.mmo_enchanter.table_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.table_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "the_lesser_table" }
+          ],
+          "Do": [
+            { "TurnIn": "the_lesser_table" },
+            { "Open": { "Type": "Quests", "Highlight": "the_lesser_table" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "unmaking_offer": {
+      "TextKey": "dialogue.mmo_enchanter.unmaking_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.unmaking_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "first_unmaking" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "kinds_offer": {
+      "TextKey": "dialogue.mmo_enchanter.kinds_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.kinds_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "three_kinds_of_gear" },
+            { "Goto": "active_generic" }
+          ]
+        },
+        {
+          "LabelKey": "dialogue.mmo_enchanter.kinds_offer.opt.what",
+          "Style": "neutral",
+          "Goto": "what_it_takes"
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "draw_offer": {
+      "TextKey": "dialogue.mmo_enchanter.draw_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.draw_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "the_essence_draw" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "draw_ready": {
+      "TextKey": "dialogue.mmo_enchanter.draw_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.draw_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "the_essence_draw" }
+          ],
+          "Do": [
+            { "TurnIn": "the_essence_draw" },
+            { "Open": { "Type": "Quests", "Highlight": "the_essence_draw" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "worn_offer": {
+      "TextKey": "dialogue.mmo_enchanter.worn_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.worn_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "worn_through" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "mithril_offer": {
+      "TextKey": "dialogue.mmo_enchanter.mithril_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.mithril_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "mithril_unmade" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "mithril_ready": {
+      "TextKey": "dialogue.mmo_enchanter.mithril_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.mithril_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "mithril_unmade" }
+          ],
+          "Do": [
+            { "TurnIn": "mithril_unmade" },
+            { "Open": { "Type": "Quests", "Highlight": "mithril_unmade" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "hands_offer": {
+      "TextKey": "dialogue.mmo_enchanter.hands_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.hands_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "steady_hands" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "greater_offer": {
+      "TextKey": "dialogue.mmo_enchanter.greater_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.greater_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "the_greater_table" },
+            { "Goto": "greater_brief" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "greater_brief": {
+      "TextKey": "dialogue.mmo_enchanter.greater_brief.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "greater_ready": {
+      "TextKey": "dialogue.mmo_enchanter.greater_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.greater_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "the_greater_table" }
+          ],
+          "Do": [
+            { "TurnIn": "the_greater_table" },
+            { "Open": { "Type": "Quests", "Highlight": "the_greater_table" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "shadoweave_offer": {
+      "TextKey": "dialogue.mmo_enchanter.shadoweave_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.shadoweave_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "shadoweave" },
+            { "Goto": "active_generic" }
+          ]
+        },
+        {
+          "LabelKey": "dialogue.mmo_enchanter.shadoweave_offer.opt.why",
+          "Style": "neutral",
+          "Goto": "why_i_left"
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "shadoweave_ready": {
+      "TextKey": "dialogue.mmo_enchanter.shadoweave_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.shadoweave_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "shadoweave" }
+          ],
+          "Do": [
+            { "TurnIn": "shadoweave" },
+            { "Open": { "Type": "Quests", "Highlight": "shadoweave" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "thread_offer": {
+      "TextKey": "dialogue.mmo_enchanter.thread_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.thread_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "a_thread_of_void" },
+            { "Goto": "active_generic" }
+          ]
+        },
+        {
+          "LabelKey": "dialogue.mmo_enchanter.thread_offer.opt.what",
+          "Style": "neutral",
+          "Goto": "what_is_void"
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "steel_offer": {
+      "TextKey": "dialogue.mmo_enchanter.steel_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.steel_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "outlander_steel" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "voidheart_offer": {
+      "TextKey": "dialogue.mmo_enchanter.voidheart_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.voidheart_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "the_voidheart" },
+            { "Goto": "voidheart_brief" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "voidheart_brief": {
+      "TextKey": "dialogue.mmo_enchanter.voidheart_brief.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "voidheart_ready": {
+      "TextKey": "dialogue.mmo_enchanter.voidheart_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.voidheart_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "the_voidheart" }
+          ],
+          "Do": [
+            { "TurnIn": "the_voidheart" },
+            { "Open": { "Type": "Quests", "Highlight": "the_voidheart" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "iron_offer": {
+      "TextKey": "dialogue.mmo_enchanter.iron_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.iron_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "iron_for_the_mill" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "second_offer": {
+      "TextKey": "dialogue.mmo_enchanter.second_offer.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.second_offer.opt.accept",
+          "Style": "accept",
+          "Do": [
+            { "Accept": "a_second_table" },
+            { "Goto": "active_generic" }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "rites_ready": {
+      "TextKey": "dialogue.mmo_enchanter.rites_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.rites_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "unmaking_rites" }
+          ],
+          "Do": [
+            { "TurnIn": "unmaking_rites" },
+            { "Open": { "Type": "Quests", "Highlight": "unmaking_rites" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "threads_ready": {
+      "TextKey": "dialogue.mmo_enchanter.threads_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.threads_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "loose_threads" }
+          ],
+          "Do": [
+            { "TurnIn": "loose_threads" },
+            { "Open": { "Type": "Quests", "Highlight": "loose_threads" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "week_ready": {
+      "TextKey": "dialogue.mmo_enchanter.week_ready.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.week_ready.opt.turnin",
+          "Style": "turnin",
+          "Conditions": [
+            { "Type": "ReadyToTurnIn", "Quest": "a_weeks_unmaking" }
+          ],
+          "Do": [
+            { "TurnIn": "a_weeks_unmaking" },
+            { "Open": { "Type": "Quests", "Highlight": "a_weeks_unmaking" } }
+          ]
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "ready_generic": {
+      "TextKey": "dialogue.mmo_enchanter.ready_generic.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.ready_generic.opt.turnin",
+          "Style": "turnin",
+          "Open": "Quests"
+        }
+      ],
+      "IncludeOptions": [
+        "enchanter_tail"
+      ]
+    },
+    "active_generic": {
+      "TextKey": "dialogue.mmo_enchanter.active_generic.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "vow_talk": {
+      "TextKey": "dialogue.mmo_enchanter.vow_talk.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "greater_talk": {
+      "TextKey": "dialogue.mmo_enchanter.greater_talk.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "table_talk": {
+      "TextKey": "dialogue.mmo_enchanter.table_talk.text",
+      "IncludeOptions": [
+        "enchanter_footer"
+      ]
+    },
+    "how_it_works": {
+      "TextKey": "dialogue.mmo_enchanter.how_it_works.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.how_it_works.opt.takes",
+          "Style": "neutral",
+          "Goto": "what_it_takes"
+        },
+        {
+          "LabelKey": "dialogue.mmo_enchanter.how_it_works.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "what_it_takes": {
+      "TextKey": "dialogue.mmo_enchanter.what_it_takes.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.what_it_takes.opt.bench",
+          "Style": "neutral",
+          "Goto": "the_bench"
+        },
+        {
+          "LabelKey": "dialogue.mmo_enchanter.what_it_takes.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "the_bench": {
+      "TextKey": "dialogue.mmo_enchanter.the_bench.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.the_bench.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "the_greater_how": {
+      "TextKey": "dialogue.mmo_enchanter.the_greater_how.text",
+      "Conditions": [
+        {
+          "Type": "Factor",
+          "Factor": "ziggfreedcommon:quest_completed",
+          "Param": "the_greater_table",
+          "Min": 1
+        }
+      ],
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.the_greater_how.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "what_is_void": {
+      "TextKey": "dialogue.mmo_enchanter.what_is_void.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.what_is_void.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "grimoire_tease": {
+      "TextKey": "dialogue.mmo_enchanter.grimoire_tease.text",
+      "Conditions": [
+        {
+          "Type": "Not",
+          "Of": [
+            {
+              "Type": "Factor",
+              "Factor": "hytale:held_item",
+              "Param": "RPG_Weapon_Spellbook_Grimoire_Disenchanter",
+              "Min": 1
+            }
+          ]
+        }
+      ],
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.grimoire_tease.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "kit_talk": {
+      "TextKey": "dialogue.mmo_enchanter.kit_talk.text",
+      "Conditions": [
+        {
+          "Type": "Factor",
+          "Factor": "ziggfreedcommon:quest_completed",
+          "Param": "the_greater_table",
+          "Min": 1
+        }
+      ],
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.kit_talk.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    },
+    "why_i_left": {
+      "TextKey": "dialogue.mmo_enchanter.why_i_left.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_enchanter.why_i_left.opt.void",
+          "Style": "neutral",
+          "Goto": "what_is_void"
+        },
+        {
+          "LabelKey": "dialogue.mmo_enchanter.why_i_left.opt.back",
+          "Style": "continue",
+          "Goto": "menu"
+        }
+      ]
+    }
+  },
+  "Fragments": {
+    "enchanter_footer": [
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.returned",
+        "Style": "accept",
+        "Conditions": [
+          { "Type": "HasReadyToTurnIn" }
+        ],
+        "Open": "Quests"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.quests",
+        "Style": "neutral",
+        "Open": "Quests"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.how",
+        "Style": "neutral",
+        "Goto": "how_it_works"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.takes",
+        "Style": "neutral",
+        "Goto": "what_it_takes"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.bench",
+        "Style": "neutral",
+        "Goto": "the_bench"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.greater",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Factor",
+            "Factor": "ziggfreedcommon:quest_completed",
+            "Param": "the_greater_table",
+            "Min": 1
+          }
+        ],
+        "Goto": "the_greater_how"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.grimoire",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Not",
+            "Of": [
+              {
+                "Type": "Factor",
+                "Factor": "hytale:held_item",
+                "Param": "RPG_Weapon_Spellbook_Grimoire_Disenchanter",
+                "Min": 1
+              }
+            ]
+          }
+        ],
+        "Goto": "grimoire_tease"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.kit",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Factor",
+            "Factor": "ziggfreedcommon:quest_completed",
+            "Param": "the_greater_table",
+            "Min": 1
+          }
+        ],
+        "Goto": "kit_talk"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.why",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Factor",
+            "Factor": "ziggfreedcommon:quest_completed",
+            "Param": "shadoweave",
+            "Min": 1
+          }
+        ],
+        "Goto": "why_i_left"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.nothing",
+        "Style": "farewell",
+        "Close": true
+      }
+    ],
+    "enchanter_tail": [
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.how",
+        "Style": "neutral",
+        "Goto": "how_it_works"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.takes",
+        "Style": "neutral",
+        "Goto": "what_it_takes"
+      },
+      {
+        "LabelKey": "dialogue.mmo_enchanter.opt.nothing",
+        "Style": "farewell",
+        "Close": true
+      }
+    ]
+  }
+}

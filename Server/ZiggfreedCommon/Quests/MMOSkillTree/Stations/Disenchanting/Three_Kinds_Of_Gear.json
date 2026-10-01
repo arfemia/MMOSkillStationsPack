@@ -1,0 +1,111 @@
+{
+  "$Comment": [
+    "The gear lesson: the table takes a weapon, a piece of armor and a tool alike, and each gives",
+    "back what it was made of. Three STATION_INPUT steps, one per gear class, all on Order 1 so",
+    "they fill in any order: 'Weapon_', 'Armor_' and 'Tool_' on PREFIX catch every family and every",
+    "grade of each class (a shield is a Weapon_ in vanilla, and so counts as one here). Each step",
+    "carries its own TextKey because the kind's default line names a single item. Every step is",
+    "qualified to the tables ('Disenchanting_Table' on PREFIX, so both tiers count), since the",
+    "Sawmill also consumes input and must not fill a disenchanting count.",
+    "",
+    "No hand-in: with TurnInId 'giver' the quest still settles at Orrin, so the player comes back",
+    "to be paid and hear his next line. Rewards sit in Claim: Enchanting XP and a short personal",
+    "Enchanting boost token (the Mmo_Boost_Token kind: Skill, Multiplier, DurationMinutes), since",
+    "Enchanting has no token item to hand over. Retune the three Amounts to change how long the",
+    "lesson runs."
+  ],
+  "Name": "Three_Kinds_Of_Gear",
+  "Text": {
+    "TitleKey": "quest.three_kinds_of_gear.title",
+    "FlavorKey": "quest.three_kinds_of_gear.flavor"
+  },
+  "Listing": {
+    "Icon": "Weapon_Sword_Iron",
+    "Category": "main",
+    "SortOrder": 33,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 3
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true,
+    "HideLockedSteps": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "first_unmaking"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "unmake_weapon": {
+      "Kind": "STATION_INPUT",
+      "Target": "Weapon_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 2,
+      "TextKey": "objective.text.stations.unmake_weapons",
+      "Order": 1
+    },
+    "unmake_armor": {
+      "Kind": "STATION_INPUT",
+      "Target": "Armor_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 2,
+      "TextKey": "objective.text.stations.unmake_armor",
+      "Order": 1
+    },
+    "unmake_tool": {
+      "Kind": "STATION_INPUT",
+      "Target": "Tool_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 2,
+      "TextKey": "objective.text.stations.unmake_tools",
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 900
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 1.5,
+          "DurationMinutes": 30
+        }
+      }
+    ]
+  }
+}

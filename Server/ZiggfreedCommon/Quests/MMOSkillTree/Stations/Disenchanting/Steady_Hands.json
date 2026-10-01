@@ -1,0 +1,96 @@
+{
+  "$Comment": [
+    "The long sitting before the greater table: forty pieces unmade and Enchanting level twenty,",
+    "both on Order 1 so they progress together. Flow.HideLockedSteps keeps the walk back to Orrin",
+    "off the step list until that sitting is behind the player, so the quest reads as the work it",
+    "is asking for.",
+    "",
+    "long_rites is STATION_INPUT with a blank Target (any piece), qualified to 'Disenchanting_Table'",
+    "on PREFIX so both tiers count and the Sawmill does not, carrying the shared unmake_gear",
+    "TextKey; reach_the_level is STAT_THRESHOLD, which reads a native stat channel by id",
+    "(MMO_Level_ENCHANTING) and holds the high-water reading, so a level already reached counts the",
+    "moment the quest is taken. No hand-in: TurnInId 'giver' still settles it at Orrin. Rewards sit",
+    "in Claim: Enchanting XP and a handful of Void essence toward the greater table's own ask, the",
+    "rung that follows."
+  ],
+  "Name": "Steady_Hands",
+  "Text": {
+    "TitleKey": "quest.steady_hands.title",
+    "FlavorKey": "quest.steady_hands.flavor"
+  },
+  "Listing": {
+    "Icon": "RPG_Armor_Disenchanter_Hands",
+    "Category": "main",
+    "SortOrder": 37,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 7
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true,
+    "HideLockedSteps": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "mithril_unmade"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "long_rites": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 40,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    },
+    "reach_the_level": {
+      "Kind": "STAT_THRESHOLD",
+      "Target": "MMO_Level_ENCHANTING",
+      "MatchMode": "EXACT",
+      "Amount": 20,
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 3000
+        }
+      },
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "Ingredient_Void_Essence",
+          "Count": 5
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$Comment": "A weapon of every family, unmade: one criterion per family the game ships as gear, each 'Weapon_<Family>_' on PREFIX so any grade of that family counts, and every one of the seventeen must complete. Shields are a Weapon_ family in vanilla and so are listed; the ammunition, bombs, darts and deployables that share the prefix are not gear, the tables refuse them, and they are left out. A family missing from this list is simply not asked for; add a criterion to ask for one a pack introduces. Every criterion is qualified to 'Disenchanting_Table' on PREFIX, so both tables count and the Sawmill never does.",
+  "Name": "Disenchanting_Every_Blade",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_every_blade.title",
+    "FlavorKey": "achievement.disenchanting_every_blade.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 49
+  },
+  "Scoring": {
+    "Points": 100
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "axe": { "Kind": "STATION_INPUT", "Target": "Weapon_Axe_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "battleaxe": { "Kind": "STATION_INPUT", "Target": "Weapon_Battleaxe_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "blowgun": { "Kind": "STATION_INPUT", "Target": "Weapon_Blowgun_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "claws": { "Kind": "STATION_INPUT", "Target": "Weapon_Claws_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "club": { "Kind": "STATION_INPUT", "Target": "Weapon_Club_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "crossbow": { "Kind": "STATION_INPUT", "Target": "Weapon_Crossbow_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "daggers": { "Kind": "STATION_INPUT", "Target": "Weapon_Daggers_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "gun": { "Kind": "STATION_INPUT", "Target": "Weapon_Gun_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "longsword": { "Kind": "STATION_INPUT", "Target": "Weapon_Longsword_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "mace": { "Kind": "STATION_INPUT", "Target": "Weapon_Mace_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "shield": { "Kind": "STATION_INPUT", "Target": "Weapon_Shield_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "shortbow": { "Kind": "STATION_INPUT", "Target": "Weapon_Shortbow_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "spear": { "Kind": "STATION_INPUT", "Target": "Weapon_Spear_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "spellbook": { "Kind": "STATION_INPUT", "Target": "Weapon_Spellbook_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "staff": { "Kind": "STATION_INPUT", "Target": "Weapon_Staff_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "sword": { "Kind": "STATION_INPUT", "Target": "Weapon_Sword_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 },
+    "wand": { "Kind": "STATION_INPUT", "Target": "Weapon_Wand_", "MatchMode": "PREFIX", "Qualifier": "Disenchanting_Table", "QualifierMatchMode": "PREFIX", "Amount": 1 }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 6600
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 3300
+        }
+      }
+    ]
+  }
+}

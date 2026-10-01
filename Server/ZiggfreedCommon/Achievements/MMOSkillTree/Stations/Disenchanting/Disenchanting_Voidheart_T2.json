@@ -1,0 +1,65 @@
+{
+  "$Comment": "Voidhearts a Disenchanting Table found, rung 2 of the disenchanting_voidheart ladder. An exact item id; a Voidheart is the table's rarest find, gated to the deepest gear, so even the first rung is a real chase and the top one is a long career. STATION_OUTPUT counts a stack the moment it lands in the worker's inventory. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Qualifier 'Disenchanting_Table' with QualifierMatchMode PREFIX counts BOTH tables (the greater table's station id starts with the lesser's); a qualifier left out would count the same item at the Sawmill too, so every disenchanting count names it.",
+  "Name": "Disenchanting_Voidheart_T2",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_voidheart_t2.title",
+    "FlavorKey": "achievement.disenchanting_voidheart.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 47,
+    "Chains": [
+      {
+        "Id": "disenchanting_voidheart",
+        "Tier": 2
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "find-voidheart": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Voidheart",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 5
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 12000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      }
+    ]
+  }
+}

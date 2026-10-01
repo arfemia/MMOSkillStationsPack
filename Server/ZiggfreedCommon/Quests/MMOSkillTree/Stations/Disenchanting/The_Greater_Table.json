@@ -1,0 +1,106 @@
+{
+  "$Comment": [
+    "The chain's last rung, and the one that pays the Greater Disenchanting Table: bring Orrin the",
+    "makings and he builds the wider table around the frame he keeps.",
+    "",
+    "The three deliveries are the thorium, the silk and the Void essence the greater table's own",
+    "recipe asks for, less the lesser table it consumes (the player keeps theirs; Orrin has a frame",
+    "of his own) and with the essence count brought down, since a player who has only just learned",
+    "to find void has no stock of it. All three sit on Order 1 and hand in to Orrin only",
+    "(TurnInNpcId 'giver'), so they can be brought in any order. The reward sits in the Claim",
+    "bucket, so the table and the XP wait in the quest log until the player collects them.",
+    "",
+    "With this pack installed the greater table is never crafted (the pack ships the block with no",
+    "Recipe), so this quest is the only place one comes from. Claiming it also opens Loose Threads,",
+    "the short order whose tables pay the disenchanter's kit, and the Voidheart rung of Orrin's own",
+    "chain. Completing it is what the Disenchanting Master achievement counts, so a retune here",
+    "changes what that achievement asks. Remove the Item entry and the chain ends on a plain XP",
+    "job; the table itself is what this quest is for."
+  ],
+  "Name": "The_Greater_Table",
+  "Text": {
+    "TitleKey": "quest.the_greater_table.title",
+    "FlavorKey": "quest.the_greater_table.flavor"
+  },
+  "Listing": {
+    "Icon": "RPG_Station_Disenchanting_Table_Greater",
+    "Category": "main",
+    "SortOrder": 38,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 8
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "steady_hands"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "bring_thorium": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Bar_Thorium",
+      "MatchMode": "EXACT",
+      "Amount": 8,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "bring_silk": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Bolt_Silk",
+      "MatchMode": "EXACT",
+      "Amount": 6,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "bring_void": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Void_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 10,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Station_Disenchanting_Table_Greater",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 5000
+        }
+      }
+    ]
+  }
+}

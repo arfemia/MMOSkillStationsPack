@@ -1,0 +1,56 @@
+{
+  "$Comment": "The Disenchanter flair: the cosmetic the Disenchanter achievement grants once the trophy grimoire has come off a Disenchanting Table. Stations names the two table ids this flair dresses, lower-cased; leave it out to dress every station. Moments is keyed by moment ids the tables' own Disenchant action spells (matched case-insensitively): the four find cues its Lootables name (Cue:Kit_Find for a kit piece, Cue:Void_Find for Void essence, Cue:Voidheart for the rarest find, Cue:Trophy for the grimoire itself) and the Unmake beat of both rituals (Step:Disenchant:Unmake for the lesser table, Step:Disenchant_Greater:Unmake for the greater, whose action is a child of the first and so has its own step key). Completion is left alone on purpose: it plays at the hidden worker's position, so a visual there is never seen. Each entry is a PER-LEAF overlay on the base presentation: only the leaves written here change, so authoring Particles alone keeps the base sounds, delays and shake exactly as the table plays them, and the Target stays the placed piece. A Particles list REPLACES the base list rather than adding to it, which is why both Unmake entries name RPG_Disenchant_Flash first: it is the bounded shatter the ritual's own Unmake beat plays, shipped by RPG Stations, so the flair keeps that shatter and layers its gem sparks, green eternal-seed motes and gold crown on top; the greater table's adds the void splash and the signature burst the deeper ritual earns. The palette is the ritual's own: pale green and gold for Life essence, violet at the void finds, gold with purple on the grimoire. Every system is bounded: DurationSeconds caps the ones with no end of their own (the drop glows, the crown, the sparks, the eternal-seed motes, the top glow), and the ritual's flash, the signature burst and the void key art carry their own short LifeSpan. The crown's rays sit two to three blocks up in their own system, so PositionOffset.Y -1 brings them down over the table. A moment id nothing emits is a validator warning (/rpgstations validate), never an error. The flair id is this file's name lower-cased (disenchanter): an achievement grants it with {\"Kind\": \"Flair\", \"Params\": {\"Flair\": \"disenchanter\"}}, /zigflair grant hands it out by the same id, and its display name reads from flair.disenchanter.name in a language file.",
+  "Stations": ["disenchanting_table", "disenchanting_table_greater"],
+  "Moments": {
+    "Cue:Kit_Find": {
+      "Particles": [
+        { "SystemId": "Drop_Uncommon", "DurationSeconds": 1.5, "PositionOffset": { "Y": 0.8 } },
+        { "SystemId": "Seeds_Eternal", "DurationSeconds": 1.5, "PositionOffset": { "Y": 0.8 } },
+        { "SystemId": "Effect_Crown_Gold", "DurationSeconds": 2.0, "PositionOffset": { "Y": -1.0 } }
+      ]
+    },
+    "Cue:Void_Find": {
+      "Particles": [
+        { "SystemId": "VoidImpact", "DurationSeconds": 2.0, "PositionOffset": { "Y": 1.0 } },
+        { "SystemId": "MagicPortal_VoidKeyArt", "Scale": 0.25, "DurationSeconds": 1.0, "PositionOffset": { "Y": 1.0 } },
+        { "SystemId": "Drop_Epic", "DurationSeconds": 1.5, "PositionOffset": { "Y": 0.8 } },
+        { "SystemId": "Effect_Crown_Gold", "DurationSeconds": 2.0, "PositionOffset": { "Y": -1.0 } }
+      ]
+    },
+    "Cue:Voidheart": {
+      "Particles": [
+        { "SystemId": "Drop_Epic", "DurationSeconds": 2.0, "PositionOffset": { "Y": 0.8 } },
+        { "SystemId": "Block_Top_Glow", "DurationSeconds": 2.0 },
+        { "SystemId": "VoidImpact", "DurationSeconds": 2.0, "PositionOffset": { "Y": 1.0 } },
+        { "SystemId": "MagicPortal_VoidKeyArt", "Scale": 0.35, "DurationSeconds": 1.5, "PositionOffset": { "Y": 1.0 } },
+        { "SystemId": "Effect_Crown_Gold", "DurationSeconds": 2.5, "PositionOffset": { "Y": -1.0 } }
+      ]
+    },
+    "Cue:Trophy": {
+      "Particles": [
+        { "SystemId": "Effect_Crown_Gold", "DurationSeconds": 2.5, "PositionOffset": { "Y": -1.0 } },
+        { "SystemId": "Drop_Epic", "DurationSeconds": 2.0, "PositionOffset": { "Y": 0.8 } },
+        { "SystemId": "Drop_Legendary", "DurationSeconds": 2.0, "PositionOffset": { "Y": 0.8 } },
+        { "SystemId": "Block_Gem_Sparks", "DurationSeconds": 1.5, "PositionOffset": { "Y": 0.8 } }
+      ]
+    },
+    "Step:Disenchant:Unmake": {
+      "Particles": [
+        { "SystemId": "RPG_Disenchant_Flash" },
+        { "SystemId": "Block_Gem_Sparks", "DurationSeconds": 1.5 },
+        { "SystemId": "Seeds_Eternal", "DurationSeconds": 1.5 },
+        { "SystemId": "Effect_Crown_Gold", "DurationSeconds": 1.5, "PositionOffset": { "Y": -1.0 } }
+      ]
+    },
+    "Step:Disenchant_Greater:Unmake": {
+      "Particles": [
+        { "SystemId": "RPG_Disenchant_Flash" },
+        { "SystemId": "Block_Gem_Sparks", "DurationSeconds": 1.5 },
+        { "SystemId": "Seeds_Eternal", "DurationSeconds": 1.5 },
+        { "SystemId": "VoidImpact", "DurationSeconds": 1.5 },
+        { "SystemId": "Potion_Signature_Burst" },
+        { "SystemId": "Effect_Crown_Gold", "DurationSeconds": 1.5, "PositionOffset": { "Y": -1.0 } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "$Comment": [
+    "The third rung of Orrin's Vow: what the Outlanders carry. The cult's warriors drop the Doomed",
+    "weapons they fight with, and this rung sends the player to take some and bring them to the",
+    "table.",
+    "",
+    "cull_outlanders is KILL_ENTITY on 'Outlander' with CONTAINS, so every Outlander role counts",
+    "(peon, cultist, hunter, priest and the rest); unmake_doomed counts Doomed gear the tables took",
+    "apart ('_Doomed' on CONTAINS, which catches every Doomed weapon whatever its family, qualified",
+    "to 'Disenchanting_Table' on PREFIX so both tiers count, with its own TextKey because the kind's",
+    "default line would print the bare match string). Both sit on Order 1, so the hunt and the",
+    "sitting run side by side. The Doomed weapons also drop from the Outlander camps' chests, so a",
+    "player who would rather not fight for them can loot them instead.",
+    "",
+    "Rewards sit in Claim: Enchanting XP and a personal Enchanting boost token. The Chains entry",
+    "files it as tier 3 of orrins_vow. Retune the kill count to make the hunt longer or shorter."
+  ],
+  "Name": "Outlander_Steel",
+  "Text": {
+    "TitleKey": "quest.outlander_steel.title",
+    "FlavorKey": "quest.outlander_steel.flavor"
+  },
+  "Listing": {
+    "Icon": "Weapon_Sword_Doomed",
+    "Category": "main",
+    "SortOrder": 42,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "orrins_vow",
+        "Tier": 3
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "a_thread_of_void"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "cull_outlanders": {
+      "Kind": "KILL_ENTITY",
+      "Target": "Outlander",
+      "MatchMode": "CONTAINS",
+      "Amount": 15,
+      "Order": 1
+    },
+    "unmake_doomed": {
+      "Kind": "STATION_INPUT",
+      "Target": "_Doomed",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3,
+      "TextKey": "objective.text.stations.unmake_doomed",
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 3500
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$Comment": [
+    "The worn-gear rung: Orrin asks for the gear a player would otherwise throw away, the blades",
+    "chipped to nothing and the boots walked through, and a long sitting at the table to unmake",
+    "them.",
+    "",
+    "No objective kind reads a piece's wear, so the step counts PIECES rather than worn pieces:",
+    "STATION_INPUT with a blank Target (any item), qualified to 'Disenchanting_Table' on PREFIX so",
+    "both tiers count and the Sawmill does not, carrying the shared unmake_gear TextKey so the line",
+    "reads honestly as 'pieces of gear'. The worn-ness lives in Orrin's ask and in what a player",
+    "has to hand, not in the count: a piece near breaking pays the table less essence (its wear",
+    "scales the payout), so the player who follows the ask gets through the count at a lower wage",
+    "and a player who feeds it fresh gear pays more for the same count. No hand-in: with TurnInId",
+    "'giver' the quest still settles at Orrin. Rewards sit in Claim, Enchanting first and Crafting",
+    "half. Retune the one Amount to change how long the sitting runs."
+  ],
+  "Name": "Worn_Through",
+  "Text": {
+    "TitleKey": "quest.worn_through.title",
+    "FlavorKey": "quest.worn_through.flavor"
+  },
+  "Listing": {
+    "Icon": "Weapon_Club_Iron_Rusty",
+    "Category": "main",
+    "SortOrder": 35,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "disenchanting",
+        "Tier": 5
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true,
+    "HideLockedSteps": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "the_essence_draw"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "unmake_worn": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 15,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 2000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 600
+        }
+      }
+    ]
+  }
+}

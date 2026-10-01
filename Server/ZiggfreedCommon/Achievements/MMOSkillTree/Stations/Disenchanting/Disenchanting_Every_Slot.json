@@ -1,0 +1,77 @@
+{
+  "$Comment": "Armor for every slot, unmade: four criteria, and EVERY criterion must complete. Vanilla armor ids end in the slot ('Armor_Iron_Head', 'Armor_Mithril_Legs'), so each criterion matches its slot suffix on CONTAINS, which takes every material and every set; no other gear id ends that way, so nothing else fills a slot. Each is qualified to 'Disenchanting_Table' on PREFIX, so both tables count and the Sawmill never does. Retune the four Amounts together.",
+  "Name": "Disenchanting_Every_Slot",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_every_slot.title",
+    "FlavorKey": "achievement.disenchanting_every_slot.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 50
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "head": {
+      "Kind": "STATION_INPUT",
+      "Target": "_Head",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3
+    },
+    "chest": {
+      "Kind": "STATION_INPUT",
+      "Target": "_Chest",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3
+    },
+    "hands": {
+      "Kind": "STATION_INPUT",
+      "Target": "_Hands",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3
+    },
+    "legs": {
+      "Kind": "STATION_INPUT",
+      "Target": "_Legs",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 3
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 3300
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 1650
+        }
+      }
+    ]
+  }
+}

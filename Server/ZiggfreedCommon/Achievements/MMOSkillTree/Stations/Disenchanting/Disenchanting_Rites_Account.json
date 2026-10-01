@@ -1,0 +1,44 @@
+{
+  "$Comment": "Orrin's Unmaking Rites kept day after day. COMPLETE_QUEST on a repeatable counts every completion, so the Amount is a number of days the rites were kept. Retune it to change how long the habit must hold.",
+  "Name": "Disenchanting_Rites_Account",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_rites_account.title",
+    "FlavorKey": "achievement.disenchanting_rites_account.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 57
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "keep-the-rites": {
+      "Kind": "COMPLETE_QUEST",
+      "Target": "unmaking_rites",
+      "MatchMode": "EXACT",
+      "Amount": 25
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

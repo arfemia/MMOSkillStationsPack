@@ -1,0 +1,64 @@
+{
+  "$Comment": "Pieces of gear a Disenchanting Table took apart, rung 4 of the disenchanting_unmade ladder. STATION_INPUT counts a stack the moment a station consumes it; the blank Target matches every item, so any piece of gear counts and nothing else can reach a table. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Qualifier 'Disenchanting_Table' with QualifierMatchMode PREFIX counts BOTH tables (the greater table's station id starts with the lesser's); a qualifier left out would count the same item at the Sawmill too, so every disenchanting count names it.",
+  "Name": "Disenchanting_Unmade_T4",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_unmade_t4.title",
+    "FlavorKey": "achievement.disenchanting_unmade.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 34,
+    "Chains": [
+      {
+        "Id": "disenchanting_unmade",
+        "Tier": 4
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "unmake-pieces": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 250
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 6600
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 3300
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$Comment": "The first piece of gear taken apart at a Disenchanting Table. STATION_INPUT counts a stack the moment a station consumes it, so one finished ritual earns it; the blank Target matches every item, and Qualifier 'Disenchanting_Table' with QualifierMatchMode PREFIX counts both tables and never the Sawmill. Requires carries the stations feature: the achievement does not exist on a server without RPG Stations switched on.",
+  "Name": "Disenchanting_First_Piece",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_first_piece.title",
+    "FlavorKey": "achievement.disenchanting_first_piece.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 30
+  },
+  "Scoring": {
+    "Points": 5
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "unmake-piece": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 66
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 33
+        }
+      }
+    ]
+  }
+}

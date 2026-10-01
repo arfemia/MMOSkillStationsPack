@@ -1,0 +1,120 @@
+{
+  "$Comment": [
+    "Orrin's weekly: a long week at the table, counted three ways.",
+    "",
+    "Repeat.Reset with Period Weekly is a CALENDAR weekly: the allowance refreshes at the week",
+    "boundary on server time. Author Weekday on the Reset block to move the boundary, or replace",
+    "Period with an Every block to set any other length.",
+    "",
+    "It opens once The Essence Draw is claimed, so every player who takes it has drawn essence in",
+    "numbers before. All three steps sit on Order 1, so they run together through the week:",
+    "week_rites counts pieces the tables took apart (STATION_INPUT, blank Target so any piece",
+    "counts, qualified to 'Disenchanting_Table' on PREFIX so both tiers count and the Sawmill does",
+    "not, with the shared unmake_gear TextKey); week_essence counts Life essence the tables handed",
+    "over (STATION_OUTPUT, exact id, the same qualifier); week_void hands Void essence in to Orrin",
+    "only (TurnInNpcId 'giver'), which the tables find in good gear. Raise or lower any of the",
+    "three Amounts to change how long a week's unmaking takes.",
+    "",
+    "Rewards sit in Claim: Enchanting XP, a long personal Enchanting boost token (the Mmo_Boost_Token",
+    "kind: Skill, Multiplier, DurationMinutes) and two Disenchanter's Draughts, the jar's potion",
+    "that hurries the ritual along. Listing puts it in the misc category on the same shelf as the",
+    "daily and the short order, one place after them."
+  ],
+  "Name": "A_Weeks_Unmaking",
+  "Text": {
+    "TitleKey": "quest.a_weeks_unmaking.title",
+    "FlavorKey": "quest.a_weeks_unmaking.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Void_Essence",
+    "Category": "misc",
+    "SortOrder": 212,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Repeat": {
+    "Reset": {
+      "Period": "Weekly"
+    },
+    "CooldownFrom": "Complete"
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "the_essence_draw"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "week_rites": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 60,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    },
+    "week_essence": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 100,
+      "Order": 1
+    },
+    "week_void": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Void_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 3,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 6000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.5,
+          "DurationMinutes": 120
+        }
+      },
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Potion_Disenchanters_Draught",
+          "Count": 2
+        }
+      }
+    ]
+  }
+}

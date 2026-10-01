@@ -1,0 +1,90 @@
+{
+  "$Comment": [
+    "The first rung of Orrin's Vow, the questline that ends with his own grimoire: the cloth the",
+    "cult weaves, brought to him, and the weapons it arms itself with, taken apart.",
+    "",
+    "It opens once First Unmaking is claimed, so it is only ever offered to somebody who owns a",
+    "table and has run it. bring_shadoweave is an exact-id hand-in of the fabric scrap every",
+    "Outlander drops (TurnInNpcId 'giver', so to Orrin only); unmake_weapons counts weapons the",
+    "tables took apart ('Weapon_' on PREFIX, qualified to 'Disenchanting_Table' on PREFIX so both",
+    "tiers count, with the shared unmake_weapons TextKey). Both sit on Order 1, so the hunt and the",
+    "sitting run side by side and the rung settles once both are in.",
+    "",
+    "Rewards sit in Claim: Enchanting XP. The Chains entry files it as tier 1 of orrins_vow, its",
+    "own ladder in the quest book beside the disenchanting chain it runs alongside. Retune the",
+    "scrap count to make the hunt longer or shorter."
+  ],
+  "Name": "Shadoweave",
+  "Text": {
+    "TitleKey": "quest.shadoweave.title",
+    "FlavorKey": "quest.shadoweave.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Fabric_Scrap_Shadoweave",
+    "Category": "main",
+    "SortOrder": 40,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "orrins_vow",
+        "Tier": 1
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "first_unmaking"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "bring_shadoweave": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Fabric_Scrap_Shadoweave",
+      "MatchMode": "EXACT",
+      "Amount": 8,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    },
+    "unmake_weapons": {
+      "Kind": "STATION_INPUT",
+      "Target": "Weapon_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 5,
+      "TextKey": "objective.text.stations.unmake_weapons",
+      "Order": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 1200
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$Comment": "Pieces taken apart at the GREATER Disenchanting Table alone: STATION_INPUT with a blank Target (any piece) and Qualifier 'Disenchanting_Table_Greater' on EXACT, so the lesser table never counts toward it. The greater table works three pieces back to back, so this is a measure of queues run rather than single rituals. The FlavorKey's {0} is filled from TextArgs.Flavor's @amount, so retuning is editing the Amount and nothing in a language file.",
+  "Name": "Disenchanting_Greater_Hand",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_greater_hand.title",
+    "FlavorKey": "achievement.disenchanting_greater_hand.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 53
+  },
+  "Scoring": {
+    "Points": 100
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "unmake-greater": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table_Greater",
+      "QualifierMatchMode": "EXACT",
+      "Amount": 100
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 6600
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 3300
+        }
+      }
+    ]
+  }
+}

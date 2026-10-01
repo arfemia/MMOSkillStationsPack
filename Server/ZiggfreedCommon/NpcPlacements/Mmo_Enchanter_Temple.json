@@ -1,0 +1,71 @@
+{
+  "$Comment": [
+    "Enchanter Orrin, standing in the Forgotten Temple at a spot of his own, away from the merchant",
+    "cluster where Sawyer Marn and the Mastery Trainer flank the Rootling merchant's marker. Orrin is",
+    "this pack's character end to end: his role, this placement and the conversation pressing F",
+    "opens all ship here, so a server without the pack has no enchanter to stand up. Interact names",
+    "a conversation rather than a screen because Orrin has quests to hand out and lines to say",
+    "before any list opens; a screen name there would open that screen with no conversation at",
+    "all. Author Open or Dialogue, never both.",
+    "",
+    "To take Orrin out without editing this file, set Enabled false in",
+    "mods/ziggfreedcommon/npc-placements.json.",
+    "",
+    "Where targets the temple by its GameplayConfig key rather than by name: that key is the",
+    "engine's own per-world gameplay-config id ('ForgottenTemple' ships with the base game) and",
+    "it is the same every time the temple is entered, while the world NAME carries a fresh uuid",
+    "each time.",
+    "",
+    "Requires keeps Orrin away until the stations feature is on, which means RPG Stations is",
+    "installed and switched on; with it off his quests do not exist either, so nothing dangles.",
+    "Lifecycle keeps his chunk loaded, puts him back if something removes him, and raises his",
+    "health beyond anything that can be dealt. All three matter for a quest giver: a delivery",
+    "quest whose character is not standing where the player is parks unpaid until they find him.",
+    "This placement authors no Identity.NpcId, so the character IS his role: the disenchanting",
+    "quests bind to Mmo_Enchanter, and any second placement of that role is the same enchanter,",
+    "offering and taking hand-ins for the same quests.",
+    "",
+    "Anchor is the temple's own arrival spot plus an offset, the same anchor the Adventurer's Guide",
+    "uses for its temple standing (the guide stands fourteen blocks along negative X from the",
+    "arrival spot, on the open side of the landing; positive X runs into the structure). Orrin",
+    "stands between the arrival spot and the guide, eight blocks along negative X and two back",
+    "along negative Z, so he is clear of both the guide and the merchant cluster. To move him, edit",
+    "Anchor.WorldSpawn.Offset, keeping it small enough to stay out of the walls, and Yaw to turn",
+    "which way he faces; test the spot in game, since the walls do not move for the offset.",
+    "/mmonpc list --arg1=placements shows whether the placement resolved."
+  ],
+  "Name": "Mmo_Enchanter_Temple",
+  "Enabled": true,
+  "Where": {
+    "GameplayConfig": ["ForgottenTemple"]
+  },
+  "Identity": {
+    "Role": "Mmo_Enchanter"
+  },
+  "Anchor": {
+    "WorldSpawn": {
+      "Offset": {
+        "X": -8,
+        "Z": -2
+      },
+      "Yaw": 180.0
+    }
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Lifecycle": {
+    "KeepAlive": true,
+    "Respawn": true,
+    "Fortify": true
+  },
+  "Interact": {
+    "Dialogue": "Mmo_Enchanter"
+  }
+}

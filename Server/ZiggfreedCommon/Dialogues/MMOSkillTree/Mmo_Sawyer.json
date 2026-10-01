@@ -700,6 +700,50 @@
           "Goto": "menu"
         }
       ]
+    },
+    "enchanter_intro": {
+      "$Comment": "Who else is standing on this landing: the enchanter in his own corner. Reached from the footer's pointer line, which shows only until his introduction is taken. The accept line takes that introduction on and shows the brief; the other line simply goes back. What Marn hands out is the walk across the landing and nothing more: the enchanter's own jobs are his to offer, once the player has stood in front of him.",
+      "TextKey": "dialogue.mmo_sawyer.enchanter_intro.text",
+      "Options": [
+        {
+          "LabelKey": "dialogue.mmo_sawyer.enchanter_intro.opt.accept",
+          "Style": "accept",
+          "Conditions": [
+            {
+              "Type": "Gate",
+              "Requirements": {
+                "Quests": ["meet_the_sawyer"],
+                "Factors": [
+                  { "Factor": "mmoskilltree:feature", "Param": "stations", "Min": 1 }
+                ]
+              }
+            },
+            {
+              "Type": "QuestState",
+              "Quest": "meet_the_enchanter",
+              "State": "NOT_STARTED"
+            }
+          ],
+          "Do": [
+            { "Accept": "meet_the_enchanter" },
+            { "Goto": "enchanter_brief" }
+          ]
+        },
+        {
+          "LabelKey": "dialogue.mmo_sawyer.enchanter_intro.opt.back",
+          "Style": "neutral",
+          "Goto": "menu"
+        }
+      ],
+      "IncludeOptions": [
+        "sawyer_tail"
+      ]
+    },
+    "enchanter_brief": {
+      "TextKey": "dialogue.mmo_sawyer.enchanter_brief.text",
+      "IncludeOptions": [
+        "sawyer_footer"
+      ]
     }
   },
   "Fragments": {
@@ -754,6 +798,27 @@
           }
         ],
         "Goto": "kit_talk"
+      },
+      {
+        "LabelKey": "dialogue.mmo_sawyer.opt.enchanter_who",
+        "Style": "neutral",
+        "Conditions": [
+          {
+            "Type": "Gate",
+            "Requirements": {
+              "Quests": ["meet_the_sawyer"],
+              "Factors": [
+                { "Factor": "mmoskilltree:feature", "Param": "stations", "Min": 1 }
+              ]
+            }
+          },
+          {
+            "Type": "QuestState",
+            "Quest": "meet_the_enchanter",
+            "State": "NOT_STARTED"
+          }
+        ],
+        "Goto": "enchanter_intro"
       },
       {
         "LabelKey": "dialogue.mmo_sawyer.opt.nothing",

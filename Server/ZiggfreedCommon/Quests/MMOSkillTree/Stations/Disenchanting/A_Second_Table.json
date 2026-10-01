@@ -1,0 +1,88 @@
+{
+  "$Comment": [
+    "A second Disenchanting Table for a worker who has proven the first one earns its keep: a",
+    "hundred pieces unmade, then Life essence delivered.",
+    "",
+    "volume counts pieces the tables took apart (STATION_INPUT, blank Target so any piece counts,",
+    "qualified to 'Disenchanting_Table' on PREFIX so both tiers count and the Sawmill does not,",
+    "with the shared unmake_gear TextKey); bring_essence is Order 2, an exact-id hand-in to Orrin.",
+    "Life essence is the table's ordinary wage, so the delivery is paid for by running the table,",
+    "not by a detour. This quest branches off the chain after Three Kinds of Gear rather than",
+    "sitting in it, so it carries no Chains entry and its SortOrder places it after the chain's",
+    "rungs. The reward is the table itself; remove that entry and the quest is a plain XP job."
+  ],
+  "Name": "A_Second_Table",
+  "Text": {
+    "TitleKey": "quest.a_second_table.title",
+    "FlavorKey": "quest.a_second_table.flavor"
+  },
+  "Listing": {
+    "Icon": "RPG_Station_Disenchanting_Table",
+    "Category": "main",
+    "SortOrder": 39,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "three_kinds_of_gear"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "volume": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 100,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    },
+    "bring_essence": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 30,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "RPG_Station_Disenchanting_Table",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 1000
+        }
+      }
+    ]
+  }
+}

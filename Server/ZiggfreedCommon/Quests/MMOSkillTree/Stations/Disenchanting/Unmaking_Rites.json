@@ -1,0 +1,99 @@
+{
+  "$Comment": [
+    "Orrin's daily: a short sitting at the table and a tithe of Life essence, paid from one table.",
+    "",
+    "Repeat.Reset with Period Daily is a CALENDAR daily, not a rolling wait: the allowance refreshes",
+    "at the day boundary on server time, so a player who finishes late in the evening can go again",
+    "the next morning rather than waiting a fixed number of hours from whenever they last claimed.",
+    "Author AtMinutes on the Reset block to move the boundary off midnight, or replace Period with",
+    "an Every block to set any other length.",
+    "",
+    "It opens once First Unmaking is claimed, so every player who takes it owns a table and knows",
+    "how to run it. Both steps sit on Order 1, so they run together: rites counts pieces the tables",
+    "took apart (STATION_INPUT, blank Target so any piece counts, qualified to 'Disenchanting_Table'",
+    "on PREFIX so both tiers count and the Sawmill does not, with the shared unmake_gear TextKey),",
+    "and tithe hands Life essence in to Orrin only (TurnInNpcId 'giver'). The table pays essence for",
+    "every piece, so one sitting covers both. Raise or lower either Amount to change how long a",
+    "day's rites take.",
+    "",
+    "The whole payout is ONE Lootable reward, Lootables/Mmo_Enchanter_Rites.json, which grows with",
+    "the player's Enchanting level and luck and carries the daily's chance rolls; retune the odds",
+    "there, and nothing in this file needs to change to make the daily more or less generous. The",
+    "reward sits in the Claim bucket, so the roll happens when the player collects it.",
+    "",
+    "Listing puts it in the misc category with the Repeatable tag, the same shelf as the sawyer's",
+    "Standing Order."
+  ],
+  "Name": "Unmaking_Rites",
+  "Text": {
+    "TitleKey": "quest.unmaking_rites.title",
+    "FlavorKey": "quest.unmaking_rites.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Life_Essence",
+    "Category": "misc",
+    "SortOrder": 210,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Repeat": {
+    "Reset": {
+      "Period": "Daily"
+    },
+    "CooldownFrom": "Complete"
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "first_unmaking"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "rites": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 6,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    },
+    "tithe": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 10,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Enchanter_Rites"
+        }
+      }
+    ]
+  }
+}

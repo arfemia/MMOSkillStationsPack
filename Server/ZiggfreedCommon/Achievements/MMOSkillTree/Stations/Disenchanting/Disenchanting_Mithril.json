@@ -1,0 +1,59 @@
+{
+  "$Comment": "Mithril gear taken apart at a Disenchanting Table: '_Mithril' on CONTAINS catches every mithril piece whatever its class, since armor ids carry the metal in the middle and weapons and tools at the end. The bar and the ore also contain the word, but neither is gear and the tables refuse both, so they can never count. Qualified to 'Disenchanting_Table' on PREFIX, so both tables count and the Sawmill never does. The FlavorKey's {0} is filled from TextArgs.Flavor's @amount, so retuning is editing the Amount and nothing in a language file.",
+  "Name": "Disenchanting_Mithril",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_mithril.title",
+    "FlavorKey": "achievement.disenchanting_mithril.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 52
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "unmake-mithril": {
+      "Kind": "STATION_INPUT",
+      "Target": "_Mithril",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 10
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 8000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 60
+        }
+      }
+    ]
+  }
+}

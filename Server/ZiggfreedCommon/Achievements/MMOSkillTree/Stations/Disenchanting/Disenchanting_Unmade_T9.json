@@ -1,0 +1,79 @@
+{
+  "$Comment": "Pieces of gear a Disenchanting Table took apart, rung 9 and the top of the disenchanting_unmade ladder. STATION_INPUT counts a stack the moment a station consumes it; the blank Target matches every item, so any piece of gear counts and nothing else can reach a table. Qualifier 'Disenchanting_Table' with QualifierMatchMode PREFIX counts BOTH tables (the greater table's station id starts with the lesser's); a qualifier left out would count the same item at the Sawmill too, so every disenchanting count names it. Announced to the server. Its Claim is XP and a long personal Enchanting boost token (Enchanting has no token item to hand over); the earned grimoire is paid by Orrin's own questline rather than here, so this rung stays a pure ladder top. Retune the whole ladder by editing each rung's Amount and nothing in a language file.",
+  "Name": "Disenchanting_Unmade_T9",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_unmade_t9.title",
+    "FlavorKey": "achievement.disenchanting_unmade.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 39,
+    "Chains": [
+      {
+        "Id": "disenchanting_unmade",
+        "Tier": 9
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 1200
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "unmake-pieces": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 10000
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 66000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 33000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.5,
+          "DurationMinutes": 120
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.disenchanting_unmade_t9.title"
+      }
+    }
+  }
+}

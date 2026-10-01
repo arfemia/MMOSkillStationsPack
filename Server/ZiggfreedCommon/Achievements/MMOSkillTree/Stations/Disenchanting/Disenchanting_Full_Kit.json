@@ -1,0 +1,78 @@
+{
+  "$Comment": "Every piece of the disenchanter's kit, found: four criteria, one per cloth piece, and EVERY criterion must complete. The kit pieces are item grants on the Disenchant_Kit table, so each is reported as station output the moment it lands and its exact-id criterion advances on it; each is qualified to 'Disenchanting_Table' on PREFIX, so a piece found at either table counts. A piece paid out of Orrin's Loose Threads order lands from a quest claim rather than a station and does not count here, by design: the achievement is for the table finds. Add a criterion here if the kit gains a piece.",
+  "Name": "Disenchanting_Full_Kit",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_full_kit.title",
+    "FlavorKey": "achievement.disenchanting_full_kit.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 54
+  },
+  "Scoring": {
+    "Points": 150
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "hood": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Armor_Disenchanter_Head",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1
+    },
+    "robe": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Armor_Disenchanter_Chest",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1
+    },
+    "gloves": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Armor_Disenchanter_Hands",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1
+    },
+    "leggings": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Armor_Disenchanter_Legs",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 8000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.0,
+          "DurationMinutes": 90
+        }
+      }
+    ]
+  }
+}

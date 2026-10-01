@@ -1,0 +1,114 @@
+{
+  "$Comment": [
+    "The last rung of Orrin's Vow, and the one that pays his own grimoire: a long sitting at the",
+    "greater table, then a Voidheart brought to him.",
+    "",
+    "deep_rites counts pieces the GREATER table took apart (STATION_INPUT, blank Target so any",
+    "piece counts, Qualifier 'Disenchanting_Table_Greater' on EXACT so the lesser table does not;",
+    "the shared unmake_gear TextKey, with the table's name added to the line automatically).",
+    "bring_heart is Order 2, an exact-id hand-in of one Voidheart to Orrin only (TurnInNpcId",
+    "'giver'). Flow.HideLockedSteps keeps that hand-in off the step list until the sitting is",
+    "behind the player, so the quest reads as the work it is asking for.",
+    "",
+    "The heart is a hand-in rather than a station find on purpose: the tables find a Voidheart",
+    "only in the deepest gear and rarely, the void's own creatures drop them too, and Orrin's",
+    "daily and short order each roll a small chance at one, so the rung has a definite end",
+    "whichever road the player takes. Requires names both the rung before it and the greater",
+    "table's quest, since the sitting is at that table, plus an Enchanting level gate, the top of",
+    "the questline's own curve.",
+    "",
+    "Rewards sit in Claim: Orrin's grimoire itself (Item/Items/MMO_Weapon_Spellbook_Grimoire_Orrin",
+    ".json, a working spellbook whose stats are tuned in that file) and Enchanting XP. An Item",
+    "reward is fit-checked before the claim goes through, so a full bag parks the claim rather",
+    "than eating the book. The Chains entry files it as tier 4 of orrins_vow. Completing this quest",
+    "is also what the Orrin's Own achievement counts, so a retune here changes what that",
+    "achievement asks. Remove the Item entry and the questline is a plain XP arc."
+  ],
+  "Name": "The_Voidheart",
+  "Text": {
+    "TitleKey": "quest.the_voidheart.title",
+    "FlavorKey": "quest.the_voidheart.flavor"
+  },
+  "Listing": {
+    "Icon": "Ingredient_Voidheart",
+    "Category": "main",
+    "SortOrder": 43,
+    "Tags": [
+      "Stations"
+    ],
+    "Chains": [
+      {
+        "Id": "orrins_vow",
+        "Tier": 4
+      }
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true,
+    "HideLockedSteps": true
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "outlander_steel",
+      "the_greater_table"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      },
+      {
+        "Factor": "hytale:stat",
+        "Param": "MMO_Level_ENCHANTING",
+        "Min": 25
+      }
+    ]
+  },
+  "Objectives": {
+    "deep_rites": {
+      "Kind": "STATION_INPUT",
+      "Target": "",
+      "MatchMode": "CONTAINS",
+      "Qualifier": "Disenchanting_Table_Greater",
+      "QualifierMatchMode": "EXACT",
+      "Amount": 40,
+      "TextKey": "objective.text.stations.unmake_gear",
+      "Order": 1
+    },
+    "bring_heart": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Voidheart",
+      "MatchMode": "EXACT",
+      "Amount": 1,
+      "Order": 2,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Item",
+        "Params": {
+          "Item": "MMO_Weapon_Spellbook_Grimoire_Orrin",
+          "Count": 1
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 8000
+        }
+      }
+    ]
+  }
+}

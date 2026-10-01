@@ -1,0 +1,44 @@
+{
+  "$Comment": "Orrin's week of unmaking finished week after week. COMPLETE_QUEST on a repeatable counts every completion, so the Amount is a number of weeks. Retune it to change how long the habit must hold.",
+  "Name": "Disenchanting_Weekly_Account",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_weekly_account.title",
+    "FlavorKey": "achievement.disenchanting_weekly_account.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 59
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "finish-the-week": {
+      "Kind": "COMPLETE_QUEST",
+      "Target": "a_weeks_unmaking",
+      "MatchMode": "EXACT",
+      "Amount": 10
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$Comment": "The trophy: the Disenchanter's Grimoire coming off a Disenchanting Table. The grimoire is an item grant on the trophy table, so it is reported as station output the moment it lands and this exact-id criterion advances on it; qualified to 'Disenchanting_Table' on PREFIX, so either table counts. Hidden until earned, announced to the server, and its Claim carries the Flair reward: {\"Kind\": \"Flair\", \"Params\": {\"Flair\": \"disenchanter\"}} unlocks the Disenchanter flair (Server/RpgStations/Flairs/Disenchanter.json) for the player, which re-dresses the tables' find cues and the Unmake beat of both rituals. A flair the player already holds is a no-op.",
+  "Name": "Disenchanter",
+  "Text": {
+    "TitleKey": "achievement.disenchanter.title",
+    "FlavorKey": "achievement.disenchanter.desc"
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 55,
+    "Hidden": true
+  },
+  "Scoring": {
+    "Points": 250
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "trophy-grimoire": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "RPG_Weapon_Spellbook_Grimoire_Disenchanter",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 16500
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 8250
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.5,
+          "DurationMinutes": 120
+        }
+      },
+      {
+        "Kind": "Flair",
+        "Params": {
+          "Flair": "disenchanter"
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.disenchanter.title"
+      }
+    }
+  }
+}

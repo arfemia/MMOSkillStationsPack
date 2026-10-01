@@ -1,0 +1,204 @@
+{
+  "$Comment": [
+    "What Enchanter Orrin pays for the Unmaking Rites, his daily. The daily's whole payout is this",
+    "one table, so retune the daily here and the quest file never changes.",
+    "",
+    "A CLAIM TABLE, never a station table. It rolls when the player collects the reward from the",
+    "quest log, with only the player in context: no piece of gear, no table, no tool. That is why",
+    "every roll here reads the PLAYER alone (Enchanting level and luck through hytale:stat) and",
+    "none carries a Trigger or a gear condition. The table's own station tables (Disenchant_Void",
+    "and the rest) gate their rolls on the placed piece's level and so can never pay from a claim;",
+    "this file is the claim-side twin of those finds, sized for one day rather than one ritual.",
+    "",
+    "ROLLS EVALUATE INDEPENDENTLY. Every roll whose Chance passes pays out on the same claim, so a",
+    "good day hands over several at once. The first roll always pays, and each one after it is a",
+    "bonus on top. Chance is a percentage, 0 to 100; a roll with no Chance always fires. Count and",
+    "CountMax together are a range, rolled per grant.",
+    "",
+    "THE FIRST ROLL IS A LADDER, which is what makes the daily grow with the enchanter instead of",
+    "paying a beginner and a veteran the same handful. Its Factors are summed into one score and the",
+    "Floors are read against that score; floors are NOT cumulative, so the highest one reached wins",
+    "and only its Grants fire. Two things feed the score, weighted equally: the Enchanting level, so",
+    "the rites pay better as the skill grows, and Enchanting luck, so a luck-heavy tree pays here as",
+    "well as at the table. Each floor pays Enchanting XP through a Rewards entry (the Mmo_Xp kind:",
+    "Skill plus Amount) and a little Life essence on the side.",
+    "",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_Luck_ENCHANTING",
+    "stores whole percent points, so a fully claimed Enchanting tree reads near a hundred rather",
+    "than near one, and MMO_Level_ENCHANTING is a level, not a fraction. The floors below are",
+    "therefore written on a scale of roughly 0 to 250. Never swap these two leaves for the",
+    "mmoskilltree:station_luck aggregate: that one returns a FRACTION, which would shift every floor",
+    "by a factor of a hundred.",
+    "",
+    "The three chance rolls carry a Cue, the celebration id a roll may author beside its Grants. It",
+    "fires only when the grants beside it genuinely paid out; Rare_Find is the everyday chime the",
+    "MMO jar ships as a toast. All the odds and floors here are opening balance."
+  ],
+  "Name": "Mmo_Enchanter_Rites",
+  "Rolls": [
+    {
+      "$Comment": "Always pays, and pays more the further along the enchanter is. Floor 0 is what somebody who has only just earned a table receives; the top floor wants a high level and a full luck tree together rather than one alone.",
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_ENCHANTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_ENCHANTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "The starting tier, reachable by anybody, since a score of 0 always passes.",
+            "Min": 0,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "ENCHANTING",
+                    "Amount": 300
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 3,
+                  "CountMax": 6
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "An enchanter past the early levels, or one who has claimed a few luck rewards.",
+            "Min": 40,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "ENCHANTING",
+                    "Amount": 800
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 4,
+                  "CountMax": 8
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "A committed enchanter: a solid level with real luck investment behind it.",
+            "Min": 90,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "ENCHANTING",
+                    "Amount": 1800
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 6,
+                  "CountMax": 10
+                }
+              ]
+            }
+          },
+          {
+            "$Comment": "The top of the ladder, needing both halves near their ceiling rather than one alone.",
+            "Min": 160,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "Mmo_Xp",
+                  "Params": {
+                    "Skill": "ENCHANTING",
+                    "Amount": 3500
+                  }
+                }
+              ],
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 8,
+                  "CountMax": 14
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "The everyday bonus, roughly two days in five: a thread of Void essence, the thing the table finds in good gear.",
+      "Chance": { "Base": 40.0 },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Void_Essence",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The uncommon bonus, roughly one day in ten: a Disenchanter's Draught, which hurries the ritual along for a few minutes.",
+      "Chance": { "Base": 10.0 },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "RPG_Potion_Disenchanters_Draught",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The rare pull, roughly one day in fifty at no luck and one in twenty-five with a full tree: a Voidheart. Luck acts on the odds here, not on the count, because a heart is a yes or a no.",
+      "Chance": {
+        "Base": 2.0,
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_ENCHANTING",
+            "Weight": 0.01
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 0.01
+          }
+        ],
+        "Clamp": {
+          "Max": 4.0
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Voidheart",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Rare_Find"
+    }
+  ]
+}

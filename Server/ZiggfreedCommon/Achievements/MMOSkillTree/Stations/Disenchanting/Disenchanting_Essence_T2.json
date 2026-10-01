@@ -1,0 +1,64 @@
+{
+  "$Comment": "Life essence a Disenchanting Table drew out of gear, rung 2 of the disenchanting_essence ladder. An exact item id, so only the plain essence counts; it is the table's ordinary wage, paid for every piece, so this ladder is a measure of pieces unmade weighted by how good they were. STATION_OUTPUT counts a stack the moment it lands in the worker's inventory. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Qualifier 'Disenchanting_Table' with QualifierMatchMode PREFIX counts BOTH tables (the greater table's station id starts with the lesser's); a qualifier left out would count the same item at the Sawmill too, so every disenchanting count names it.",
+  "Name": "Disenchanting_Essence_T2",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_essence_t2.title",
+    "FlavorKey": "achievement.disenchanting_essence.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 41,
+    "Chains": [
+      {
+        "Id": "disenchanting_essence",
+        "Tier": 2
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "draw-essence": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1000
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 5000
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 2500
+        }
+      }
+    ]
+  }
+}

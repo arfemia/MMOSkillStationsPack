@@ -1,0 +1,122 @@
+{
+  "$Comment": [
+    "Orrin's standing order, for a finished enchanter: armor and weapons unmade, and a tithe of",
+    "essence delivered. The order that pays the disenchanter's kit.",
+    "",
+    "Repeat.Reset with an Every block is a SPAN cadence rather than a calendar one, which is what",
+    "three hours needs: a calendar has no three-hour boundary, so Period cannot express it. Author",
+    "Every for any window that is not Daily or Weekly, and never both in the same Reset. Widen or",
+    "narrow the Hours here to change how often the order comes round; the engine buckets anything",
+    "shorter than a day as repeatable rather than daily, so the quest list badges it that way and a",
+    "finish-so-many-dailies objective elsewhere will not count it.",
+    "",
+    "It opens once The Greater Table is claimed, so it runs beside the Unmaking Rites for a player",
+    "who has finished the disenchanting chain, and the two never pay the same thing. All three",
+    "steps sit on Order 1, so they run together: unmake_armor and unmake_weapons count the two gear",
+    "classes the tables took apart ('Armor_' and 'Weapon_' on PREFIX, qualified to",
+    "'Disenchanting_Table' on PREFIX so both tiers count, each with its own TextKey), and tithe",
+    "hands Life essence in to Orrin only (TurnInNpcId 'giver'). One sitting covers all three.",
+    "",
+    "The payout is two Lootable rewards, one per concern. Mmo_Enchanter_Threads is the wage and the",
+    "finds: Enchanting level and luck size the wage, and luck weighs the chance rolls at Void",
+    "essence, a draught and a Voidheart. Disenchant_Kit is the pack's own table for the four kit",
+    "pieces, the same luck-weighted rolls the Disenchanting Table itself makes, so an order filled",
+    "here is one more roll at the kit beside every ritual. Both tables roll with only the player in",
+    "context, which is why neither carries a gear condition; a station table that gates on the",
+    "placed piece can never pay from a claim, so never name one here. Both sit in the Claim bucket,",
+    "so every roll happens when the player collects.",
+    "",
+    "Listing puts it in the misc category on the same shelf as the Unmaking Rites, one place after",
+    "it."
+  ],
+  "Name": "Loose_Threads",
+  "Text": {
+    "TitleKey": "quest.loose_threads.title",
+    "FlavorKey": "quest.loose_threads.flavor"
+  },
+  "Listing": {
+    "Icon": "RPG_Armor_Disenchanter_Head",
+    "Category": "misc",
+    "SortOrder": 211,
+    "Tags": [
+      "Stations"
+    ],
+    "Hidden": true,
+    "RequirePrerequisites": true
+  },
+  "Flow": {
+    "AutoAccept": false,
+    "AutoTrack": true
+  },
+  "Repeat": {
+    "Reset": {
+      "Every": {
+        "Hours": 3
+      }
+    },
+    "CooldownFrom": "Complete"
+  },
+  "Npc": {
+    "ViewId": "Mmo_Enchanter",
+    "TurnInId": "giver"
+  },
+  "CompletionDialogue": "Mmo_Enchanter",
+  "Requires": {
+    "Quests": [
+      "the_greater_table"
+    ],
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Objectives": {
+    "unmake_armor": {
+      "Kind": "STATION_INPUT",
+      "Target": "Armor_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 2,
+      "TextKey": "objective.text.stations.unmake_armor",
+      "Order": 1
+    },
+    "unmake_weapons": {
+      "Kind": "STATION_INPUT",
+      "Target": "Weapon_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 2,
+      "TextKey": "objective.text.stations.unmake_weapons",
+      "Order": 1
+    },
+    "tithe": {
+      "Kind": "TURN_IN",
+      "Target": "Ingredient_Life_Essence",
+      "MatchMode": "EXACT",
+      "Amount": 6,
+      "Order": 1,
+      "TurnInNpcId": "giver"
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Mmo_Enchanter_Threads"
+        }
+      },
+      {
+        "Kind": "Lootable",
+        "Params": {
+          "Lootable": "Disenchant_Kit"
+        }
+      }
+    ]
+  }
+}

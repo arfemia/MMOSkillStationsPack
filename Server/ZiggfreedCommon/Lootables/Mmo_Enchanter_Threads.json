@@ -1,0 +1,143 @@
+{
+  "$Comment": [
+    "What Enchanter Orrin pays for Loose Threads, the order that comes round every few hours,",
+    "beside the kit table (Disenchant_Kit) the same quest claims. One concern per file: this one is",
+    "the wage and the finds, the kit table is the four cloth pieces.",
+    "",
+    "A CLAIM TABLE, never a station table. It rolls when the player collects the reward from the",
+    "quest log, with only the player in context: no piece of gear, no table, no tool. That is why",
+    "every roll here reads the PLAYER alone (Enchanting level and luck through hytale:stat) and",
+    "none carries a Trigger or a gear condition. The table's own station finds gate on the placed",
+    "piece's level and so can never pay from a claim; this file is their claim-side twin, sized for",
+    "one short order rather than one ritual.",
+    "",
+    "ROLLS EVALUATE INDEPENDENTLY. The first roll is a ladder that always pays (Enchanting level and",
+    "Enchanting luck summed into one score, the highest floor reached winning; both channels are",
+    "whole points, never the mmoskilltree:station_luck fraction). The chance rolls after it are",
+    "luck-weighted: each reads Base at no luck, adds its Factors Weight per whole point of Enchanting",
+    "luck and global luck at equal weight, and stops at Clamp.Max however much is stacked on top.",
+    "Luck acts on the odds and never on the count, because a find is a yes or a no.",
+    "",
+    "Read the odds as a number of ORDERS rather than days: the order comes round several times a",
+    "day, so a thread of Void essence lands most orders, a draught about one in twelve, and a",
+    "Voidheart about one in a hundred at no luck and one in forty with a heavily invested tree.",
+    "Every Cue is Rare_Find, the everyday chime the MMO jar ships as a toast. All opening balance."
+  ],
+  "Name": "Mmo_Enchanter_Threads",
+  "Rolls": [
+    {
+      "$Comment": "Always pays: Enchanting XP and a little Life essence, scaled by level and luck together.",
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Level_ENCHANTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_ENCHANTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 0,
+            "Grants": {
+              "Rewards": [
+                { "Kind": "Mmo_Xp", "Params": { "Skill": "ENCHANTING", "Amount": 150 } }
+              ],
+              "Items": [
+                { "Item": "Ingredient_Life_Essence", "Count": 2, "CountMax": 4 }
+              ]
+            }
+          },
+          {
+            "Min": 40,
+            "Grants": {
+              "Rewards": [
+                { "Kind": "Mmo_Xp", "Params": { "Skill": "ENCHANTING", "Amount": 400 } }
+              ],
+              "Items": [
+                { "Item": "Ingredient_Life_Essence", "Count": 3, "CountMax": 6 }
+              ]
+            }
+          },
+          {
+            "Min": 90,
+            "Grants": {
+              "Rewards": [
+                { "Kind": "Mmo_Xp", "Params": { "Skill": "ENCHANTING", "Amount": 900 } }
+              ],
+              "Items": [
+                { "Item": "Ingredient_Life_Essence", "Count": 4, "CountMax": 8 }
+              ]
+            }
+          },
+          {
+            "Min": 160,
+            "Grants": {
+              "Rewards": [
+                { "Kind": "Mmo_Xp", "Params": { "Skill": "ENCHANTING", "Amount": 1800 } }
+              ],
+              "Items": [
+                { "Item": "Ingredient_Life_Essence", "Count": 6, "CountMax": 10 }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "A thread of Void essence, most orders; luck lifts it toward a near certainty.",
+      "Chance": {
+        "Base": 55.0,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.1 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.1 }
+        ],
+        "Clamp": { "Max": 85.0 }
+      },
+      "Grants": {
+        "Items": [
+          { "Item": "Ingredient_Void_Essence", "Count": 1, "CountMax": 2 }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "A Disenchanter's Draught, about one order in twelve.",
+      "Chance": {
+        "Base": 8.0,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.03 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.03 }
+        ],
+        "Clamp": { "Max": 15.0 }
+      },
+      "Grants": {
+        "Items": [
+          { "Item": "RPG_Potion_Disenchanters_Draught", "Count": 1 }
+        ]
+      },
+      "Cue": "Rare_Find"
+    },
+    {
+      "$Comment": "The rare pull: a Voidheart. The shallowest curve and the lowest ceiling here, so luck shortens the tail rather than removing it.",
+      "Chance": {
+        "Base": 1.0,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.0075 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.0075 }
+        ],
+        "Clamp": { "Max": 2.5 }
+      },
+      "Grants": {
+        "Items": [
+          { "Item": "Ingredient_Voidheart", "Count": 1 }
+        ]
+      },
+      "Cue": "Rare_Find"
+    }
+  ]
+}

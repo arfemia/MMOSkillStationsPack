@@ -1,0 +1,72 @@
+{
+  "$Comment": "Void essence a Disenchanting Table found in gear, rung 3 of the disenchanting_void ladder. An exact item id; the table finds void only in gear of iron grade and up, the odds rising with the piece's level, so this ladder measures good gear unmade rather than any gear. STATION_OUTPUT counts a stack the moment it lands in the worker's inventory. One rung of a ladder: Listing.Chains names the ladder and this rung's place in it, and every rung shares ONE FlavorKey whose {0} is filled from TextArgs.Flavor's @amount, so retuning a rung is editing its Amount and nothing in a language file. Qualifier 'Disenchanting_Table' with QualifierMatchMode PREFIX counts BOTH tables (the greater table's station id starts with the lesser's); a qualifier left out would count the same item at the Sawmill too, so every disenchanting count names it. Announced to the server.",
+  "Name": "Disenchanting_Void_T3",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_void_t3.title",
+    "FlavorKey": "achievement.disenchanting_void.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 45,
+    "Chains": [
+      {
+        "Id": "disenchanting_void",
+        "Tier": 3
+      }
+    ]
+  },
+  "Scoring": {
+    "Points": 200
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "find-void": {
+      "Kind": "STATION_OUTPUT",
+      "Target": "Ingredient_Void_Essence",
+      "MatchMode": "EXACT",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 1000
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ALL",
+          "Amount": 8000
+        }
+      },
+      {
+        "Kind": "Mmo_Boost_Token",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Multiplier": 2.5,
+          "DurationMinutes": 120
+        }
+      }
+    ]
+  },
+  "Meta": {
+    "mmoskilltree": {
+      "Announce": {
+        "TitleKey": "achievement.announce.disenchanting_void_t3.title"
+      }
+    }
+  }
+}

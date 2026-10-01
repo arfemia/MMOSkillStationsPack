@@ -1,0 +1,58 @@
+{
+  "$Comment": "Tools taken apart at a Disenchanting Table: 'Tool_' on PREFIX catches every hatchet, pickaxe, shovel and the rest, whatever the grade (the repair kits, fertilizers and capture crate share the prefix but the tables refuse them, so they never count). Qualified to 'Disenchanting_Table' on PREFIX, so both tables count and the Sawmill never does. The FlavorKey's {0} is filled from TextArgs.Flavor's @amount, so retuning is editing the Amount and nothing in a language file.",
+  "Name": "Disenchanting_Tools",
+  "Text": {
+    "TitleKey": "achievement.disenchanting_tools.title",
+    "FlavorKey": "achievement.disenchanting_tools.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
+  },
+  "Listing": {
+    "Category": "stations",
+    "Subcategory": "disenchanting",
+    "SortOrder": 51
+  },
+  "Scoring": {
+    "Points": 50
+  },
+  "Requires": {
+    "Factors": [
+      {
+        "Factor": "mmoskilltree:feature",
+        "Param": "stations",
+        "Min": 1
+      }
+    ]
+  },
+  "Criteria": {
+    "unmake-tools": {
+      "Kind": "STATION_INPUT",
+      "Target": "Tool_",
+      "MatchMode": "PREFIX",
+      "Qualifier": "Disenchanting_Table",
+      "QualifierMatchMode": "PREFIX",
+      "Amount": 50
+    }
+  },
+  "Rewards": {
+    "Claim": [
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "ENCHANTING",
+          "Amount": 3300
+        }
+      },
+      {
+        "Kind": "Mmo_Xp",
+        "Params": {
+          "Skill": "CRAFTING",
+          "Amount": 1650
+        }
+      }
+    ]
+  }
+}
