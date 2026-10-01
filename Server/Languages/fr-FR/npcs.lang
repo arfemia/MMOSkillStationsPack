@@ -1,4 +1,5 @@
-# Pack MMO Skill Tree Stations - Nom d'affichage du Scieur Marn.
+# Pack MMO Skill Tree Stations - Noms d'affichage du Scieur Marn et de l'Enchanteur Orrin.
 # Le module I18nModule de Hytale ajoute le nom du fichier en préfixe, donc chaque clé se charge comme npcs.<clé>
 
 Mmo_Sawyer.name = Scieur Marn
+Mmo_Enchanter.name = Enchanteur Orrin

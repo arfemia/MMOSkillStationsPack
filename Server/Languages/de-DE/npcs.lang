@@ -1,4 +1,5 @@
-# Skill-Stationen-Pack - Anzeigename von Säger Marn.
+# Skill-Stationen-Pack - Anzeigenamen von Säger Marn und Verzauberer Orrin.
 # Das Spiel stellt dem Dateinamen die Schlüssel voran, also wird jeder Schlüssel als npcs.<key> geladen.
 
 Mmo_Sawyer.name = Säger Marn
+Mmo_Enchanter.name = Verzauberer Orrin

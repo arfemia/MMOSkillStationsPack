@@ -2,3 +2,4 @@
 # El módulo de I18n de Hytale antepone el nombre del archivo, así que cada clave se carga como npcs.<clave>
 
 Mmo_Sawyer.name = Aserrador Marn
+Mmo_Enchanter.name = Encantador Orrin
