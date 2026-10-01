@@ -82,19 +82,21 @@ His own story is about why he left the cult. It ends with forty pieces unmade at
 
 ## For server owners
 
-All of it is content in the zip. Nothing here needs a code change to retune:
+Everything here is plain content in the zip. You can retune any of it without writing code:
 
-- Find tiers, their thresholds, and which level opens the deep ones: `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json`
-- What a find hands over: `Server/Drops/`. The offcut mix is shared with RPG Stations' own tables, so one edit changes it across the whole bench.
-- The two plank ladders, one for levels and one for luck: `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json`
-- Trophy chase odds: `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json`
-- XP per cycle: `Server/RpgStations/Extensions/SawmillProgression.json`
-- Marn's quests and what they pay: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`. Standing Order's whole payout is one table, `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json`; Trim Work's is four, one concern each, alongside it: `Mmo_Sawmill_Trim_Pay.json`, `_Trim_Supply.json`, `_Trim_Finds.json` and `Mmo_Woodcutters_Kit.json`.
-- The achievements and their points: `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`
-- The bounty contracts and their pay: `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/`
-- The disenchanting tables' XP and how much the Enchanting level speeds a ritual: `Server/RpgStations/Extensions/` (the greater table follows the lesser one). Their extra essence and salvage, the void finds and the kit and grimoire odds: `Server/ZiggfreedCommon/Lootables/`
-- Orrin's quests: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Disenchanting/`. The woodcutter's kit set and its tiers: `Server/ZiggfreedCommon/GearSets/`
-- Take Marn or Orrin out without editing the pack: set the placement to `"Enabled": false` in `mods/ziggfreedcommon/npc-placements.json`. Their quests hide with the stations feature, so nothing dangles if RPG Stations is switched off.
+- The sawmill's five find tiers: what it takes to reach each one and what each pays out.
+- Both plank ladders, the one for levels and the one for luck.
+- The odds on the Sawmiller's Hatchet, and the XP a cycle pays.
+- Marn's and Orrin's quests and what they pay. Standing Order and Trim Work pay from tables of their own, so you can change a wage without touching the quest.
+- The achievements and their points.
+- All sixteen bounty contracts.
+- At the disenchanting tables, the XP a piece pays and how much the Enchanting level speeds up a ritual. The greater table takes its settings from the lesser one until you give it its own.
+- The extra essence and salvage a piece gives up. Also the odds on each find: Void Essence, the Voidheart, the disenchanter's kit and the Disenchanter's Grimoire.
+- The woodcutter's kit as a set: which pieces count and what each tier gives.
+
+Where each of those lives is listed in the pack's [README](https://github.com/arfemia/MMOSkillStationsPack/blob/main/README.md#for-server-owners).
+
+Want Marn or Orrin out of the temple? Leave the pack alone. `/mmonpc list` in the temple names both of them, and `/mmonpc disable` takes one away on the spot. That switch lives in your server's own settings, so a pack update won't bring him back. Their quests hide with the stations feature, so nothing dangles if RPG Stations is switched off.
 
 Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and still pay their own finds, they just grant no skill XP, and the tables go back to being crafted; this pack itself, Marn and Orrin included, needs both mods installed to load at all. Without RPG Stations there are no stations at all.
 

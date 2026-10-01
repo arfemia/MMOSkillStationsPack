@@ -159,6 +159,39 @@ Sawmill's display name/desc (`Identity.NameKey`/`DescKey`) point at
 `rpgstations.station.sawmill.name`/`.desc`, the keys RPG Stations itself ships (`rpgstations.lang`)
 - this pack reuses them rather than duplicating the translation.
 
+## For server owners
+
+Everything the store page says an owner can retune is plain content in the zip, at these paths:
+
+- Find tiers, their thresholds, and which level opens the deep ones:
+  `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json`
+- What a find hands over: `Server/Drops/`. The offcut mix is shared with RPG Stations' own tables,
+  so one edit changes it across the whole bench.
+- The two plank ladders, one for levels and one for luck:
+  `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json`
+- Trophy chase odds: `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json`
+- XP per cycle: `Server/RpgStations/Extensions/SawmillProgression.json`
+- Marn's quests and what they pay: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`.
+  Standing Order's whole payout is one table, `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json`;
+  Trim Work's is four, one concern each, alongside it: `Mmo_Sawmill_Trim_Pay.json`,
+  `_Trim_Supply.json`, `_Trim_Finds.json` and `Mmo_Woodcutters_Kit.json`.
+- The achievements and their points: `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`
+- The bounty contracts and their pay: `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/`
+- The disenchanting tables' XP and how much the Enchanting level speeds a ritual:
+  `Server/RpgStations/Extensions/DisenchantingProgression.json` (the greater table's file is a
+  `Parent` child of it that changes only its target; author a leaf there to tune the two apart).
+  Their extra essence and salvage, the void finds and the kit and grimoire odds:
+  `Server/ZiggfreedCommon/Lootables/` (`Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`,
+  `_Void_Finds.json`, `Disenchant_Kit.json`, `DisenchantTrophy.json`)
+- Orrin's quests: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Disenchanting/`, with his
+  daily and three-hourly payouts in `Mmo_Enchanter_Rites.json` and `Mmo_Enchanter_Threads.json`
+  beside the other lootables. The woodcutter's kit set and its tiers:
+  `Server/ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json`
+- Take Marn or Orrin out without editing the pack: `/mmonpc disable --arg1=Mmo_Sawyer_Temple` (or
+  `Mmo_Enchanter_Temple`), or the same switch by hand in `mods/ziggfreedcommon/npc-placements.json`:
+  `{"Mmo_Sawyer_Temple": {"enabled": false}}`. Their quests hide with the stations feature, so
+  nothing dangles if RPG Stations is switched off.
+
 ## Build
 
 ```powershell
