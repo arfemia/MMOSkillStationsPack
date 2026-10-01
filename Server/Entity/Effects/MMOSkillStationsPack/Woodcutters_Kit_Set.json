@@ -1,0 +1,14 @@
+{
+  "$Comment": "The woodcutter's kit's look, held on the player while the set's four-piece armor tier is active (ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json names it as that tier's Effect): a slow drift of gold sparks around the wearer, the same Block_Gem_Sparks the Sawmiller flair throws on a rare find, tinted to the Sawmiller's gold. It carries no stats; every number lives in the gear set. Infinite with OverlapBehavior Ignore, as a gear-set effect must be: the set engine puts it on when the tier comes on and again at every login, and takes it off itself when no active tier wants it. This id is dedicated to the set; do not apply it from anything else. To change the look, edit the Particles list (SystemId, Color and Scale are the usual knobs).",
+  "Infinite": true,
+  "OverlapBehavior": "Ignore",
+  "ApplicationEffects": {
+    "Particles": [
+      {
+        "SystemId": "Block_Gem_Sparks",
+        "Color": "#ffd97a",
+        "Scale": 1.5
+      }
+    ]
+  }
+}

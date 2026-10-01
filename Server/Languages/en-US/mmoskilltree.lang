@@ -50,6 +50,11 @@ ui.quest.tag.sawmill = Sawmill
 ui.quest.tag.stations = Stations
 flair.sawmiller.name = Sawmiller's Crown
 
+gearset.woodcutters_kit.title = Woodcutter's Kit
+gearset.woodcutters_kit.tier_pieces = Two pieces on: a little more from every log.
+gearset.woodcutters_kit.tier_armor = The full kit: more from every log, and gold sparks that follow you off the mill floor.
+gearset.woodcutters_kit.tier_held = The full kit with a hatchet in hand: the best the trade pays.
+
 achievement.sawmill_first_log.title = First Log
 achievement.sawmill_first_log.desc = Run your first log through a Sawmill.
 achievement.sawmill_shift_t1.title = Sawdust
