@@ -102,7 +102,7 @@ Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and 
 
 ## Versions
 
-### [Full Changelog](https://github.com/arfemia/MMOSkillStationsPack/blob/main/CHANGELOG.md)
+### [Full Changelog](https://github.com/arfemia/MMOSkillStationsPack/tree/main/patch-notes)
 
 ### v1.1.0 (unreleased, held)
 
