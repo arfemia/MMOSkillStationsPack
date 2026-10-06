@@ -52,10 +52,10 @@ At the Disenchanting Tables (1.1.0, held):
   piece (item level, quality, wear and stamped enhancement) from 1x for crude gear to 2x for
   mithril and 2.5x for enhanced mithril. The first Enchanting XP source that needs no enchanting
   mod.
-- **A trained enchanter works faster**: the Enchanting level shortens the ritual on top of the
-  table's own Disenchanting Proficiency, from 38 seconds untrained down to 15 (about 26 seconds at
-  level 100 alone, the 15-second floor with the full kit on and the Disenchanter's Grimoire in
-  hand).
+- **A trained enchanter works faster**: the ritual runs 34 seconds untrained here, and the
+  Enchanting level shortens it on top of the table's own Disenchanting Proficiency, down to a
+  15-second floor (about 21 seconds at level 100 alone, about 19 with the full kit alone, the floor
+  at level 100 with the full kit on).
 - **Luck sizes the extra Life Essence** (up to 1 more for crude gear, 2 for iron, 3 for cobalt to
   adamantite, 4 for mithril), and the Enchanting level and luck each pay a chance of a little
   more of the salvage, never a whole extra unit.
@@ -133,7 +133,8 @@ bonus) but grant no skill XP and roll no item stats.
 | `unreleased/Server/Emote/MMO_Emote_Hammer.json` | HELD BACK: the Anvil ritual's hammering emote |
 | `unreleased/Server/RpgStations/Extensions/CookingProgression.json` + `MMOSkillTree/CustomSkills/Cooking.json` | HELD BACK: the Cooking progression layer (targets a station held back on the RPG Stations jar side, so the two repos restore together) |
 | `unreleased/Server/MMOSkillTree/CustomSkills/Smithing.json` | HELD BACK: the SMITHING skill itself (a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures) |
-| `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, a pace ladder over the Enchanting level, and the three add-on tables below. The greater file is a `Parent` child that changes only its target |
+| `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, the ritual's length here (a 2.5 stretch on the paced beats and a 15-second floor) with a pace ladder over the Enchanting level, and the three add-on tables below. The greater file is a `Parent` child that changes only its target |
+| `Server/RpgStations/Extensions/DisenchantingProficiency.json`, `DisenchantingGreaterProficiency.json` | A gentler ladder over the disenchanter's gear (the Disenchanting Proficiency stat) that multiplies RPG Stations' own, since the Enchanting level does much of the speeding up here. The greater file is a `Parent` child that changes only its target |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json` | Extra Life Essence sized by luck within the piece's band, the occasional extra unit of salvage, and the luck-weighted Void Essence and Voidheart finds |
 | `Server/ZiggfreedCommon/Lootables/Disenchant_Kit.json`, `DisenchantTrophy.json` | Same-id replacements of RPG Stations' own kit and grimoire tables, luck-weighted |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Enchanter_Rites.json`, `Mmo_Enchanter_Threads.json` | What Orrin's daily and three-hourly order pay when you collect them |
@@ -177,9 +178,11 @@ Everything the store page says an owner can retune is plain content in the zip, 
   `_Trim_Supply.json`, `_Trim_Finds.json` and `Mmo_Woodcutters_Kit.json`.
 - The achievements and their points: `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`
 - The bounty contracts and their pay: `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/`
-- The disenchanting tables' XP and how much the Enchanting level speeds a ritual:
+- The disenchanting tables' XP, how long a ritual runs and how much the Enchanting level speeds it:
   `Server/RpgStations/Extensions/DisenchantingProgression.json` (the greater table's file is a
   `Parent` child of it that changes only its target; author a leaf there to tune the two apart).
+  How much the disenchanter's gear speeds it: `DisenchantingProficiency.json` beside it, with its
+  own greater-table child.
   Their extra essence and salvage, the void finds and the kit and grimoire odds:
   `Server/ZiggfreedCommon/Lootables/` (`Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`,
   `_Void_Finds.json`, `Disenchant_Kit.json`, `DisenchantTrophy.json`)

@@ -1,0 +1,18 @@
+{
+  "$Comment": "Keeps the disenchanter's gear at its gentler pace on this pack's servers. The jar's Disenchant action reads RPG_Disenchanting_Proficiency through a steep ladder, so that on a server with nothing else the full kit, the grimoire and the draught bring a ritual down to about 3 seconds; here the Enchanting level does much of that work (DisenchantingProgression.json), so the gear counts for less. This ladder reads the same stat and MULTIPLIES the jar's: each floor is the gentler scale divided by the jar's own at the same Min, so together they read 0.9 at 10 points, 0.8 at 20, 0.7 at 30, 0.55 at 45, 0.42 at 60, 0.3 at 75 and 0.21 at 90. If the jar's ladder changes, recompute each floor as the scale you want divided by the jar's. It targets the scoped lesser action, the same as DisenchantingProgression.json; DisenchantingGreaterProficiency.json is its Parent child for the greater table.",
+  "Target": { "Station": "Disenchanting_Table", "Action": "Disenchant" },
+  "Pace": {
+    "Ladder": {
+      "Factors": [ { "Factor": "hytale:stat", "Param": "RPG_Disenchanting_Proficiency" } ],
+      "Floors": [
+        { "Min": 10, "Scale": 1.034 },
+        { "Min": 20, "Scale": 1.067 },
+        { "Min": 30, "Scale": 1.129 },
+        { "Min": 45, "Scale": 1.122 },
+        { "Min": 60, "Scale": 1.135 },
+        { "Min": 75, "Scale": 1.25 },
+        { "Min": 90, "Scale": 1.826 }
+      ]
+    }
+  }
+}

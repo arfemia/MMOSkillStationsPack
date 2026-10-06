@@ -1,5 +1,5 @@
 {
-  "$Comment": "This pack's copy of the Greater Disenchanting Table block. It shares its id with the RPG Stations jar item, so this file overrides that ITEM wholesale through pack load order (the station itself, Stations/Disenchanting_Table_Greater.json, stays the jar's; this pack adds to its action through Extensions/DisenchantingGreaterProgression.json). A same-id copy replaces the whole item, which is why every field of the jar's file is restated here in the jar's order. Two things differ, on purpose: there is no Recipe (the jar's is an upgrade of the lesser table at the Arcane bench), so with this pack installed Enchanter Orrin's questline is the only way to get one; and Tags.Family reads MMOSkillTree rather than RpgStations, the same as this pack's Sawmill block. The model is the vanilla Arcane table's, two blocks wide, with its lit texture and idle animation on the Working and Drawing states the ritual flips; every state name a station or a step names must exist here, so keep all four if you copy this file. The name, description and hints reuse the jar's own items.RPG_Station_Disenchanting_Table_Greater.* keys.",
+  "$Comment": "This pack's copy of the Greater Disenchanting Table block. It shares its id with the RPG Stations jar item, so this file overrides that ITEM wholesale through pack load order (the station itself, Stations/Disenchanting_Table_Greater.json, stays the jar's; this pack adds to its action through Extensions/DisenchantingGreaterProgression.json). A same-id copy replaces the whole item, which is why every field of the jar's file is restated here in the jar's order. Two things differ, on purpose: there is no Recipe (the jar's is an upgrade of the lesser table at the Arcane bench), so with this pack installed Enchanter Orrin's questline is the only way to get one; and Tags.Family reads MMOSkillTree rather than RpgStations, the same as this pack's Sawmill block. The model is the vanilla Arcane table's, two blocks wide, with its lit texture and idle animation on the Working and Drawing states the ritual flips; every state name a station or a step names must exist here, so keep all four if you copy this file. Seats must stay too: the ritual seats its worker on this block (the jar action's Hold.Mount), and without the seat the table refuses to start. The name, description and hints reuse the jar's own items.RPG_Station_Disenchanting_Table_Greater.* keys.",
   "TranslationProperties": {
     "Name": "items.RPG_Station_Disenchanting_Table_Greater.name",
     "Description": "items.RPG_Station_Disenchanting_Table_Greater.description"
@@ -42,6 +42,9 @@
     "Interactions": {
       "Use": "RPG_Station_Disenchanting_Table_Greater_Use"
     },
+    "Seats": [
+      { "Offset": { "X": -0.5, "Y": 0, "Z": 0.6 }, "Yaw": 180 }
+    ],
     "State": {
       "Definitions": {
         "Default": {

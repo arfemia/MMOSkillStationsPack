@@ -1,0 +1,5 @@
+{
+  "$Comment": "The gentler gear pace at the Greater Disenchanting Table: exactly the lesser table's. The greater table runs its own action, Disenchant_Greater, and an extension's additions never flow down a Parent chain, so DisenchantingProficiency.json cannot reach it. This file is a Parent child of that one and authors only Target, the scoped {Station: Disenchanting_Table_Greater, Action: Disenchant_Greater}; the ladder is inherited, so a retune there reaches both tables.",
+  "Parent": "DisenchantingProficiency",
+  "Target": { "Station": "Disenchanting_Table_Greater", "Action": "Disenchant_Greater" }
+}
