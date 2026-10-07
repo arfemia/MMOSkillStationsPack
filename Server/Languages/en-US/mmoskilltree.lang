@@ -395,3 +395,7 @@ dialogue.mmo_enchanter.opt.grimoire = Does the table give anything rare?
 dialogue.mmo_enchanter.opt.kit = Where does the kit come from?
 dialogue.mmo_enchanter.opt.why = Why did you leave the cult?
 dialogue.mmo_enchanter.opt.nothing = Nothing for now.
+
+# ---- Achievement subcategory names ----
+achievement.category.stations.sawmill = Sawmill
+achievement.category.stations.disenchanting = Disenchanting
