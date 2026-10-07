@@ -389,3 +389,7 @@ dialogue.mmo_sawyer.opt.how = Cómo funciona el aserradero?
 dialogue.mmo_sawyer.opt.edge = Has visto un filo mejor?
 dialogue.mmo_sawyer.opt.kit = Qué complementa este gorro?
 dialogue.mmo_sawyer.opt.nothing = Nada por ahora.
+
+# ---- Nombres de las subcategorías de logros ----
+achievement.category.stations.sawmill = Aserradero
+achievement.category.stations.disenchanting = Desencantamiento

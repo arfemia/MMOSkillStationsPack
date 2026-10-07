@@ -391,3 +391,7 @@ dialogue.mmo_sawyer.opt.how = Hogy működik a malom?
 dialogue.mmo_sawyer.opt.edge = Láttál már élesebb élt?
 dialogue.mmo_sawyer.opt.kit = Mi jár ehhez a sapkához?
 dialogue.mmo_sawyer.opt.nothing = Egyelőre semmi.
+
+# ---- Teljesítmény-alkategóriák nevei ----
+achievement.category.stations.sawmill = Fűrészmalom
+achievement.category.stations.disenchanting = Enchantbontás

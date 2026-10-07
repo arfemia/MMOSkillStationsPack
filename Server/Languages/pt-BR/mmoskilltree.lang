@@ -392,3 +392,7 @@ dialogue.mmo_enchanter.opt.grimoire = A bancada dá alguma coisa rara?
 dialogue.mmo_enchanter.opt.kit = De onde vem o kit?
 dialogue.mmo_enchanter.opt.why = Por que você deixou o culto?
 dialogue.mmo_enchanter.opt.nothing = Nada por enquanto.
+
+# ---- Nomes das subcategorias de conquistas ----
+achievement.category.stations.sawmill = Serraria
+achievement.category.stations.disenchanting = Desencantamento

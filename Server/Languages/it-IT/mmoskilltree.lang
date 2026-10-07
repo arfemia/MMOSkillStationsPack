@@ -388,3 +388,7 @@ dialogue.mmo_sawyer.enchanter_intro.text = Lui? Un Outlander, a giudicare dalle 
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Vado a trovarlo.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Magari più tardi.
 dialogue.mmo_sawyer.enchanter_brief.text = Sta nell'angolo in fondo al <color is="#ffd97a">Tempio Dimenticato</color>, con la pietra alle spalle e un libro in mano. L'<color is="#ffd97a">Incantatore Orrin</color>. Salutalo e al resto delle chiacchiere ci pensa lui.
+
+# ---- Nomi delle sottocategorie degli obiettivi ----
+achievement.category.stations.sawmill = Segheria
+achievement.category.stations.disenchanting = Disincanto

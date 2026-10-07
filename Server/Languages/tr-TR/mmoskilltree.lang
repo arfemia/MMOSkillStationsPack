@@ -206,6 +206,10 @@ dialogue.mmo_enchanter.opt.kit = Takım nereden geliyor?
 dialogue.mmo_enchanter.opt.why = Kültten neden ayrıldın?
 dialogue.mmo_enchanter.opt.nothing = Şimdilik bir şey yok.
 
+# ---- Başarım alt kategori adları ----
+achievement.category.stations.sawmill = Bıçkıhane
+achievement.category.stations.disenchanting = Büyü Bozma
+
 achievement.category.disenchanting = Büyü Bozma
 achievement.category.stations = İstasyonlar
 ui.quest.tag.sawmill = Bıçkıhane

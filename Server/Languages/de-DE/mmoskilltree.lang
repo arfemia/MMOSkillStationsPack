@@ -387,3 +387,7 @@ dialogue.mmo_enchanter.opt.grimoire = Gibt der Tisch auch etwas Seltenes her?
 dialogue.mmo_enchanter.opt.kit = Woher kommt die Garnitur?
 dialogue.mmo_enchanter.opt.why = Warum hast du den Kult verlassen?
 dialogue.mmo_enchanter.opt.nothing = Im Moment nichts.
+
+# ---- Namen der Erfolgs-Unterkategorien ----
+achievement.category.stations.sawmill = Sägewerk
+achievement.category.stations.disenchanting = Entzauberung

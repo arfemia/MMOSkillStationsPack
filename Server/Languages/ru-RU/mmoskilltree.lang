@@ -387,3 +387,6 @@ dialogue.mmo_enchanter.opt.grimoire = Стол выдаёт что-нибудь 
 dialogue.mmo_enchanter.opt.kit = Откуда берётся комплект?
 dialogue.mmo_enchanter.opt.why = Почему ты ушёл из культа?
 dialogue.mmo_enchanter.opt.nothing = Пока ничего.
+
+achievement.category.stations.sawmill = Лесопилка
+achievement.category.stations.disenchanting = Снятие чар

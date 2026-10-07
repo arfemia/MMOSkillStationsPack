@@ -390,3 +390,7 @@ dialogue.mmo_sawyer.opt.edge = T'as jamais vu un tranchant meilleur?
 dialogue.mmo_sawyer.opt.kit = Qu'est-ce qui va avec cette casquette?
 dialogue.mmo_sawyer.opt.enchanter_who = C'est qui, le prêtre dans le coin ?
 dialogue.mmo_sawyer.opt.nothing = Rien pour maintenant.
+
+# ---- Noms des sous-catégories de succès ----
+achievement.category.stations.sawmill = Scierie
+achievement.category.stations.disenchanting = Désenchantement
