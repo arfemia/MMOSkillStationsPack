@@ -6,7 +6,7 @@
   },
   "Listing": { "Category": "items", "SortOrder": 20 },
   "Cost": {
-    "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 20 } ]
+    "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 30 } ]
   },
   "Rewards": [
     { "Kind": "Item", "Params": { "Item": "Weapon_Blowgun_Tribal", "Count": 1 } }

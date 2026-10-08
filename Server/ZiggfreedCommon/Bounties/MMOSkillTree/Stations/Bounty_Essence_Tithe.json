@@ -28,7 +28,7 @@
       "Kind": "TURN_IN",
       "Target": "Ingredient_Life_Essence",
       "MatchMode": "EXACT",
-      "Amount": 100
+      "Amount": 150
     }
   },
   "Rewards": {

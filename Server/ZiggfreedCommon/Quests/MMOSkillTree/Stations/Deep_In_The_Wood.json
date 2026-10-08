@@ -65,7 +65,7 @@
       "Target": "Ingredient_Life_Essence",
       "MatchMode": "EXACT",
       "Qualifier": "Sawmill",
-      "Amount": 40,
+      "Amount": 60,
       "TextKey": "objective.text.stations.shake_essence",
       "Order": 1
     },
@@ -73,7 +73,7 @@
       "Kind": "TURN_IN",
       "Target": "Ingredient_Life_Essence",
       "MatchMode": "EXACT",
-      "Amount": 25,
+      "Amount": 40,
       "Order": 2,
       "TurnInNpcId": "giver"
     }

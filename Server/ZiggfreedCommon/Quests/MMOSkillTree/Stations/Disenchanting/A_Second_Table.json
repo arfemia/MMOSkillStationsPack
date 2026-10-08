@@ -62,7 +62,7 @@
       "Kind": "TURN_IN",
       "Target": "Ingredient_Life_Essence",
       "MatchMode": "EXACT",
-      "Amount": 30,
+      "Amount": 45,
       "Order": 2,
       "TurnInNpcId": "giver"
     }

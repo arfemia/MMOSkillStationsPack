@@ -79,7 +79,7 @@
       "MatchMode": "EXACT",
       "Qualifier": "Disenchanting_Table",
       "QualifierMatchMode": "PREFIX",
-      "Amount": 100,
+      "Amount": 150,
       "TextKey": "objective.text.stations.draw_essence",
       "Order": 1
     },

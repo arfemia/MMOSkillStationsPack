@@ -6,7 +6,7 @@
   },
   "Listing": { "Category": "items", "SortOrder": 10 },
   "Cost": {
-    "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 20 } ]
+    "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 30 } ]
   },
   "Rewards": [
     { "Kind": "Item", "Params": { "Item": "Weapon_Wand_Wood", "Count": 1 } }

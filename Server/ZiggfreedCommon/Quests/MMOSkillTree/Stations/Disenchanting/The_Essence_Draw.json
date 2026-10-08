@@ -65,7 +65,7 @@
       "MatchMode": "EXACT",
       "Qualifier": "Disenchanting_Table",
       "QualifierMatchMode": "PREFIX",
-      "Amount": 40,
+      "Amount": 60,
       "TextKey": "objective.text.stations.draw_essence",
       "Order": 1
     },
@@ -73,7 +73,7 @@
       "Kind": "TURN_IN",
       "Target": "Ingredient_Life_Essence",
       "MatchMode": "EXACT",
-      "Amount": 20,
+      "Amount": 30,
       "Order": 2,
       "TurnInNpcId": "giver"
     }
