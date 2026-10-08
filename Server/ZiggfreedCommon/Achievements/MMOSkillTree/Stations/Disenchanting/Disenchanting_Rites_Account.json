@@ -3,7 +3,12 @@
   "Name": "Disenchanting_Rites_Account",
   "Text": {
     "TitleKey": "achievement.disenchanting_rites_account.title",
-    "FlavorKey": "achievement.disenchanting_rites_account.desc"
+    "FlavorKey": "achievement.disenchanting_rites_account.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

@@ -29,7 +29,8 @@
       "Target": "Ingredient_Life_Essence",
       "MatchMode": "EXACT",
       "Qualifier": "Sawmill",
-      "Amount": 20
+      "Amount": 20,
+      "TextKey": "objective.text.stations.shake_essence"
     }
   },
   "Rewards": {

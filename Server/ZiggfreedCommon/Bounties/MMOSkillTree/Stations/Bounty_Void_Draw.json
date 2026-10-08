@@ -30,7 +30,8 @@
       "MatchMode": "EXACT",
       "Qualifier": "Disenchanting_Table",
       "QualifierMatchMode": "PREFIX",
-      "Amount": 3
+      "Amount": 3,
+      "TextKey": "objective.text.stations.draw_essence"
     }
   },
   "Rewards": {

@@ -3,7 +3,12 @@
   "Name": "Disenchanting_Every_Slot",
   "Text": {
     "TitleKey": "achievement.disenchanting_every_slot.title",
-    "FlavorKey": "achievement.disenchanting_every_slot.desc"
+    "FlavorKey": "achievement.disenchanting_every_slot.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

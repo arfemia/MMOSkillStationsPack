@@ -66,6 +66,7 @@
       "MatchMode": "EXACT",
       "Qualifier": "Sawmill",
       "Amount": 40,
+      "TextKey": "objective.text.stations.shake_essence",
       "Order": 1
     },
     "deliver_essence": {

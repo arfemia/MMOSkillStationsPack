@@ -3,7 +3,12 @@
   "Name": "Disenchanting_Threads_Account",
   "Text": {
     "TitleKey": "achievement.disenchanting_threads_account.title",
-    "FlavorKey": "achievement.disenchanting_threads_account.desc"
+    "FlavorKey": "achievement.disenchanting_threads_account.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

@@ -28,7 +28,8 @@
       "Kind": "WORK_STATION",
       "Target": "Sawmill",
       "MatchMode": "EXACT",
-      "Amount": 15
+      "Amount": 15,
+      "TextKey": "objective.text.stations.saw_logs"
     }
   },
   "Rewards": {

@@ -1,5 +1,5 @@
 {
-  "$Comment": "The race for the first trophy hatchet on the server: Meta.mmoskilltree.ServerFirst true means only the first player to satisfy the criterion keeps it, and Announce carries both a title and a body so the whole server hears who. The criterion is the same exact-id station output the Sawmiller achievement counts.",
+  "$Comment": "The race for the first trophy hatchet on the server: Meta.mmoskilltree.ServerFirst true means only the first player to satisfy the criterion keeps it, and Announce carries both a title and a body so the whole server hears who. It is a feat of strength: Listing.Feat lists it in the earned-only feats section, and Scoring gives it no points and keeps it out of the points total, so a player who never wins the race can still reach every points milestone. Its Auto reward unlocks the First Sawmiller title (Server/ZiggfreedCommon/Titles/MMOSkillTree/First_Sawmiller.json) the moment it is earned. The criterion is the same exact-id station output the Sawmiller achievement counts.",
   "Name": "Sawmiller_Server_First",
   "Text": {
     "TitleKey": "achievement.sawmiller_server_first.title",
@@ -9,10 +9,12 @@
     "Category": "stations",
     "Subcategory": "sawmill",
     "SortOrder": 21,
-    "Hidden": true
+    "Hidden": true,
+    "Feat": true
   },
   "Scoring": {
-    "Points": 100
+    "Points": 0,
+    "CountsTowardTotal": false
   },
   "Requires": {
     "Factors": [
@@ -33,6 +35,14 @@
     }
   },
   "Rewards": {
+    "Auto": [
+      {
+        "Kind": "Title",
+        "Params": {
+          "Title": "First_Sawmiller"
+        }
+      }
+    ],
     "Claim": [
       {
         "Kind": "Mmo_Xp",

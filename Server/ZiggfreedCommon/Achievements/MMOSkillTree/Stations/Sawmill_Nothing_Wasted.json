@@ -3,7 +3,12 @@
   "Name": "Sawmill_Nothing_Wasted",
   "Text": {
     "TitleKey": "achievement.sawmill_nothing_wasted.title",
-    "FlavorKey": "achievement.sawmill_nothing_wasted.desc"
+    "FlavorKey": "achievement.sawmill_nothing_wasted.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

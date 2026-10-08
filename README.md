@@ -6,15 +6,15 @@ turning into planks one cycle at a time) that grants passive Woodcutting + Craft
 the held hatchet's power, and **Sawyer Marn**, the character in the Forgotten Temple who hands the
 mill out and has work for whoever can feed one. Since 1.1.0 (held) it also carries the MMO layer of
 the **Disenchanting Table** and the **Greater Disenchanting Table** (a long staged ritual unmakes
-one piece of gear, three queued at the greater table, for Enchanting + Crafting XP, Life Essence
+one piece of gear, three queued at the greater table, for Enchanting + Crafting XP, Essence of Life
 and luck-weighted finds) and **Enchanter Orrin**, the turned Outlander priest who hands both tables
 out.
 
 The MMO progression layered on top comes in these parts:
 
 - **Five find tiers**, scored on your Woodcutting and Crafting luck AND levels together (the top
-  three additionally require Woodcutting 30). Every tier pays offcuts - fibre, bark, sap and
-  sticks - and life essence joins from the second tier up, with concentrated essence at the top.
+  three additionally require Woodcutting 30). Every tier pays offcuts - Plant Fiber, Tree Bark, Tree Sap and
+  sticks - and Essence of Life joins from the second tier up, with Greater Essence of Life at the top.
 - **Two bonus-plank ladders**, one for Woodcutting level (at 25/50/75/100/125) and one for luck
   alone, so stacking luck is worth it at a bench that already rewards levels.
 - **A luck-driven chase** for the sawmill's drop-only trophy tool, improving from 1 in 3000 to
@@ -24,12 +24,12 @@ The MMO progression layered on top comes in these parts:
   tool-gated roll no other tool can, paying a double helping of offcuts plus the occasional
   Woodcutting XP boost token - its own luck bonus feeding the very roll it unlocks.
 - **A hatchet for the ones the trophy never drops for**, the **Millwright's Hatchet**: the reward
-  on the last rung of the lumber ladder, ten million pieces milled. It cuts and wears exactly like
+  on the last rung of the lumber ladder, six hundred thousand pieces milled. It cuts and wears exactly like
   the trophy, and every stat sits a notch under it (+5 maximum stamina, +22% Woodcutting XP, +12%
   Crafting XP, +22 Woodcutting luck). No crown comes with it, and it opens no tool-gated roll.
 - **Sawyer Marn's work.** Eleven quests, all offered and handed in at the temple: Timber Rights
   hands over the Sawmill; First Cut, Reading the Grain, Deep in the Wood and A Finer Edge each
-  teach one thing the mill does and pay hatchets, boost tokens and XP; A Second Bench pays a
+  teach one thing the mill does and pay hatchets, boost tokens and XP; A Second Mill pays a
   second mill; Standing Order is a calendar daily paid from a ladder that grows with your
   Woodcutting level and luck. Once A Finer Edge is claimed, two more things open: **Trim Work**, a
   standing trim order that comes round several times a day and pays a wage, tool upkeep, occasional
@@ -56,10 +56,10 @@ At the Disenchanting Tables (1.1.0, held):
   Enchanting level shortens it on top of the table's own Disenchanting Proficiency, down to a
   15-second floor (about 21 seconds at level 100 alone, about 19 with the full kit alone, the floor
   at level 100 with the full kit on).
-- **Luck sizes the extra Life Essence** (up to 1 more for crude gear, 2 for iron, 3 for cobalt to
+- **Luck sizes the extra Essence of Life** (up to 1 more for crude gear, 2 for iron, 3 for cobalt to
   adamantite, 4 for mithril), and the Enchanting level and luck each pay a chance of a little
   more of the salvage, never a whole extra unit.
-- **Luck makes the finds likelier**: Void Essence from item level 30, the Voidheart from 45, the
+- **Luck makes the finds likelier**: Essence of the Void from item level 30, the Voidheart from 45, the
   four-piece disenchanter's kit and the Disenchanter's Grimoire. The kit pieces (36 Enchanting luck
   and 18% Enchanting XP across the four) and the grimoire (20 luck, 15% XP while held) grant
   Enchanting luck themselves.
@@ -67,8 +67,10 @@ At the Disenchanting Tables (1.1.0, held):
   unmaking chain that hands over both tables, a side branch paying a second lesser table, Orrin's
   own four-rung chain ending in **Orrin's Grimoire**, a crossover carrying iron to Marn, a daily, a
   three-hourly order and a weekly), thirty-two achievements in a Disenchanting subcategory, nine
-  bounty contracts, and the **Disenchanter's Halo** flair. With this pack installed neither table
-  can be crafted: the questline hands them out.
+  bounty contracts, the **Disenchanter's Halo** flair, and **Orrin's Shelf**, which sells the
+  Wooden Earth Wand and the Tribal Blowgun for Essence of Life: nothing else hands a player either
+  one, and Every Blade wants both unmade. With this pack installed neither table can be crafted:
+  the questline hands them out.
 
 Also the **Anvil**, a two-action station that sharpens vanilla metal bars (Convert) or runs a
 hammering ritual that rolls stats onto a placed weapon (Enhance), granting Smithing XP. The Anvil
@@ -107,11 +109,11 @@ bonus) but grant no skill XP and roll no item stats.
 | `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json` | Where he stands: the Forgotten Temple, beside the merchant's marker across from the Mastery Trainer, gated on the stations feature, kept alive and respawned |
 | `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` | His conversation (29 screens): the first meeting, a screen per quest across all eleven (offer, in progress, ready), what he says once you own a mill, once you have finished the sawmill chain and once you have finished Marn's Edge, three help screens plus a fourth about the woodcutter's kit, and a different greeting when you walk up holding the Sawmiller's Hatchet |
 | `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/*.json` | The twelve quests: eleven Marn offers himself, plus `Meet_The_Sawyer`, the introduction the Adventurer's Guide hands out and Marn settles. `Meet_The_Sawyer` (the introduction), `Timber_Rights` (chop timber, hand-cut planks, deliver; collect the Sawmill itself plus Woodcutting XP from the quest log), `First_Cut`, `Reading_The_Grain`, `Deep_In_The_Wood` (Woodcutting 20), `A_Finer_Edge` (the sawmill chain's last rung, Woodcutting 25, opens Marn's Edge and Trim Work), `Second_Bench` (a side branch paying a second mill), `Standing_Order` (the daily); then `Straight_Grain`, `Cold_Metal`, `The_Fitting` (Marn's Edge, paying Marn's own hatchet), and `Trim_Work` (a short-cycle repeatable). Everything the mill hands over is counted as station output from the Sawmill only |
-| `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/*.json` | Seven bounty contracts on the shared bounty board, self-contained (no Parent, since the skeleton a bounty pack contract would inherit may not be installed): two on the two-hour board, four daily, one weekly, all paying `bounty_token` plus Woodcutting XP |
-| `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json` | What Standing Order pays: a ladder over Woodcutting level and luck (XP plus tree sap, the highest floor reached wins) and three independent chance rolls for life essence, a Woodcutting boost token and a concentrated essence |
+| `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/*.json` | Seven bounty contracts on the shared bounty board, self-contained (no Parent, since the skeleton a bounty pack contract would inherit may not be installed): two on the two-hour board, four daily, one weekly; the daily and weekly ones pay `bounty_token` plus Woodcutting XP, the two quick ones Woodcutting XP alone |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Order.json` | What Standing Order pays: a ladder over Woodcutting level and luck (XP plus tree sap, the highest floor reached wins) and three independent chance rolls for Essence of Life, a Woodcutting boost token and a Greater Essence of Life |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Trim_Pay.json`, `_Trim_Supply.json`, `_Trim_Finds.json`, `Mmo_Woodcutters_Kit.json` | What Trim Work pays, one concern per table: the order's wage (a ladder over Woodcutting level and luck), tool and repair-kit upkeep (level alone), the occasional extra find, and the only rolls anywhere for the four-piece woodcutter's kit |
 | `Server/ZiggfreedCommon/AchievementCategories/MMOSkillTree/Stations.json` | The Stations achievement category (its Sawmill subcategory), sorted between Crafting and Leveling |
-| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json` | Twenty-six achievements: three ladders (cycles worked, life essence found, and lumber milled, which runs nine rungs from five hundred pieces to ten million and pays the Millwright's Hatchet at the top), every offcut kept, every wood species milled, concentrated essence, a hidden one for finding a boost token in the shavings, the hidden Sawmiller and the server-first First Sawmiller for the trophy hatchet, Standing Account for keeping the daily up, Master Sawyer for finishing the sawmill chain, Trim Account for keeping the trim order filled, and Marn's Own for finishing Marn's Edge |
+| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/*.json` | Twenty-six achievements: three ladders (cycles worked, Essence of Life found, and lumber milled, which runs nine rungs from five hundred pieces to six hundred thousand and pays the Millwright's Hatchet at the top), every offcut kept, every wood species milled, Greater Essence of Life, a hidden one for finding a boost token in the shavings, the hidden Sawmiller and the server-first First Sawmiller for the trophy hatchet (a feat: no points, and it pays the First Sawmiller title), Standing Account for keeping the daily up, Master Sawyer for finishing the sawmill chain, Trim Account for keeping the trim order filled, and Marn's Own for finishing Marn's Edge |
 | `Server/RpgStations/Flairs/Sawmiller.json` | The Sawmiller's Crown: gold crown and spark particles on the Sawmill's rare finds and session ends, for a player who has claimed the Sawmiller achievement |
 | `Server/Item/Items/MMO_Tool_Hatchet_Millwright.json` | The Millwright's Hatchet, the hatchet you earn rather than find: Onyxium head, Epic, the same cut and wear as the trophy with every stat a notch under it and no flair. Handed over by the last rung of the lumber ladder |
 | `Server/Item/Items/MMO_Tool_Hatchet_Marn.json` | Marn's Hatchet, the reward for finishing Marn's Edge: a Cobalt-pattern hatchet, Rare, a notch under the trophy and the Millwright's hatchet on purpose |
@@ -124,7 +126,7 @@ bonus) but grant no skill XP and roll no item stats.
 | `unreleased/Server/Item/Items/Ingredient/MMO_Sharpened_<Metal>_Bar.json` (x10) | HELD BACK: the Anvil's Convert-action output, one per vanilla metal bar family, and the Enhance ritual's own `Stamp.Reagents` |
 | `unreleased/Server/Item/ResourceTypes/MMO_Sharpened_Bar.json` | HELD BACK: the shared `ResourceType` family the ten Sharpened Bar items list themselves under (native pack-authorable asset, Icon-only) |
 | `Server/Item/Items/RPG_Tool_Hatchet_Sawmiller.json` | The Sawmill's drop-only trophy hatchet (SHARED id with RPG Stations' own jar item, overridden wholesale) with this pack's MMO stat payload added: +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck while held |
-| `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier drop tables. Each composes offcuts (fibre, bark, sap, sticks - pulled from RPG Stations' own shared byproduct list, more pulls as the tier rises) with its own life essence; T1 pays offcuts only, and T5 always pays |
+| `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier drop tables. Each composes offcuts (Plant Fiber, Tree Bark, Tree Sap, sticks - pulled from RPG Stations' own shared byproduct list, more pulls as the tier rises) with its own Essence of Life; T1 pays offcuts only, and T5 always pays |
 | `Server/Drops/MMO_Station_Sawmill_Masterwork.json` | What the Sawmiller's Hatchet shakes loose: a double helping of offcuts plus a rare Woodcutting XP boost token |
 | `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json` | The five find tiers, as two banded Rolls over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus your levels in both at a lighter weight. T1-T2 are ungated; T3-T5 additionally require Woodcutting 30 |
 | `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
@@ -135,16 +137,18 @@ bonus) but grant no skill XP and roll no item stats.
 | `unreleased/Server/MMOSkillTree/CustomSkills/Smithing.json` | HELD BACK: the SMITHING skill itself (a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures) |
 | `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, the ritual's length here (a 2.5 stretch on the paced beats and a 15-second floor) with a pace ladder over the Enchanting level, and the three add-on tables below. The greater file is a `Parent` child that changes only its target |
 | `Server/RpgStations/Extensions/DisenchantingProficiency.json`, `DisenchantingGreaterProficiency.json` | A gentler ladder over the disenchanter's gear (the Disenchanting Proficiency stat) that multiplies RPG Stations' own, since the Enchanting level does much of the speeding up here. The greater file is a `Parent` child that changes only its target |
-| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json` | Extra Life Essence sized by luck within the piece's band, the occasional extra unit of salvage, and the luck-weighted Void Essence and Voidheart finds |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json` | Extra Essence of Life sized by luck within the piece's band, the occasional extra unit of salvage, and the luck-weighted Essence of the Void and Voidheart finds |
 | `Server/ZiggfreedCommon/Lootables/Disenchant_Kit.json`, `DisenchantTrophy.json` | Same-id replacements of RPG Stations' own kit and grimoire tables, luck-weighted |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Enchanter_Rites.json`, `Mmo_Enchanter_Threads.json` | What Orrin's daily and three-hourly order pay when you collect them |
 | `Server/Item/Items/RPG_Station_Disenchanting_Table.json`, `RPG_Station_Disenchanting_Table_Greater.json` | The two table blocks (SHARED ids with RPG Stations' own, overridden wholesale with no crafting recipe, so the questline hands them out) |
 | `Server/Item/Items/RPG_Armor_Disenchanter_{Head,Chest,Hands,Legs}.json`, `RPG_Weapon_Spellbook_Grimoire_Disenchanter.json` | The disenchanter's kit and the Disenchanter's Grimoire (SHARED ids with RPG Stations' own), each adding Enchanting luck and Enchanting XP to the jar item |
 | `Server/Item/Items/MMO_Weapon_Spellbook_Grimoire_Orrin.json` | Orrin's Grimoire, the Uncommon spellbook his own questline ends with |
 | `Server/RpgStations/ProtectLists/Mmo_Disenchanting_Tables_Earned.json` | Keeps Orrin's Grimoire off both tables, beside RPG Stations' own list |
-| `Server/NPC/Roles/Passive/Mmo_Enchanter.json`, `Server/ZiggfreedCommon/NpcPlacements/Mmo_Enchanter_Temple.json`, `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Enchanter.json` | Enchanter Orrin: an Outlander priest with a grimoire in hand, where he stands in the Forgotten Temple, and his conversation (44 screens) |
+| `Server/NPC/Roles/Passive/Mmo_Enchanter.json`, `Server/ZiggfreedCommon/NpcPlacements/Mmo_Enchanter_Temple.json`, `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Enchanter.json` | Enchanter Orrin: an Outlander priest with a grimoire in hand, where he stands in the Forgotten Temple, and his conversation (45 screens) |
+| `Server/ZiggfreedCommon/Shops/MMOSkillTree/Mmo_Enchanter.json`, `Server/ZiggfreedCommon/ShopEntries/MMOSkillTree/Mmo_Enchanter_Offer_{Wand,Blowgun}.json` | Orrin's Shelf, the storefront his conversation opens once The Lesser Table is claimed (in the Forgotten Temple only, and gone with the stations feature), and its two offers: the game's Wooden Earth Wand and Tribal Blowgun for Essence of Life taken from the bag, the only player source of either |
 | `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Disenchanting/*.json` | Orrin's eighteen quests |
-| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/Disenchanting/*.json` | Thirty-two achievements in the Stations category's Disenchanting subcategory |
+| `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/Disenchanting/*.json` | Thirty-two achievements in the Stations category's Disenchanting subcategory; Every Blade asks for a weapon of fifteen families (the tribal claws and the guns have no player source, so they are left out); the server-first First Disenchanter is a feat (no points) paying the First Disenchanter title |
+| `Server/ZiggfreedCommon/Titles/MMOSkillTree/First_Sawmiller.json`, `First_Disenchanter.json` | The two titles the server-first feats pay, named by `title.first_sawmiller.*` and `title.first_disenchanter.*` |
 | `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/Bounty_*.json` | Nine bounty contracts for the tables beside the seven for the mill (two on the two-hour board, five daily, two weekly) |
 | `Server/RpgStations/Flairs/Disenchanter.json` | The Disenchanter's Halo, on every find and both tables' unmaking beat |
 | `Server/ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json`, `Server/Entity/Effects/MMOSkillStationsPack/Woodcutters_Kit_Set.json` | The woodcutter's kit as a gear set (three stacking tiers) and its gold-spark look |
@@ -152,7 +156,7 @@ bonus) but grant no skill XP and roll no item stats.
 | `Server/Languages/<locale>/npcs.lang` | Sawyer Marn's and Enchanter Orrin's nameplates (`Mmo_Sawyer.name`, `Mmo_Enchanter.name`, Hytale's own `npcs` namespace) |
 | `Server/Languages/<locale>/avatarCustomization.lang` | The hammer emote's display name (Hytale's own `avatarCustomization` namespace) |
 | `Server/Languages/<locale>/rpgstations.lang` | Per-key-additive overlay over RPG Stations' own file for pack-exclusive content (`station.anvil.name`/`.desc`; the Sawmill reuses RPG Stations' own shipped keys) |
-| `Server/Languages/<locale>/mmoskilltree.lang` | Every quest and bounty title and flavor line (Orrin's questline included), the "Mill N pieces of lumber" and unmaking step lines, every achievement title, description and announcement, the Stations category and its Disenchanting subcategory titles, the Sawmiller's Crown and Disenchanter's Halo names, every line of Marn's and Orrin's conversations, the Woodcutter's Kit set title and tier lines (`gearset.woodcutters_kit.*`), plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
+| `Server/Languages/<locale>/mmoskilltree.lang` | Every quest and bounty title and flavor line (Orrin's questline included), the sawing, milling, essence and unmaking step lines, every achievement title, description and announcement, the two server-first titles, the Stations category and its Disenchanting subcategory titles, the Sawmiller's Crown and Disenchanter's Halo names, every line of Marn's and Orrin's conversations, the name and line of Orrin's Shelf (`shop.mmo_enchanter.*`), the Woodcutter's Kit set title and tier lines (`gearset.woodcutters_kit.*`), plus `skill.smithing`/`.desc` and `skill.cooking`/`.desc` for the held-back skills |
 
 All 9 shipped locales are key-complete, held-back content included (an unreferenced lang key is
 invisible at runtime, so the keys stay shipped rather than risking translation work). The
@@ -190,6 +194,9 @@ Everything the store page says an owner can retune is plain content in the zip, 
   daily and three-hourly payouts in `Mmo_Enchanter_Rites.json` and `Mmo_Enchanter_Threads.json`
   beside the other lootables. The woodcutter's kit set and its tiers:
   `Server/ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json`
+- Orrin's Shelf, what it sells and the price: one file per offer,
+  `Server/ZiggfreedCommon/ShopEntries/MMOSkillTree/Mmo_Enchanter_Offer_*.json`; where the shelf
+  opens and when it hides: `Server/ZiggfreedCommon/Shops/MMOSkillTree/Mmo_Enchanter.json`
 - Take Marn or Orrin out without editing the pack: `/mmonpc disable --arg1=Mmo_Sawyer_Temple` (or
   `Mmo_Enchanter_Temple`), or the same switch by hand in `mods/ziggfreedcommon/npc-placements.json`:
   `{"Mmo_Sawyer_Temple": {"enabled": false}}`. Their quests hide with the stations feature, so

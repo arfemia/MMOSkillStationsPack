@@ -3,7 +3,12 @@
   "Name": "Sawmill_Distilled",
   "Text": {
     "TitleKey": "achievement.sawmill_distilled.title",
-    "FlavorKey": "achievement.sawmill_distilled.desc"
+    "FlavorKey": "achievement.sawmill_distilled.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

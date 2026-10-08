@@ -39,7 +39,7 @@
       "Target": "Wood_",
       "MatchMode": "PREFIX",
       "Qualifier": "Sawmill",
-      "Amount": 500000
+      "Amount": 100000
     }
   },
   "Rewards": {

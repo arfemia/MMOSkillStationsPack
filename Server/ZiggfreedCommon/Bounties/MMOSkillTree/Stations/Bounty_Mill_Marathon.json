@@ -28,7 +28,8 @@
       "Kind": "WORK_STATION",
       "Target": "Sawmill",
       "MatchMode": "EXACT",
-      "Amount": 300
+      "Amount": 1500,
+      "TextKey": "objective.text.stations.saw_logs"
     }
   },
   "Rewards": {
@@ -37,14 +38,14 @@
         "Kind": "Currency",
         "Params": {
           "Currency": "bounty_token",
-          "Amount": 1000
+          "Amount": 750
         }
       },
       {
         "Kind": "Mmo_Xp",
         "Params": {
           "Skill": "WOODCUTTING",
-          "Amount": 10000
+          "Amount": 8000
         }
       }
     ]

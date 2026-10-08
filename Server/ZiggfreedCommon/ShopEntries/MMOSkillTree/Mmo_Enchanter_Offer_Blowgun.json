@@ -1,0 +1,14 @@
+{
+  "$Comment": "The game's own Tribal Blowgun, on Orrin's shelf. No bench crafts one (its recipe names no bench), and no drop or chest hands a player a blowgun, and the Every Blade achievement wants one unmade at a Disenchanting Table, so this is where it comes from. The blowgun takes its body from the game's sword template, but an item's quality never comes down a Parent, so it carries the default quality the tables' protect list lets through; give it a Template or Technical quality and the tables refuse it. Priced in Essence of Life taken from the bag, what Orrin's own tithes ask for, and kept above the most one unmaking gives back, so buying a blowgun and unmaking it never makes essence. No Limits: a player may buy as many as they can pay for. The title is the item's own name key, written in full (server.items.<Id>.name), so the shelf shows the name the bag shows; the item has no description key, so the offer has no line under it. The filename is the offer id, and each player's purchase count is filed under it.",
+  "Shop": "Mmo_Enchanter",
+  "Text": {
+    "TitleKey": "server.items.Weapon_Blowgun_Tribal.name"
+  },
+  "Listing": { "Category": "items", "SortOrder": 20 },
+  "Cost": {
+    "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 20 } ]
+  },
+  "Rewards": [
+    { "Kind": "Item", "Params": { "Item": "Weapon_Blowgun_Tribal", "Count": 1 } }
+  ]
+}

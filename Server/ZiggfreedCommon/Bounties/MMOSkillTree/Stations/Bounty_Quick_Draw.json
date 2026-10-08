@@ -30,23 +30,17 @@
       "MatchMode": "EXACT",
       "Qualifier": "Disenchanting_Table",
       "QualifierMatchMode": "PREFIX",
-      "Amount": 5
+      "Amount": 5,
+      "TextKey": "objective.text.stations.draw_essence"
     }
   },
   "Rewards": {
     "Claim": [
       {
-        "Kind": "Currency",
-        "Params": {
-          "Currency": "bounty_token",
-          "Amount": 5
-        }
-      },
-      {
         "Kind": "Mmo_Xp",
         "Params": {
           "Skill": "ENCHANTING",
-          "Amount": 300
+          "Amount": 400
         }
       }
     ]

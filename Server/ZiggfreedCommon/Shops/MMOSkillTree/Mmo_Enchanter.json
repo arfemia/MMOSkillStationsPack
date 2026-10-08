@@ -1,0 +1,15 @@
+{
+  "$Comment": "Enchanter Orrin's shelf: the wand and the blowgun the Every Blade achievement asks for, which no recipe, drop or chest hands a player. Orrin's conversation opens it by id from his footer once the player has claimed The Lesser Table. The Requires block makes the shelf, and every offer naming it, absent while the stations feature is off. Where keeps it in the Forgotten Temple, where Orrin stands: anywhere else it is left out of every list and opens closed, so a server that places Orrin somewhere else deletes Where here. Order 80 keeps it behind a server's everyday storefronts, so a shop block or a conversation line that opens 'the first storefront' never lands here. Its offers are priced in Essence of Life taken from the bag, an item rather than a wallet, so the header lists no Currencies. Each offer is its own file, ShopEntries/MMOSkillTree/Mmo_Enchanter_Offer_*.json, and the shelf's name and line are shop.mmo_enchanter.title and .desc in mmoskilltree.lang.",
+  "Text": {
+    "TitleKey": "shop.mmo_enchanter.title",
+    "FlavorKey": "shop.mmo_enchanter.desc"
+  },
+  "Icon": "Weapon_Wand_Wood",
+  "Order": 80,
+  "Where": { "GameplayConfig": [ "ForgottenTemple" ] },
+  "Requires": {
+    "Factors": [
+      { "Factor": "mmoskilltree:feature", "Param": "stations", "Min": 1 }
+    ]
+  }
+}

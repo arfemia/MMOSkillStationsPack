@@ -60,6 +60,7 @@
       "MatchMode": "CONTAINS",
       "Qualifier": "Sawmill",
       "Amount": 40,
+      "TextKey": "objective.text.stations.mill_planks",
       "Order": 1
     },
     "fancy_cut": {
@@ -68,6 +69,7 @@
       "MatchMode": "CONTAINS",
       "Qualifier": "Sawmill",
       "Amount": 15,
+      "TextKey": "objective.text.stations.mill_decorative",
       "Order": 1
     },
     "fine_cut": {
@@ -76,6 +78,7 @@
       "MatchMode": "CONTAINS",
       "Qualifier": "Sawmill",
       "Amount": 15,
+      "TextKey": "objective.text.stations.mill_ornate",
       "Order": 1
     }
   },

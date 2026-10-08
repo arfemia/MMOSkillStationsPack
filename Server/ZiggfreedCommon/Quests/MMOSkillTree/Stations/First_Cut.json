@@ -64,6 +64,7 @@
       "Target": "Sawmill",
       "MatchMode": "EXACT",
       "Amount": 10,
+      "TextKey": "objective.text.stations.saw_logs",
       "Order": 1
     },
     "mill_lumber": {

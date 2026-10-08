@@ -65,6 +65,7 @@
       "Target": "Sawmill",
       "MatchMode": "EXACT",
       "Amount": 400,
+      "TextKey": "objective.text.stations.saw_logs",
       "Order": 1
     },
     "reach_the_level": {

@@ -3,7 +3,12 @@
   "Name": "Sawmill_Standing_Account",
   "Text": {
     "TitleKey": "achievement.sawmill_standing_account.title",
-    "FlavorKey": "achievement.sawmill_standing_account.desc"
+    "FlavorKey": "achievement.sawmill_standing_account.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

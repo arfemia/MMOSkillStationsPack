@@ -74,6 +74,7 @@
       "Target": "Sawmill",
       "MatchMode": "EXACT",
       "Amount": 20,
+      "TextKey": "objective.text.stations.saw_logs",
       "Order": 1
     },
     "deliver_planks": {

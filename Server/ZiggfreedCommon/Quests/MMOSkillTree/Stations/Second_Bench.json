@@ -1,6 +1,6 @@
 {
   "$Comment": [
-    "A second Sawmill for a worker who has proven the first one earns its keep: ten thousand",
+    "A second Sawmill for a worker who has proven the first one earns its keep: fifteen hundred",
     "pieces of lumber milled, then sap delivered.",
     "",
     "The volume step counts every cut of every species the mill hands over ('Wood_' on PREFIX,",
@@ -52,7 +52,7 @@
       "Target": "Wood_",
       "MatchMode": "PREFIX",
       "Qualifier": "Sawmill",
-      "Amount": 10000,
+      "Amount": 1500,
       "TextKey": "objective.text.stations.mill_lumber",
       "Order": 1
     },

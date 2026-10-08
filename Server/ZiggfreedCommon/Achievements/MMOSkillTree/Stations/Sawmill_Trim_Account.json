@@ -3,7 +3,12 @@
   "Name": "Sawmill_Trim_Account",
   "Text": {
     "TitleKey": "achievement.sawmill_trim_account.title",
-    "FlavorKey": "achievement.sawmill_trim_account.desc"
+    "FlavorKey": "achievement.sawmill_trim_account.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

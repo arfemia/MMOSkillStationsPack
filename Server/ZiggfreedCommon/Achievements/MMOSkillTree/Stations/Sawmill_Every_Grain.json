@@ -3,7 +3,12 @@
   "Name": "Sawmill_Every_Grain",
   "Text": {
     "TitleKey": "achievement.sawmill_every_grain.title",
-    "FlavorKey": "achievement.sawmill_every_grain.desc"
+    "FlavorKey": "achievement.sawmill_every_grain.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

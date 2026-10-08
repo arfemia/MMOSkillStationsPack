@@ -80,6 +80,7 @@
       "Qualifier": "Disenchanting_Table",
       "QualifierMatchMode": "PREFIX",
       "Amount": 100,
+      "TextKey": "objective.text.stations.draw_essence",
       "Order": 1
     },
     "week_void": {

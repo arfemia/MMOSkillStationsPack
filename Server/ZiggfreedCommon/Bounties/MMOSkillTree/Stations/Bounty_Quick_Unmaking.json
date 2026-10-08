@@ -37,17 +37,10 @@
   "Rewards": {
     "Claim": [
       {
-        "Kind": "Currency",
-        "Params": {
-          "Currency": "bounty_token",
-          "Amount": 5
-        }
-      },
-      {
         "Kind": "Mmo_Xp",
         "Params": {
           "Skill": "ENCHANTING",
-          "Amount": 300
+          "Amount": 400
         }
       }
     ]

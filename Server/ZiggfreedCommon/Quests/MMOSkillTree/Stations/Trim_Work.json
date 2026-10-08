@@ -14,7 +14,7 @@
     "finished the sawmill chain, and the two never pay the same thing. All five steps sit on",
     "Order 1, so they run together. cut_decorative and cut_ornate count the two specialty cuts the",
     "crouch-and-use picker offers, any species on CONTAINS and qualified to the Sawmill, so lumber",
-    "from a hand bench does not count; pull_offcuts counts plant fibre the mill sheds as a byproduct,",
+    "from a Builder's Workbench does not count; pull_offcuts counts plant fibre the mill sheds as a byproduct,",
     "exact id and Sawmill-qualified the same way. deliver_trim and deliver_offcuts hand in to Marn",
     "only (TurnInNpcId 'giver'): decorative planks of any species on CONTAINS, and bark by exact id,",
     "another Sawmill byproduct. One session at the mill covers all five: the cut steps fill the delivery",
@@ -84,6 +84,7 @@
       "MatchMode": "CONTAINS",
       "Qualifier": "Sawmill",
       "Amount": 32,
+      "TextKey": "objective.text.stations.mill_decorative",
       "Order": 1
     },
     "cut_ornate": {
@@ -92,6 +93,7 @@
       "MatchMode": "CONTAINS",
       "Qualifier": "Sawmill",
       "Amount": 32,
+      "TextKey": "objective.text.stations.mill_ornate",
       "Order": 1
     },
     "pull_offcuts": {
@@ -107,6 +109,7 @@
       "Target": "_Decorative",
       "MatchMode": "CONTAINS",
       "Amount": 24,
+      "TextKey": "objective.text.stations.deliver_decorative",
       "Order": 1,
       "TurnInNpcId": "giver"
     },

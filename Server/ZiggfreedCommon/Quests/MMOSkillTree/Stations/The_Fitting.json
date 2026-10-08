@@ -69,6 +69,7 @@
       "MatchMode": "EXACT",
       "Qualifier": "Sawmill",
       "Amount": 120,
+      "TextKey": "objective.text.stations.shake_essence",
       "Order": 1
     },
     "long_shift": {
@@ -76,6 +77,7 @@
       "Target": "Sawmill",
       "MatchMode": "EXACT",
       "Amount": 120,
+      "TextKey": "objective.text.stations.saw_logs",
       "Order": 1
     },
     "bring_leather": {

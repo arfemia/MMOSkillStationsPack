@@ -1,0 +1,8 @@
+{
+  "$Comment": "First Sawmiller: the title the feat sawmiller_server_first pays the one player who pulls the server's first Sawmiller's Hatchet out of a mill. It shows beside a player's name in menus and leaderboards once they pick it. Where it sits around the name is the key title.first_sawmiller.display, whose {0} is the name. Enabled false hides it everywhere without taking it from anybody who earned it.",
+  "Order": 100,
+  "Text": {
+    "TitleKey": "title.first_sawmiller.name",
+    "FlavorKey": "title.first_sawmiller.flavor"
+  }
+}

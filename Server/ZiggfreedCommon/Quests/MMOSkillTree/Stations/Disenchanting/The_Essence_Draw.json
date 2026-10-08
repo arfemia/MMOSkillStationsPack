@@ -66,6 +66,7 @@
       "Qualifier": "Disenchanting_Table",
       "QualifierMatchMode": "PREFIX",
       "Amount": 40,
+      "TextKey": "objective.text.stations.draw_essence",
       "Order": 1
     },
     "deliver_essence": {

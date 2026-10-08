@@ -3,7 +3,12 @@
   "Name": "Disenchanting_Weekly_Account",
   "Text": {
     "TitleKey": "achievement.disenchanting_weekly_account.title",
-    "FlavorKey": "achievement.disenchanting_weekly_account.desc"
+    "FlavorKey": "achievement.disenchanting_weekly_account.desc",
+    "TextArgs": {
+      "Flavor": [
+        "@amount"
+      ]
+    }
   },
   "Listing": {
     "Category": "stations",

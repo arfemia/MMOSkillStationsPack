@@ -6,7 +6,7 @@
     "It opens once A Finer Edge is claimed, so it is only ever offered to a woodcutter who has",
     "finished the sawmill chain and owns a well-run mill. mill_stock counts every cut of every",
     "species the Sawmill hands over ('Wood_' on PREFIX, qualified to the Sawmill, so lumber from a",
-    "hand bench does not count) and carries the shared mill_lumber TextKey, since the kind's default",
+    "Builder's Workbench does not count) and carries the shared mill_lumber TextKey, since the kind's default",
     "line names a single item; run_cycles is WORK_STATION on the station id, as the station's own",
     "asset spells it, and counts real cycles only, so idle practice with nothing loaded does not",
     "tick. Both sit on Order 1 and fill through the same shift. deliver_stock is Order 2, a hand-in",
@@ -75,6 +75,7 @@
       "Target": "Sawmill",
       "MatchMode": "EXACT",
       "Amount": 60,
+      "TextKey": "objective.text.stations.saw_logs",
       "Order": 1
     },
     "deliver_stock": {
