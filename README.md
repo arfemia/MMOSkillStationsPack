@@ -4,7 +4,7 @@ A standalone Hytale content pack that ships the **interactive work stations** co
 **Sawmill**, a diegetic third-person work loop (press use and your character visibly saws, logs
 turning into planks one cycle at a time) that grants passive Woodcutting + Crafting XP, scaled by
 the held hatchet's power, and **Sawyer Marn**, the character in the Forgotten Temple who hands the
-mill out and has work for whoever can feed one. Since 1.1.0 (held) it also carries the MMO layer of
+mill out and has work for whoever can feed one. Since 1.1.0 it also carries the MMO layer of
 the **Disenchanting Table** and the **Greater Disenchanting Table** (a long staged ritual unmakes
 one piece of gear, three queued at the greater table, for Enchanting + Crafting XP, Essence of Life
 and luck-weighted finds) and **Enchanter Orrin**, the turned Outlander priest who hands both tables
@@ -46,7 +46,7 @@ The MMO progression layered on top comes in these parts:
   Crafting XP and a gold-spark look, and all four with a hatchet in hand add the most; the tiers
   stack, and the Novice Cap is not a member.
 
-At the Disenchanting Tables (1.1.0, held):
+At the Disenchanting Tables (1.1.0):
 
 - **Enchanting XP for unmaking gear**: 30 Enchanting and 15 Crafting XP per piece, scaled by the
   piece (item level, quality, wear and stamped enhancement) from 1x for crude gear to 2x for

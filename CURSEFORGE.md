@@ -105,7 +105,7 @@ Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and 
 
 ### [Full Changelog](https://github.com/arfemia/MMOSkillStationsPack/tree/main/patch-notes)
 
-### v1.1.0 (unreleased, held)
+### v1.1.0
 
 The Disenchanting Table and the Greater Disenchanting Table, with Enchanting and Crafting XP for every piece unmade and luck-weighted essence and finds. Enchanter Orrin and his eighteen quests, thirty-two achievements, nine bounties, his shelf, the Disenchanter's Halo and Orrin's Grimoire. The woodcutter's kit becomes a set. Needs RPG Stations 1.1.0 and MMO Skill Tree 1.7.0, plus ZiggfreedCommon 2.2.0.
 
