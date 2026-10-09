@@ -122,6 +122,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Olá, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = O Guia te mandou descer, então. Fala bastante, esse.\nDiz que você tem cara de quem consegue alimentar uma serraria. Vai, se apresenta e a gente se conhece.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Olá, Marn.
 dialogue.mmo_sawyer.menu.text = Marn segue aqui. Tora não serra sozinha, então fala o que precisa.
+dialogue.mmo_sawyer.guide_first.text = Trabalho? Não pra alguém de quem ninguém me falou.\nVai falar com o <color is="#ffd97a">Guia do Aventureiro</color>, perto de onde você entrou. É ele que me manda quem vale uma serraria. Resolve o que ele te trouxe aqui embaixo pra fazer, e ele te aponta o caminho de volta pra cá.
 dialogue.mmo_sawyer.trophy_hail.text = Espera aí. Me mostra.\nEssa é a <color is="#ffd97a">Machado do Serrador</color>. Mithril, equilibrada na serraria e em nenhum outro lugar. Não via nada parecido em anos, e nunca numa mão tão verde.\nSerraria entrega uma dessas aí sobre como tora se divide sozinha. Mantém afiada.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Saiu da serraria.
 dialogue.mmo_sawyer.trophy_talk.text = Ainda carregando a <color is="#ffd97a">Machado do Serrador</color>. Bom. Lâmina assim quer trabalho, então não deixa pendurada na parede. Que precisa?
@@ -175,15 +176,15 @@ dialogue.mmo_sawyer.opt.quests = Tem algo que precisa cortar?
 dialogue.mmo_sawyer.opt.how = Como funciona a serraria?
 dialogue.mmo_sawyer.opt.edge = Já viu um fio melhor?
 dialogue.mmo_sawyer.opt.kit = O que vem com esse boné?
-dialogue.mmo_sawyer.opt.enchanter_who = Quem é o sacerdote ali no canto?
+dialogue.mmo_sawyer.opt.enchanter_who = Quem é o sacerdote aí do seu lado?
 dialogue.mmo_sawyer.opt.nothing = Nada por enquanto.
 dialogue.mmo_sawyer.enchanter_intro.text = Ele? Outlander, pelas vestes, e um Kweebec aprende a ficar de olho nesses. Até agora não partiu pra cima de ninguém. Diz que se chama Orrin. Tem uma bancada lá que desmonta equipamento e devolve o material, e anda querendo que alguém use.\nVai lá e dá um oi. Diz que fui eu que mandei. Só que ele fala feito livro, viu?
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Vou lá falar com ele.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Quem sabe depois.
-dialogue.mmo_sawyer.enchanter_brief.text = Ele fica no canto do fundo do <color is="#ffd97a">Templo Esquecido</color>, com a pedra nas costas e um livro na mão. <color is="#ffd97a">Encantador Orrin</color>. Dá um oi que o resto da conversa fica por conta dele.
+dialogue.mmo_sawyer.enchanter_brief.text = É esse aqui do meu lado, com um livro na mão. <color is="#ffd97a">Encantador Orrin</color>. Dá um oi que o resto da conversa fica por conta dele.
 
 quest.meet_the_enchanter.title = Uma Palavrinha com Orrin
-quest.meet_the_enchanter.flavor = Tem um sacerdote lá no canto do fundo, com um livro e uma bancada em que mais ninguém encosta. Outlander, pelas vestes. Inofensivo, acho eu. Vai lá dar um oi.
+quest.meet_the_enchanter.flavor = Tem um sacerdote de vestes Outlander ao lado do Marn, com um livro e uma bancada em que mais ninguém encosta. Diz que largou o culto. Vai lá dar um oi.
 quest.the_lesser_table.title = A Bancada Menor
 quest.the_lesser_table.flavor = Guardo a estrutura de uma Bancada de Desencantamento e nada com que terminá-la. Traga-me Lingotes de Ferro e Essência da Vida. Ela já ficou parada tempo demais.
 quest.first_unmaking.title = Primeiro Desfazimento
@@ -209,7 +210,7 @@ quest.outlander_steel.flavor = Os Outlanders carregam armas condenadas, forjadas
 quest.the_voidheart.title = O Coração do Vazio
 quest.the_voidheart.flavor = Um Coração do Vazio é o vazio que ganhou forma. Trabalhe na bancada maior até ter segurança, depois traga-me um coração, de onde quer que o encontre.
 quest.iron_for_the_mill.title = Ferro para a Serraria
-quest.iron_for_the_mill.flavor = O serrador vive sem ferro, e eu já me cansei de ouvir isso. Desfaça algumas machadinhas de ferro na bancada e leve o minério que elas devolverem até ele, do outro lado do patamar.
+quest.iron_for_the_mill.flavor = O serrador vive sem ferro, e eu fico perto o bastante para ouvir isso. Desfaça algumas machadinhas de ferro na bancada e leve o minério que elas devolverem até ele.
 quest.a_second_table.title = Uma Segunda Bancada
 quest.a_second_table.flavor = Uma segunda bancada pode ficar onde quer que você trabalhe, para que não precise voltar sempre à primeira. Desfaça uma pilha de equipamento na sua e traga-me Essência da Vida do trabalho.
 quest.unmaking_rites.title = Ritos de Desfazimento
@@ -314,9 +315,10 @@ achievement.announce.disenchanting_orrins_own.title = Coisa de Orrin!
 
 dialogue.mmo_enchanter.first_words.text = Você está na frente da minha luz. Não importa. Fique.\nSou Orrin. Já fui sacerdote do culto, e as vestes não saem com a mesma facilidade com que a crença saiu. Aqui no <color is="#ffd97a">Templo Esquecido</color> mantenho uma bancada que desmonta uma peça de equipamento e devolve o que foi posto nela. Cumprimente-me e conversaremos como se deve.
 dialogue.mmo_enchanter.first_words.opt.hail = Olá, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Marn mandou você. Ele grita, e tem razão mais vezes do que imagina.\nDiz que você é paciente. Veremos.
+dialogue.mmo_enchanter.sent_by_sawyer.text = Você foi enviado a mim. Bom. A maioria dos que param aqui só tropeçou em mim.\nMe disseram que você é paciente. Veremos.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Olá, Orrin.
 dialogue.mmo_enchanter.menu.text = Pergunte o que veio perguntar. Tenho tempo.
+dialogue.mmo_enchanter.vouch_first.text = Ainda não. Não conheço você, e não ponho minha bancada nas mãos de um estranho.\nO <color is="#ffd97a">Guia do Aventureiro</color>, perto de onde você entrou, me diz quem vale o meu tempo. Faça o que ele pedir de você aqui embaixo, e ele o enviará a mim.
 dialogue.mmo_enchanter.trophy_hail.text = Você está segurando o <color is="#ffd97a">Grimório do Desencantador</color>.\nUm livro inteiro, montado com coisas que a bancada desmontou. Passei anos sentado àquela bancada e ela nunca me deu sequer uma página.\nEle lança feitiços e, na sua mão, acelera o rito. Mantenha-o fechado enquanto dorme.
 dialogue.mmo_enchanter.trophy_hail.opt.show = Saiu da bancada.
 dialogue.mmo_enchanter.trophy_talk.text = Você ainda tem o <color is="#ffd97a">Grimório do Desencantador</color>. Quase deixei de ter inveja de você por isso. Quase.
@@ -363,7 +365,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Vou trazer um Coração do V
 dialogue.mmo_enchanter.voidheart_brief.text = A <b>bancada maior</b>, até suas mãos estarem seguras. Depois, um <b>Coração do Vazio</b>, de onde quer que consiga encontrá-lo. Não tenha pressa. O livro já esperou mais do que você.
 dialogue.mmo_enchanter.voidheart_ready.text = Um <b>Coração do Vazio</b>. Entregue-o a mim. Sim. Ainda bate, à sua maneira.\nEste é o meu próprio grimório, escrito antes de eu partir e reescrito desde então. É um livro menor do que o que a bancada entrega, e eu sei disso. Ele lança feitiços e, na mão, acelera o rito e faz os achados da bancada aparecerem com um pouco mais de frequência. <color is="#ffd97a">Grimório de Orrin</color>. É seu.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Aqui está o coração.
-dialogue.mmo_enchanter.iron_offer.text = O serrador vive sem ferro, e diz isso a quem estiver ao alcance da voz.\nDesfaça algumas <b>machadinhas de ferro</b> na bancada; as gastas servem. O <b>minério de ferro</b> que elas devolverem, leve-o até o <color is="#ffd97a">Serrador Marn</color>, do outro lado do patamar. Ele lhe pagará por isso, e eu não terei de ouvi-lo.
+dialogue.mmo_enchanter.iron_offer.text = O serrador vive sem ferro, e diz isso a quem estiver ao alcance da voz.\nDesfaça algumas <b>machadinhas de ferro</b> na bancada; as gastas servem. O <b>minério de ferro</b> que elas devolverem, leve-o até o <color is="#ffd97a">Serrador Marn</color>, ali ao meu lado. Ele lhe pagará por isso, e eu não terei de ouvi-lo.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Vou levar o ferro para Marn.
 dialogue.mmo_enchanter.second_offer.text = Uma bancada de nada serve do outro lado do mundo. Uma segunda pode ficar onde quer que você trabalhe.\nDesfaça uma pilha de equipamento na sua, traga-me <b>Essência da Vida</b> do trabalho, e eu a construirei.
 dialogue.mmo_enchanter.second_offer.opt.accept = Vou passar as peças pela bancada.

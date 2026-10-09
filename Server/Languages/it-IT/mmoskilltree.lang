@@ -28,7 +28,7 @@ quest.the_fitting.flavor = Manico e testa, e adesso devono essere uniti. Lavora 
 quest.trim_work.title = Lavori di Finitura
 quest.trim_work.flavor = Finitura, questa volta. Il taglio decorativo e quello ornato, e già che ci sei tieni la Fibra Vegetale che la sega butta via. Portami una parte della finitura e un po' di corteccia. L'ordine torna prima che finisca la giornata.
 quest.meet_the_enchanter.title = Due Parole con Orrin
-quest.meet_the_enchanter.flavor = C'è un prete nell'angolo in fondo, con un libro e un tavolo che nessun altro vuole toccare. Un Outlander, a giudicare dalle vesti. Innocuo, credo. Vai a salutarlo.
+quest.meet_the_enchanter.flavor = Accanto a Marn c'è un prete in vesti da Outlander, con un libro e un tavolo che nessun altro vuole toccare. Dice di aver lasciato il culto. Vai a salutarlo.
 quest.the_lesser_table.title = Il Tavolo Minore
 quest.the_lesser_table.flavor = Conservo il telaio di un Tavolo da Disincanto e non ho nulla con cui completarlo. Portami Barre di Ferro ed Essenza Vitale. È rimasto inutilizzato fin troppo a lungo.
 quest.first_unmaking.title = Primo Smontaggio
@@ -54,7 +54,7 @@ quest.outlander_steel.flavor = Gli Outlander portano armi Dannate, forgiate con 
 quest.the_voidheart.title = Il Cuore del Vuoto
 quest.the_voidheart.flavor = Un Cuore del Vuoto è il vuoto che ha preso forma. Lavora al grande tavolo finché non lo conoscerai bene, poi portami un cuore, ovunque tu lo trovi.
 quest.iron_for_the_mill.title = Ferro per la Segheria
-quest.iron_for_the_mill.flavor = Al segantino manca sempre il ferro, e io sono stanco di sentirglielo dire. Smonta al tavolo qualche accetta di ferro e porta il minerale che restituiscono a lui, dall'altra parte del pianerottolo.
+quest.iron_for_the_mill.flavor = Al segantino manca sempre il ferro, e io gli sto abbastanza vicino da sentirglielo dire. Smonta al tavolo qualche accetta di ferro e porta a lui il minerale che restituiscono.
 quest.a_second_table.title = Un Secondo Tavolo
 quest.a_second_table.flavor = Un secondo tavolo può stare ovunque tu lavori, così non dovrai tornare di continuo al primo. Smonta un mucchio di equipaggiamento al tuo e portami l'Essenza Vitale che ne ricavi.
 quest.unmaking_rites.title = Riti di Smontaggio
@@ -249,6 +249,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Ciao, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = Mi manda giù la Guida, allora. Parla sempre, quel tipo.\nDice che hai l'aria giusta per alimentare una segheria. Su, dillo come si deve e sei introdotto.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Ciao, Marn.
 dialogue.mmo_sawyer.menu.text = Marn è ancora qui. I tronchi non si segano da soli, così dimmi cosa ti serve.
+dialogue.mmo_sawyer.guide_first.text = Lavoro? Non per uno di cui nessuno mi ha parlato.\nVai dalla <color is="#ffd97a">Guida dell'Avventuriero</color>, vicino a dove sei entrato. È lui che mi manda quelli che valgono una segheria. Sbriga quello per cui ti ha fatto scendere quaggiù, e ti rimanderà dalle mie parti.
 dialogue.mmo_sawyer.trophy_hail.text = Aspetta. Mostrami quella.\nQuesta è l'<color is="#ffd97a">Ascia del Segantino</color>. Mithril, equilibrata a una segheria e da nessun'altra parte. Non ho mai visto nulla del genere in anni, e mai in mani così verdi.\nLa segheria regala una di quelle quasi mai, come un tronco che si spacca da solo. Mantienila affilata.
 dialogue.mmo_sawyer.trophy_hail.opt.show = È uscita dalla segheria.
 dialogue.mmo_sawyer.trophy_talk.text = Ancora con l'<color is="#ffd97a">Ascia del Segantino</color>. Bene. Una lama così richiede lavoro, quindi non lasciarla appesa al muro. Cosa ti serve?
@@ -303,12 +304,13 @@ dialogue.mmo_sawyer.opt.how = Come funziona la segheria?
 dialogue.mmo_sawyer.opt.edge = Mai visto un taglio più fine?
 dialogue.mmo_sawyer.opt.kit = Cosa va con questo berretto?
 dialogue.mmo_sawyer.opt.nothing = Niente per adesso.
-dialogue.mmo_sawyer.opt.enchanter_who = Chi è il prete nell'angolo?
+dialogue.mmo_sawyer.opt.enchanter_who = Chi è il prete accanto a te?
 dialogue.mmo_enchanter.first_words.text = Mi fai ombra. Non importa. Resta.\nIo sono Orrin. Un tempo ero un sacerdote del culto, e le vesti non si dismettono con la stessa facilità della fede. Qui nel <color is="#ffd97a">Tempio Dimenticato</color> custodisco un tavolo che scompone un pezzo di equipaggiamento e restituisce ciò che vi era stato messo. Salutami e parleremo come si conviene.
 dialogue.mmo_enchanter.first_words.opt.hail = Salve, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Ti manda Marn. Urla, e ha ragione più spesso di quanto sappia.\nDice che sei paziente. Vedremo.
+dialogue.mmo_enchanter.sent_by_sawyer.text = Ti hanno mandato da me. Bene. La maggior parte di chi sta qui mi è solo inciampato addosso.\nMi dicono che sei paziente. Vedremo.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Salve, Orrin.
 dialogue.mmo_enchanter.menu.text = Chiedi ciò per cui sei qui. Ho tempo.
+dialogue.mmo_enchanter.vouch_first.text = Non ancora. Non ti conosco, e non metto il mio tavolo nelle mani di uno sconosciuto.\nLa <color is="#ffd97a">Guida dell'Avventuriero</color>, vicino a dove sei entrato, mi dice chi merita il mio tempo. Fai ciò che ti chiede quaggiù, e sarà lui a mandarti da me.
 dialogue.mmo_enchanter.trophy_hail.text = Hai in mano il <color is="#ffd97a">Grimorio del Disincantatore</color>.\nUn libro intero, composto da cose che il tavolo ha smontato. Siedo a quel tavolo da anni e non mi ha mai concesso nemmeno una pagina.\nLancia incantesimi, e nella tua mano affretta il rito. Tienilo chiuso mentre dormi.
 dialogue.mmo_enchanter.trophy_hail.opt.show = È uscito dal tavolo.
 dialogue.mmo_enchanter.trophy_talk.text = Hai ancora il <color is="#ffd97a">Grimorio del Disincantatore</color>. Ho quasi smesso di invidiartelo. Quasi.
@@ -355,7 +357,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Ti porterò un Cuore del Vuo
 dialogue.mmo_enchanter.voidheart_brief.text = Il <b>grande tavolo</b>, finché le tue mani non saranno sicure. Poi un <b>Cuore del Vuoto</b>, ovunque tu riesca a trovarlo. Prenditi il tuo tempo. Il libro ha atteso più a lungo di te.
 dialogue.mmo_enchanter.voidheart_ready.text = Un <b>Cuore del Vuoto</b>. Dammelo. Sì. Batte ancora, a modo suo.\nQuesto è il mio grimorio, scritto prima che me ne andassi e riscritto da allora. È un libro inferiore a quello che concede il tavolo, e lo so. Lancia incantesimi, e tenuto in mano affretta il rito e fa capitare un po' più spesso i ritrovamenti del tavolo. Il <color is="#ffd97a">Grimorio di Orrin</color>. È tuo.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Ecco il cuore.
-dialogue.mmo_enchanter.iron_offer.text = Al segantino manca sempre il ferro, e lo dice a chiunque sia a portata d'orecchio.\nSmonta al tavolo qualche <b>accetta di ferro</b>; vanno bene anche quelle consumate. Il <b>minerale di ferro</b> che restituiscono, portalo dall'altra parte del pianerottolo al <color is="#ffd97a">Segantino Marn</color>. Ti pagherà, e io non dovrò più ascoltarlo.
+dialogue.mmo_enchanter.iron_offer.text = Al segantino manca sempre il ferro, e lo dice a chiunque sia a portata d'orecchio.\nSmonta al tavolo qualche <b>accetta di ferro</b>; vanno bene anche quelle consumate. Il <b>minerale di ferro</b> che restituiscono, portalo al <color is="#ffd97a">Segantino Marn</color>, lì accanto a me. Ti pagherà, e io non dovrò più ascoltarlo.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Porterò il ferro a Marn.
 dialogue.mmo_enchanter.second_offer.text = Un tavolo non serve a nulla se sta dall'altra parte del mondo. Un secondo può stare ovunque tu lavori.\nSmonta un mucchio di equipaggiamento al tuo, portami l'<b>Essenza Vitale</b> che ne ricavi, e lo costruirò.
 dialogue.mmo_enchanter.second_offer.opt.accept = Farò passare i pezzi.
@@ -406,7 +408,7 @@ shop.mmo_enchanter.desc = Nessun altro vende una bacchetta o una cerbottana, cos
 dialogue.mmo_sawyer.enchanter_intro.text = Lui? Un Outlander, a giudicare dalle vesti, e un Kweebec impara a tenerli d'occhio. Finora non ha alzato le mani su nessuno. Dice di chiamarsi Orrin. Ha un tavolo laggiù che smonta l'equipaggiamento e ti ridà i materiali, ed è da un pezzo che cerca qualcuno che lo usi.\nVai a salutarlo. Digli che ti mando io. Però occhio, parla come un libro stampato.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Vado a trovarlo.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Magari più tardi.
-dialogue.mmo_sawyer.enchanter_brief.text = Sta nell'angolo in fondo al <color is="#ffd97a">Tempio Dimenticato</color>, con la pietra alle spalle e un libro in mano. L'<color is="#ffd97a">Incantatore Orrin</color>. Salutalo e al resto delle chiacchiere ci pensa lui.
+dialogue.mmo_sawyer.enchanter_brief.text = È quello qui al mio fianco, con un libro in mano. L'<color is="#ffd97a">Incantatore Orrin</color>. Salutalo e al resto delle chiacchiere ci pensa lui.
 
 # ---- Nomi delle sottocategorie degli obiettivi ----
 achievement.category.stations.sawmill = Segheria

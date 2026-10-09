@@ -44,7 +44,7 @@ quest.bounty_mill_marathon.title = Die lange Schicht
 quest.bounty_mill_marathon.flavor = Eine Woche an der Sägemühle, und die Tafel zählt jeden Stamm. Halt nen großen Stapel davon an der Säge bereit.
 
 quest.meet_the_enchanter.title = Ein Wort mit Orrin
-quest.meet_the_enchanter.flavor = In der hintersten Ecke sitzt ein Priester mit einem Buch und einem Tisch, den sonst keiner anfasst. Outlander, der Robe nach. Harmlos, glaub ich. Geh hin und sag Hallo.
+quest.meet_the_enchanter.flavor = Neben Marn steht ein Priester in Outlander-Robe, mit einem Buch und einem Tisch, den sonst keiner anfasst. Er hat dem Kult den Rücken gekehrt, sagt er. Geh hin und sag Hallo.
 quest.the_lesser_table.title = Der kleine Tisch
 quest.the_lesser_table.flavor = Ich bewahre den Rahmen eines Entzauberungstisches auf und habe nichts, um ihn zu vollenden. Bring mir Eisenbarren und Lebensessenz. Er hat lange genug ungenutzt dagestanden.
 quest.first_unmaking.title = Die erste Zerlegung
@@ -70,7 +70,7 @@ quest.outlander_steel.flavor = Die Outlander tragen Waffen des Untergangs, gesch
 quest.the_voidheart.title = Das Leerenherz
 quest.the_voidheart.flavor = Ein Leerenherz ist die Leere, in eine Gestalt gebracht. Arbeite am großen Tisch, bis du dir deiner Sache sicher bist, und bring mir dann ein Herz, gleich, wo du es findest.
 quest.iron_for_the_mill.title = Eisen für die Mühle
-quest.iron_for_the_mill.flavor = Dem Säger fehlt es immer an Eisen, und ich bin es leid, davon zu hören. Zerlege ein paar Eisenbeile am Tisch und trage das Erz, das sie hergeben, über den Absatz zu ihm.
+quest.iron_for_the_mill.flavor = Dem Säger fehlt es immer an Eisen, und ich stehe nah genug, um davon zu hören. Zerlege ein paar Eisenbeile am Tisch und trage das Erz, das sie hergeben, zu ihm.
 quest.a_second_table.title = Ein zweiter Tisch
 quest.a_second_table.flavor = Ein zweiter Tisch kann dort stehen, wo du deine Arbeit tust, damit du nicht ständig zum ersten zurückläufst. Zerlege an deinem einen Haufen Ausrüstung und bring mir Lebensessenz aus dieser Arbeit.
 quest.unmaking_rites.title = Riten der Zerlegung
@@ -248,6 +248,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Hallo, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = Der Führer hat dich also runtergeschickt. Der redet, ich weiß.\nSagt, du siehst aus wie einer der eine Mühle füttern kann. Komm, sag's anständig, dann sind wir uns vorgestellt.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Hallo, Marn.
 dialogue.mmo_sawyer.menu.text = Marn steht noch hier. Die Stämme sägen sich nicht selbst. Was brauchst du?
+dialogue.mmo_sawyer.guide_first.text = Arbeit? Nicht für jemanden, von dem mir keiner was erzählt hat.\nGeh zum <color is="#ffd97a">Abenteurer-Führer</color>, nicht weit von da, wo du reingekommen bist. Er schickt mir die, die eine Mühle wert sind. Erledige, wofür er dich hier runtergeholt hat, dann zeigt er dir den Weg zurück zu mir.
 dialogue.mmo_sawyer.trophy_hail.text = Moment. Zeig mir das mal.\nDas ist ne <color is="#ffd97a">Sägewerker-Axt</color>. Mithril, ausgewogen am Mühlenstein und nirgendswo sonst. So was hab' ich Jahre nicht gesehen, und nie in so grüner Hand.\nDie Mühle gibt so eine ungefähr so oft her, wie sich ein Stamm von selbst spaltet. Halt die Klinge scharf.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Es kam aus der Mühle.
 dialogue.mmo_sawyer.trophy_talk.text = Noch immer die <color is="#ffd97a">Sägewerker-Axt</color> dabei. Gut. So ne Klinge will benutzt werden, nicht an der Wand hängen. Was brauchst du?
@@ -299,8 +300,8 @@ dialogue.mmo_sawyer.kit_talk.opt.back = Ich bleib bei den zierlichen Arbeiten.
 dialogue.mmo_sawyer.enchanter_intro.text = Der? Outlander, der Robe nach, und ein Kweebec lernt, auf die aufzupassen. Auf jemanden losgegangen ist er bisher nicht. Orrin nennt er sich. Er hat da drüben einen Tisch, der Ausrüstung zerlegt und die Rohstoffe zurückgibt, und er sucht schon lange jemanden, der ihn benutzt.\nGeh rüber und sag Hallo. Sag ihm, ich schick dich. Er redet wie ein Buch, nur damit du's weißt.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Ich geh mal zu ihm.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Vielleicht später.
-dialogue.mmo_sawyer.enchanter_brief.text = Er sitzt in der hintersten Ecke des <color is="#ffd97a">Vergessenen Tempels</color>, den Stein im Rücken und ein Buch in der Hand. <color is="#ffd97a">Verzauberer Orrin</color>. Sag Hallo, das Reden übernimmt dann er.
-dialogue.mmo_sawyer.opt.enchanter_who = Wer ist der Priester in der Ecke?
+dialogue.mmo_sawyer.enchanter_brief.text = Er steht gleich neben mir, ein Buch in der Hand. <color is="#ffd97a">Verzauberer Orrin</color>. Sag Hallo, das Reden übernimmt dann er.
+dialogue.mmo_sawyer.opt.enchanter_who = Wer ist der Priester neben dir?
 dialogue.mmo_sawyer.opt.returned = Ich bin zurück mit dem was du brauchst.
 dialogue.mmo_sawyer.opt.quests = Gibts was zu sägen?
 dialogue.mmo_sawyer.opt.how = Wie funktioniert die Mühle?
@@ -309,9 +310,10 @@ dialogue.mmo_sawyer.opt.kit = Was passt zu dieser Kappe?
 dialogue.mmo_sawyer.opt.nothing = Jetzt nicht.
 dialogue.mmo_enchanter.first_words.text = Du stehst in meinem Licht. Einerlei. Bleib.\nIch bin Orrin. Einst war ich ein Priester des Kults, und die Roben legt man nicht so leicht ab wie den Glauben. Hier im <color is="#ffd97a">Vergessenen Tempel</color> hüte ich einen Tisch, der ein Stück Ausrüstung zerlegt und zurückgibt, was darin steckt. Grüße mich, dann sprechen wir, wie es sich gehört.
 dialogue.mmo_enchanter.first_words.opt.hail = Hallo, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Marn hat dich geschickt. Er schreit, und er hat öfter recht, als er ahnt.\nEr sagt, du seist geduldig. Das werden wir sehen.
+dialogue.mmo_enchanter.sent_by_sawyer.text = Man hat dich zu mir geschickt. Gut. Die meisten, die hier stehen, sind nur über mich gestolpert.\nMan sagt mir, du seist geduldig. Das werden wir sehen.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Hallo, Orrin.
 dialogue.mmo_enchanter.menu.text = Frage, was du fragen wolltest. Ich habe Zeit.
+dialogue.mmo_enchanter.vouch_first.text = Noch nicht. Ich kenne dich nicht, und ich lege meinen Tisch nicht in die Hände eines Fremden.\nDer <color is="#ffd97a">Abenteurer-Führer</color>, nahe der Stelle, an der du hereingekommen bist, sagt mir, wer meine Zeit wert ist. Tu, was er hier unten von dir verlangt, und er wird dich zu mir schicken.
 dialogue.mmo_enchanter.trophy_hail.text = Du hältst das <color is="#ffd97a">Entzauberer-Grimoire</color> in der Hand.\nEin ganzes Buch, zusammengefügt aus Dingen, die der Tisch zerlegt hat. Ich sitze seit Jahren an diesem Tisch, und er hat mir nicht einmal eine Seite gegeben.\nEs wirkt Zauber, und in deiner Hand beschleunigt es den Ritus. Halte es geschlossen, wenn du schläfst.
 dialogue.mmo_enchanter.trophy_hail.opt.show = Es kam aus dem Tisch.
 dialogue.mmo_enchanter.trophy_talk.text = Du hast noch immer das <color is="#ffd97a">Entzauberer-Grimoire</color>. Ich habe fast aufgehört, dich darum zu beneiden. Fast.
@@ -358,7 +360,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Ich bringe dir ein Leerenher
 dialogue.mmo_enchanter.voidheart_brief.text = Der <b>große Tisch</b>, bis deine Hände sicher sind. Dann ein <b>Leerenherz</b>, wo auch immer du eines findest. Lass dir Zeit. Das Buch hat schon länger gewartet als du.
 dialogue.mmo_enchanter.voidheart_ready.text = Ein <b>Leerenherz</b>. Gib es mir. Ja. Es schlägt noch, auf seine Weise.\nDies ist mein eigenes Grimoire, geschrieben, bevor ich ging, und seither umgeschrieben. Es ist ein geringeres Buch als jenes, das der Tisch hergibt, und das weiß ich. Es wirkt Zauber, und in der Hand beschleunigt es den Ritus und lässt die Funde des Tisches etwas öfter auftauchen. <color is="#ffd97a">Orrins Grimoire</color>. Es gehört dir.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Hier ist das Herz.
-dialogue.mmo_enchanter.iron_offer.text = Dem Säger fehlt es immer an Eisen, und das sagt er jedem, der in Hörweite ist.\nZerlege ein paar <b>Eisenbeile</b> am Tisch; abgenutzte genügen. Das <b>Eisenerz</b>, das sie hergeben, trage über den Absatz zu <color is="#ffd97a">Säger Marn</color>. Er wird dich dafür bezahlen, und ich muss mir sein Klagen nicht anhören.
+dialogue.mmo_enchanter.iron_offer.text = Dem Säger fehlt es immer an Eisen, und das sagt er jedem, der in Hörweite ist.\nZerlege ein paar <b>Eisenbeile</b> am Tisch; abgenutzte genügen. Das <b>Eisenerz</b>, das sie hergeben, trage zu <color is="#ffd97a">Säger Marn</color>, dort neben mir. Er wird dich dafür bezahlen, und ich muss mir sein Klagen nicht anhören.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Ich bringe das Eisen zu Marn.
 dialogue.mmo_enchanter.second_offer.text = Ein Tisch nützt dir nichts, wenn er am anderen Ende der Welt steht. Ein zweiter kann dort stehen, wo du deine Arbeit tust.\nZerlege an deinem einen Haufen Ausrüstung, bring mir <b>Lebensessenz</b> aus dieser Arbeit, und ich baue ihn.
 dialogue.mmo_enchanter.second_offer.opt.accept = Ich lasse die Stücke durch den Tisch gehen.

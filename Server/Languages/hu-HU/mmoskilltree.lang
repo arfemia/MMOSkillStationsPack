@@ -43,7 +43,7 @@ quest.bounty_essence_run.flavor = Az alkimisták Életesszenciát akarnak, egyen
 quest.bounty_mill_marathon.title = Az Utolsó Műsak
 quest.bounty_mill_marathon.flavor = Egy hét a Fűrészmalomnál, és a tábla minden rönköt számol. Tarts egy nagy rakást a fűrész mellett.
 quest.meet_the_enchanter.title = Pár Szó Orrinnal
-quest.meet_the_enchanter.flavor = A túlsó sarokban van egy pap, egy könyvvel meg egy asztallal, amihez rajta kívül senki sem nyúl. Outlander, a ruhájából ítélve. Ártalmatlan, szerintem. Menj, köszönj neki.
+quest.meet_the_enchanter.flavor = Marn mellett áll egy pap Outlander-ruhában, egy könyvvel meg egy asztallal, amihez senki más nem nyúl. Azt mondja, otthagyta a kultuszt. Menj, köszönj neki.
 quest.the_lesser_table.title = A Kisebb Asztal
 quest.the_lesser_table.flavor = Őrzök egy keretet egy Enchantbontó Asztalhoz, de nincs mivel befejeznem. Hozz nekem Vasrudakat és Életesszenciát. Elég régóta áll már tétlenül.
 quest.first_unmaking.title = Az Első Szétbontás
@@ -69,7 +69,7 @@ quest.outlander_steel.flavor = Az Outlanderek Elátkozott fegyvereket hordanak, 
 quest.the_voidheart.title = Az Ürességszív
 quest.the_voidheart.flavor = Az Ürességszív maga az üresség, alakot öltve. Dolgozz a nagy asztalnál, amíg biztos kézzel nem bánsz vele, aztán hozz nekem egy szívet, bárhol leled is.
 quest.iron_for_the_mill.title = Vas a Malomnak
-quest.iron_for_the_mill.flavor = A fűrészmalmosnak mindig kevés a vasa, és belefáradtam, hogy ezt hallgassam. Bonts szét néhány vasfejszét az asztalnál, és a visszakapott ércet vidd át neki a pihenőn túlra.
+quest.iron_for_the_mill.flavor = A fűrészmalmosnak mindig kevés a vasa, és elég közel állok ahhoz, hogy halljam is. Bonts szét néhány vasfejszét az asztalnál, és a visszakapott ércet vidd el neki.
 quest.a_second_table.title = Egy Második Asztal
 quest.a_second_table.flavor = Egy második asztal ott állhat, ahol épp dolgozol, így nem kell örökké visszagyalogolnod az elsőhöz. Bonts szét egy halom felszerelést a tiéden, és hozz nekem Életesszenciát a munkából.
 quest.unmaking_rites.title = A Szétbontás Rítusai
@@ -248,9 +248,10 @@ achievement.announce.disenchanting_orrins_own.title = Orrin Sajátja!
 
 dialogue.mmo_enchanter.first_words.text = A fényemben állsz. Nem számít. Maradj.\nOrrin vagyok. Egykor a kultusz papja voltam, és a ruhát nem olyan könnyű levetni, mint a hitet. Itt, a <color is="#ffd97a">Feledett Templomban</color> egy asztalt őrzök, amely szétbontja a felszerelést, és visszaadja, ami belekerült. Köszönj, és beszéljünk rendesen.
 dialogue.mmo_enchanter.first_words.opt.hail = Üdv, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Marn küldött. Kiabál, és gyakrabban van igaza, mint gondolná.\nAzt mondja, türelmes vagy. Majd meglátjuk.
+dialogue.mmo_enchanter.sent_by_sawyer.text = Hozzám küldtek. Jó. A legtöbben, akik itt állnak, csak belém botlottak.\nAzt mondják, türelmes vagy. Majd meglátjuk.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Üdv, Orrin.
 dialogue.mmo_enchanter.menu.text = Kérdezd, amiért jöttél. Van időm.
+dialogue.mmo_enchanter.vouch_first.text = Még nem. Nem ismerlek, és az asztalomat nem adom idegen kezébe.\nA <color is="#ffd97a">Kalandozó Kalauz</color>, nem messze attól a helytől, ahol bejöttél, megmondja nekem, ki érdemli meg az időmet. Tedd meg, amit itt lent kér tőled, és ő majd hozzám küld.
 dialogue.mmo_enchanter.trophy_hail.text = Az <color is="#ffd97a">Enchantbontó Grimoárt</color> tartod a kezedben.\nEgy egész könyv, olyan dolgokból összerakva, amelyeket az asztal szétbontott. Évek óta ülök annál az asztalnál, és nekem még egy lapot sem adott.\nVarázsolni lehet vele, és kézben gyorsítja a rítust. Tartsd csukva, amikor alszol.
 dialogue.mmo_enchanter.trophy_hail.opt.show = Az asztalból jött elő.
 dialogue.mmo_enchanter.trophy_talk.text = Még mindig nálad van az <color is="#ffd97a">Enchantbontó Grimoár</color>. Már majdnem nem irigyellek érte. Majdnem.
@@ -306,7 +307,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Hozok neked egy Ürességsz�
 dialogue.mmo_enchanter.voidheart_brief.text = A <b>nagy asztal</b>, amíg biztos nem lesz a kezed. Aztán egy <b>Ürességszív</b>, bárhol találod is. Ne siess. A könyv már régebb óta vár, mint te.
 dialogue.mmo_enchanter.voidheart_ready.text = Egy <b>Ürességszív</b>. Add ide. Igen. A maga módján még mindig dobog.\nEz a saját grimoárom, amelyet még a távozásom előtt írtam, és azóta újraírtam. Kisebb könyv, mint amelyet az asztal ad, és ezt tudom is. Varázsolni lehet vele, kézben gyorsítja a rítust, és kicsit gyakrabban hozza az asztal leleteit. <color is="#ffd97a">Orrin Grimoárja</color>. A tiéd.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Itt a szív.
-dialogue.mmo_enchanter.iron_offer.text = A fűrészmalmosnak mindig kevés a vasa, és ezt mindenkinek elmondja, aki hallja.\nBonts szét néhány <b>vasfejszét</b> az asztalnál; a kopottak is megteszik. A <b>vasércet</b>, amelyet visszaadnak, vidd át a pihenőn túlra <color is="#ffd97a">Fűrészmalmos Marnnak</color>. Fizet érte, nekem pedig nem kell őt hallgatnom.
+dialogue.mmo_enchanter.iron_offer.text = A fűrészmalmosnak mindig kevés a vasa, és ezt mindenkinek elmondja, aki hallja.\nBonts szét néhány <b>vasfejszét</b> az asztalnál; a kopottak is megteszik. A <b>vasércet</b>, amelyet visszaadnak, vidd el <color is="#ffd97a">Fűrészmalmos Marnnak</color>, ott mellettem. Fizet érte, nekem pedig nem kell őt hallgatnom.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Elviszem a vasat Marnnak.
 dialogue.mmo_enchanter.second_offer.text = Egy asztal semmit sem ér, ha a világ túlsó felén áll tőled. Egy második ott állhat, ahol épp dolgozol.\nBonts szét egy halom felszerelést a tiéden, hozz nekem <b>Életesszenciát</b> a munkából, és megépítem.
 dialogue.mmo_enchanter.second_offer.opt.accept = Nekilátok a daraboknak.
@@ -351,6 +352,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Halló, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = A Kalauz leküldet, hát. Beszédes az.\nAzt mondja, olyan vagy, aki tudna malmot etetni. No, mondd rendesen, majd megismerkedünk.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Halló, Marn.
 dialogue.mmo_sawyer.menu.text = Marn még itt van. A rönkök nem maguk faragják, úgyhogy mondd meg, mit kell.
+dialogue.mmo_sawyer.guide_first.text = Munka? Nem olyannak, akiről senki nem szólt nekem.\nMenj el a <color is="#ffd97a">Kalandozó Kalauzhoz</color>, nem messze onnan, ahol bejöttél. Ő küldi hozzám azokat, akik megérnek egy malmot. Intézd el, amiért lehozott ide, és majd visszairányít hozzám.
 dialogue.mmo_sawyer.trophy_hail.text = Várj. Mutasd meg azt.\nEz egy <color is="#ffd97a">Fűrészmalmi balta</color>. Mitril, malmban egyensúlyozott, másutt nem. Nem láttam még ilyet, és soha zöld kezekben.\nA malom alig olyan gyakran ad ki ilyet, mint egy rönk széthasítja magát. Tartsd élesnek.
 dialogue.mmo_sawyer.trophy_hail.opt.show = A malmomból jött ki.
 dialogue.mmo_sawyer.trophy_talk.text = Még mindig a <color is="#ffd97a">Fűrészmalmi baltát</color> cipeled. Jó. Egy penge az olyan szeretne dolgozni, szóval ne hagyj a falon. Mit kell?
@@ -399,11 +401,11 @@ dialogue.mmo_sawyer.hatchet_tease.text = Ott van egy <color is="#ffd97a">Fűrés
 dialogue.mmo_sawyer.hatchet_tease.opt.back = Majd vágok tovább.
 dialogue.mmo_sawyer.kit_talk.text = Az a sapka kezdet, nem játszom, hogy több. Van igazi felszerelés.\nFavágó bőr, az egész garnitúra. Sapka, kabát, kesztyű, nadrág, malmozásra vágva, és senki sem árulja. Kifizettem a <b>díszítő munkámból</b>, egy darab itt-ott, jó vágásonként. A kabát jön utolsónak. Viselj mindent, a malom majd észrevesz.
 dialogue.mmo_sawyer.kit_talk.opt.back = Majd folytatok a díszítéssel.
-dialogue.mmo_sawyer.opt.enchanter_who = Ki az a pap ott a sarokban?
+dialogue.mmo_sawyer.opt.enchanter_who = Ki az a pap melletted?
 dialogue.mmo_sawyer.enchanter_intro.text = Ő? Outlander, a ruhájából ítélve, és egy Kweebec megtanulja szemmel tartani az ilyeneket. Eddig még senkinek nem esett neki. Orrinnak mondja magát. Van ott egy asztala, ami szétszedi a felszerelést, és visszaadja, amiből készült, és már egy ideje keres valakit, aki használná.\nEredj át, köszönj neki. Mondd, hogy én küldtelek. Úgy beszél, mint egy könyv, csak szólok.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Megyek, beszélek vele.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Talán később.
-dialogue.mmo_sawyer.enchanter_brief.text = A <color is="#ffd97a">Feledett Templom</color> túlsó sarkában van, háttal a kőnek, könyvvel a kezében. <color is="#ffd97a">Enchantoló Orrin</color>. Köszönj neki, a beszédet aztán ő viszi.
+dialogue.mmo_sawyer.enchanter_brief.text = Ő az, aki itt áll mellettem, könyvvel a kezében. <color is="#ffd97a">Enchantoló Orrin</color>. Köszönj neki, a beszédet aztán ő viszi.
 dialogue.mmo_sawyer.opt.returned = Visszajöttem, amit kértél.
 dialogue.mmo_sawyer.opt.quests = Van valami, mit kellene vágni?
 dialogue.mmo_sawyer.opt.how = Hogy működik a malom?

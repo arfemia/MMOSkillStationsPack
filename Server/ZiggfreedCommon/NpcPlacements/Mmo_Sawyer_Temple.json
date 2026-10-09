@@ -27,9 +27,11 @@
     "Marn stands beside the temple's own Rootling Merchant spawn marker rather than at the raw",
     "portal-landing point, so he moves with the temple's actual layout instead of an offset that",
     "can land inside a wall. The Mastery Trainer anchors to the same marker on the positive X side,",
-    "so Marn takes the negative side. To move him, edit Anchor.Structure.Offset, keeping it small",
-    "enough to stay out of the walls, and Yaw to turn which way he faces. /mmonpc list",
-    "--arg1=structures shows the marker ids the engine has seen when an anchor resolves nothing."
+    "so Marn takes the negative side, and Enchanter Orrin (Mmo_Enchanter_Temple.json) stands two",
+    "blocks past him along negative X, so move the two together. To move him, edit",
+    "Anchor.Structure.Offset, keeping it small enough to stay out of the walls, and Yaw to turn",
+    "which way he faces. /mmonpc list --arg1=structures shows the marker ids the engine has seen",
+    "when an anchor resolves nothing."
   ],
   "Name": "Mmo_Sawyer_Temple",
   "Enabled": true,

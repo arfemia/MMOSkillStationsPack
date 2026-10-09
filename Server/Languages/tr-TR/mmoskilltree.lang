@@ -32,7 +32,7 @@ quest.the_fitting.flavor = Sap ve baş; şimdi birleştirilmeleri gerek. Uzun bi
 quest.trim_work.title = Dekoratif Kesim
 quest.trim_work.flavor = Bu sefer dekoratif kesim. Dekoratif ve süslü olanı; hazır başındayken testerenin attığı Bitki Lifi'ni de sakla. Bana dekoratif kesimden bir pay ve biraz kabuk getir. Gün bitmeden sipariş yine gelir.
 quest.meet_the_enchanter.title = Orrin'le Bir Çift Söz
-quest.meet_the_enchanter.flavor = Dip köşede elinde kitapla bir rahip var, bir de kimsenin elini sürmediği bir masa. Cüppesine bakılırsa Outlander. Zararsız bence. Git bir merhaba de.
+quest.meet_the_enchanter.flavor = Marn'ın yanında Outlander cüppeli bir rahip duruyor; elinde bir kitap, bir de kimsenin elini sürmediği bir masası var. Kültten ayrıldığını söylüyor. Git bir merhaba de.
 quest.the_lesser_table.title = Küçük Masa
 quest.the_lesser_table.flavor = Bir Büyü Bozma Masası için çerçevem var, ama onu tamamlayacak hiçbir şeyim yok. Bana Demir Külçeleri ve Yaşam Özü getir. Yeterince uzun süre boş durdu.
 quest.first_unmaking.title = İlk Çözme
@@ -58,7 +58,7 @@ quest.outlander_steel.flavor = Outlander'lar, bir demircinin asla kullanmaması 
 quest.the_voidheart.title = Boşluk Kalbi
 quest.the_voidheart.flavor = Boşluk Kalbi, şekle bürünmüş boşluktur. Gelişmiş masada kendinden emin olana dek çalış, sonra bana bir kalp getir; nerede bulursan bul.
 quest.iron_for_the_mill.title = Bıçkıhane İçin Demir
-quest.iron_for_the_mill.flavor = Bıçkıcının demiri hep eksiktir ve bunu dinlemekten yoruldum. Masada birkaç demir balta çöz ve verdikleri cevheri sahanlığın karşısına, ona götür.
+quest.iron_for_the_mill.flavor = Bıçkıcının demiri hep eksiktir ve ben de bunu duyacak kadar yakınında duruyorum. Masada birkaç demir balta çöz ve verdikleri cevheri ona götür.
 quest.a_second_table.title = İkinci Bir Masa
 quest.a_second_table.flavor = İkinci bir masa, işini nerede yapıyorsan orada durabilir; böylece ilkine durmadan geri yürümezsin. Kendi masanda bir yığın ekipman çöz ve bu işten bana Yaşam Özü getir.
 quest.unmaking_rites.title = Çözme Ayinleri
@@ -119,9 +119,10 @@ objective.text.stations.draw_essence = Ekipmandan {0} {1} çek
 
 dialogue.mmo_enchanter.first_words.text = Işığımın önünde duruyorsun. Önemi yok. Kal.\nBen Orrin. Bir zamanlar kültün rahibiydim; cüppe, inanç kadar kolay çıkmıyor. Burada, <color is="#ffd97a">Unutulmuş Tapınak'ta</color>, bir ekipman parçasını çözüp içine konanı geri veren bir masa tutuyorum. Selam ver, sonra gereği gibi konuşalım.
 dialogue.mmo_enchanter.first_words.opt.hail = Merhaba, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Seni Marn gönderdi. Bağırır; ama sandığından daha sık haklı çıkar.\nSabırlı olduğunu söylüyor. Göreceğiz.
+dialogue.mmo_enchanter.sent_by_sawyer.text = Seni bana yolladılar. Güzel. Burada duranların çoğu bana yalnızca tesadüfen denk geldi.\nSabırlı olduğun söylendi. Göreceğiz.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Merhaba, Orrin.
 dialogue.mmo_enchanter.menu.text = Sormaya geldiğini sor. Vaktim var.
+dialogue.mmo_enchanter.vouch_first.text = Henüz değil. Seni tanımıyorum ve masamı bir yabancının ellerine bırakmam.\nGirdiğin yerin yakınındaki <color is="#ffd97a">Maceracı Rehberi</color>, kimin vaktime değer olduğunu bana söyler. Burada, aşağıda senden ne isterse onu yap, o da seni bana gönderir.
 dialogue.mmo_enchanter.trophy_hail.text = <color is="#ffd97a">Büyü Bozucu Kitabı'nı</color> tutuyorsun.\nMasanın söktüğü şeylerden bir araya getirilmiş koca bir kitap. Ben o masanın başında yıllarca oturdum; bana tek bir sayfa bile vermedi.\nBüyü yapar ve elinde ayini hızlandırır. Uyurken kapalı tut.
 dialogue.mmo_enchanter.trophy_hail.opt.show = Masadan çıktı.
 dialogue.mmo_enchanter.trophy_talk.text = <color is="#ffd97a">Büyü Bozucu Kitabı</color> hâlâ sende. Bunun için seni kıskanmayı neredeyse bıraktım. Neredeyse.
@@ -168,7 +169,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Sana bir Boşluk Kalbi getir
 dialogue.mmo_enchanter.voidheart_brief.text = Ellerin emin olana dek <b>gelişmiş masa</b>. Sonra, nerede bulursan bul, bir <b>Boşluk Kalbi</b>. Acele etme. Kitap, senin beklediğinden çok daha uzun süre bekledi.
 dialogue.mmo_enchanter.voidheart_ready.text = Bir <b>Boşluk Kalbi</b>. Ver onu bana. Evet. Kendince hâlâ atıyor.\nBu benim kendi büyü kitabım; ayrılmadan önce yazdım, o günden beri de yeniden yazdım. Masanın verdiğinden daha mütevazı bir kitap, bunu biliyorum. Büyü yapar; elde tutulunca ayini hızlandırır ve masanın buluntularını biraz daha sık getirir. <color is="#ffd97a">Orrin'in Büyü Kitabı</color>. Artık senin.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Kalp burada.
-dialogue.mmo_enchanter.iron_offer.text = Bıçkıcının demiri hep eksiktir ve bunu sesini duyan herkese söyler.\nMasada birkaç <b>demir balta</b> çöz; yıpranmış olanlar da olur. Verdikleri <b>demir cevherini</b> sahanlığın karşısına, <color is="#ffd97a">Bıçkıcı Marn'a</color> götür. Sana karşılığını öder, ben de onu dinlemek zorunda kalmam.
+dialogue.mmo_enchanter.iron_offer.text = Bıçkıcının demiri hep eksiktir ve bunu sesini duyan herkese söyler.\nMasada birkaç <b>demir balta</b> çöz; yıpranmış olanlar da olur. Verdikleri <b>demir cevherini</b> hemen yanımdaki <color is="#ffd97a">Bıçkıcı Marn'a</color> götür. Sana karşılığını öder, ben de onu dinlemek zorunda kalmam.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Demiri Marn'a götüreceğim.
 dialogue.mmo_enchanter.second_offer.text = Dünyanın öbür ucunda kalmış bir masa sana bir işe yaramaz. İkincisi, işini nerede yapıyorsan orada durabilir.\nKendi masanda bir yığın ekipman çöz, bu işten bana <b>Yaşam Özü</b> getir; ben de onu kurayım.
 dialogue.mmo_enchanter.second_offer.opt.accept = Parçaları geçireceğim.
@@ -354,6 +355,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Merhaba, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = Rehber seni yolladı, demek. Konuşkan tür, adam o.\nDiyor ki, sen değirmeni besleyebilecek biri görünüyorsun. Haydi, düzgün kendini tanıt.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Merhaba, Marn.
 dialogue.mmo_sawyer.menu.text = Marn hâlâ burada. Kereste kendisi kesilmiyor, söyle ne lazım.
+dialogue.mmo_sawyer.guide_first.text = İş mi? Kimsenin bana bahsetmediği birine yok.\nGit, girdiğin yerin yakınındaki <color is="#ffd97a">Maceracı Rehberi'yle</color> konuş. Değirmene layık olanları bana o yollar. Seni aşağıya ne için getirdiyse onu hallet, o da sana yine benim yolumu gösterir.
 dialogue.mmo_sawyer.trophy_hail.text = Bekle. Bunu göster.\nBu <color is="#ffd97a">Hızarcı Baltası</color>. Mitril, değirmende ayarlanmış başka hiçbir yerde değil. Yıllar oldu böylesi görmemiştim, böyle yeşil bir elde hiç.\nDeğirmen böyle bir baltayı hemen her değirmenci kadar sık dağıtır. Keskin tutun.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Değirmenciden çıktı.
 dialogue.mmo_sawyer.trophy_talk.text = <color is="#ffd97a">Hızarcı Baltası</color>'nı hâlâ taşıyorsun. İyi. Böyle bir bıçak çalışılmak ister, duvar dibine asma. Ne lazım?
@@ -408,8 +410,8 @@ dialogue.mmo_sawyer.opt.how = Değirmen nasıl çalışıyor?
 dialogue.mmo_sawyer.opt.edge = Daha keskin bir kenar görürsen?
 dialogue.mmo_sawyer.opt.kit = Bu şapka ile ne gelmeli?
 dialogue.mmo_sawyer.opt.nothing = Şimdilik hiçbir şey yok.
-dialogue.mmo_sawyer.opt.enchanter_who = Köşedeki rahip kim?
+dialogue.mmo_sawyer.opt.enchanter_who = Yanındaki rahip kim?
 dialogue.mmo_sawyer.enchanter_intro.text = O mu? Cüppesine bakılırsa Outlander; bir Kweebec onlardan gözünü ayırmamayı öğrenir. Daha kimseye kılıç sallamadı. Kendine Orrin diyor. Orada bir masası var; ekipmanı söküp içindeki malzemeyi geri veriyor. Bir süredir onu kullanacak birini bekliyor.\nGit bir merhaba de. Seni benim yolladığımı söyle. Kitap gibi konuşur ama, haberin olsun.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Gidip onunla görüşeyim.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Belki sonra.
-dialogue.mmo_sawyer.enchanter_brief.text = <color is="#ffd97a">Unutulmuş Tapınak'ın</color> dip köşesinde, sırtı taşa dayalı, elinde bir kitap. <color is="#ffd97a">Büyücü Orrin</color>. Bir merhaba de, gerisini o konuşur.
+dialogue.mmo_sawyer.enchanter_brief.text = Hemen yanı başımda, elinde bir kitap. <color is="#ffd97a">Büyücü Orrin</color>. Bir merhaba de, gerisini o konuşur.

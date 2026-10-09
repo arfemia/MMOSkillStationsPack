@@ -47,7 +47,7 @@ quest.bounty_essence_run.flavor = Los alquimistas quieren Esencia de Vida recié
 quest.bounty_mill_marathon.title = El Turno Largo
 quest.bounty_mill_marathon.flavor = Una semana en el Aserradero, y el tablón cuenta cada tronco. Ten una buena pila junto a la sierra.
 quest.meet_the_enchanter.title = Unas Palabras con Orrin
-quest.meet_the_enchanter.flavor = Hay un sacerdote en la esquina del fondo con un libro y una mesa que nadie más quiere tocar. Outlander, por la túnica. Inofensivo, creo. Ve a saludarlo.
+quest.meet_the_enchanter.flavor = Junto a Marn hay un sacerdote con túnica de Outlander, y tiene un libro y una mesa que nadie más quiere tocar. Dice que abandonó el culto. Ve a saludarlo.
 quest.the_lesser_table.title = La Mesa Menor
 quest.the_lesser_table.flavor = Guardo el armazón de una Mesa de Desencantamiento y nada con que terminarla. Tráeme Lingotes de Hierro y Esencia de Vida. Ya ha estado ociosa bastante tiempo.
 quest.first_unmaking.title = El Primer Deshacer
@@ -73,7 +73,7 @@ quest.outlander_steel.flavor = Los Outlanders llevan armas Condenadas, forjadas 
 quest.the_voidheart.title = El Corazón del Vacío
 quest.the_voidheart.flavor = Un Corazón del Vacío es el vacío hecho forma. Trabaja la gran mesa hasta que la domines y después tráeme un corazón, de dondequiera que lo saques.
 quest.iron_for_the_mill.title = Hierro para el Aserradero
-quest.iron_for_the_mill.flavor = Al aserrador siempre le falta hierro, y estoy cansado de oírlo. Deshaz unas cuantas hachas de hierro en la mesa y llévale el mineral que devuelvan, al otro lado del rellano.
+quest.iron_for_the_mill.flavor = Al aserrador siempre le falta hierro, y estoy lo bastante cerca como para oírlo. Deshaz unas cuantas hachas de hierro en la mesa y llévale el mineral que devuelvan.
 quest.a_second_table.title = Una Segunda Mesa
 quest.a_second_table.flavor = Una segunda mesa puede alzarse allí donde trabajes, y así no tendrás que volver una y otra vez a la primera. Deshaz un montón de equipo en la tuya y tráeme Esencia de Vida de ese trabajo.
 quest.unmaking_rites.title = Ritos del Deshacer
@@ -246,9 +246,10 @@ achievement.announce.disenchanting_orrins_own.title = ¡De Orrin!
 
 dialogue.mmo_enchanter.first_words.text = Me tapas la luz. No importa. Quédate.\nSoy Orrin. En otro tiempo fui sacerdote del culto, y la túnica no se quita con la facilidad con que se fue la fe. Aquí, en el <color is="#ffd97a">Templo Olvidado</color>, guardo una mesa que desmonta una pieza de equipo y devuelve lo que se puso en ella. Salúdame y hablaremos como es debido.
 dialogue.mmo_enchanter.first_words.opt.hail = Hola, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Te envía Marn. Grita, y acierta más a menudo de lo que cree.\nDice que eres paciente. Ya veremos.
+dialogue.mmo_enchanter.sent_by_sawyer.text = Te han enviado a mí. Bien. La mayoría de los que se plantan aquí solo tropezaron conmigo.\nMe dicen que eres paciente. Ya veremos.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Hola, Orrin.
 dialogue.mmo_enchanter.menu.text = Pregunta lo que has venido a preguntar. Tengo tiempo.
+dialogue.mmo_enchanter.vouch_first.text = Todavía no. No te conozco, y no pongo mi mesa en manos de un extraño.\nEl <color is="#ffd97a">Guía del Aventurero</color>, cerca de por donde entraste, me dice quién merece mi tiempo. Haz lo que te pida aquí abajo, y él te enviará a mí.
 dialogue.mmo_enchanter.trophy_hail.text = Tienes en la mano el <color is="#ffd97a">Grimorio del Desencantador</color>.\nUn libro entero, hecho con cosas que la mesa deshizo. Llevo años sentado a esa mesa y nunca me ha dado ni una página.\nLanza hechizos, y en tu mano acelera el rito. Tenlo cerrado cuando duermas.
 dialogue.mmo_enchanter.trophy_hail.opt.show = Salió de la mesa.
 dialogue.mmo_enchanter.trophy_talk.text = Aún tienes el <color is="#ffd97a">Grimorio del Desencantador</color>. Casi he dejado de envidiártelo. Casi.
@@ -295,7 +296,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Te traeré un Corazón del V
 dialogue.mmo_enchanter.voidheart_brief.text = La <b>gran mesa</b>, hasta que tus manos estén seguras. Después, un <b>Corazón del Vacío</b>, de dondequiera que puedas sacarlo. Tómate tu tiempo. El libro ha esperado más que tú.
 dialogue.mmo_enchanter.voidheart_ready.text = Un <b>Corazón del Vacío</b>. Dámelo. Sí. Aún late, a su manera.\nEste es mi propio grimorio, escrito antes de marcharme y reescrito desde entonces. Es un libro menor que el que da la mesa, y lo sé. Lanza hechizos, y en la mano acelera el rito y hace que los hallazgos de la mesa lleguen algo más a menudo. <color is="#ffd97a">Grimorio de Orrin</color>. Es tuyo.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Aquí tienes el corazón.
-dialogue.mmo_enchanter.iron_offer.text = Al aserrador siempre le falta hierro, y se lo dice a cualquiera que lo oiga.\nDeshaz unas cuantas <b>hachas de hierro</b> en la mesa; las gastadas servirán. Lleva el <b>mineral de hierro</b> que devuelvan al otro lado del rellano, al <color is="#ffd97a">Aserrador Marn</color>. Él te lo pagará, y yo no tendré que escucharlo.
+dialogue.mmo_enchanter.iron_offer.text = Al aserrador siempre le falta hierro, y se lo dice a cualquiera que lo oiga.\nDeshaz unas cuantas <b>hachas de hierro</b> en la mesa; las gastadas servirán. Lleva el <b>mineral de hierro</b> que devuelvan al <color is="#ffd97a">Aserrador Marn</color>, ahí a mi lado. Él te lo pagará, y yo no tendré que escucharlo.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Le llevaré el hierro a Marn.
 dialogue.mmo_enchanter.second_offer.text = Una mesa no te sirve de nada si está en el otro extremo del mundo. Una segunda puede alzarse allí donde trabajes.\nDeshaz un montón de equipo en la tuya, tráeme <b>Esencia de Vida</b> de ese trabajo y la construiré.
 dialogue.mmo_enchanter.second_offer.opt.accept = Pasaré las piezas por la mesa.
@@ -343,17 +344,18 @@ dialogue.mmo_enchanter.opt.why = ¿Por qué dejaste el culto?
 dialogue.mmo_enchanter.opt.nothing = Nada por ahora.
 shop.mmo_enchanter.title = Estante de Orrin
 shop.mmo_enchanter.desc = Nadie más vende varitas ni cerbatanas, así que Orrin guarda unas cuantas para la mesa.
-dialogue.mmo_sawyer.opt.enchanter_who = ¿Quién es el sacerdote de la esquina?
+dialogue.mmo_sawyer.opt.enchanter_who = ¿Quién es el sacerdote que tienes al lado?
 dialogue.mmo_sawyer.enchanter_intro.text = ¿Ese? Un Outlander, por la túnica, y un Kweebec aprende a vigilar a esos. Todavía no se ha liado a golpes con nadie. Dice que se llama Orrin. Tiene ahí una mesa que desmonta el equipo y te devuelve los materiales, y lleva tiempo buscando a alguien que la use.\nAnda, ve a saludarlo. Dile que vas de mi parte. Eso sí, habla como un libro.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Iré a verlo.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Quizá más tarde.
-dialogue.mmo_sawyer.enchanter_brief.text = Está en la esquina del fondo del <color is="#ffd97a">Templo Olvidado</color>, con la piedra a la espalda y un libro en la mano. <color is="#ffd97a">Encantador Orrin</color>. Salúdalo y él se encargará del resto de la charla.
+dialogue.mmo_sawyer.enchanter_brief.text = Es el que está a mi lado con un libro en la mano. <color is="#ffd97a">Encantador Orrin</color>. Salúdalo y él se encargará del resto de la charla.
 
 dialogue.mmo_sawyer.first_words.text = Hm. Callosidades en las palmas y corteza en las botas. Servirás.\nMe llamo Marn. Yo asierro madera. Un Kweebec en un aserradero, ya lo sé. Alguien la va a cortar de todos modos. Mejor que sea alguien que sabe lo que hay dentro. Aquí abajo, en el <color is="#ffd97a">Templo Olvidado</color>, todo es piedra y no hay árboles, así que un aserrador es algo raro, y mantengo un aserradero o dos para quien pueda alimentar uno. Saluda y hablaremos.
 dialogue.mmo_sawyer.first_words.opt.hail = Hola, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = El Guía te mandó para abajo, entonces. Ese sí que habla.\nDice que tienes pinta de poder alimentar un aserradero. Vamos, saluda bien y quedamos presentados.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Hola, Marn.
 dialogue.mmo_sawyer.menu.text = Marn sigue aquí. Los troncos no se asierran solos, así que dime qué necesitas.
+dialogue.mmo_sawyer.guide_first.text = ¿Trabajo? No para alguien de quien nadie me ha hablado.\nVe a ver al <color is="#ffd97a">Guía del Aventurero</color>, cerca de por donde entraste. Él me manda a los que valen para un aserradero. Arregla lo que sea que te trajo a hacer aquí abajo, y ya te señalará el camino de vuelta hasta mí.
 dialogue.mmo_sawyer.trophy_hail.text = Espera. Déjame verlo.\nEso es un <color is="#ffd97a">Hacha del Aserrador</color>. Mithril, equilibrada en un aserradero y en ningún otro lugar. No he visto nada igual en años, y nunca en manos tan nuevas.\nUn aserradero entrega una de esas tan a menudo como un tronco se divide a sí mismo. Mantenla afilada.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Salió del aserradero.
 dialogue.mmo_sawyer.trophy_talk.text = Todavía cargas el <color is="#ffd97a">Hacha del Aserrador</color>. Bien. Una cuchilla así quiere trabajar, así que no la dejes colgada en una pared. Qué necesitas?

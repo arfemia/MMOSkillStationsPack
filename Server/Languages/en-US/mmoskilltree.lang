@@ -122,6 +122,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Hello, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = The Guide sent you down, then. He talks, that one.\nSays you've the look of somebody who could feed a mill. Go on, say it properly and we'll call you introduced.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Hello, Marn.
 dialogue.mmo_sawyer.menu.text = Marn's still here. Logs don't saw themselves, so say what you need.
+dialogue.mmo_sawyer.guide_first.text = Work? Not for somebody nobody's told me about.\nGo and see the <color is="#ffd97a">Adventurer's Guide</color>, near where you came in. He sends me the ones worth a mill. Settle whatever he brought you down here for, and he'll point you back my way.
 dialogue.mmo_sawyer.trophy_hail.text = Hold on. Show me that.\nThat's a <color is="#ffd97a">Sawmiller's Hatchet</color>. Mithril, balanced at a mill and nowhere else. I've not seen its like in years, and never in a hand this green.\nThe mill hands one of those out about as often as a log splits itself. Keep it sharp.
 dialogue.mmo_sawyer.trophy_hail.opt.show = It came out of the mill.
 dialogue.mmo_sawyer.trophy_talk.text = Still carrying the <color is="#ffd97a">Sawmiller's Hatchet</color>. Good. A blade like that wants working, so don't let it hang on a wall. What do you need?
@@ -176,14 +177,14 @@ dialogue.mmo_sawyer.opt.how = How does the mill work?
 dialogue.mmo_sawyer.opt.edge = Ever seen a better edge?
 dialogue.mmo_sawyer.opt.kit = What goes with this cap?
 dialogue.mmo_sawyer.opt.nothing = Nothing for now.
-dialogue.mmo_sawyer.opt.enchanter_who = Who's the priest in the corner?
+dialogue.mmo_sawyer.opt.enchanter_who = Who's the priest next to you?
 dialogue.mmo_sawyer.enchanter_intro.text = Him? Outlander, by the robes, and a Kweebec learns to watch those. He's not swung at anybody yet. Orrin, he calls himself. He keeps a table over there that takes gear apart and gives the makings back, and he's been wanting somebody to use it.\nGo on over and say hello. Tell him I sent you. He talks like a book, mind.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = I'll go and see him.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Maybe later.
-dialogue.mmo_sawyer.enchanter_brief.text = He's in the far corner of the <color is="#ffd97a">Forgotten Temple</color>, stone at his back and a book in his hand. <color is="#ffd97a">Enchanter Orrin</color>. Say hello and he'll do the rest of the talking.
+dialogue.mmo_sawyer.enchanter_brief.text = He's the one at my shoulder with a book in his hand. <color is="#ffd97a">Enchanter Orrin</color>. Say hello and he'll do the rest of the talking.
 
 quest.meet_the_enchanter.title = A Word with Orrin
-quest.meet_the_enchanter.flavor = There's a priest in the far corner with a book and a table nobody else will touch. Outlander, by the robes. Harmless, I think. Go and say hello.
+quest.meet_the_enchanter.flavor = There's a priest in Outlander robes standing beside Marn, with a book and a table nobody else will touch. He walked out on the cult, he says. Go and say hello.
 quest.the_lesser_table.title = The Lesser Table
 quest.the_lesser_table.flavor = I keep a frame for a Disenchanting Table and nothing to finish it with. Bring me Iron Ingots and Essence of Life. It has stood idle long enough.
 quest.first_unmaking.title = First Unmaking
@@ -209,7 +210,7 @@ quest.outlander_steel.flavor = The Outlanders carry Doomed weapons, forged with 
 quest.the_voidheart.title = The Voidheart
 quest.the_voidheart.flavor = A Voidheart is the void given a shape. Work the greater table until you are sure of it, then bring me one heart, from wherever you find it.
 quest.iron_for_the_mill.title = Iron for the Mill
-quest.iron_for_the_mill.flavor = The sawyer is always short of iron, and I am tired of hearing it. Unmake a few iron hatchets at the table and carry the ore they give back across the landing to him.
+quest.iron_for_the_mill.flavor = The sawyer is always short of iron, and I stand close enough to hear about it. Unmake a few iron hatchets at the table and carry the ore they give back to him.
 quest.a_second_table.title = A Second Table
 quest.a_second_table.flavor = A second table can stand wherever you do your work, so you are not forever walking back to the first. Unmake a pile of gear at yours and bring me Essence of Life from the work.
 quest.unmaking_rites.title = Unmaking Rites
@@ -317,9 +318,10 @@ achievement.announce.disenchanting_orrins_own.title = Orrin's Own!
 
 dialogue.mmo_enchanter.first_words.text = You are standing in my light. No matter. Stay.\nI am Orrin. I was a priest of the cult once, and the robes do not come off as easily as the belief did. Here in the <color is="#ffd97a">Forgotten Temple</color> I keep a table that takes a piece of gear apart and gives back what went into it. Say hello and we will speak properly.
 dialogue.mmo_enchanter.first_words.opt.hail = Hello, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = Marn sent you. He shouts, and he is right more often than he knows.\nHe says you are patient. We shall see.
+dialogue.mmo_enchanter.sent_by_sawyer.text = You were sent to me. Good. Most who stand here only stumbled over me.\nI am told you are patient. We shall see.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Hello, Orrin.
 dialogue.mmo_enchanter.menu.text = Ask what you came to ask. I have time.
+dialogue.mmo_enchanter.vouch_first.text = Not yet. I do not know you, and I do not put my table in a stranger's hands.\nThe <color is="#ffd97a">Adventurer's Guide</color>, near where you came in, tells me who is worth my time. Do what he asks of you down here, and he will send you to me.
 dialogue.mmo_enchanter.trophy_hail.text = You are holding the <color is="#ffd97a">Disenchanter's Grimoire</color>.\nA whole book, put together out of things the table took apart. I have sat at that table for years and it has never given me so much as a page.\nIt casts, and in your hand it hurries the rite along. Keep it shut when you sleep.
 dialogue.mmo_enchanter.trophy_hail.opt.show = It came out of the table.
 dialogue.mmo_enchanter.trophy_talk.text = You still have the <color is="#ffd97a">Disenchanter's Grimoire</color>. I have nearly stopped envying you for it. Nearly.
@@ -366,7 +368,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = I will bring you a Voidheart
 dialogue.mmo_enchanter.voidheart_brief.text = The <b>greater table</b>, until your hands are sure. Then one <b>Voidheart</b>, from wherever you can find it. Take your time. The book has waited longer than you have.
 dialogue.mmo_enchanter.voidheart_ready.text = A <b>Voidheart</b>. Give it here. Yes. It is still beating, in its way.\nThis is my own grimoire, written before I left and rewritten since. It is a lesser book than the one the table gives out, and I know it. It casts, and in hand it hurries the rite and brings the table's finds round a little more often. <color is="#ffd97a">Orrin's Grimoire</color>. It is yours.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Here is the heart.
-dialogue.mmo_enchanter.iron_offer.text = The sawyer is always short of iron, and he says so to anyone in earshot.\nUnmake a few <b>iron hatchets</b> at the table; worn ones will do. The <b>iron ore</b> they give back, carry across the landing to <color is="#ffd97a">Sawyer Marn</color>. He will pay you for it, and I will not have to listen to him.
+dialogue.mmo_enchanter.iron_offer.text = The sawyer is always short of iron, and he says so to anyone in earshot.\nUnmake a few <b>iron hatchets</b> at the table; worn ones will do. The <b>iron ore</b> they give back, carry to <color is="#ffd97a">Sawyer Marn</color>, there beside me. He will pay you for it, and I will not have to listen to him.
 dialogue.mmo_enchanter.iron_offer.opt.accept = I will carry the iron to Marn.
 dialogue.mmo_enchanter.second_offer.text = A table is no use on the far side of the world from you. A second one can stand wherever you do your work.\nUnmake a pile of gear at yours, bring me <b>Essence of Life</b> from the work, and I will build it.
 dialogue.mmo_enchanter.second_offer.opt.accept = I will put the pieces through.

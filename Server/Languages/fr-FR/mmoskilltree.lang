@@ -48,7 +48,7 @@ quest.bounty_essence_run.flavor = Les alchimistes veulent de l'essence de vie to
 quest.bounty_mill_marathon.title = Le Long Quart
 quest.bounty_mill_marathon.flavor = Une semaine à la Scierie, et le tableau compte chaque rondin. Gardes-en une grosse pile près de la scie.
 quest.meet_the_enchanter.title = Un Mot avec Orrin
-quest.meet_the_enchanter.flavor = Y a un prêtre dans le coin du fond, avec un livre et une table que personne d'autre veut toucher. Un Outrelandais, à voir sa robe. Inoffensif, je crois. Va lui dire bonjour.
+quest.meet_the_enchanter.flavor = Il y a un prêtre en robe d'Outrelandais à côté de Marn, avec un livre et une table que personne d'autre ne veut toucher. Il a tourné le dos au culte, à ce qu'il dit. Va lui dire bonjour.
 quest.the_lesser_table.title = La Petite Table
 quest.the_lesser_table.flavor = Je garde le cadre d'une Table de Désenchantement, et rien pour l'achever. Apporte-moi des lingots de fer et de l'essence de vie. Il n'a que trop attendu.
 quest.first_unmaking.title = Premier Démantèlement
@@ -74,7 +74,7 @@ quest.outlander_steel.flavor = Les Outrelandais portent des armes Maudites, forg
 quest.the_voidheart.title = Le Cœur du Vide
 quest.the_voidheart.flavor = Un Cœur du Vide est le vide auquel on a donné forme. Travaille à la table supérieure jusqu'à en être sûr, puis apporte-moi un cœur, où que tu le trouves.
 quest.iron_for_the_mill.title = Du Fer pour la Scierie
-quest.iron_for_the_mill.flavor = Le scieur manque toujours de fer, et je suis las de l'entendre. Démantèle quelques haches de fer à la table et porte-lui le minerai qu'elles rendent, de l'autre côté du palier.
+quest.iron_for_the_mill.flavor = Le scieur manque toujours de fer, et je me tiens assez près pour l'entendre. Démantèle quelques haches de fer à la table et porte-lui le minerai qu'elles rendent.
 quest.a_second_table.title = Une Seconde Table
 quest.a_second_table.flavor = Une seconde table peut se dresser partout où tu travailles, afin que tu ne retournes pas sans cesse à la première. Démantèle un tas d'équipement à la tienne et rapporte-moi l'essence de vie de ce travail.
 quest.unmaking_rites.title = Rites de Démantèlement
@@ -247,9 +247,10 @@ achievement.announce.disenchanting_orrins_own.title = Propriété d'Orrin !
 
 dialogue.mmo_enchanter.first_words.text = Tu me caches la lumière. Peu importe. Reste.\nJe suis Orrin. J'ai été prêtre du culte, autrefois, et la robe ne s'ôte pas aussi aisément que la foi. Ici, au <color is="#ffd97a">Temple Oublié</color>, je garde une table qui démantèle une pièce d'équipement et rend ce qui est entré dans sa fabrication. Salue-moi, et nous parlerons comme il convient.
 dialogue.mmo_enchanter.first_words.opt.hail = Bonjour, Orrin.
-dialogue.mmo_enchanter.sent_by_sawyer.text = C'est Marn qui t'envoie. Il crie, et il a raison plus souvent qu'il ne le croit.\nIl dit que tu as de la patience. Nous verrons.
+dialogue.mmo_enchanter.sent_by_sawyer.text = On t'a envoyé à moi. Bien. La plupart de ceux qui se tiennent ici n'ont fait que trébucher sur moi.\nOn me dit que tu as de la patience. Nous verrons.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Bonjour, Orrin.
 dialogue.mmo_enchanter.menu.text = Pose la question qui t'amène. J'ai le temps.
+dialogue.mmo_enchanter.vouch_first.text = Pas encore. Je ne te connais pas, et je ne remets pas ma table entre les mains d'un inconnu.\nLe <color is="#ffd97a">Guide de l'Aventurier</color>, près de l'endroit où tu es entré, me dit qui mérite mon temps. Fais ce qu'il te demande ici-bas, et il t'enverra à moi.
 dialogue.mmo_enchanter.trophy_hail.text = Tu tiens le <color is="#ffd97a">Grimoire du Désenchanteur</color>.\nUn livre entier, assemblé à partir de choses que la table a défaites. Je me suis assis à cette table pendant des années, et elle ne m'a jamais donné ne serait-ce qu'une page.\nIl lance des sorts, et dans ta main il hâte le rite. Garde-le fermé quand tu dors.
 dialogue.mmo_enchanter.trophy_hail.opt.show = Il est sorti de la table.
 dialogue.mmo_enchanter.trophy_talk.text = Tu as toujours le <color is="#ffd97a">Grimoire du Désenchanteur</color>. J'ai presque cessé de te l'envier. Presque.
@@ -296,7 +297,7 @@ dialogue.mmo_enchanter.voidheart_offer.opt.accept = Je t'apporterai un Cœur du 
 dialogue.mmo_enchanter.voidheart_brief.text = La <b>table supérieure</b>, jusqu'à ce que tes mains soient sûres. Puis un <b>Cœur du Vide</b>, où que tu puisses le trouver. Prends ton temps. Le livre a attendu plus longtemps que toi.
 dialogue.mmo_enchanter.voidheart_ready.text = Un <b>Cœur du Vide</b>. Donne-le-moi. Oui. Il bat encore, à sa manière.\nVoici mon propre grimoire, écrit avant mon départ et réécrit depuis. C'est un livre moindre que celui que donne la table, et je le sais. Il lance des sorts, et en main il hâte le rite et ramène un peu plus souvent les trouvailles de la table. Le <color is="#ffd97a">Grimoire d'Orrin</color>. Il est à toi.
 dialogue.mmo_enchanter.voidheart_ready.opt.turnin = Voici le cœur.
-dialogue.mmo_enchanter.iron_offer.text = Le scieur manque toujours de fer, et il le dit à quiconque peut l'entendre.\nDémantèle quelques <b>haches de fer</b> à la table ; des usées feront l'affaire. Le <b>minerai de fer</b> qu'elles rendent, porte-le de l'autre côté du palier, au <color is="#ffd97a">Scieur Marn</color>. Il te le paiera, et je n'aurai pas à l'écouter.
+dialogue.mmo_enchanter.iron_offer.text = Le scieur manque toujours de fer, et il le dit à quiconque peut l'entendre.\nDémantèle quelques <b>haches de fer</b> à la table ; des usées feront l'affaire. Le <b>minerai de fer</b> qu'elles rendent, porte-le au <color is="#ffd97a">Scieur Marn</color>, là, à côté de moi. Il te le paiera, et je n'aurai pas à l'écouter.
 dialogue.mmo_enchanter.iron_offer.opt.accept = Je porterai le fer à Marn.
 dialogue.mmo_enchanter.second_offer.text = Une table ne te sert à rien si elle est à l'autre bout du monde. Une seconde peut se dresser partout où tu travailles.\nDémantèle un tas d'équipement à la tienne, rapporte-moi de l'<b>essence de vie</b> de ce travail, et je la bâtirai.
 dialogue.mmo_enchanter.second_offer.opt.accept = Je ferai passer les pièces.
@@ -350,6 +351,7 @@ dialogue.mmo_sawyer.first_words.opt.hail = Salut, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = Le Guide t'a envoyé alors. Il cause celui-là.\nDit que t'as l'air de quelqu'un qui peut nourrir une Scierie. Allez, dis-le bien et on va être présentés.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Salut, Marn.
 dialogue.mmo_sawyer.menu.text = Marn est toujours là. Les rondins se sciaient pas tout seuls, alors dis-moi ce qu'il te faut.
+dialogue.mmo_sawyer.guide_first.text = Du travail ? Pas pour quelqu'un dont personne m'a parlé.\nVa voir le <color is="#ffd97a">Guide de l'Aventurier</color>, près de là où t'es entré. C'est lui qui m'envoie ceux qui valent une scierie. Règle ce pour quoi il t'a fait descendre ici, et il te montrera le chemin jusqu'à moi.
 dialogue.mmo_sawyer.trophy_hail.text = Attends voir. Montre-moi ça.\nC'est une <color is="#ffd97a">Hache du Scieur</color>. Du mithril, équilibrée à la Scierie et nulle part ailleurs. J'en ai pas vu de semblable en années, et jamais dans une main aussi verte.\nUne Scierie en sort une de ces haches-là aussi souvent qu'un rondin se fend tout seul. Garde-la aiguisée.
 dialogue.mmo_sawyer.trophy_hail.opt.show = Elle vient de la Scierie.
 dialogue.mmo_sawyer.trophy_talk.text = T'as encore la <color is="#ffd97a">Hache du Scieur</color>. Bien. Une lame comme ça c'est faite pour travailler, alors la laisse pas moisir sur un mur. Qu'est-ce qu'il te faut?
@@ -401,13 +403,13 @@ dialogue.mmo_sawyer.kit_talk.opt.back = Je vais continuer la finition.
 dialogue.mmo_sawyer.enchanter_intro.text = Lui ? Un Outrelandais, à voir sa robe, et un Kweebec apprend à les surveiller. Il a encore levé la main sur personne. Orrin, qu'il se fait appeler. Il a une table là-bas qui démonte l'équipement et rend de quoi le refaire, et ça fait un moment qu'il cherche quelqu'un pour s'en servir.\nVas-y, va lui dire bonjour. Dis-lui que c'est moi qui t'envoie. Il parle comme un livre, remarque.
 dialogue.mmo_sawyer.enchanter_intro.opt.accept = Je vais aller le voir.
 dialogue.mmo_sawyer.enchanter_intro.opt.back = Peut-être plus tard.
-dialogue.mmo_sawyer.enchanter_brief.text = Il est tout au fond du <color is="#ffd97a">Temple Oublié</color>, dos à la pierre, un livre à la main. <color is="#ffd97a">Enchanteur Orrin</color>. Dis-lui bonjour, il causera pour deux.
+dialogue.mmo_sawyer.enchanter_brief.text = C'est lui, planté à côté de moi, un livre à la main. <color is="#ffd97a">Enchanteur Orrin</color>. Dis-lui bonjour, il causera pour deux.
 dialogue.mmo_sawyer.opt.returned = Je suis revenu avec ce que tu as demandé.
 dialogue.mmo_sawyer.opt.quests = Y a quelque chose à scier?
 dialogue.mmo_sawyer.opt.how = Comment marche la Scierie?
 dialogue.mmo_sawyer.opt.edge = T'as jamais vu un tranchant meilleur?
 dialogue.mmo_sawyer.opt.kit = Qu'est-ce qui va avec cette casquette?
-dialogue.mmo_sawyer.opt.enchanter_who = C'est qui, le prêtre dans le coin ?
+dialogue.mmo_sawyer.opt.enchanter_who = C'est qui, le prêtre à côté de toi ?
 dialogue.mmo_sawyer.opt.nothing = Rien pour maintenant.
 
 # ---- Noms des sous-catégories de succès ----

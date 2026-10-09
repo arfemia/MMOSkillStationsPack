@@ -2,7 +2,9 @@
   "$Comment": [
     "The introduction to the sawmill: the Adventurer's Guide, standing in the Forgotten Temple,",
     "points the player at the sawyer working a few paces away across the same landing. The quest",
-    "exists to make the player look up and notice him.",
+    "exists to make the player look up and notice him. Until it is taken the sawyer has nothing of",
+    "his own to offer, so asking him for work sends the player to the guide (his conversation's",
+    "guide_first screen).",
     "",
     "Npc.ViewId names the guide's temple id, so the guide is who OFFERS it: it appears on their",
     "quest list down in the temple, right after the meeting that brought the player there. The step",

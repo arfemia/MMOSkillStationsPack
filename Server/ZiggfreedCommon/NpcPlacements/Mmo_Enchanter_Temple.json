@@ -1,12 +1,12 @@
 {
   "$Comment": [
-    "Enchanter Orrin, standing in the Forgotten Temple at a spot of his own, away from the merchant",
-    "cluster where Sawyer Marn and the Mastery Trainer flank the Rootling merchant's marker. Orrin is",
-    "this pack's character end to end: his role, this placement and the conversation pressing F",
-    "opens all ship here, so a server without the pack has no enchanter to stand up. Interact names",
-    "a conversation rather than a screen because Orrin has quests to hand out and lines to say",
-    "before any list opens; a screen name there would open that screen with no conversation at",
-    "all. Author Open or Dialogue, never both.",
+    "Enchanter Orrin, standing in the Forgotten Temple beside Sawyer Marn, in the merchant cluster",
+    "where Marn and the Mastery Trainer flank the Rootling merchant's marker. Orrin is this pack's",
+    "character end to end: his role, this placement and the conversation pressing F opens all ship",
+    "here, so a server without the pack has no enchanter to stand up. Interact names a conversation",
+    "rather than a screen because Orrin has quests to hand out and lines to say before any list",
+    "opens; a screen name there would open that screen with no conversation at all. Author Open or",
+    "Dialogue, never both.",
     "",
     "To take Orrin out without editing this file, set Enabled false in",
     "mods/ziggfreedcommon/npc-placements.json.",
@@ -25,14 +25,16 @@
     "quests bind to Mmo_Enchanter, and any second placement of that role is the same enchanter,",
     "offering and taking hand-ins for the same quests.",
     "",
-    "Anchor is the temple's own arrival spot plus an offset, the same anchor the Adventurer's Guide",
-    "uses for its temple standing (the guide stands fourteen blocks along negative X from the",
-    "arrival spot, on the open side of the landing; positive X runs into the structure). Orrin",
-    "stands between the arrival spot and the guide, eight blocks along negative X and two back",
-    "along negative Z, so he is clear of both the guide and the merchant cluster. To move him, edit",
-    "Anchor.WorldSpawn.Offset, keeping it small enough to stay out of the walls, and Yaw to turn",
-    "which way he faces; test the spot in game, since the walls do not move for the offset.",
-    "/mmonpc list --arg1=placements shows whether the placement resolved."
+    "Anchor is the temple's own Rootling Merchant spawn marker, the same marker Marn and the Mastery",
+    "Trainer stand by, so the three move with the temple's actual layout instead of an offset from",
+    "the arrival spot that can land inside a wall. The trainer stands three blocks along positive X",
+    "from the marker and Marn three along negative X and one back along negative Z; Orrin stands two",
+    "blocks further along negative X than Marn, on the same line, facing the same way, so he is at",
+    "Marn's shoulder and clear of him. Both the Adventurer's Guide and Old Jack stand off the arrival",
+    "spot by the entrance, well away from this cluster. To move him, edit Anchor.Structure.Offset,",
+    "keeping it small enough to stay out of the walls, and Yaw to turn which way he faces; test the",
+    "spot in game, since the walls do not move for the offset. /mmonpc list --arg1=placements shows",
+    "whether the placement resolved, and --arg1=structures the marker ids the engine has seen."
   ],
   "Name": "Mmo_Enchanter_Temple",
   "Enabled": true,
@@ -43,10 +45,11 @@
     "Role": "Mmo_Enchanter"
   },
   "Anchor": {
-    "WorldSpawn": {
+    "Structure": {
+      "MarkerIds": ["Temple_Kweebec_Merchant_Static"],
       "Offset": {
-        "X": -8,
-        "Z": -2
+        "X": -5,
+        "Z": -1
       },
       "Yaw": 180.0
     }
