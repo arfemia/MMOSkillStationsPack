@@ -12,7 +12,7 @@ still tracked in git and was moved with `git mv`, so `git log --follow` still wo
 ## Restore everything
 
 ```powershell
-cd 'D:\dev\business\hyMMO\content-packs\skill-stations-pack'
+cd 'D:\dev\business\hytale-dev\hyMMO\content-packs\skill-stations-pack'
 .\unreleased\restore.ps1              # moves it all back into Server/
 .\unreleased\restore.ps1 -WhatIf      # preview without touching anything
 .\unreleased\restore.ps1 -Only Anvil  # restore one group
