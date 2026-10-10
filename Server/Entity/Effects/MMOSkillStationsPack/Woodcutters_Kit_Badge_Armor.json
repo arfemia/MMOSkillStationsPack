@@ -1,0 +1,8 @@
+{
+  "$Comment": "The woodcutter's kit's tile on the buff bar while all four armor pieces are on and the hatchet is not in hand (ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json names it as the second tier's Badge). The set shows one tile, the badge of its highest active tier, so this one gives way to Woodcutters_Kit_Badge_Held with a hatchet in hand. It carries nothing but the icon and the name; the gold sparks are the set's Effect, Woodcutters_Kit_Set. Infinite, as a set's tile must be: the set engine puts it on and takes it off itself, so never apply this id from anything else.",
+  "Name": "mmoskilltree.gearset.woodcutters_kit.badge_armor",
+  "StatusEffectIcon": "Icons/ItemsGenerated/Armor_Leather_Soft_Chest.png",
+  "Infinite": true,
+  "OverlapBehavior": "Ignore",
+  "Debuff": false
+}

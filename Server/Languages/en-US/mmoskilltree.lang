@@ -62,6 +62,9 @@ gearset.woodcutters_kit.title = Woodcutter's Kit
 gearset.woodcutters_kit.tier_pieces = Two pieces on: a little more from every log.
 gearset.woodcutters_kit.tier_armor = The full kit: more from every log, and gold sparks that follow you off the mill floor.
 gearset.woodcutters_kit.tier_held = The full kit, with Marn's Hatchet or one the mill gave you in hand: the best the trade pays.
+gearset.woodcutters_kit.badge_pieces = Woodcutter's Kit: Two Pieces
+gearset.woodcutters_kit.badge_armor = Woodcutter's Kit: Full
+gearset.woodcutters_kit.badge_held = Woodcutter's Kit: Full, Hatchet in Hand
 
 achievement.sawmill_first_log.title = First Log
 achievement.sawmill_first_log.desc = Run your first log through a Sawmill.

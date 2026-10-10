@@ -1,0 +1,8 @@
+{
+  "$Comment": "The woodcutter's kit's tile on the buff bar while all four armor pieces are on and one of the kit's hatchets is in hand (ZiggfreedCommon/GearSets/Mmo_Woodcutters_Kit.json names it as the third tier's Badge), the Sawmiller's Hatchet's icon. It carries nothing but the icon and the name; every number lives in the gear set. Infinite, as a set's tile must be: the set engine puts it on and takes it off itself, so never apply this id from anything else.",
+  "Name": "mmoskilltree.gearset.woodcutters_kit.badge_held",
+  "StatusEffectIcon": "Icons/ItemsGenerated/Tool_Hatchet_Mithril.png",
+  "Infinite": true,
+  "OverlapBehavior": "Ignore",
+  "Debuff": false
+}
