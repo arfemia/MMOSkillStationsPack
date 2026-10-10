@@ -260,5 +260,6 @@ Stations' `rpgstations.station.<id>.name`/`.desc` convention keys directly, as t
 
 ## Requires
 
-RPG Stations 1.1.0 or newer, ZiggfreedCommon 2.2.0 or newer (the gear-set store), and MMO Skill
-Tree 1.7.0 or newer (for the skill-XP + luck bridge and the `STATION_INPUT` quests).
+A Hytale Update 7 server, RPG Stations 1.1.1 or newer, ZiggfreedCommon 2.3.0 or newer (the gear-set
+store), and MMO Skill Tree 1.7.1 or newer (for the skill-XP + luck bridge and the `STATION_INPUT`
+quests).
