@@ -12,7 +12,7 @@ still tracked in git and was moved with `git mv`, so `git log --follow` still wo
 ## Restore everything
 
 ```powershell
-cd 'D:\dev\business\hytale-dev\hyMMO\content-packs\skill-stations-pack'
+cd 'D:\dev\business\hytale-dev\mmo-family\packs\skill-stations-pack'
 .\unreleased\restore.ps1              # moves it all back into Server/
 .\unreleased\restore.ps1 -WhatIf      # preview without touching anything
 .\unreleased\restore.ps1 -Only Anvil  # restore one group
@@ -41,7 +41,7 @@ Groups: `Anvil`, `Cooking`, `All` (default).
 
 ## Companion change in the RPG Stations jar
 
-`additional-mods/rpg-stations/unreleased/` holds the CookingFire, CuttingBoard, and MountSpike
+`mmo-family/rpg-stations/unreleased/` holds the CookingFire, CuttingBoard, and MountSpike
 stations plus the buildable CookingPit family for the same release. Restore the two together when
 the anvil and cooking come back: the jar's `CookingFire` is what this pack's `CookingProgression`
 targets.

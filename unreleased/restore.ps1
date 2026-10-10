@@ -10,7 +10,7 @@
 # Groups: Anvil, Cooking, All (default)
 #
 # Cooking targets the `cookingfire` station, which lives in the RPG Stations jar and is held back
-# there too - restore additional-mods/rpg-stations/unreleased/ in the same pass.
+# there too - restore mmo-family/rpg-stations/unreleased/ in the same pass.
 
 [CmdletBinding(SupportsShouldProcess = $true)]
 param(
