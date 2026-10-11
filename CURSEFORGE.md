@@ -107,7 +107,7 @@ Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and 
 
 ### v1.1.1 (unreleased, held)
 
-Moves the pack onto Hytale Update 7. Adds a Woodcutter's Kit icon beside your other effects, named for how much of the kit you have on, and the Millwright's Hatchet comes at A Town's Worth, 150,000 pieces of lumber, where it waited for 600,000. Needs RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus ZiggfreedCommon 2.3.0, and won't load on Update 6.
+Moves the pack onto Hytale Update 7. Adds a Woodcutter's Kit icon beside your other effects, named for how much of the kit you have on, and with RPG Stations 1.1.1 a Disenchanter's Kit icon too. The Millwright's Hatchet comes at A Town's Worth, 150,000 pieces of lumber, where it waited for 600,000. Achievements that gave XP to every skill give a Skill Lamp instead: rub it and choose three skills, and each gets three times what every skill got before. Needs RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus ZiggfreedCommon 2.3.0, and won't load on Update 6.
 
 ### v1.1.0
 
