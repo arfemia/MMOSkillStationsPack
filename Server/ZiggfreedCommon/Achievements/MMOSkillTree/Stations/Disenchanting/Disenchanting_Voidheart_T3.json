@@ -46,10 +46,10 @@
   "Rewards": {
     "Claim": [
       {
-        "Kind": "Mmo_Xp",
+        "Kind": "Mmo_Lamp",
         "Params": {
-          "Skill": "ALL",
-          "Amount": 12000
+          "Amount": 36000,
+          "Picks": 3
         }
       },
       {
