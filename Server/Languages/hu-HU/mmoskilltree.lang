@@ -124,6 +124,9 @@ gearset.woodcutters_kit.title = Favágó Szett
 gearset.woodcutters_kit.tier_pieces = Két darab rajtad: egy kicsivel több minden rönkből.
 gearset.woodcutters_kit.tier_armor = A teljes szett: több minden rönkből, és aranyszikrák, amelyek a malomtól is elkísérnek.
 gearset.woodcutters_kit.tier_held = A teljes szett, kezedben Marn Fejszéjével vagy egy fejszével, amit a malom adott: ennél jobbat nem ad a mesterség.
+gearset.woodcutters_kit.badge_pieces = Favágó Szett: Két Darab
+gearset.woodcutters_kit.badge_armor = Favágó Szett: Teljes
+gearset.woodcutters_kit.badge_held = Favágó Szett: Teljes, Fejsze a Kézben
 
 achievement.sawmill_first_log.title = Az Első Rönk
 achievement.sawmill_first_log.desc = Futtass végig az első rönköt egy Fűrészmalmom.

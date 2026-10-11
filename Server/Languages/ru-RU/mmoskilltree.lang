@@ -61,6 +61,9 @@ gearset.woodcutters_kit.title = Комплект лесоруба
 gearset.woodcutters_kit.tier_pieces = Две части надеты: чуть больше с каждого бревна.
 gearset.woodcutters_kit.tier_armor = Весь комплект: больше с каждого бревна, а золотые искры провожают тебя с лесопилки.
 gearset.woodcutters_kit.tier_held = Весь комплект, а в руке Марнов топор или тот, что дала лесопилка: лучшее, что даёт это ремесло.
+gearset.woodcutters_kit.badge_pieces = Комплект лесоруба: две части
+gearset.woodcutters_kit.badge_armor = Комплект лесоруба: полный
+gearset.woodcutters_kit.badge_held = Комплект лесоруба: полный, топор в руке
 
 achievement.sawmill_first_log.title = Первое брёвно
 achievement.sawmill_first_log.desc = Пропусти своё первое брёвно через лесопилку.

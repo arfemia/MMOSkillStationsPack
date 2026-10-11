@@ -125,6 +125,9 @@ gearset.woodcutters_kit.title = Kit del Taglialegna
 gearset.woodcutters_kit.tier_pieces = Due pezzi addosso: un po' di più da ogni tronco.
 gearset.woodcutters_kit.tier_armor = Il kit completo: di più da ogni tronco, e scintille d'oro che ti seguono quando lasci la segheria.
 gearset.woodcutters_kit.tier_held = Il kit completo, con in mano l'Ascia di Marn o una avuta dalla segheria: il massimo che il mestiere possa dare.
+gearset.woodcutters_kit.badge_pieces = Kit del Taglialegna: Due Pezzi
+gearset.woodcutters_kit.badge_armor = Kit del Taglialegna: Completo
+gearset.woodcutters_kit.badge_held = Kit del Taglialegna: Completo, Accetta in Mano
 
 achievement.sawmill_first_log.title = Primo Tronco
 achievement.sawmill_first_log.desc = Fai passare il tuo primo tronco attraverso una Segheria.

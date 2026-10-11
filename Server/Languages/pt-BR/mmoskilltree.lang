@@ -7,6 +7,9 @@ gearset.woodcutters_kit.title = Kit do Cortador de Madeira
 gearset.woodcutters_kit.tier_pieces = Duas peças vestidas: um pouco mais de cada tora.
 gearset.woodcutters_kit.tier_armor = O kit completo: mais de cada tora, e fagulhas douradas que acompanham você para fora da serraria.
 gearset.woodcutters_kit.tier_held = O kit completo, com o Machado de Marn ou um que a serraria lhe deu na mão: o melhor que o ofício paga.
+gearset.woodcutters_kit.badge_pieces = Kit do Cortador de Madeira: Duas Peças
+gearset.woodcutters_kit.badge_armor = Kit do Cortador de Madeira: Completo
+gearset.woodcutters_kit.badge_held = Kit do Cortador de Madeira: Completo, Machadinha na Mão
 
 quest.meet_the_sawyer.title = Uma Conversa com Marn
 quest.meet_the_sawyer.flavor = Tem um serrador do outro lado do patamar. Está por aqui há mais tempo que eu. Vai lá, se apresenta.

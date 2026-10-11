@@ -6,6 +6,9 @@ gearset.woodcutters_kit.title = Oduncu Takımı
 gearset.woodcutters_kit.tier_pieces = İki parça giyiliyken: her kütükten biraz daha fazlası.
 gearset.woodcutters_kit.tier_armor = Tam takım: her kütükten daha fazlası, bir de bıçkıhaneden çıkarken peşine takılan altın kıvılcımlar.
 gearset.woodcutters_kit.tier_held = Tam takım, elinde Marn Baltası ya da bıçkıhanenin verdiği bir balta: bu işin verebileceği en iyisi.
+gearset.woodcutters_kit.badge_pieces = Oduncu Takımı: İki Parça
+gearset.woodcutters_kit.badge_armor = Oduncu Takımı: Tam
+gearset.woodcutters_kit.badge_held = Oduncu Takımı: Tam, Elde Balta
 
 quest.meet_the_sawyer.title = Marn ile Bir Söz
 quest.meet_the_sawyer.flavor = İnişin karşı ucunda bir bıçkıcı çalışıyor, benden çok daha uzun zamandır burada. Karşıya git, selamını ver.

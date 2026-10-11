@@ -6,6 +6,9 @@ gearset.woodcutters_kit.title = Conjunto del Leñador
 gearset.woodcutters_kit.tier_pieces = Dos piezas puestas: un poco más de cada tronco.
 gearset.woodcutters_kit.tier_armor = El conjunto completo: más de cada tronco, y chispas doradas que te siguen al salir del aserradero.
 gearset.woodcutters_kit.tier_held = El conjunto completo, con el Hacha de Marn o una que te dio el aserradero en la mano: lo mejor que paga el oficio.
+gearset.woodcutters_kit.badge_pieces = Conjunto del Leñador: Dos Piezas
+gearset.woodcutters_kit.badge_armor = Conjunto del Leñador: Completo
+gearset.woodcutters_kit.badge_held = Conjunto del Leñador: Completo, Hacha en Mano
 
 quest.meet_the_sawyer.title = Una Palabra con Marn
 quest.meet_the_sawyer.flavor = Hay un aserrador trabajando al otro lado del rellano, y lleva más tiempo aquí que yo. Cruza y saluda.

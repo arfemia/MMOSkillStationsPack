@@ -242,6 +242,9 @@ gearset.woodcutters_kit.title = Holzfäller-Garnitur
 gearset.woodcutters_kit.tier_pieces = Zwei Teile angelegt: etwas mehr aus jedem Stamm.
 gearset.woodcutters_kit.tier_armor = Die komplette Garnitur: mehr aus jedem Stamm, und goldene Funken, die dir auch abseits der Mühle folgen.
 gearset.woodcutters_kit.tier_held = Die komplette Garnitur, dazu Marns Axt oder eine aus der Mühle in der Hand: das Beste, was das Handwerk hergibt.
+gearset.woodcutters_kit.badge_pieces = Holzfäller-Garnitur: Zwei Teile
+gearset.woodcutters_kit.badge_armor = Holzfäller-Garnitur: Komplett
+gearset.woodcutters_kit.badge_held = Holzfäller-Garnitur: Komplett, Axt in der Hand
 
 dialogue.mmo_sawyer.first_words.text = Hm. Schwielen an den Händen und Rinde an den Stiefeln. Du taugst.\nIch heiß Marn. Ich säg Holz. Ein Kweebec an ner Sägemühle, ich weiß. Irgendwer schneidet es sowieso. Kann auch einer sein, der weiß, was drinsteckt. Hier unten im <color is="#ffd97a">Vergessenen Tempel</color> gibt's nur Stein und keine Bäume, also ist ein Säger was Seltenes, und ich halt ein, zwei Mühlen für jeden, der eine füttern kann. Sag Hallo, dann reden wir.
 dialogue.mmo_sawyer.first_words.opt.hail = Hallo, Marn.

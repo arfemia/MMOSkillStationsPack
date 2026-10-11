@@ -7,6 +7,9 @@ gearset.woodcutters_kit.title = Kit du Bûcheron
 gearset.woodcutters_kit.tier_pieces = Deux pièces portées : un peu plus de chaque rondin.
 gearset.woodcutters_kit.tier_armor = Le kit complet : plus de chaque rondin, et des étincelles d'or qui te suivent quand tu quittes la scierie.
 gearset.woodcutters_kit.tier_held = Le kit complet, avec en main la Hache de Marn ou celle que la scierie t'a donnée : ce que le métier paie de mieux.
+gearset.woodcutters_kit.badge_pieces = Kit du Bûcheron : Deux Pièces
+gearset.woodcutters_kit.badge_armor = Kit du Bûcheron : Complet
+gearset.woodcutters_kit.badge_held = Kit du Bûcheron : Complet, Hache en Main
 
 quest.meet_the_sawyer.title = Un Mot avec Marn
 quest.meet_the_sawyer.flavor = Il y a un scieur qui travaille de l'autre côté du palier, et il est ici depuis plus longtemps que moi. Traverse et salue-le.
