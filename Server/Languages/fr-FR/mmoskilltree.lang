@@ -248,7 +248,7 @@ achievement.announce.disenchanter_server_first.body = {0} a fait sortir d'une ta
 achievement.announce.disenchanting_master.title = Maître Désenchanteur !
 achievement.announce.disenchanting_orrins_own.title = Propriété d'Orrin !
 
-dialogue.mmo_enchanter.first_words.text = Tu me caches la lumière. Peu importe. Reste.\nJe suis Orrin. J'ai été prêtre du culte, autrefois, et la robe ne s'ôte pas aussi aisément que la foi. Ici, au <color is="#ffd97a">Temple Oublié</color>, je garde une table qui démantèle une pièce d'équipement et rend ce qui est entré dans sa fabrication. Salue-moi, et nous parlerons comme il convient.
+dialogue.mmo_enchanter.first_words.text = Tu me caches la lumière. Peu importe. Reste.\nJe suis Orrin. J'ai été prêtre du culte, autrefois, et la robe ne s'ôte pas aussi aisément que la foi. Ici, au <color is="#ffd97a">Temple de l'Oubli</color>, je garde une table qui démantèle une pièce d'équipement et rend ce qui est entré dans sa fabrication. Salue-moi, et nous parlerons comme il convient.
 dialogue.mmo_enchanter.first_words.opt.hail = Bonjour, Orrin.
 dialogue.mmo_enchanter.sent_by_sawyer.text = On t'a envoyé à moi. Bien. La plupart de ceux qui se tiennent ici n'ont fait que trébucher sur moi.\nOn me dit que tu as de la patience. Nous verrons.
 dialogue.mmo_enchanter.sent_by_sawyer.opt.hail = Bonjour, Orrin.
@@ -349,7 +349,7 @@ dialogue.mmo_enchanter.opt.nothing = Rien pour l'instant.
 shop.mmo_enchanter.title = L'Étagère d'Orrin
 shop.mmo_enchanter.desc = Personne d'autre ne vend de baguette ni de sarbacane, alors Orrin en garde quelques-unes pour la table.
 
-dialogue.mmo_sawyer.first_words.text = Hm. Des callosités aux paumes et de l'écorce aux bottes. T'iras.\nC'est Marn. Je scie le bois. Un Kweebec à une scierie, je sais. Quelqu'un va toujours le couper. Autant que ce soit quelqu'un qui sait ce qu'il y a dedans. Ici en bas au <color is="#ffd97a">Temple Oublié</color> c'est que de la pierre et pas un arbre, alors un scieur c'est rare, et je garde une Scierie ou deux pour quiconque peut l'alimenter. Salue-moi et on parlera.
+dialogue.mmo_sawyer.first_words.text = Hm. Des callosités aux paumes et de l'écorce aux bottes. T'iras.\nC'est Marn. Je scie le bois. Un Kweebec à une scierie, je sais. Quelqu'un va toujours le couper. Autant que ce soit quelqu'un qui sait ce qu'il y a dedans. Ici en bas au <color is="#ffd97a">Temple de l'Oubli</color> c'est que de la pierre et pas un arbre, alors un scieur c'est rare, et je garde une Scierie ou deux pour quiconque peut l'alimenter. Salue-moi et on parlera.
 dialogue.mmo_sawyer.first_words.opt.hail = Salut, Marn.
 dialogue.mmo_sawyer.sent_by_guide.text = Le Guide t'a envoyé alors. Il cause celui-là.\nDit que t'as l'air de quelqu'un qui peut nourrir une Scierie. Allez, dis-le bien et on va être présentés.
 dialogue.mmo_sawyer.sent_by_guide.opt.hail = Salut, Marn.
@@ -392,7 +392,7 @@ dialogue.mmo_sawyer.ready_generic.text = T'as l'air de quelqu'un qui porte un tr
 dialogue.mmo_sawyer.ready_generic.opt.turnin = Voilà ce que j'ai fait.
 dialogue.mmo_sawyer.active_generic.text = Tu bosses encore alors. La Scierie roulera pas sans toi qui la regardes. Allez.
 dialogue.mmo_sawyer.edge_talk.text = T'as une hache de moi et un nom que je donne pas. Y a plus rien dans ce coin que je peux te fabriquer.\nLa Scierie c'est une autre histoire. Elle a ses propres idées sur qui elle donne un tranchant, et se tenir à côté c'est la seule façon de le découvrir. Y a du travail ici quand tu veux, comme avant.
-dialogue.mmo_sawyer.yard_talk.text = Scieur. C'est ce que je t'appelle maintenant, et je le dis pas à beaucoup.\nT'as une cour à toi maintenant. La mienne c'est ce coin du <color is="#ffd97a">Temple Oublié</color>, à une longue marche du moindre bosquet, et c'est assez. Repasse quand tu veux parler du bois.
+dialogue.mmo_sawyer.yard_talk.text = Scieur. C'est ce que je t'appelle maintenant, et je le dis pas à beaucoup.\nT'as une cour à toi maintenant. La mienne c'est ce coin du <color is="#ffd97a">Temple de l'Oubli</color>, à une longue marche du moindre bosquet, et c'est assez. Repasse quand tu veux parler du bois.
 dialogue.mmo_sawyer.bench_talk.text = T'as une Scierie maintenant. Tiens-la nourrie. Les planches d'abord, et plus longtemps tu te tiens à la Scierie, plus un rondin crache. Y a du travail ici quand tu veux.
 dialogue.mmo_sawyer.how_it_works.text = Des <b>rondins</b> à la main, utilise le bloc, et la Scierie te les enlève. Utilise-la encore et tu scies.\nTa <b>hache</b> fait la coupe, donc une meilleure ça veut dire plus de planches un cycle, et plus de tout ce que la Scierie sort d'un rondin, écorce à essence. Accroupis-toi en utilisant le bloc et elle demandera quelle <b>coupe</b> tu veux.\nC'est tout le truc. Le reste c'est rester là.
 dialogue.mmo_sawyer.how_it_works.opt.wood = C'est quoi d'autre dans un rondin?
