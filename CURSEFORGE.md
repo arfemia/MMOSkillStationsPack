@@ -101,25 +101,10 @@ Want Marn or Orrin out of the temple? Leave the pack alone. `/mmonpc list` in th
 
 Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and still pay their own finds, they just grant no skill XP, and the tables go back to being crafted; this pack itself, Marn and Orrin included, needs both mods installed to load at all. Without RPG Stations there are no stations at all.
 
-## Versions
-
-### [Full Changelog](https://github.com/arfemia/MMOSkillStationsPack/tree/main/patch-notes)
-
-### v1.1.1 (unreleased, held)
-
-Moves the pack onto Hytale Update 7. Adds a Woodcutter's Kit icon beside your other effects, named for how much of the kit you have on, and with RPG Stations 1.1.1 a Disenchanter's Kit icon too. The Millwright's Hatchet comes at A Town's Worth, 150,000 pieces of lumber, where it waited for 600,000. Achievements that gave XP to every skill give a Skill Lamp instead: rub it and choose three skills, and each gets three times what every skill got before. Needs RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus Ziggfreed's CommonLib 2.3.0, and won't load on Update 6.
-
-### v1.1.0
-
-The Disenchanting Table and the Greater Disenchanting Table, with Enchanting and Crafting XP for every piece unmade and luck-weighted essence and finds. Enchanter Orrin and his eighteen quests, thirty-two achievements, nine bounties, his shelf, the Disenchanter's Halo and Orrin's Grimoire. The woodcutter's kit becomes a set. Needs RPG Stations 1.1.0 and MMO Skill Tree 1.7.0, plus ZiggfreedCommon 2.2.0.
-
-### v1.0.0
-
-First release: the Sawmill, Sawyer Marn and his work.
-
 ## Links
 
 - [MMO Skill Tree](https://www.curseforge.com/hytale/mods/mmo-skill-tree)
 - [RPG Stations](https://www.curseforge.com/hytale/mods/rpg-stations)
 - [Documentation](https://mmo-skill-tree-docs.ziggfreed.com)
+- [Patch notes for every version](https://github.com/arfemia/MMOSkillStationsPack/tree/main/patch-notes)
 - [Discord](https://discord.gg/5NFdZsUxHZ)
