@@ -4,7 +4,7 @@
 
 RPG Stations gives you a sawmill and two disenchanting tables you can place and work by hand. This pack wires them into [MMO Skill Tree](https://www.curseforge.com/hytale/mods/mmo-skill-tree), so every log you mill pays Woodcutting and Crafting XP and every piece of gear you unmake pays Enchanting and Crafting XP. What falls out depends on how far you have come. It also puts a sawyer and an enchanter in the Forgotten Temple with work for you.
 
-You need a Hytale Update 7 server with both mods installed, RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus ZiggfreedCommon 2.3.0 or newer. This pack is just the content between them.
+You need a Hytale Update 7 server with both mods installed, RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus Ziggfreed's CommonLib 2.3.0 or newer. This pack is just the content between them.
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/5NFdZsUxHZ) [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/ziggfreed) [![Documentation](https://img.shields.io/badge/Docs-Read%20More-0ea5e9?style=for-the-badge)](https://mmo-skill-tree-docs.ziggfreed.com)
 
@@ -107,7 +107,7 @@ Without MMO Skill Tree the sawmill and the tables still run on RPG Stations and 
 
 ### v1.1.1 (unreleased, held)
 
-Moves the pack onto Hytale Update 7. Adds a Woodcutter's Kit icon beside your other effects, named for how much of the kit you have on, and with RPG Stations 1.1.1 a Disenchanter's Kit icon too. The Millwright's Hatchet comes at A Town's Worth, 150,000 pieces of lumber, where it waited for 600,000. Achievements that gave XP to every skill give a Skill Lamp instead: rub it and choose three skills, and each gets three times what every skill got before. Needs RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus ZiggfreedCommon 2.3.0, and won't load on Update 6.
+Moves the pack onto Hytale Update 7. Adds a Woodcutter's Kit icon beside your other effects, named for how much of the kit you have on, and with RPG Stations 1.1.1 a Disenchanter's Kit icon too. The Millwright's Hatchet comes at A Town's Worth, 150,000 pieces of lumber, where it waited for 600,000. Achievements that gave XP to every skill give a Skill Lamp instead: rub it and choose three skills, and each gets three times what every skill got before. Needs RPG Stations 1.1.1 and MMO Skill Tree 1.7.1, plus Ziggfreed's CommonLib 2.3.0, and won't load on Update 6.
 
 ### v1.1.0
 
