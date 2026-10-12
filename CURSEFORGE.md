@@ -57,10 +57,10 @@ His own story is about why he left the cult. It ends with forty pieces unmade at
 1. Install RPG Stations, MMO Skill Tree, and this pack.
 2. Reach the Forgotten Temple and find Sawyer Marn. Chop timber, cut planks at a Builder's Workbench, deliver him a share, and collect the Sawmill itself plus Woodcutting XP from your quest log. Or have an admin give you one. Place it. (With this pack installed the bench has no crafting recipe, so Marn is where it comes from.)
 3. Hold logs, press F to load up to 100 into the bench.
-4. Press F again holding a hatchet. Your character mills the pile one cycle at a time while you watch. Crouch as you press F to pick which cut you want from the log in the bench.
+4. Press F a second time, holding a hatchet. Your character mills the pile one cycle at a time while you watch. Crouch as you press F to pick which cut you want from the log in the bench.
 5. Walk off, take a hit, or run the pile dry and the session ends with a summary. Anything still in the bench comes back to you.
 6. Go back to Marn. Every job hands in to him, and each one he settles opens the next.
-7. Later, get a Disenchanting Table from Orrin and place it. Hold a piece of gear and press F to set it on the table, then F again to start. Watch the ritual: when the piece comes apart you get back what the Salvager's Workbench would, plus Essence of Life and sometimes a find. The greater table takes three, one after another.
+7. Later, get a Disenchanting Table from Orrin and place it. Hold a piece of gear and press F to set it on the table, then press F once more to start. Watch the ritual: when the piece comes apart you get back what the Salvager's Workbench would, plus Essence of Life and sometimes a find. The greater table takes three, one after another.
 
 ## What decides your rewards
 
@@ -78,7 +78,7 @@ His own story is about why he left the cult. It ends with forty pieces unmade at
 | Enchanting + global luck | Extra Essence of Life, the void finds, the kit pieces and the grimoire |
 | Enchanting level | How fast a ritual runs, and the odd extra salvage |
 | A grimoire in hand | A faster ritual, plus Enchanting luck and XP |
-| The woodcutter's kit worn as a set | More Woodcutting luck and XP, more again with a hatchet in hand |
+| The woodcutter's kit worn as a set | More Woodcutting luck and XP, and more still with a hatchet in hand |
 
 ## For server owners
 
