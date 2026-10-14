@@ -210,7 +210,7 @@ Everything the store page says an owner can retune is plain content in the zip, 
 .\build.ps1 -Install:$false  # build only, no copy
 ```
 
-Produces `MMOSkillStationsPack-1.1.1.zip` (forward-slash entries plus explicit directory entries, which
+Produces `MMOSkillStationsPack-1.1.2.zip` (forward-slash entries plus explicit directory entries, which
 the bundled `.lang` files need). The script is cross-platform (`pwsh ./build.ps1` works on
 macOS/Linux). To have it also copy the zip into your Hytale `Mods/` folder, set `HYTALE_MODS_DIR`
 once to that folder (or pass `-ModsDir <path>`); without it the script just builds the zip. Start a
