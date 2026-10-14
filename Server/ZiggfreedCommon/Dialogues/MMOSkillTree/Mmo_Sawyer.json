@@ -716,8 +716,8 @@
           "Style": "accept",
           "Conditions": [
             {
-              "Type": "Gate",
-              "Requirements": {
+              "Type": "Requires",
+              "Requires": {
                 "Quests": ["meet_the_sawyer"],
                 "Factors": [
                   { "Factor": "mmoskilltree:feature", "Param": "stations", "Min": 1 }
@@ -846,8 +846,8 @@
         "Style": "neutral",
         "Conditions": [
           {
-            "Type": "Gate",
-            "Requirements": {
+            "Type": "Requires",
+            "Requires": {
               "Quests": ["meet_the_sawyer"],
               "Factors": [
                 { "Factor": "mmoskilltree:feature", "Param": "stations", "Min": 1 }

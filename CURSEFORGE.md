@@ -4,7 +4,7 @@
 
 This pack ties the Sawmill and the Disenchanting Tables from [RPG Stations](https://www.curseforge.com/hytale/mods/rpg-stations) into [MMO Skill Tree](https://www.curseforge.com/hytale/mods/mmo-skill-tree). Every log you mill pays Woodcutting and Crafting XP, every piece of gear you unmake pays Enchanting and Crafting XP, and two characters in the Forgotten Temple have work for you.
 
-You need a Hytale Update 7 server with RPG Stations 1.1.1 or newer, MMO Skill Tree 1.7.1 or newer and Ziggfreed's CommonLib 2.3.0 or newer.
+You need a Hytale Update 7 server with RPG Stations 1.1.1 or newer, MMO Skill Tree 1.7.1 or newer and Ziggfreed's CommonLib 2.4.0 or newer.
 
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/5NFdZsUxHZ) [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/ziggfreed) [![Documentation](https://img.shields.io/badge/Docs-Read%20More-0ea5e9?style=for-the-badge)](https://mmo-skill-tree-docs.ziggfreed.com)
 

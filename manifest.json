@@ -13,7 +13,7 @@
   "IncludesAssetPack": true,
   "Dependencies": {
     "Ziggfreed:RpgStations": ">=1.1.1",
-    "Ziggfreed:ZiggfreedCommon": ">=2.3.0",
+    "Ziggfreed:ZiggfreedCommon": ">=2.4.0",
     "Ziggfreed:MMOSkillTree": "^1.7.1"
   }
 }
