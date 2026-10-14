@@ -27,6 +27,7 @@
   "Listing": {
     "Icon": "MMO_Tool_Hatchet_Marn",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 28,
     "Tags": [
       "Stations"

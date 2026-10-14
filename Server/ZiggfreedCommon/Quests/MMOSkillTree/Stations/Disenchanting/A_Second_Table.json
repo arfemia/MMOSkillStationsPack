@@ -19,6 +19,7 @@
   "Listing": {
     "Icon": "RPG_Station_Disenchanting_Table",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 39,
     "Tags": [
       "Stations"

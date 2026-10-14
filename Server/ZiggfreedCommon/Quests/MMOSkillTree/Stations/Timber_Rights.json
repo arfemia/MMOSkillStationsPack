@@ -36,6 +36,7 @@
   "Listing": {
     "Icon": "RPG_Station_Sawmill",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 20,
     "Tags": [
       "Stations"

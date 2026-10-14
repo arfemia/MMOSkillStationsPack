@@ -18,6 +18,7 @@
   "Listing": {
     "Icon": "Tool_Hatchet_Iron",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 22,
     "Tags": [
       "Stations"

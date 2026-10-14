@@ -23,6 +23,7 @@
   "Listing": {
     "Icon": "Weapon_Sword_Doomed",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 42,
     "Tags": [
       "Stations"

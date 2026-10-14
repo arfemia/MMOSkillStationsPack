@@ -44,6 +44,7 @@
   "Listing": {
     "Icon": "Weapon_Spellbook_Grimoire_Purple",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 30,
     "Tags": [
       "Tutorial",

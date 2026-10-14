@@ -26,6 +26,7 @@
   "Listing": {
     "Icon": "RPG_Potion_Disenchanters_Draught",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 32,
     "Tags": [
       "Stations"

@@ -22,6 +22,7 @@
   "Listing": {
     "Icon": "Ingredient_Fabric_Scrap_Shadoweave",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 40,
     "Tags": [
       "Stations"

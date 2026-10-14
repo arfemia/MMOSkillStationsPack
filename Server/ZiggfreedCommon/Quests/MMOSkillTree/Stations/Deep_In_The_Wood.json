@@ -20,6 +20,7 @@
   "Listing": {
     "Icon": "Ingredient_Life_Essence",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 23,
     "Tags": [
       "Stations"

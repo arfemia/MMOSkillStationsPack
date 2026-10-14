@@ -21,6 +21,7 @@
   "Listing": {
     "Icon": "RPG_Armor_Disenchanter_Hands",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 37,
     "Tags": [
       "Stations"

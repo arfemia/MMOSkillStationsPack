@@ -22,6 +22,7 @@
   "Listing": {
     "Icon": "Weapon_Sword_Iron",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 33,
     "Tags": [
       "Stations"

@@ -48,6 +48,7 @@
   "Listing": {
     "Icon": "Tool_Hatchet_Crude",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 19,
     "Tags": [
       "Tutorial",

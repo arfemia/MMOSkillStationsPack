@@ -26,6 +26,7 @@
   "Listing": {
     "Icon": "Wood_Redwood_Planks",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 26,
     "Tags": [
       "Stations"

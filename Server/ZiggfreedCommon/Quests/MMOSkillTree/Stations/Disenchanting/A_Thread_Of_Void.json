@@ -19,6 +19,7 @@
   "Listing": {
     "Icon": "Ingredient_Void_Essence",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 41,
     "Tags": [
       "Stations"

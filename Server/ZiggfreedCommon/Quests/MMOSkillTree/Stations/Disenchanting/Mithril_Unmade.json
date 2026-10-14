@@ -25,6 +25,7 @@
   "Listing": {
     "Icon": "Ingredient_Bar_Mithril",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 36,
     "Tags": [
       "Stations"

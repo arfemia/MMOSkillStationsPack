@@ -23,6 +23,7 @@
   "Listing": {
     "Icon": "Ingredient_Bar_Cobalt",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 27,
     "Tags": [
       "Stations"

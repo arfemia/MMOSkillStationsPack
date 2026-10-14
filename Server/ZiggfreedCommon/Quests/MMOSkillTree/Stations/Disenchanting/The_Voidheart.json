@@ -32,6 +32,7 @@
   "Listing": {
     "Icon": "Ingredient_Voidheart",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 43,
     "Tags": [
       "Stations"

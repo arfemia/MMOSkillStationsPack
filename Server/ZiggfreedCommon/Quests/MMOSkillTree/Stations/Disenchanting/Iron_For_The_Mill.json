@@ -28,6 +28,7 @@
   "Listing": {
     "Icon": "Ore_Iron",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 44,
     "Tags": [
       "Stations"

@@ -24,6 +24,7 @@
   "Listing": {
     "Icon": "Ingredient_Life_Essence_Concentrated",
     "Category": "main",
+    "MainLine": true,
     "SortOrder": 24,
     "Tags": [
       "Stations"
