@@ -225,7 +225,6 @@ shop.mmo_enchanter.desc = Başka kimse değnek ya da üfleme borusu satmıyor, o
 achievement.category.stations.sawmill = Bıçkıhane
 achievement.category.stations.disenchanting = Büyü Bozma
 
-achievement.category.disenchanting = Büyü Bozma
 achievement.category.stations = İstasyonlar
 ui.quest.tag.sawmill = Bıçkıhane
 ui.quest.tag.stations = İstasyonlar

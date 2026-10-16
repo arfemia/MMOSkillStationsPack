@@ -106,7 +106,6 @@ objective.text.stations.unmake_mithril = Zerlege {0} Mithril-Ausrüstungsteile
 objective.text.stations.unmake_hatchets = Zerlege {0} Eisenbeile
 objective.text.stations.unmake_doomed = Zerlege {0} Waffen des Untergangs
 objective.text.stations.draw_essence = Ziehe {0} {1} aus Ausrüstung
-achievement.category.disenchanting = Entzauberung
 flair.disenchanter.name = Entzauberer-Heiligenschein
 achievement.disenchanting_first_piece.title = Das erste Stück
 achievement.disenchanting_first_piece.desc = Zerlege dein erstes Stück Ausrüstung an einem Entzauberungstisch.

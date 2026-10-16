@@ -250,7 +250,6 @@ objective.text.stations.unmake_hatchets = Desfaça {0} machadinhas de ferro
 objective.text.stations.unmake_doomed = Desfaça {0} armas condenadas
 objective.text.stations.draw_essence = Extraia {0} {1} do equipamento
 
-achievement.category.disenchanting = Desencantamento
 flair.disenchanter.name = Auréola do Desencantador
 achievement.disenchanting_first_piece.title = Primeira Peça
 achievement.disenchanting_first_piece.desc = Desfaça sua primeira peça de equipamento numa Bancada de Desencantamento.

@@ -251,7 +251,6 @@ objective.text.stations.unmake_hatchets = Unmake {0} iron hatchets
 objective.text.stations.unmake_doomed = Unmake {0} Doomed weapons
 objective.text.stations.draw_essence = Draw {0} {1} out of gear
 
-achievement.category.disenchanting = Disenchanting
 flair.disenchanter.name = Disenchanter's Halo
 
 achievement.disenchanting_first_piece.title = First Piece

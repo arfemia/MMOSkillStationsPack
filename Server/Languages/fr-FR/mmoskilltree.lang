@@ -122,7 +122,6 @@ objective.text.stations.unmake_doomed = Démanteler {0} armes Maudites
 objective.text.stations.draw_essence = Extraire {0} {1} de l'équipement
 
 achievement.category.stations = Stations
-achievement.category.disenchanting = Désenchantement
 ui.quest.tag.sawmill = Scierie
 ui.quest.tag.stations = Stations
 ui.quest.tag.disenchanting_table = Table de Désenchantement

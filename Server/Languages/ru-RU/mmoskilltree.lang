@@ -246,7 +246,6 @@ objective.text.stations.unmake_mithril = Разбери мифриловые п�
 objective.text.stations.unmake_hatchets = Разбери железные топоры: {0}
 objective.text.stations.unmake_doomed = Разбери оружие обречённых: {0}
 objective.text.stations.draw_essence = Извлеки из экипировки «{1}»: {0}
-achievement.category.disenchanting = Снятие чар
 flair.disenchanter.name = Ореол снятия чар
 achievement.disenchanting_first_piece.title = Первый предмет
 achievement.disenchanting_first_piece.desc = Разбери свой первый предмет экипировки у Стола снятия чар.

@@ -181,7 +181,6 @@ achievement.announce.sawmiller_server_first.body = {0} sacó el Hacha del Aserra
 achievement.announce.sawmill_master_sawyer.title = Maestro Aserrador
 achievement.announce.sawmill_marns_own.title = ¡De Marn!
 
-achievement.category.disenchanting = Desencantamiento
 flair.disenchanter.name = Halo del Desencantador
 achievement.disenchanting_first_piece.title = Primera Pieza
 achievement.disenchanting_first_piece.desc = Deshaz tu primera pieza de equipo en una Mesa de Desencantamiento.

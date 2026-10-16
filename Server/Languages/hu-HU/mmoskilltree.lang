@@ -182,7 +182,6 @@ achievement.announce.sawmiller_server_first.body = {0} emelte ki a szerver első
 achievement.announce.sawmill_master_sawyer.title = Mester Fűrészmalmos!
 achievement.announce.sawmill_marns_own.title = Marni!
 
-achievement.category.disenchanting = Enchantbontás
 flair.disenchanter.name = Enchantbontó Glória
 achievement.disenchanting_first_piece.title = Az Első Darab
 achievement.disenchanting_first_piece.desc = Bontsd szét az első felszerelésedet egy Enchantbontó Asztalnál.

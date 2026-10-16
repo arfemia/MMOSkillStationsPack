@@ -113,7 +113,6 @@ objective.text.stations.unmake_hatchets = Smonta {0} accette di ferro
 objective.text.stations.unmake_doomed = Smonta {0} armi Dannate
 objective.text.stations.draw_essence = Estrai {0} {1} dall'equipaggiamento
 
-achievement.category.disenchanting = Disincanto
 achievement.category.stations = Stazioni
 ui.quest.tag.sawmill = Segheria
 ui.quest.tag.stations = Stazioni
