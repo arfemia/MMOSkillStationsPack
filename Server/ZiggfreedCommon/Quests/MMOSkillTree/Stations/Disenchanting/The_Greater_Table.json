@@ -71,9 +71,9 @@
     },
     "bring_silk": {
       "Kind": "TURN_IN",
-      "Target": "Ingredient_Bolt_Silk",
+      "Target": "Ingredient_Spider_Silk",
       "MatchMode": "EXACT",
-      "Amount": 6,
+      "Amount": 12,
       "Order": 1,
       "TurnInNpcId": "giver"
     },
