@@ -1,0 +1,57 @@
+{
+  "$Comment": "What the trees' Greater Table stat (MMO_Station_Bonus_Queue: Bulk Return, Generous Rite) pays at the Greater Disenchanting Table, on each queued piece it unmakes: named by Extensions/DisenchantingGreaterProgression.json alone, so the lesser table never rolls it. Like the other piece bonuses in Mmo_Disenchant_Talents it pays Essence of Life and a second void roll, never more of the return, so unmaking still always loses materials. Every number here is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Bulk Return and Generous Rite, essence half: on each piece of the Greater Table's queue, the chance of one more Essence of Life.",
+      "Trigger": "Cycle",
+      "Expected": true,
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Queue",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 1
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Bulk Return and Generous Rite, find half: on each piece of the Greater Table's queue, the same chance the ritual rolls the luck-weighted Essence of the Void (Mmo_Disenchant_Void_Finds) again.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Queue",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Void_Finds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

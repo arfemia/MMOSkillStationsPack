@@ -1,0 +1,17 @@
+{
+  "$Comment": "Second Shift at rank 2 (a Crafting talent): 2 more max stamina for the ten minutes after a long Sawmill session, put on by Lootables/Mmo_Sawmill_Second_Shift.json (rpgstations:effect) when the session ends. One file a rank, since an effect carries one amount; a new session overwrites the last. Retune the amount here and the length in the table's DurationMs.",
+  "Name": "mmoskilltree.effect.second_shift",
+  "StatusEffectIcon": "UI/StatusEffects/AddStamina/Small.png",
+  "RawStatModifiers": {
+    "Stamina": [
+      {
+        "Amount": 2,
+        "CalculationType": "Additive",
+        "Target": "Max"
+      }
+    ]
+  },
+  "Duration": 600,
+  "OverlapBehavior": "Overwrite",
+  "Debuff": false
+}

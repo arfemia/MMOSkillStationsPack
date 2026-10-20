@@ -12,11 +12,17 @@ out.
 
 The MMO progression layered on top comes in these parts:
 
-- **Five find tiers**, scored on your Woodcutting and Crafting luck AND levels together (the top
-  three additionally require Woodcutting 30). Every tier pays offcuts - Plant Fiber, Tree Bark, Tree Sap and
+- **Five find tiers**, scored on your Woodcutting and Crafting luck plus the points you have spent
+  in both skill trees (the top three also need Woodcutting 30). Every tier pays offcuts - Plant Fiber, Tree Bark, Tree Sap and
   sticks - and Essence of Life joins from the second tier up, with Greater Essence of Life at the top.
-- **Two bonus-plank ladders**, one for Woodcutting level (at 25/50/75/100/125) and one for luck
-  alone, so stacking luck is worth it at a bench that already rewards levels.
+- **Two bonus-plank ladders**, one for the points you spend in the Woodcutting tree (one extra
+  plank from a quarter of the tree, two at three quarters, three with all of it, and a fourth for
+  gear or a buff that takes you past that) and one for luck alone, so stacking luck is worth it at
+  a bench that already rewards your tree.
+- **The Crafting tree's mill talents**: a chance of one more plank, finds rolled a second time,
+  sap and stamina for a long session, two trades that swap the plank ladders for better finds or
+  the other way round, and two techniques, Rip Cut and Quarter Saw, that change how the mill works
+  once you take them.
 - **A luck-driven chase** for the sawmill's drop-only trophy tool, improving from 1 in 3000 to
   roughly 1 in 762 as you invest in Woodcutting luck.
 - **A reward for wielding that trophy**, the **Sawmiller's Hatchet**: it carries an MMO stat
@@ -52,13 +58,17 @@ At the Disenchanting Tables (1.1.0):
   piece (item level, quality, wear and stamped enhancement) from 1x for crude gear to 2x for
   mithril and 2.5x for enhanced mithril. The first Enchanting XP source that needs no enchanting
   mod.
-- **A trained enchanter works faster**: the ritual runs 34 seconds untrained here, and the
-  Enchanting level shortens it on top of the table's own Disenchanting Proficiency, down to a
-  15-second floor (about 21 seconds at level 100 alone, about 19 with the full kit alone, the floor
-  at level 100 with the full kit on).
+- **A trained enchanter works faster**: the ritual runs 34 seconds untrained here, and every
+  point you spend in the Enchanting tree shortens it a little, on top of the table's own
+  Disenchanting Proficiency, down to a 15-second floor (about 21 seconds with the whole tree spent,
+  about 19 with the full kit alone, the floor with both; gear or a buff can take you past the tree).
 - **Luck sizes the extra Essence of Life** (up to 1 more for crude gear, 2 for iron, 3 for cobalt to
-  adamantite, 4 for mithril), and the Enchanting level and luck each pay a chance of a little
-  more of the salvage, never a whole extra unit.
+  adamantite, 4 for mithril), and the Enchanting tree, luck and a few Crafting talents each add to
+  the chance of one more unit of the salvage. Together they never reach a whole extra unit, so
+  unmaking a piece never gives back more than it took to make.
+- **The trees' table talents**: more Essence of Life, Essence of the Void and the Voidheart rolled
+  a second time, a second try at the disenchanter's kit, and more for enhanced, high-level, rare
+  or worn pieces and for every piece in the Greater Table's queue.
 - **Luck makes the finds likelier**: Essence of the Void from item level 30, the Voidheart from 45, the
   four-piece disenchanter's kit and the Disenchanter's Grimoire. The kit pieces (36 Enchanting luck
   and 18% Enchanting XP across the four) and the grimoire (20 luck, 15% XP while held) grant
@@ -105,7 +115,8 @@ bonus) but grant no skill XP and roll no item stats.
 
 | Path | What it is |
 |------|------------|
-| `Server/RpgStations/Extensions/SawmillProgression.json` | The Sawmill progression layer: an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action - per-cycle Woodcutting/Crafting XP on the `mmoskilltree:skill_xp` channel plus the three add-on `Bonus.Lootables` references below |
+| `Server/RpgStations/Extensions/SawmillProgression.json` | The Sawmill progression layer: an additive `ExtensionAsset` targeting the RPG Stations jar's own Sawmill `Mill` action - per-cycle Woodcutting/Crafting XP on the `mmoskilltree:skill_xp` channel plus the add-on `Bonus.Lootables` references below (the two find bands, the plank ladders, the trophy hatchet's roll and the Crafting tree's talent tables) |
+| `Server/RpgStations/Extensions/SawmillTechniques.json`, `SawmillProgression_Rip_Cut.json`, `SawmillProgression_Quarter_Saw.json`, `Server/RpgStations/Actions/Mmo_Mill_Rip_Cut.json`, `Mmo_Mill_Quarter_Saw.json` | The Crafting tree's two Sawmill techniques: two more ways to work the mill, placed ahead of `Mill` and each open only to a player who has taken its talent, so everyone else mills as before. Each action is a `Parent: Mill` change (Rip Cut feeds two logs for two planks and wears the hatchet twice as fast, Quarter Saw takes longer and rolls its finds again), with its own progression child, since the layer aimed at `Mill` never reaches a variant |
 | `Server/NPC/Roles/Passive/Mmo_Sawyer.json` | Sawyer Marn: a `Variant` of the MMO jar's quest-giver template, an elder Kweebec treesinger with an iron hatchet in hand |
 | `Server/ZiggfreedCommon/NpcPlacements/Mmo_Sawyer_Temple.json` | Where he stands: the Forgotten Temple, beside the merchant's marker across from the Mastery Trainer, gated on the stations feature, kept alive and respawned |
 | `Server/ZiggfreedCommon/Dialogues/MMOSkillTree/Mmo_Sawyer.json` | His conversation (32 screens): the first meeting, a line sending you to the guide if you ask him for work before the guide has introduced you, a screen per quest across all eleven (offer, in progress, ready), what he says once you own a mill, once you have finished the sawmill chain and once you have finished Marn's Edge, three help screens plus a fourth about the woodcutter's kit, and a different greeting when you walk up holding the Sawmiller's Hatchet |
@@ -129,16 +140,18 @@ bonus) but grant no skill XP and roll no item stats.
 | `Server/Item/Items/RPG_Tool_Hatchet_Sawmiller.json` | The Sawmill's drop-only trophy hatchet (SHARED id with RPG Stations' own jar item, overridden wholesale) with this pack's MMO stat payload added: +10 maximum stamina, +25% Woodcutting XP, +25 Woodcutting luck while held |
 | `Server/Drops/MMO_Station_Sawmill_T1..T5.json` | The Sawmill's five find-tier drop tables. Each composes offcuts (Plant Fiber, Tree Bark, Tree Sap, sticks - pulled from RPG Stations' own shared byproduct list, more pulls as the tier rises) with its own Essence of Life; T1 pays offcuts only, and T5 always pays |
 | `Server/Drops/MMO_Station_Sawmill_Masterwork.json` | What the Sawmiller's Hatchet shakes loose: a double helping of offcuts plus a rare Woodcutting XP boost token |
-| `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json` | The five find tiers, as two banded Rolls over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus your levels in both at a lighter weight. T1-T2 are ungated; T3-T5 additionally require Woodcutting 30 |
-| `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for Woodcutting level (1/1/2/3/4 extra planks at level 25/50/75/100/125), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
+| `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json`, `SawmillDeepFinds.json` | The five find tiers, as two bands over one score: your Woodcutting and Crafting luck (the station's own skill counting full, the adjacent one half) plus the main lines the Woodcutting and Crafting trees pay for every point spent. The everyday band (T1-T2) is ungated; the deep band (T3-T5) needs Woodcutting 30. Each band is a table of its own so a talent can roll it a second time |
+| `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json` | The two bonus-plank ladders: one paying for the points spent in the Woodcutting tree (1/1/2/3 extra planks at a quarter, a half, three quarters and all of it, 4 for gear past it), one paying for luck alone (a quarter plank rising to two, so early luck arrives as a plank every few cycles rather than nothing) |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Sawmill_Talents.json`, `Mmo_Sawmill_Quarter_Saw.json`, `Mmo_Sawmill_Sap_Tap.json`, `Mmo_Sawmill_Second_Shift.json`, `Server/Entity/Effects/MMOSkillStationsPack/Mmo_Second_Shift_{1,2,3}.json` | What the Crafting tree's mill talents pay: the chance of one more plank, the finds rolled again, Essence of Life, the long-session bonus, Quarter Saw's second find roll, Sap Tap's tree sap and Second Shift's stamina buff. Each roll reads one of the MMO's station stats, so gear or a buff carrying the stat counts the same as the talent |
 | `Server/ZiggfreedCommon/Lootables/SawmillMasterworkBonus.json` | The tool-gated Roll only the Sawmiller's Hatchet can open, paying the Masterwork table above for wielding it; its chance rises with your luck, which that hatchet itself grants |
 | `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json` | Replaces RPG Stations' own flat hatchet chase with a luck-scaled one: 1 in 3000 with no luck invested, improving to roughly 1 in 762 on a finished Woodcutting tree (base and Woodcutting luck only). The win is an item grant, so it is counted as station output and the Sawmiller achievements see it |
 | `unreleased/Server/Emote/MMO_Emote_Hammer.json` | HELD BACK: the Anvil ritual's hammering emote |
 | `unreleased/Server/RpgStations/Extensions/CookingProgression.json` + `MMOSkillTree/CustomSkills/Cooking.json` | HELD BACK: the Cooking progression layer (targets a station held back on the RPG Stations jar side, so the two repos restore together) |
 | `unreleased/Server/MMOSkillTree/CustomSkills/Smithing.json` | HELD BACK: the SMITHING skill itself (a Pattern A `CustomSkillAsset` - Name/Description/Icon/Category/InsertAfter/Triggers/RequiresFeatures) |
-| `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, the ritual's length here (a 2.5 stretch on the paced beats and a 15-second floor) with a pace ladder over the Enchanting level, and the three add-on tables below. The greater file is a `Parent` child that changes only its target |
-| `Server/RpgStations/Extensions/DisenchantingProficiency.json`, `DisenchantingGreaterProficiency.json` | A gentler ladder over the disenchanter's gear (the Disenchanting Proficiency stat) that multiplies RPG Stations' own, since the Enchanting level does much of the speeding up here. The greater file is a `Parent` child that changes only its target |
-| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json` | Extra Essence of Life sized by luck within the piece's band, the occasional extra unit of salvage, and the luck-weighted Essence of the Void and Voidheart finds |
+| `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, the ritual's length here (a 2.5 stretch on the paced beats and a 15-second floor) with a pace ladder over the Enchanting tree's main line (what the tree pays for every point spent), and the add-on tables below. The greater file is a `Parent` child that changes its target and adds the queue's own talent table |
+| `Server/RpgStations/Extensions/DisenchantingProficiency.json`, `DisenchantingGreaterProficiency.json` | A gentler ladder over the disenchanter's gear (the Disenchanting Proficiency stat) that multiplies RPG Stations' own, since the Enchanting tree does much of the speeding up here. The greater file is a `Parent` child that changes only its target |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json`, `_Voidheart.json` | Extra Essence of Life sized by luck within the piece's band, the occasional extra unit of salvage (for the Enchanting tree and for luck), and the luck-weighted Essence of the Void and Voidheart finds, one find per table so a talent can roll it again |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Talents.json`, `Mmo_Disenchant_Queue_Talents.json` | What the Crafting and Enchanting trees' table talents pay: Essence of Life, the finds rolled again, the bonuses for enhanced, high-level, rare, worn and queued pieces, and a share of one more unit of the salvage that never reaches a whole one, so unmaking always loses materials |
 | `Server/ZiggfreedCommon/Lootables/Disenchant_Kit.json`, `DisenchantTrophy.json` | Same-id replacements of RPG Stations' own kit and grimoire tables, luck-weighted |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Enchanter_Rites.json`, `Mmo_Enchanter_Threads.json` | What Orrin's daily and three-hourly order pay when you collect them |
 | `Server/Item/Items/RPG_Station_Disenchanting_Table.json`, `RPG_Station_Disenchanting_Table_Greater.json` | The two table blocks (SHARED ids with RPG Stations' own, overridden wholesale with no crafting recipe, so the questline hands them out) |
@@ -170,11 +183,14 @@ Sawmill's display name/desc (`Identity.NameKey`/`DescKey`) point at
 Everything the store page says an owner can retune is plain content in the zip, at these paths:
 
 - Find tiers, their thresholds, and which level opens the deep ones:
-  `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json`
+  `Server/ZiggfreedCommon/Lootables/SawmillLuckFinds.json` and `SawmillDeepFinds.json`
 - What a find hands over: `Server/Drops/`. The offcut mix is shared with RPG Stations' own tables,
   so one edit changes it across the whole bench.
-- The two plank ladders, one for levels and one for luck:
+- The two plank ladders, one for the Woodcutting tree and one for luck:
   `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json`
+- What the skill trees' station talents pay: `Mmo_Sawmill_Talents.json` (with `Mmo_Sawmill_Quarter_Saw.json`,
+  `_Sap_Tap.json` and `_Second_Shift.json`) for the mill and `Mmo_Disenchant_Talents.json` (with
+  `Mmo_Disenchant_Queue_Talents.json`) for the tables, beside the other lootables
 - Trophy chase odds: `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json`
 - XP per cycle: `Server/RpgStations/Extensions/SawmillProgression.json`
 - Marn's quests and what they pay: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`.
@@ -183,14 +199,14 @@ Everything the store page says an owner can retune is plain content in the zip, 
   `_Trim_Supply.json`, `_Trim_Finds.json` and `Mmo_Woodcutters_Kit.json`.
 - The achievements and their points: `Server/ZiggfreedCommon/Achievements/MMOSkillTree/Stations/`
 - The bounty contracts and their pay: `Server/ZiggfreedCommon/Bounties/MMOSkillTree/Stations/`
-- The disenchanting tables' XP, how long a ritual runs and how much the Enchanting level speeds it:
+- The disenchanting tables' XP, how long a ritual runs and how much the Enchanting tree speeds it:
   `Server/RpgStations/Extensions/DisenchantingProgression.json` (the greater table's file is a
   `Parent` child of it that changes only its target; author a leaf there to tune the two apart).
   How much the disenchanter's gear speeds it: `DisenchantingProficiency.json` beside it, with its
   own greater-table child.
   Their extra essence and salvage, the void finds and the kit and grimoire odds:
   `Server/ZiggfreedCommon/Lootables/` (`Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`,
-  `_Void_Finds.json`, `Disenchant_Kit.json`, `DisenchantTrophy.json`)
+  `_Void_Finds.json`, `_Voidheart.json`, `Disenchant_Kit.json`, `DisenchantTrophy.json`)
 - Orrin's quests: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/Disenchanting/`, with his
   daily and three-hourly payouts in `Mmo_Enchanter_Rites.json` and `Mmo_Enchanter_Threads.json`
   beside the other lootables. The woodcutter's kit set and its tiers:
@@ -228,7 +244,8 @@ A station is pure JSON, no plugin code:
    every self-contained action carries its own `Select`/`Tool`/`Recipe`/`Work`/`Custody`/`Bonus`/
    `ContributionScale`/`Worker` (grouping `Hold`/`Camera`/`Animation`/`Puppet`)/`Moments` (grouping
    `Cycle`/`Completion`), nothing is inherited from the station or from another action. See the
-   RPG Stations jar's own `Sawmill.json` for a single-action station (its one action, `Mill`), or
+   RPG Stations jar's own `Sawmill.json` for a single-action station (its one action, `Mill`, kept
+   in `Actions/Mill.json` and named by `Ref` so this pack's techniques can take it as their `Parent`), or
    this repo's held-back `unreleased/Server/RpgStations/Stations/Anvil.json` for a
    multi-action station whose two actions, `Convert` and `Enhance`, each duplicate the same `Tool`/
    `Worker` groups inline rather than sharing a station-level default - see RPG Stations' own
@@ -242,7 +259,7 @@ A station is pure JSON, no plugin code:
 4. **Bonus (optional)**: on the action, author `Bonus.Rolls` (inline) or reference
    `Bonus.Lootables` (a `Server/ZiggfreedCommon/Lootables/<Name>.json` `LootableAsset`) for conditional
    bonus loot - `Chance`/`Ladder`/`Grants`, independently composable. See the RPG Stations jar's
-   own `Sawmill.json` `Mill` action's `Bonus` block for the shape (a tool-quality ladder, plus this
+   own `Actions/Mill.json` `Bonus` block for the shape (a tool-quality ladder, plus this
    pack's own `mmoskilltree`-luck ladders layered on top via `Extensions/SawmillProgression.json`).
 5. **Quests and achievements for it (optional)**: a `WORK_STATION` step counts real cycles at a
    station (target = the station id), a `STATION_OUTPUT` step counts what it hands over and a

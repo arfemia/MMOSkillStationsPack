@@ -1,0 +1,309 @@
+{
+  "$Comment": "Sap Tap, a Crafting talent (two ranks): every 25th cycle of a Sawmill session (every 15th with the second rank) also pays a little tree sap. Named by Extensions/SawmillProgression.json. A roll cannot ask for every Nth cycle, so each payout cycle is its own roll (Min and Max on rpgstations:cycle_count), as far as a ten-minute session reaches (about 124 cycles); each reads the talent's own record (ziggfreedcommon:track_pick, its rank the count). A longer session cap wants more rolls here.",
+  "Rolls": [
+    {
+      "$Comment": "Rank 1: cycle 25.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 25,
+          "Max": 25
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 1,
+          "Max": 1
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 1: cycle 50.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 50,
+          "Max": 50
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 1,
+          "Max": 1
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 1: cycle 75.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 75,
+          "Max": 75
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 1,
+          "Max": 1
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 1: cycle 100.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 100,
+          "Max": 100
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 1,
+          "Max": 1
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 15.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 15,
+          "Max": 15
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 30.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 30,
+          "Max": 30
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 45.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 45,
+          "Max": 45
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 60.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 60,
+          "Max": 60
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 75.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 75,
+          "Max": 75
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 90.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 90,
+          "Max": 90
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 105.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 105,
+          "Max": 105
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: cycle 120.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 120,
+          "Max": 120
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Sap_Tap",
+          "Min": 2
+        }
+      ],
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Tree_Sap",
+            "Count": 1,
+            "CountMax": 2
+          }
+        ]
+      }
+    }
+  ]
+}

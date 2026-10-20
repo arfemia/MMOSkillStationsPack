@@ -423,3 +423,6 @@ shop.mmo_enchanter.desc = Nobody else sells a wand or a blowgun, so Orrin keeps 
 # ---- Achievement subcategory names ----
 achievement.category.stations.sawmill = Sawmill
 achievement.category.stations.disenchanting = Disenchanting
+
+# ---- Station talent effects (the buff bar names the Crafting tree's station talents give) ----
+effect.second_shift = Second Shift

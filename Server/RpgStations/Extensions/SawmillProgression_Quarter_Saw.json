@@ -1,0 +1,9 @@
+{
+  "$Comment": "What progression means at the Sawmill's Quarter Saw variant (Actions/Mmo_Mill_Quarter_Saw.json): what it means at Mill, plus its second find roll. An extension aimed at Mill never reaches a variant, so this file is a Parent child of SawmillProgression.json with its own Target, the scoped {Station: Sawmill, Action: Mmo_Mill_Quarter_Saw} (a variant attached by Ref answers to its action asset's id), inheriting the XP. Bonus.Lootables replaces the inherited list whole, so it names SawmillProgression's tables again and adds Mmo_Sawmill_Quarter_Saw; a table added to that list belongs here too.",
+  "Parent": "SawmillProgression",
+  "Target": { "Station": "Sawmill", "Action": "Mmo_Mill_Quarter_Saw" },
+  "Bonus": {
+    "Lootables": ["SawmillLuckFinds", "SawmillDeepFinds", "SawmillOutputLadders", "SawmillMasterworkBonus",
+      "Mmo_Sawmill_Talents", "Mmo_Sawmill_Sap_Tap", "Mmo_Sawmill_Second_Shift", "Mmo_Sawmill_Quarter_Saw"]
+  }
+}

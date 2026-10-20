@@ -1,0 +1,5 @@
+{
+  "$Comment": "What progression means at the Sawmill's Rip Cut variant (Actions/Mmo_Mill_Rip_Cut.json): exactly what it means at Mill. An extension aimed at Mill never reaches a variant, so this file is a Parent child of SawmillProgression.json that changes only Target, the scoped {Station: Sawmill, Action: Mmo_Mill_Rip_Cut} (a variant attached by Ref answers to its action asset's id); the XP and every table are inherited from it, so a retune there reaches both. XP is per cycle, so a Rip Cut cycle (two logs) pays what a Mill cycle pays.",
+  "Parent": "SawmillProgression",
+  "Target": { "Station": "Sawmill", "Action": "Mmo_Mill_Rip_Cut" }
+}

@@ -1,0 +1,665 @@
+{
+  "$Comment": "What the Crafting and Enchanting trees' station stats pay at both Disenchanting Tables. Named by Extensions/DisenchantingProgression.json (and its greater child) and rolled once per ritual at the Payout beat. Each roll reads the MMO's station stats (Server/Entity/Stats/MMO_Station*.json in the MMO jar, each file saying what one point does) and nothing else: every stat is whole percent points read as a Chance, so 25 points is one ritual in four. A talent, gear carrying the stat or a buff all count the same, and with none of them every roll here reads 0 and pays nothing.\n\nTHE RETURN SHARE AND THE GUARDRAIL. Unmaking crafted gear must always lose materials: on the tightest pieces (two bolts in, one back) there is one unit of room, and Mmo_Disenchant_Salvage_Extras already pays up to three quarters of it. Every rpgstations:output_items a ritual grants sums before ONE resolution (the whole part lands, the fraction is the chance of one more), so a talent that paid a whole unit would stack on that three quarters and could hand back three for two. So every stat that adds more of the return (Crafting's main line MMO_StationYield_CRAFTING, Metal Reclaim's MMO_Station_Return and the everyday-find stat MMO_Station_Find) shares ONE slot here, read as a SHARE of one more, never a whole unit: their sum on a Ladder in whole points, each point a hundredth of a unit, held at 0.20 by the top floor, behind the same item level 15 gate. With the extras the most a ritual adds is 0.95 of a unit, under the one unit of room, so even a fully invested, lucky enchanter gets back less than went in. Raise the top floor only with the extras table lowered to match.\n\nThe rolls that repeat a find grant a Lootable reward naming the table to roll again with Trigger Cycle: the nested table is judged against this same ritual (the same piece, its level, quality and wear), so a second roll keeps every gate the first had. The conditional piece bonuses (the MMO_Station_Bonus_* stats) pay Essence of Life and a second void roll, never more of the return, for the guardrail above.\n\nEvery number here is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "The one return share: Crafting's main line, Metal Reclaim and the everyday-find stat summed and read in whole points, each floor paying that many hundredths of one more of the return's main material into the ritual's one fractional sum, up to 0.20 at 20 points and past it, on gear of item level 15 and up (the same gate as the salvage extras).",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_level",
+          "Min": 15
+        }
+      ],
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_StationYield_CRAFTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Return",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Find",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 1,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.01"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 2,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.02"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 3,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.03"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 4,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.04"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 5,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.05"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 6,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.06"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 7,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.07"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 8,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.08"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 9,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.09"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 10,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.1"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 11,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.11"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 12,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.12"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 13,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.13"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 14,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.14"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 15,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.15"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 16,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.16"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 17,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.17"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 18,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.18"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 19,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.19"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 20,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.2"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Essence of Life: the station Essence stat (Seasoned Wood, Second Wage) is the chance of one more Essence of Life on the wage, shown as ordinary output beside it.",
+      "Trigger": "Cycle",
+      "Expected": true,
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Essence",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 1
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Void essence again: the void-find stat (Void Sight) is the chance the ritual rolls the luck-weighted Essence of the Void (Mmo_Disenchant_Void_Finds) a second time.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Find_Void",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Void_Finds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "The Voidheart again: the rarest-find stat (Heart Seeker, Rare Woods) is the chance the ritual rolls the luck-weighted Voidheart (Mmo_Disenchant_Voidheart) a second time.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Find_Rare",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Voidheart",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "The kit and grimoire again: the kit-find stat (Kit Hunter) is the chance the ritual rolls the disenchanter's kit (Disenchant_Kit) and the grimoire chase (DisenchantTrophy) a second time, both at once.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Find_Kit",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Disenchant_Kit",
+              "Trigger": "Cycle"
+            }
+          },
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "DisenchantTrophy",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Stamp Reclaim, essence half: on a piece carrying stamped enhancement points, the chance of one more Essence of Life.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:item_stamp_points",
+          "Min": 1
+        }
+      ],
+      "Expected": true,
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Stamped",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 1
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Stamp Reclaim, find half: on a piece carrying stamped enhancement points, the same chance the ritual rolls the luck-weighted Essence of the Void (Mmo_Disenchant_Void_Finds) again.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:item_stamp_points",
+          "Min": 1
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Stamped",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Void_Finds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Heavy Haul, Deep Finds and Deep Wells, essence half: on a piece of item level 40 or higher, the chance of one more Essence of Life.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_level",
+          "Min": 40
+        }
+      ],
+      "Expected": true,
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_HighLevel",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 1
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Heavy Haul, Deep Finds and Deep Wells, find half: on a piece of item level 40 or higher, the same chance the ritual rolls the luck-weighted Essence of the Void (Mmo_Disenchant_Void_Finds) again.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_level",
+          "Min": 40
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_HighLevel",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Void_Finds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Quality Eye and Essence Wells, essence half: on an Uncommon or better piece, the chance of one more Essence of Life.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_quality",
+          "Min": 2
+        }
+      ],
+      "Expected": true,
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Rare",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 1
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Quality Eye and Essence Wells, find half: on an Uncommon or better piece, the same chance the ritual rolls the luck-weighted Essence of the Void (Mmo_Disenchant_Void_Finds) again.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_quality",
+          "Min": 2
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Rare",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Void_Finds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Old Gear, essence half: on a piece under half its durability, the chance of one more Essence of Life.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_durability_percent",
+          "Max": 49.9
+        }
+      ],
+      "Expected": true,
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Worn",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence",
+            "Count": 1
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Old Gear, find half: on a piece under half its durability, the same chance the ritual rolls the luck-weighted Essence of the Void (Mmo_Disenchant_Void_Finds) again.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_durability_percent",
+          "Max": 49.9
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Worn",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "Mmo_Disenchant_Void_Finds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

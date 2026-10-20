@@ -1,5 +1,5 @@
 {
-  "$Comment": "What Enchanting means at the lesser Disenchanting Table. It extends the jar's Disenchant action through the SCOPED target {Station: Disenchanting_Table, Action: Disenchant}, so it reaches that action on that one station and nowhere else. An extension's additions never flow down a Parent chain, so the greater table's own action (Disenchant_Greater, a child of Disenchant) never sees this file: DisenchantingGreaterProgression.json is a Parent child of this one that changes only its Target, so the two tables share one set of numbers and a retune here reaches both.\n\nFour things, nothing else: the jar owns the ritual, its presentation, its custody and its recipe, and this pack owns only what progression means at it and how long the ritual runs here.\n\n(1) PerCycleContributions. One cycle is one whole ritual (one piece unmade, 15 to 34 seconds here), so each amount is per piece, not per few seconds the way the Sawmill's are. ENCHANTING counts full and CRAFTING half, the station's own skill full and the adjacent one half. Both post on mmoskilltree:skill_xp (Param is the skill id), which the MMO bridge awards as skill XP.\n\n(2) ContributionScale. The jar's Disenchant action authors none, so this one stands alone and multiplies the two amounts above before they are posted, from the piece on the table: item level at 1, quality at 5 per step, durability at a tenth per percent (a worn piece reads lower) and stamped enhancement points at a half each (an enhanced piece reads higher). The highest floor reached wins; below the first floor the scale is 1. A crude piece stays at 1, an iron piece reaches 1.25, the cobalt to adamantite band 1.5, a mithril piece 2 and an enhanced mithril piece 2.5. If the jar ever authors its own ContributionScale, remember that an extension's Factors and Floors each replace the action's whole array.\n\n(3) Pace. The jar's own ritual is a short one, about 15 seconds untrained and down to about 3 with all the disenchanter's gear, so a server without this pack is not kept waiting. Here the ritual is the long one. Stretch 2.5 makes every paced beat two and a half times its jar length (Open 2 seconds, Kindle 8, Draw 12, Surge 9, Unmake 1.5, then the 1.5-second bloom: 34 seconds untrained). Clamp Min 0.42 narrows the jar action's range so a ritual never drops under 15 seconds; it binds before the stretch. A trained enchanter works faster as well as luckier: this ladder over the Enchanting level is its own complete ladder, and its scale MULTIPLIES the jar action's proficiency ladder (softened back to its gentler curve here by DisenchantingProficiency.json). Level 100 with nothing else on brings the paced beats to 0.6 of their length (about 21 seconds a ritual); the full disenchanter's kit alone to about 19; level 100 with the kit on as well reaches the 15-second floor.\n\n(4) Bonus.Lootables names only the tables this pack ADDS: Mmo_Disenchant_Essence_Pay (more Life essence, sized by luck), Mmo_Disenchant_Salvage_Extras (now and then more of the salvage return's main material) and Mmo_Disenchant_Void_Finds (luck-weighted Void finds). The pack also ships Disenchant_Kit.json and DisenchantTrophy.json, which carry the ids of tables the jar's action already lists, so they replace the jar's versions in place; listing either here would roll it twice.\n\nEvery number here is balance data and retunes by editing this one file.",
+  "$Comment": "What Enchanting means at the lesser Disenchanting Table. It extends the jar's Disenchant action through the SCOPED target {Station: Disenchanting_Table, Action: Disenchant}, so it reaches that action on that one station and nowhere else. An extension's additions never flow down a Parent chain, so the greater table's own action (Disenchant_Greater, a child of Disenchant) never sees this file: DisenchantingGreaterProgression.json is a Parent child of this one that changes only its Target, so the two tables share one set of numbers and a retune here reaches both.\n\nFour things, nothing else: the jar owns the ritual, its presentation, its custody and its recipe, and this pack owns only what progression means at it and how long the ritual runs here.\n\n(1) PerCycleContributions. One cycle is one whole ritual (one piece unmade, 15 to 34 seconds here), so each amount is per piece, not per few seconds the way the Sawmill's are. ENCHANTING counts full and CRAFTING half, the station's own skill full and the adjacent one half. Both post on mmoskilltree:skill_xp (Param is the skill id), which the MMO bridge awards as skill XP.\n\n(2) ContributionScale. The jar's Disenchant action authors none, so this one stands alone and multiplies the two amounts above before they are posted, from the piece on the table: item level at 1, quality at 5 per step, durability at a tenth per percent (a worn piece reads lower) and stamped enhancement points at a half each (an enhanced piece reads higher). The highest floor reached wins; below the first floor the scale is 1. A crude piece stays at 1, an iron piece reaches 1.25, the cobalt to adamantite band 1.5, a mithril piece 2 and an enhanced mithril piece 2.5. If the jar ever authors its own ContributionScale, remember that an extension's Factors and Floors each replace the action's whole array.\n\n(3) Pace. The jar's own ritual is a short one, about 15 seconds untrained and down to about 3 with all the disenchanter's gear, so a server without this pack is not kept waiting. Here the ritual is the long one. Stretch 2.5 makes every paced beat two and a half times its jar length (Open 2 seconds, Kindle 8, Draw 12, Surge 9, Unmake 1.5, then the 1.5-second bloom: 34 seconds untrained). Clamp Min 0.42 narrows the jar action's range so a ritual never drops under 15 seconds; it binds before the stretch. A trained enchanter works faster as well as luckier: this ladder reads MMO_StationPace_ENCHANTING, Enchanting's main line (0.4 a point spent on the Enchanting tree, never a level, so a ritual speeds up as the points are spent), in steps of four points of the stat, each step four percent shorter, and its scale MULTIPLIES the jar action's proficiency ladder (softened back to its gentler curve here by DisenchantingProficiency.json). The whole tree spent (99 points, 39.6 of the stat, so that floor sits at 39.5 for the stat map's float rounding) brings the paced beats to 0.6 of their length (about 21 seconds a ritual); the full disenchanter's kit alone to about 19; both reach the 15-second floor. The floors past it are there for gear or a buff that carries the stat. The pace reaches the paced beats only (Open, Kindle, Draw, Surge, Unmake); the closing Payout beat keeps its 1.5 seconds.\n\n(4) Bonus.Lootables names only the tables this pack ADDS: Mmo_Disenchant_Essence_Pay (more Life essence, sized by luck), Mmo_Disenchant_Salvage_Extras (now and then more of the salvage return's main material), Mmo_Disenchant_Void_Finds (luck-weighted Void essence), Mmo_Disenchant_Voidheart (the luck-weighted Voidheart) and Mmo_Disenchant_Talents (what the Crafting and Enchanting trees' station stats pay here). The pack also ships Disenchant_Kit.json and DisenchantTrophy.json, which carry the ids of tables the jar's action already lists, so they replace the jar's versions in place; listing either here would roll it twice.\n\nEvery number here is balance data and retunes by editing this one file.",
   "Target": { "Station": "Disenchanting_Table", "Action": "Disenchant" },
   "PerCycleContributions": [
     { "Channel": "mmoskilltree:skill_xp", "Param": "ENCHANTING", "Amount": 30.0 },
@@ -21,20 +21,29 @@
   },
   "Pace": {
     "Ladder": {
-      "Factors": [ { "Factor": "hytale:stat", "Param": "MMO_Level_ENCHANTING" } ],
+      "Factors": [ { "Factor": "hytale:stat", "Param": "MMO_StationPace_ENCHANTING" } ],
       "Floors": [
-        { "Min": 20, "Scale": 0.92 },
-        { "Min": 40, "Scale": 0.84 },
-        { "Min": 60, "Scale": 0.76 },
-        { "Min": 80, "Scale": 0.68 },
-        { "Min": 100, "Scale": 0.6 },
-        { "Min": 125, "Scale": 0.55 }
+        { "Min": 4, "Scale": 0.96 },
+        { "Min": 8, "Scale": 0.92 },
+        { "Min": 12, "Scale": 0.88 },
+        { "Min": 16, "Scale": 0.84 },
+        { "Min": 20, "Scale": 0.8 },
+        { "Min": 24, "Scale": 0.76 },
+        { "Min": 28, "Scale": 0.72 },
+        { "Min": 32, "Scale": 0.68 },
+        { "Min": 36, "Scale": 0.64 },
+        { "Min": 39.5, "Scale": 0.6 },
+        { "Min": 44, "Scale": 0.56 },
+        { "Min": 48, "Scale": 0.52 },
+        { "Min": 52, "Scale": 0.48 },
+        { "Min": 56, "Scale": 0.44 }
       ]
     },
     "Clamp": { "Min": 0.42 },
     "Stretch": 2.5
   },
   "Bonus": {
-    "Lootables": ["Mmo_Disenchant_Essence_Pay", "Mmo_Disenchant_Salvage_Extras", "Mmo_Disenchant_Void_Finds"]
+    "Lootables": ["Mmo_Disenchant_Essence_Pay", "Mmo_Disenchant_Salvage_Extras", "Mmo_Disenchant_Void_Finds",
+      "Mmo_Disenchant_Voidheart", "Mmo_Disenchant_Talents"]
   }
 }

@@ -1,0 +1,24 @@
+{
+  "$Comment": "The luck-weighted Voidheart, beside the jar's own flat Voidheart roll in Disenchant_Void. Named by Extensions/DisenchantingProgression.json (and its greater child) and rolled once per ritual at the Payout beat, at both tables. A FIND: no Expected leaf, so it lands as a gold row, with the jar action's own Voidheart cue. It sits in a file of its own, apart from Mmo_Disenchant_Void_Finds, so a station stat can roll it again on its own: Mmo_Disenchant_Talents re-rolls it for the rarest-find stat (Heart Seeker, Rare Woods).\n\nTHE GUARDRAIL. A mithril weapon costs a Voidheart to forge, and the heart here starts at a fifth of a percent and stops at 0.8: with the jar's own 0.8 that is about one heart per hundred mithril weapons unmade at no luck and one per seventy at full luck, each of which cost a heart to make; the rarest-find stat at its tree peak rolls this file again on about a third of rituals, which still leaves a heart rarer than one per fifty pieces.\n\nEvery chance and gate is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "The Voidheart: gear of item level 45 and up, a fifth of a percent plus a two-hundredth per luck point, held under 0.8 percent.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 45 }
+      ],
+      "Chance": {
+        "Base": 0.2,
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.005 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.005 }
+        ],
+        "Clamp": { "Max": 0.8 }
+      },
+      "Grants": {
+        "Items": [ { "Item": "Ingredient_Voidheart", "Count": 1 } ]
+      },
+      "Cue": "Cue:Voidheart"
+    }
+  ]
+}

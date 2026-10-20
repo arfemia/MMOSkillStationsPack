@@ -1,0 +1,15 @@
+{
+  "$Comment": "Quarter Saw's second find roll: named only by Extensions/SawmillProgression_Quarter_Saw.json, so it rolls only at the Quarter Saw variant of the Sawmill, on every cycle. Each roll grants a Lootable reward naming one find band (SawmillLuckFinds, SawmillDeepFinds) with Trigger Cycle, so the band rolls again against this same cycle: the same score, the Woodcutting 30 gate on the deep band, and every technique gate inside the bands. Pair it with the variant's slower cycle (Work.CycleMs) when retuning.",
+  "Rolls": [
+    {
+      "$Comment": "The everyday band again.",
+      "Trigger": "Cycle",
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "SawmillLuckFinds", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "The deep band again.",
+      "Trigger": "Cycle",
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "SawmillDeepFinds", "Trigger": "Cycle" } } ] }
+    }
+  ]
+}

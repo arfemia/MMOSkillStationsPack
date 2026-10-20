@@ -1,0 +1,85 @@
+{
+  "$Comment": "Second Shift, a Crafting talent (three ranks): a Sawmill session that ran 10 cycles or more ends with more max stamina for ten minutes, one rank a point. Named by Extensions/SawmillProgression.json, so its children carry it to the Sawmill's variants too; each roll answers the session's Completion moment and reads the talent's own record (ziggfreedcommon:track_pick, Param <Track>/<Pick>, its rank the count), so exactly one rank's roll passes. The effects live in Entity/Effects/MMOSkillStationsPack/Mmo_Second_Shift_<rank>.json. A Disenchanting Table's session is one ritual, so only the Sawmill runs long enough.",
+  "Rolls": [
+    {
+      "$Comment": "Rank 1: a session of 10 cycles or more ends with Mmo_Second_Shift_1 for ten minutes.",
+      "Trigger": "Completion",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 10
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Second_Shift",
+          "Min": 1,
+          "Max": 1
+        }
+      ],
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "rpgstations:effect",
+            "Params": {
+              "Id": "Mmo_Second_Shift_1",
+              "DurationMs": "600000"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 2: a session of 10 cycles or more ends with Mmo_Second_Shift_2 for ten minutes.",
+      "Trigger": "Completion",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 10
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Second_Shift",
+          "Min": 2,
+          "Max": 2
+        }
+      ],
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "rpgstations:effect",
+            "Params": {
+              "Id": "Mmo_Second_Shift_2",
+              "DurationMs": "600000"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Rank 3: a session of 10 cycles or more ends with Mmo_Second_Shift_3 for ten minutes.",
+      "Trigger": "Completion",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 10
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Second_Shift",
+          "Min": 3
+        }
+      ],
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "rpgstations:effect",
+            "Params": {
+              "Id": "Mmo_Second_Shift_3",
+              "DurationMs": "600000"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

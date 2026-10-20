@@ -1,0 +1,152 @@
+{
+  "$Comment": "The sawmill's deep find tiers (T3 to T5), behind the file's one level gate, Woodcutting 30. Its sibling SawmillLuckFinds holds the everyday tiers and explains the score both bands share (luck at full and half weight, the Woodcutting and Crafting main lines at weight 1), its units and why the tiers sit in two bands; this band reads the very same five factors, so one score paces the whole ladder. Referenced from this pack's Extensions/SawmillProgression.json Bonus.Lootables, and rolled again by Mmo_Sawmill_Talents for the rarest-find stat (Rare Woods, Heart Seeker), which is why it is a table of its own.\n\nThe main-line terms inside the score already pace these tiers by themselves, so a per-tier gate on each floor would be redundant - but a single hard Condition on the band is not, because the score alone cannot tell a level-3 player in borrowed luck gear from a veteran, and the deep tiers should read as earned rather than equipped. The gate reads the Woodcutting level because it is a gate, not a payout. A player below level 30 never evaluates this Roll at all, so the everyday band is their whole ladder.\n\nAll thresholds, weights and grants here are initial balance and retune freely without any engine change.\n\nTHE MILL TRADE. Two Crafting talents read off the talent's own record (ziggfreedcommon:track_pick) change this band: under Bulk Order it never rolls, and under Treasure Cut the second roll stands in for the first, each floor paying the tier above it. A talent that rolls the band again (Mmo_Sawmill_Talents) reads the same gates.",
+  "Rolls": [
+    {
+      "$Comment": "Band B, the deep tiers.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:stat",
+          "Param": "MMO_Level_WOODCUTTING",
+          "Min": 30
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Bulk_Order",
+          "Max": 0
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Treasure_Cut",
+          "Max": 0
+        }
+      ],
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "GatherSpeed_Woodcutting",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_StationYield_CRAFTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "$Comment": "T3, the upper tier: offcuts double to two pulls and the essence table gains its first CONCENTRATED entry, announced with a legendary chest sound and a gold crown. Reachable on luck alone by a well-geared woodcutter, or earlier with both trees spent behind it.",
+            "Min": 150,
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T3"
+              ]
+            },
+            "Cue": "cue:find_deep"
+          },
+          {
+            "$Comment": "T4, the veteran tier: two offcut pulls like T3, and the first table paying concentrated essence in multiples. It is also the first floor no single source reaches on its own - it wants real luck and both trees behind it. Its celebration adds a spark burst over T3's.",
+            "Min": 200,
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T4"
+              ]
+            },
+            "Cue": "cue:find_deep"
+          },
+          {
+            "$Comment": "T5, the end of the ladder. 250 sits near the ceiling a fully invested worker can reach, so this floor asks for every source this file reads at once, the trophy hatchet in hand among them. Its table is the one find table in this pack with no empty entry, so a T5 roll always pays, and its celebration is the grandest available.",
+            "Min": 250,
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T5"
+              ]
+            },
+            "Cue": "cue:find_apex"
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Treasure Cut (a Crafting talent, the Mill Trade): the deep band one floor higher, T3's floor paying T4 and T4's paying T5, the top. It reads the same score and gate as the band above, which is off for a Treasure Cut player.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:stat",
+          "Param": "MMO_Level_WOODCUTTING",
+          "Min": 30
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Treasure_Cut",
+          "Min": 1
+        }
+      ],
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "GatherSpeed_Woodcutting",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_StationYield_CRAFTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 150,
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T4"
+              ]
+            },
+            "Cue": "cue:find_deep"
+          },
+          {
+            "Min": 200,
+            "Grants": {
+              "DropLists": [
+                "MMO_Station_Sawmill_T5"
+              ]
+            },
+            "Cue": "cue:find_apex"
+          }
+        ]
+      }
+    }
+  ]
+}

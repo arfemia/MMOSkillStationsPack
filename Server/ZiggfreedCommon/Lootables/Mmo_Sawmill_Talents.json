@@ -1,0 +1,220 @@
+{
+  "$Comment": "What the Crafting tree's station stats pay at the Sawmill. Named by Extensions/SawmillProgression.json and rolled on every completed cycle. Each roll reads one or two of the MMO's station stats (Server/Entity/Stats/MMO_Station*.json in the MMO jar, each file saying what one point does) and nothing else: every stat is whole percent points read as a Chance, so 25 points is one cycle in four. A talent, a piece of gear carrying the stat (an item's StatModifiers) or a buff (an effect's stat modifiers) all count the same, and with none of them every roll here reads 0 and pays nothing, so a worker without the tree mills exactly as before.\n\nThe rolls that pay planks grant rpgstations:output_items, ONE more of the cycle's own product on a hit, on top of Recipe.Yield and the other ladders. The rolls that repeat a find grant a Lootable reward naming the band to roll again with Trigger Cycle: the nested table is judged against this same cycle (the same score, the same Woodcutting gate), so a second roll can never pay a tier the first could not.\n\nEvery number here is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Planks: Crafting's main line (MMO_StationYield_CRAFTING, a quarter of a point for each Crafting tree point spent) and Clean Cuts (MMO_Station_Planks) summed into one chance of one more plank, held at 100 percent.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_StationYield_CRAFTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Planks",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "rpgstations:output_items",
+            "Params": {
+              "Count": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Everyday finds again: the everyday-find stat (MMO_Station_Find: Offcut Bin, Second Look) is the chance this cycle rolls the everyday band (SawmillLuckFinds) a second time.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Find",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "SawmillLuckFinds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "The deep tiers again: the rarest-find stat (MMO_Station_Find_Rare: Rare Woods, Heart Seeker) is the chance this cycle rolls the deep band (SawmillDeepFinds, still behind its Woodcutting 30 gate) a second time.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Find_Rare",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "SawmillDeepFinds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Essence of Life: the station Essence stat (MMO_Station_Essence: Seasoned Wood, Second Wage) is the chance of one more Essence of Life, paid only once the worker's find score reaches the first tier that pays essence (T2, 100 points, the same five factors as the find bands), so a worker whose finds pay no essence yet gets none here either. Under Bulk Order the find tiers never roll, so neither does this.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Bulk_Order",
+          "Max": 0
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Essence",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "GatherSpeed_Woodcutting",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_StationYield_CRAFTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 100,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "In the Grain, the long-session stat (MMO_Station_Bonus_Session), plank half: once a session passes 20 cycles, the chance of one more plank.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 20
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Session",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "rpgstations:output_items",
+            "Params": {
+              "Count": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "In the Grain, find half: once a session passes 20 cycles, the same chance the cycle rolls the everyday band again.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "rpgstations:cycle_count",
+          "Min": 20
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Bonus_Session",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Rewards": [
+          {
+            "Kind": "Lootable",
+            "Params": {
+              "Lootable": "SawmillLuckFinds",
+              "Trigger": "Cycle"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "$Comment": "Quarter Saw, a Crafting technique (the Mill Technique choice on the Crafting tree): the jar's Mill with a slower, finer cut. Parent Mill gives it every group it does not author, per leaf; here only Work.CycleMs changes, half again the jar's 4805 (MaxDurationMs stays the jar's). Its find tiers roll twice a cycle: Extensions/SawmillProgression_Quarter_Saw.json gives it Mill's XP and tables plus Lootables/Mmo_Sawmill_Quarter_Saw.json, which rolls both find bands once more. Extensions/SawmillTechniques.json adds it to the Sawmill ahead of Mill, gated on the Quarter Saw talent.",
+  "Parent": "Mill",
+  "Work": { "CycleMs": 7208 }
+}
