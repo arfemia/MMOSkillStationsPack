@@ -1,0 +1,170 @@
+{
+  "$Comment": "The Disenchanting Tables' base wage of Essence of Life: a same-id copy of RPG Stations' own Disenchant_Essence (both jar actions already list it, so no extension names it), carrying the jar's ladder unchanged and adding only what two Enchanting talents change, read off the talent's own record (ziggfreedcommon:track_pick). Rite of Purity gives the wage up for four times the Greater Essence chance, and Purist pays it again on half of all rituals for giving up Greater Essence. The jar's own comment explains the ladder (item level at weight 1, quality at weight 5, a better piece draws more); a jar retune of the ladder means copying it here again, into both rolls.\n\nEvery number here is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "The base wage, the jar's own roll unchanged, paid unless Rite of Purity (an Enchanting talent, a face of the Rite) gives it up for Greater Essence.",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Purity",
+          "Max": 0
+        }
+      ],
+      "Trigger": "Cycle",
+      "Expected": true,
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:item_level",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:item_quality",
+            "Weight": 5.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 0,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 25,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 2
+                }
+              ]
+            }
+          },
+          {
+            "Min": 45,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 3
+                }
+              ]
+            }
+          },
+          {
+            "Min": 62,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 5
+                }
+              ]
+            }
+          },
+          {
+            "Min": 78,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 8
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Purist (an Enchanting talent, a face of the Essence Trade): half of all rituals pay the base wage a second time, the price being every Greater Essence roll in Mmo_Disenchant_Talents. The tree never lets Rite of Purity be held beside it.",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Enchanting/Mmo_Enchanting_Purist",
+          "Min": 1
+        }
+      ],
+      "Chance": {
+        "Base": 50.0
+      },
+      "Trigger": "Cycle",
+      "Expected": true,
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:item_level",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:item_quality",
+            "Weight": 5.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 0,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 1
+                }
+              ]
+            }
+          },
+          {
+            "Min": 25,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 2
+                }
+              ]
+            }
+          },
+          {
+            "Min": 45,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 3
+                }
+              ]
+            }
+          },
+          {
+            "Min": 62,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 5
+                }
+              ]
+            }
+          },
+          {
+            "Min": 78,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 8
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

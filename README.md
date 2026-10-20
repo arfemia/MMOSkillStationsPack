@@ -66,9 +66,13 @@ At the Disenchanting Tables (1.1.0):
   adamantite, 4 for mithril), and the Enchanting tree, luck and a few Crafting talents each add to
   the chance of one more unit of the salvage. Together they never reach a whole extra unit, so
   unmaking a piece never gives back more than it took to make.
-- **The trees' table talents**: more Essence of Life, Essence of the Void and the Voidheart rolled
-  a second time, a second try at the disenchanter's kit, and more for enhanced, high-level, rare
-  or worn pieces and for every piece in the Greater Table's queue.
+- **The trees' table talents**: more Essence of Life (the Crafting tree's points pay some on every
+  ritual), a chance at a Greater Essence of Life on gear of item level 20 and up, Essence of the
+  Void and the Voidheart rolled a second time, a second try at the disenchanter's kit, and more for
+  enhanced, high-level, rare or worn pieces and for every piece in the Greater Table's queue. Two
+  trades change the wage: Rite of Purity gives up the base Essence of Life for four times the
+  Greater Essence chance, and Purist gives up Greater Essence for the base wage twice on half your
+  rituals. You can hold one of the two, never both.
 - **Luck makes the finds likelier**: Essence of the Void from item level 30, the Voidheart from 45, the
   four-piece disenchanter's kit and the Disenchanter's Grimoire. The kit pieces (36 Enchanting luck
   and 18% Enchanting XP across the four) and the grimoire (20 luck, 15% XP while held) grant
@@ -151,8 +155,9 @@ bonus) but grant no skill XP and roll no item stats.
 | `Server/RpgStations/Extensions/DisenchantingProgression.json`, `DisenchantingGreaterProgression.json` | The Disenchanting Tables' progression layer (1.1.0): Enchanting + Crafting XP per piece unmade, scaled by the piece, the ritual's length here (a 2.5 stretch on the paced beats and a 15-second floor) with a pace ladder over the Enchanting tree's main line (what the tree pays for every point spent), and the add-on tables below. The greater file is a `Parent` child that changes its target and adds the queue's own talent table |
 | `Server/RpgStations/Extensions/DisenchantingProficiency.json`, `DisenchantingGreaterProficiency.json` | A gentler ladder over the disenchanter's gear (the Disenchanting Proficiency stat) that multiplies RPG Stations' own, since the Enchanting tree does much of the speeding up here. The greater file is a `Parent` child that changes only its target |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Essence_Pay.json`, `_Salvage_Extras.json`, `_Void_Finds.json`, `_Voidheart.json` | Extra Essence of Life sized by luck within the piece's band, the occasional extra unit of salvage (for the Enchanting tree and for luck), and the luck-weighted Essence of the Void and Voidheart finds, one find per table so a talent can roll it again |
-| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Talents.json`, `Mmo_Disenchant_Queue_Talents.json` | What the Crafting and Enchanting trees' table talents pay: Essence of Life, the finds rolled again, the bonuses for enhanced, high-level, rare, worn and queued pieces, and a share of one more unit of the salvage that never reaches a whole one, so unmaking always loses materials |
+| `Server/ZiggfreedCommon/Lootables/Mmo_Disenchant_Talents.json`, `Mmo_Disenchant_Queue_Talents.json` | What the Crafting and Enchanting trees' table talents pay: Essence of Life (Crafting's main line among it), Greater Essence of Life (worth a hundred Essence of Life, so its chances are sized at that rate), the finds rolled again, the bonuses for enhanced, high-level, rare, worn and queued pieces, and a small share of one more unit of the salvage that never reaches a whole one, so unmaking always loses materials |
 | `Server/ZiggfreedCommon/Lootables/Disenchant_Kit.json`, `DisenchantTrophy.json` | Same-id replacements of RPG Stations' own kit and grimoire tables, luck-weighted |
+| `Server/ZiggfreedCommon/Lootables/Disenchant_Essence.json` | Same-id replacement of RPG Stations' own base Essence of Life wage: the jar's ladder unchanged, plus the two Enchanting trades on it (Rite of Purity stops it, Purist pays it again on half of all rituals) |
 | `Server/ZiggfreedCommon/Lootables/Mmo_Enchanter_Rites.json`, `Mmo_Enchanter_Threads.json` | What Orrin's daily and three-hourly order pay when you collect them |
 | `Server/Item/Items/RPG_Station_Disenchanting_Table.json`, `RPG_Station_Disenchanting_Table_Greater.json` | The two table blocks (SHARED ids with RPG Stations' own, overridden wholesale with no crafting recipe, so the questline hands them out) |
 | `Server/Item/Items/RPG_Armor_Disenchanter_{Head,Chest,Hands,Legs}.json`, `RPG_Weapon_Spellbook_Grimoire_Disenchanter.json` | The disenchanter's kit and the Disenchanter's Grimoire (SHARED ids with RPG Stations' own), each adding Enchanting luck and Enchanting XP to the jar item |
@@ -190,7 +195,8 @@ Everything the store page says an owner can retune is plain content in the zip, 
   `Server/ZiggfreedCommon/Lootables/SawmillOutputLadders.json`
 - What the skill trees' station talents pay: `Mmo_Sawmill_Talents.json` (with `Mmo_Sawmill_Quarter_Saw.json`,
   `_Sap_Tap.json` and `_Second_Shift.json`) for the mill and `Mmo_Disenchant_Talents.json` (with
-  `Mmo_Disenchant_Queue_Talents.json`) for the tables, beside the other lootables
+  `Mmo_Disenchant_Queue_Talents.json`) for the tables, beside the other lootables; the tables' base
+  Essence of Life wage: `Disenchant_Essence.json` beside them
 - Trophy chase odds: `Server/ZiggfreedCommon/Lootables/SawmillTrophy.json`
 - XP per cycle: `Server/RpgStations/Extensions/SawmillProgression.json`
 - Marn's quests and what they pay: `Server/ZiggfreedCommon/Quests/MMOSkillTree/Stations/`.
