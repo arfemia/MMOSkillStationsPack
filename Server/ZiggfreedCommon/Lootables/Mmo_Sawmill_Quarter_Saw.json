@@ -1,15 +1,38 @@
 {
-  "$Comment": "Quarter Saw's second find roll: named only by Extensions/SawmillProgression_Quarter_Saw.json, so it rolls only at the Quarter Saw variant of the Sawmill, on every cycle. Each roll grants a Lootable reward naming one find band (SawmillLuckFinds, SawmillDeepFinds) with Trigger Cycle, so the band rolls again against this same cycle: the same score, the Woodcutting 30 gate on the deep band, and every technique gate inside the bands. Pair it with the variant's slower cycle (Work.CycleMs) when retuning.",
+  "$Comment": "Quarter Saw's second find roll (a Crafting talent, a face of the Mill Technique): named by Extensions/SawmillProgression.json on the Mill's one action and rolled on every cycle, each roll gated on the talent's own record (ziggfreedcommon:track_pick, Min 1), so it rolls only for the talent's holder, whose cycle the same extension's Pace makes half again as long. Each roll grants a Lootable reward naming one find band (SawmillLuckFinds, SawmillDeepFinds) beside its Treasure Cut twin (Mmo_Sawmill_Treasure_Luck, Mmo_Sawmill_Treasure_Deep) with Trigger Cycle, so the band rolls again against this same cycle: the same score, the Woodcutting 30 gate on the deep band, and every Mill Trade gate inside the bands, so a player gets the band that is theirs. Mill Practice (a Crafting talent) makes the second roll likelier the way the tree's find talents do: a tenth of its holder's cycles a rank, both bands roll a third time. Pair it with the Pace ladder when retuning.",
   "Rolls": [
     {
       "$Comment": "The everyday band again.",
       "Trigger": "Cycle",
-      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "SawmillLuckFinds", "Trigger": "Cycle" } } ] }
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Quarter_Saw", "Min": 1 } ],
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "SawmillLuckFinds", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Sawmill_Treasure_Luck", "Trigger": "Cycle" } }
+      ] }
     },
     {
       "$Comment": "The deep band again.",
       "Trigger": "Cycle",
-      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "SawmillDeepFinds", "Trigger": "Cycle" } } ] }
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Quarter_Saw", "Min": 1 } ],
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "SawmillDeepFinds", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Sawmill_Treasure_Deep", "Trigger": "Cycle" } }
+      ] }
+    },
+    {
+      "$Comment": "Mill Practice: ten percent of cycles a rank (twenty at both ranks), both bands roll a third time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Quarter_Saw", "Min": 1 } ],
+      "Chance": {
+        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Mill_Practice", "Weight": 10.0 } ],
+        "Clamp": { "Max": 100 }
+      },
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "SawmillLuckFinds", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Sawmill_Treasure_Luck", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "SawmillDeepFinds", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Sawmill_Treasure_Deep", "Trigger": "Cycle" } }
+      ] }
     }
   ]
 }

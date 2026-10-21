@@ -1,0 +1,18 @@
+{
+  "$Comment": "The jar's own flat Voidheart roll (RPG Stations' Disenchant_Void carries it beside the Void essence), moved into a table of its own because this pack's same-id Disenchant_Void now holds only the Void essence, gated for Kit Rite; the Voidheart is not a Void find, so Kit Rite keeps it. Unchanged from the jar: gear of item level 45 and up, a flat 0.8 percent, one heart. Named by Extensions/DisenchantingProgression.json (and its greater child), and rolled again by Treasure Hunter from Mmo_Disenchant_Seekers. Its luck-weighted sibling is Mmo_Disenchant_Voidheart. A jar retune of the Voidheart roll means copying it here again.",
+  "Rolls": [
+    {
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 45 }
+      ],
+      "Chance": {
+        "Base": 0.8
+      },
+      "Grants": {
+        "Items": [ { "Item": "Ingredient_Voidheart", "Count": 1 } ]
+      },
+      "Cue": "Cue:Voidheart"
+    }
+  ]
+}

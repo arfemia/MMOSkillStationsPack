@@ -1,0 +1,30 @@
+{
+  "$Comment": "The Enchanting trades that pay the base Essence wage AGAIN at both Disenchanting Tables, each read off the talent's own record (ziggfreedcommon:track_pick) and gated on it, so nobody without the talent rolls here: Purist (the Essence Trade) on half of all rituals, Rite of Plenty (the Rite) on half of them and a tenth more a rank of Rite Practice, and Essence Only (the Essence Trade) on two in five. Each grants a Lootable reward naming the jar's wage table, Disenchant_Essence (this pack's same-id copy), against this same ritual, so the second wage is the first one's size and keeps its gate: a rite that gives the wage up gives up its repeats too. Rite of Plenty and Essence Only also put the essence-only route ahead of the salvage rows (Extensions/DisenchantingProgression.json, Recipe.Fallback.EssenceOnly.PreferWhen), so their holder gives up the return for the essence. Named by Extensions/DisenchantingProgression.json (and its greater child). Every chance is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Purist: half of all rituals pay the base wage a second time, the price being every Greater Essence roll (Mmo_Disenchant_Greater_Essence turns itself off for Purist). The tree never lets Rite of Purity be held beside it.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Purist", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Essence", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Rite of Plenty: half again the Essence of Life, as the base wage paid a second time on half of all rituals, a tenth more of them a rank of Rite Practice (60, 70).",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Plenty", "Min": 1 } ],
+      "Chance": {
+        "Base": 50.0,
+        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Rite_Practice", "Weight": 10.0 } ],
+        "Clamp": { "Max": 100 }
+      },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Essence", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Essence Only: two rituals in five pay the base wage a second time, for a ritual that gives no salvage return at all.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Essence_Only", "Min": 1 } ],
+      "Chance": { "Base": 40.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Essence", "Trigger": "Cycle" } } ] }
+    }
+  ]
+}

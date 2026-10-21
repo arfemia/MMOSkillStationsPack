@@ -1,0 +1,42 @@
+{
+  "$Comment": "Mmo_Disenchant_Seekers' Void Rite and Treasure Hunter rolls for the one find only the Greater Disenchanting Table has, its extra Void essence chance (Mmo_Disenchant_Greater_Void): named by Extensions/DisenchantingGreaterProgression.json alone, so the lesser table never rolls it. Each roll is gated on the talent's own record (ziggfreedcommon:track_pick), the Void Rite thresholds and their Seeker's Practice steps matching Mmo_Disenchant_Seekers exactly; retune the two together.",
+  "Rolls": [
+    {
+      "$Comment": "Void Rite before Seeker's Practice: from item level 30.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Void_Rite", "Min": 1 },
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Max": 0 },
+        { "Factor": "hytale:item_level", "Min": 30 }
+      ],
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Greater_Void", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Void Rite at Seeker's Practice rank 1: from item level 25.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Void_Rite", "Min": 1 },
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Min": 1, "Max": 1 },
+        { "Factor": "hytale:item_level", "Min": 25 }
+      ],
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Greater_Void", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Void Rite at Seeker's Practice rank 2: from item level 20.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Void_Rite", "Min": 1 },
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Min": 2 },
+        { "Factor": "hytale:item_level", "Min": 20 }
+      ],
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Greater_Void", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the greater table's Void essence again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Greater_Void", "Trigger": "Cycle" } } ] }
+    }
+  ]
+}

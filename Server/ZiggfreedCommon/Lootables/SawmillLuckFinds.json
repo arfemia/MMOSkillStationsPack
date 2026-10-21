@@ -1,189 +1,34 @@
 {
-  "$Comment": "The sawmill's everyday find tiers (T1 and T2): what a lucky, experienced woodcutter shakes loose from a milled log, on top of the planks the cycle already made. Its sibling SawmillDeepFinds holds the deep tiers (T3 to T5) behind the Woodcutting 30 gate. Both are referenced from this pack's Extensions/SawmillProgression.json Bonus.Lootables beside SawmillOutputLadders and SawmillMasterworkBonus, each of which owns one concern and no more, and each band is a table of its own so a station stat can roll that band again by itself: Mmo_Sawmill_Talents rolls this one again for the everyday-find stat (Offcut Bin, Second Look) and In the Grain, and SawmillDeepFinds for the rarest-find stat (Rare Woods, Heart Seeker). A find is always a DIFFERENT item from the cycle's own product: how many planks a cycle makes lives end to end in the jar action's Recipe.Yield plus its own OutputItems rolls, and nothing here can multiply that number from a second file.\n\nSCORE. Both bands sum the SAME five weighted factors, so one score paces the whole ladder. Read the weights as two families: LUCK, which the tiers exist to reward, and the main lines, which keep a heavily geared newcomer from arriving at the top. Within each family the station's own skill counts full and the adjacent one counts half, matching the action's own XP split (WOODCUTTING 8.0, CRAFTING 4.0). The main lines are what the trees pay per point spent, never a level: GatherSpeed_Woodcutting (half a point a point spent, so 49.5 with the Woodcutting tree spent) and MMO_StationYield_CRAFTING (a quarter, so 24.75 with the Crafting tree spent), each at weight 1, which is what half a Woodcutting level and a quarter of a Crafting level paid before, about 74 points together with both trees spent.\n\nUNITS - the one trap in this file. hytale:stat returns the folded native MAX of the named channel, and the MMO luck channels store WHOLE PERCENT POINTS, so 25 points of Woodcutting luck read as 25 here, not 0.25. The mmoskilltree:station_luck convenience aggregate computes the very same luck sum but returns a FRACTION (its read divides by 100 exactly once), so swapping the luck leaves for that one id would silently shift every floor by a factor of 100 and this ladder would never fire again. The per-source channels are also the composable route: they weight each source independently, which the aggregate cannot, and composing the aggregate TOGETHER with any stat/MMO_Luck* leaf double-counts a player's luck (the MMO's own bridge hook warns on exactly that pairing).\n\nWHERE THE LUCK COMES FROM: on a server whose skills earn no tree points, the older skill trees' luck rewards (about 98 for Woodcutting, 111 for Crafting); everywhere, the drop-only Sawmiller's Hatchet carries +25 MMO_Luck_WOODCUTTING while held, the mastery loot multiplier mirrors onto the same MMO_Luck_<skill> channels for a point or two more, and gear or other packs write into MMO_Luck. Global MMO_Luck ships empty (only a truly global luck claim writes it) and is authored here so gear, potions and other packs compose for free.\n\nBANDING. The five tiers are spread across two tables rather than one apiece, and the reason is worth knowing before authoring your own ladder: Rolls evaluate INDEPENDENTLY, so every Roll whose gates pass pays out on the same cycle. One Roll per tier would hand a fully invested player all five drop tables at once. Grouping tiers as floors on a shared Ladder caps that, because floors are NOT cumulative - within a band the highest reached Min wins and only that floor's Grants and Presentation fire. Two bands therefore mean at most two tables per cycle (more only when a talent rolls a band again). Use a Roll boundary where you want a hard gate (the deep band's level Condition), and a floor boundary where you want tiers to be mutually exclusive.\n\nAll thresholds, weights and grants here are initial balance and retune freely without any engine change.\n\nTHE MILL TRADE. Two Crafting talents read off the talent's own record (ziggfreedcommon:track_pick) change this band: under Bulk Order it never rolls, and under Treasure Cut the two later rolls stand in for it, each floor paying the tier above it, the T3 the first floor reaches behind the deep band's Woodcutting 30 gate. A talent that rolls the band again (Mmo_Sawmill_Talents) reads the same gates.",
+  "$Comment": "The sawmill's everyday find tiers (T1 and T2): what a lucky, experienced woodcutter shakes loose from a milled log, on top of the planks the cycle already made. Its sibling SawmillDeepFinds holds the deep tiers (T3 to T5) behind the Woodcutting 30 gate. Both are referenced from this pack's Extensions/SawmillProgression.json Bonus.Lootables beside SawmillOutputLadders and SawmillMasterworkBonus, each of which owns one concern and no more, and each band is a table of its own so a station stat can roll that band again by itself: Mmo_Sawmill_Talents rolls this one again for the everyday-find stat (Offcut Bin, Second Look) and In the Grain, and SawmillDeepFinds for the rarest-find stat (Rare Woods, Heart Seeker). A find is always a DIFFERENT item from the cycle's own product: how many planks a cycle makes lives end to end in the jar action's Recipe.Yield plus its own OutputItems rolls, and nothing here can multiply that number from a second file.\n\nSCORE. Both bands sum the SAME five weighted factors, so one score paces the whole ladder. Read the weights as two families: LUCK, which the tiers exist to reward, and the main lines, which keep a heavily geared newcomer from arriving at the top. Within each family the station's own skill counts full and the adjacent one counts half, matching the action's own XP split (WOODCUTTING 8.0, CRAFTING 4.0). The main lines are what the trees pay per point spent, never a level: GatherSpeed_Woodcutting (half a point a point spent, so 49.5 with the Woodcutting tree spent) and MMO_StationYield_CRAFTING (a quarter, so 24.75 with the Crafting tree spent), each at weight 1, which is what half a Woodcutting level and a quarter of a Crafting level paid before, about 74 points together with both trees spent.\n\nUNITS - the one trap in this file. hytale:stat returns the folded native MAX of the named channel, and the MMO luck channels store WHOLE PERCENT POINTS, so 25 points of Woodcutting luck read as 25 here, not 0.25. The mmoskilltree:station_luck convenience aggregate computes the very same luck sum but returns a FRACTION (its read divides by 100 exactly once), so swapping the luck leaves for that one id would silently shift every floor by a factor of 100 and this ladder would never fire again. The per-source channels are also the composable route: they weight each source independently, which the aggregate cannot, and composing the aggregate TOGETHER with any stat/MMO_Luck* leaf double-counts a player's luck (the MMO's own bridge hook warns on exactly that pairing).\n\nWHERE THE LUCK COMES FROM: on a server whose skills earn no tree points, the older skill trees' luck rewards (about 98 for Woodcutting, 111 for Crafting); everywhere, the drop-only Sawmiller's Hatchet carries +25 MMO_Luck_WOODCUTTING while held, the mastery loot multiplier mirrors onto the same MMO_Luck_<skill> channels for a point or two more, and gear or other packs write into MMO_Luck. Global MMO_Luck ships empty (only a truly global luck claim writes it) and is authored here so gear, potions and other packs compose for free.\n\nBANDING. The five tiers are spread across two tables rather than one apiece, and the reason is worth knowing before authoring your own ladder: Rolls evaluate INDEPENDENTLY, so every Roll whose gates pass pays out on the same cycle. One Roll per tier would hand a fully invested player all five drop tables at once. Grouping tiers as floors on a shared Ladder caps that, because floors are NOT cumulative - within a band the highest reached Min wins and only that floor's Grants and Presentation fire. Two bands therefore mean at most two tables per cycle (more only when a talent rolls a band again). Use a Roll boundary where you want a hard gate (the deep band's level Condition), and a floor boundary where you want tiers to be mutually exclusive.\n\nAll thresholds, weights and grants here are initial balance and retune freely without any engine change.\n\nTHE MILL TRADE. Two Crafting talents read off the talent's own record (ziggfreedcommon:track_pick) turn this band off for their holder: under Bulk Order it never rolls, and under Treasure Cut its twin Mmo_Sawmill_Treasure_Luck rolls instead, each floor paying the tier above. That is this table's Requires: its two Not groups shut the band only for a player holding one of the two, so a player without either, and a server with Crafting switched off or no Crafting track at all (where neither group can pass), rolls the band as always. A talent that rolls the band again (Mmo_Sawmill_Talents, Mmo_Sawmill_Quarter_Saw) names this table and its twin side by side, so each player gets the one that is theirs.",
+  "Requires": {
+    "Not": [
+      { "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Bulk_Order", "Min": 1 } ] },
+      { "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Treasure_Cut", "Min": 1 } ] }
+    ]
+  },
   "Rolls": [
     {
       "$Comment": "Band A, the everyday tiers, ungated: every worker is eligible from their first cycle and the score alone decides whether anything is found. 50 points is a real luck investment, or a lighter one once the main lines are contributing, so T1 is the first thing the ladder pays for; 100 is where a committed woodcutter with luck behind both trees lands. Neither floor is reachable by the main lines alone (both trees spent contribute about 74), so luck investment is genuinely required to open even T1 - the deliberate reason this band carries no level Conditions at all.",
       "Trigger": "Cycle",
-      "Conditions": [
-        {
-          "Factor": "ziggfreedcommon:track_pick",
-          "Param": "Crafting/Mmo_Crafting_Bulk_Order",
-          "Max": 0
-        },
-        {
-          "Factor": "ziggfreedcommon:track_pick",
-          "Param": "Crafting/Mmo_Crafting_Treasure_Cut",
-          "Max": 0
-        }
-      ],
       "Ladder": {
         "Factors": [
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_CRAFTING",
-            "Weight": 0.5
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "GatherSpeed_Woodcutting",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_StationYield_CRAFTING",
-            "Weight": 1.0
-          }
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
+          { "Factor": "hytale:stat", "Param": "GatherSpeed_Woodcutting", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
         ],
         "Floors": [
           {
             "$Comment": "T1, the base find: OFFCUTS only, one pull from the shared byproduct list, with no life essence and no celebration. The first tier is a pleasant surprise rather than an event, and saving both the essence and the fanfare for T2 upward is what makes the next rung read as an arrival.",
             "Min": 50,
-            "Grants": {
-              "DropLists": [
-                "MMO_Station_Sawmill_T1"
-              ]
-            }
+            "Grants": { "DropLists": [ "MMO_Station_Sawmill_T1" ] }
           },
           {
             "$Comment": "T2, the everyday-worker tier: the same offcuts plus the first life essence, and the first celebration. The cue is judged against this floor's own Grants, so a cycle whose table pays offcuts but rolls no essence still chimes, while one that pays nothing at all stays silent rather than celebrating an empty hand.",
             "Min": 100,
-            "Grants": {
-              "DropLists": [
-                "MMO_Station_Sawmill_T2"
-              ]
-            },
+            "Grants": { "DropLists": [ "MMO_Station_Sawmill_T2" ] },
             "Cue": "rare_find"
-          }
-        ]
-      }
-    },
-    {
-      "$Comment": "Treasure Cut (a Crafting talent, the Mill Trade) below Woodcutting 30: the everyday band one floor higher as far as T2, its one floor paying T2 and nothing past it, since T3 keeps the Woodcutting 30 gate the deep band holds. It reads the same score as the band above, which is off for a Treasure Cut player.",
-      "Trigger": "Cycle",
-      "Conditions": [
-        {
-          "Factor": "ziggfreedcommon:track_pick",
-          "Param": "Crafting/Mmo_Crafting_Treasure_Cut",
-          "Min": 1
-        },
-        {
-          "Factor": "hytale:stat",
-          "Param": "MMO_Level_WOODCUTTING",
-          "Max": 29
-        }
-      ],
-      "Ladder": {
-        "Factors": [
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_CRAFTING",
-            "Weight": 0.5
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "GatherSpeed_Woodcutting",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_StationYield_CRAFTING",
-            "Weight": 1.0
-          }
-        ],
-        "Floors": [
-          {
-            "Min": 50,
-            "Grants": {
-              "DropLists": [
-                "MMO_Station_Sawmill_T2"
-              ]
-            },
-            "Cue": "rare_find"
-          }
-        ]
-      }
-    },
-    {
-      "$Comment": "Treasure Cut (a Crafting talent, the Mill Trade) from Woodcutting 30: the everyday band one floor higher, the first floor paying T2 and the second T3, behind the same Woodcutting 30 gate the deep band keeps. It reads the same score as the band above, which is off for a Treasure Cut player.",
-      "Trigger": "Cycle",
-      "Conditions": [
-        {
-          "Factor": "ziggfreedcommon:track_pick",
-          "Param": "Crafting/Mmo_Crafting_Treasure_Cut",
-          "Min": 1
-        },
-        {
-          "Factor": "hytale:stat",
-          "Param": "MMO_Level_WOODCUTTING",
-          "Min": 30
-        }
-      ],
-      "Ladder": {
-        "Factors": [
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck_CRAFTING",
-            "Weight": 0.5
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "GatherSpeed_Woodcutting",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_StationYield_CRAFTING",
-            "Weight": 1.0
-          }
-        ],
-        "Floors": [
-          {
-            "Min": 50,
-            "Grants": {
-              "DropLists": [
-                "MMO_Station_Sawmill_T2"
-              ]
-            },
-            "Cue": "rare_find"
-          },
-          {
-            "Min": 100,
-            "Grants": {
-              "DropLists": [
-                "MMO_Station_Sawmill_T3"
-              ]
-            },
-            "Cue": "cue:find_deep"
           }
         ]
       }

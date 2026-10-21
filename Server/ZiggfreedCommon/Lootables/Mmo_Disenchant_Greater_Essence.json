@@ -1,0 +1,58 @@
+{
+  "$Comment": "The plain Greater Essence of Life roll at both Disenchanting Tables, kept in a table of its own so two Enchanting talents can shut it through this table's Requires: Purist (the Essence Trade) gives Greater Essence up for its second wage, and Rite of Purity (the Rite) rolls its own, four times as likely, in Mmo_Disenchant_Talents. Each Not names only that talent's holder, so everyone else, and a server with Enchanting switched off or no Enchanting track at all, rolls it as always. Named by Extensions/DisenchantingProgression.json (and its greater child). Sized at a hundred Essence of Life to one: see Mmo_Disenchant_Talents.",
+  "Requires": {
+    "Not": [
+      {
+        "Factors": [
+          {
+            "Factor": "ziggfreedcommon:track_pick",
+            "Param": "Enchanting/Mmo_Enchanting_Purist",
+            "Min": 1
+          }
+        ]
+      },
+      {
+        "Factors": [
+          {
+            "Factor": "ziggfreedcommon:track_pick",
+            "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Purity",
+            "Min": 1
+          }
+        ]
+      }
+    ]
+  },
+  "Rolls": [
+    {
+      "$Comment": "Greater Essence of Life: the Greater Essence stat (Greater Draw) is the chance of one Concentrated Essence of Life, on gear of item level 20 and up.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_level",
+          "Min": 20
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Essence_Greater",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence_Concentrated",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Cue:Kit_Find"
+    }
+  ]
+}

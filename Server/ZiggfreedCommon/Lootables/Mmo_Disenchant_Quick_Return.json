@@ -1,0 +1,18 @@
+{
+  "$Comment": "What a Quick Unmaking ritual pays beyond its return (a Crafting talent, a face of the Table Technique): rolled only by the Payout_Quick beat Extensions/DisenchantingProgression.json inserts, which runs in place of the jar's Payout beat for that talent's holder alone, so the ritual's usual Bonus (the Essence wage, the finds, the talents) never rolls for them. Table Practice (a Crafting talent) brings two of those back: at rank 1 the salvage extras roll (Mmo_Disenchant_Salvage_Extras), at rank 2 also the base Essence wage at half, as the wage paid on half of all rituals (Disenchant_Essence, the jar's table, keeping its own gate). Each roll grants a Lootable reward naming the table with Trigger Cycle, judged against this same ritual. Every chance is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Table Practice rank 1 and up: the salvage extras roll.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Table_Practice", "Min": 1 } ],
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Salvage_Extras", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Table Practice rank 2: the base Essence wage on half of all rituals.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Table_Practice", "Min": 2 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Essence", "Trigger": "Cycle" } } ] }
+    }
+  ]
+}

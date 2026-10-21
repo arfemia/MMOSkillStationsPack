@@ -1,0 +1,189 @@
+{
+  "$Comment": "Bulk Order (a Crafting talent, the Mill Trade): SawmillOutputLadders' two plank ladders paid a second time, so its holder's planks come twice over. Each roll is gated on the talent's own record (ziggfreedcommon:track_pick, Min 1), so it pays nobody else. Named by Extensions/SawmillProgression.json beside SawmillOutputLadders; retune each copy with the ladder it repeats. Bulk Order's price, the find tiers that never roll, is the Requires on SawmillLuckFinds, SawmillDeepFinds and Mmo_Sawmill_Find_Essence.",
+  "Rolls": [
+    {
+      "$Comment": "Bulk Order (a Crafting talent, the Mill Trade): the ladder above paid a second time, so its planks come twice over. Retune it with that ladder.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Bulk_Order",
+          "Min": 1
+        }
+      ],
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "GatherSpeed_Woodcutting",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 12,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 24.5,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 37,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "2"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 49.5,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "3"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 62,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "4"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$Comment": "Bulk Order (a Crafting talent, the Mill Trade): the ladder above paid a second time, so its planks come twice over. Retune it with that ladder.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Crafting/Mmo_Crafting_Bulk_Order",
+          "Min": 1
+        }
+      ],
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 30,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.25"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 60,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "0.5"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 90,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1.0"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 120,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "1.5"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "Min": 160,
+            "Grants": {
+              "Rewards": [
+                {
+                  "Kind": "rpgstations:output_items",
+                  "Params": {
+                    "Count": "2.0"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

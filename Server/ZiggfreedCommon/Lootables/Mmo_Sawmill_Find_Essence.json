@@ -1,0 +1,76 @@
+{
+  "$Comment": "The Essence of Life half of the Crafting tree's find stats at the Sawmill: what Mmo_Sawmill_Talents' finds pay in essence, kept in a table of its own so Bulk Order (a Crafting talent, the Mill Trade, whose holder's find tiers never roll) can shut it through this table's Requires. The Not names only that talent's holder, so a player without it, and a server with Crafting switched off or no Crafting track at all, is paid as always. Named by Extensions/SawmillProgression.json.",
+  "Requires": {
+    "Not": [
+      {
+        "Factors": [
+          {
+            "Factor": "ziggfreedcommon:track_pick",
+            "Param": "Crafting/Mmo_Crafting_Bulk_Order",
+            "Min": 1
+          }
+        ]
+      }
+    ]
+  },
+  "Rolls": [
+    {
+      "$Comment": "Essence of Life: the station Essence stat (MMO_Station_Essence: Seasoned Wood, Second Wage) is the chance of one more Essence of Life, paid only once the worker's find score reaches the first tier that pays essence (T2, 100 points, the same five factors as the find bands), so a worker whose finds pay no essence yet gets none here either.",
+      "Trigger": "Cycle",
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Essence",
+            "Weight": 1.0
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Ladder": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_WOODCUTTING",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Luck_CRAFTING",
+            "Weight": 0.5
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "GatherSpeed_Woodcutting",
+            "Weight": 1.0
+          },
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_StationYield_CRAFTING",
+            "Weight": 1.0
+          }
+        ],
+        "Floors": [
+          {
+            "Min": 100,
+            "Grants": {
+              "Items": [
+                {
+                  "Item": "Ingredient_Life_Essence",
+                  "Count": 1
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

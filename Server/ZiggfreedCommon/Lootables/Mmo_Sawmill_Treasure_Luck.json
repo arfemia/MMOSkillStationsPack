@@ -1,0 +1,46 @@
+{
+  "$Comment": "Treasure Cut's everyday band (a Crafting talent, the Mill Trade): SawmillLuckFinds one floor higher, for the talent's holder only. Each roll is gated on the talent's own record (ziggfreedcommon:track_pick, Min 1), so it rolls for nobody else, and SawmillLuckFinds turns itself off for the same player, so the two never both pay. Named by Extensions/SawmillProgression.json beside SawmillLuckFinds, and named again beside it by every roll that rolls the everyday band a second time (Mmo_Sawmill_Talents, Mmo_Sawmill_Quarter_Saw). It reads the very same five-factor score as SawmillLuckFinds (see that file for the score, its units and the banding); retune the two together.",
+  "Rolls": [
+    {
+      "$Comment": "Below Woodcutting 30: the everyday band's one floor paying T2 and nothing past it, since T3 keeps the Woodcutting 30 gate the deep band holds.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Treasure_Cut", "Min": 1 },
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Max": 29 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
+          { "Factor": "hytale:stat", "Param": "GatherSpeed_Woodcutting", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 50, "Grants": { "DropLists": [ "MMO_Station_Sawmill_T2" ] }, "Cue": "rare_find" }
+        ]
+      }
+    },
+    {
+      "$Comment": "From Woodcutting 30: the first floor paying T2 and the second T3, behind the same Woodcutting 30 gate the deep band keeps.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Treasure_Cut", "Min": 1 },
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 30 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
+          { "Factor": "hytale:stat", "Param": "GatherSpeed_Woodcutting", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 50, "Grants": { "DropLists": [ "MMO_Station_Sawmill_T2" ] }, "Cue": "rare_find" },
+          { "Min": 100, "Grants": { "DropLists": [ "MMO_Station_Sawmill_T3" ] }, "Cue": "cue:find_deep" }
+        ]
+      }
+    }
+  ]
+}

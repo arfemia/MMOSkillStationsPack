@@ -1,0 +1,25 @@
+{
+  "$Comment": "The Greater Disenchanting Table's extra Void essence chance, the jar's own second roll of Disenchant_Greater_Bonus unchanged (gear of item level 20 and up, 2 percent plus 0.3 per item level under a 20 percent ceiling, one essence), moved into a table of its own so it can carry a Requires: Kit Rite (an Enchanting talent, a face of the Seeker's Rite, read off the talent's own record, ziggfreedcommon:track_pick) trades the Void finds away, and the Not shuts this table for that talent's holder alone, so everyone else, and a server with Enchanting switched off or no Enchanting track at all, is paid as always. Named by Extensions/DisenchantingGreaterProgression.json alone, so the lesser table never rolls it; Void Rite and Treasure Hunter roll it again from Mmo_Disenchant_Greater_Rites. A jar retune of the roll means copying it here again.",
+  "Requires": {
+    "Not": [
+      { "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Kit_Rite", "Min": 1 } ] }
+    ]
+  },
+  "Rolls": [
+    {
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 20 }
+      ],
+      "Chance": {
+        "Base": 2.0,
+        "Factors": [ { "Factor": "hytale:item_level", "Weight": 0.3 } ],
+        "Clamp": { "Max": 20 }
+      },
+      "Grants": {
+        "Items": [ { "Item": "Ingredient_Void_Essence", "Count": 1 } ]
+      },
+      "Cue": "Cue:Void_Find"
+    }
+  ]
+}

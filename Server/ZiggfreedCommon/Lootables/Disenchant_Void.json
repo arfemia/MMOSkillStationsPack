@@ -1,0 +1,25 @@
+{
+  "$Comment": "The Disenchanting Tables' Void essence find: a same-id copy of RPG Stations' own Disenchant_Void (both jar actions already list it, so no extension names it), carrying the jar's Void essence roll unchanged (gear of item level 20 and up, 2 percent plus 0.4 per item level under a 30 ceiling, one or two essence; a jar retune of it means copying it here again). The jar's flat Voidheart roll, which shares the jar's file, lives in Mmo_Disenchant_Voidheart_Base instead, so this table can carry a Requires of its own: Kit Rite (an Enchanting talent, a face of the Seeker's Rite, read off the talent's own record, ziggfreedcommon:track_pick) trades the Void finds away for a second roll of the kit, and the Not shuts this table for that talent's holder alone, so everyone else, and a server with Enchanting switched off or no Enchanting track at all, is paid as always. Void Rite and Treasure Hunter roll it again from Mmo_Disenchant_Seekers.\n\nEvery chance is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Requires": {
+    "Not": [
+      { "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Kit_Rite", "Min": 1 } ] }
+    ]
+  },
+  "Rolls": [
+    {
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "hytale:item_level", "Min": 20 }
+      ],
+      "Chance": {
+        "Base": 2.0,
+        "Factors": [ { "Factor": "hytale:item_level", "Weight": 0.4 } ],
+        "Clamp": { "Max": 30 }
+      },
+      "Grants": {
+        "Items": [ { "Item": "Ingredient_Void_Essence", "Count": 1, "CountMax": 2 } ]
+      },
+      "Cue": "Cue:Void_Find"
+    }
+  ]
+}

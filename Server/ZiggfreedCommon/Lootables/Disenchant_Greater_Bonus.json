@@ -1,0 +1,20 @@
+{
+  "$Comment": "What the Greater Disenchanting Table pays over the lesser one, essence half: a same-id copy of RPG Stations' own Disenchant_Greater_Bonus (the jar's Disenchant_Greater action already lists it, so no extension names it), carrying the jar's Life essence ladder unchanged (item level at 1, quality at 5: 1 more for any piece, 2 more from about a cobalt piece up, 3 more from a mithril piece up; a jar retune of it means copying it here again). The jar's second roll, the greater table's extra Void essence chance, lives in Mmo_Disenchant_Greater_Void instead, so Kit Rite can shut it there without touching this essence.",
+  "Rolls": [
+    {
+      "Trigger": "Cycle",
+      "Expected": true,
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:item_level", "Weight": 1.0 },
+          { "Factor": "hytale:item_quality", "Weight": 5.0 }
+        ],
+        "Floors": [
+          { "Min": 0, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 1 } ] } },
+          { "Min": 45, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 2 } ] } },
+          { "Min": 70, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 3 } ] } }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$Comment": "Treasure Cut's deep band (a Crafting talent, the Mill Trade): SawmillDeepFinds one floor higher, T3's floor paying T4 and T4's paying T5, the top, for the talent's holder only. The roll is gated on the talent's own record (ziggfreedcommon:track_pick, Min 1) and on the deep band's Woodcutting 30, and SawmillDeepFinds turns itself off for the same player, so the two never both pay. Named by Extensions/SawmillProgression.json beside SawmillDeepFinds, and again beside it by every roll that rolls the deep band a second time (Mmo_Sawmill_Talents, Mmo_Sawmill_Quarter_Saw). It reads the same five-factor score; retune it with SawmillDeepFinds.",
+  "Rolls": [
+    {
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Treasure_Cut", "Min": 1 },
+        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 30 }
+      ],
+      "Ladder": {
+        "Factors": [
+          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
+          { "Factor": "hytale:stat", "Param": "GatherSpeed_Woodcutting", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
+        ],
+        "Floors": [
+          { "Min": 150, "Grants": { "DropLists": [ "MMO_Station_Sawmill_T4" ] }, "Cue": "cue:find_deep" },
+          { "Min": 200, "Grants": { "DropLists": [ "MMO_Station_Sawmill_T5" ] }, "Cue": "cue:find_apex" }
+        ]
+      }
+    }
+  ]
+}

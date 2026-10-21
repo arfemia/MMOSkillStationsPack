@@ -1,5 +1,5 @@
 {
-  "$Comment": "What the Crafting and Enchanting trees' station stats pay at both Disenchanting Tables. Named by Extensions/DisenchantingProgression.json (and its greater child) and rolled once per ritual at the Payout beat. Each roll reads the MMO's station stats (Server/Entity/Stats/MMO_Station*.json in the MMO jar, each file saying what one point does) and nothing else: every stat is whole percent points read as a Chance, so 25 points is one ritual in four. A talent, gear carrying the stat or a buff all count the same, and with none of them every roll here reads 0 and pays nothing.\n\nTHE RETURN SHARE AND THE GUARDRAIL. Unmaking crafted gear must always lose materials: on the tightest pieces (two bolts in, one back) there is one unit of room, and Mmo_Disenchant_Salvage_Extras already pays up to three quarters of it. Every rpgstations:output_items a ritual grants sums before ONE resolution (the whole part lands, the fraction is the chance of one more), so a talent that paid a whole unit would stack on that three quarters and could hand back three for two. So the stats that add more of the return's own material (Metal Reclaim's MMO_Station_Return at full weight, and the everyday-find stat MMO_Station_Find at a tenth) share ONE slot here, read as a SHARE of one more, never a whole unit: their sum on a Ladder, each point a hundredth of a unit, held at 0.10 by the top floor, behind the same item level 15 gate. With the extras the most a ritual adds is 0.85 of a unit, under the one unit of room, so even a fully invested, lucky enchanter gets back less than went in. The rest of the room is kept for the tables still to come; everything else a talent pays here is Essence of Life or a find, never more of the recipe's material. Raise the top floor only with the extras table lowered to match.\n\nGREATER ESSENCE. A Greater (Concentrated) Essence of Life is worth exactly a hundred Essence of Life: the game's Farmingbench turns one into the other both ways. So its chance is sized at that rate: a Greater Draw rank (MMO_Station_Essence_Greater, 0.2 points) pays a fifth of an Essence of Life a ritual on average, about what a Rich Essence rank's five points of Enchanting luck add through Mmo_Disenchant_Essence_Pay. Its rolls need gear of item level 20 and up, so a pile of cheap pieces never becomes a farm. The Essence Trade and the Rite (Enchanting faces read off the talent's own record, ziggfreedcommon:track_pick) change them: Purist turns them off, and Rite of Purity makes them four times as likely while the jar's base wage (Disenchant_Essence, this pack's same-id copy) stops.\n\nThe rolls that repeat a find grant a Lootable reward naming the table to roll again with Trigger Cycle: the nested table is judged against this same ritual (the same piece, its level, quality and wear), so a second roll keeps every gate the first had. Crafting's main line (MMO_StationYield_CRAFTING) and the conditional piece bonuses (the MMO_Station_Bonus_* stats) pay Essence of Life, and the bonuses a second void roll too, never more of the return, for the guardrail above.\n\nEvery number here is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "$Comment": "What the Crafting and Enchanting trees' station stats pay at both Disenchanting Tables. Named by Extensions/DisenchantingProgression.json (and its greater child) and rolled once per ritual at the Payout beat. Each roll reads the MMO's station stats (Server/Entity/Stats/MMO_Station*.json in the MMO jar, each file saying what one point does) and nothing else: every stat is whole percent points read as a Chance, so 25 points is one ritual in four. A talent, gear carrying the stat or a buff all count the same, and with none of them every roll here reads 0 and pays nothing.\n\nTHE RETURN SHARE AND THE GUARDRAIL. Unmaking crafted gear must always lose materials: on the tightest pieces (two bolts in, one back) there is one unit of room, and Mmo_Disenchant_Salvage_Extras already pays up to three quarters of it. Every rpgstations:output_items a ritual grants sums before ONE resolution (the whole part lands, the fraction is the chance of one more), so a talent that paid a whole unit would stack on that three quarters and could hand back three for two. So the stats that add more of the return's own material (Metal Reclaim's MMO_Station_Return at full weight, and the everyday-find stat MMO_Station_Find at a tenth) share ONE slot here, read as a SHARE of one more, never a whole unit: their sum on a Ladder, each point a hundredth of a unit, held at 0.10 by the top floor, behind the same item level 15 gate. With the extras the most a ritual adds is 0.85 of a unit, under the one unit of room, so even a fully invested, lucky enchanter gets back less than went in. The rest of the room is kept for the tables still to come; everything else a talent pays here is Essence of Life or a find, never more of the recipe's material. Raise the top floor only with the extras table lowered to match.\n\nGREATER ESSENCE. A Greater (Concentrated) Essence of Life is worth exactly a hundred Essence of Life: the game's Farmingbench turns one into the other both ways. So its chance is sized at that rate: a Greater Draw rank (MMO_Station_Essence_Greater, 0.2 points) pays a fifth of an Essence of Life a ritual on average, about what a Rich Essence rank's five points of Enchanting luck add through Mmo_Disenchant_Essence_Pay. Its rolls need gear of item level 20 and up, so a pile of cheap pieces never becomes a farm. The Essence Trade and the Rite (Enchanting faces read off the talent's own record, ziggfreedcommon:track_pick) change them: Purist turns them off, and Rite of Purity makes them four times as likely (a tenth likelier again a rank of Rite Practice) while the jar's base wage (Disenchant_Essence, this pack's same-id copy) stops. The plain roll lives in Mmo_Disenchant_Greater_Essence, whose Requires shuts it for those two talents' holders alone, and the rite's rolls here, gated on the rite itself, so a server with Enchanting switched off pays the plain roll as always.\n\nThe rolls that repeat a find grant a Lootable reward naming the table to roll again with Trigger Cycle: the nested table is judged against this same ritual (the same piece, its level, quality and wear), so a second roll keeps every gate the first had. Crafting's main line (MMO_StationYield_CRAFTING) and the conditional piece bonuses (the MMO_Station_Bonus_* stats) pay Essence of Life, and the bonuses a second void roll too, never more of the return, for the guardrail above.\n\nEvery number here is balance data; retune by shipping a same-id file from a pack loading after this one.",
   "Rolls": [
     {
       "$Comment": "The one return share: Metal Reclaim's stat at full weight and the everyday-find stat at a tenth, summed, each floor paying that many hundredths of one more of the return's main material into the ritual's one fractional sum, up to 0.10 at 10 points and past it, on gear of item level 15 and up (the same gate as the salvage extras). Each floor sits a hair under its mark, since the stat map keeps its numbers as floats.",
@@ -208,7 +208,7 @@
       }
     },
     {
-      "$Comment": "Greater Essence of Life: the Greater Essence stat (Greater Draw) is the chance of one Concentrated Essence of Life, on gear of item level 20 and up. Off under Purist and under Rite of Purity, which has the roll below instead.",
+      "$Comment": "Greater Essence of Life under Rite of Purity (an Enchanting talent, a face of the Rite), before Rite Practice: four times the chance, since the rite gives up the base wage (Disenchant_Essence) for it. The tree never lets Purist be held beside it.",
       "Trigger": "Cycle",
       "Conditions": [
         {
@@ -217,12 +217,12 @@
         },
         {
           "Factor": "ziggfreedcommon:track_pick",
-          "Param": "Enchanting/Mmo_Enchanting_Purist",
-          "Max": 0
+          "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Purity",
+          "Min": 1
         },
         {
           "Factor": "ziggfreedcommon:track_pick",
-          "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Purity",
+          "Param": "Enchanting/Mmo_Enchanting_Rite_Practice",
           "Max": 0
         }
       ],
@@ -231,7 +231,7 @@
           {
             "Factor": "hytale:stat",
             "Param": "MMO_Station_Essence_Greater",
-            "Weight": 1.0
+            "Weight": 4.0
           }
         ],
         "Clamp": {
@@ -249,7 +249,7 @@
       "Cue": "Cue:Kit_Find"
     },
     {
-      "$Comment": "Greater Essence of Life under Rite of Purity (an Enchanting talent, a face of the Rite): the same roll at four times the chance, since the rite gives up the jar's base wage (Disenchant_Essence) for it. The tree never lets Purist be held beside it.",
+      "$Comment": "Greater Essence of Life under Rite of Purity (an Enchanting talent, a face of the Rite), at Rite Practice rank 1: a tenth likelier again (4.4 times), since the rite gives up the base wage (Disenchant_Essence) for it. The tree never lets Purist be held beside it.",
       "Trigger": "Cycle",
       "Conditions": [
         {
@@ -260,6 +260,12 @@
           "Factor": "ziggfreedcommon:track_pick",
           "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Purity",
           "Min": 1
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Enchanting/Mmo_Enchanting_Rite_Practice",
+          "Min": 1,
+          "Max": 1
         }
       ],
       "Chance": {
@@ -267,7 +273,48 @@
           {
             "Factor": "hytale:stat",
             "Param": "MMO_Station_Essence_Greater",
-            "Weight": 4.0
+            "Weight": 4.4
+          }
+        ],
+        "Clamp": {
+          "Max": 100
+        }
+      },
+      "Grants": {
+        "Items": [
+          {
+            "Item": "Ingredient_Life_Essence_Concentrated",
+            "Count": 1
+          }
+        ]
+      },
+      "Cue": "Cue:Kit_Find"
+    },
+    {
+      "$Comment": "Greater Essence of Life under Rite of Purity (an Enchanting talent, a face of the Rite), at Rite Practice rank 2: a fifth likelier again (4.8 times), since the rite gives up the base wage (Disenchant_Essence) for it. The tree never lets Purist be held beside it.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        {
+          "Factor": "hytale:item_level",
+          "Min": 20
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Enchanting/Mmo_Enchanting_Rite_Of_Purity",
+          "Min": 1
+        },
+        {
+          "Factor": "ziggfreedcommon:track_pick",
+          "Param": "Enchanting/Mmo_Enchanting_Rite_Practice",
+          "Min": 2
+        }
+      ],
+      "Chance": {
+        "Factors": [
+          {
+            "Factor": "hytale:stat",
+            "Param": "MMO_Station_Essence_Greater",
+            "Weight": 4.8
           }
         ],
         "Clamp": {

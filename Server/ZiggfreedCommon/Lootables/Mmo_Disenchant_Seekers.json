@@ -1,0 +1,108 @@
+{
+  "$Comment": "The Enchanting tree's find techniques at both Disenchanting Tables, each read off the talent's own record (ziggfreedcommon:track_pick) and gated on it, so nobody without the talent rolls here. Each repeats a find by granting a Lootable reward naming the find's own table with Trigger Cycle, judged against this same ritual (the same piece, its level, quality and wear, and every gate the table carries), so a second roll can never pay what the first could not. One find per table is why these can name each one alone.\n\nVOID RITE (the Seeker's Rite): from item level 30 the Void finds (Disenchant_Void, this pack's same-id copy, and Mmo_Disenchant_Void_Finds) roll a second time, and Disenchant_Essence pays no base wage on that piece. Seeker's Practice lowers the threshold a rank (25, then 20): one roll per rank, so exactly one applies.\nKIT RITE (the Seeker's Rite): the disenchanter's kit (Disenchant_Kit) and the grimoire chase (DisenchantTrophy) roll a second time, and the Void finds never (both Void tables carry a Requires shutting them for this talent's holder). Seeker's Practice adds a quarter of rituals a rank (half at both ranks) on which they roll a third time.\nTREASURE HUNTER (the Seeker's Trade): every find table rolls again on half of all rituals, each on its own, so each find is half again as likely; the price, a salvage return half the size, is Extensions/DisenchantingProgression.json's Recipe.Yield.Ladder.\n\nThe greater table's own extra Void chance (Mmo_Disenchant_Greater_Void) gets the same Void Rite and Treasure Hunter rolls in Mmo_Disenchant_Greater_Rites, named only there. Named by Extensions/DisenchantingProgression.json (and its greater child). Every chance and threshold is balance data; retune by shipping a same-id file from a pack loading after this one.",
+  "Rolls": [
+    {
+      "$Comment": "Void Rite before Seeker's Practice: the Void finds again, on gear of item level 30 and up.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Void_Rite", "Min": 1 },
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Max": 0 },
+        { "Factor": "hytale:item_level", "Min": 30 }
+      ],
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Void", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Void_Finds", "Trigger": "Cycle" } }
+      ] }
+    },
+    {
+      "$Comment": "Void Rite at Seeker's Practice rank 1: from item level 25.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Void_Rite", "Min": 1 },
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Min": 1, "Max": 1 },
+        { "Factor": "hytale:item_level", "Min": 25 }
+      ],
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Void", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Void_Finds", "Trigger": "Cycle" } }
+      ] }
+    },
+    {
+      "$Comment": "Void Rite at Seeker's Practice rank 2: from item level 20.",
+      "Trigger": "Cycle",
+      "Conditions": [
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Void_Rite", "Min": 1 },
+        { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Min": 2 },
+        { "Factor": "hytale:item_level", "Min": 20 }
+      ],
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Void", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Void_Finds", "Trigger": "Cycle" } }
+      ] }
+    },
+    {
+      "$Comment": "Kit Rite: the kit and the grimoire again, on every ritual.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Kit_Rite", "Min": 1 } ],
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Kit", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "DisenchantTrophy", "Trigger": "Cycle" } }
+      ] }
+    },
+    {
+      "$Comment": "Seeker's Practice for Kit Rite: a quarter of rituals a rank, the kit and the grimoire a third time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Kit_Rite", "Min": 1 } ],
+      "Chance": {
+        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Seekers_Practice", "Weight": 25.0 } ],
+        "Clamp": { "Max": 100 }
+      },
+      "Grants": { "Rewards": [
+        { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Kit", "Trigger": "Cycle" } },
+        { "Kind": "Lootable", "Params": { "Lootable": "DisenchantTrophy", "Trigger": "Cycle" } }
+      ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the jar's Void essence again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Void", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the luck-weighted Void essence again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Void_Finds", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the jar's Voidheart again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Voidheart_Base", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the luck-weighted Voidheart again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Mmo_Disenchant_Voidheart", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the disenchanter's kit again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "Disenchant_Kit", "Trigger": "Cycle" } } ] }
+    },
+    {
+      "$Comment": "Treasure Hunter: the grimoire chase again, half the time.",
+      "Trigger": "Cycle",
+      "Conditions": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Enchanting/Mmo_Enchanting_Treasure_Hunter", "Min": 1 } ],
+      "Chance": { "Base": 50.0 },
+      "Grants": { "Rewards": [ { "Kind": "Lootable", "Params": { "Lootable": "DisenchantTrophy", "Trigger": "Cycle" } } ] }
+    }
+  ]
+}
