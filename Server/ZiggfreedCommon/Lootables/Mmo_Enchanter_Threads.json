@@ -14,8 +14,8 @@
     "ROLLS EVALUATE INDEPENDENTLY. The first roll is a ladder that always pays (Enchanting level and",
     "Enchanting luck summed into one score, the highest floor reached winning; both channels are",
     "whole points, never the mmoskilltree:station_luck fraction). The chance rolls after it are",
-    "luck-weighted: each reads Base at no luck, adds its Factors Weight per whole point of Enchanting",
-    "luck and global luck at equal weight, and stops at Clamp.Max however much is stacked on top.",
+    "luck-weighted: each reads Base at no luck, adds its Factors Weight per whole point of Enchanting's",
+    "station yield, and stops at Clamp.Max however much is stacked on top.",
     "Luck acts on the odds and never on the count, because a find is a yes or a no.",
     "",
     "Read the odds as a number of ORDERS rather than days: the order comes round several times a",
@@ -36,7 +36,7 @@
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_ENCHANTING",
+            "Param": "MMO_StationYield_ENCHANTING",
             "Weight": 1.0
           }
         ],
@@ -93,8 +93,7 @@
       "Chance": {
         "Base": 55.0,
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.1 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.1 }
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 0.1 }
         ],
         "Clamp": { "Max": 85.0 }
       },
@@ -110,8 +109,7 @@
       "Chance": {
         "Base": 8.0,
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.03 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.03 }
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 0.03 }
         ],
         "Clamp": { "Max": 15.0 }
       },
@@ -127,8 +125,7 @@
       "Chance": {
         "Base": 1.0,
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.0075 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.0075 }
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 0.0075 }
         ],
         "Clamp": { "Max": 2.5 }
       },

@@ -1,5 +1,5 @@
 {
-  "$Comment": "The woodcutter's kit as a gear set: the four leather pieces the Sawmill's trim work pays out (Lootables/Mmo_Woodcutters_Kit.json) plus the three hatchets as the held member, any one of which completes the kit: the Sawmiller's Hatchet (RPG_Tool_Hatchet_Sawmiller, the RPG Stations item this pack overrides under the same id), the Millwright's and Marn's. The novice cap is not a member. Members are item ids, matched without regard to case. Every tier whose minimums hold applies at once, so the tiers stack: two pieces on anywhere add a little Woodcutting luck and experience; all four armor pieces add more and put the set's look on (Woodcutters_Kit_Set, an effect dedicated to this set); all four plus a hatchet in hand add the most. Held counts the active-hand item only when it is a member that is not also worn, so the third tier needs the hatchet itself in hand. Author Held as 1 or leave it out; 0 is an error. Each tier names a Badge, the set's one tile on the buff bar: the tile shown is the badge of the highest tier that holds, so its icon and name follow the kit as it fills (the three Woodcutters_Kit_Badge_* effects, each dedicated to this set).\n\nThe stats are the set's own bonus on top of what each piece and hatchet already carries, and they ride the same channels: MMO_Luck_WOODCUTTING and the two MMO_BonusXp_* channels take their PERCENT as the Amount, and Stamina is Hytale's own maximum stamina. Every entry is Additive on purpose: these channels carry a base of zero, so a Multiplicative-only entry computes nothing. Opening balance, sized so that wearing the whole set adds a modest slice on top of the kit's own stats rather than a second kit; raise or lower an Amount without touching any code. Under Parent the Bonuses list replaces whole, so restate every tier you keep. The text keys are mmoskilltree.lang's gearset.woodcutters_kit.* lines.",
+  "$Comment": "The woodcutter's kit as a gear set: the four leather pieces the Sawmill's trim work pays out (Lootables/Mmo_Woodcutters_Kit.json) plus the three hatchets as the held member, any one of which completes the kit: the Sawmiller's Hatchet (RPG_Tool_Hatchet_Sawmiller, the RPG Stations item this pack overrides under the same id), the Millwright's and Marn's. The novice cap is not a member. Members are item ids, matched without regard to case. Every tier whose minimums hold applies at once, so the tiers stack: two pieces on anywhere add a little Woodcutting luck and experience; all four armor pieces add more and put the set's look on (Woodcutters_Kit_Set, an effect dedicated to this set); all four plus a hatchet in hand add the most. Held counts the active-hand item only when it is a member that is not also worn, so the third tier needs the hatchet itself in hand. Author Held as 1 or leave it out; 0 is an error. Each tier names a Badge, the set's one tile on the buff bar: the tile shown is the badge of the highest tier that holds, so its icon and name follow the kit as it fills (the three Woodcutters_Kit_Badge_* effects, each dedicated to this set).\n\nThe stats are the set's own bonus on top of what each piece and hatchet already carries, and they ride the same channels: GatherYield_Woodcutting and the two TrackGain_* stats take their PERCENT as the Amount, and Stamina is Hytale's own maximum stamina. Every entry is Additive on purpose: these channels carry a base of zero, so a Multiplicative-only entry computes nothing. Opening balance, sized so that wearing the whole set adds a modest slice on top of the kit's own stats rather than a second kit; raise or lower an Amount without touching any code. Under Parent the Bonuses list replaces whole, so restate every tier you keep. The text keys are mmoskilltree.lang's gearset.woodcutters_kit.* lines.",
   "Text": { "TitleKey": "gearset.woodcutters_kit.title" },
   "Members": [
     "MMO_Armor_Woodcutter_Head",
@@ -16,8 +16,8 @@
       "Text": { "TitleKey": "gearset.woodcutters_kit.tier_pieces" },
       "Badge": "Woodcutters_Kit_Badge_Pieces",
       "StatModifiers": {
-        "MMO_Luck_WOODCUTTING": [ { "Amount": 2, "CalculationType": "Additive" } ],
-        "MMO_BonusXp_WOODCUTTING": [ { "Amount": 2, "CalculationType": "Additive" } ]
+        "GatherYield_Woodcutting": [ { "Amount": 2, "CalculationType": "Additive" } ],
+        "TrackGain_Woodcutting": [ { "Amount": 2, "CalculationType": "Additive" } ]
       }
     },
     {
@@ -26,9 +26,9 @@
       "Effect": "Woodcutters_Kit_Set",
       "Badge": "Woodcutters_Kit_Badge_Armor",
       "StatModifiers": {
-        "MMO_Luck_WOODCUTTING": [ { "Amount": 3, "CalculationType": "Additive" } ],
-        "MMO_BonusXp_WOODCUTTING": [ { "Amount": 3, "CalculationType": "Additive" } ],
-        "MMO_BonusXp_CRAFTING": [ { "Amount": 2, "CalculationType": "Additive" } ]
+        "GatherYield_Woodcutting": [ { "Amount": 3, "CalculationType": "Additive" } ],
+        "TrackGain_Woodcutting": [ { "Amount": 3, "CalculationType": "Additive" } ],
+        "TrackGain_Crafting": [ { "Amount": 2, "CalculationType": "Additive" } ]
       }
     },
     {
@@ -37,9 +37,9 @@
       "Text": { "TitleKey": "gearset.woodcutters_kit.tier_held" },
       "Badge": "Woodcutters_Kit_Badge_Held",
       "StatModifiers": {
-        "MMO_Luck_WOODCUTTING": [ { "Amount": 5, "CalculationType": "Additive" } ],
-        "MMO_BonusXp_WOODCUTTING": [ { "Amount": 4, "CalculationType": "Additive" } ],
-        "MMO_BonusXp_CRAFTING": [ { "Amount": 3, "CalculationType": "Additive" } ],
+        "GatherYield_Woodcutting": [ { "Amount": 5, "CalculationType": "Additive" } ],
+        "TrackGain_Woodcutting": [ { "Amount": 4, "CalculationType": "Additive" } ],
+        "TrackGain_Crafting": [ { "Amount": 3, "CalculationType": "Additive" } ],
         "Stamina": [ { "Amount": 1, "CalculationType": "Additive" } ]
       }
     }

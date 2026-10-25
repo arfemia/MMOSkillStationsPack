@@ -18,7 +18,7 @@
     "here as well as at the bench. Each floor pays Woodcutting XP through a Rewards entry (the",
     "Mmo_Xp kind: Skill plus Amount) and a little tree sap on the side.",
     "",
-    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_Luck_WOODCUTTING",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: GatherYield_Woodcutting",
     "stores whole percent points, so a fully claimed Woodcutting tree reads near a hundred rather",
     "than near one, and MMO_Level_WOODCUTTING is a level, not a fraction. The floors below are",
     "therefore written on a scale of roughly 0 to 250, the ceiling a capped level with a full tree",
@@ -49,7 +49,7 @@
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
+            "Param": "GatherYield_Woodcutting",
             "Weight": 1.0
           }
         ],

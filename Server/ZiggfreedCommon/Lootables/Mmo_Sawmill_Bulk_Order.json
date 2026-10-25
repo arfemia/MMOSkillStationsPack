@@ -102,17 +102,17 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck",
+            "Param": "GatherYield",
             "Weight": 1.0
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
+            "Param": "GatherYield_Woodcutting",
             "Weight": 1.0
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_CRAFTING",
+            "Param": "MMO_StationYield_CRAFTING",
             "Weight": 0.5
           }
         ],

@@ -10,9 +10,8 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
+          { "Factor": "hytale:stat", "Param": "GatherYield", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "GatherYield_Woodcutting", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "GatherSpeed_Woodcutting", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
         ],
@@ -30,9 +29,8 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_WOODCUTTING", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_CRAFTING", "Weight": 0.5 },
+          { "Factor": "hytale:stat", "Param": "GatherYield", "Weight": 1.0 },
+          { "Factor": "hytale:stat", "Param": "GatherYield_Woodcutting", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "GatherSpeed_Woodcutting", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
         ],

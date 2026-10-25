@@ -23,7 +23,7 @@
     "well as at the table. Each floor pays Enchanting XP through a Rewards entry (the Mmo_Xp kind:",
     "Skill plus Amount) and a little Life essence on the side.",
     "",
-    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_Luck_ENCHANTING",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_StationYield_ENCHANTING",
     "stores whole percent points, so a fully claimed Enchanting tree reads near a hundred rather",
     "than near one, and MMO_Level_ENCHANTING is a level, not a fraction. The floors below are",
     "therefore written on a scale of roughly 0 to 250. Never swap these two leaves for the",
@@ -47,7 +47,7 @@
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_ENCHANTING",
+            "Param": "MMO_StationYield_ENCHANTING",
             "Weight": 1.0
           }
         ],
@@ -177,12 +177,7 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_ENCHANTING",
-            "Weight": 0.01
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "MMO_Luck",
+            "Param": "MMO_StationYield_ENCHANTING",
             "Weight": 0.01
           }
         ],

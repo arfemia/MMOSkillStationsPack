@@ -15,8 +15,7 @@
       "Chance": {
         "Base": 1.0,
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 0.05 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 0.05 }
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 0.05 }
         ],
         "Clamp": { "Max": 6.0 }
       },

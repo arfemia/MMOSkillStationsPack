@@ -95,23 +95,23 @@
       }
     },
     {
-      "$Comment": "The luck-invested ladder, and the reason luck is worth stacking at a bench that already pays for levels: luck alone buys planks here, with no level term anywhere in the score. Its three factors are exactly the luck half of SawmillLuckFinds' five - global MMO_Luck plus the station's own WOODCUTTING channel at full weight and the adjacent CRAFTING channel at half, mirroring the action's own 8.0/4.0 XP split. Levels are deliberately ABSENT: the ladder above already pays for them, and reading them here too would pay the same progression twice.\n\nThe reachable band is about 179 points (98 from a full WOODCUTTING tree, 55.5 from a full CRAFTING tree after its 0.5 weight, 25 from the trophy hatchet while held, a point or two of mastery loot multiplier; global MMO_Luck ships empty and is here so gear and other packs compose for free), which is what the floors are sized against - 160 is a real destination rather than an unreachable label. See SawmillLuckFinds' own comment for the whole-percent-points unit note that governs these numbers.\n\nEvery grant is FRACTIONAL on purpose, the schema feature that lets a rung be worth half a step: the first two floors pay less than a whole plank, so early luck investment is felt as a plank arriving every few cycles rather than as nothing until some distant threshold. 0.25 means one extra plank on one cycle in four.",
+      "$Comment": "The luck-invested ladder, and the reason luck is worth stacking at a bench that already pays for levels: luck alone buys planks here, with no level term anywhere in the score. Its three factors are exactly the luck half of SawmillLuckFinds' five - the shared GatherYield plus the station's own WOODCUTTING channel at full weight and the adjacent CRAFTING channel at half, mirroring the action's own 8.0/4.0 XP split. Levels are deliberately ABSENT: the ladder above already pays for them, and reading them here too would pay the same progression twice.\n\nThe reachable band is about 179 points (98 from a full WOODCUTTING tree, 55.5 from a full CRAFTING tree after its 0.5 weight, 25 from the trophy hatchet while held, a point or two of mastery loot multiplier; the shared GatherYield ships empty and is here so gear and other packs compose for free), which is what the floors are sized against - 160 is a real destination rather than an unreachable label. See SawmillLuckFinds' own comment for the whole-percent-points unit note that governs these numbers.\n\nEvery grant is FRACTIONAL on purpose, the schema feature that lets a rung be worth half a step: the first two floors pay less than a whole plank, so early luck investment is felt as a plank arriving every few cycles rather than as nothing until some distant threshold. 0.25 means one extra plank on one cycle in four.",
       "Trigger": "Cycle",
       "Ladder": {
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck",
+            "Param": "GatherYield",
             "Weight": 1.0
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_WOODCUTTING",
+            "Param": "GatherYield_Woodcutting",
             "Weight": 1.0
           },
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Luck_CRAFTING",
+            "Param": "MMO_StationYield_CRAFTING",
             "Weight": 0.5
           }
         ],

@@ -18,15 +18,14 @@
       }
     },
     {
-      "$Comment": "Luck invested: a quarter of a unit once Enchanting luck plus global luck reach 45, about what the full kit and part of the mastery give.",
+      "$Comment": "Luck invested: a quarter of a unit once Enchanting's station yield reaches 45, about what the full kit and part of the mastery give.",
       "Trigger": "Cycle",
       "Conditions": [
         { "Factor": "hytale:item_level", "Min": 15 }
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_Luck_ENCHANTING", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_Luck", "Weight": 1.0 }
+          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 1.0 }
         ],
         "Floors": [
           { "Min": 45, "Grants": { "Rewards": [ { "Kind": "rpgstations:output_items", "Params": { "Count": "0.25" } } ] } }
