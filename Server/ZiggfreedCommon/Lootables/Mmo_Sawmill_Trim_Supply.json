@@ -152,12 +152,12 @@
       }
     },
     {
-      "$Comment": "A small bonus for a well-invested luck tree: extra saplings, and a lantern once that investment is heavy. Reads the woodcutter's own luck on the shared GatherYield, which holds Woodcutting's share while a hatchet is in hand, on its own floors, with no Chance gating it - it always resolves, and its zero floor pays a token sapling rather than nothing.",
+      "$Comment": "A small bonus for a well-invested luck tree: extra saplings, and a lantern once that investment is heavy. Reads the woodcutter's own Woodcutting luck through mmoskilltree:skill_stat with Param GatherYield@Woodcutting (the shared GatherYield plus Woodcutting's talents and kit, counted whatever is in hand, since the supply is rolled when the order is collected), on its own floors, with no Chance gating it - it always resolves, and its zero floor pays a token sapling rather than nothing.",
       "Ladder": {
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 1.0
           }
         ],

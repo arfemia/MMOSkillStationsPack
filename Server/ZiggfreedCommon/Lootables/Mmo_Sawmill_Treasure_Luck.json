@@ -1,5 +1,5 @@
 {
-  "$Comment": "Treasure Cut's everyday band (a Crafting talent, the Mill Trade): SawmillLuckFinds one floor higher, for the talent's holder only. Each roll is gated on the talent's own record (ziggfreedcommon:track_pick, Min 1), so it rolls for nobody else, and SawmillLuckFinds turns itself off for the same player, so the two never both pay. Named by Extensions/SawmillProgression.json beside SawmillLuckFinds, and named again beside it by every roll that rolls the everyday band a second time (Mmo_Sawmill_Talents, Mmo_Sawmill_Quarter_Saw). It reads the very same five-factor score as SawmillLuckFinds (see that file for the score, its units and the banding); retune the two together.",
+  "$Comment": "Treasure Cut's everyday band (a Crafting talent, the Mill Trade): SawmillLuckFinds one floor higher, for the talent's holder only. Each roll is gated on the talent's own record (ziggfreedcommon:track_pick, Min 1), so it rolls for nobody else, and SawmillLuckFinds turns itself off for the same player, so the two never both pay. Named by Extensions/SawmillProgression.json beside SawmillLuckFinds, and named again beside it by every roll that rolls the everyday band a second time (Mmo_Sawmill_Talents, Mmo_Sawmill_Quarter_Saw). It reads the very same score as SawmillLuckFinds (see that file for the score, why Woodcutting's two leaves read mmoskilltree:skill_stat, its units and the banding); retune the two together.",
   "Rolls": [
     {
       "$Comment": "Below Woodcutting 30: the everyday band's one floor paying T2 and nothing past it, since T3 keeps the Woodcutting 30 gate the deep band holds.",
@@ -10,8 +10,8 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "GatherYield", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "GatherSpeed", "Weight": 1.0 },
+          { "Factor": "mmoskilltree:skill_stat", "Param": "GatherYield@Woodcutting", "Weight": 1.0 },
+          { "Factor": "mmoskilltree:skill_stat", "Param": "GatherSpeed@Woodcutting", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
         ],
         "Floors": [
@@ -28,8 +28,8 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "GatherYield", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "GatherSpeed", "Weight": 1.0 },
+          { "Factor": "mmoskilltree:skill_stat", "Param": "GatherYield@Woodcutting", "Weight": 1.0 },
+          { "Factor": "mmoskilltree:skill_stat", "Param": "GatherSpeed@Woodcutting", "Weight": 1.0 },
           { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
         ],
         "Floors": [

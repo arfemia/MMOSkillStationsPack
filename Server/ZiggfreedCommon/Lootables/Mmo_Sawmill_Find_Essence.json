@@ -15,7 +15,7 @@
   },
   "Rolls": [
     {
-      "$Comment": "Essence of Life: the station Essence stat (MMO_Station_Essence: Seasoned Wood, Second Wage) is the chance of one more Essence of Life, paid only once the worker's find score reaches the first tier that pays essence (T2, 100 points, the same factors as the find bands), so a worker whose finds pay no essence yet gets none here either.",
+      "$Comment": "Essence of Life: the station Essence stat (MMO_Station_Essence: Seasoned Wood, Second Wage) is the chance of one more Essence of Life, paid only once the worker's find score reaches the first tier that pays essence (T2, 100 points, the same factors as the find bands, Woodcutting's two through mmoskilltree:skill_stat so a Lumberyard pile's gatherer counts Woodcutting's talents whatever is in hand), so a worker whose finds pay no essence yet gets none here either.",
       "Trigger": "Cycle",
       "Chance": {
         "Factors": [
@@ -32,13 +32,13 @@
       "Ladder": {
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 1.0
           },
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherSpeed",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherSpeed@Woodcutting",
             "Weight": 1.0
           },
           {

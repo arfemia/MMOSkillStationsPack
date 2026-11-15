@@ -9,7 +9,7 @@
     "",
     "LUCK ACTS ON THE ODDS, not on what lands, because a piece is a yes or a no rather than a",
     "quantity. Each Chance reads Base at no luck at all, adds its Factors Weight per whole point of",
-    "the shared GatherYield, which holds the woodcutter's own Woodcutting luck while a hatchet is in hand, and stops at",
+    "the woodcutter's own Woodcutting luck, read through mmoskilltree:skill_stat with Param GatherYield@Woodcutting (the shared GatherYield plus Woodcutting's talents and the set's own luck, counted whatever is in hand, since these are rolled when the order is collected), and stops at",
     "Clamp.Max however much is stacked on top. That is the same rule the finds table follows and the",
     "opposite of the wage, where luck sizes a payout instead; luck acting on both axes inside one",
     "table would pay the same investment twice.",
@@ -49,8 +49,8 @@
         "Base": 10.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 0.04
           }
         ],
@@ -74,8 +74,8 @@
         "Base": 5.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 0.025
           }
         ],
@@ -99,8 +99,8 @@
         "Base": 5.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 0.025
           }
         ],
@@ -124,8 +124,8 @@
         "Base": 2.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 0.015
           }
         ],

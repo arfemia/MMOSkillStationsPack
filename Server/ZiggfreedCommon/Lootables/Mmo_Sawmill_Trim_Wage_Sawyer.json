@@ -2,7 +2,7 @@
   "$Comment": [
     "The Sawyer wage: what a woodcutter at the Sawyer floor of Trim Work earns for one order,",
     "once luck decides how the run actually went. Mmo_Sawmill_Trim_Pay routes here on level alone;",
-    "everything below reads the woodcutter's own luck on the shared GatherYield, which holds Woodcutting's share while a hatchet is in hand (this is the mill's own trade, so Crafting luck is left out), so within this tier",
+    "everything below reads the woodcutter's own Woodcutting luck through mmoskilltree:skill_stat with Param GatherYield@Woodcutting, the shared GatherYield plus Woodcutting's talents and kit counted whatever is in hand, since the wage is rolled when the order is collected (this is the mill's own trade, so Crafting luck is left out), so within this tier",
     "a lucky run pays noticeably more than an unlucky one even though both workers stand at the same",
     "point in the trade.",
     "",
@@ -24,8 +24,8 @@
       "Ladder": {
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 1.0
           }
         ],

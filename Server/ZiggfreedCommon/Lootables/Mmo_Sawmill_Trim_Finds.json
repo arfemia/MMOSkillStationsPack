@@ -11,7 +11,7 @@
     "",
     "A Chance is a percentage from zero to one hundred. Base is what the roll reads at no luck at",
     "all, each Factors entry adds its Weight per whole point of the channel it names, and Clamp.Max",
-    "is the ceiling however much luck is stacked on top. Both rolls below read the shared GatherYield, which holds the woodcutter's own Woodcutting luck while a hatchet is in hand, and it stores WHOLE percent points, so a fully claimed Woodcutting tree reads near a hundred and a geared worker past a",
+    "is the ceiling however much luck is stacked on top. Both rolls below read the woodcutter's own Woodcutting luck through mmoskilltree:skill_stat with Param GatherYield@Woodcutting: the shared GatherYield plus Woodcutting's talents and kit, counted whatever is in hand, since these are rolled when the order is collected. It stores WHOLE percent points, so a fully claimed Woodcutting tree reads near a hundred and a geared worker past a",
     "hundred and sixty; the Weights below are sized against that scale. Never swap it for",
     "the mmoskilltree:station_luck aggregate, which returns a FRACTION and would make the term vanish.",
     "",
@@ -43,8 +43,8 @@
         "Base": 8.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 0.05
           }
         ],
@@ -69,8 +69,8 @@
         "Base": 5.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield",
+            "Factor": "mmoskilltree:skill_stat",
+            "Param": "GatherYield@Woodcutting",
             "Weight": 0.03
           }
         ],
