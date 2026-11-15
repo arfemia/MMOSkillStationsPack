@@ -5,7 +5,8 @@
     "",
     "A CLAIM TABLE, never a station table. It rolls when the player collects the reward from the",
     "quest log, with only the player in context: no piece of gear, no table, no tool. That is why",
-    "every roll here reads the PLAYER alone (Enchanting level and luck through hytale:stat) and",
+    "every roll here reads the PLAYER alone (Enchanting level through hytale:stat, luck through",
+    "ziggfreedcommon:station_stat at the Disenchanting Table, so the luck talents bound to working there count) and",
     "none carries a Trigger or a gear condition. The table's own station tables (Disenchant_Void",
     "and the rest) gate their rolls on the placed piece's level and so can never pay from a claim;",
     "this file is the claim-side twin of those finds, sized for one day rather than one ritual.",
@@ -23,7 +24,7 @@
     "well as at the table. Each floor pays Enchanting XP through a Rewards entry (the Mmo_Xp kind:",
     "Skill plus Amount) and a little Life essence on the side.",
     "",
-    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: MMO_StationYield_ENCHANTING",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: StationYield_Enchanting",
     "stores whole percent points, so a fully claimed Enchanting tree reads near a hundred rather",
     "than near one, and MMO_Level_ENCHANTING is a level, not a fraction. The floors below are",
     "therefore written on a scale of roughly 0 to 250. Never swap these two leaves for the",
@@ -46,8 +47,8 @@
             "Weight": 1.0
           },
           {
-            "Factor": "hytale:stat",
-            "Param": "MMO_StationYield_ENCHANTING",
+            "Factor": "ziggfreedcommon:station_stat",
+            "Param": "StationYield_Enchanting@Disenchanting_Table",
             "Weight": 1.0
           }
         ],
@@ -176,8 +177,8 @@
         "Base": 2.0,
         "Factors": [
           {
-            "Factor": "hytale:stat",
-            "Param": "MMO_StationYield_ENCHANTING",
+            "Factor": "ziggfreedcommon:station_stat",
+            "Param": "StationYield_Enchanting@Disenchanting_Table",
             "Weight": 0.01
           }
         ],

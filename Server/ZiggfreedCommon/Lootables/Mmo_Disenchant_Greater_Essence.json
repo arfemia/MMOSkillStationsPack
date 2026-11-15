@@ -36,7 +36,7 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Station_Essence_Greater",
+            "Param": "StationEssence_Greater",
             "Weight": 1.0
           }
         ],

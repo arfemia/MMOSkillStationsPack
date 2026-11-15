@@ -17,7 +17,7 @@
         "Factors": [
           { "Factor": "mmoskilltree:skill_stat", "Param": "GatherYield@Woodcutting", "Weight": 1.0 },
           { "Factor": "mmoskilltree:skill_stat", "Param": "GatherSpeed@Woodcutting", "Weight": 1.0 },
-          { "Factor": "hytale:stat", "Param": "MMO_StationYield_CRAFTING", "Weight": 1.0 }
+          { "Factor": "ziggfreedcommon:station_stat", "Param": "StationYield_Crafting@Sawmill", "Weight": 1.0 }
         ],
         "Floors": [
           {

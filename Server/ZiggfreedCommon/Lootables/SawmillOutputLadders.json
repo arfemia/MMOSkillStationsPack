@@ -105,8 +105,8 @@
             "Weight": 1.0
           },
           {
-            "Factor": "hytale:stat",
-            "Param": "MMO_StationYield_CRAFTING",
+            "Factor": "ziggfreedcommon:station_stat",
+            "Param": "StationYield_Crafting@Sawmill",
             "Weight": 0.5
           }
         ],

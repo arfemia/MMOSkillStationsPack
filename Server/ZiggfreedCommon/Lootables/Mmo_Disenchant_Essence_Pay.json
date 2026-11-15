@@ -10,7 +10,7 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 1.0 }
+          { "Factor": "hytale:stat", "Param": "StationYield_Enchanting", "Weight": 1.0 }
         ],
         "Floors": [
           { "Min": 40, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 1 } ] } }
@@ -26,7 +26,7 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 1.0 }
+          { "Factor": "hytale:stat", "Param": "StationYield_Enchanting", "Weight": 1.0 }
         ],
         "Floors": [
           { "Min": 25, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 1 } ] } },
@@ -44,7 +44,7 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 1.0 }
+          { "Factor": "hytale:stat", "Param": "StationYield_Enchanting", "Weight": 1.0 }
         ],
         "Floors": [
           { "Min": 20, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 1 } ] } },
@@ -63,7 +63,7 @@
       ],
       "Ladder": {
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 1.0 }
+          { "Factor": "hytale:stat", "Param": "StationYield_Enchanting", "Weight": 1.0 }
         ],
         "Floors": [
           { "Min": 15, "Grants": { "Items": [ { "Item": "Ingredient_Life_Essence", "Count": 1 } ] } },

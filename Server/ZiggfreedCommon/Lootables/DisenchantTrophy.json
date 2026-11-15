@@ -9,7 +9,7 @@
       "Chance": {
         "Base": 0.5,
         "Factors": [
-          { "Factor": "hytale:stat", "Param": "MMO_StationYield_ENCHANTING", "Weight": 0.005 }
+          { "Factor": "hytale:stat", "Param": "StationYield_Enchanting", "Weight": 0.005 }
         ],
         "Clamp": { "Max": 1.25 }
       },
