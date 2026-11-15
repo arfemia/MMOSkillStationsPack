@@ -9,21 +9,20 @@
     "",
     "LUCK ACTS ON THE ODDS, not on what lands, because a piece is a yes or a no rather than a",
     "quantity. Each Chance reads Base at no luck at all, adds its Factors Weight per whole point of",
-    "the woodcutter's own Woodcutting luck and the shared GatherYield, at equal weight, and stops at",
+    "the shared GatherYield, which holds the woodcutter's own Woodcutting luck while a hatchet is in hand, and stops at",
     "Clamp.Max however much is stacked on top. That is the same rule the finds table follows and the",
     "opposite of the wage, where luck sizes a payout instead; luck acting on both axes inside one",
     "table would pay the same investment twice.",
     "",
-    "The loop this closes is worth knowing before you retune it: the kit ITSELF grants Woodcutting",
-    "luck, so each piece found makes the next one likelier. A worker who has the cap, the gloves and",
+    "The loop this closes is worth knowing before you retune it: the kit ITSELF grants gathering yield, so each piece found makes the next one likelier. A worker who has the cap, the gloves and",
     "the breeches is hunting the jerkin at better odds than they started with, which is what keeps",
     "the long tail of the set from feeling flat. Raise the Weights and that loop tightens; drop them",
     "to zero and the set goes back to a fixed grind.",
     "",
-    "UNITS: GatherYield_Woodcutting and GatherYield both store WHOLE percent points, so a fully claimed",
-    "Woodcutting tree reads near a hundred on the station's own channel, and a worker with the",
+    "UNITS: GatherYield stores WHOLE percent points, so a fully claimed",
+    "Woodcutting tree reads near a hundred on it, and a worker with the",
     "trophy hatchet and the finished kit past a hundred and sixty. The Weights below are sized",
-    "against that scale. Never swap either channel for the mmoskilltree:station_luck aggregate,",
+    "against that scale. Never swap it for the mmoskilltree:station_luck aggregate,",
     "which returns a FRACTION and would make the term vanish.",
     "",
     "THE CHEST IS THE RARE ONE. It carries the heaviest stat load of the four, so it is deliberately",
@@ -51,11 +50,6 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "GatherYield_Woodcutting",
-            "Weight": 0.04
-          },
-          {
-            "Factor": "hytale:stat",
             "Param": "GatherYield",
             "Weight": 0.04
           }
@@ -79,11 +73,6 @@
       "Chance": {
         "Base": 5.0,
         "Factors": [
-          {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield_Woodcutting",
-            "Weight": 0.025
-          },
           {
             "Factor": "hytale:stat",
             "Param": "GatherYield",
@@ -111,11 +100,6 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "GatherYield_Woodcutting",
-            "Weight": 0.025
-          },
-          {
-            "Factor": "hytale:stat",
             "Param": "GatherYield",
             "Weight": 0.025
           }
@@ -139,11 +123,6 @@
       "Chance": {
         "Base": 2.0,
         "Factors": [
-          {
-            "Factor": "hytale:stat",
-            "Param": "GatherYield_Woodcutting",
-            "Weight": 0.015
-          },
           {
             "Factor": "hytale:stat",
             "Param": "GatherYield",

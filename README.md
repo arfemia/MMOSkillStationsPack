@@ -48,9 +48,9 @@ The MMO progression layered on top comes in these parts:
   weekly), self-contained so they load with nothing installed but this pack, RPG Stations and MMO
   Skill Tree, and posted only while the `stations` feature is on.
 - **The woodcutter's kit is a gear set** (1.1.0): the four leather pieces plus any one of the three
-  hatchets. Two pieces on add a little Woodcutting luck and XP, all four worn add more plus
-  Crafting XP and a gold-spark look, and all four with a hatchet in hand add the most; the tiers
-  stack, and the Novice Cap is not a member.
+  hatchets. Two pieces on add a little Woodcutting XP, all four worn add more plus Crafting XP
+  and a gold-spark look, and all four with a hatchet in hand add the most; the set's luck counts
+  only while a hatchet is in hand, the tiers stack, and the Novice Cap is not a member.
 
 At the Disenchanting Tables (1.1.0):
 

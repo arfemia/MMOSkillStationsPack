@@ -14,12 +14,11 @@
     "paying a beginner and a veteran the same handful. Its Factors are summed into one score and the",
     "Floors are read against that score; floors are NOT cumulative, so the highest one reached wins",
     "and only its Grants fire. Two things feed the score, weighted equally: the Woodcutting level, so",
-    "the order pays better as the skill grows, and Woodcutting luck, so a luck-heavy skill tree pays",
+    "the order pays better as the skill grows, and the shared GatherYield, Woodcutting's luck while a hatchet is in hand, so a luck-heavy skill tree pays",
     "here as well as at the bench. Each floor pays Woodcutting XP through a Rewards entry (the",
     "Mmo_Xp kind: Skill plus Amount) and a little tree sap on the side.",
     "",
-    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: GatherYield_Woodcutting",
-    "stores whole percent points, so a fully claimed Woodcutting tree reads near a hundred rather",
+    "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: GatherYield stores whole percent points, so a fully claimed Woodcutting tree reads near a hundred rather",
     "than near one, and MMO_Level_WOODCUTTING is a level, not a fraction. The floors below are",
     "therefore written on a scale of roughly 0 to 250, the ceiling a capped level with a full tree",
     "and the trophy hatchet in hand can reach. Never swap these two leaves for the",
@@ -49,7 +48,7 @@
           },
           {
             "Factor": "hytale:stat",
-            "Param": "GatherYield_Woodcutting",
+            "Param": "GatherYield",
             "Weight": 1.0
           }
         ],

@@ -15,7 +15,7 @@
   },
   "Rolls": [
     {
-      "$Comment": "Essence of Life: the station Essence stat (MMO_Station_Essence: Seasoned Wood, Second Wage) is the chance of one more Essence of Life, paid only once the worker's find score reaches the first tier that pays essence (T2, 100 points, the same five factors as the find bands), so a worker whose finds pay no essence yet gets none here either.",
+      "$Comment": "Essence of Life: the station Essence stat (MMO_Station_Essence: Seasoned Wood, Second Wage) is the chance of one more Essence of Life, paid only once the worker's find score reaches the first tier that pays essence (T2, 100 points, the same factors as the find bands), so a worker whose finds pay no essence yet gets none here either.",
       "Trigger": "Cycle",
       "Chance": {
         "Factors": [
@@ -38,12 +38,7 @@
           },
           {
             "Factor": "hytale:stat",
-            "Param": "GatherYield_Woodcutting",
-            "Weight": 1.0
-          },
-          {
-            "Factor": "hytale:stat",
-            "Param": "GatherSpeed_Woodcutting",
+            "Param": "GatherSpeed",
             "Weight": 1.0
           },
           {
