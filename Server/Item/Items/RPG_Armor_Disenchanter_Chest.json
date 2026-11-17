@@ -28,7 +28,7 @@
     "StatModifiers": {
       "Health": [ { "Amount": 17, "CalculationType": "Additive" } ],
       "Mana": [ { "Amount": 22, "CalculationType": "Additive" } ],
-      "RPG_Disenchanting_Proficiency": [ { "Amount": 12, "CalculationType": "Additive" } ],
+      "DisenchantingProficiency": [ { "Amount": 12, "CalculationType": "Additive" } ],
       "StationYield_Enchanting": [ { "Amount": 12, "CalculationType": "Additive" } ],
       "TrackGain_Enchanting": [ { "Amount": 6, "CalculationType": "Additive" } ]
     },

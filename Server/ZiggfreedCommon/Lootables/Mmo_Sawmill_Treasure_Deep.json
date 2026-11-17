@@ -5,7 +5,7 @@
       "Trigger": "Cycle",
       "Conditions": [
         { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Treasure_Cut", "Min": 1 },
-        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 30 }
+        { "Factor": "hytale:stat", "Param": "Level_Woodcutting", "Min": 30 }
       ],
       "Ladder": {
         "Factors": [

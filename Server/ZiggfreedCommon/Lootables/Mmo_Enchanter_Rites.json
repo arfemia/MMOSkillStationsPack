@@ -26,7 +26,7 @@
     "",
     "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: StationYield_Enchanting",
     "stores whole percent points, so a fully claimed Enchanting tree reads near a hundred rather",
-    "than near one, and MMO_Level_ENCHANTING is a level, not a fraction. The floors below are",
+    "than near one, and Level_Enchanting is a level, not a fraction. The floors below are",
     "therefore written on a scale of roughly 0 to 250. Never swap these two leaves for the",
     "mmoskilltree:station_luck aggregate: that one returns a FRACTION, which would shift every floor",
     "by a factor of a hundred.",
@@ -43,7 +43,7 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Level_ENCHANTING",
+            "Param": "Level_Enchanting",
             "Weight": 1.0
           },
           {

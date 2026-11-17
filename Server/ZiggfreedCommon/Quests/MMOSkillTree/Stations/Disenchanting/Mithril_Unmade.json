@@ -61,7 +61,7 @@
       },
       {
         "Factor": "hytale:stat",
-        "Param": "MMO_Level_ENCHANTING",
+        "Param": "Level_Enchanting",
         "Min": 15
       }
     ]

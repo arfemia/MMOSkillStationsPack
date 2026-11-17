@@ -26,7 +26,7 @@
     "in hand.",
     "",
     "UNITS, the one trap worth knowing. Both channels are read as WHOLE NUMBERS: GatherYield stores whole percent points, so a fully claimed Woodcutting tree reads near a hundred rather",
-    "than near one, and MMO_Level_WOODCUTTING is a level, not a fraction. The floors below are",
+    "than near one, and Level_Woodcutting is a level, not a fraction. The floors below are",
     "therefore written on a scale of roughly 0 to 250, the ceiling a capped level with a full tree",
     "and the trophy hatchet in hand can reach. Never swap these two leaves for the",
     "mmoskilltree:station_luck aggregate: that one returns a FRACTION, which would shift every floor",
@@ -50,7 +50,7 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Level_WOODCUTTING",
+            "Param": "Level_Woodcutting",
             "Weight": 1.0
           },
           {

@@ -35,7 +35,7 @@
       "Conditions": [
         {
           "Factor": "hytale:stat",
-          "Param": "MMO_Level_WOODCUTTING",
+          "Param": "Level_Woodcutting",
           "Min": 55
         }
       ],

@@ -11,7 +11,7 @@
       "$Comment": "Band B, the deep tiers.",
       "Trigger": "Cycle",
       "Conditions": [
-        { "Factor": "hytale:stat", "Param": "MMO_Level_WOODCUTTING", "Min": 30 }
+        { "Factor": "hytale:stat", "Param": "Level_Woodcutting", "Min": 30 }
       ],
       "Ladder": {
         "Factors": [

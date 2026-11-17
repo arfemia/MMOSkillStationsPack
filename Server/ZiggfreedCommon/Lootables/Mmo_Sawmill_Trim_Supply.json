@@ -42,7 +42,7 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Level_WOODCUTTING",
+            "Param": "Level_Woodcutting",
             "Weight": 1.0
           }
         ],
@@ -107,7 +107,7 @@
         "Factors": [
           {
             "Factor": "hytale:stat",
-            "Param": "MMO_Level_WOODCUTTING",
+            "Param": "Level_Woodcutting",
             "Weight": 1.0
           }
         ],
