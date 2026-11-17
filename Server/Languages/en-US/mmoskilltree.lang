@@ -4,7 +4,7 @@ skill.cooking = Cooking
 skill.cooking.desc = Prepare and cook food at work stations to gain experience
 
 quest.meet_the_sawyer.title = A Word with Marn
-quest.meet_the_sawyer.flavor = There's a sawyer working the far side of the landing, and he's been down here longer than I have. Cross over and say hello.
+quest.meet_the_sawyer.flavor = There's a sawyer working on the temple's landing, and he's been down here longer than I have. Take the Way to the Temple off the Concourse and say hello.
 quest.timber_rights.title = Timber Rights
 quest.timber_rights.flavor = I've a Sawmill going spare, and I don't hand them to just anybody. Cut me planks by hand first, so you know what they cost. Then the mill's yours.
 quest.first_cut.title = First Cut
@@ -189,7 +189,7 @@ dialogue.mmo_sawyer.enchanter_intro.opt.back = Maybe later.
 dialogue.mmo_sawyer.enchanter_brief.text = He's the one at my shoulder with a book in his hand. <color is="#ffd97a">Enchanter Orrin</color>. Say hello and he'll do the rest of the talking.
 
 quest.meet_the_enchanter.title = A Word with Orrin
-quest.meet_the_enchanter.flavor = There's a priest in Outlander robes standing beside Marn, with a book and a table nobody else will touch. He walked out on the cult, he says. Go and say hello.
+quest.meet_the_enchanter.flavor = There's a priest in Outlander robes beside Marn on the temple's landing, with a book and a table nobody else will touch. He walked out on the cult, he says. Take the Way to the Temple and say hello.
 quest.the_lesser_table.title = The Lesser Table
 quest.the_lesser_table.flavor = I keep a frame for a Disenchanting Table and nothing to finish it with. Bring me Iron Ingots and Essence of Life. It has stood idle long enough.
 quest.first_unmaking.title = First Unmaking
