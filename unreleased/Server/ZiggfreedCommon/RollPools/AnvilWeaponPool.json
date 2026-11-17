@@ -1,11 +1,22 @@
 {
-  "$Comment": "The anvil's Enhance action stat pool (design section 9.5). Global (non-per-skill) weapon-adjacent stats, matching the MMO's own ItemEnhanceRoll weapon-pool ranges exactly (MMO_CritChance/MMO_CritMultiplier/MMO_Lifesteal/MMO_CooldownReduction from reward.MmoStats, KillYield/TrackGain global ids) so a hand-rolled /mmoitemenhance and an anvil-enhanced weapon read the same stat vocabulary.",
+  "$Comment": [
+    "What the anvil's Enhance ritual rolls onto a placed weapon: the station's Picks draws from this pool,",
+    "each draw one entry picked by Weight, its Points rolled between Min and Max in whole percent points.",
+    "",
+    "The first four are the stats and ranges MMO Skill Tree's own weapon pool (Mmo_Enhance_Weapon) writes,",
+    "so a weapon enhanced at the anvil and one enhanced with /mmoitemenhance carry the same stats.",
+    "KillYield is a weapon pool's luck: points on the chance of a kill's bonus find, the combat side of",
+    "GatherYield. TrackGain raises the XP every skill earns while the weapon is held.",
+    "",
+    "Retune a range or a weight and the next roll uses it. Add an entry and every anvil roll can draw it."
+  ],
+  "Name": "AnvilWeaponPool",
   "Entries": [
-    { "Stat": "MMO_CritChance", "Points": { "Min": 2, "Max": 6 }, "Weight": 1 },
-    { "Stat": "MMO_CritMultiplier", "Points": { "Min": 5, "Max": 15 }, "Weight": 1 },
-    { "Stat": "MMO_Lifesteal", "Points": { "Min": 2, "Max": 5 }, "Weight": 1 },
-    { "Stat": "MMO_CooldownReduction", "Points": { "Min": 2, "Max": 6 }, "Weight": 1 },
-    { "Stat": "KillYield", "Points": { "Min": 3, "Max": 10 }, "Weight": 1 },
-    { "Stat": "TrackGain", "Points": { "Min": 5, "Max": 15 }, "Weight": 1 }
+    { "Stat": "CritChance", "Points": { "Min": 2, "Max": 6 } },
+    { "Stat": "CritDamage", "Points": { "Min": 5, "Max": 15 } },
+    { "Stat": "Lifesteal", "Points": { "Min": 2, "Max": 5 } },
+    { "Stat": "CooldownReduction", "Points": { "Min": 2, "Max": 6 } },
+    { "Stat": "KillYield", "Points": { "Min": 3, "Max": 10 } },
+    { "Stat": "TrackGain", "Points": { "Min": 5, "Max": 15 } }
   ]
 }
