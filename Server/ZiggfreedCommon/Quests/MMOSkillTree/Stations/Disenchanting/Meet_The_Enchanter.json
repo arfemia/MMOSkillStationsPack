@@ -1,7 +1,8 @@
 {
   "$Comment": [
-    "The introduction to the Disenchanting Table: the Adventurer's Guide, standing in the Forgotten",
-    "Temple, points the player at the priest standing beside Sawyer Marn. The quest exists to make",
+    "The introduction to the Disenchanting Table: the Adventurer's Guide, at their post in MMO Skill",
+    "Tree's Adventurers' Hall in the temple hub, points the player back to the priest standing beside",
+    "Sawyer Marn on the Forgotten Temple's landing. The quest exists to make",
     "the player notice him. It has the same shape and the same minimal gate as the introductions",
     "to Marn (Meet_The_Sawyer) and to the Mastery Trainer, so a player can meet the three in any",
     "order once the temple meeting is behind them. Until it is taken Orrin has nothing of his own",
@@ -9,8 +10,8 @@
     "screen).",
     "",
     "Npc.ViewId names the guide's temple id, so the guide is who OFFERS it: it appears on their",
-    "quest list down in the temple, right after the meeting that brought the player there, and the",
-    "guide's temple screens carry a pointer line about the one with the book that takes it on.",
+    "quest list in the hall, right after the meeting that brought the player there, and the guide's",
+    "screens there carry a pointer line about the enchanter in the temple that takes it on.",
     "Marn's conversation can also take it on, from his question about the priest next to him; a",
     "quest is accepted wherever a conversation's Accept runs, and either way it is the same quest.",
     "The step names the enchanter's role id, so the errand is taken from one character and",
@@ -34,7 +35,7 @@
     "guide has nothing to offer. The feature factor keeps the quest out of the log on a server with",
     "the station engine switched off, where Orrin never appears at all. Listing.Hidden keeps it off",
     "open listings until it is taken; a giver always lists its own quests, so the guide still",
-    "offers it in the temple."
+    "offers it in the hall."
   ],
   "Name": "Meet_The_Enchanter",
   "Text": {
