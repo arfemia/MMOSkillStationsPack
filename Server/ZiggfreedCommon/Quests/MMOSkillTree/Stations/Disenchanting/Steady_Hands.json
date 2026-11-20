@@ -7,8 +7,8 @@
     "",
     "long_rites is STATION_INPUT with a blank Target (any piece), qualified to 'Disenchanting_Table'",
     "on PREFIX so both tiers count and the Sawmill does not, carrying the shared unmake_gear",
-    "TextKey; reach_the_level is STAT_THRESHOLD, which reads a native stat channel by id",
-    "(Level_Enchanting) and holds the high-water reading, so a level already reached counts the",
+    "TextKey; reach_the_level is STAT_THRESHOLD, which reads a hytale:stat reading by id",
+    "(Level_Enchanting, the player's level) and holds the high-water reading, so a level already reached counts the",
     "moment the quest is taken. No hand-in: TurnInId 'giver' still settles it at Orrin. Rewards sit",
     "in Claim: Enchanting XP and a handful of Void essence toward the greater table's own ask, the",
     "rung that follows."

@@ -6,7 +6,7 @@
     "work it is asking for.",
     "",
     "long_shifts is WORK_STATION on the station id; reach_the_level is STAT_THRESHOLD, which reads a",
-    "native stat channel by id (Level_Woodcutting) and holds the high-water reading, so a level",
+    "hytale:stat reading by id (Level_Woodcutting, the player's level) and holds the high-water reading, so a level",
     "already reached counts the moment the quest is taken. No hand-in: TurnInId 'giver' still",
     "settles it at Marn. Rewards sit in Claim: XP, one concentrated essence, and the Woodcutter's",
     "Novice Cap, the graduation piece: a small head piece on plain wooden-helm art that carries a",
