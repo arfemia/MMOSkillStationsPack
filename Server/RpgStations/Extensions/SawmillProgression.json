@@ -40,11 +40,11 @@
       },
       "MaxQuantity": {
         "Base": 40,
-        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Lumberyard_2", "Weight": 10 } ]
+        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Lumberyard_II", "Weight": 10 } ]
       },
       "GatherMaxCycles": {
         "Base": 24,
-        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Lumberyard_2", "Weight": 4 } ]
+        "Factors": [ { "Factor": "ziggfreedcommon:track_pick", "Param": "Crafting/Mmo_Crafting_Lumberyard_II", "Weight": 4 } ]
       }
     }
   },
