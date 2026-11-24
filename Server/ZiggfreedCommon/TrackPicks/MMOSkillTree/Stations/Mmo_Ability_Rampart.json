@@ -1,0 +1,14 @@
+{
+  "$Comment": "This pack's trainer for Building, Wright Tamsin (NpcPlacements/Mmo_Trainer_Wright.json), teaches this ability too: a file of the generated pick's id replaces MMO Skill Tree's row (TrackPickGenerators/MMOSkillTree/Mmo_Trainer_Abilities.json, the same title, icon, order and level) and adds that trainer to its Where, ahead of the hall's own Artisan Odda (Mmo_Trainer_Crafting) and the Skill Trainer (Mmo_Trainer), so it is learned at whichever of them stands. Keep At, Order and Icon equal to the MMO row's whenever that row changes. An owner changes who teaches it, its level or its switch on the Trainer Lessons screen (/zigadmin).",
+  "Parent": "Mmo_Tree_Building",
+  "Text": {
+    "TitleKey": "mmoskilltree.ability.rampart.name",
+    "FlavorKey": "mmoskilltree.tree.shared.ability",
+    "TextArgs": { "Flavor": [ "@key:mmoskilltree.ability.rampart.desc" ] }
+  },
+  "Icon": "Rock_Stone_Brick",
+  "Order": 112,
+  "At": 12,
+  "ResetsAs": "Abilities",
+  "Where": { "Placements": [ "Mmo_Trainer_Wright", "Mmo_Trainer_Crafting", "Mmo_Trainer" ] }
+}

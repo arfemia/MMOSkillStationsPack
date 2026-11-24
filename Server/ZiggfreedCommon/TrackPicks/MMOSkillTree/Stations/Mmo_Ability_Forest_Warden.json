@@ -1,0 +1,14 @@
+{
+  "$Comment": "This pack's trainer for Woodcutting, Sawyer Marn (NpcPlacements/Mmo_Trainer_Sawyer.json), teaches this ability too: a file of the generated pick's id replaces MMO Skill Tree's row (TrackPickGenerators/MMOSkillTree/Mmo_Trainer_Abilities.json, the same title, icon, order and level) and adds that trainer to its Where, ahead of the hall's own Forager Bram (Mmo_Trainer_Gathering) and the Skill Trainer (Mmo_Trainer), so it is learned at whichever of them stands. Keep At, Order and Icon equal to the MMO row's whenever that row changes. An owner changes who teaches it, its level or its switch on the Trainer Lessons screen (/zigadmin).",
+  "Parent": "Mmo_Tree_Woodcutting",
+  "Text": {
+    "TitleKey": "mmoskilltree.ability.forest_warden.name",
+    "FlavorKey": "mmoskilltree.tree.shared.ability",
+    "TextArgs": { "Flavor": [ "@key:mmoskilltree.ability.forest_warden.desc" ] }
+  },
+  "Icon": "Tool_Hatchet_Crude",
+  "Order": 167,
+  "At": 67,
+  "ResetsAs": "Abilities",
+  "Where": { "Placements": [ "Mmo_Trainer_Sawyer", "Mmo_Trainer_Gathering", "Mmo_Trainer" ] }
+}

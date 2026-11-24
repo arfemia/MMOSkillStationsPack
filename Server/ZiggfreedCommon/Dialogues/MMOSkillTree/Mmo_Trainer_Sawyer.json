@@ -1,0 +1,11 @@
+{
+  "Name": "Mmo_Trainer_Sawyer",
+  "Parent": "Mmo_Trainer",
+  "$Comment": "Sawyer Marn's trainer conversation, at his counter in the Adventurers' Hall: MMO Skill Tree's Mmo_Trainer conversation with his own greeting. Everything else is inherited: the technique and reset screens and the shared answers (Train opens his trainer page). His quests stay in his own conversation, Mmo_Sawyer, at the temple's landing; his trainer page lists them under Quests.",
+  "Nodes": {
+    "greet": {
+      "TextKey": "dialogue.mmo_trainer_sawyer.greet.text",
+      "IncludeOptions": ["Mmo_Trainer_Menu"]
+    }
+  }
+}

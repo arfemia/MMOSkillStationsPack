@@ -1,0 +1,10 @@
+{
+  "$Comment": "Wright Tamsin, the stations' crafting trainer, hammer in hand: a thin Variant of CommonLib's Template_Zig_QuestGiver, the template MMO Skill Tree's hall trainers wear (the look and the nameplate only; Modify names only that template's parameters, Appearance, NameTranslationKey, Weapons, OffHand and DefaultOffHandSlot, or the game refuses the whole role). Her placement, NpcPlacements/Mmo_Trainer_Wright.json, stands her at the artisans' stall. Her nameplate is in this pack's npcs.lang.",
+  "Type": "Variant",
+  "Reference": "Template_Zig_QuestGiver",
+  "Modify": {
+    "Appearance": "Kweebec_Sapling_Yellow",
+    "NameTranslationKey": "npcs.Mmo_Wright.name",
+    "Weapons": [ "Tool_Hammer_Crude" ]
+  }
+}

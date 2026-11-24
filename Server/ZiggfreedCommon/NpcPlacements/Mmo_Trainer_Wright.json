@@ -1,0 +1,24 @@
+{
+  "$Comment": "Wright Tamsin, the stations' crafting trainer, teaching Crafting and Building at the second counter of the artisans' stall in MMO Skill Tree's Adventurers' Hall, beside Artisan Odda (Custom anchor, Provider ziggfreedcommon:hub, so she follows the hall to any lot). A child of the MMO's Mmo_Trainer, which says how every trainer works: everything not written here (the lifecycle, the trainer page's parts, the reach) comes from there. Her look is this pack's Mmo_Wright role; pressing F opens her trainer conversation (Dialogues/MMOSkillTree/Mmo_Trainer_Wright.json), whose Train answer opens her trainer page. She teaches every lesson whose Where names Mmo_Trainer_Wright (this pack's TrackPicks/MMOSkillTree/Stations files name her on Crafting's and Building's abilities, beside Odda and the Skill Trainer). Requires keeps her away, and teaching nothing, while the stations feature is off or the hall does not stand (ziggfreedcommon:hub_district Min 1; written here because a child would otherwise take the Skill Trainer's stand-in rule). Switch her off on the NPC Placements screen (/zigadmin) and her lessons stay with Odda.",
+  "Name": "Mmo_Trainer_Wright",
+  "Parent": "Mmo_Trainer",
+  "Enabled": true,
+  "Where": { "GameplayConfig": ["ZiggfreedCommon_Hub"] },
+  "Identity": { "Role": "Mmo_Wright" },
+  "Anchor": {
+    "Custom": {
+      "Provider": "ziggfreedcommon:hub",
+      "Params": { "District": "Mmo_Adventurers_Hall", "Anchor": "Trainer_Artisans_2" }
+    }
+  },
+  "Requires": {
+    "Factors": [
+      { "Factor": "mmoskilltree:feature", "Param": "stations", "Min": 1 },
+      { "Factor": "ziggfreedcommon:hub_district", "Param": "Mmo_Adventurers_Hall", "Min": 1 }
+    ]
+  },
+  "Interact": { "Dialogue": "Mmo_Trainer_Wright" },
+  "Trainer": {
+    "Tracks": [ "Crafting", "Building" ]
+  }
+}

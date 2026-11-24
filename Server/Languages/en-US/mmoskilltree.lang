@@ -419,6 +419,13 @@ dialogue.mmo_enchanter.opt.kit = Where does the kit come from?
 dialogue.mmo_enchanter.opt.why = Why did you leave the cult?
 dialogue.mmo_enchanter.opt.nothing = Nothing for now.
 
+# The pack's three trainers at the Adventurers' Hall's stalls (Dialogues/MMOSkillTree/Mmo_Trainer_*.json): each one's
+# greeting. The rest of a trainer's conversation is MMO Skill Tree's shared trainer lines. Marn keeps his contractions,
+# Orrin and Tamsin never use one.
+dialogue.mmo_trainer_sawyer.greet.text = Found my other counter, then. On the landing I saw timber. Up here I teach what a hatchet's for when there's no log in front of it.\nNone of it costs a thing once your <b>Woodcutting</b>'s high enough. Come back as it climbs.
+dialogue.mmo_trainer_enchanter.greet.text = The Kweebecs keep a counter for me beside their spellwright. Here I teach <b>Enchanting</b>: what a piece of gear holds, and how to draw it out with your own hands.\nWhat I teach is yours for nothing once your level is there.
+dialogue.mmo_trainer_wright.greet.text = If you make it at a station or raise it as a wall, I teach it. <b>Crafting</b> and <b>Building</b>, both.\nNone of it costs you anything once your level is there. Come back whenever a skill climbs.
+
 shop.mmo_enchanter.title = Orrin's Shelf
 shop.mmo_enchanter.desc = Nobody else sells a wand or a blowgun, so Orrin keeps a few for the table.
 

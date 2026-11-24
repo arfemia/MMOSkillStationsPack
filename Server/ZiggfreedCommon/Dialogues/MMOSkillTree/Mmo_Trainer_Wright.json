@@ -1,0 +1,11 @@
+{
+  "Name": "Mmo_Trainer_Wright",
+  "Parent": "Mmo_Trainer",
+  "$Comment": "Wright Tamsin's trainer conversation, at her counter in the Adventurers' Hall: MMO Skill Tree's Mmo_Trainer conversation with her own greeting. Everything else is inherited: the technique and reset screens and the shared answers (Train opens her trainer page).",
+  "Nodes": {
+    "greet": {
+      "TextKey": "dialogue.mmo_trainer_wright.greet.text",
+      "IncludeOptions": ["Mmo_Trainer_Menu"]
+    }
+  }
+}
